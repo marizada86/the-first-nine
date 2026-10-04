@@ -1,103 +1,156 @@
 ﻿version: 2
 
 last_completed_plan:
-  id: "2026-10-04-b05-thornwake-combat-readability"
-  spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
-  evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
-  implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
+  id: "2026-10-04-enemy-facing-correction"
+  spec: "[[2026-10-04-enemy-facing-correction]]"
+  evidence: "[[2026-10-04-enemy-facing-correction]]"
   status: complete-implementation-merged
   mode: guided
+  request_classification: NEW_PLAN
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
   approved: "2026-10-04"
-  request_classification: NEW_PLAN
-  scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
-  blocking_gaps: []
-  source_publication_approved: true
-  source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
+  request_execution_classification: IN_PLAN
   implementation_approved: true
-  source_push_approved: true
-  implementation_push_approved: true
-  implementation_branch: codex/b05-controls-wagon-inventory
-  published_commit: "e5832da604226b33f424d18248b24f0825c568aa"
-  branch_publication: "Original 4400b59 was published on b05-thornwake-combat-readability; current merged PR head is e5832da on codex/b05-controls-wagon-inventory. Both branches are retained."
-  review_evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
-  approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
-  revision_execution: local
-  revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
-  followup_push_approved: true
-  followup_push_authority: "Historical revision publication approval on 2026-10-04. PR, merge and closure received separate later owner approvals, recorded below."
-  revision_published: true
-  revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
-  revision_publication: "First revision publication at bb4a0d4; publication reconciliation at e6b614c; corrected geometry b8823c7 and acceptance/publication records e5832da later merged through PR #4."
-  pull_request_approved: true
-  pull_request: "https://github.com/marizada86/the-first-nine/pull/4"
-  pull_request_base: "main at 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
-  pull_request_head: "e5832da604226b33f424d18248b24f0825c568aa"
-  pull_request_branch: codex/b05-controls-wagon-inventory
-  pull_request_status: merged
-  pull_request_opening_authority: "Owner explicitly authorized opening the B-05 PR into main without merge. IN_PLAN; no additional push, auto-merge, deletion or B-06."
-  pull_request_evidence: "[[2026-10-04-b05-pull-request]]"
-  pull_request_receipt_published_before_closure: false
-  merge_approved: true
-  original_merge_authority: "Owner explicitly authorized a regular merge of PR #4 preserving six commits and both branches. IN_PLAN; documentation closure/push, deletion and B-06 remain separate."
-  merge_commit: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
-  merge_parents: ["9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b", "e5832da604226b33f424d18248b24f0825c568aa"]
-  merge_verified: true
-  merged_main: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
-  preserved_commits: ["4400b59", "43ab112", "bb4a0d4", "e6b614c", "b8823c7", "e5832da"]
-  feature_branches_preserved: true
-  local_pr_receipt_commit: "f0ee44f36a1ed4ef47463d4c198b25fb927ef201"
-  documentation_closure_approved: true
-  batch: B-05
+  scope: "Track enemy facing and mirror existing sprites without changing geometry, reach, AI, controls, art or progression."
+  blocking_gaps: []
   checkpoint: complete
-  implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
-  implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
-  prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
-  revision_branch: codex/b05-controls-wagon-inventory
-  revision_base: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
-  revision_commit: "43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c"
+  steps: ["S-001-facing-and-rendering", "S-002-isolated-direction-validation", "S-003-regressions-evidence-review"]
+  batches: ["B-001-enemy-facing-correction"]
+  baseline_commit: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
+  implementation_branch: codex/enemy-facing-correction
+  implementation_commit: "e7812e6ac969e899292a6c0c4845769ccaba2404"
+  steps_completed: ["S-001", "S-002", "S-003"]
+  validation: "Godot 4.7.2: headless facing 65/65, rendered facing 102/102, 3 rejected faulty subclasses (exit 1), independent geometry 46/46, actual-input combat 9/9, menus 33/33, full self-test and normal/headless 600-frame smoke passed. Zero new gameplay alpha scans; scoped records and preserved completed history checked."
   human_validation_accepted: true
   human_validation_date: "2026-10-04"
-  human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
-  published_revision_branch: codex/b05-controls-wagon-inventory
-  revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
-  revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
-  deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
-  geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
-  geometry_correction_classification: IN_PLAN
-  geometry_correction_approved: true
-  geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
-  geometry_correction_authority: "Initial scope authorized the local geometry fix and tests only. Later explicit owner approvals authorized its publication, PR #4, regular merge and documentation closure; no deletion or B-06."
-  geometry_correction_push_approved: true
-  geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
-  geometry_correction_status: complete-implementation-merged
-  geometry_correction_published: true
-  geometry_correction_commit: "b8823c70c637fdbef9f36e6cf0da0925369faa47"
-  geometry_correction_human_validation_accepted: true
-  geometry_correction_human_validation_date: "2026-10-04"
-  geometry_correction_human_validation_source: "Owner stated: conferido. Vamos passar o próximo prompt para o opus 5.5. Accepted as IN_PLAN visual-review confirmation; no additional detailed tests inferred."
-  geometry_correction_publication_authority: "Owner separately authorized normal branch publication of the correction and acceptance records, followed by explicit PR, merge and main-documentation-closure approvals."
-  geometry_correction_publication: "Historical geometry publication verified at b8823c7 with main then at 9ea4fc1; records at e5832da and regular merge bc7796e integrated that corrected version into main."
-  geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
-  geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
-  final_technical_review: "Owner-delivered Opus report reviewed e5832da, found no blockers and reported Linux Godot 4.7.2 reproduction of 46/46 geometry, 5 rejected faults, 9/9 combat, 33/33 menus, self-tests and smoke runs. Reviewer evidence, not fresh Atena or CI results. Historical/current record clarity is reconciled in this closure."
-  pull_request_opening_checks: "At PR opening, GitHub: mergeable=true, merged=false; 0 check runs, 0 statuses and 0 PR-triggered workflow runs. Historical pre-merge check; no CI success inferred."
-  merge_validation: "GitHub confirms closed/merged=true at bc7796e; local fetch and remote refs agree, merged tree is identical to e5832da, all six PR commits remain ancestors of main and both remote feature branches remain at their original heads. No new engine runs or extra file-content change claimed."
-  original_implementation_branch: b05-thornwake-combat-readability
-  original_published_commit: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
-  merged_feature_head: "e5832da604226b33f424d18248b24f0825c568aa"
-  closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
-  documentation_closure_authority: "Owner explicitly authorized closing B-05, fixing the record inconsistencies and publishing documentation only on main. IN_PLAN; no runtime change or B-06."
-  documentation_publication_approved: true
-  pull_request_receipt_included_in_closure: true
-  preserved_local_merge_receipt_commit: "3b37c9f5e24b15ddb98fccd9963c9e04c9f7fcde"
-  receipt_recovery_branch: codex/b05-controls-wagon-inventory
-  closure_validation: "ADD contract/links, completed-plan and exact prior-history preservation checks, saved runtime evidence diagnostics, whitespace and documentation-only Git boundary checks. No new engine run; existing validated merge tree remains unchanged outside .atena."
-  next_recommendation: "Optional separately approved 1280x720 balance/feel playtest of pose-dependent reach, unchanged 35 px contact damage, approved inventory pause and startup latency; outcome would be a tuning plan, not new features or automatic B-06."
-  exception: "No new runtime, art, dependencies, canonical gameplay rules, travel, Mark power, ally roles, disk persistence, branch deletion or B-06. All deferred items remain visible."
+  human_validation_source: "Owner stated: aprovado. Accepted as IN_PLAN human review of e7812e6; no extra detailed tests or publication authority inferred."
+  known_limitations: "Thornwake 12 poses are raster-verified; generic retreat/legacy fallback are state-verified, not all prototype artwork. Rendering tests use Godot-owned captures, not sealed harness/GPU profiling. Balance and other deferred B-05 items unchanged."
+  push_approved: true
+  published: true
+  first_published_commit: "523960b3b3c83832edabda8298de76e767828c43"
+  publication_authority: "Owner explicitly authorized publishing the correction and records on codex/enemy-facing-correction, without PR or merge. IN_PLAN; approval is separate from execution and human acceptance."
+  publication: "Normal push created the feature branch at 523960b; reconciliation edb5623 and subsequently authorized receipt fb565d0 were pushed normally. Main stayed at 39cd7d3 until the separately authorized regular merge 7049063; no amend or force-push."
+  pull_request_approved: true
+  pull_request: "https://github.com/marizada86/the-first-nine/pull/5"
+  pull_request_state: merged
+  pull_request_opening_head: "edb5623d2609152c7df5dffffe10a34e6f3e2ba0"
+  pull_request_head: "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"
+  pull_request_base: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
+  pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
+  pull_request_authority: "Owner explicitly authorized opening the correction PR into main with an English description and without merge. Classified IN_PLAN; separate from earlier branch publication."
+  additional_record_push_approved: true
+  merge_approved: true
+  additional_record_push_authority: "Owner answered autorizados to publishing local receipt fb565d0 and regularly merging PR #5. IN_PLAN; not standing authorization for another documentation push."
+  additional_record_push_commit: "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"
+  merge_authority: "Same explicit owner approval authorized a regular merge after publishing fb565d0, preserving the branch and all four commits."
+  merge_commit: "7049063358132aac6d85aa69c0f06ae53efa98da"
+  merge_parents: ["39cd7d3d46a8afb3894889920e0840cbae573e7b", "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"]
+  merge_verified: true
+  preserved_commits: ["e7812e6", "523960b", "edb5623", "fb565d0"]
+  feature_branch_preserved: true
+  merge_validation: "Remote main and fetched merge agree; merged tree equals fb565d0, all four commits remain ancestors. GitHub closed/merged true. Final pre-merge head had zero check runs and statuses; no CI or fresh engine pass inferred."
+  closure_record_publication_approved: false
+  closure_record_publication: "Local operational closure only. The owner authorized fb565d0 publication and merge, not a further main documentation push."
+  next_recommendation: "A separately approved balance/feel playtest can evaluate deferred B-05 items. No B-06 is authorized or started."
+  exception: "No new runtime, art, dependency, gameplay rule, balance, unlock, external dispatch, further push or branch deletion. Prior completed plans and deferred items remain preserved."
 
 completed_plan_history:
+  - id: "2026-10-04-b05-thornwake-combat-readability"
+    spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
+    evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
+    implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
+    status: complete-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approval_selection: user-explicit-2026-10-04
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
+    blocking_gaps: []
+    source_publication_approved: true
+    source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
+    implementation_approved: true
+    source_push_approved: true
+    implementation_push_approved: true
+    implementation_branch: codex/b05-controls-wagon-inventory
+    published_commit: "e5832da604226b33f424d18248b24f0825c568aa"
+    branch_publication: "Original 4400b59 was published on b05-thornwake-combat-readability; current merged PR head is e5832da on codex/b05-controls-wagon-inventory. Both branches are retained."
+    review_evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
+    approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
+    revision_execution: local
+    revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
+    followup_push_approved: true
+    followup_push_authority: "Historical revision publication approval on 2026-10-04. PR, merge and closure received separate later owner approvals, recorded below."
+    revision_published: true
+    revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
+    revision_publication: "First revision publication at bb4a0d4; publication reconciliation at e6b614c; corrected geometry b8823c7 and acceptance/publication records e5832da later merged through PR #4."
+    pull_request_approved: true
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/4"
+    pull_request_base: "main at 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+    pull_request_head: "e5832da604226b33f424d18248b24f0825c568aa"
+    pull_request_branch: codex/b05-controls-wagon-inventory
+    pull_request_status: merged
+    pull_request_opening_authority: "Owner explicitly authorized opening the B-05 PR into main without merge. IN_PLAN; no additional push, auto-merge, deletion or B-06."
+    pull_request_evidence: "[[2026-10-04-b05-pull-request]]"
+    pull_request_receipt_published_before_closure: false
+    merge_approved: true
+    original_merge_authority: "Owner explicitly authorized a regular merge of PR #4 preserving six commits and both branches. IN_PLAN; documentation closure/push, deletion and B-06 remain separate."
+    merge_commit: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
+    merge_parents: ["9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b", "e5832da604226b33f424d18248b24f0825c568aa"]
+    merge_verified: true
+    merged_main: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
+    preserved_commits: ["4400b59", "43ab112", "bb4a0d4", "e6b614c", "b8823c7", "e5832da"]
+    feature_branches_preserved: true
+    local_pr_receipt_commit: "f0ee44f36a1ed4ef47463d4c198b25fb927ef201"
+    documentation_closure_approved: true
+    batch: B-05
+    checkpoint: complete
+    implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
+    implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+    prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
+    revision_branch: codex/b05-controls-wagon-inventory
+    revision_base: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+    revision_commit: "43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c"
+    human_validation_accepted: true
+    human_validation_date: "2026-10-04"
+    human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
+    published_revision_branch: codex/b05-controls-wagon-inventory
+    revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
+    revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
+    deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
+    geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
+    geometry_correction_classification: IN_PLAN
+    geometry_correction_approved: true
+    geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
+    geometry_correction_authority: "Initial scope authorized the local geometry fix and tests only. Later explicit owner approvals authorized its publication, PR #4, regular merge and documentation closure; no deletion or B-06."
+    geometry_correction_push_approved: true
+    geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
+    geometry_correction_status: complete-implementation-merged
+    geometry_correction_published: true
+    geometry_correction_commit: "b8823c70c637fdbef9f36e6cf0da0925369faa47"
+    geometry_correction_human_validation_accepted: true
+    geometry_correction_human_validation_date: "2026-10-04"
+    geometry_correction_human_validation_source: "Owner stated: conferido. Vamos passar o próximo prompt para o opus 5.5. Accepted as IN_PLAN visual-review confirmation; no additional detailed tests inferred."
+    geometry_correction_publication_authority: "Owner separately authorized normal branch publication of the correction and acceptance records, followed by explicit PR, merge and main-documentation-closure approvals."
+    geometry_correction_publication: "Historical geometry publication verified at b8823c7 with main then at 9ea4fc1; records at e5832da and regular merge bc7796e integrated that corrected version into main."
+    geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
+    geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
+    final_technical_review: "Owner-delivered Opus report reviewed e5832da, found no blockers and reported Linux Godot 4.7.2 reproduction of 46/46 geometry, 5 rejected faults, 9/9 combat, 33/33 menus, self-tests and smoke runs. Reviewer evidence, not fresh Atena or CI results. Historical/current record clarity is reconciled in this closure."
+    pull_request_opening_checks: "At PR opening, GitHub: mergeable=true, merged=false; 0 check runs, 0 statuses and 0 PR-triggered workflow runs. Historical pre-merge check; no CI success inferred."
+    merge_validation: "GitHub confirms closed/merged=true at bc7796e; local fetch and remote refs agree, merged tree is identical to e5832da, all six PR commits remain ancestors of main and both remote feature branches remain at their original heads. No new engine runs or extra file-content change claimed."
+    original_implementation_branch: b05-thornwake-combat-readability
+    original_published_commit: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+    merged_feature_head: "e5832da604226b33f424d18248b24f0825c568aa"
+    closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
+    documentation_closure_authority: "Owner explicitly authorized closing B-05, fixing the record inconsistencies and publishing documentation only on main. IN_PLAN; no runtime change or B-06."
+    documentation_publication_approved: true
+    pull_request_receipt_included_in_closure: true
+    preserved_local_merge_receipt_commit: "3b37c9f5e24b15ddb98fccd9963c9e04c9f7fcde"
+    receipt_recovery_branch: codex/b05-controls-wagon-inventory
+    closure_validation: "ADD contract/links, completed-plan and exact prior-history preservation checks, saved runtime evidence diagnostics, whitespace and documentation-only Git boundary checks. No new engine run; existing validated merge tree remains unchanged outside .atena."
+    next_recommendation: "Optional separately approved 1280x720 balance/feel playtest of pose-dependent reach, unchanged 35 px contact damage, approved inventory pause and startup latency; outcome would be a tuning plan, not new features or automatic B-06."
+    exception: "No new runtime, art, dependencies, canonical gameplay rules, travel, Mark power, ally roles, disk persistence, branch deletion or B-06. All deferred items remain visible."
   - id: "2026-10-04-b04-thornwake-mark-one-stabilization"
     spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
     status: complete-implementation-merged
@@ -444,48 +497,8 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan:
-  id: "2026-10-04-enemy-facing-correction"
-  spec: "[[2026-10-04-enemy-facing-correction]]"
-  evidence: "[[2026-10-04-enemy-facing-correction]]"
-  status: pull-request-open-awaiting-merge-authorization
-  mode: guided
-  request_classification: NEW_PLAN
-  approval_mode: per-plan
-  approval_selection: user-explicit-2026-10-04
-  approved: "2026-10-04"
-  request_execution_classification: IN_PLAN
-  implementation_approved: true
-  scope: "Track enemy facing and mirror existing sprites without changing geometry, reach, AI, controls, art or progression."
-  blocking_gaps: []
-  checkpoint: open-pr-awaiting-merge-authorization
-  steps: ["S-001-facing-and-rendering", "S-002-isolated-direction-validation", "S-003-regressions-evidence-review"]
-  batches: ["B-001-enemy-facing-correction"]
-  baseline_commit: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
-  implementation_branch: codex/enemy-facing-correction
-  implementation_commit: "e7812e6ac969e899292a6c0c4845769ccaba2404"
-  steps_completed: ["S-001", "S-002", "S-003"]
-  validation: "Godot 4.7.2: headless facing 65/65, rendered facing 102/102, 3 rejected faulty subclasses (exit 1), independent geometry 46/46, actual-input combat 9/9, menus 33/33, full self-test and normal/headless 600-frame smoke passed. Zero new gameplay alpha scans; scoped records and preserved completed history checked."
-  human_validation_accepted: true
-  human_validation_date: "2026-10-04"
-  human_validation_source: "Owner stated: aprovado. Accepted as IN_PLAN human review of e7812e6; no extra detailed tests or publication authority inferred."
-  known_limitations: "Thornwake 12 poses are raster-verified; generic retreat/legacy fallback are state-verified, not all prototype artwork. Rendering tests use Godot-owned captures, not sealed harness/GPU profiling. Balance and other deferred B-05 items unchanged."
-  push_approved: true
-  published: true
-  first_published_commit: "523960b3b3c83832edabda8298de76e767828c43"
-  publication_authority: "Owner explicitly authorized publishing the correction and records on codex/enemy-facing-correction, without PR or merge. IN_PLAN; approval is separate from execution and human acceptance."
-  publication: "Normal push created origin/codex/enemy-facing-correction at 523960b; exact remote hash verified, with main unchanged at 39cd7d3. Record reconciliation follows normally on the same authorized branch; no amend or force-push."
-  pull_request_approved: true
-  pull_request: "https://github.com/marizada86/the-first-nine/pull/5"
-  pull_request_state: open
-  pull_request_head: "edb5623d2609152c7df5dffffe10a34e6f3e2ba0"
-  pull_request_base: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
-  pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
-  pull_request_authority: "Owner explicitly authorized opening the correction PR into main with an English description and without merge. Classified IN_PLAN; separate from earlier branch publication."
-  additional_record_push_approved: false
-  merge_approved: false
-  exception: "B-05 remains completed. PR #5 is open at the approved published head; this receipt remains local. No B-06, new art, dependency, rule, balance change, unlock, external dispatch, extra record push, branch deletion or merge."
-plan_cursor: enemy-facing-pr-open-awaiting-merge-authorization
+active_plan: null
+plan_cursor: complete
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

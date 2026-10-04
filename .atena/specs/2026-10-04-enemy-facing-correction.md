@@ -1,5 +1,5 @@
 ---
-status: pull-request-open-awaiting-merge-authorization
+status: complete-implementation-merged
 kind: bounded-visual-correction-plan
 created: 2026-10-04
 plan_id: 2026-10-04-enemy-facing-correction
@@ -24,10 +24,13 @@ first_published_commit: 523960b3b3c83832edabda8298de76e767828c43
 publication_authority: explicit-owner-branch-push-and-records-authorization
 pull_request_approved: true
 pull_request: https://github.com/marizada86/the-first-nine/pull/5
-pull_request_head: edb5623d2609152c7df5dffffe10a34e6f3e2ba0
+pull_request_opening_head: edb5623d2609152c7df5dffffe10a34e6f3e2ba0
+pull_request_head: fb565d0c430a8df3b0a12bd233c8a4109466f6a0
 pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
-additional_record_push_approved: false
-merge_approved: false
+additional_record_push_approved: true
+merge_approved: true
+merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da
+closure_record_publication_approved: false
 ---
 
 # Enemy facing correction
@@ -44,7 +47,7 @@ Track each enemy's facing direction and mirror the existing enemy sprite when fa
 
 Keep source images and frame selection, native aspect, centered visible body, grounded feet, widths/shared-outline melee reach, prewarmed caches, health, damage, contact radius and timing unchanged. Restore drawing transforms before labels, health bars or other scene elements. Do not mirror the entire scene or mutate source artwork.
 
-No new art, dependencies, adapter installation, GPU/performance profiling, controls, parry, progression, ally roles, disk saves or B-06. External publication is not implicit: the owner separately approved branch publication and subsequently PR creation. Merge and publication of this local PR receipt remain unapproved.
+No new art, dependencies, adapter installation, GPU/performance profiling, controls, parry, progression, ally roles, disk saves or B-06. External publication is not implicit: the owner separately approved branch publication, PR creation, and subsequently receipt publication plus regular merge. A further documentation-closure push remains unapproved.
 
 ## Grounded decisions and gaps
 
@@ -87,4 +90,6 @@ Godot 4.7.2: 65/65 headless direction checks; 102/102 rendered checks (12 pose r
 
 The owner then explicitly authorized publishing the correction and records on `codex/enemy-facing-correction`, without PR or merge. A normal push published `e7812e6` and acceptance records `523960b`; remote HEAD was verified as `523960b3b3c83832edabda8298de76e767828c43`, with main unchanged at `39cd7d3`. Publication reconciliation was subsequently pushed as `edb5623` on the same authorized branch, without amend or force-push.
 
-The owner separately answered "autorizo" to opening a PR into main, with an English description and no merge. Classified IN_PLAN. PR #5 is open at published head `edb5623`, with base `39cd7d3`, three commits and 61 changed files. GitHub reports clean mergeability, zero check runs, zero commit statuses and auto-merge disabled. The plan remains active at the merge-authority checkpoint. See [[2026-10-04-enemy-facing-pull-request]] for the exact receipt. This reconciliation stays local; it does not change the PR head or claim fresh engine validation. No merge, dispatch, branch deletion or B-06 is authorized/performed.
+The owner separately answered "autorizo" to opening a PR into main, with an English description and no merge. Classified IN_PLAN. At opening, PR #5 had head `edb5623`, base `39cd7d3`, three commits and 61 changed files. GitHub reported clean mergeability, zero check runs, zero commit statuses and auto-merge disabled. Receipt `fb565d0` was initially local and the plan awaited merge authority.
+
+The owner then answered "autorizados" to receipt publication and merge. A normal push published `fb565d0`; PR #5 was regularly merged at `7049063358132aac6d85aa69c0f06ae53efa98da`, preserving all four commits and the feature branch. The merged tree equals the final PR head. The local plan is completed, with prior B-05 moved unchanged into history and active_plan cleared. See [[2026-10-04-enemy-facing-pull-request]] for exact facts. This closure is local and unpushed; no fresh engine validation, further publication, dispatch, branch deletion or B-06 is authorized/performed.

@@ -1,5 +1,5 @@
 ---
-status: pull-request-open-awaiting-merge-authorization
+status: complete-implementation-merged
 kind: preparation-and-implementation-evidence
 created: 2026-10-04
 request_classification: NEW_PLAN
@@ -20,10 +20,13 @@ first_published_commit: 523960b3b3c83832edabda8298de76e767828c43
 publication_authority: explicit-owner-branch-push-and-records-authorization
 pull_request_approved: true
 pull_request: https://github.com/marizada86/the-first-nine/pull/5
-pull_request_head: edb5623d2609152c7df5dffffe10a34e6f3e2ba0
+pull_request_opening_head: edb5623d2609152c7df5dffffe10a34e6f3e2ba0
+pull_request_head: fb565d0c430a8df3b0a12bd233c8a4109466f6a0
 pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
-additional_record_push_approved: false
-merge_approved: false
+additional_record_push_approved: true
+merge_approved: true
+merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da
+closure_record_publication_approved: false
 ---
 
 # Enemy direction diagnosis
@@ -98,4 +101,14 @@ Publication reconciliation was pushed as `edb5623d2609152c7df5dffffe10a34e6f3e2b
 
 The owner explicitly answered "autorizo" to opening the PR with an English description and without merging. Classified IN_PLAN, separate from implementation, acceptance and branch-push approvals. PR #5 was opened and attached to this chat: https://github.com/marizada86/the-first-nine/pull/5. Its verified head remains `edb5623` and base remains `39cd7d3`; state is open, merged is false, mergeability is clean and auto-merge is null. GitHub reports zero check runs and zero commit statuses (combined status pending, not a failing check).
 
-Current status is `pull-request-open-awaiting-merge-authorization`. Exact metadata and the publication boundary are in [[2026-10-04-enemy-facing-pull-request]]. This local receipt/record reconciliation is not pushed and does not change the three-commit PR. Only saved-result/operational checks are revalidated; no new Godot run or new human-test claim. Merge, additional record publication, branch deletion, external dispatch and B-06 remain unapproved.
+At the opening-receipt checkpoint, status was `pull-request-open-awaiting-merge-authorization`; receipt `fb565d0` was not yet pushed. Only saved-result/operational checks were revalidated, with no new Godot run or new human-test claim. The subsequent separate publication and merge approval is recorded below.
+
+## Authorized receipt publication and regular merge
+
+The owner answered "autorizados" to publishing `fb565d0` and merging PR #5. Classified IN_PLAN. A fresh fetch confirmed clean branch tracking with exactly that documentation-only commit ahead; the existing scoped validator passed before publication. A normal push moved the feature branch from `edb5623` to `fb565d0c430a8df3b0a12bd233c8a4109466f6a0`, without amend or force-push. Only five record/validator files changed in that commit; runtime and saved evidence were unchanged.
+
+GitHub confirmed the new head, clean mergeability, four commits and 62 changed files (+1660 / -6). Final pre-merge head had zero check runs and zero statuses; no CI pass is inferred. A regular merge was requested with expected head `fb565d0` and returned `7049063358132aac6d85aa69c0f06ae53efa98da`. GitHub subsequently confirmed closed/merged true at `2026-10-04T22:56:52Z`.
+
+After fetching, local main was safely fast-forwarded to the merge. Its parents are prior main `39cd7d3d46a8afb3894889920e0840cbae573e7b` and final PR head `fb565d0`. The merged tree is identical to that head; all four correction commits remain ancestors. Remote main matches the merge, and `codex/enemy-facing-correction` is preserved at `fb565d0`. No branch deletion or other remote changes.
+
+Local status is now `complete-implementation-merged`. Spec, receipt, plan state and their validator are reconciled locally; prior B-05 moves unchanged to the first history entry, older history is preserved, and active_plan is null with cursor complete. Exact facts are in [[2026-10-04-enemy-facing-pull-request]]. This documentation closure is unpushed and separately gated; no new engine test, source change, art, dependency, dispatch, balance change or B-06.

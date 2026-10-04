@@ -1,5 +1,5 @@
 ---
-status: pull-request-open-awaiting-merge-authorization
+status: complete-implementation-merged
 kind: authorized-pull-request-receipt
 created: 2026-10-04
 request_classification: IN_PLAN
@@ -8,17 +8,19 @@ spec: "[[2026-10-04-enemy-facing-correction]]"
 implementation_evidence: "[[2026-10-04-enemy-facing-correction]]"
 pull_request: https://github.com/marizada86/the-first-nine/pull/5
 pull_request_approved: true
-additional_record_push_approved: false
-merge_approved: false
+additional_record_push_approved: true
+merge_approved: true
+merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da
+closure_record_publication_approved: false
 ---
 
 # Enemy-facing correction PR receipt
 
-## Authority
+## Opening authority (historical)
 
 The owner explicitly answered "autorizo" to opening `codex/enemy-facing-correction` into main, with an English description and no merge. This is IN_PLAN PR-only authorization, not an extension of the previous branch-push approval. No merge, auto-merge, branch deletion, additional record publication, external dispatch or B-06.
 
-## Verified remote facts
+## Verified opening facts (historical)
 
 - PR: https://github.com/marizada86/the-first-nine/pull/5.
 - Title: Fix enemy sprite facing during movement and attacks.
@@ -38,6 +40,24 @@ The creation connector's initial normalized snapshot reported mergeable false. A
 
 The English description distinguishes recorded Godot implementation results from this PR operation: 65/65 headless, 102/102 rendered, three intentionally faulty controls rejected, geometry 46/46, real-input combat 9/9, menus 33/33, full self-tests and two smoke runs. No engine tests were rerun when opening this PR.
 
-Spec, evidence, active-plan state and the operational validator are reconciled locally, with saved-result and link/contract checks only. Completed B-05 history, source, art, runtime test results and existing captures remain unchanged. This receipt is not pushed; it does not change the PR's approved three-commit head. The active plan remains at the separate merge-authority checkpoint.
+At this opening checkpoint, spec, evidence, active-plan state and the operational validator were reconciled locally, with saved-result and link/contract checks only. Completed B-05 history, source, art, runtime test results and existing captures remained unchanged. Receipt `fb565d0` was not yet pushed and the active plan awaited separate merge authority. Its subsequent publication and merge are recorded below.
 
 Local operational validation exits 0 with `FACING_RECORDS_PASS` (12 resolved links, exact completed-history preservation, bounded paths and unchanged combat/geometry functions) and `FACING_RESULTS_PASS` (checks the already saved process results, not fresh engine execution). The scoped whitespace check passes. YAML checks remain structural only, not a whole-file parser claim.
+
+## Authorized publication and verified merge
+
+The owner subsequently answered "autorizados" to both pending actions: publishing the local receipt and merging PR #5. Classified IN_PLAN. The earlier restrictions above describe the opening checkpoint, not this later approval. This does not authorize a further closure push, deletion, external dispatch or B-06.
+
+- Receipt commit `fb565d0c430a8df3b0a12bd233c8a4109466f6a0` was normally pushed to the same feature branch.
+- Final PR head: `fb565d0`; four commits, 62 changed files, +1660 / -6. The extra commit changes only records and their validator.
+- Final pre-merge GitHub metadata: mergeable true, mergeable_state clean; zero check runs, zero statuses and combined status pending. No automatic test pass inferred.
+- Regular merge used expected head `fb565d0`, preserving commits `e7812e6`, `523960b`, `edb5623` and `fb565d0`.
+- Merge commit: `7049063358132aac6d85aa69c0f06ae53efa98da`.
+- Parents: `39cd7d3d46a8afb3894889920e0840cbae573e7b` and `fb565d0c430a8df3b0a12bd233c8a4109466f6a0`.
+- GitHub state: closed and merged, at `2026-10-04T22:56:52Z`.
+- Remote main verified at the merge; local main safely fast-forwarded to it. The merged tree is identical to the final PR head.
+- Feature branch preserved at `fb565d0`. No amend, force-push, auto-merge or deletion.
+
+The plan is completed locally, with prior B-05 preserved as the first history entry and active_plan cleared. Closure records remain local and unpushed. Validation checks merge ancestry/tree equality, saved results, record links and exact prior-history preservation; no new engine execution or detailed human tests are claimed.
+
+The closure validator passes with 12 resolved links and the unchanged saved runtime results. Its first closure-history comparison rejected the required newline separating the newly moved B-05 entry from the older list. The assertion now requires exactly that single new separator and byte-equivalent normalized older content; no older entry or acceptance result was changed to pass the check. Scoped whitespace checks pass. YAML checks remain structural, not a full parser pass.
