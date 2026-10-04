@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-local-revision-awaiting-human-review
 kind: bounded-runtime-fix-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b05-thornwake-combat-readability
@@ -15,7 +15,10 @@ implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instr
 implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
 implementation_branch: b05-thornwake-combat-readability
 implementation_base: 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b
-implementation_push_approved: false
+implementation_push_approved: true
+published_commit: 4400b59aab49ed2860c5c6369ba79b386a7d2e9a
+followup_push_approved: false
+revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
 pull_request_approved: false
 merge_approved: false
 ---
@@ -88,4 +91,12 @@ The owner selected `per-plan` for the single stable batch, `B-05`, on 2026-10-04
 - **Fix:** measured melee reach at visible contact; a distinct miss swing; an enemy hit flash; and separate attack, dodge, and hurt states. Hurt visuals appear only after real health loss.
 - **Validation:** the Godot 4.7.2 headless self-test passes (B-01 to B-05 and playtester); 11 B-05 negative controls fail as expected; the real-input runner passes 9 of 9; normal and headless runs are error-free.
 - **Details:** exact health values, captures, and limitations are in `[[2026-10-04-b05-thornwake-combat-readability-implementation]]`.
-- **Approvals:** implementation push, pull request, and merge are not approved and have not been performed.
+- **Historical approval state at implementation:** publication had not yet been approved. The later publication is recorded below.
+
+## Current review and requested revision
+
+The original approved implementation was subsequently published with owner authorization on `b05-thornwake-combat-readability` at `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. It has not been merged. The preparation and execution instructions above describe the original batch and its historical gate.
+
+Independent review found an uncleared hurt/action state on generic checkpoint restore and a frame-count-dependent real-input runner. Details and local validation are in [[2026-10-04-b05-controls-and-wagon-menu-review]]. These corrections are now implemented locally; human acceptance remains pending.
+
+The owner's new input/management definition is canonical in [[2026-10-04-separated-controls-and-wagon-management]]. The bounded extension is in [[2026-10-04-b05-controls-and-wagon-menu-revision]]. The owner approved local implementation before returning to Claude, then explicitly deferred parry to a higher Mark and requested clean dash and larger enemies. Local results are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Do not use the original shared-primary instruction to implement the new controls. No follow-up push, PR or merge is authorized.

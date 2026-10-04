@@ -1,5 +1,5 @@
 ---
-status: approved-ready-for-external-execution
+status: historical-instruction-local-revision-awaiting-review
 kind: external-implementation-instruction
 created: 2026-10-04
 batch: B-05
@@ -7,6 +7,10 @@ plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
 ---
 
 # B-05 — Thornwake melee damage and animation readability
+
+## Current follow-up checkpoint
+
+The original implementation described below was published at `4400b59` on `b05-thornwake-combat-readability`. It is not merged. The owner approved local independent controls, inventory and wagon management, then deferred parry to a higher Mark and requested clean dash and larger enemies. That follow-up is implemented locally and awaits human review; it has not been published. Read [[2026-10-04-b05-controls-and-wagon-menu-revision]], [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] and [[2026-10-04-b05-controls-and-wagon-menu-instruction]] for current results and review instructions. The remaining sections below preserve the original historical execution instruction, not authorization to reimplement or publish the new revision.
 
 ## Execution gate
 

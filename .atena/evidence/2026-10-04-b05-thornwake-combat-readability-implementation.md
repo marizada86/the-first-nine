@@ -124,6 +124,12 @@ Godot 4.7.2 stable, official Linux x86_64 build, in a scratch copy of the projec
 - **Unchanged visuals.** Enemy sprites still draw behind the camp fire and Wagon. The elf sprite still reads as drow.
 - **Debug-only F4.** F4 remains debug-only, and no release export was produced.
 
-## Approval state
+## Historical approval state at original implementation
 
 Implemented locally on `b05-thornwake-combat-readability` and awaiting human review. Implementation push, pull request, and merge are not approved and have not been performed.
+
+## Subsequent publication and local follow-up
+
+The owner subsequently authorized the original implementation push, published as `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. No B-05 PR or merge has occurred. The approval statement above records the earlier implementation checkpoint, not current publication state.
+
+The owner then approved local independent inputs, Lolth inventory and wagon management, with later clarifications deferring parry and requesting clean dash and larger Thornwake enemies. The follow-up is implemented on local `codex/b05-controls-wagon-inventory`, based on the published original commit. Updated reach, mappings, restore corrections, real-input runner and inspected final captures are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. The earlier reach values, E attack events and blue dash streak describe the original implementation and are superseded by that local follow-up. B-05 remains active at human review; follow-up publication, PR and merge are not approved or performed.

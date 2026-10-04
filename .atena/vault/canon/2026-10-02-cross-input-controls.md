@@ -23,3 +23,7 @@ related_intent: '[[2026-10-02-thalestriel-exodus-game-intent]]'
 ## Regra de contexto
 
 Ação primária ataca quando há ameaça alcançável e interage/recupera quando Lolth está diante de objeto, alavanca, entrada ou ponto de acampamento. A interface sempre deve exibir o ícone da entrada ativa quando pedir uma ação.
+
+## Owner revision on 2026-10-04
+
+The shared contextual-primary binding above is superseded by [[2026-10-04-separated-controls-and-wagon-management]]: E collects/interacts, left-click attacks, Space jumps, Shift dashes, and I opens Lolth's inventory. All ally management belongs in the wagon menu. The cross-input equivalence requirement remains; this revision changes action separation and interface access, not the availability of keyboard/controller play. Runtime implementation is tracked separately in [[2026-10-04-b05-controls-and-wagon-menu-revision]].

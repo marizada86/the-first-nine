@@ -49,4 +49,8 @@ Claude fetched and verified `origin/main` at `9ea4fc1bbfabd5be50a2d7f334b9b11325
 
 Full results, captures, and limitations are in `[[2026-10-04-b05-thornwake-combat-readability-implementation]]`.
 
-Implementation push, pull request, and merge are not approved and have not been performed. Human review is pending.
+At the original implementation checkpoint, implementation push, pull request, and merge were not approved or performed. Human review was pending.
+
+## Subsequent publication and local follow-up
+
+The owner later authorized publication of the original implementation as `4400b59` on `b05-thornwake-combat-readability`. No B-05 PR or merge has occurred. The owner then requested local independent controls, inventory and wagon management, followed by clean dash and larger-enemy corrections while deferring parry to a higher Mark. The local implementation and 33/33 controls/menu plus 9/9 combat validation are recorded in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Human review remains open and the follow-up is not published; do not treat earlier preparation/approval wording as its current state.

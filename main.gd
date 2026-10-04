@@ -16,6 +16,7 @@ const MISS_FEEDBACK_RANGE := 220.0
 const ATTACK_POSE_TIME := 0.28
 const HURT_FLASH_TIME := 0.45
 const ENEMY_HIT_FLASH_TIME := 0.16
+const THORNWAKE_ENEMY_SIZES := {"BRIAR HOUND": 160.0, "STAG OF MIRE": 200.0, "ANTLERED HUNGER": 260.0}
 const PORTAL_X := 1100.0
 const GRAVITY := 1500.0
 const JUMP_SPEED := 590.0
@@ -191,6 +192,9 @@ var mark_vfx_pos := Vector2.ZERO
 var player_action := ""
 var player_action_time := 0.0
 var hurt_flash_time := 0.0
+var ui_management
+var ui_gameplay_requests: Array[String] = []
+var ui_enemy_bounds: Dictionary = {}
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
 var state := "journey" # opening, journey, shar_shell, cure, victory, defeat
@@ -234,6 +238,9 @@ var checkpoint := {"mark": 0, "zone": 0, "flame": 100.0, "provisions": 4.0, "awa
 
 func _ready() -> void:
 	setup_input_actions()
+	ui_management = preload("res://wagon_inventory_ui.gd").new()
+	add_child(ui_management)
+	ui_management.setup(self)
 	start_new_run()
 	setup_playtester_panel()
 	queue_redraw()
@@ -241,24 +248,28 @@ func _ready() -> void:
 		call_deferred("run_self_test")
 
 func setup_input_actions() -> void:
+	for action in ["primary", "attack", "jump", "shadow_action", "camp_menu", "inventory", "skip", "camp_action", "shadow_strike"]:
+		ensure_action(action)
+		InputMap.action_erase_events(action)
 	add_joy_motion_action("move_left", JOY_AXIS_LEFT_X, -1.0)
 	add_joy_button_action("move_left", JOY_BUTTON_DPAD_LEFT)
 	add_joy_motion_action("move_right", JOY_AXIS_LEFT_X, 1.0)
 	add_joy_button_action("move_right", JOY_BUTTON_DPAD_RIGHT)
 	add_key_action("primary", KEY_E)
-	add_mouse_action("primary", MOUSE_BUTTON_LEFT)
-	add_joy_button_action("primary", JOY_BUTTON_X)
+	add_joy_button_action("primary", JOY_BUTTON_Y)
+	add_key_action("attack", KEY_J)
+	add_mouse_action("attack", MOUSE_BUTTON_LEFT)
+	add_joy_button_action("attack", JOY_BUTTON_X)
 	add_key_action("jump", KEY_SPACE)
 	add_joy_button_action("jump", JOY_BUTTON_A)
 	add_key_action("shadow_action", KEY_SHIFT)
-	add_mouse_action("shadow_action", MOUSE_BUTTON_RIGHT)
 	add_joy_motion_action("shadow_action", JOY_AXIS_TRIGGER_RIGHT, 1.0)
+	add_key_action("inventory", KEY_I)
 	add_key_action("camp_menu", KEY_M)
 	add_joy_button_action("camp_menu", JOY_BUTTON_BACK)
-	add_key_action("post_cycle", KEY_Q)
-	add_joy_button_action("post_cycle", JOY_BUTTON_Y)
-	add_key_action("post_toggle", KEY_R)
-	add_joy_button_action("post_toggle", JOY_BUTTON_RIGHT_SHOULDER)
+	for retired in ["post_cycle", "post_toggle"]:
+		if InputMap.has_action(retired):
+			InputMap.erase_action(retired)
 	add_key_action("skip", KEY_ESCAPE)
 	add_joy_button_action("skip", JOY_BUTTON_START)
 	add_key_action("camp_action", KEY_F)
@@ -335,18 +346,41 @@ func add_playtester_button(parent: Control, title: String, callback: Callable) -
 	return button
 
 func _input(event: InputEvent) -> void:
-	if not playtester_available():
+	if event.is_echo():
 		return
-	if event.is_action_pressed("playtester_toggle") and not event.is_echo():
+	if playtester_available() and event.is_action_pressed("playtester_toggle"):
 		toggle_playtester_panel()
 		get_viewport().set_input_as_handled()
 	elif is_instance_valid(playtester_panel) and playtester_panel.visible and event.is_action_pressed("skip"):
 		toggle_playtester_panel()
 		get_viewport().set_input_as_handled()
+	elif state == "journey" and event.is_action_pressed("inventory"):
+		ui_management.toggle_inventory()
+		get_viewport().set_input_as_handled()
+	elif state == "journey" and event.is_action_pressed("camp_menu"):
+		if event is InputEventJoypadButton and player.x >= 305.0:
+			ui_management.toggle_inventory()
+		else:
+			open_camp_menu()
+		get_viewport().set_input_as_handled()
+	elif ui_management.is_open():
+		ui_management.handle_event(event)
+
+# GUI widgets consume their clicks before any action can be queued in the world.
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_echo() or state != "journey" or ui_management.is_open() or (is_instance_valid(playtester_panel) and playtester_panel.visible) or playtester_resume_guard:
+		return
+	for action in ["attack", "primary", "shadow_action", "shadow_strike", "camp_action"]:
+		if event.is_action_pressed(action):
+			ui_gameplay_requests.append(action)
+			get_viewport().set_input_as_handled()
+			return
 
 func toggle_playtester_panel() -> void:
 	if not playtester_available() or not is_instance_valid(playtester_panel):
 		return
+	ui_management.close_window()
+	ui_gameplay_requests.clear()
 	playtester_panel.visible = not playtester_panel.visible
 	playtester_resume_guard = true
 	refresh_playtester_panel()
@@ -369,7 +403,7 @@ func begin_playtester_session() -> void:
 	playtester_snapshot.clear()
 	for property in get_property_list():
 		var property_name := String(property.name)
-		if (int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE) == 0 or property_name.begins_with("playtester_"):
+		if (int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE) == 0 or property_name.begins_with("playtester_") or property_name.begins_with("ui_"):
 			continue
 		var value: Variant = get(property_name)
 		if value is Array or value is Dictionary:
@@ -379,6 +413,7 @@ func begin_playtester_session() -> void:
 
 func prepare_playtester_override() -> void:
 	begin_playtester_session()
+	clear_combat_visuals()
 	state = "journey"
 	# Injected states cannot reuse an ordinary safe save from another Mark or time.
 	camp_secured = false
@@ -468,7 +503,7 @@ func add_joy_motion_action(action: String, axis: JoyAxis, axis_value: float) -> 
 	InputMap.action_add_event(action, event)
 
 func run_self_test() -> void:
-	var controls_bound := InputMap.action_get_events("move_left").size() >= 4 and InputMap.action_get_events("move_right").size() >= 4 and InputMap.action_get_events("primary").size() >= 3 and InputMap.action_get_events("jump").size() >= 2 and InputMap.action_get_events("shadow_action").size() >= 3 and InputMap.action_get_events("post_cycle").size() >= 2 and InputMap.action_get_events("skip").size() >= 2 and InputMap.action_get_events("camp_action").size() >= 2 and InputMap.action_get_events("shadow_strike").size() >= 2
+	var controls_bound := InputMap.action_get_events("move_left").size() >= 4 and InputMap.action_get_events("move_right").size() >= 4 and InputMap.action_get_events("primary").size() == 2 and InputMap.action_get_events("attack").size() == 3 and InputMap.action_get_events("inventory").size() == 1 and InputMap.action_get_events("jump").size() >= 2 and InputMap.action_get_events("shadow_action").size() == 2 and not InputMap.has_action("post_cycle") and not InputMap.has_action("post_toggle") and InputMap.action_get_events("skip").size() >= 2 and InputMap.action_get_events("camp_action").size() >= 2 and InputMap.action_get_events("shadow_strike").size() >= 2
 	var opening_cave_ready := run_opening_cave_self_test()
 	var thornwake_tutorial_ready := run_thornwake_tutorial_self_test()
 	var first_boss_ready := run_first_boss_self_test()
@@ -499,9 +534,9 @@ func run_self_test() -> void:
 	var second_wave_ready := night_wave == 2 and not shades.is_empty() and String(shades[0].name) == "STAG OF MIRE"
 	spawn_enemy("COMBO TARGET", Vector2(330, GROUND_Y - 34), 10, 0)
 	player = Vector2(330, GROUND_Y - 38)
-	handle_primary()
-	handle_primary()
-	handle_primary()
+	handle_attack()
+	handle_attack()
+	handle_attack()
 	var combo_works := int(shades.back().health) == 6
 	reset_to_prologue()
 	for item in [{"name": "HERB", "type": "herb", "slots": 1}, {"name": "WATER", "type": "water", "slots": 1}, {"name": "WOOD", "type": "wood", "slots": 1}, {"name": "ROPE", "type": "rope", "slots": 1}, {"name": "SALVAGE", "type": "salvage", "slots": 1}]:
@@ -663,6 +698,7 @@ func run_thornwake_tutorial_self_test() -> bool:
 	var recipe_shown := String(RECIPES[WHEEL_KIT_RECIPE].name) == "WHEEL KIT" and recipe_label(RECIPES[WHEEL_KIT_RECIPE]) == "1 WOOD, 1 ROPE, 1 SALVAGE" and current_objective() == "Stand at the Wagon and craft the WHEEL KIT."
 	open_camp_menu()
 	var recipe_locked := selected_recipe == WHEEL_KIT_RECIPE
+	ui_management.close_window()
 	wagon_stock.append({"name": "HERBS", "type": "herb", "slots": 1})
 	var stock_before := wagon_stock.size()
 	player = wagon_spot
@@ -687,7 +723,7 @@ func run_thornwake_tutorial_self_test() -> bool:
 	update_enemies(0.016)
 	var hound_telegraphs := String(hound.attack_state) == "windup" and health == health_before and HOUND_WINDUP >= MIN_TELEGRAPH_TIME
 	player = hound.pos
-	handle_primary()
+	handle_attack()
 	update_night_waves(0.0)
 	update_night_waves(NIGHT_WAVE_INTERVAL)
 	for shade in shades:
@@ -707,8 +743,8 @@ func run_thornwake_tutorial_self_test() -> bool:
 		time_to_hit += 0.05
 	var stag_hit_after_windup := wagon_integrity < integrity_before and time_to_hit >= MIN_TELEGRAPH_TIME and state == "journey"
 	player = stag.pos
-	handle_primary()
-	handle_primary()
+	handle_attack()
+	handle_attack()
 	update_night_waves(0.0)
 	var only_tutorial_enemies := seen_enemies == ["BRIAR HOUND", "STAG OF MIRE"]
 	var no_rewards := shadow_echoes == 0 and mark_level == 0 and cured_allies.is_empty() and state == "journey"
@@ -760,7 +796,7 @@ func defeat_boss_for_test() -> int:
 		player = shades[0].pos
 		combo_time = 0.0
 		health = max_health()
-		handle_primary()
+		handle_attack()
 		hits += 1
 	return hits
 
@@ -856,7 +892,7 @@ func run_first_boss_self_test() -> bool:
 	spawn_enemy("BRIAR HOUND", Vector2(player.x + 40.0, GROUND_Y - 34), 1, 1)
 	player = shades.back().pos
 	combo_time = 0.0
-	handle_primary()
+	handle_attack()
 	var echoes_after_cure := shadow_echoes == 1
 	collect_echo(10)
 	var echoes_capped := shadow_echoes == int(ECHO_THRESHOLDS[1]) and mark_level == 1 and state == "journey"
@@ -869,7 +905,7 @@ func run_first_boss_self_test() -> bool:
 	var thread_cooldown := int(shades.back().health) == 3
 	player = shades.back().pos
 	combo_time = 0.0
-	handle_primary()
+	handle_attack()
 	var melee_still_works := int(shades.back().health) == 2
 	dodge_cooldown = 0.0
 	perform_dodge(1.0)
@@ -1018,14 +1054,14 @@ func run_combat_readability_self_test() -> bool:
 	spawn_enemy("BRIAR HOUND", Vector2(580.0, enemy_y), 3, 1)
 	var hound: Dictionary = shades.back()
 	player_facing_left = true
-	handle_primary()
+	handle_attack()
 	var contact_hit := int(hound.health) == 2 and player_pose() == "strike" and mark_vfx_kind == "strike" and float(hound.hit_flash) > 0.0 and not player_facing_left and shadow_echoes == 0
 	shades.clear()
 	combo_time = 0.0
-	spawn_enemy("BRIAR HOUND", Vector2(600.0, enemy_y), 3, 1)
+	spawn_enemy("BRIAR HOUND", Vector2(630.0, enemy_y), 3, 1)
 	hound = shades.back()
 	player_action_time = 0.0
-	handle_primary()
+	handle_attack()
 	var beyond_reach_misses := int(hound.health) == 3 and player_pose() == "strike" and mark_vfx_kind == "swing" and float(hound.hit_flash) == 0.0 and message.begins_with("Out of reach")
 	shades.clear()
 	spawn_enemy("BRIAR HOUND", Vector2(420.0, enemy_y), 3, 1)
@@ -1033,14 +1069,14 @@ func run_combat_readability_self_test() -> bool:
 	var left_hound: Dictionary = shades[0]
 	var right_stag: Dictionary = shades[1]
 	combo_time = 0.0
-	handle_primary()
+	handle_attack()
 	var nearest_and_facing := int(right_stag.health) == 2 and int(left_hound.health) == 3 and not player_facing_left
 	shades.clear()
 	combo_time = 0.0
 	spawn_enemy("COMBO TARGET", Vector2(560.0, enemy_y), 10, 0)
-	handle_primary()
-	handle_primary()
-	handle_primary()
+	handle_attack()
+	handle_attack()
+	handle_attack()
 	var combo_kept := int(shades.back().health) == 6
 	shades.clear()
 	health = max_health()
@@ -1066,7 +1102,7 @@ func run_combat_readability_self_test() -> bool:
 	spawn_enemy("BRIAR HOUND", Vector2(570.0, enemy_y), 3, 1)
 	hound = shades.back()
 	var overlap_lolth := health
-	handle_primary()
+	handle_attack()
 	hound.pos = player
 	check_enemy_contact()
 	var overlap_readable := int(hound.health) == 2 and health == overlap_lolth - 1.0 and player_pose() == "hurt" and player_hurt_visible() and float(hound.hit_flash) > 0.0
@@ -1075,12 +1111,20 @@ func run_combat_readability_self_test() -> bool:
 	update_clock(0.02)
 	var wave_hound: Dictionary = shades[0]
 	player = Vector2(float(wave_hound.pos.x) - 80.0, floor_y)
-	handle_primary()
+	handle_attack()
 	update_night_waves(0.0)
 	update_night_waves(NIGHT_WAVE_INTERVAL)
 	var hound_defeated_wave_advances := bool(wave_hound.defeated) and night_wave == 2 and not shades.is_empty() and String(shades[0].name) == "STAG OF MIRE" and shadow_echoes == 0
 	reset_to_prologue()
-	var passed := contact_hit and beyond_reach_misses and nearest_and_facing and combo_kept and dodge_visual and dodge_blocks and real_hurt and overlap_readable and hound_defeated_wave_advances
+	apply_mark_one()
+	cure_selected_ally()
+	create_checkpoint()
+	hurt_lolth()
+	fail_run("generic restore visuals")
+	restart_from_checkpoint()
+	var restore_visuals_clean := not player_hurt_visible() and player_action_time == 0.0 and mark_vfx_time == 0.0 and dodge_time == 0.0
+	reset_to_prologue()
+	var passed := restore_visuals_clean and contact_hit and beyond_reach_misses and nearest_and_facing and combo_kept and dodge_visual and dodge_blocks and real_hurt and overlap_readable and hound_defeated_wave_advances
 	if passed:
 		print("SELF_TEST_B05_PASS: melee lands at visible contact, misses are distinct, and attack, dodge, and hurt visuals follow real damage")
 	else:
@@ -1267,11 +1311,14 @@ func spawn_zone() -> void:
 	message_time = 4.0
 
 func _process(delta: float) -> void:
+	if ui_management.is_open():
+		return
 	if is_instance_valid(playtester_panel) and playtester_panel.visible:
 		refresh_playtester_panel()
 		return
 	if playtester_resume_guard:
 		playtester_resume_guard = false
+		ui_gameplay_requests.clear()
 		return
 	pulse += delta
 	message_time = maxf(0.0, message_time - delta)
@@ -1336,20 +1383,18 @@ func _process(delta: float) -> void:
 	hurt_flash_time = maxf(0.0, hurt_flash_time - delta)
 	for shade in shades:
 		shade.hit_flash = maxf(0.0, float(shade.get("hit_flash", 0.0)) - delta)
-	if Input.is_action_just_pressed("primary"):
+	var requests := ui_gameplay_requests.duplicate()
+	ui_gameplay_requests.clear()
+	if "attack" in requests:
+		handle_attack()
+	if "primary" in requests:
 		handle_primary()
-	if Input.is_action_just_pressed("shadow_action"):
+	if "shadow_action" in requests:
 		use_shadow_action(direction)
-	if Input.is_action_just_pressed("shadow_strike"):
+	if "shadow_strike" in requests:
 		use_first_thread()
-	if Input.is_action_just_pressed("camp_action"):
+	if "camp_action" in requests:
 		use_camp_action()
-	if Input.is_action_just_pressed("camp_menu"):
-		open_camp_menu()
-	if Input.is_action_just_pressed("post_cycle"):
-		cycle_post_ally()
-	if Input.is_action_just_pressed("post_toggle"):
-		toggle_selected_post()
 	update_wagon_threat(delta)
 	update_enemies(delta)
 	update_night_waves(delta)
@@ -1408,30 +1453,6 @@ func hurt_lolth() -> void:
 		fail_run("Lolth could not return to the Caravan.")
 
 func use_shadow_action(direction: float) -> void:
-	if mark_level < 5:
-		perform_dodge(direction)
-		return
-	if ally_is_near("LURAEN") and not bool(ally_assists_used.get("luraen", false)):
-		ally_assists_used.luraen = true
-		echo_sense_time = 6.0
-		trigger_mark_vfx("sense", player + Vector2(0, -96))
-		message = "LURAEN reveals the path between waking and dream."
-		message_time = 2.0
-		return
-	if mark_level >= 7:
-		for gate in mark_gates:
-			if not gate.opened and int(gate.mark) == 7 and player.distance_to(gate.pos) < 110.0:
-				gate.opened = true
-				trigger_mark_vfx("gate", gate.pos)
-				message = "SPIDER'S PROMISE anchors a path through the ruins."
-				message_time = 2.0
-				return
-	if mark_level >= 5:
-		echo_sense_time = 3.0
-		trigger_mark_vfx("sense", player + Vector2(0, -96))
-		message = "NIGHT CHOIR reveals echoes and hidden routes."
-		message_time = 2.0
-		return
 	perform_dodge(direction)
 
 func perform_dodge(direction: float) -> void:
@@ -1450,11 +1471,19 @@ func perform_dodge(direction: float) -> void:
 	message = "LOLTH DODGES"
 	message_time = 0.7
 
-func handle_primary() -> void:
-	if zone == 2 and mark_level == 9 and absf(player.x - PORTAL_X) < 90.0:
-		state = "victory"
-		message = "Their old memories are gone. Lolth leaves the Kiss of Shar with the First Nine."
-		return
+func clear_combat_visuals() -> void:
+	player_action = ""
+	player_action_time = 0.0
+	hurt_flash_time = 0.0
+	dodge_time = 0.0
+	dodge_cooldown = 0.0
+	hurt_cooldown = 0.0
+	mark_vfx_time = 0.0
+	ui_gameplay_requests.clear()
+	if is_instance_valid(ui_management):
+		ui_management.close_window()
+
+func handle_attack() -> void:
 	var melee_target := find_melee_target()
 	if not melee_target.is_empty():
 		var shade := melee_target
@@ -1486,6 +1515,23 @@ func handle_primary() -> void:
 		else:
 			message = "%s is staggered. STRIKE %d/3." % [shade.name, combo_step]
 		message_time = 1.2
+		return
+	var nearby := nearest_live_enemy(MISS_FEEDBACK_RANGE)
+	if not nearby.is_empty():
+		player_facing_left = float(nearby.pos.x) < player.x
+	set_player_action("strike", ATTACK_POSE_TIME)
+	trigger_mark_vfx("swing", player + Vector2(-58.0 if player_facing_left else 58.0, -70.0))
+	combo_step = 0
+	combo_time = 0.0
+	combo_target = ""
+	message = "Out of reach — step closer to strike the %s." % nearby.name if not nearby.is_empty() else "Lolth swings. No enemy in reach."
+	message_time = 1.2
+
+# Interaction cannot damage an enemy, even when it overlaps a pickup.
+func handle_primary() -> void:
+	if zone == 2 and mark_level == 9 and absf(player.x - PORTAL_X) < 90.0:
+		state = "victory"
+		message = "Their old memories are gone. Lolth leaves the Kiss of Shar with the First Nine."
 		return
 	if use_rope_route():
 		return
@@ -1520,22 +1566,15 @@ func handle_primary() -> void:
 				message = "%s secured in RECOVERED LOAD." % item.name
 				message_time = 2.5
 			return
-	var nearby := nearest_live_enemy(MISS_FEEDBACK_RANGE)
-	if not nearby.is_empty():
-		# A visible swing that cannot be mistaken for a hit: no enemy flash, no damage.
-		player_facing_left = float(nearby.pos.x) < player.x
-		set_player_action("strike", ATTACK_POSE_TIME)
-		trigger_mark_vfx("swing", player + Vector2(-58.0 if player_facing_left else 58.0, -70.0))
-		combo_step = 0
-		combo_target = ""
-		message = "Out of reach — step closer to strike the %s." % nearby.name
-		message_time = 1.2
-		return
-	message = "Stand near a resource, enemy, or the Wagon and press the primary action."
+	message = "Stand near a resource or the Wagon and press E to interact."
 	message_time = 2.0
 
 func melee_reach(shade: Dictionary) -> float:
-	return MELEE_LOLTH_HALF_WIDTH + float(MELEE_ENEMY_HALF_WIDTHS.get(String(shade.name), MELEE_DEFAULT_ENEMY_HALF_WIDTH))
+	var old_size := 160.0 if String(shade.name) == "ANTLERED HUNGER" else 96.0
+	return MELEE_LOLTH_HALF_WIDTH + float(MELEE_ENEMY_HALF_WIDTHS.get(String(shade.name), MELEE_DEFAULT_ENEMY_HALF_WIDTH)) * enemy_visual_size(shade) / old_size
+
+func enemy_visual_size(shade: Dictionary) -> float:
+	return float(THORNWAKE_ENEMY_SIZES.get(String(shade.name), 96.0)) if zone == 0 else 96.0
 
 # The nearest live enemy whose drawn body touches Lolth's.
 func find_melee_target() -> Dictionary:
@@ -1687,19 +1726,9 @@ func open_camp_menu() -> void:
 		message = "Return to the Wagon to manage supplies and crafting."
 		message_time = 2.0
 		return
-	if not recovered_load.is_empty():
-		selected_load = (selected_load + 1) % recovered_load.size()
-		message = "Selected load: %s. Press primary action to store it." % recovered_load[selected_load].name
-		message_time = 2.5
-	elif zone == 0 and mark_level == 0 and tutorial_phase == "day_salvage":
+	if zone == 0 and mark_level == 0 and tutorial_phase == "day_salvage":
 		selected_recipe = WHEEL_KIT_RECIPE
-		message = "Recipe: WHEEL KIT — %s from Wagon stock. Press primary action to craft." % recipe_label(RECIPES[WHEEL_KIT_RECIPE])
-		message_time = 3.5
-	else:
-		selected_recipe = (selected_recipe + 1) % RECIPES.size()
-		var recipe: Dictionary = RECIPES[selected_recipe]
-		message = "Recipe: %s — %s. Press primary action to craft." % [recipe.name, recipe.description]
-		message_time = 3.5
+	ui_management.toggle_wagon()
 
 func try_advance_from_camp() -> void:
 	if zone == 0:
@@ -1910,6 +1939,7 @@ func capture_safe_wagon_state() -> void:
 	message_time = 4.0
 
 func restore_safe_wagon_state() -> void:
+	clear_combat_visuals()
 	var saved := safe_wagon_state
 	health = float(saved.health)
 	flame = float(saved.flame)
@@ -1949,6 +1979,7 @@ func restore_safe_wagon_state() -> void:
 	message_time = 4.0
 
 func restart_from_checkpoint() -> void:
+	clear_combat_visuals()
 	if int(checkpoint.mark) == 0:
 		reset_to_prologue()
 		return
@@ -1996,6 +2027,7 @@ func restart_from_checkpoint() -> void:
 	message_time = 4.0
 
 func reset_to_prologue() -> void:
+	clear_combat_visuals()
 	state = "journey"
 	zone = 0
 	mark_level = 0
@@ -2594,6 +2626,10 @@ func toggle_selected_post() -> void:
 	message_time = 2.5
 
 func select_mission() -> void:
+	if zone == 0:
+		message = "Missions are not available at the cave camp."
+		message_time = 2.0
+		return
 	if player.x >= 305.0:
 		message = "Choose a camp mission beside the Caravan."
 		message_time = 2.0
@@ -2607,6 +2643,10 @@ func select_mission() -> void:
 	message_time = 3.5
 
 func assign_mission() -> void:
+	if zone == 0 or player.x >= 305.0 or cured_allies.is_empty():
+		message = "Missions require an eligible ally and a later-region wagon camp."
+		message_time = 2.5
+		return
 	if not passive_mission.is_empty():
 		message = "%s is already underway. Return after the next path." % passive_mission.name
 		message_time = 2.5
@@ -2763,18 +2803,40 @@ func draw_shades() -> void:
 			var hover_frame := int(floor(pulse * 4.0)) % 2
 			source = Rect2(source_width * float(hover_frame), 0, source_width, source_height)
 		var tint := Color(2.2, 1.8, 1.8) if float(shade.get("hit_flash", 0.0)) > 0.0 else Color.WHITE
-		if String(shade.name) == "ANTLERED HUNGER":
-			draw_texture_rect_region(sheet, Rect2(p.x - 80, p.y - 150, 160, 160), source, tint)
-		else:
-			draw_texture_rect_region(sheet, Rect2(p.x - 48, p.y - 92, 96, 96), source, tint)
+		var size := enemy_visual_size(shade)
+		var bounds := enemy_frame_bounds(sheet, source)
+		var scale_factor := size / source.size.y
+		# Align opaque feet to the floor, rather than the padded atlas-cell bottom.
+		var destination := Rect2(p.x - float(bounds.position.x + bounds.size.x / 2.0) * size / source.size.x, p.y + 34.0 - float(bounds.end.y) * scale_factor, size, size)
+		draw_texture_rect_region(sheet, destination, source, tint)
 		if not shade.defeated:
-			var label_width := 180.0 if String(shade.name) == "ANTLERED HUNGER" else 100.0
-			draw_string(ThemeDB.fallback_font, p + Vector2(-label_width / 2.0, -43), String(shade.name), HORIZONTAL_ALIGNMENT_CENTER, label_width, 12, Color("dfb8f4"))
+			var top := destination.position.y + float(bounds.position.y) * scale_factor
+			var label_width := maxf(160.0, size)
+			draw_string(ThemeDB.fallback_font, Vector2(p.x - label_width / 2.0, top - 26.0), String(shade.name), HORIZONTAL_ALIGNMENT_CENTER, label_width, 13, Color("dfb8f4"))
 			if String(shade.get("behavior", "")) == "charge" and is_night() and zone == 0:
-				draw_string(ThemeDB.fallback_font, p + Vector2(-50, -58), "WAGON RUNNER", HORIZONTAL_ALIGNMENT_CENTER, 100, 10, Color("f3bc75"))
+				draw_string(ThemeDB.fallback_font, Vector2(p.x - 60, top - 41.0), "WAGON RUNNER", HORIZONTAL_ALIGNMENT_CENTER, 120, 10, Color("f3bc75"))
 			var enemy_health := float(int(shade.health)) / float(int(shade.get("max_health", shade.health))) * 100.0
-			draw_rect(Rect2(p.x - 34, p.y - 33, 68, 5), Color("27182e"))
-			draw_rect(Rect2(p.x - 34, p.y - 33, 68 * enemy_health / 100.0, 5), Color("db7587"))
+			draw_rect(Rect2(p.x - 45, top - 16.0, 90, 6), Color("27182e"))
+			draw_rect(Rect2(p.x - 45, top - 16.0, 90 * enemy_health / 100.0, 6), Color("db7587"))
+
+func enemy_frame_bounds(sheet: Texture2D, source: Rect2) -> Rect2i:
+	var key := sheet.resource_path + str(source)
+	if not ui_enemy_bounds.has(key):
+		var pixels := sheet.get_image().get_region(Rect2i(source))
+		var used := pixels.get_used_rect()
+		var minimum := pixels.get_size()
+		var maximum := Vector2i(-1, -1)
+		# Ignore nearly transparent atlas noise when finding the actual feet/head.
+		# This scan runs once per sprite cell and is cached, not every frame.
+		for y in range(used.position.y, used.end.y):
+			for x in range(used.position.x, used.end.x):
+				if pixels.get_pixel(x, y).a >= 0.25:
+					minimum.x = mini(minimum.x, x)
+					minimum.y = mini(minimum.y, y)
+					maximum.x = maxi(maximum.x, x)
+					maximum.y = maxi(maximum.y, y)
+		ui_enemy_bounds[key] = Rect2i(minimum, maximum - minimum + Vector2i.ONE) if maximum.x >= 0 else Rect2i(Vector2i.ZERO, Vector2i(source.size))
+	return ui_enemy_bounds[key]
 
 # Drawn above the camp so a charge toward the Wagon stays readable.
 func draw_attack_telegraphs() -> void:
@@ -2787,12 +2849,13 @@ func draw_attack_telegraphs() -> void:
 func draw_attack_telegraph(shade: Dictionary) -> void:
 	var p: Vector2 = shade.pos
 	var warning := Color(1.0, 0.42, 0.25, 0.7 + 0.3 * sin(pulse * 18.0))
+	var height := enemy_visual_size(shade)
 	if String(shade.get("attack_target", "lolth")) == "wagon":
 		draw_line(p + Vector2(0, -20), Vector2(CARAVAN_X, GROUND_Y - 40), warning, 4.0)
-		draw_string(ThemeDB.fallback_font, p + Vector2(-50, -112), "CHARGE!", HORIZONTAL_ALIGNMENT_CENTER, 100, 16, warning)
+		draw_string(ThemeDB.fallback_font, p + Vector2(-50, 10.0 - height), "CHARGE!", HORIZONTAL_ALIGNMENT_CENTER, 100, 16, warning)
 	else:
-		draw_string(ThemeDB.fallback_font, p + Vector2(-50, -112), "!", HORIZONTAL_ALIGNMENT_CENTER, 100, 24, warning)
-	draw_arc(p + Vector2(0, -40), 46.0, 0.0, TAU, 32, warning, 3.0)
+		draw_string(ThemeDB.fallback_font, p + Vector2(-50, 10.0 - height), "!", HORIZONTAL_ALIGNMENT_CENTER, 100, 24, warning)
+	draw_arc(p + Vector2(0, -40), height * 0.28, 0.0, TAU, 32, warning, 3.0)
 
 func draw_mark_gates() -> void:
 	for gate in mark_gates:
@@ -2925,14 +2988,26 @@ func draw_player() -> void:
 	var pose_width := pose_sheet.get_width() / 3.0
 	var pose_height := pose_sheet.get_height() / 3.0
 	var pose_source := Rect2(pose_width * float(pose_index % 3), pose_height * float(int(pose_index / 3)), pose_width, pose_height)
-	draw_player_sprite(pose_sheet, pose_source)
+	var crop := Rect2()
+	if pose_index == 4:
+		# The adjacent attack cell spills a weapon into the dash cell's blank margin.
+		# Sample only the clean body region, preserving its original scale and pivot.
+		var top_cut := 0.32 if lolth_form() == "elf" else 0.23
+		var left_cut := 0.0 if lolth_form() == "elf" else 0.15
+		crop = Rect2(pose_width * left_cut, pose_height * top_cut, pose_width * (1.0 - left_cut), pose_height * (1.0 - top_cut))
+	draw_player_sprite(pose_sheet, pose_source, PLAYER_SPRITE_HEIGHT, 1.0, crop)
 	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color("fff0b0"))
 	if player_hurt_visible():
 		draw_circle(player + Vector2(0, -62), 58, Color(0.85, 0.25, 0.45, 0.18))
 
-func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0) -> void:
+func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0, crop: Rect2 = Rect2()) -> void:
 	var width := height * source.size.x / source.size.y
 	var destination := Rect2(player.x - width / 2.0, player.y + PLAYER_FEET_OFFSET - height * feet_ratio, width, height)
+	if crop.has_area():
+		var source_scale := destination.size / source.size
+		destination.position += crop.position * source_scale
+		destination.size = crop.size * source_scale
+		source = Rect2(source.position + crop.position, crop.size)
 	if player_facing_left:
 		draw_set_transform(Vector2(player.x * 2.0, 0.0), 0.0, Vector2(-1.0, 1.0))
 		draw_texture_rect_region(sheet, destination, source)
@@ -2949,17 +3024,15 @@ func draw_foreground_overlay() -> void:
 	draw_texture_rect_region(RUINS_FOREGROUND_OVERLAYS, Rect2(Vector2.ZERO, VIEW), source)
 
 func draw_mark_vfx() -> void:
-	if mark_vfx_time <= 0.0:
+	# The dash uses Lolth's existing pose only; the atlas streak contains stray marks.
+	if mark_vfx_time <= 0.0 or mark_vfx_kind == "dash":
 		return
 	var alpha := clampf(mark_vfx_time / 0.42, 0.0, 1.0)
 	var cell_width := SHADOW_ACTIONS_VFX.get_width() / 2.0
 	var cell_height := SHADOW_ACTIONS_VFX.get_height() / 2.0
 	var cell_index := 0
 	var size := Vector2(132, 106)
-	if mark_vfx_kind == "dash":
-		cell_index = 2
-		size = Vector2(154, 84)
-	elif mark_vfx_kind == "sense" or mark_vfx_kind == "gate":
+	if mark_vfx_kind == "sense" or mark_vfx_kind == "gate":
 		cell_index = 3
 		size = Vector2(170, 124)
 	elif mark_vfx_kind == "collect":
@@ -2991,7 +3064,7 @@ func draw_hud() -> void:
 	draw_action_prompt(Vector2(460, 620), 2)
 	draw_action_prompt(Vector2(765, 620), 3)
 	var load_text: String = "EMPTY" if recovered_load.is_empty() else recovered_load[selected_load].name
-	draw_string(ThemeDB.fallback_font, Vector2(46, 648), "MOVE: A/D or stick  ·  JUMP: Space / bottom button  ·  PRIMARY: E / click / left face  ·  DODGE: Shift / right click / trigger" + ("  ·  FIRST THREAD: C / right face" if mark_level >= 1 else ""), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color("d9d1e1"))
+	draw_string(ThemeDB.fallback_font, Vector2(46, 648), "A/D: Move · Space: Jump · E: Interact · LMB/J: Attack · Shift: Dash · I: Inventory · M: Wagon" + (" · C: First Thread" if mark_level >= 1 else ""), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color("d9d1e1"))
 	var stats := current_stats()
 	var next_threshold: int = int(ECHO_THRESHOLDS[mark_level]) if mark_level > 0 and mark_level < 9 else 0
 	draw_string(ThemeDB.fallback_font, Vector2(46, 670), "LOAD %d/%d: %s  ·  STOCK %d/%d  ·  POSTS %d/%d  ·  ECHOES %d/%d  ·  M:%d V:%d G:%d S:%d W:%d" % [load_used(), load_capacity(), load_text, wagon_stock.size(), WAGON_STOCK_CAPACITY, posted_allies.size(), MAX_ACTIVE_POSTS, shadow_echoes, next_threshold, stats.might, stats.vigor, stats.grace, stats.shadow, stats.web], HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color("a9d9d0"))
@@ -3012,7 +3085,7 @@ func draw_cure_menu() -> void:
 		draw_rect(rect, Color("f6d47f") if selected else Color("725683"), false, 2.0)
 		draw_string(ThemeDB.fallback_font, rect.position + Vector2(0, 43), available[index], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22, Color("fff2df"))
 		draw_string(ThemeDB.fallback_font, rect.position + Vector2(0, 70), "Press E to awaken", HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 14, Color("d9c6e8"))
-	draw_string(ThemeDB.fallback_font, Vector2(0, 600), "A/D or stick: choose   ·   E / click: cure", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 18, Color("fff2df"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 600), "A/D or stick: choose   ·   E / top face: cure", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 18, Color("fff2df"))
 
 func draw_meter(position: Vector2, label: String, value: float, color: Color, icon_index: int) -> void:
 	var icon_width := HUD_STATUS_ICONS.get_width() / 3.0
@@ -3058,7 +3131,7 @@ func draw_passive_mission_emblem(position: Vector2, mission_type: String) -> voi
 # Placeholder shell: no H-02 art, dialogue, or story text until H-02 is approved for runtime.
 func draw_shar_shell() -> void:
 	draw_rect(Rect2(Vector2.ZERO, VIEW), Color("07050f"))
-	draw_string(ThemeDB.fallback_font, Vector2(0, 660), "E / click: continue   ·   Esc / Start: skip", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 660), "E / top face: continue   ·   Esc / Start: skip", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
 
 func draw_boss_camp_action() -> void:
 	var panel := Rect2(24, 132, 420, 58)
