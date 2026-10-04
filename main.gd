@@ -5,6 +5,17 @@ const CARAVAN_X := 190.0
 const GROUND_Y := 555.0
 const PLAYER_RADIUS := 19.0
 const INTERACT_RADIUS := 56.0
+# B-05 melee reach, measured from the drawn sprites at 1280x720: Lolth's opaque body is
+# about 73-90 px wide (half ~40 px). Enemy half-widths are their drawn opaque bodies.
+# A strike lands when the bodies visibly touch: center gap <= Lolth half + enemy half + 4.
+const MELEE_LOLTH_HALF_WIDTH := 44.0
+const MELEE_VERTICAL_REACH := 70.0
+const MELEE_ENEMY_HALF_WIDTHS := {"BRIAR HOUND": 42.0, "STAG OF MIRE": 52.0, "ANTLERED HUNGER": 73.0}
+const MELEE_DEFAULT_ENEMY_HALF_WIDTH := 42.0
+const MISS_FEEDBACK_RANGE := 220.0
+const ATTACK_POSE_TIME := 0.28
+const HURT_FLASH_TIME := 0.45
+const ENEMY_HIT_FLASH_TIME := 0.16
 const PORTAL_X := 1100.0
 const GRAVITY := 1500.0
 const JUMP_SPEED := 590.0
@@ -176,6 +187,10 @@ var echo_sense_time := 0.0
 var mark_vfx_time := 0.0
 var mark_vfx_kind := ""
 var mark_vfx_pos := Vector2.ZERO
+# B-05: the most recent player action drives the pose; hurt visuals follow real damage only.
+var player_action := ""
+var player_action_time := 0.0
+var hurt_flash_time := 0.0
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
 var state := "journey" # opening, journey, shar_shell, cure, victory, defeat
@@ -458,6 +473,7 @@ func run_self_test() -> void:
 	var thornwake_tutorial_ready := run_thornwake_tutorial_self_test()
 	var first_boss_ready := run_first_boss_self_test()
 	var stabilization_ready := run_mark_one_stabilization_self_test()
+	var combat_readability_ready := run_combat_readability_self_test()
 	if not run_playtester_self_test():
 		get_tree().quit(1)
 		return
@@ -582,7 +598,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -992,6 +1008,85 @@ func run_mark_one_stabilization_self_test() -> bool:
 		push_error("SELF_TEST_B04_FAIL: premark=%s early=%s cure=%s/%s away=%s fallback=%s unsafe=%s capture=%s/%s fail=%s restore=%s narrative=%s wagon=%s latest=%s/%s terminal=%s cap=%s/%s travel=%s newrun=%s" % [pre_mark_reset, no_early_echoes, first_cure, return_objective, no_capture_away, cure_fallback, no_unsafe_capture, captured, secure_objective, failed_after_safe_return, restored, narrative_kept, wagon_kept, latest_objective, latest_restored, terminal_kept_snapshot, capped, cap_objective, travel_locked, new_run_clears])
 	return passed
 
+# B-05 checks: melee reach matches visible contact, misses are distinct, and attack, dodge,
+# and hurt visuals follow the real game state.
+func run_combat_readability_self_test() -> bool:
+	reset_to_prologue()
+	var floor_y := GROUND_Y - PLAYER_FEET_OFFSET
+	var enemy_y := GROUND_Y - 34
+	player = Vector2(500.0, floor_y)
+	spawn_enemy("BRIAR HOUND", Vector2(580.0, enemy_y), 3, 1)
+	var hound: Dictionary = shades.back()
+	player_facing_left = true
+	handle_primary()
+	var contact_hit := int(hound.health) == 2 and player_pose() == "strike" and mark_vfx_kind == "strike" and float(hound.hit_flash) > 0.0 and not player_facing_left and shadow_echoes == 0
+	shades.clear()
+	combo_time = 0.0
+	spawn_enemy("BRIAR HOUND", Vector2(600.0, enemy_y), 3, 1)
+	hound = shades.back()
+	player_action_time = 0.0
+	handle_primary()
+	var beyond_reach_misses := int(hound.health) == 3 and player_pose() == "strike" and mark_vfx_kind == "swing" and float(hound.hit_flash) == 0.0 and message.begins_with("Out of reach")
+	shades.clear()
+	spawn_enemy("BRIAR HOUND", Vector2(420.0, enemy_y), 3, 1)
+	spawn_enemy("STAG OF MIRE", Vector2(575.0, enemy_y), 3, 1)
+	var left_hound: Dictionary = shades[0]
+	var right_stag: Dictionary = shades[1]
+	combo_time = 0.0
+	handle_primary()
+	var nearest_and_facing := int(right_stag.health) == 2 and int(left_hound.health) == 3 and not player_facing_left
+	shades.clear()
+	combo_time = 0.0
+	spawn_enemy("COMBO TARGET", Vector2(560.0, enemy_y), 10, 0)
+	handle_primary()
+	handle_primary()
+	handle_primary()
+	var combo_kept := int(shades.back().health) == 6
+	shades.clear()
+	health = max_health()
+	hurt_cooldown = 0.0
+	hurt_flash_time = 0.0
+	player_action_time = 0.0
+	dodge_cooldown = 0.0
+	var dodge_health := health
+	perform_dodge(1.0)
+	var dodge_visual := player_pose() == "dodge" and not player_hurt_visible() and mark_vfx_kind == "dash" and health == dodge_health and hurt_cooldown > 0.0
+	hurt_lolth()
+	var dodge_blocks := health == dodge_health and player_pose() == "dodge" and not player_hurt_visible()
+	dodge_time = 0.0
+	hurt_cooldown = 0.0
+	player_action_time = 0.0
+	hurt_lolth()
+	var real_hurt := health == dodge_health - 1.0 and player_pose() == "hurt" and player_hurt_visible()
+	hurt_cooldown = 0.0
+	hurt_flash_time = 0.0
+	player_action_time = 0.0
+	health = max_health()
+	combo_time = 0.0
+	spawn_enemy("BRIAR HOUND", Vector2(570.0, enemy_y), 3, 1)
+	hound = shades.back()
+	var overlap_lolth := health
+	handle_primary()
+	hound.pos = player
+	check_enemy_contact()
+	var overlap_readable := int(hound.health) == 2 and health == overlap_lolth - 1.0 and player_pose() == "hurt" and player_hurt_visible() and float(hound.hit_flash) > 0.0
+	reset_to_prologue()
+	clock_seconds = DAY_DURATION - 0.01
+	update_clock(0.02)
+	var wave_hound: Dictionary = shades[0]
+	player = Vector2(float(wave_hound.pos.x) - 80.0, floor_y)
+	handle_primary()
+	update_night_waves(0.0)
+	update_night_waves(NIGHT_WAVE_INTERVAL)
+	var hound_defeated_wave_advances := bool(wave_hound.defeated) and night_wave == 2 and not shades.is_empty() and String(shades[0].name) == "STAG OF MIRE" and shadow_echoes == 0
+	reset_to_prologue()
+	var passed := contact_hit and beyond_reach_misses and nearest_and_facing and combo_kept and dodge_visual and dodge_blocks and real_hurt and overlap_readable and hound_defeated_wave_advances
+	if passed:
+		print("SELF_TEST_B05_PASS: melee lands at visible contact, misses are distinct, and attack, dodge, and hurt visuals follow real damage")
+	else:
+		push_error("SELF_TEST_B05_FAIL: hit=%s miss=%s nearest=%s combo=%s dodge=%s/%s hurt=%s overlap=%s wave=%s" % [contact_hit, beyond_reach_misses, nearest_and_facing, combo_kept, dodge_visual, dodge_blocks, real_hurt, overlap_readable, hound_defeated_wave_advances])
+	return passed
+
 func run_playtester_self_test() -> bool:
 	if not playtester_available():
 		print("SELF_TEST_PLAYTESTER_SKIP: debug tools unavailable in release")
@@ -1237,6 +1332,10 @@ func _process(delta: float) -> void:
 		combo_target = ""
 	echo_sense_time = maxf(0.0, echo_sense_time - delta)
 	mark_vfx_time = maxf(0.0, mark_vfx_time - delta)
+	player_action_time = maxf(0.0, player_action_time - delta)
+	hurt_flash_time = maxf(0.0, hurt_flash_time - delta)
+	for shade in shades:
+		shade.hit_flash = maxf(0.0, float(shade.get("hit_flash", 0.0)) - delta)
 	if Input.is_action_just_pressed("primary"):
 		handle_primary()
 	if Input.is_action_just_pressed("shadow_action"):
@@ -1301,6 +1400,8 @@ func hurt_lolth() -> void:
 		return
 	health = maxf(0.0, health - 1.0)
 	hurt_cooldown = 1.0
+	hurt_flash_time = HURT_FLASH_TIME
+	set_player_action("hurt", HURT_FLASH_TIME)
 	message = "Lolth is wounded."
 	message_time = 1.5
 	if health <= 0.0:
@@ -1344,7 +1445,8 @@ func perform_dodge(direction: float) -> void:
 	dodge_time = DODGE_DURATION
 	dodge_cooldown = DODGE_COOLDOWN
 	hurt_cooldown = DODGE_DURATION
-	trigger_mark_vfx("dodge", player + Vector2(0, -72))
+	trigger_mark_vfx("dash", player + Vector2(0, -72))
+	set_player_action("dodge", DODGE_DURATION)
 	message = "LOLTH DODGES"
 	message_time = 0.7
 
@@ -1353,34 +1455,38 @@ func handle_primary() -> void:
 		state = "victory"
 		message = "Their old memories are gone. Lolth leaves the Kiss of Shar with the First Nine."
 		return
-	for shade in shades:
-		if not shade.defeated and player.distance_to(shade.pos) < INTERACT_RADIUS:
-			var target_name := String(shade.name)
-			if combo_time > 0.0 and combo_target == target_name:
-				combo_step = mini(combo_step + 1, COMBO_DAMAGE.size())
-			else:
-				combo_step = 1
-			combo_target = target_name
-			combo_time = COMBO_WINDOW
-			var strike_power := int(COMBO_DAMAGE[combo_step - 1])
-			if ally_is_near("NIMARA") and not bool(ally_assists_used.get("nimara", false)):
-				strike_power += 1
-				ally_assists_used.nimara = true
-				message = "NIMARA exposes a weak point."
-			if ally_is_near("SORETH") and not bool(ally_assists_used.get("soreth", false)):
-				strike_power += 1
-				ally_assists_used.soreth = true
-				message = "SORETH pins the enemy in place."
-			shade.health = int(shade.health) - strike_power
-			trigger_mark_vfx("strike", shade.pos + Vector2(0, -32))
-			if int(shade.health) <= 0:
-				combo_step = 0
-				combo_target = ""
-				defeat_enemy(shade)
-			else:
-				message = "%s is staggered. STRIKE %d/3." % [shade.name, combo_step]
-			message_time = 1.2
-			return
+	var melee_target := find_melee_target()
+	if not melee_target.is_empty():
+		var shade := melee_target
+		player_facing_left = float(shade.pos.x) < player.x
+		set_player_action("strike", ATTACK_POSE_TIME)
+		shade.hit_flash = ENEMY_HIT_FLASH_TIME
+		var target_name := String(shade.name)
+		if combo_time > 0.0 and combo_target == target_name:
+			combo_step = mini(combo_step + 1, COMBO_DAMAGE.size())
+		else:
+			combo_step = 1
+		combo_target = target_name
+		combo_time = COMBO_WINDOW
+		var strike_power := int(COMBO_DAMAGE[combo_step - 1])
+		if ally_is_near("NIMARA") and not bool(ally_assists_used.get("nimara", false)):
+			strike_power += 1
+			ally_assists_used.nimara = true
+			message = "NIMARA exposes a weak point."
+		if ally_is_near("SORETH") and not bool(ally_assists_used.get("soreth", false)):
+			strike_power += 1
+			ally_assists_used.soreth = true
+			message = "SORETH pins the enemy in place."
+		shade.health = int(shade.health) - strike_power
+		trigger_mark_vfx("strike", shade.pos + Vector2(0, -32))
+		if int(shade.health) <= 0:
+			combo_step = 0
+			combo_target = ""
+			defeat_enemy(shade)
+		else:
+			message = "%s is staggered. STRIKE %d/3." % [shade.name, combo_step]
+		message_time = 1.2
+		return
 	if use_rope_route():
 		return
 	for gate in mark_gates:
@@ -1410,11 +1516,65 @@ func handle_primary() -> void:
 			if add_to_load(item):
 				item.taken = true
 				trigger_mark_vfx("collect", item.pos)
+				set_player_action("collect", ATTACK_POSE_TIME)
 				message = "%s secured in RECOVERED LOAD." % item.name
 				message_time = 2.5
 			return
+	var nearby := nearest_live_enemy(MISS_FEEDBACK_RANGE)
+	if not nearby.is_empty():
+		# A visible swing that cannot be mistaken for a hit: no enemy flash, no damage.
+		player_facing_left = float(nearby.pos.x) < player.x
+		set_player_action("strike", ATTACK_POSE_TIME)
+		trigger_mark_vfx("swing", player + Vector2(-58.0 if player_facing_left else 58.0, -70.0))
+		combo_step = 0
+		combo_target = ""
+		message = "Out of reach — step closer to strike the %s." % nearby.name
+		message_time = 1.2
+		return
 	message = "Stand near a resource, enemy, or the Wagon and press the primary action."
 	message_time = 2.0
+
+func melee_reach(shade: Dictionary) -> float:
+	return MELEE_LOLTH_HALF_WIDTH + float(MELEE_ENEMY_HALF_WIDTHS.get(String(shade.name), MELEE_DEFAULT_ENEMY_HALF_WIDTH))
+
+# The nearest live enemy whose drawn body touches Lolth's.
+func find_melee_target() -> Dictionary:
+	var target: Dictionary = {}
+	var best := INF
+	for shade in shades:
+		if shade.defeated:
+			continue
+		var gap := absf(float(shade.pos.x) - player.x)
+		if gap <= melee_reach(shade) and absf(float(shade.pos.y) - player.y) <= MELEE_VERTICAL_REACH and gap < best:
+			target = shade
+			best = gap
+	return target
+
+func nearest_live_enemy(range_limit: float) -> Dictionary:
+	var target: Dictionary = {}
+	var best := range_limit
+	for shade in shades:
+		var gap := player.distance_to(shade.pos)
+		if not shade.defeated and gap <= best:
+			target = shade
+			best = gap
+	return target
+
+func set_player_action(action: String, duration: float) -> void:
+	player_action = action
+	player_action_time = duration
+
+func player_pose() -> String:
+	if player_action_time > 0.0 and player_action != "":
+		return player_action
+	if not on_floor:
+		return "air"
+	if absf(velocity.x) > 40.0:
+		return "walk"
+	return "idle"
+
+func player_hurt_visible() -> bool:
+	return hurt_flash_time > 0.0
 
 func defeat_enemy(shade: Dictionary) -> void:
 	shade.defeated = true
@@ -1453,6 +1613,8 @@ func use_first_thread() -> void:
 		return
 	first_thread_cooldown = FIRST_THREAD_COOLDOWN
 	player_facing_left = float(target.pos.x) < player.x
+	set_player_action("strike", ATTACK_POSE_TIME)
+	target.hit_flash = ENEMY_HIT_FLASH_TIME
 	target.health = int(target.health) - FIRST_THREAD_DAMAGE
 	trigger_mark_vfx("strike", target.pos + Vector2(0, -32))
 	if int(target.health) <= 0:
@@ -1771,6 +1933,9 @@ func restore_safe_wagon_state() -> void:
 	dodge_time = 0.0
 	dodge_cooldown = 0.0
 	first_thread_cooldown = 0.0
+	player_action = ""
+	player_action_time = 0.0
+	hurt_flash_time = 0.0
 	combo_step = 0
 	combo_time = 0.0
 	combo_target = ""
@@ -1856,6 +2021,9 @@ func reset_to_prologue() -> void:
 	camp_secured = false
 	safe_wagon_state = {}
 	was_at_safe_wagon = false
+	player_action = ""
+	player_action_time = 0.0
+	hurt_flash_time = 0.0
 	dodge_time = 0.0
 	dodge_cooldown = 0.0
 	brazier_built = false
@@ -2033,7 +2201,7 @@ func spawn_enemy(enemy_name: String, position: Vector2, enemy_health: int, echoe
 			behavior = "entangle"
 		"ROOT CROWN":
 			behavior = "crush"
-	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "defeated": false, "defeated_at": -1.0})
+	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0})
 
 func update_enemies(delta: float) -> void:
 	for enemy in shades:
@@ -2594,10 +2762,11 @@ func draw_shades() -> void:
 		else:
 			var hover_frame := int(floor(pulse * 4.0)) % 2
 			source = Rect2(source_width * float(hover_frame), 0, source_width, source_height)
+		var tint := Color(2.2, 1.8, 1.8) if float(shade.get("hit_flash", 0.0)) > 0.0 else Color.WHITE
 		if String(shade.name) == "ANTLERED HUNGER":
-			draw_texture_rect_region(sheet, Rect2(p.x - 80, p.y - 150, 160, 160), source)
+			draw_texture_rect_region(sheet, Rect2(p.x - 80, p.y - 150, 160, 160), source, tint)
 		else:
-			draw_texture_rect_region(sheet, Rect2(p.x - 48, p.y - 92, 96, 96), source)
+			draw_texture_rect_region(sheet, Rect2(p.x - 48, p.y - 92, 96, 96), source, tint)
 		if not shade.defeated:
 			var label_width := 180.0 if String(shade.name) == "ANTLERED HUNGER" else 100.0
 			draw_string(ThemeDB.fallback_font, p + Vector2(-label_width / 2.0, -43), String(shade.name), HORIZONTAL_ALIGNMENT_CENTER, label_width, 12, Color("dfb8f4"))
@@ -2740,24 +2909,25 @@ func draw_portal() -> void:
 func draw_player() -> void:
 	var pose_sheet: Texture2D = LOLTH_ELF_RUNTIME if lolth_form() == "elf" else LOLTH_DROW_RUNTIME
 	var pose_index := 0
-	if mark_vfx_time > 0.0 and mark_vfx_kind == "strike":
-		pose_index = 3
-	elif mark_vfx_time > 0.0 and mark_vfx_kind == "dash":
-		pose_index = 4
-	elif mark_vfx_time > 0.0 and mark_vfx_kind == "collect":
-		pose_index = 5
-	elif not on_floor:
-		pose_index = 6 if velocity.y <= 80.0 else 7
-	elif hurt_cooldown > 0.0:
-		pose_index = 8
-	elif absf(velocity.x) > 40.0:
-		pose_index = 1 if int(floor(pulse * 8.0)) % 2 == 0 else 2
+	match player_pose():
+		"strike":
+			pose_index = 3
+		"dodge":
+			pose_index = 4
+		"collect":
+			pose_index = 5
+		"hurt":
+			pose_index = 8
+		"air":
+			pose_index = 6 if velocity.y <= 80.0 else 7
+		"walk":
+			pose_index = 1 if int(floor(pulse * 8.0)) % 2 == 0 else 2
 	var pose_width := pose_sheet.get_width() / 3.0
 	var pose_height := pose_sheet.get_height() / 3.0
 	var pose_source := Rect2(pose_width * float(pose_index % 3), pose_height * float(int(pose_index / 3)), pose_width, pose_height)
 	draw_player_sprite(pose_sheet, pose_source)
 	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color("fff0b0"))
-	if hurt_cooldown > 0.0:
+	if player_hurt_visible():
 		draw_circle(player + Vector2(0, -62), 58, Color(0.85, 0.25, 0.45, 0.18))
 
 func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0) -> void:
@@ -2795,6 +2965,9 @@ func draw_mark_vfx() -> void:
 	elif mark_vfx_kind == "collect":
 		cell_index = 1
 		size = Vector2(96, 74)
+	elif mark_vfx_kind == "swing":
+		size = Vector2(104, 84)
+		alpha *= 0.45
 	var source := Rect2(cell_width * float(cell_index % 2), cell_height * float(int(cell_index / 2)), cell_width, cell_height)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	draw_texture_rect_region(SHADOW_ACTIONS_VFX, Rect2(mark_vfx_pos - size / 2.0, size), source, Color(1, 1, 1, alpha))

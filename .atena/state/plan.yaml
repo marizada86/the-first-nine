@@ -353,7 +353,7 @@ active_plan:
   spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
   evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
   implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: approved-ready-for-external-execution
+  status: implemented-awaiting-human-review
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
@@ -370,7 +370,11 @@ active_plan:
   merge_approved: false
   batch: B-05
   checkpoint: opus-local-implementation
-plan_cursor: B-05-approved-ready-for-opus
+  implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
+  implementation_branch: b05-thornwake-combat-readability
+  implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+  validation: "Godot 4.7.2 headless self-test passed (B-01 to B-05, playtester, prototype suites); 11 B-05 negative controls failed as expected; 9/9 real-input checks passed at 1280x720; playtester runner, normal 1280x720 and headless runs passed without script errors."
+plan_cursor: B-05-implemented-awaiting-human-review
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"
