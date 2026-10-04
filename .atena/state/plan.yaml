@@ -353,23 +353,24 @@ active_plan:
   spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
   evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
   implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: approved-awaiting-source-publication
+  status: approved-ready-for-external-execution
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
   approved: "2026-10-04"
   request_classification: NEW_PLAN
   scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
-  blocking_gaps:
-    - "The tested F4 playtester source is not on remote main, so Opus cannot yet work from the correct remote baseline."
+  blocking_gaps: []
   source_publication_approved: true
+  source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
   implementation_approved: true
-  push_approved: true
+  source_push_approved: true
+  implementation_push_approved: false
   pull_request_approved: false
   merge_approved: false
   batch: B-05
-  checkpoint: source-delivery
-plan_cursor: B-05-approved-awaiting-source-publication
+  checkpoint: opus-local-implementation
+plan_cursor: B-05-approved-ready-for-opus
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"
@@ -383,10 +384,11 @@ last_direct_execution:
   implementation_base: "787b1a1"
   scope: "Debug-only English F4 panel: reversible Mark 0-9 and next-day/night controls; no canonical progression changes. Initial F8 binding corrected after user feedback."
   validation: "Godot 4.7.2: B-01 to B-04, playtester, and full self-test passed; F4 binding and normal-rendering keyboard/mouse runner passed at 1280x720; captures inspected."
-  published: false
+  published: true
+  publication: "Approved F4 source commit 4ef349b was pushed to origin/main with B-05 approval record a31c12c on 2026-10-04."
   committed: true
   blocking_gaps: []
-  exception: "No B-05, automatic cures, travel unlock, new art, animation fix, disk persistence, release export, or external publication. B-04 completion history is unchanged."
+  exception: "No B-05 implementation, automatic cures, travel unlock, new art, animation fix, disk persistence, or release export. B-04 completion history is unchanged."
 suspension: null
 deferred_requests: []
 pending_plan_change_requests: []

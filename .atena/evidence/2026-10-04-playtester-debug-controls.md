@@ -81,4 +81,4 @@ Use **Exit playtest and restore previous state** to discard overrides, or restar
 
 ## Publication state
 
-Local implementation and validation only. The source and these records were later included in the local preparation commit for B-05; this does not publish them to the remote. No push, PR, merge, canon edit, dependency installation, or asset admission was performed for this request.
+The tested F4 source and these records were included in local commit `4ef349b`. The owner approved publishing it, and it was pushed to `origin/main` on 2026-10-04 together with B-05 approval record `a31c12c`. No PR, merge, canon edit, dependency installation, or asset admission was performed for this request.

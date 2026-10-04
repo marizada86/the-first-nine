@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-source-publication
+status: approved-ready-for-external-execution
 kind: external-implementation-instruction
 created: 2026-10-04
 batch: B-05
@@ -10,7 +10,7 @@ plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
 
 ## Execution gate
 
-The project owner approved B-05 with `per-plan` approval on 2026-10-04. Begin implementation only after the working branch contains the locally tested F4 playtester changes. Report the exact starting commit. An older remote `main` without F4 is not sufficient. Do not silently recreate or omit the playtester changes.
+The project owner approved B-05 with `per-plan` approval on 2026-10-04. Remote `main` now contains the tested F4 playtester source commit `4ef349b` and the B-05 approval record `a31c12c`. Fetch the latest `origin/main` and report the exact starting commit before editing. Do not work from an older branch without F4, and do not silently recreate or omit the playtester changes.
 
 ## Read before editing
 

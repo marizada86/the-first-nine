@@ -61,7 +61,7 @@ Mark changes clear Echoes and refresh health to the existing level maximum for i
 
 Use `D:/Godot/godot.exe` with `--headless --path . -- --self-test`. Use the runner `.atena/generated/2026-10-04-playtester-validation/validate_playtester.gd` in normal rendering at 1280×720 for UI validation and captures.
 
-Close the panel to play with overrides; select **Exit playtest and restore previous state** to recover the original run. Ending the process discards both in-memory sessions. Changes remain local; external publication requires separate approval.
+Close the panel to play with overrides; select **Exit playtest and restore previous state** to recover the original run. Ending the process discards both in-memory sessions. The owner later approved publishing the tested F4 source; commit `4ef349b` was pushed to `origin/main` on 2026-10-04.
 
 ## Shortcut correction, 2026-10-04
 
