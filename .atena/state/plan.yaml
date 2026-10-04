@@ -1,18 +1,29 @@
 ﻿version: 2
 
 last_completed_plan:
-  id: "2026-10-03-hq-narrative-revision"
-  spec: "[[2026-10-03-hq-narrative-revision]]"
-  status: complete-canon-and-reference-generation
+  id: "2026-10-03-b00-opening-ending-and-production-resolution"
+  spec: "[[2026-10-03-b00-opening-ending-and-production-resolution]]"
+  status: complete-canon-reconciliation-and-handoff-preparation
   mode: guided
   approval_mode: per-plan
   approved: "2026-10-03"
   request_classification: NEW_PLAN
-  scope: "Record approved three-HQ narrative revision and generate three replacement reference boards; no runtime admission or external dispatch."
+  scope: "Record approved B-00 canon resolutions and prepare a non-dispatched B-01 instruction for Opus; no runtime or art execution."
   blocking_gaps: []
-  evidence: "[[2026-10-03-hq-narrative-revision]]"
-  exception: "Godot changes, runtime admission, external dispatch, publication, and deletion remain out of scope."
+  evidence: "[[2026-10-03-b00-opening-ending-and-production-resolution]]"
+  exception: "Runtime implementation, art generation, asset admission, external dispatch, publication, and deletion remain out of scope."
 completed_plan_history:
+  - id: "2026-10-03-hq-narrative-revision"
+    spec: "[[2026-10-03-hq-narrative-revision]]"
+    status: complete-canon-and-reference-generation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Record approved three-HQ narrative revision and generate three replacement reference boards; no runtime admission or external dispatch."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-hq-narrative-revision]]"
+    exception: "Godot changes, runtime admission, external dispatch, publication, and deletion remain out of scope."
   - id: "2026-10-03-caravan-cave-visual-series"
     spec: "[[2026-10-03-caravan-cave-visual-series]]"
     status: complete-reference-generation
