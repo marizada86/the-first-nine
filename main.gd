@@ -206,11 +206,21 @@ var hollowroot_boss_defeated := false
 var hollowroot_mark_ready := false
 var hollowroot_web_anchor_open := false
 var pulse := 0.0
+var playtester_active := false
+var playtester_snapshot: Dictionary = {}
+var playtester_panel: PanelContainer
+var playtester_status: Label
+var playtester_mark_down: Button
+var playtester_mark_up: Button
+var playtester_restore_button: Button
+var playtester_toggle_button: Button
+var playtester_resume_guard := false
 var checkpoint := {"mark": 0, "zone": 0, "flame": 100.0, "provisions": 4.0, "awakened": 0, "final_echo_phase": false, "wagon_repair": 0, "load": [], "stock": [], "wagon_integrity": 100.0, "clock": DAY_DURATION, "echoes": 0, "cured": [], "posts": [], "downed": [], "first_night": false, "axle_brakes": false, "stonehook_boss": false, "stonehook_shar": false, "brazier": false, "crafted": {}}
 
 func _ready() -> void:
 	setup_input_actions()
 	start_new_run()
+	setup_playtester_panel()
 	queue_redraw()
 	if "--self-test" in OS.get_cmdline_user_args():
 		call_deferred("run_self_test")
@@ -240,6 +250,178 @@ func setup_input_actions() -> void:
 	add_joy_button_action("camp_action", JOY_BUTTON_LEFT_SHOULDER)
 	add_key_action("shadow_strike", KEY_C)
 	add_joy_button_action("shadow_strike", JOY_BUTTON_B)
+	if playtester_available():
+		add_key_action("playtester_toggle", KEY_F4)
+
+# These overrides are inspection tools, not ordinary narrative progression.
+func playtester_available() -> bool:
+	return OS.is_debug_build()
+
+func setup_playtester_panel() -> void:
+	if not playtester_available():
+		return
+	var layer := CanvasLayer.new()
+	layer.layer = 10
+	add_child(layer)
+	var toggle := Button.new()
+	toggle.text = "Playtester [F4]"
+	toggle.position = Vector2(1060, 132)
+	toggle.size = Vector2(196, 36)
+	toggle.focus_mode = Control.FOCUS_NONE
+	toggle.pressed.connect(toggle_playtester_panel)
+	playtester_toggle_button = toggle
+	layer.add_child(toggle)
+	playtester_panel = PanelContainer.new()
+	playtester_panel.position = Vector2(804, 178)
+	playtester_panel.custom_minimum_size = Vector2(452, 0)
+	var panel_style := StyleBoxFlat.new()
+	panel_style.bg_color = Color("11131f")
+	panel_style.border_color = Color("8c7850")
+	panel_style.set_border_width_all(1)
+	panel_style.set_corner_radius_all(6)
+	playtester_panel.add_theme_stylebox_override("panel", panel_style)
+	layer.add_child(playtester_panel)
+	var margin := MarginContainer.new()
+	for edge in ["left", "top", "right", "bottom"]:
+		margin.add_theme_constant_override("margin_" + edge, 16)
+	playtester_panel.add_child(margin)
+	var content := VBoxContainer.new()
+	content.add_theme_constant_override("separation", 12)
+	margin.add_child(content)
+	var heading := Label.new()
+	heading.text = "PLAYTESTER"
+	heading.add_theme_font_size_override("font_size", 22)
+	content.add_child(heading)
+	playtester_status = Label.new()
+	playtester_status.custom_minimum_size.x = 420
+	playtester_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	content.add_child(playtester_status)
+	var marks := HBoxContainer.new()
+	content.add_child(marks)
+	playtester_mark_down = add_playtester_button(marks, "Mark -", playtester_change_mark.bind(-1))
+	playtester_mark_up = add_playtester_button(marks, "Mark +", playtester_change_mark.bind(1))
+	var time_buttons := HBoxContainer.new()
+	content.add_child(time_buttons)
+	add_playtester_button(time_buttons, "Next day", playtester_set_time.bind(false))
+	add_playtester_button(time_buttons, "Next night", playtester_set_time.bind(true))
+	playtester_restore_button = add_playtester_button(content, "Exit playtest and restore previous state", restore_playtester_session)
+	add_playtester_button(content, "Close panel / resume [F4]", toggle_playtester_panel)
+	playtester_panel.hide()
+	refresh_playtester_panel()
+
+func add_playtester_button(parent: Control, title: String, callback: Callable) -> Button:
+	var button := Button.new()
+	button.text = title
+	button.custom_minimum_size.y = 36
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	button.focus_mode = Control.FOCUS_NONE
+	button.pressed.connect(callback)
+	parent.add_child(button)
+	return button
+
+func _input(event: InputEvent) -> void:
+	if not playtester_available():
+		return
+	if event.is_action_pressed("playtester_toggle") and not event.is_echo():
+		toggle_playtester_panel()
+		get_viewport().set_input_as_handled()
+	elif is_instance_valid(playtester_panel) and playtester_panel.visible and event.is_action_pressed("skip"):
+		toggle_playtester_panel()
+		get_viewport().set_input_as_handled()
+
+func toggle_playtester_panel() -> void:
+	if not playtester_available() or not is_instance_valid(playtester_panel):
+		return
+	playtester_panel.visible = not playtester_panel.visible
+	playtester_resume_guard = true
+	refresh_playtester_panel()
+
+func refresh_playtester_panel() -> void:
+	if not is_instance_valid(playtester_status):
+		return
+	var mark_name := "UNMARKED" if mark_level == 0 else String(MARK_NAMES[mark_level])
+	playtester_status.text = "Mark %d/9: %s\nTime: %s | State: %s\n%s\nWorld paused while this panel is open.\nMarks only: cure choices are unchanged. Levels 2-9 inspect existing prototype states." % [mark_level, mark_name, clock_label(), state, "Overrides active. Restore to return to your previous run." if playtester_active else "Your current run is preserved before the first override."]
+	playtester_mark_down.disabled = mark_level <= 0
+	playtester_mark_up.disabled = mark_level >= MARK_NAMES.size() - 1
+	playtester_restore_button.disabled = not playtester_active
+	playtester_toggle_button.text = "Playtest active [F4]" if playtester_active else "Playtester [F4]"
+
+# Capture script-owned runtime variables, including checkpoints and mutable arrays.
+# Tool variables are excluded so restoring gameplay never replaces scene objects.
+func begin_playtester_session() -> void:
+	if playtester_active:
+		return
+	playtester_snapshot.clear()
+	for property in get_property_list():
+		var property_name := String(property.name)
+		if (int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE) == 0 or property_name.begins_with("playtester_"):
+			continue
+		var value: Variant = get(property_name)
+		if value is Array or value is Dictionary:
+			value = value.duplicate(true)
+		playtester_snapshot[property_name] = value
+	playtester_active = true
+
+func prepare_playtester_override() -> void:
+	begin_playtester_session()
+	state = "journey"
+	# Injected states cannot reuse an ordinary safe save from another Mark or time.
+	camp_secured = false
+	safe_wagon_state.clear()
+	was_at_safe_wagon = false
+
+func playtester_change_mark(amount: int) -> void:
+	if not playtester_available():
+		return
+	var target_mark := clampi(mark_level + amount, 0, MARK_NAMES.size() - 1)
+	if target_mark == mark_level:
+		return
+	prepare_playtester_override()
+	mark_level = target_mark
+	shadow_echoes = 0
+	health = max_health()
+	first_thread_cooldown = 0.0
+	mark_vfx_time = 0.0
+	# Returning to Mark 0 must not strand the clock in a marked-only phase.
+	if zone == 0 and mark_level == 0:
+		tutorial_phase = "night_defense" if is_night() else "day_salvage"
+	create_checkpoint()
+	message = "PLAYTEST: Mark set to %d. Cure choices unchanged." % mark_level
+	message_time = 4.0
+	refresh_playtester_panel()
+	queue_redraw()
+
+func playtester_set_time(night: bool) -> void:
+	if not playtester_available():
+		return
+	prepare_playtester_override()
+	dusk_time = 0.0
+	# Use the real boundary handler for wave spawning and dawn cleanup.
+	clock_seconds = DAY_DURATION - 0.01 if night else DAY_DURATION + NIGHT_DURATION - 0.01
+	if zone == 0:
+		tutorial_phase = "night_defense" if night and mark_level == 0 else "safe_camp"
+	update_clock(0.02)
+	create_checkpoint()
+	message = "PLAYTEST: Next night started." if night else "PLAYTEST: Next day started."
+	message_time = 4.0
+	refresh_playtester_panel()
+	queue_redraw()
+
+func restore_playtester_session() -> void:
+	if not playtester_available() or not playtester_active:
+		return
+	for property_name in playtester_snapshot:
+		var value: Variant = playtester_snapshot[property_name]
+		if value is Array or value is Dictionary:
+			value = value.duplicate(true)
+		set(property_name, value)
+	playtester_snapshot.clear()
+	playtester_active = false
+	if is_instance_valid(playtester_panel):
+		playtester_panel.hide()
+	playtester_resume_guard = true
+	refresh_playtester_panel()
+	queue_redraw()
 
 func ensure_action(action: String) -> void:
 	if not InputMap.has_action(action):
@@ -276,6 +458,9 @@ func run_self_test() -> void:
 	var thornwake_tutorial_ready := run_thornwake_tutorial_self_test()
 	var first_boss_ready := run_first_boss_self_test()
 	var stabilization_ready := run_mark_one_stabilization_self_test()
+	if not run_playtester_self_test():
+		get_tree().quit(1)
+		return
 	reset_to_prologue()
 	player = Vector2(VIEW.x - 60.0, GROUND_Y - PLAYER_FEET_OFFSET)
 	clock_seconds = DAY_DURATION + 1.0
@@ -807,6 +992,69 @@ func run_mark_one_stabilization_self_test() -> bool:
 		push_error("SELF_TEST_B04_FAIL: premark=%s early=%s cure=%s/%s away=%s fallback=%s unsafe=%s capture=%s/%s fail=%s restore=%s narrative=%s wagon=%s latest=%s/%s terminal=%s cap=%s/%s travel=%s newrun=%s" % [pre_mark_reset, no_early_echoes, first_cure, return_objective, no_capture_away, cure_fallback, no_unsafe_capture, captured, secure_objective, failed_after_safe_return, restored, narrative_kept, wagon_kept, latest_objective, latest_restored, terminal_kept_snapshot, capped, cap_objective, travel_locked, new_run_clears])
 	return passed
 
+func run_playtester_self_test() -> bool:
+	if not playtester_available():
+		print("SELF_TEST_PLAYTESTER_SKIP: debug tools unavailable in release")
+		return true
+	reset_to_prologue()
+	# Opening the panel alone must never advance time or alter the run.
+	var original_clock := clock_seconds
+	var original_health := health
+	toggle_playtester_panel()
+	_process(2.0)
+	var panel_pauses := playtester_panel.visible and clock_seconds == original_clock and health == original_health and not playtester_active
+	# Exercise the actual button signal rather than only the gameplay helper.
+	playtester_mark_up.pressed.emit()
+	var mark_up := mark_level == 1 and lolth_form() == "drow" and cured_allies.is_empty() and playtester_active and playtester_snapshot.has("checkpoint")
+	playtester_mark_down.pressed.emit()
+	var mark_down := mark_level == 0 and lolth_form() == "elf"
+	playtester_change_mark(99)
+	var upper_bound := mark_level == 9 and playtester_mark_up.disabled and current_objective().begins_with("PLAYTEST:")
+	playtester_change_mark(-99)
+	var lower_bound := mark_level == 0 and playtester_mark_down.disabled
+	playtester_set_time(true)
+	var forced_night := is_night() and shades.size() == 1 and String(shades[0].name) == "BRIAR HOUND" and tutorial_phase == "night_defense" and wagon_repair == 0
+	playtester_set_time(true)
+	var repeat_night := shades.size() == 1 and night_wave == 1
+	playtester_set_time(false)
+	var forced_day := not is_night() and shades.is_empty() and night_wave_total == 0
+	# Mutating nested data in the sandbox must not touch the original run.
+	wagon_stock.append({"name": "DEBUG WOOD", "type": "wood", "slots": 1})
+	cured_allies.append("AELIRA")
+	checkpoint.stock.append({"name": "DEBUG STOCK", "type": "wood", "slots": 1})
+	playtester_restore_button.pressed.emit()
+	var restored: bool = not playtester_active and not playtester_panel.visible and is_cave_camp_start() and wagon_stock.is_empty() and checkpoint.stock.is_empty() and health == original_health and clock_seconds == original_clock
+	# Closing the panel consumes the input frame so its click cannot also attack.
+	var restored_pulse := pulse
+	_process(0.1)
+	var no_click_leak := pulse == restored_pulse and not playtester_resume_guard
+	# Restore an already-secured marked run, not only an empty prologue.
+	apply_mark_one()
+	cure_selected_ally()
+	player = Vector2(CARAVAN_X, GROUND_Y - PLAYER_FEET_OFFSET)
+	update_safe_wagon()
+	var original_safe := safe_wagon_state.duplicate(true)
+	var original_checkpoint := checkpoint.duplicate(true)
+	playtester_change_mark(8)
+	playtester_set_time(true)
+	var high_mark_night := mark_level == 9 and is_night() and wagon_travel_locked()
+	restore_playtester_session()
+	var marked_restored := mark_level == 1 and cured_allies == ["AELIRA"] and camp_secured and safe_wagon_state == original_safe and checkpoint == original_checkpoint and not is_night()
+	# The tools also work from an opening without permanently skipping its shell.
+	start_new_run()
+	playtester_set_time(true)
+	var opening_override := state == "journey" and is_night() and not shades.is_empty()
+	restore_playtester_session()
+	var opening_restored := state == "opening" and opening_beat == 0 and mark_level == 0
+	reset_to_prologue()
+	playtester_resume_guard = false
+	var passed: bool = panel_pauses and mark_up and mark_down and upper_bound and lower_bound and forced_night and repeat_night and forced_day and restored and no_click_leak and high_mark_night and marked_restored and opening_override and opening_restored
+	if passed:
+		print("SELF_TEST_PLAYTESTER_PASS: panel pause, Mark bounds, night waves, dawn cleanup, input isolation, and exact run restoration")
+	else:
+		push_error("SELF_TEST_PLAYTESTER_FAIL: pause=%s marks=%s/%s bounds=%s/%s night=%s/%s day=%s restore=%s input=%s high=%s marked=%s opening=%s/%s" % [panel_pauses, mark_up, mark_down, upper_bound, lower_bound, forced_night, repeat_night, forced_day, restored, no_click_leak, high_mark_night, marked_restored, opening_override, opening_restored])
+	return passed
+
 func is_cave_camp_start() -> bool:
 	return state == "journey" and zone == 0 and mark_level == 0 and cured_allies.is_empty() and wagon_repair == 0 and wagon_condition() == "cave_damaged" and wagon_travel_locked() and lolth_form() == "elf" and not is_night() and shades.is_empty() and night_wave_total == 0 and tutorial_phase == "day_salvage"
 
@@ -924,6 +1172,12 @@ func spawn_zone() -> void:
 	message_time = 4.0
 
 func _process(delta: float) -> void:
+	if is_instance_valid(playtester_panel) and playtester_panel.visible:
+		refresh_playtester_panel()
+		return
+	if playtester_resume_guard:
+		playtester_resume_guard = false
+		return
 	pulse += delta
 	message_time = maxf(0.0, message_time - delta)
 	if state == "opening":
@@ -2010,6 +2264,8 @@ func defeat_antlered_hunger() -> void:
 	start_shar_shell()
 
 func current_objective() -> String:
+	if playtester_active:
+		return "PLAYTEST: Mark %d. Use F4 to change Mark/time or restore your run." % mark_level
 	if zone == 0 and mark_level >= 1 and not cured_allies.is_empty():
 		if not camp_secured:
 			return "Return to the Wagon to secure the camp."

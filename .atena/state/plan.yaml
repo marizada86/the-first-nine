@@ -348,8 +348,45 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan: null
-plan_cursor: complete
+active_plan:
+  id: "2026-10-04-b05-thornwake-combat-readability"
+  spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
+  evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
+  implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
+  status: prepared-awaiting-approval-and-source-publication
+  mode: guided
+  approval_mode: unconfigured
+  approved: false
+  request_classification: NEW_PLAN
+  scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
+  blocking_gaps:
+    - "Approval mode and B-05 scope have not been approved."
+    - "The tested F4 playtester source is not on remote main, so Opus cannot yet work from the correct remote baseline."
+  source_publication_approved: false
+  implementation_approved: false
+  push_approved: false
+  pull_request_approved: false
+  merge_approved: false
+  batch: B-05
+  checkpoint: approval-selection-and-source-delivery
+plan_cursor: B-05-awaiting-approval-selection-and-source-delivery
+last_direct_execution:
+  id: "2026-10-04-playtester-debug-controls"
+  spec: "[[2026-10-04-playtester-debug-controls]]"
+  evidence: "[[2026-10-04-playtester-debug-controls]]"
+  origin: post-hoc
+  implementation_preceded_spec: true
+  mode: direct
+  request_classification: NEW_DIRECT_REQUEST
+  execution_authority: direct-user-request-2026-10-04
+  status: complete-local-validation
+  implementation_base: "787b1a1"
+  scope: "Debug-only English F4 panel: reversible Mark 0-9 and next-day/night controls; no canonical progression changes. Initial F8 binding corrected after user feedback."
+  validation: "Godot 4.7.2: B-01 to B-04, playtester, and full self-test passed; F4 binding and normal-rendering keyboard/mouse runner passed at 1280x720; captures inspected."
+  published: false
+  committed: true
+  blocking_gaps: []
+  exception: "No B-05, automatic cures, travel unlock, new art, animation fix, disk persistence, release export, or external publication. B-04 completion history is unchanged."
 suspension: null
 deferred_requests: []
 pending_plan_change_requests: []

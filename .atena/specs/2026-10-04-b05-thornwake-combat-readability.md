@@ -1,0 +1,70 @@
+---
+status: prepared-awaiting-approval-and-source-publication
+kind: bounded-runtime-fix-plan
+created: 2026-10-04
+plan_id: 2026-10-04-b05-thornwake-combat-readability
+approval_mode: unconfigured
+request_classification: NEW_PLAN
+depends_on:
+  - "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+  - "[[2026-10-04-playtester-debug-controls]]"
+evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
+implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
+---
+
+# B-05 plan — Thornwake melee damage and animation readability
+
+## Source and intent
+
+During a human playtest on 2026-10-04, the user confirmed the F4 playtester controls work and reported that the primary attack appears not to damage enemies while Lolth also appears to play a hurt animation. Prepare this as the next bounded Opus 5.5 implementation batch. The report is user evidence, not a claim that the exact root cause is proven.
+
+## Scope
+
+1. Reproduce the player-visible melee problem in Thornwake using normal movement and primary input, including a night enemy reached through the F4 playtester controls.
+2. Make a valid melee hit visibly and reliably lower the intended enemy's health, while preserving the approved three-strike combo and enemy defeat/Echo rules.
+3. Make attack, dodge and hurt visuals represent their respective actions. A dodge or attack must not show the hurt pose/effect unless Lolth actually takes damage.
+4. Check simultaneous enemy contact: if a real enemy strike lands during a player attack, both game-state outcomes must be correct and visually readable. Do not hide legitimate damage simply to make the animation look better.
+5. Keep F4, day/night controls, and reversible playtester sessions working for repeatable human testing.
+
+## Grounded observations to investigate
+
+- `handle_primary()` in `main.gd` subtracts health only when the distance between player and enemy positions is under `INTERACT_RADIUS` (currently 56 px). The player sprite is drawn at 200 px high. This could produce a visual reach mismatch, but it has not yet been proven to be the sole cause of the reported failure.
+- `perform_dodge()` sets `hurt_cooldown` for dodge invulnerability. `draw_player()` uses that same value to select the hurt pose and draw a pink hurt effect. The dodge visual checks for `mark_vfx_kind == "dash"`, while `perform_dodge()` emits `"dodge"`. This is a concrete state-to-pose mismatch.
+- In the normal update, primary input is handled before enemy movement and contact checks. The player could also genuinely take a hit during an attack. Record health before/after to distinguish this from false hurt visuals.
+- Existing B-03 self-tests prove direct close-range `handle_primary()` can lower enemy health. They do not establish that the real-input reach and visual feedback match player expectations.
+
+## Non-goals
+
+- No new attack ability, enemy type, art asset, companion control, travel unlock, region, Mark progression, or cure.
+- No broader combat rebalance beyond a measured melee reach/feedback correction needed for this defect.
+- No new dependencies, canon edits, asset admission, disk-save system, remote publication, PR, or merge in this batch.
+
+## Acceptance criteria
+
+1. At 1280×720, a real primary key or mouse press during Thornwake combat produces a visible hit and measurable enemy-health decrease when the enemy is within the intended melee reach. A miss beyond that reach does not damage the enemy and is visually distinguishable.
+2. A successful series of melee hits can defeat a Briar Hound and progress the night wave; the B-03 boss and Mark-I first-cure path retain their existing behavior.
+3. Attack pose/effect appears for an attack; dodge pose/effect appears for a dodge; hurt pose/effect appears only after actual Lolth health loss. Genuine overlapping attacks and enemy damage remain possible and understandable.
+4. Opening and closing F4 playtester, forced night/day, restoration, safe-wagon checkpoints and B-01 through B-04 regressions still pass.
+5. Godot 4.7.2 headless self-test passes; a normal-rendering 1280×720 real-input check records enemy and Lolth health before/after, animation states, and an inspected visual capture.
+
+## Impacts and gaps
+
+- Runtime: primary-hit selection/reach and player pose/effect separation in `main.gd`.
+- Test evidence: targeted combat assertions, real-input check, and a normal-rendering capture. Document any tuning as playtest values.
+- Operational records: B-05 spec, implementation note, evidence, and plan state only after the approved work occurs.
+- BLOCKING for Opus dispatch: the locally tested F4 playtester changes are absent from remote `main`; their exact source must be available to Opus before implementation starts.
+- BLOCKING for execution: approval mode has not been selected and this B-05 plan has not been approved.
+- RESOLVABLE during execution: choose the smallest melee range/pose implementation after measuring the real failure.
+- DEFERRED: unrelated animation polish, other regions, and all previously deferred gameplay progression.
+
+## Plan of flight
+
+1. Publish or otherwise deliver the exact reviewed F4 playtester source to the Opus working environment after explicit authorization. Verify commit and clean source state; do not overwrite local work.
+2. Opus reads this spec, relevant canon/records, and the B-05 instruction. Reproduce the reported failure before changing combat.
+3. Implement only the melee and animation correction, with targeted positive/negative tests.
+4. Validate headless and normal real-input play at 1280×720, then prepare English implementation evidence with exact results and known limitations.
+5. Return for human review. Push, PR and merge require separate explicit authorization.
+
+## Approval checkpoint
+
+This is a prepared plan, not an execution grant. Select `per-plan`, `per-batch` or `per-step` and approve the bounded scope. There is one stable batch, `B-05`; `per-plan` is the recommended low-friction mode. The remote-source gate remains separate from plan approval.
