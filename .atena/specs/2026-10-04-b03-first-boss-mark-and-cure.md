@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-published-awaiting-review
 approval_mode: per-plan
 approval_selection: user-explicit-2026-10-04
 approved: 2026-10-04
@@ -14,7 +14,10 @@ planned_branch: claude/wonderful-planck-suynnk
 implementation_base: 15e39eb
 implementation_commit: ac091fa
 implementation_evidence: "[[2026-10-04-b03-first-boss-implementation]]"
-push_pr_merge_approved: false
+published_commit: 4ac235960b52643562bd8f36036b21d5269ba3ef
+branch_publication_approved: true
+pull_request_approved: false
+merge_approved: false
 ---
 
 # B-03 plan - first boss, Mark I and first cure
@@ -57,8 +60,9 @@ An English implementation note must list exact changed files, canon used, test o
 
 ## Implementation status
 
-- **Status:** implemented, awaiting human review. The user has provisionally accepted the implementation pending this ADD record reconciliation. Push, pull request, and merge are not approved.
+- **Status:** implemented and published to its branch, awaiting human review. The user provisionally accepted the implementation pending the ADD record reconciliation.
+- **Publication:** the project owner approved branch publication. `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`, and a documentation-only follow-up commit was pushed to the same branch. A pull request and a merge are not approved and have not been performed. `main` is unchanged.
 - **Branch:** the work is on the local branch `b03-first-boss-mark-and-cure`, created from `origin/main` at `15e39eb`. The planned branch `claude/wonderful-planck-suynnk` was not used, because its pull request had already been merged.
-- **Commit:** the original implementation commit is `ac091fa`. This record reconciliation was amended into that same local commit, so the final commit hash differs from `ac091fa` and is reported outside the commit.
+- **Commit:** the original implementation commit was `ac091fa`. The record reconciliation was amended into it, producing the published commit `4ac235960b52643562bd8f36036b21d5269ba3ef`.
 - **Preconditions:** both were satisfied before implementation. `origin/main` at `15e39eb` contains the merged B-01/B-02 implementation and the B-00/B-02/B-03 records.
 - **Evidence:** `[[2026-10-04-b03-first-boss-mark-and-cure]]` and the implementation note `[[2026-10-04-b03-first-boss-implementation]]`.

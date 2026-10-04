@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-published-awaiting-review
 kind: b03-implementation-evidence
 recorded: 2026-10-04
 plan: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
@@ -7,7 +7,10 @@ implementation_note: "[[2026-10-04-b03-first-boss-implementation]]"
 implementation_branch: b03-first-boss-mark-and-cure
 implementation_base: 15e39eb
 implementation_commit: ac091fa
-push_pr_merge_approved: false
+published_commit: 4ac235960b52643562bd8f36036b21d5269ba3ef
+branch_publication_approved: true
+pull_request_approved: false
+merge_approved: false
 ---
 
 # Evidence - B-03 implementation
@@ -66,4 +69,9 @@ All runs used Godot 4.7.2 stable in a scratch copy of the project.
 
 ## Approval state
 
-The user provisionally accepted the implementation pending this ADD record reconciliation. Human review is still open. The user has not approved a push, pull request, merge, or publication, and none has been performed.
+The user provisionally accepted the implementation pending the ADD record reconciliation, which was amended into the B-03 commit.
+
+- **Branch publication:** the project owner approved it, and the branch `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`. `main` was not changed.
+- **Documentation follow-up:** a documentation-only follow-up commit recording this state was also approved and pushed to the same branch.
+- **Pull request and merge:** neither is approved, and neither has been performed.
+- **Review:** human review is still open.

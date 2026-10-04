@@ -301,7 +301,7 @@ completed_plan_history:
 active_plan:
   id: "2026-10-04-b03-first-boss-mark-and-cure"
   spec: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
-  status: implemented-awaiting-human-review
+  status: implemented-published-awaiting-review
   mode: guided
   approval_mode: per-plan
   approved: "2026-10-04"
@@ -312,11 +312,15 @@ active_plan:
   implementation_evidence: "[[2026-10-04-b03-first-boss-implementation]]"
   implementation_branch: b03-first-boss-mark-and-cure
   implementation_base: "15e39eb"
-  implementation_commit: "ac091fa (amended locally with this record reconciliation; final hash reported outside the commit)"
+  implementation_commit: "ac091fa (amended with the record reconciliation into the published commit)"
+  published_commit: "4ac235960b52643562bd8f36036b21d5269ba3ef"
   validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, prototype suites); 13 B-03 negative controls failed as expected; 14/14 real-input runtime checks passed; normal 1280x720 and headless 600-frame runs exited 0 without script errors."
-  push_pr_merge_approved: false
-  exception: "Push, pull request, merge, and publication are not approved. Later marks, travel, art admission, and deletion remain out of scope."
-plan_cursor: B-03-implemented-awaiting-human-review
+  branch_publication_approved: true
+  branch_published: "origin/b03-first-boss-mark-and-cure at 4ac235960b52643562bd8f36036b21d5269ba3ef, plus a documentation-only follow-up commit"
+  pull_request_approved: false
+  merge_approved: false
+  exception: "A pull request and a merge are not approved and have not been performed; main is unchanged. Later marks, travel, art admission, and deletion remain out of scope."
+plan_cursor: B-03-published-awaiting-review
 suspension: null
 deferred_requests: []
 pending_plan_change_requests: []

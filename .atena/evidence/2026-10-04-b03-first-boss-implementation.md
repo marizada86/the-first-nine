@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-review
+status: implemented-published-awaiting-review
 kind: implementation-note
 created: 2026-10-04
 batch: B-03
@@ -11,16 +11,24 @@ source_canon:
   - "[[2026-10-03-b00-opening-ending-and-production-resolution]]"
 implementation_branch: b03-first-boss-mark-and-cure
 base_commit: 15e39eb
+published_commit: 4ac235960b52643562bd8f36036b21d5269ba3ef
+pull_request_approved: false
+merge_approved: false
 ---
 
 # B-03 - first boss, Mark I and first cure
 
 ## Changed files
 
+The published B-03 commit `4ac235960b52643562bd8f36036b21d5269ba3ef` changes these files:
+
 - `main.gd` - Antlered Hunger camp action and encounter, boss telegraphs, neutral Shar shell, Mark I, `FIRST THREAD`, the one-cure lock, the Echo gate and cap, no Thornwake ally posts, and B-03 headless checks.
 - `.atena/evidence/2026-10-04-b03-first-boss-implementation.md` - this note.
+- `.atena/evidence/2026-10-04-b03-first-boss-mark-and-cure.md` - B-03 evidence, reconciled from preparation to implementation.
+- `.atena/specs/2026-10-04-b03-first-boss-mark-and-cure.md` - B-03 spec status, branch, and implementation record.
+- `.atena/state/plan.yaml` - active B-03 plan state.
 
-No asset, scene, project setting, canon, spec, plan, or instruction file was changed. No reference board was admitted to `res://`.
+An earlier version of this note said that no spec or plan file changed. That was accurate for the first implementation commit (`ac091fa`) but not for the published commit. The operational reconciliation of the spec, plan state, and evidence was amended into the B-03 commit, which produced `4ac235960b52643562bd8f36036b21d5269ba3ef`. No asset, scene, project setting, canon, or instruction file was changed. No reference board was admitted to `res://`.
 
 ## What was implemented
 
@@ -100,3 +108,28 @@ All runs used Godot 4.7.2 stable (official Linux x86_64 build, SHA-512 verified 
 - **HUD objective.** After the cure, the objective falls back to the cave-camp text.
 - **Art gaps (unchanged).** The pre-Mark elf sprite reads as drow, there is no cave backdrop, enemy sprites draw behind the camp, and the boss label is partly covered by the foreground overlay.
 - **Unused file.** The legacy storyboard file remains in `assets/concept-art/comic/` but is no longer referenced.
+
+## Publication state
+
+- **Branch publication:** approved by the project owner and performed. The branch `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`. `main` was not changed.
+- **Pull request and merge:** neither is approved, and neither has been performed.
+- **Follow-up commit:** this documentation-only follow-up commit is also pushed to the same branch with the owner's approval. It changes no gameplay, asset, test, or project setting.
+
+## B-04 recommendation (non-authorizing)
+
+This recommendation does not authorize any work. B-04 requires its own approved plan.
+
+Plan a post-Mark-I Thornwake stabilization and persistence slice that makes the state after the first cure coherent, without expanding progression:
+
+- **Saving:** implement B-00's "a safe return to the wagon saves operational progress after Mark I", so a failure restores the last safe wagon state rather than only the cure checkpoint.
+- **Clear objective:** give the post-cure camp a clear English objective, and decide what the Thornwake day/night loop offers once Echoes reach the 3/3 cap.
+- **Tuning:** tune the Antlered Hunger and `FIRST THREAD` values through playtesting.
+- **Tests:** extend the headless and real-input checks to cover save, reload, and failure after Mark I.
+
+Keep these out of B-04:
+
+- wagon travel or Stonehook access;
+- Mark II or later Marks, a second cure, or new abilities;
+- ally posts or pullers;
+- new or regenerated art, and art admission;
+- later-region content.
