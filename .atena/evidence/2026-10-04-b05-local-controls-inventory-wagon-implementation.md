@@ -1,5 +1,5 @@
 ---
-status: implemented-published-awaiting-technical-review
+status: complete-implementation-merged
 kind: local-implementation-evidence
 created: 2026-10-04
 batch: B-05
@@ -14,9 +14,25 @@ human_validation_date: 2026-10-04
 followup_push_approved: true
 published: true
 first_published_commit: bb4a0d4830563dfa487409eaab852aefe4ca5d81
-pull_request_approved: false
-merge_approved: false
+pull_request_approved: true
+merge_approved: true
+pull_request: https://github.com/marizada86/the-first-nine/pull/4
+merge_commit: bc7796e0fad33f5d7b773af3eaefc07749ec81b4
+merged_feature_head: e5832da604226b33f424d18248b24f0825c568aa
+closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
 ---
+
+## Current closure: B-05 integrated and completed
+
+PR [#4](https://github.com/marizada86/the-first-nine/pull/4) was merged with a regular merge at `bc7796e0fad33f5d7b773af3eaefc07749ec81b4`, from `codex/b05-controls-wagon-inventory` at `e5832da604226b33f424d18248b24f0825c568aa` into `main`. All six PR commits and both feature branches are preserved. The original implementation branch `b05-thornwake-combat-readability` at `4400b59` is historical, not the current integrated delivery.
+
+The owner separately authorized branch publication, PR opening, regular merge, and this documentation closure/publication on main. Initial local-only restrictions describe their original checkpoints; they do not negate those later approvals. Opus's delivered final review reported no blockers on `e5832da`; its reproduced Linux results are reviewer evidence, not fresh Atena results or CI checks.
+
+B-05 is the last completed plan; the active-plan slot is cleared. This closure changes records only. No runtime, art, saved test outputs, canonical gameplay rules or dependencies change; no B-06 or branch deletion is authorized. Parry, balance tuning, higher-Mark progression and disk saves remain deferred. See [[2026-10-04-b05-documentation-closure]] and [[2026-10-04-b05-pull-request]] for verification and approval provenance.
+
+## Historical preparation, implementation and review
+
+The following sections preserve the original checkpoints and their evidence. Any pending-review, local-only, main-unchanged or no-PR/no-merge statement below refers to that stage, not today's closed state. Original implementation values superseded by later controls/geometry corrections remain historical.
 
 # B-05 local controls, inventory, wagon and readability follow-up
 
@@ -84,7 +100,7 @@ All paths are under `.atena/generated/2026-10-04-b05-local-controls-validation/`
 - Records: approved control canon and legacy override link, revised and original B-05 specs, review and implementation evidence, active plan state, original instruction historical preface and English results/next-step handoff.
 - No project settings, scene, image, dependency, published commit or later-region production asset was changed.
 
-## Remaining checkpoint and limits
+## Original publication checkpoint and remaining limits
 
 The human-review checkpoint was pending when commit `43ab112` was created. On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation. This IN_PLAN acceptance is recorded without inventing a test-by-test human checklist or additional machine results. Saved state remains in memory only. Higher-Mark parry needs a future approved unlock/mechanics decision. Thornwake posts/missions and travel remain locked. No release export was produced.
 

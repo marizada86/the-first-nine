@@ -1,36 +1,132 @@
 ﻿version: 2
 
 last_completed_plan:
-  id: "2026-10-04-b04-thornwake-mark-one-stabilization"
-  spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+  id: "2026-10-04-b05-thornwake-combat-readability"
+  spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
+  evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
+  implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
   status: complete-implementation-merged
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
   approved: "2026-10-04"
   request_classification: NEW_PLAN
-  scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion or art."
+  scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
   blocking_gaps: []
-  evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
-  implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
-  implementation_branch: b04-thornwake-mark-one-stabilization
-  implementation_base: "9683a8c"
-  implementation_commit: "0a897fc (amended with the record reconciliation into the published commit)"
-  published_commit: "dfdf0be6b1e59b1158f172a10a12b8b84d90d076"
-  survivability_fix_commit: "b090847ec56bafb783c747755b00bce8243fa5ab"
-  validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, B-04, prototype suites); 13 B-04 negative controls and 5 B-03 regression controls failed as expected; 9/9 real-input runtime checks passed at 1280x720; normal 1280x720 and headless 600-frame runs exited 0 without script errors. Survivability fix: self-test passed, 3 terminal-capture negative controls failed as expected, the 13 B-04 controls still failed as expected, 9/9 runtime checks passed, and normal and headless runs exited 0."
-  known_limitations: "In-memory safe-wagon state only; restore uses the standard camp spawn point; night snapshots restore with waves cleared; no further Thornwake goal after the 3/3 cap; unchanged defeat-card wording and art; tuning needs a human playtest."
-  branch_publication_approved: true
-  branch_published: "origin/b04-thornwake-mark-one-stabilization at dfdf0be6b1e59b1158f172a10a12b8b84d90d076, then the approved survivability fix at b090847ec56bafb783c747755b00bce8243fa5ab"
-  remote_review_accepted: true
-  documentation_commit: "a8c2ac185516ae6b2a3b6198a0102c303cc358a5"
-  pull_request: "https://github.com/marizada86/the-first-nine/pull/3"
-  merge_commit: "36039cb2ad2803b0ac0c9d30f2d8dd9db158ce57"
-  preserved_commits: ["dfdf0be", "b090847", "a8c2ac1"]
-  feature_branch_preserved: true
-  next_recommendation: "A short human playtest of B-01 to B-04 at 1280x720 before planning further progression, recorded in [[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]] as a non-authorizing recommendation; any next batch requires its own approved plan."
-  exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, new art or art admission, later regions, disk persistence, and deletion remain out of scope."
+  source_publication_approved: true
+  source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
+  implementation_approved: true
+  source_push_approved: true
+  implementation_push_approved: true
+  implementation_branch: codex/b05-controls-wagon-inventory
+  published_commit: "e5832da604226b33f424d18248b24f0825c568aa"
+  branch_publication: "Original 4400b59 was published on b05-thornwake-combat-readability; current merged PR head is e5832da on codex/b05-controls-wagon-inventory. Both branches are retained."
+  review_evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
+  approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
+  revision_execution: local
+  revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
+  followup_push_approved: true
+  followup_push_authority: "Historical revision publication approval on 2026-10-04. PR, merge and closure received separate later owner approvals, recorded below."
+  revision_published: true
+  revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
+  revision_publication: "First revision publication at bb4a0d4; publication reconciliation at e6b614c; corrected geometry b8823c7 and acceptance/publication records e5832da later merged through PR #4."
+  pull_request_approved: true
+  pull_request: "https://github.com/marizada86/the-first-nine/pull/4"
+  pull_request_base: "main at 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+  pull_request_head: "e5832da604226b33f424d18248b24f0825c568aa"
+  pull_request_branch: codex/b05-controls-wagon-inventory
+  pull_request_status: merged
+  pull_request_opening_authority: "Owner explicitly authorized opening the B-05 PR into main without merge. IN_PLAN; no additional push, auto-merge, deletion or B-06."
+  pull_request_evidence: "[[2026-10-04-b05-pull-request]]"
+  pull_request_receipt_published_before_closure: false
+  merge_approved: true
+  original_merge_authority: "Owner explicitly authorized a regular merge of PR #4 preserving six commits and both branches. IN_PLAN; documentation closure/push, deletion and B-06 remain separate."
+  merge_commit: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
+  merge_parents: ["9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b", "e5832da604226b33f424d18248b24f0825c568aa"]
+  merge_verified: true
+  merged_main: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
+  preserved_commits: ["4400b59", "43ab112", "bb4a0d4", "e6b614c", "b8823c7", "e5832da"]
+  feature_branches_preserved: true
+  local_pr_receipt_commit: "f0ee44f36a1ed4ef47463d4c198b25fb927ef201"
+  documentation_closure_approved: true
+  batch: B-05
+  checkpoint: complete
+  implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
+  implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+  prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
+  revision_branch: codex/b05-controls-wagon-inventory
+  revision_base: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+  revision_commit: "43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c"
+  human_validation_accepted: true
+  human_validation_date: "2026-10-04"
+  human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
+  published_revision_branch: codex/b05-controls-wagon-inventory
+  revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
+  revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
+  deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
+  geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
+  geometry_correction_classification: IN_PLAN
+  geometry_correction_approved: true
+  geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
+  geometry_correction_authority: "Initial scope authorized the local geometry fix and tests only. Later explicit owner approvals authorized its publication, PR #4, regular merge and documentation closure; no deletion or B-06."
+  geometry_correction_push_approved: true
+  geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
+  geometry_correction_status: complete-implementation-merged
+  geometry_correction_published: true
+  geometry_correction_commit: "b8823c70c637fdbef9f36e6cf0da0925369faa47"
+  geometry_correction_human_validation_accepted: true
+  geometry_correction_human_validation_date: "2026-10-04"
+  geometry_correction_human_validation_source: "Owner stated: conferido. Vamos passar o próximo prompt para o opus 5.5. Accepted as IN_PLAN visual-review confirmation; no additional detailed tests inferred."
+  geometry_correction_publication_authority: "Owner separately authorized normal branch publication of the correction and acceptance records, followed by explicit PR, merge and main-documentation-closure approvals."
+  geometry_correction_publication: "Historical geometry publication verified at b8823c7 with main then at 9ea4fc1; records at e5832da and regular merge bc7796e integrated that corrected version into main."
+  geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
+  geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
+  final_technical_review: "Owner-delivered Opus report reviewed e5832da, found no blockers and reported Linux Godot 4.7.2 reproduction of 46/46 geometry, 5 rejected faults, 9/9 combat, 33/33 menus, self-tests and smoke runs. Reviewer evidence, not fresh Atena or CI results. Historical/current record clarity is reconciled in this closure."
+  pull_request_opening_checks: "At PR opening, GitHub: mergeable=true, merged=false; 0 check runs, 0 statuses and 0 PR-triggered workflow runs. Historical pre-merge check; no CI success inferred."
+  merge_validation: "GitHub confirms closed/merged=true at bc7796e; local fetch and remote refs agree, merged tree is identical to e5832da, all six PR commits remain ancestors of main and both remote feature branches remain at their original heads. No new engine runs or extra file-content change claimed."
+  original_implementation_branch: b05-thornwake-combat-readability
+  original_published_commit: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+  merged_feature_head: "e5832da604226b33f424d18248b24f0825c568aa"
+  closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
+  documentation_closure_authority: "Owner explicitly authorized closing B-05, fixing the record inconsistencies and publishing documentation only on main. IN_PLAN; no runtime change or B-06."
+  documentation_publication_approved: true
+  pull_request_receipt_included_in_closure: true
+  preserved_local_merge_receipt_commit: "3b37c9f5e24b15ddb98fccd9963c9e04c9f7fcde"
+  receipt_recovery_branch: codex/b05-controls-wagon-inventory
+  closure_validation: "ADD contract/links, completed-plan and exact prior-history preservation checks, saved runtime evidence diagnostics, whitespace and documentation-only Git boundary checks. No new engine run; existing validated merge tree remains unchanged outside .atena."
+  next_recommendation: "Optional separately approved 1280x720 balance/feel playtest of pose-dependent reach, unchanged 35 px contact damage, approved inventory pause and startup latency; outcome would be a tuning plan, not new features or automatic B-06."
+  exception: "No new runtime, art, dependencies, canonical gameplay rules, travel, Mark power, ally roles, disk persistence, branch deletion or B-06. All deferred items remain visible."
+
 completed_plan_history:
+  - id: "2026-10-04-b04-thornwake-mark-one-stabilization"
+    spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+    status: complete-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approval_selection: user-explicit-2026-10-04
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion or art."
+    blocking_gaps: []
+    evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+    implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
+    implementation_branch: b04-thornwake-mark-one-stabilization
+    implementation_base: "9683a8c"
+    implementation_commit: "0a897fc (amended with the record reconciliation into the published commit)"
+    published_commit: "dfdf0be6b1e59b1158f172a10a12b8b84d90d076"
+    survivability_fix_commit: "b090847ec56bafb783c747755b00bce8243fa5ab"
+    validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, B-04, prototype suites); 13 B-04 negative controls and 5 B-03 regression controls failed as expected; 9/9 real-input runtime checks passed at 1280x720; normal 1280x720 and headless 600-frame runs exited 0 without script errors. Survivability fix: self-test passed, 3 terminal-capture negative controls failed as expected, the 13 B-04 controls still failed as expected, 9/9 runtime checks passed, and normal and headless runs exited 0."
+    known_limitations: "In-memory safe-wagon state only; restore uses the standard camp spawn point; night snapshots restore with waves cleared; no further Thornwake goal after the 3/3 cap; unchanged defeat-card wording and art; tuning needs a human playtest."
+    branch_publication_approved: true
+    branch_published: "origin/b04-thornwake-mark-one-stabilization at dfdf0be6b1e59b1158f172a10a12b8b84d90d076, then the approved survivability fix at b090847ec56bafb783c747755b00bce8243fa5ab"
+    remote_review_accepted: true
+    documentation_commit: "a8c2ac185516ae6b2a3b6198a0102c303cc358a5"
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/3"
+    merge_commit: "36039cb2ad2803b0ac0c9d30f2d8dd9db158ce57"
+    preserved_commits: ["dfdf0be", "b090847", "a8c2ac1"]
+    feature_branch_preserved: true
+    next_recommendation: "A short human playtest of B-01 to B-04 at 1280x720 before planning further progression, recorded in [[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]] as a non-authorizing recommendation; any next batch requires its own approved plan."
+    exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, new art or art admission, later regions, disk persistence, and deletion remain out of scope."
   - id: "2026-10-04-b03-first-boss-mark-and-cure"
     spec: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
     status: complete-implementation-merged
@@ -348,71 +444,8 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan:
-  id: "2026-10-04-b05-thornwake-combat-readability"
-  spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
-  evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
-  implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: implemented-published-awaiting-final-technical-review
-  mode: guided
-  approval_mode: per-plan
-  approval_selection: user-explicit-2026-10-04
-  approved: "2026-10-04"
-  request_classification: NEW_PLAN
-  scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
-  blocking_gaps: []
-  source_publication_approved: true
-  source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
-  implementation_approved: true
-  source_push_approved: true
-  implementation_push_approved: true
-  implementation_branch: b05-thornwake-combat-readability
-  published_commit: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
-  branch_publication: "Owner authorized the original implementation push; the published feature branch was fetched locally. No B-05 PR or merge."
-  review_evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
-  approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
-  revision_execution: local
-  revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
-  followup_push_approved: true
-  followup_push_authority: "Owner explicitly authorized push of codex/b05-controls-wagon-inventory, including implementation and records, on 2026-10-04. IN_PLAN publication; no PR or merge."
-  revision_published: true
-  revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
-  revision_publication: "Normal push to origin/codex/b05-controls-wagon-inventory verified by ls-remote; implementation 43ab112 and owner-validation bb4a0d4 preserved. Publication reconciliation follows on the same branch."
-  pull_request_approved: false
-  merge_approved: false
-  batch: B-05
-  checkpoint: published-enemy-geometry-final-technical-review
-  implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
-  implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
-  prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
-  revision_branch: codex/b05-controls-wagon-inventory
-  revision_base: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
-  revision_commit: "43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c"
-  human_validation_accepted: true
-  human_validation_date: "2026-10-04"
-  human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
-  published_revision_branch: codex/b05-controls-wagon-inventory
-  revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
-  revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
-  deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
-  geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
-  geometry_correction_classification: IN_PLAN
-  geometry_correction_approved: true
-  geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
-  geometry_correction_authority: "Owner explicitly authorized the proposed local Stag aspect/shared outline reach/startup preparation fix and tests; no push, PR or merge."
-  geometry_correction_push_approved: true
-  geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
-  geometry_correction_status: implemented-published-awaiting-final-technical-review
-  geometry_correction_published: true
-  geometry_correction_commit: "b8823c70c637fdbef9f36e6cf0da0925369faa47"
-  geometry_correction_human_validation_accepted: true
-  geometry_correction_human_validation_date: "2026-10-04"
-  geometry_correction_human_validation_source: "Owner stated: conferido. Vamos passar o próximo prompt para o opus 5.5. Accepted as IN_PLAN visual-review confirmation; no additional detailed tests inferred."
-  geometry_correction_publication_authority: "Owner explicitly authorized recording the confirmation and publishing the correction plus records on the existing branch after Opus reported b8823c7 unavailable. No PR or merge."
-  geometry_correction_publication: "Normal push to origin/codex/b05-controls-wagon-inventory advanced e6b614c to b8823c70c637fdbef9f36e6cf0da0925369faa47; verified with ls-remote. Remote main remains 9ea4fc1. Records reconciliation follows normally."
-  geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
-  geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
-plan_cursor: B-05-published-enemy-geometry-final-technical-review
+active_plan: null
+plan_cursor: complete
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"
@@ -440,7 +473,7 @@ approved_change_requests:
     spec: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
     canonical_decision: "[[2026-10-04-separated-controls-and-wagon-management]]"
     evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
-    status: implemented-published-awaiting-technical-review
+    status: complete-implementation-merged
     approval_mode: per-plan
     approved: "2026-10-04"
     approval_source: "Explicit owner request to implement here, then prepare results for Claude; subsequent instructions defer parry and request clean dash and larger enemies."

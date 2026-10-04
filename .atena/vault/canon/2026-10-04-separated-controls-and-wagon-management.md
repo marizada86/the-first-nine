@@ -5,7 +5,7 @@ created: 2026-10-04
 approval_source: direct-user-control-definition
 related_controls: "[[2026-10-02-cross-input-controls]]"
 related_plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
-implementation_status: implemented-human-validated-published
+implementation_status: complete-implementation-merged
 ---
 
 # Separate combat, interaction, and wagon management
@@ -37,4 +37,4 @@ The older contextual-primary rule in [[2026-10-02-cross-input-controls]] is supe
 
 The exact wagon-menu layout and supplementary bindings belong to the implementation specification. Existing Thornwake role locks and the two-post limit remain authoritative. All new player-facing labels and records are English.
 
-Local implementation and validation are recorded in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Publication, PR and merge remain separately gated.
+Local implementation and validation are recorded in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Branch publication, PR #4 and regular merge were separately authorized and performed; documentation closure/publication was separately authorized. See [[2026-10-04-b05-documentation-closure]]. This updates implementation metadata only, not the approved design decision.

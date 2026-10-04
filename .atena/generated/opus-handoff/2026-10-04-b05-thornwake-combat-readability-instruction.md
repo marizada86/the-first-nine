@@ -1,10 +1,16 @@
 ---
-status: historical-instruction-published-revision-awaiting-technical-review
+status: archived-merged-b05-instruction
 kind: external-implementation-instruction
 created: 2026-10-04
 batch: B-05
 plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
+closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
+merge_commit: bc7796e0fad33f5d7b773af3eaefc07749ec81b4
 ---
+
+## Archived instruction — do not execute as a new request
+
+B-05 was merged through PR #4 and is completed. This instruction is retained as historical handoff evidence, not an outstanding execution gate or authority for B-06. The owner separately authorized closure/publication of records only; no new external dispatch is performed. See [[2026-10-04-b05-documentation-closure]].
 
 # B-05 — Thornwake melee damage and animation readability
 

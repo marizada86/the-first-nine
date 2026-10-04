@@ -1,12 +1,18 @@
 ---
-status: published-geometry-results-prepared-not-dispatched
+status: archived-merged-b05-instruction
 kind: review-and-next-step-handoff
 created: 2026-10-04
 batch: B-05
 plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
 revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
 implementation_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
+closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
+merge_commit: bc7796e0fad33f5d7b773af3eaefc07749ec81b4
 ---
+
+## Archived instruction — do not execute as a new request
+
+B-05 was merged through PR #4 and is completed. This instruction is retained as historical handoff evidence, not an outstanding execution gate or authority for B-06. The owner separately authorized closure/publication of records only; no new external dispatch is performed. See [[2026-10-04-b05-documentation-closure]].
 
 # B-05 local follow-up: results and review checkpoint
 

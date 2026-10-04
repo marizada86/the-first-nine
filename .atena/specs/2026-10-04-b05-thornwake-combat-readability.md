@@ -1,5 +1,5 @@
 ---
-status: implemented-published-awaiting-technical-review
+status: complete-implementation-merged
 kind: bounded-runtime-fix-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b05-thornwake-combat-readability
@@ -13,15 +13,33 @@ depends_on:
 evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
 implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
 implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
-implementation_branch: b05-thornwake-combat-readability
+implementation_branch: codex/b05-controls-wagon-inventory
+original_implementation_branch: b05-thornwake-combat-readability
 implementation_base: 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b
 implementation_push_approved: true
-published_commit: 4400b59aab49ed2860c5c6369ba79b386a7d2e9a
+original_published_commit: 4400b59aab49ed2860c5c6369ba79b386a7d2e9a
+published_commit: e5832da604226b33f424d18248b24f0825c568aa
 followup_push_approved: true
 revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
-pull_request_approved: false
-merge_approved: false
+pull_request_approved: true
+merge_approved: true
+pull_request: https://github.com/marizada86/the-first-nine/pull/4
+merge_commit: bc7796e0fad33f5d7b773af3eaefc07749ec81b4
+merged_feature_head: e5832da604226b33f424d18248b24f0825c568aa
+closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
 ---
+
+## Current closure: B-05 integrated and completed
+
+PR [#4](https://github.com/marizada86/the-first-nine/pull/4) was merged with a regular merge at `bc7796e0fad33f5d7b773af3eaefc07749ec81b4`, from `codex/b05-controls-wagon-inventory` at `e5832da604226b33f424d18248b24f0825c568aa` into `main`. All six PR commits and both feature branches are preserved. The original implementation branch `b05-thornwake-combat-readability` at `4400b59` is historical, not the current integrated delivery.
+
+The owner separately authorized branch publication, PR opening, regular merge, and this documentation closure/publication on main. Initial local-only restrictions describe their original checkpoints; they do not negate those later approvals. Opus's delivered final review reported no blockers on `e5832da`; its reproduced Linux results are reviewer evidence, not fresh Atena results or CI checks.
+
+B-05 is the last completed plan; the active-plan slot is cleared. This closure changes records only. No runtime, art, saved test outputs, canonical gameplay rules or dependencies change; no B-06 or branch deletion is authorized. Parry, balance tuning, higher-Mark progression and disk saves remain deferred. See [[2026-10-04-b05-documentation-closure]] and [[2026-10-04-b05-pull-request]] for verification and approval provenance.
+
+## Historical preparation, implementation and review
+
+The following sections preserve the original checkpoints and their evidence. Any pending-review, local-only, main-unchanged or no-PR/no-merge statement below refers to that stage, not today's closed state. Original implementation values superseded by later controls/geometry corrections remain historical.
 
 # B-05 plan — Thornwake melee damage and animation readability
 
@@ -80,7 +98,7 @@ During a human playtest on 2026-10-04, the user confirmed the F4 playtester cont
 
 The owner selected `per-plan` for the single stable batch, `B-05`, on 2026-10-04. The separately authorized push of local commit `4ef349b` and the approval record `a31c12c` succeeded on remote `main`. The implementation is ready for Opus after it fetches and verifies the current source. This approval does not authorize a later implementation push, pull request or merge.
 
-## Implementation status
+## Original implementation checkpoint
 
 - **Status:** implemented locally on `b05-thornwake-combat-readability`, from `origin/main` at `9ea4fc1`, and awaiting human review.
 - **Root causes found:**
@@ -93,7 +111,7 @@ The owner selected `per-plan` for the single stable batch, `B-05`, on 2026-10-04
 - **Details:** exact health values, captures, and limitations are in `[[2026-10-04-b05-thornwake-combat-readability-implementation]]`.
 - **Historical approval state at implementation:** publication had not yet been approved. The later publication is recorded below.
 
-## Current review and requested revision
+## Original revision and publication checkpoint
 
 The original approved implementation was subsequently published with owner authorization on `b05-thornwake-combat-readability` at `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. It has not been merged. The preparation and execution instructions above describe the original batch and its historical gate.
 
