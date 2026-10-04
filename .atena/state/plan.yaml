@@ -353,23 +353,23 @@ active_plan:
   spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
   evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
   implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: prepared-awaiting-approval-and-source-publication
+  status: approved-awaiting-source-publication
   mode: guided
-  approval_mode: unconfigured
-  approved: false
+  approval_mode: per-plan
+  approval_selection: user-explicit-2026-10-04
+  approved: "2026-10-04"
   request_classification: NEW_PLAN
   scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
   blocking_gaps:
-    - "Approval mode and B-05 scope have not been approved."
     - "The tested F4 playtester source is not on remote main, so Opus cannot yet work from the correct remote baseline."
-  source_publication_approved: false
-  implementation_approved: false
-  push_approved: false
+  source_publication_approved: true
+  implementation_approved: true
+  push_approved: true
   pull_request_approved: false
   merge_approved: false
   batch: B-05
-  checkpoint: approval-selection-and-source-delivery
-plan_cursor: B-05-awaiting-approval-selection-and-source-delivery
+  checkpoint: source-delivery
+plan_cursor: B-05-approved-awaiting-source-publication
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

@@ -1,9 +1,11 @@
 ---
-status: prepared-awaiting-approval-and-source-publication
+status: approved-awaiting-source-publication
 kind: bounded-runtime-fix-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b05-thornwake-combat-readability
-approval_mode: unconfigured
+approval_mode: per-plan
+approval_selection: user-explicit-2026-10-04
+approved: 2026-10-04
 request_classification: NEW_PLAN
 depends_on:
   - "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
@@ -53,7 +55,7 @@ During a human playtest on 2026-10-04, the user confirmed the F4 playtester cont
 - Test evidence: targeted combat assertions, real-input check, and a normal-rendering capture. Document any tuning as playtest values.
 - Operational records: B-05 spec, implementation note, evidence, and plan state only after the approved work occurs.
 - BLOCKING for Opus dispatch: the locally tested F4 playtester changes are absent from remote `main`; their exact source must be available to Opus before implementation starts.
-- BLOCKING for execution: approval mode has not been selected and this B-05 plan has not been approved.
+- RESOLVED: the owner selected per-plan approval and approved this bounded B-05 scope on 2026-10-04.
 - RESOLVABLE during execution: choose the smallest melee range/pose implementation after measuring the real failure.
 - DEFERRED: unrelated animation polish, other regions, and all previously deferred gameplay progression.
 
@@ -67,4 +69,4 @@ During a human playtest on 2026-10-04, the user confirmed the F4 playtester cont
 
 ## Approval checkpoint
 
-This is a prepared plan, not an execution grant. Select `per-plan`, `per-batch` or `per-step` and approve the bounded scope. There is one stable batch, `B-05`; `per-plan` is the recommended low-friction mode. The remote-source gate remains separate from plan approval.
+The owner selected `per-plan` for the single stable batch, `B-05`, on 2026-10-04. The source-publication gate remains separate from plan approval; the owner authorized the push of local commit `4ef349b` on the same date. Opus may start only after the exact source is verified on remote `main`.

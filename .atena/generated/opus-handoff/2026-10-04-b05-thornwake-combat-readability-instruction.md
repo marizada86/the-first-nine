@@ -1,5 +1,5 @@
 ---
-status: prepared-awaiting-approval-and-source-publication
+status: approved-awaiting-source-publication
 kind: external-implementation-instruction
 created: 2026-10-04
 batch: B-05
@@ -10,7 +10,7 @@ plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
 
 ## Execution gate
 
-Do not begin implementation until the project owner has approved the B-05 scope and approval mode, and the working branch contains the locally tested F4 playtester changes. Report the exact starting commit. An older remote `main` without F4 is not sufficient. Do not silently recreate or omit the playtester changes.
+The project owner approved B-05 with `per-plan` approval on 2026-10-04. Begin implementation only after the working branch contains the locally tested F4 playtester changes. Report the exact starting commit. An older remote `main` without F4 is not sufficient. Do not silently recreate or omit the playtester changes.
 
 ## Read before editing
 
