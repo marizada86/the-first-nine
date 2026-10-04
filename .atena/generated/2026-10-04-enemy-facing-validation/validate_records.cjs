@@ -10,9 +10,20 @@ function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
 walk('.atena');
 let links=0;
 const paths=['.atena/specs/2026-10-04-enemy-facing-correction.md','.atena/evidence/2026-10-04-enemy-facing-correction.md'];
+const receiptPath='.atena/evidence/2026-10-04-enemy-facing-pull-request.md';
+const receipt=fs.readFileSync(receiptPath,'utf8');
+assert(receipt.includes('status: pull-request-open-awaiting-merge-authorization'));
+assert(receipt.includes('pull_request: https://github.com/marizada86/the-first-nine/pull/5'));
+assert(receipt.includes('additional_record_push_approved: false'));
+assert(receipt.includes('merge_approved: false'));
+for(const match of receipt.matchAll(/\[\[([^\]]+)\]\]/g)){assert(ids.has(match[1]),'Unresolved receipt link '+match[1]);links++;}
 for(const file of paths){
   const text=fs.readFileSync(file,'utf8');
-  assert(text.includes('status: implemented-human-validated-published-awaiting-pr-authorization'));
+  assert(text.includes('status: pull-request-open-awaiting-merge-authorization'));
+  assert(text.includes('pull_request_approved: true'));
+  assert(text.includes('pull_request_head: edb5623d2609152c7df5dffffe10a34e6f3e2ba0'));
+  assert(text.includes('additional_record_push_approved: false'));
+  assert(text.includes('merge_approved: false'));
   assert(text.includes('push_approved: true'));
   assert(text.includes('published: true'));
   assert(text.includes('first_published_commit: 523960b3b3c83832edabda8298de76e767828c43'));
@@ -26,24 +37,28 @@ for(const file of paths){
 const state=normalize(fs.readFileSync('.atena/state/plan.yaml','utf8'));
 const before=normalize(git('show',baseline+':.atena/state/plan.yaml'));
 const active=state.split(/^active_plan:\n/m)[1].split(/^plan_cursor:/m)[0];
-assert(active.includes('status: implemented-human-validated-published-awaiting-pr-authorization'));
+assert(active.includes('status: pull-request-open-awaiting-merge-authorization'));
 assert(active.includes('approval_mode: per-plan'));
 assert(active.includes('request_execution_classification: IN_PLAN'));
 assert(active.includes('human_validation_accepted: true'));
 assert(active.includes('implementation_commit: "e7812e6ac969e899292a6c0c4845769ccaba2404"'));
-assert(active.includes('checkpoint: published-fix-awaiting-pr-authorization'));
+assert(active.includes('checkpoint: open-pr-awaiting-merge-authorization'));
 assert(active.includes('push_approved: true'));
 assert(active.includes('published: true'));
 assert(active.includes('first_published_commit: "523960b3b3c83832edabda8298de76e767828c43"'));
 git('merge-base','--is-ancestor','523960b3b3c83832edabda8298de76e767828c43','refs/remotes/origin/codex/enemy-facing-correction');
 git('merge-base','--is-ancestor','e7812e6ac969e899292a6c0c4845769ccaba2404','HEAD');
 assert.equal(git('diff','--name-only','e7812e6ac969e899292a6c0c4845769ccaba2404','--','main.gd','assets','project.godot','wagon_inventory_ui.gd').trim(),'','Acceptance reconciliation must not change the game');
-for(const gate of ['pull_request_approved: false','merge_approved: false'])assert(active.includes(gate));
+for(const gate of ['pull_request_approved: true','additional_record_push_approved: false','merge_approved: false'])assert(active.includes(gate));
+assert(active.includes('pull_request_state: open'));
+assert(active.includes('pull_request_head: "edb5623d2609152c7df5dffffe10a34e6f3e2ba0"'));
+assert(active.includes('pull_request_base: "39cd7d3d46a8afb3894889920e0840cbae573e7b"'));
+assert.equal(git('rev-parse','refs/remotes/origin/codex/enemy-facing-correction').trim(),'edb5623d2609152c7df5dffffe10a34e6f3e2ba0','PR head changed after receipt');
 assert.equal(state.replace(/^active_plan:\n[\s\S]*?^plan_cursor:.*$/m,'active_plan: null\nplan_cursor: complete'),before,'Completed history/unrelated state changed');
 assert(!/\t/.test(state));
 for(const match of active.matchAll(/\[\[([^\]]+)\]\]/g)){assert(ids.has(match[1]));links++;}
 const changed=git('diff','--name-only',baseline,'--').trim().split('\n').filter(Boolean);
-const allowed=new Set(['main.gd','.atena/state/plan.yaml',...paths]);
+const allowed=new Set(['main.gd','.atena/state/plan.yaml',receiptPath,...paths]);
 assert(changed.every(file=>allowed.has(file)||file.startsWith('.atena/generated/2026-10-04-enemy-facing-validation/')),'Out-of-scope change');
 const source=fs.readFileSync('main.gd','utf8').replace(/\r\n/g,'\n');
 const previous=git('show',baseline+':main.gd');

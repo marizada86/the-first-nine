@@ -1,5 +1,5 @@
 ---
-status: implemented-human-validated-published-awaiting-pr-authorization
+status: pull-request-open-awaiting-merge-authorization
 kind: preparation-and-implementation-evidence
 created: 2026-10-04
 request_classification: NEW_PLAN
@@ -18,7 +18,11 @@ push_approved: true
 published: true
 first_published_commit: 523960b3b3c83832edabda8298de76e767828c43
 publication_authority: explicit-owner-branch-push-and-records-authorization
-pull_request_approved: false
+pull_request_approved: true
+pull_request: https://github.com/marizada86/the-first-nine/pull/5
+pull_request_head: edb5623d2609152c7df5dffffe10a34e6f3e2ba0
+pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
+additional_record_push_approved: false
 merge_approved: false
 ---
 
@@ -78,12 +82,20 @@ An initial sandbox-only self-test printed passing suites but also sandbox log/ce
 
 At implementation commit `e7812e6ac969e899292a6c0c4845769ccaba2404`, S-001 through S-003 were complete locally and human review was pending. The owner then stated "aprovado" on 2026-10-04, accepting that exact local correction. Classified IN_PLAN. This acceptance does not imply any additional detailed playtest results or approval to publish.
 
-At acceptance commit `523960b3b3c83832edabda8298de76e767828c43`, status was `implemented-human-validated-awaiting-publication-authorization`. The owner subsequently authorized the branch push and records, without PR or merge. Current status is `implemented-human-validated-published-awaiting-pr-authorization`; the plan remains at the separate PR-authority checkpoint. B-05 remains last completed with its history unchanged; B-06 is not started. This follow-up changes only spec/evidence/state and their operational validator. Saved runtime results, source code and captures are unchanged; no new engine run is claimed. The original correction commit is preserved without amend.
+At acceptance commit `523960b3b3c83832edabda8298de76e767828c43`, status was `implemented-human-validated-awaiting-publication-authorization`. The owner subsequently authorized the branch push and records, without PR or merge. Publication-reconciliation commit `edb5623` recorded status `implemented-human-validated-published-awaiting-pr-authorization`. That was the checkpoint before the later separate PR approval recorded below. B-05 remains last completed with its history unchanged; B-06 is not started. Operational follow-ups change only records and their validator. Saved runtime results, source code and captures are unchanged; no new engine run is claimed. The original correction commit is preserved without amend.
 
-No PR, merge, remote dispatch or branch deletion is approved/performed. The original source PNGs, canonical design and previous evidence remain unchanged. Deferred balance/contact-radius tuning, UI crowding, parry/higher Marks and disk persistence remain deferred. Visual verification covers all 12 Thornwake poses; generic movement/fallback tests do not claim complete visual validation of later prototype-region art.
+At the publication-reconciliation checkpoint, no PR, merge, remote dispatch or branch deletion was approved/performed. The later PR-only approval does not authorize merge, remote dispatch or branch deletion. The original source PNGs, canonical design and previous evidence remain unchanged. Deferred balance/contact-radius tuning, UI crowding, parry/higher Marks and disk persistence remain deferred. Visual verification covers all 12 Thornwake poses; generic movement/fallback tests do not claim complete visual validation of later prototype-region art.
 
 ## Authorized branch publication
 
 The owner explicitly answered "autorizado" to publication of `codex/enemy-facing-correction` with correction and records, without opening a PR or merging. Classified IN_PLAN publication authorization, separate from the earlier per-plan execution and human acceptance.
 
 A normal upstream push created `origin/codex/enemy-facing-correction` at `523960b3b3c83832edabda8298de76e767828c43`, preserving implementation `e7812e6ac969e899292a6c0c4845769ccaba2404` and acceptance `523960b`. Remote refs confirmed main remained `39cd7d3d46a8afb3894889920e0840cbae573e7b`. No amend, force-push or branch deletion. This publication reconciliation is a normal documentation follow-up on the same authorized branch, not a runtime change or fresh engine test.
+
+## Separately authorized PR creation
+
+Publication reconciliation was pushed as `edb5623d2609152c7df5dffffe10a34e6f3e2ba0`. A subsequent read-only readiness check confirmed main at `39cd7d3`, clean branch tracking, current main as an ancestor, preserved completed history and no existing correction PR.
+
+The owner explicitly answered "autorizo" to opening the PR with an English description and without merging. Classified IN_PLAN, separate from implementation, acceptance and branch-push approvals. PR #5 was opened and attached to this chat: https://github.com/marizada86/the-first-nine/pull/5. Its verified head remains `edb5623` and base remains `39cd7d3`; state is open, merged is false, mergeability is clean and auto-merge is null. GitHub reports zero check runs and zero commit statuses (combined status pending, not a failing check).
+
+Current status is `pull-request-open-awaiting-merge-authorization`. Exact metadata and the publication boundary are in [[2026-10-04-enemy-facing-pull-request]]. This local receipt/record reconciliation is not pushed and does not change the three-commit PR. Only saved-result/operational checks are revalidated; no new Godot run or new human-test claim. Merge, additional record publication, branch deletion, external dispatch and B-06 remain unapproved.
