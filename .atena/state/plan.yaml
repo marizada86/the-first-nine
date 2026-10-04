@@ -448,7 +448,7 @@ active_plan:
   id: "2026-10-04-enemy-facing-correction"
   spec: "[[2026-10-04-enemy-facing-correction]]"
   evidence: "[[2026-10-04-enemy-facing-correction]]"
-  status: implemented-human-validated-awaiting-publication-authorization
+  status: implemented-human-validated-published-awaiting-pr-authorization
   mode: guided
   request_classification: NEW_PLAN
   approval_mode: per-plan
@@ -458,7 +458,7 @@ active_plan:
   implementation_approved: true
   scope: "Track enemy facing and mirror existing sprites without changing geometry, reach, AI, controls, art or progression."
   blocking_gaps: []
-  checkpoint: accepted-local-fix-awaiting-publication-authorization
+  checkpoint: published-fix-awaiting-pr-authorization
   steps: ["S-001-facing-and-rendering", "S-002-isolated-direction-validation", "S-003-regressions-evidence-review"]
   batches: ["B-001-enemy-facing-correction"]
   baseline_commit: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
@@ -470,11 +470,15 @@ active_plan:
   human_validation_date: "2026-10-04"
   human_validation_source: "Owner stated: aprovado. Accepted as IN_PLAN human review of e7812e6; no extra detailed tests or publication authority inferred."
   known_limitations: "Thornwake 12 poses are raster-verified; generic retreat/legacy fallback are state-verified, not all prototype artwork. Rendering tests use Godot-owned captures, not sealed harness/GPU profiling. Balance and other deferred B-05 items unchanged."
-  push_approved: false
+  push_approved: true
+  published: true
+  first_published_commit: "523960b3b3c83832edabda8298de76e767828c43"
+  publication_authority: "Owner explicitly authorized publishing the correction and records on codex/enemy-facing-correction, without PR or merge. IN_PLAN; approval is separate from execution and human acceptance."
+  publication: "Normal push created origin/codex/enemy-facing-correction at 523960b; exact remote hash verified, with main unchanged at 39cd7d3. Record reconciliation follows normally on the same authorized branch; no amend or force-push."
   pull_request_approved: false
   merge_approved: false
-  exception: "B-05 remains completed. No B-06, new art, dependency, rule, balance change, unlock, external dispatch, push or merge."
-plan_cursor: enemy-facing-accepted-awaiting-publication-authorization
+  exception: "B-05 remains completed. Branch correction/record push separately approved; no B-06, new art, dependency, rule, balance change, unlock, external dispatch, PR or merge."
+plan_cursor: enemy-facing-published-awaiting-pr-authorization
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

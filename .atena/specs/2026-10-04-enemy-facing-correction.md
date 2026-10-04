@@ -1,5 +1,5 @@
 ---
-status: implemented-human-validated-awaiting-publication-authorization
+status: implemented-human-validated-published-awaiting-pr-authorization
 kind: bounded-visual-correction-plan
 created: 2026-10-04
 plan_id: 2026-10-04-enemy-facing-correction
@@ -18,7 +18,10 @@ implementation_commit: e7812e6ac969e899292a6c0c4845769ccaba2404
 human_validation_accepted: true
 human_validation_date: 2026-10-04
 human_validation_source: owner-stated-aprovado
-push_approved: false
+push_approved: true
+published: true
+first_published_commit: 523960b3b3c83832edabda8298de76e767828c43
+publication_authority: explicit-owner-branch-push-and-records-authorization
 pull_request_approved: false
 merge_approved: false
 ---
@@ -37,7 +40,7 @@ Track each enemy's facing direction and mirror the existing enemy sprite when fa
 
 Keep source images and frame selection, native aspect, centered visible body, grounded feet, widths/shared-outline melee reach, prewarmed caches, health, damage, contact radius and timing unchanged. Restore drawing transforms before labels, health bars or other scene elements. Do not mirror the entire scene or mutate source artwork.
 
-No new art, dependencies, adapter installation, GPU/performance profiling, controls, parry, progression, ally roles, disk saves, B-06, push, PR or merge.
+No new art, dependencies, adapter installation, GPU/performance profiling, controls, parry, progression, ally roles, disk saves or B-06. External publication is not implicit: the owner separately approved branch publication after implementation acceptance; PR and merge remain unapproved.
 
 ## Grounded decisions and gaps
 
@@ -76,4 +79,6 @@ Preserve B-05 completed state and previous history. Record actual test exits, vi
 
 Persistent facing is initialized at spawn, updated from signed motion on the generic path, and locked to committed attack direction through Thornwake windup/strike. Stationary recovery/defeat hold their orientation. Drawing reflects only the sprite around the visible-body center, then resets its transform. No art, shared geometry/reach, damage, timing or input rule changed.
 
-Godot 4.7.2: 65/65 headless direction checks; 102/102 rendered checks (12 pose reflection comparisons and unchanged labels/markers/full-scene exterior); three faulty subclasses rejected with exit 1; independent geometry 46/46; actual-input combat 9/9 and menus 33/33; full self-test and both 600-frame smoke runs pass. See the linked evidence for exact process results, captures, initial harness corrections and limitations. The owner subsequently accepted the local correction with "aprovado" on 2026-10-04. No additional human checklist or fresh engine results are inferred; no push, PR, merge or B-06 is authorized/performed. The active checkpoint now awaits separate publication authority.
+Godot 4.7.2: 65/65 headless direction checks; 102/102 rendered checks (12 pose reflection comparisons and unchanged labels/markers/full-scene exterior); three faulty subclasses rejected with exit 1; independent geometry 46/46; actual-input combat 9/9 and menus 33/33; full self-test and both 600-frame smoke runs pass. See the linked evidence for exact process results, captures, initial harness corrections and limitations. The owner subsequently accepted the local correction with "aprovado" on 2026-10-04. No additional human checklist or fresh engine results are inferred.
+
+The owner then explicitly authorized publishing the correction and records on `codex/enemy-facing-correction`, without PR or merge. A normal push published `e7812e6` and acceptance records `523960b`; remote HEAD was verified as `523960b3b3c83832edabda8298de76e767828c43`, with main unchanged at `39cd7d3`. Publication reconciliation follows normally on the same authorized branch. Current checkpoint awaits separate PR authority; no PR, merge, dispatch or B-06.

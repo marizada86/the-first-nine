@@ -1,5 +1,5 @@
 ---
-status: implemented-human-validated-awaiting-publication-authorization
+status: implemented-human-validated-published-awaiting-pr-authorization
 kind: preparation-and-implementation-evidence
 created: 2026-10-04
 request_classification: NEW_PLAN
@@ -14,7 +14,10 @@ implementation_commit: e7812e6ac969e899292a6c0c4845769ccaba2404
 human_validation_accepted: true
 human_validation_date: 2026-10-04
 human_validation_source: owner-stated-aprovado
-push_approved: false
+push_approved: true
+published: true
+first_published_commit: 523960b3b3c83832edabda8298de76e767828c43
+publication_authority: explicit-owner-branch-push-and-records-authorization
 pull_request_approved: false
 merge_approved: false
 ---
@@ -75,6 +78,12 @@ An initial sandbox-only self-test printed passing suites but also sandbox log/ce
 
 At implementation commit `e7812e6ac969e899292a6c0c4845769ccaba2404`, S-001 through S-003 were complete locally and human review was pending. The owner then stated "aprovado" on 2026-10-04, accepting that exact local correction. Classified IN_PLAN. This acceptance does not imply any additional detailed playtest results or approval to publish.
 
-Current status is `implemented-human-validated-awaiting-publication-authorization`; the plan remains at the separate publication-authority checkpoint. B-05 remains last completed with its history unchanged; B-06 is not started. This follow-up changes only spec/evidence/state and their operational validator. Saved runtime results, source code and captures are unchanged; no new engine run is claimed. The original correction commit is preserved without amend.
+At acceptance commit `523960b3b3c83832edabda8298de76e767828c43`, status was `implemented-human-validated-awaiting-publication-authorization`. The owner subsequently authorized the branch push and records, without PR or merge. Current status is `implemented-human-validated-published-awaiting-pr-authorization`; the plan remains at the separate PR-authority checkpoint. B-05 remains last completed with its history unchanged; B-06 is not started. This follow-up changes only spec/evidence/state and their operational validator. Saved runtime results, source code and captures are unchanged; no new engine run is claimed. The original correction commit is preserved without amend.
 
-No push, PR, merge, remote dispatch or branch deletion is approved/performed. The original source PNGs, canonical design and previous evidence remain unchanged. Deferred balance/contact-radius tuning, UI crowding, parry/higher Marks and disk persistence remain deferred. Visual verification covers all 12 Thornwake poses; generic movement/fallback tests do not claim complete visual validation of later prototype-region art.
+No PR, merge, remote dispatch or branch deletion is approved/performed. The original source PNGs, canonical design and previous evidence remain unchanged. Deferred balance/contact-radius tuning, UI crowding, parry/higher Marks and disk persistence remain deferred. Visual verification covers all 12 Thornwake poses; generic movement/fallback tests do not claim complete visual validation of later prototype-region art.
+
+## Authorized branch publication
+
+The owner explicitly answered "autorizado" to publication of `codex/enemy-facing-correction` with correction and records, without opening a PR or merging. Classified IN_PLAN publication authorization, separate from the earlier per-plan execution and human acceptance.
+
+A normal upstream push created `origin/codex/enemy-facing-correction` at `523960b3b3c83832edabda8298de76e767828c43`, preserving implementation `e7812e6ac969e899292a6c0c4845769ccaba2404` and acceptance `523960b`. Remote refs confirmed main remained `39cd7d3d46a8afb3894889920e0840cbae573e7b`. No amend, force-push or branch deletion. This publication reconciliation is a normal documentation follow-up on the same authorized branch, not a runtime change or fresh engine test.
