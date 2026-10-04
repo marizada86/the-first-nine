@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-external-execution
+status: complete-external-implementation-merged
 approval_mode: per-plan
 approval_selection: user-explicit-2026-10-04
 approved: 2026-10-04
