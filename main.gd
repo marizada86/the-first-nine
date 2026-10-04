@@ -773,6 +773,25 @@ func run_mark_one_stabilization_self_test() -> bool:
 	hurt_lolth()
 	restart_from_checkpoint()
 	var latest_restored := wagon_stock.size() == latest_stock and shadow_echoes == 2 and mark_level == 1 and cured_allies == [chosen]
+	var terminal_kept_snapshot := true
+	for terminal in ["flame", "provisions"]:
+		var valid_snapshot := safe_wagon_state.duplicate(true)
+		player = field_spot
+		update_safe_wagon()
+		wagon_stock.append({"name": "DOOMED WOOD", "type": "wood", "slots": 1})
+		if terminal == "flame":
+			flame = 0.0
+		else:
+			provisions = 0.0
+		player = wagon_spot
+		update_safe_wagon()
+		var snapshot_unchanged := safe_wagon_state == valid_snapshot
+		check_survival_failures()
+		var failed := state == "defeat"
+		restart_from_checkpoint()
+		var restored_valid := state == "journey" and flame > 0.0 and provisions > 0.0 and wagon_stock.size() == latest_stock and shadow_echoes == 2 and mark_level == 1 and cured_allies == [chosen]
+		check_survival_failures()
+		terminal_kept_snapshot = terminal_kept_snapshot and snapshot_unchanged and failed and restored_valid and state == "journey"
 	collect_echo(10)
 	var capped := shadow_echoes == int(ECHO_THRESHOLDS[1]) and mark_level == 1 and state == "journey" and cured_allies.size() == 1
 	var cap_objective := current_objective() == "The Wagon is secure. No deeper Mark can awaken in Thornwake."
@@ -781,11 +800,11 @@ func run_mark_one_stabilization_self_test() -> bool:
 	var travel_locked := zone == 0 and state == "journey" and wagon_travel_locked() and wagon_condition() == "stationed"
 	reset_to_prologue()
 	var new_run_clears := not camp_secured and safe_wagon_state.is_empty() and is_cave_camp_start()
-	var passed := pre_mark_reset and no_early_echoes and first_cure and return_objective and no_capture_away and cure_fallback and no_unsafe_capture and captured and secure_objective and failed_after_safe_return and restored and narrative_kept and wagon_kept and latest_objective and latest_restored and capped and cap_objective and travel_locked and new_run_clears
+	var passed := pre_mark_reset and no_early_echoes and first_cure and return_objective and no_capture_away and cure_fallback and no_unsafe_capture and captured and secure_objective and failed_after_safe_return and restored and narrative_kept and wagon_kept and latest_objective and latest_restored and terminal_kept_snapshot and capped and cap_objective and travel_locked and new_run_clears
 	if passed:
 		print("SELF_TEST_B04_PASS: safe-wagon capture, post-Mark-I restore, preserved Mark I and cure, Echo gate and cap, and travel lock are ready")
 	else:
-		push_error("SELF_TEST_B04_FAIL: premark=%s early=%s cure=%s/%s away=%s fallback=%s unsafe=%s capture=%s/%s fail=%s restore=%s narrative=%s wagon=%s latest=%s/%s cap=%s/%s travel=%s newrun=%s" % [pre_mark_reset, no_early_echoes, first_cure, return_objective, no_capture_away, cure_fallback, no_unsafe_capture, captured, secure_objective, failed_after_safe_return, restored, narrative_kept, wagon_kept, latest_objective, latest_restored, capped, cap_objective, travel_locked, new_run_clears])
+		push_error("SELF_TEST_B04_FAIL: premark=%s early=%s cure=%s/%s away=%s fallback=%s unsafe=%s capture=%s/%s fail=%s restore=%s narrative=%s wagon=%s latest=%s/%s terminal=%s cap=%s/%s travel=%s newrun=%s" % [pre_mark_reset, no_early_echoes, first_cure, return_objective, no_capture_away, cure_fallback, no_unsafe_capture, captured, secure_objective, failed_after_safe_return, restored, narrative_kept, wagon_kept, latest_objective, latest_restored, terminal_kept_snapshot, capped, cap_objective, travel_locked, new_run_clears])
 	return passed
 
 func is_cave_camp_start() -> bool:
@@ -1444,9 +1463,12 @@ func checkpoint_label() -> String:
 	return MARK_NAMES[int(checkpoint.mark)]
 
 # Lolth is at the safe Wagon when she stands in the Wagon interaction area with no living
-# enemy and no unfinished night defense.
+# enemy, no unfinished night defense, and a survivable camp. A terminal Flame, Provisions,
+# health, or Wagon state is never captured, so the previous valid snapshot stays the fallback.
 func is_at_safe_wagon() -> bool:
 	if state != "journey" or zone != 0 or mark_level < 1 or cured_allies.is_empty() or player.x >= 305.0:
+		return false
+	if flame <= 0.0 or provisions <= 0.0 or health <= 0.0 or wagon_integrity <= 0.0:
 		return false
 	for shade in shades:
 		if not shade.defeated:

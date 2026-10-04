@@ -75,6 +75,35 @@ All runs used Godot 4.7.2 stable in a scratch copy of the project.
 - **Normal runs:** a 600-frame OpenGL run at 1280 by 720 and a 600-frame headless run both exited with code 0 with no script errors. The only messages came from the container's missing audio device and V-Sync control.
 - **Screenshots** were captured for the return objective, the camp secured, the Echo objective, the failure card, the restore at the safe Wagon, and the Echo cap.
 
+## Fix: no capture of a terminal camp state
+
+A review found an edge case in the published B-04 commit `dfdf0be`. `update_safe_wagon()` runs before `check_survival_failures()` in the same frame. A player who reached the Wagon with Flame or Provisions at zero could capture a safe-wagon state that failed at once. Every restore then landed in the same failure.
+
+**Fix.** `is_at_safe_wagon()` now also requires a survivable camp: Flame, Provisions, Lolth's health, and Wagon integrity must all be above zero. Flame and Provisions were the required minimum. Health and integrity were added because they are the other two terminal-failure values.
+
+**Effect.**
+
+- A terminal arrival at the Wagon captures nothing, so the previous valid snapshot stays in place.
+- The failure that follows restores that snapshot.
+- All other B-04 behavior, tuning, objectives, locks, and narrative persistence are unchanged.
+
+**Coverage.** The B-04 self-test now checks Flame and Provisions in turn. For each one, starting from a valid secured camp, it:
+
+1. sets the value to zero;
+2. walks Lolth into the Wagon area;
+3. confirms the stored snapshot is unchanged;
+4. triggers the survival failure;
+5. confirms the restore returns the earlier valid state: Flame and Provisions above zero, the earlier stock and Echoes, and Mark I and the cure kept;
+6. confirms the restored camp does not fail again.
+
+**Validation of the fix** (Godot 4.7.2):
+
+- The self-test exited with code 0 and printed `SELF_TEST_B01_PASS`, `SELF_TEST_B02_PASS`, `SELF_TEST_B03_PASS`, `SELF_TEST_B04_PASS`, and `SELF_TEST_PASS`.
+- Three new negative controls failed as expected (exit code 1, `terminal=false`): the whole guard removed, only the Flame check removed, and only the Provisions check removed.
+- All 13 original B-04 negative controls still fail as expected.
+- The real-input runtime check still passes 9 of 9.
+- A normal 600-frame OpenGL run at 1280 by 720 and a 600-frame headless run both exited with code 0 with no script errors.
+
 ## Known limitations
 
 - **No disk save:** the safe-wagon state is in memory only, as approved. Quitting loses it.
