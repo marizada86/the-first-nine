@@ -1,0 +1,43 @@
+{
+  "approval": "approved",
+  "art_direction": "Linguagem visual A aprovada: pixel art 2D dark fantasy em vista lateral, noite azul-violeta fria, luz âmbar quente apenas em fontes de fogo, materiais ásperos e leitura forte de silhueta.",
+  "output_dir": ".atena/generated/2026-10-03-stonehook-reference-batch-e",
+  "max_attempts": 2,
+  "assets": [
+    {
+      "id": "zone.stonehook",
+      "kind": "reference",
+      "prompt": "Prancha de referência ambiental para Stonehook Mountains: travessia montanhosa em pixel art 2D dark fantasy, vista lateral. Mostrar panorama de penhascos e scree, duas rotas de corda com ancoragens nítidas, plataformas de pedra, minério metálico, corda e ferramentas de eixo/freios como recursos distinguíveis; profundidade com duas camadas de parallax. Noite violeta-fria, luz âmbar apenas em uma lanterna remota. Sem personagens, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "stonehook-zone-v1.png",
+      "checks": ["side-view composition", "stone, scree, ropes and anchor points are distinguishable", "metal, rope and tools read as distinct resources", "cold violet and restrained amber palette", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "stonehook.resources-and-repair",
+      "kind": "reference",
+      "prompt": "Prancha de props de referência para Stonehook em pixel art 2D dark fantasy: minério de ferro, bobina de corda grossa, ferramentas gastas, eixo de carroça e conjunto de freios em montagem de oficina montanhosa; vistas laterais limpas e detalhes de material. Pedra cinza fria, metal oxidado, fibras de corda claras, brilho âmbar discreto de uma lamparina. Sem personagens, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "stonehook-resources-repair-v1.png",
+      "checks": ["metal, rope, tools, axle and brakes are individually legible", "materials are readable against stone", "cold violet and restrained amber palette", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "stonehook.traversal-hazards",
+      "kind": "reference",
+      "prompt": "Prancha de riscos de travessia de Stonehook em pixel art 2D dark fantasy, vista lateral: encosta íngreme de scree em deslizamento, precipício com rota por corda e pontos de ancoragem, queda visível e plataforma segura de recuperação. A geometria deve comunicar risco e rota sem sugerir escalada livre. Noite azul-violeta fria, pedra com bordas legíveis, sem personagens, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "stonehook-traversal-hazards-v1.png",
+      "checks": ["fall, slide, rope route and safe recovery are distinguishable", "does not imply free climbing or open world", "clear silhouette against rock", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "enemy.scree-crawler-and-cliff-harrier",
+      "kind": "reference",
+      "prompt": "Prancha de criaturas regionais de Stonehook em pixel art 2D dark fantasy: um Scree Crawler rastejante de pedra solta em solo montanhoso e um Cliff Harrier aéreo de falésia em voo, cada um com silhueta, postura de ataque e telegraph de movimento distintos. Não são sombras nem criaturas humanoides. Fundo mínimo de rocha violeta para contraste; sem Lolth, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "stonehook-regular-enemies-v1.png",
+      "checks": ["two enemy silhouettes and attack reads are distinct", "aerial read for Cliff Harrier is clear", "not shadow species", "readable against rock", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "enemy.stone-maw",
+      "kind": "reference",
+      "prompt": "Prancha de referência do chefe Stone Maw para Stonehook em pixel art 2D dark fantasy, vista lateral: colossal predador montanhoso feito de rocha, mandíbula mineral expressiva, postura de avanço e telegraph de ataque claro, escala de chefe sem ocultar sua silhueta. Não é sombra, não tem texto nem elementos de UI. Fundo de penhasco violeta escuro, bordas frias bem separadas, pequeno acento âmbar distante. Sem personagem jogável, watermark, sprite sheet ou atlas.",
+      "target": "stonehook-stone-maw-v1.png",
+      "checks": ["boss scale and attack telegraph are clear", "not shadow species", "silhouette remains readable against rock", "no text, watermark, UI, sprite sheet or atlas"]
+    }
+  ]
+}

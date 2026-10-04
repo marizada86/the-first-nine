@@ -1,0 +1,19 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-hq-narrative-revision.md",
+    "plan_id": "2026-10-03-hq-narrative-revision",
+    "batch_id": "H-01"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel-art-inspired storyboard; large legible pixel clusters, cool blue-violet catastrophe palette, sparse amber fire, cinematic gutters, no copied external designs.",
+  "output_dir": ".atena/generated/2026-10-03-hq-narrative-revision",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "h-01-opening-exodus-v1",
+    "kind": "storyboard",
+    "prompt": "A wordless nine-panel opening-comic reference: elf-only Golden City crowded with elves; council sends major families to seek homes; more than one hundred Thalestriel elves leave in a large open-wagon caravan with relics; monsters, enemies and natural disasters strike; plague kills nearly all; Lolth and eight survivors reach a root-lined cave with a broken wagon. Every Lolth panel visibly shows her furious at Eol with non-readable anger-cursing visual cues.",
+    "target": ".atena/generated/2026-10-03-hq-narrative-revision/h-01-opening-exodus-v1.png",
+    "checks": ["nine-panel-storyboard", "elf-only-golden-city", "mass-exodus", "lolth-curses-eol-cues", "eight-survivors-cave", "no-readable-text", "no-watermark"]
+  }]
+}
+

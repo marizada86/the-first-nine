@@ -1,0 +1,18 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-caravan-cave-visual-series-approval.md",
+    "plan_id": "2026-10-03-caravan-cave-visual-series",
+    "batch_id": "C-01"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel art: large readable pixel clusters, sparse cool blue-violet night palette, warm amber fire contrast, restrained detail, clean silhouettes, no copied external designs.",
+  "output_dir": ".atena/generated/2026-10-03-caravan-cave-visual-series",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "c-01-prologue-comic-v1",
+    "kind": "storyboard",
+    "prompt": "Use case: illustration-story. Asset type: six-panel wordless opening comic reference for a 2D pixel-art game. Primary request: show a Thalestriel family fleeing through a cold dark-fantasy night, carrying a few clearly precious ancestral relics to their open horse-less wagon; show plague exhaustion among eight companions; show arrival at a root-lined cave where the wagon has a broken wheel and splintered wood; end with Lolth standing ready to explore while the eight sick allies rest in the cave camp. Style: minimal lateral 2D pixel art, large pixel clusters, cool blue-violet shadows, small amber campfire light, cinematic panel gutters. Constraints: Lolth is the only active explorer; wagon is open, no horse, no second vehicle, no abandonment, no explicit gore, no readable text, no watermark, no logo, no UI.",
+    "target": ".atena/generated/2026-10-03-caravan-cave-visual-series/c-01-prologue-comic-v1.png",
+    "checks": ["six-panel storyboard", "open horse-less wagon", "cave arrival", "eight sick allies", "no-text", "no-watermark"]
+  }]
+}

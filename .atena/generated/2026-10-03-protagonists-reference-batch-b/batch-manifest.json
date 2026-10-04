@@ -1,0 +1,66 @@
+{
+  "approval": "approved",
+  "approval_source": "User explicitly approved Lot B and the proposed scale rule in Codex on 2026-10-03",
+  "art_direction": {
+    "style_approval": ".atena/vault/canon/2026-10-03-visual-language-a-approval.md",
+    "scale_decision": ".atena/vault/canon/2026-10-03-protagonist-reference-scale.md",
+    "source_references": [
+      "assets/concept-art/characters/lolth-definitive-production-sheet-v1.png",
+      "assets/concept-art/characters/first-elves-portrait-sheet-v1.png",
+      "assets/concept-art/characters/first-drows-portrait-sheet-v1.png",
+      ".atena/generated/2026-10-03-visual-language-a/style-master-frame-v1.png",
+      ".atena/generated/2026-10-03-visual-language-a/style-palette-materials-v1.png"
+    ],
+    "constraints": [
+      "2D dark-fantasy pixel-art reference boards only",
+      "cold blue-violet darkness, nearly black violet shadows, restrained amber-gold accents",
+      "all playable figures are visually 1.00 versus Lolth with feet on a shared ground line",
+      "no text, logo, watermark, runtime asset, sprite atlas, code or import into res://"
+    ]
+  },
+  "output_dir": ".atena/generated/2026-10-03-protagonists-reference-batch-b",
+  "max_attempts": 2,
+  "assets": [
+    {
+      "id": "char.lolth.elf.reference.v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: character reference board, not a final game asset. Create a single 16:9 handcrafted 2D dark-fantasy pixel-art board for Lolth before the Shadow Mark: one full-body, pale blue-gray elven woman with long white hair, elegant and physically strong, restrained black and deep-violet travelling clothes with fine muted-gold accents. Show a large front standing baseline figure with feet on one horizontal ground line, plus small clean turnaround, idle, running, jumping, basic melee attack and short-dodge studies. Dark neutral blue-violet backdrop, small amber edge-light only. Readable silhouette and clustered pixel treatment. No text, labels, logo, watermark, collage, other characters, VFX or game-ready sprite sheet. This is a review reference only.",
+      "target": ".atena/generated/2026-10-03-protagonists-reference-batch-b/char-lolth-elf-reference-v1.png",
+      "checks": ["16:9 board", "one measurable full-body baseline figure", "front/turnaround/locomotion/action studies", "feet-on-shared-ground-line", "no-text-or-watermark", "not-a-final-runtime-asset"],
+      "scale_reference": "Lolth approved baseline scale sheet",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "char.lolth.drow.reference.v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: character reference board, not a final game asset. Create a single 16:9 handcrafted 2D dark-fantasy pixel-art board for Lolth after the Shadow Mark. Keep her visibly the same strong pale blue-gray, long white-haired elven woman and exactly the same normalised full-body height as the companion Lolth baseline; distinguish her through a more deliberate dark violet-black drow travel silhouette, subtle violet shadow motifs and restrained muted-gold details. Show a large front standing figure with feet on a horizontal ground line, plus small turnaround, idle, running, shadow action and short dodge studies. Dark blue-violet neutral backdrop with a restrained amber edge-light. No spider transformation, no wings, no text, labels, logo, watermark, other characters, VFX clutter or game-ready sprite sheet. Review reference only.",
+      "target": ".atena/generated/2026-10-03-protagonists-reference-batch-b/char-lolth-drow-reference-v1.png",
+      "checks": ["16:9 board", "same identity as Lolth elf", "one measurable full-body figure", "drow silhouette and action studies", "feet-on-shared-ground-line", "no-text-or-watermark"],
+      "scale_reference": "char.lolth.elf.reference.v1",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "char.shar.narrative-reference.v1",
+      "kind": "narrative-reference",
+      "prompt": "Use case: stylized-concept. Asset type: narrative character reference board, not a final game asset. Create one 16:9 2D dark-fantasy pixel-art board for Shar as a distant goddess of forgetting at a Shadow Mark encounter. Include a dignified portrait and one full-body ceremonial presence, surrounded by restrained near-black violet shadow and a small amber-gold rim light. Her design is mysterious and composed, distinct from Lolth, with no playable combat poses and no new lore props. Dark blue-violet neutral backdrop, readable silhouette. No text, labels, logo, watermark, extra characters, UI, sprite sheet or runtime asset. Review reference only.",
+      "target": ".atena/generated/2026-10-03-protagonists-reference-batch-b/char-shar-narrative-reference-v1.png",
+      "checks": ["16:9 board", "portrait and ceremonial presence", "narrative-not-playable reading", "visual coherence with language A", "no-text-or-watermark", "not-a-final-runtime-asset"]
+    },
+    {
+      "id": "char.thalestriel.elves.lineup.v1",
+      "kind": "lineup-reference",
+      "prompt": "Use case: stylized-concept. Asset type: ensemble character lineup reference, not a final game asset. Create a single 16:9 handcrafted 2D dark-fantasy pixel-art lineup of exactly eight adult elven Thalestriel survivors standing with their feet on one shared ground line at equal normalised visual height. Arrange eight distinct but coherent figures left to right in this fixed order: Aelira the Forager, Vaelun the Bearer, Nimara the Scout, Thaviel the Flame Keeper, Ilyren the Repairer, Orisya the Healer, Soreth the Sentinel, Luraen the Dreamer. Their roles must read through modest tools, posture and clothing; they are weakened survivors, not adventuring heroes. Include small portrait heads aligned beneath or beside each figure without any labels. Cold blue-violet background, restrained amber fire accents, clean readable pixel clusters. No text, letters, numbers, logo, watermark, weapons posed for combat, follower UI, sprite sheet or runtime asset.",
+      "target": ".atena/generated/2026-10-03-protagonists-reference-batch-b/char-thalestriel-elves-lineup-v1.png",
+      "checks": ["exactly-eight figures", "fixed roster order", "shared-ground-line", "equal-normalised-height", "role-readable-without-biography", "no-text-or-watermark", "not-a-final-runtime-asset"]
+    },
+    {
+      "id": "char.thalestriel.drows.lineup.v1",
+      "kind": "lineup-reference",
+      "prompt": "Use case: stylized-concept. Asset type: ensemble character lineup reference, not a final game asset. Create a single 16:9 handcrafted 2D dark-fantasy pixel-art lineup of exactly the same eight adult Thalestriel survivors after their drow awakening. Keep them at equal normalised visual height and feet on one shared ground line. Arrange left to right in the fixed order Aelira the Forager, Vaelun the Bearer, Nimara the Scout, Thaviel the Flame Keeper, Ilyren the Repairer, Orisya the Healer, Soreth the Sentinel, Luraen the Dreamer. Preserve a recognisable counterpart identity through silhouette and role while giving each a restrained blue-gray drow complexion, white or pale hair and dark violet-black travelwear with subtle amber-gold accents. Include small portrait heads without labels. They are contextual allies, never player-controlled followers. No text, letters, numbers, logo, watermark, combat poses, follower UI, sprite sheet or runtime asset. Review reference only.",
+      "target": ".atena/generated/2026-10-03-protagonists-reference-batch-b/char-thalestriel-drows-lineup-v1.png",
+      "checks": ["exactly-eight figures", "fixed roster order", "shared-ground-line", "equal-normalised-height", "drow-counterpart-identity", "no-text-or-watermark", "not-a-final-runtime-asset"]
+    }
+  ]
+}

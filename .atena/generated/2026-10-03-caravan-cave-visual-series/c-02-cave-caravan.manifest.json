@@ -1,0 +1,18 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-caravan-cave-visual-series-approval.md",
+    "plan_id": "2026-10-03-caravan-cave-visual-series",
+    "batch_id": "C-02"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel art with large readable pixel groups, cold cave blues and violet shadow, amber fire as the only warm accent, clean silhouette-first composition.",
+  "output_dir": ".atena/generated/2026-10-03-caravan-cave-visual-series",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "c-02-cave-caravan-v1",
+    "kind": "environment-reference",
+    "prompt": "Use case: stylized-concept. Asset type: side-view environment and state reference board for a 2D pixel-art game. Primary request: a root-lined cavern camp with a single open wooden Thalestriel wagon at left; show three clearly separated states of the same wagon: cave-damaged with broken wheel and splintered rail, repaired and stationed, and slow travelling with four sick passengers and one humanoid pulling it. Include a compact relic chest inside the wagon, eight simple sick-bed silhouettes in the camp state, repair wood and wheel materials. Style: minimal lateral dark-fantasy pixel art, readable at game distance, cool cave palette with amber fire. Constraints: no horse, no second vehicle, no enclosed bedroom, no map UI, no readable text, no watermark, ground line straight and continuous under every wagon state.",
+    "target": ".atena/generated/2026-10-03-caravan-cave-visual-series/c-02-cave-caravan-v1.png",
+    "checks": ["three-wagon-states", "open-horse-less-wagon", "relics-visible", "straight-ground-line", "no-text", "no-watermark"]
+  }]
+}

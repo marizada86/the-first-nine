@@ -1,0 +1,19 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-hq-narrative-revision.md",
+    "plan_id": "2026-10-03-hq-narrative-revision",
+    "batch_id": "H-03"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel-art-inspired finale storyboard; luminous dream-gold mixed with blue-violet shadow, quiet monumental scale, clean silhouettes, no copied external designs.",
+  "output_dir": ".atena/generated/2026-10-03-hq-narrative-revision",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "h-03-dream-departure-v1",
+    "kind": "storyboard",
+    "prompt": "A wordless five-panel finale comic reference: Lolth completes her shadow-spider divinity transformation; she opens a portal to the Dream Plane; Lolth and exactly eight drow Thalestriel enter together; the dream Golden City welcomes them; Lolth leaves the elegant wand O Beijo de Shar in the drows' protected custody within the Golden City of Dreams. Emotional, safe arrival, no readable words.",
+    "target": ".atena/generated/2026-10-03-hq-narrative-revision/h-03-dream-departure-v1.png",
+    "checks": ["five-panel-storyboard", "completed-transformation", "portal-to-dream-plane", "nine-united-figures", "golden-dream-city", "wand-left-with-drows", "no-readable-text", "no-watermark"]
+  }]
+}
+

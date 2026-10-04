@@ -1,0 +1,14 @@
+{
+  "batch_id": "2026-10-03-minimal-hollowroot-batch-f2",
+  "status": "complete-user-approved-reference-only",
+  "tool": "built-in image generation",
+  "scope": "Five minimal Hollowroot reference boards only; no runtime asset admission.",
+  "selected": [
+    {"id":"F-M01","file":"hollowroot-zone-minimal-v1.png","source_job":"exec-11e0f5b3-c00c-4d7b-a82b-621e6e254612","attempt":1,"size":"2172x724","sha256":"e9d61b148b9cc07067177173de8c0711bc32e858a3ace62f7a1b5e48cf89c15f"},
+    {"id":"F-M02","file":"hollowroot-resources-minimal-v1.png","source_job":"exec-544f79b8-3c5f-4309-a995-3703f901dbc4","attempt":1,"size":"1774x887","sha256":"41ba12b9dfd871bed18b19309e839626e539657267e3ee5b1712f301cad61951"},
+    {"id":"F-M03","file":"hollowroot-hazards-minimal-v1.png","source_job":"exec-df1e4ce0-2174-4aa3-b1fa-746df503beaf","attempt":1,"size":"2172x724","sha256":"970898c7a1ffd9763ae9f03f2a9a8a8dfbe3c3cd6c28b1b95ca4fed76c944b56"},
+    {"id":"F-M04","file":"hollowroot-regular-enemies-minimal-v1.png","source_job":"exec-1b16bf75-1a0d-46be-af6f-ae8ae0f525f8","attempt":1,"size":"1774x887","sha256":"70777683a83e6d4930f4555ad84196519833c109cd0ef010c35755d451b3a25a"},
+    {"id":"F-M05","file":"hollow-mother-minimal-v1.png","source_job":"exec-4f330051-e230-4fb1-9f4b-f5fa1e22592f","attempt":1,"size":"1536x1024","sha256":"5447822b31fd03dc0bd220c36caa8128073368c3634363871e27f4bb03a30460"}
+  ],
+  "runtime_admission": "deferred"
+}

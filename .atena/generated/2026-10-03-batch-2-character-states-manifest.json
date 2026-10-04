@@ -1,0 +1,72 @@
+{
+  "approval": "approved",
+  "art_direction": "assets/concept-art/ART_DIRECTION.md",
+  "output_dir": "assets/art/characters",
+  "max_attempts": 3,
+  "source_references": [
+    "assets/concept-art/characters/lolth-original-elf-form-v1.png",
+    "assets/concept-art/characters/lolth-eight-mark-transformations-v2.png",
+    "assets/art/characters/lolth-drow-aerial-runtime-sheet-v1.png",
+    "assets/art/characters/lolth-elf-aerial-runtime-sheet-v1.png"
+  ],
+  "scale_sheet": {
+    "lolth-drow-baseline": {
+      "asset": "assets/art/characters/lolth-drow-aerial-runtime-sheet-v1.png",
+      "cells": "2x2",
+      "measurement": "mean visible figure height across cells, measured feet-to-crown from alpha bounds after excluding transparent padding, raised arms, weapons, and VFX",
+      "ground_pivot": "feet-on-shared-ground-line"
+    }
+  },
+  "assets": [
+    {
+      "id": "lolth-elf-hurt-v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready 2D side-scrolling game damage-reaction sprite sheet for The First Nine. Create exactly two equal full-body cells in one horizontal 2 by 1 row of the original elven Lolth before awakening: warm pale-olive skin, long ash-blonde hair, worn charcoal-and-umber travel coat, muted ivory scarf, antique-brass buckles, and a small staff wrapped with pale thread. Left: a readable brief hurt flinch; right: a composed hurt-recovery stance. Same side-view orientation, character, costume, shared invisible ground baseline, and 100 by 200 pixel readability. Scene/backdrop: none; genuine transparent background. Style: polished painterly dark-fantasy 2D gameplay art. Constraints: full figure, equal cells, transparent gutters, no crop, no floor, no cast shadow. Avoid text, UI, borders, frames, checkerboard, logos, watermark, violet awakening magic, black smoke, borrowed game characters.",
+      "target": "assets/art/characters/lolth-elf-hurt-runtime-sheet-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "two-cell-row", "full-body", "readable-at-100x200", "clean-antialiased-edges"],
+      "scale_reference": "lolth-drow-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "lolth-drow-hurt-v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready 2D side-scrolling game damage-reaction sprite sheet for The First Nine. Create exactly two equal full-body cells in one horizontal 2 by 1 row of awakened drow Lolth: charcoal skin, long white hair, dark violet-black layered travel robes, restrained antique-gold trim, delicate web-thread focus, and no added limbs. Left: a readable brief hurt flinch; right: a composed hurt-recovery stance. Same side-view orientation, character, costume, shared invisible ground baseline, and 100 by 200 pixel readability. Scene/backdrop: none; genuine transparent background. Style: polished painterly dark-fantasy 2D gameplay art. Constraints: full figure, equal cells, transparent gutters, no crop, no floor, no cast shadow. Avoid text, UI, borders, frames, checkerboard, logos, watermark, exaggerated glow, photorealism, borrowed game characters.",
+      "target": "assets/art/characters/lolth-drow-hurt-runtime-sheet-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "two-cell-row", "full-body", "readable-at-100x200", "clean-antialiased-edges"],
+      "scale_reference": "lolth-drow-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "lolth-drow-intensified-motion-v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready 2D side-scrolling game locomotion sprite sheet for The First Nine. Create exactly four equal full-body cells in a strict 2 by 2 grid of intensified drow Lolth for Marks 6 through 8: charcoal skin, long white hair, dark violet-black travel robes, small antique-gold relic details, and clearly visible bone-white segmented chitin integrated into her shoulders and silhouette with restrained webbing. Reading order: top-left calm idle, top-right alert idle, bottom-left forward run contact toward screen-right, bottom-right forward run passing pose toward screen-right. Keep same side-view orientation, character, costume, shared invisible ground baseline, and readable silhouette at 100 by 200 pixels. Scene/backdrop: none; genuine transparent background. Style: polished painterly dark-fantasy 2D gameplay art. Constraints: full figure, equal cells, transparent gutters, no crop, no floor, no cast shadow. Avoid text, UI, borders, frames, checkerboard, logos, watermark, conventional flesh spider anatomy, rider-on-spider pose, photorealism, borrowed game characters.",
+      "target": "assets/art/characters/lolth-drow-intensified-motion-runtime-sheet-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "two-by-two-grid", "full-body", "readable-at-100x200", "clean-antialiased-edges"],
+      "scale_reference": "lolth-drow-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "lolth-drow-intensified-aerial-v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready 2D side-scrolling game aerial-movement sprite sheet for The First Nine. Create exactly four equal full-body cells in a strict 2 by 2 grid of intensified drow Lolth for Marks 6 through 8: charcoal skin, long white hair, dark violet-black travel robes, small antique-gold relic details, and bone-white segmented chitin integrated into her silhouette with restrained webbing. Reading order: top-left ascending jump toward screen-right; top-right weightless apex; bottom-left descending fall with legs prepared to land; bottom-right soft landing/recovery. Keep same side-view orientation, character, costume, shared invisible ground baseline, and readable silhouette at 100 by 200 pixels. Scene/backdrop: none; genuine transparent background. Style: polished painterly dark-fantasy 2D gameplay art. Constraints: full figure, equal cells, transparent gutters, no crop, no floor, no cast shadow. Avoid text, UI, borders, frames, checkerboard, logos, watermark, conventional flesh spider anatomy, rider-on-spider pose, exaggerated glow, photorealism, borrowed game characters.",
+      "target": "assets/art/characters/lolth-drow-intensified-aerial-runtime-sheet-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "two-by-two-grid", "full-body", "readable-at-100x200", "clean-antialiased-edges"],
+      "scale_reference": "lolth-drow-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "lolth-drow-intensified-action-v1",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready 2D side-scrolling game primary-strike sprite sheet for The First Nine. Create exactly four equal full-body cells in a strict 2 by 2 grid of intensified drow Lolth for Marks 6 through 8: charcoal skin, long white hair, dark violet-black travel robes, small antique-gold relic details, and bone-white segmented chitin integrated into her silhouette with restrained webbing. Reading order: top-left ready stance, top-right committed close strike toward screen-right with a short controlled violet-black web-thread arc, bottom-left recovery stance, bottom-right guarded combat idle. Keep same side-view orientation, character, costume, shared invisible ground baseline, and readable silhouette at 100 by 200 pixels. Scene/backdrop: none; genuine transparent background. Style: polished painterly dark-fantasy 2D gameplay art. Constraints: full figure, equal cells, transparent gutters, no crop, no floor, no cast shadow. Avoid text, UI, borders, frames, checkerboard, logos, watermark, conventional flesh spider anatomy, rider-on-spider pose, exaggerated effects, photorealism, borrowed game characters.",
+      "target": "assets/art/characters/lolth-drow-intensified-action-runtime-sheet-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "two-by-two-grid", "full-body", "readable-at-100x200", "clean-antialiased-edges"],
+      "scale_reference": "lolth-drow-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    }
+  ]
+}

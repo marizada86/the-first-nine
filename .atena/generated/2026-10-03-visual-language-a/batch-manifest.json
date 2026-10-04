@@ -1,0 +1,41 @@
+{
+  "approval": "approved",
+  "approval_source": "User explicit approval in Codex on 2026-10-03",
+  "art_direction": {
+    "guide": ".atena/vault/drafts/2026-10-03-visual-language-guide.md",
+    "asset_manifest": ".atena/vault/drafts/2026-10-03-master-asset-reference-manifest.md",
+    "source_references": [
+      "assets/concept-art/characters/lolth-definitive-production-sheet-v1.png",
+      "assets/concept-art/key-art/the-last-camp-elven-survivors-v2.png",
+      "assets/art/ui/hud-status-icons-runtime-v1.png"
+    ],
+    "constraints": [
+      "2D dark-fantasy pixel art reference only",
+      "cold blue-violet night; nearly black violet shadows; warm amber-gold fire",
+      "side-view gameplay composition at 1280x720",
+      "no final sprites, no UI text, no logos, no watermark, no runtime import"
+    ]
+  },
+  "output_dir": ".atena/generated/2026-10-03-visual-language-a",
+  "max_attempts": 2,
+  "assets": [
+    {
+      "id": "style.master-frame.v1",
+      "kind": "reference-frame",
+      "prompt": "Use case: stylized-concept. Asset type: production visual-language reference, not a final game asset. Primary request: create a single 16:9 2D dark-fantasy pixel-art master frame for The First Nine. Scene/backdrop: side-view Thornwake Forest at night, foreground thorny roots and a recoverable coil of rope and metal wheel part, midground Lolth standing near a weathered elven caravan and amber campfire, one readable Briar Hound enemy at a distance, background ruined forest and two parallax depth layers. Subject: Lolth is an elegant, strong, pale blue-gray elven woman with long white hair, a restrained dark violet-and-black travelling outfit with fine gold accents; preserve this visual language without copying any reference image. Style/medium: cohesive handcrafted pixel art with readable clusters, no painterly rendering. Composition/framing: 1280x720 side-view gameplay scene, Lolth and wagon on shared ground, generous clear upper-corner HUD safe areas, strong foreground/midground/background separation. Lighting/mood: melancholic cold blue-violet moonlit night, almost-black violet shadows, localized warm amber-gold firelight. Materials/textures: cracked wood, worn metal, rope, wet stone, roots. Constraints: clear silhouettes for player, wagon, enemy and pickup; no text, no UI icons, no logo, no watermark, no sprite sheet, no collage, no extra named characters.",
+      "target": ".atena/generated/2026-10-03-visual-language-a/style-master-frame-v1.png",
+      "checks": [
+        "16:9 landscape composition", "Lolth, wagon, Briar Hound, salvage pickup, HUD-safe space and parallax all visible", "cold violet night and warm amber fire contrast", "pixel-art readability at 1280x720", "no text-or-watermark", "not-a-final-runtime-asset"
+      ]
+    },
+    {
+      "id": "style.palette-materials.v1",
+      "kind": "reference-board",
+      "prompt": "Use case: stylized-concept. Asset type: production visual-language reference board, not a final game asset. Primary request: create a clean 2D dark-fantasy pixel-art palette and material board for The First Nine. Include unlabeled swatches and small material studies only: cold blue-violet night ramps, near-black violet shadow ramps, warm amber-gold fire ramps, muted earth ramps; cracked dark wood, worn iron and brass, frayed rope, wet stone, thorny root, soft bioluminescent fungus and translucent desert glass. Include one small abstract side-view value study with foreground, midground and background depth; no characters and no functional UI. Style/medium: crisp pixel art clusters, coherent with a melancholic elven caravan journey. Composition/framing: organized 16:9 board, generous spacing, each material visually distinct without text. Lighting/mood: cold moonlight against a warm fire accent. Constraints: no letters, numbers, logos, watermark, photorealism, sprite sheet, game-ready texture atlas or runtime asset.",
+      "target": ".atena/generated/2026-10-03-visual-language-a/style-palette-materials-v1.png",
+      "checks": [
+        "16:9 landscape board", "all seven material studies visibly distinct", "value ramps include violet night, violet shadow, amber fire and muted earth", "no-text-or-watermark", "pixel-art coherence", "not-a-final-runtime-asset"
+      ]
+    }
+  ]
+}

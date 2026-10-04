@@ -1,0 +1,337 @@
+﻿version: 2
+
+last_completed_plan:
+  id: "2026-10-03-hq-narrative-revision"
+  spec: "[[2026-10-03-hq-narrative-revision]]"
+  status: complete-canon-and-reference-generation
+  mode: guided
+  approval_mode: per-plan
+  approved: "2026-10-03"
+  request_classification: NEW_PLAN
+  scope: "Record approved three-HQ narrative revision and generate three replacement reference boards; no runtime admission or external dispatch."
+  blocking_gaps: []
+  evidence: "[[2026-10-03-hq-narrative-revision]]"
+  exception: "Godot changes, runtime admission, external dispatch, publication, and deletion remain out of scope."
+completed_plan_history:
+  - id: "2026-10-03-caravan-cave-visual-series"
+    spec: "[[2026-10-03-caravan-cave-visual-series]]"
+    status: complete-reference-generation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate and automatically curate four cave/caravan/prologue visual reference batches; no runtime admission or external dispatch."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-caravan-cave-visual-series]]"
+    exception: "Runtime admission, final atlas conversion, Godot changes, external dispatch, dependencies, publication and deletion remain out of scope."
+  - id: "2026-10-03-caravan-relics-cave-prologue-and-travel-clarification"
+    spec: "[[2026-10-03-caravan-relics-cave-prologue-and-travel-clarification]]"
+    status: complete-canon-and-handoff-prepared
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Consolidate approved caravan/relics/cave-prologue/travel canon and prepare a non-dispatched Opus documentation delta; no runtime implementation."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-caravan-relics-cave-prologue-and-travel]]"
+    exception: "Godot implementation, asset generation, external dispatch, dependencies, publication and deletion remain out of scope."
+  - id: "2026-10-03-comprehensive-opus-readiness-audit"
+    spec: "[[2026-10-03-comprehensive-opus-readiness-audit]]"
+    status: complete-ready-with-conditions-for-opus-handoff
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Audit local project readiness and prepare an evidence-based Opus 5.5 handoff gate; no external dispatch or project modifications."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-comprehensive-opus-readiness-audit]]"
+    exception: "External dispatch, build/submission, runtime changes, asset changes, dependencies, canonical changes, publication and deletion remain out of scope."
+  - id: "2026-10-03-p17-hollowroot-playable-chapter"
+    spec: "[[2026-10-03-p17-hollowroot-playable-chapter-plan]]"
+    status: complete-user-approved-runtime-migration
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Make Hollowroot the next playable chapter after Stonehook using approved runtime_v2 assets."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p17-hollowroot-playable-chapter]]"
+    exception: "Glass Dunes, Dreamwater, audio and final balance remain deferred."
+  - id: "2026-10-03-p14-runtime-v2-core-migration"
+    spec: "[[2026-10-03-p14-runtime-v2-core-migration-plan]]"
+    status: complete-user-approved-runtime-migration
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Create runtime_v2 core assets and migrate Thornwake rendering only; preserve legacy assets."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p14-runtime-v2-core-migration]]"
+    exception: "All other asset families and runtime changes remain deferred."
+  - id: "2026-10-03-p13-runtime-art-readiness-audit"
+    spec: "[[2026-10-03-p13-runtime-art-readiness-audit-plan]]"
+    status: complete-user-approved-audit
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Audit runtime art against P0-P11 masters only; no runtime modification."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p13-runtime-art-readiness-audit]]"
+    exception: "Production and runtime asset admission remain deferred."
+  - id: "2026-10-03-p12-opus-technical-package-reconciliation"
+    spec: "[[2026-10-03-p12-opus-technical-package-reconciliation-plan]]"
+    status: complete-user-approved-documentation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Reconcile the Opus technical package with P0-P11 masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p12-opus-technical-package-reconciliation]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p11-route-landmark-masters"
+    spec: "[[2026-10-03-p11-route-landmark-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual route-landmark reference masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p11-route-landmark-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p10-survival-interface-masters"
+    spec: "[[2026-10-03-p10-survival-interface-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual survival interface masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p10-survival-interface-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p9-regional-environment-prop-masters"
+    spec: "[[2026-10-03-p9-regional-environment-prop-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual regional environment prop masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p9-regional-environment-prop-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p8-gameplay-vfx-masters"
+    spec: "[[2026-10-03-p8-gameplay-vfx-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual gameplay VFX masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p8-gameplay-vfx-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p7-salvage-web-gate-prop-masters"
+    spec: "[[2026-10-03-p7-salvage-web-gate-prop-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual salvage and web-gate prop masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p7-salvage-web-gate-prop-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p6-individual-character-sprite-masters"
+    spec: "[[2026-10-03-p6-individual-character-sprite-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate eighteen individual character sprite masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p6-individual-character-sprite-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p5-individual-monster-sprite-masters"
+    spec: "[[2026-10-03-p5-individual-monster-sprite-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate fifteen individual monster sprite masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p5-individual-monster-sprite-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-opus-final-reference-handoff"
+    spec: "[[2026-10-03-opus-final-reference-handoff-plan]]"
+    status: complete-prepared-not-dispatched
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Prepare an Opus 5.5 final-reference handoff only; no runtime asset admission or external dispatch."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-opus-final-reference-handoff]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p4-marks-shar-dream-production-masters"
+    spec: "[[2026-10-03-p4-marks-shar-dream-production-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five P4 narrative production-reference masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p4-marks-shar-dream-production-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-continuous-ground-web-gates"
+    spec: "[[2026-10-03-continuous-ground-web-gates-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Record continuous caravan-ground canon and revise four P3 terrain/transition masters as v2; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-continuous-ground-web-gates]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p0-p2-style-rebase"
+    spec: "[[2026-10-03-p0-p2-style-rebase]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Rebase fifteen P0-P2 production masters to the approved lateral visual direction; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p0-p2-style-rebase]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-dreamwater-reference-refresh"
+    spec: "[[2026-10-03-minimal-dreamwater-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Dreamwater reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-dreamwater-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-glass-dunes-reference-refresh"
+    spec: "[[2026-10-03-minimal-glass-dunes-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Glass Dunes reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-glass-dunes-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-hollowroot-reference-refresh"
+    spec: "[[2026-10-03-minimal-hollowroot-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Hollowroot reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-hollowroot-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-stonehook-reference-refresh"
+    spec: "[[2026-10-03-minimal-stonehook-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Stonehook reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-stonehook-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-interface-vfx-reference-batch-i"
+    spec: "[[2026-10-03-interface-vfx-reference-batch-i]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approved: "2026-10-03"
+    request_classification: IN_PLAN
+    scope: "Prepare four minimal interface and VFX reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-interface-vfx-minimal-delta]]"
+    legacy_approval_preserved: true
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-dreamwater-reference-batch-h"
+    spec: "[[2026-10-03-dreamwater-reference-batch-h]]"
+    status: complete-autocurated-reference
+    mode: guided
+    approved: "2026-10-03"
+    request_classification: IN_PLAN
+    scope: "Generate and automatically validate five Dreamwater reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
+    exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
+active_plan: null
+plan_cursor: complete
+suspension: null
+deferred_requests: []
+pending_plan_change_requests: []
+approved_change_requests:
+  - id: "2026-10-03-minimal-world-and-threat-assets"
+    spec: "[[2026-10-03-minimal-world-and-threat-assets]]"
+    generated_reference_receipt: "[[2026-10-03-minimal-world-and-threat-batch-w]]"
+    evidence: "[[2026-10-03-minimal-world-and-threat-assets]]"
+    status: complete-user-approved-reference-only
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Generate and curate minimal reference boards for Thornwake wagon/camp, terrain, salvage pickups, and three regional threats; no runtime admission."
+  - id: "2026-10-03-minimal-character-asset-overhaul"
+    spec: "[[2026-10-03-minimal-character-asset-overhaul]]"
+    canonical_decision: "[[2026-10-03-minimal-character-visual-direction]]"
+    generated_reference_receipt: "[[2026-10-03-minimal-character-batch-m]]"
+    conversion_contract: "[[m-06-production-grid]]"
+    evidence: "[[2026-10-03-minimal-character-asset-overhaul]]"
+    status: complete-references-generated-curated-not-admitted
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Replace character reference direction for Lolth, Shar, and the eight Thalestriel in plagued and cured forms with minimal pixel-art references and a conversion contract; no runtime admission."
+  - id: "2026-10-03-caravan-survival-slow-travel-revision"
+    spec: "[[2026-10-03-caravan-survival-slow-travel-revision]]"
+    canonical_decision: "[[2026-10-03-caravan-survival-slow-travel]]"
+    implementation_manifest: "[[2026-10-03-opus-5-5-caravan-implementation-manifest]]"
+    prepared_briefs: "[[2026-10-03-opus-5-5-caravan-reference-briefs]]"
+    evidence: "[[2026-10-03-caravan-survival-slow-travel-preparation]]"
+    generated_reference_receipt: "[[2026-10-03-caravan-reference-batch-c]]"
+    status: complete-references-generated-curated-not-admitted
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Revise survival, cures, wagon capacity, foot expeditions, slow horse-less travel, puller assignment, location attraction, and gradient world transitions; prepare—but do not execute—Opus 5.5 reference and implementation handoffs."
+  - id: "2026-10-03-decision-reconciliation-and-opus-reference-plan"
+    spec: "[[2026-10-03-decision-reconciliation-and-opus-reference-plan]]"
+    reconciliation_register: "[[2026-10-03-decision-reconciliation-register]]"
+    reference_manifest: "[[2026-10-03-opus-5-5-reference-manifest-reconciled]]"
+    evidence: "[[2026-10-03-decision-reconciliation-and-opus-reference-plan]]"
+    approval_mode: per-plan
+    canonical_resolution: "[[2026-10-03-reconciliation-resolutions]]"
+    approved_reference_manifest: "[[2026-10-03-opus-reference-manifest-approval]]"
+    prepared_briefs: "[[2026-10-03-opus-p0-reference-briefs]]"
+    status: complete-briefs-prepared-generation-not-authorized
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Audit all canonical decisions and relevant specifications, reconcile story and mechanics, then prepare—but do not generate—an approved reference manifest for Opus 5.5."
+  - id: "2026-10-03-caravan-action-loop-adaptation"
+    spec: "[[2026-10-03-caravan-action-loop-adaptation]]"
+    implementation_spec: "[[2026-10-03-thornwake-caravan-action-loop-implementation]]"
+    status: implemented-awaiting-human-validation
+    evidence: "[[2026-10-03-thornwake-caravan-action-loop]]"
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Adapt Thornwake into a compact caravan action/defense loop; preserve the active interface/VFX reference batch and all canonical gameplay boundaries."

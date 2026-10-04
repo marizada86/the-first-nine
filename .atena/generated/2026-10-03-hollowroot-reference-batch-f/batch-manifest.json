@@ -1,0 +1,43 @@
+{
+  "approval": "approved",
+  "art_direction": "Linguagem visual A aprovada e referência de leitura de Stonehook: pixel art 2D 16/32-bit, pixels visíveis, paleta limitada, noite violeta-fria, bioluminescência controlada e silhuetas nítidas.",
+  "output_dir": ".atena/generated/2026-10-03-hollowroot-reference-batch-f",
+  "max_attempts": 2,
+  "assets": [
+    {
+      "id": "zone.hollowroot",
+      "kind": "reference",
+      "prompt": "Prancha ambiental de Hollowroot Caverns em pixel art 2D dark fantasy, vista lateral: grande caverna de raízes expostas, fungos bioluminescentes, duas camadas de profundidade, passagens protegidas e ferramentas melhores como props legíveis. Separar claramente caminho, rocha, raiz, fungo e passagem. Noite violeta-fria com bioluminescência turquesa/verde contida; sem personagens, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "hollowroot-zone-v1.png",
+      "checks": ["side-view composition", "roots, fungi and protected passage are distinguishable", "controlled bioluminescence preserves silhouette", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "hollowroot.materials-and-tools",
+      "kind": "reference",
+      "prompt": "Prancha de props de Hollowroot em pixel art 2D dark fantasy: fungos aproveitáveis, minério de caverna, resina luminosa, ferramentas reforçadas e materiais de uma passagem protegida; vistas laterais limpas sobre bancada de pedra. Paleta violeta fria com luz bioluminescente discreta. Sem personagens, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "hollowroot-materials-tools-v1.png",
+      "checks": ["fungi, ore, resin, tools and passage materials are individually legible", "materials do not confuse hazard and pickup", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "hollowroot.hazards-and-passages",
+      "kind": "reference",
+      "prompt": "Prancha de risco ambiental para Hollowroot em pixel art 2D dark fantasy, vista lateral: nuvem de esporos claramente perigosa, teto de rocha em colapso e passagem estreita fechada com alternativa segura legível. Raízes e fungos moldam a rota sem parecer mundo aberto. Paleta violeta fria, bioluminescência medida, sem personagens, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "hollowroot-hazards-passages-v1.png",
+      "checks": ["spores, collapse, closed passage and safe alternative are distinct", "does not imply open world", "hazards remain legible against cave", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "enemy.chitin-burrower-and-sporebound",
+      "kind": "reference",
+      "prompt": "Prancha de criaturas regionais de Hollowroot em pixel art 2D dark fantasy: Chitin Burrower, criatura quitinosa que emerge do solo, e Sporebound, criatura tomada por fungos, em silhuetas, posturas de ataque e telegraphs claramente distintos. Não são sombras nem humanoides. Fundo mínimo de caverna violeta para contraste; sem Lolth, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "hollowroot-regular-enemies-v1.png",
+      "checks": ["two enemy silhouettes and attack reads are distinct", "burrow and spore identities are clear", "not shadow species", "no text, watermark, UI, sprite sheet or atlas"]
+    },
+    {
+      "id": "enemy.hollow-mother",
+      "kind": "reference",
+      "prompt": "Prancha do chefe Hollow Mother em pixel art 2D dark fantasy, vista lateral: grande matriarca cavernosa não humanoide, mistura de carapaça, raízes e fungos, com postura de avanço e telegraph de ataque claro. Deve dominar a caverna sem encobrir a leitura da silhueta. Não é sombra; fundo violeta escuro e bioluminescência contida; sem personagem jogável, texto, UI, watermark, sprite sheet ou atlas.",
+      "target": "hollowroot-hollow-mother-v1.png",
+      "checks": ["boss scale and attack telegraph are clear", "not shadow species", "silhouette remains readable against cave", "no text, watermark, UI, sprite sheet or atlas"]
+    }
+  ]
+}

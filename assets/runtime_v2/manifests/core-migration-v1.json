@@ -1,0 +1,61 @@
+{
+  "approval": "approved",
+  "approval_record": ".atena/vault/drafts/2026-10-03-p14-runtime-v2-core-migration-plan.md",
+  "art_direction": [
+    ".atena/vault/canon/2026-10-03-minimal-character-visual-direction.md",
+    ".atena/vault/canon/2026-10-03-caravan-open-utility-layout.md",
+    ".atena/vault/canon/2026-10-03-continuous-caravan-ground-and-web-gates.md"
+  ],
+  "output_dir": "assets/runtime_v2",
+  "max_attempts": 1,
+  "assets": [
+    {
+      "id": "lolth-elf-core-sheet-v1",
+      "kind": "character",
+      "prompt": "transparent 3 by 3 sprite sheet of Lolth in elf form: idle, walk, run, strike, dodge, collect, jump, fall, hurt; minimalist lateral pixel art; full opaque trousers to boots",
+      "target": "characters/lolth/lolth-elf-core-sheet-v1.png",
+      "checks": ["transparent-background", "3x3-grid", "side-view", "minimal-pixel-art", "opaque-trousers", "no-text"],
+      "scale_reference": "lolth-elf-core-sheet-v1",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "lolth-drow-core-sheet-v1",
+      "kind": "character",
+      "prompt": "transparent 3 by 3 sprite sheet of Lolth in drow form: idle, walk, run, strike, dodge, collect, jump, fall, hurt; minimalist lateral pixel art; full opaque trousers to boots",
+      "target": "characters/lolth/lolth-drow-core-sheet-v1.png",
+      "checks": ["transparent-background", "3x3-grid", "side-view", "minimal-pixel-art", "opaque-trousers", "no-text"],
+      "scale_reference": "lolth-elf-core-sheet-v1",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "feet-on-shared-ground-line"
+    },
+    {
+      "id": "wagon-open-core-states-v1",
+      "kind": "prop",
+      "prompt": "transparent three-panel lateral sprite sheet: the same open hand-pulled drow wagon, damaged, being repaired, repaired; visible chest, four seats and craft table; no horse and no enclosed cabin",
+      "target": "caravan/wagon-open-core-states-v1.png",
+      "checks": ["transparent-background", "3-panel-grid", "side-view", "open-wagon", "no-horse", "no-rooms", "no-text"]
+    },
+    {
+      "id": "thornwake-continuous-ground-v1",
+      "kind": "prop",
+      "prompt": "transparent wide lateral modular ground strip for Thornwake forest, three seamlessly adjacent variations of continuous earthen ground with moss, roots and grass; no gap, no bridge, no floating platform, no character",
+      "target": "world/thornwake/thornwake-continuous-ground-v1.png",
+      "checks": ["transparent-background", "wide-strip", "continuous-ground", "no-gap", "no-platform", "no-text"]
+    },
+    {
+      "id": "salvage-pickups-core-v1",
+      "kind": "prop",
+      "prompt": "transparent 2 by 2 sprite sheet of small minimalist lateral pixel-art salvage pickups: wood bundle, rope coil, metal scrap, herb pouch; isolated readable icons, no text, no UI frame",
+      "target": "items/salvage-pickups-core-v1.png",
+      "checks": ["transparent-background", "2x2-grid", "minimal-pixel-art", "no-text", "no-ui"]
+    },
+    {
+      "id": "shadow-actions-core-v1",
+      "kind": "prop",
+      "prompt": "transparent 2 by 2 sprite sheet of minimalist pixel-art gameplay VFX: short melee slash, enemy hit spark, salvage pickup shimmer, dark shadow thread cast; no character, no text, no UI",
+      "target": "vfx/shadow-actions-core-v1.png",
+      "checks": ["transparent-background", "2x2-grid", "minimal-pixel-art", "no-text", "no-character"]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-caravan-cave-visual-series-approval.md",
+    "plan_id": "2026-10-03-caravan-cave-visual-series",
+    "batch_id": "C-03"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel art, large readable pixel masses, cool blue-violet night and amber fire contrast, no decorative microtexture.",
+  "output_dir": ".atena/generated/2026-10-03-caravan-cave-visual-series",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "c-03-day-night-tutorial-v1",
+    "kind": "gameplay-reference",
+    "prompt": "Use case: stylized-concept. Asset type: three-frame gameplay tutorial reference board for a 2D pixel-art game. Primary request: show the same cave-mouth route in daylight as Lolth retrieves wood, herbs and wheel material; show her returning these supplies to the open wagon camp; show night with distinct shadow creatures approaching the camp while an amber fire and a clear nonverbal danger telegraph indicate the wagon is threatened. Style: minimal side-view dark-fantasy pixel art with clean ground, readable loot, sparse parallax. Constraints: no horse, no extra companions travelling beside Lolth, no readable UI text or input labels, no watermark, no floating platform required for the wagon route.",
+    "target": ".atena/generated/2026-10-03-caravan-cave-visual-series/c-03-day-night-tutorial-v1.png",
+    "checks": ["three-tutorial-frames", "day-night-contrast", "wagon-threat-telegraph", "no-text", "no-watermark"]
+  }]
+}

@@ -1,0 +1,18 @@
+{
+  "approval": "approved",
+  "art_direction": "assets/concept-art/ART_DIRECTION.md",
+  "output_dir": "assets/art/validation-sample",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "validation-shade",
+      "kind": "character",
+      "prompt": "Validation-only example; do not generate this asset.",
+      "target": "assets/art/validation-sample/validation-shade.png",
+      "checks": ["transparent-background", "side-view", "no-text"],
+      "scale_reference": "lolth-drow-baseline",
+      "target_height_ratio": 1.15,
+      "ground_pivot": "feet-on-shared-ground-line"
+    }
+  ]
+}

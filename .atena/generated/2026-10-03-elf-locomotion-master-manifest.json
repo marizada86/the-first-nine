@@ -1,0 +1,30 @@
+{
+  "approval": "approved",
+  "art_direction": "assets/concept-art/ART_DIRECTION.md",
+  "output_dir": "assets/art/characters",
+  "max_attempts": 3,
+  "source_references": [
+    "assets/art/characters/lolth-elf-motion-runtime-sheet-v1.png",
+    "assets/concept-art/characters/lolth-original-elf-form-v1.png"
+  ],
+  "scale_sheet": {
+    "lolth-elf-motion-baseline": {
+      "asset": "assets/art/characters/lolth-elf-motion-runtime-sheet-v1.png",
+      "cells": "2x2",
+      "measurement": "mean alpha-bound figure height across the four source cells, normalized by cell height",
+      "ground_pivot": "feet-on-shared-ground-line"
+    }
+  },
+  "assets": [
+    {
+      "id": "lolth-elf-locomotion-master-v2",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling master locomotion sprite sheet for The First Nine. Input image: the current Lolth elf motion sheet is the mandatory identity reference. Create exactly nine equal full-body cells in a strict 3 by 3 grid of this same original elf Lolth, all facing screen-right. Skin lock: preserve her long ash-blonde hair, dark blue-charcoal cape, warm ivory tunic panels, brown leather harness and bracers, muted antique-brass details, dark trousers, brown boots, and short staff; do not change clothes, colors, hair, age, body, or materials between cells. Reading order: idle breath 1, idle breath 2, run contact 1, run passing 1, run contact 2, run passing 2, jump rise, controlled fall, soft landing. Each cell uses the same square transparent canvas; full figure from crown to feet occupies about 88% of cell height, with feet on a shared internal baseline at 90% of cell height. The figure must be centered, fully visible, and readable at 100 by 200 pixels. Scene/backdrop: genuine transparent background. Style: polished painterly dark-fantasy 2D gameplay sprite art matching the input reference. Constraints: exact 3 by 3 grid, equal cells, transparent gutters, no crop, no floor, no cast shadow, no VFX, no extra characters, clean antialiased edges. Avoid text, UI, borders, frames, checkerboard, logos, watermark, alternate outfit, drow skin, purple magic, black smoke, colored edge halos, photorealism, borrowed game characters. Do not create left-facing cells; runtime will mirror the canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-locomotion-master-sheet-v2.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "three-by-three-grid", "skin-lock-to-source-reference", "consistent-costume", "shared-feet-baseline", "full-body", "readable-at-100x200", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-motion-baseline",
+      "target_height_ratio": 0.9,
+      "ground_pivot": "feet-on-cell-baseline-y-0.90"
+    }
+  ]
+}

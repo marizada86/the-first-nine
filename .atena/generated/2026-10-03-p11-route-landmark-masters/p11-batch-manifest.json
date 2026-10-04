@@ -1,0 +1,83 @@
+{
+  "approval": "approved",
+  "approval_record": ".atena/vault/drafts/2026-10-03-p11-route-landmark-masters-plan.md",
+  "art_direction": [
+    ".atena/vault/canon/2026-10-03-minimal-character-visual-direction.md",
+    ".atena/vault/canon/2026-10-03-continuous-caravan-ground-and-web-gates.md",
+    ".atena/vault/canon/2026-10-03-shadow-to-lolth-mark-visual-progression.md"
+  ],
+  "output_dir": ".atena/generated/2026-10-03-p11-route-landmark-masters",
+  "max_attempts": 1,
+  "assets": [
+    {
+      "id": "abandoned-drow-supply-cache-master-v1",
+      "kind": "prop",
+      "prompt": "minimal lateral pixel-art abandoned drow supply cache: one broken dark-wood chest, two compact crates, a folded dark cloth and a few visible salvage tools; no character, no horse, no text",
+      "target": "abandoned-drow-supply-cache-master-v1.png",
+      "checks": ["transparent-background", "side-view", "minimal-pixel-clusters", "no-text", "no-character"]
+    },
+    {
+      "id": "thornwake-herb-water-clearing-master-v1",
+      "kind": "prop",
+      "prompt": "minimal lateral pixel-art Thornwake water and herb clearing: shallow small water basin, green herb clumps, exposed roots and two compact mossy stones; no gap or floating platform, no character, no text",
+      "target": "thornwake-herb-water-clearing-master-v1.png",
+      "checks": ["transparent-background", "side-view", "continuous-ground-read", "no-text", "no-character"]
+    },
+    {
+      "id": "stonehook-metal-rope-cache-master-v1",
+      "kind": "prop",
+      "prompt": "minimal lateral pixel-art Stonehook salvage cache: a short pile of scrap metal plates, coiled rope, a worn pick head and small gray rocks; no character, no text, no UI",
+      "target": "stonehook-metal-rope-cache-master-v1.png",
+      "checks": ["transparent-background", "side-view", "minimal-pixel-clusters", "no-text", "no-character"]
+    },
+    {
+      "id": "ruined-field-workbench-master-v1",
+      "kind": "prop",
+      "prompt": "minimal lateral pixel-art ruined field workbench for wagon repair: simple low dark-wood table, one cracked wheel rim, hammer, cord spool and a small lantern; no character, no horse, no text",
+      "target": "ruined-field-workbench-master-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "no-character", "no-horse"]
+    },
+    {
+      "id": "reclaimed-night-defense-point-master-v1",
+      "kind": "prop",
+      "prompt": "minimal lateral pixel-art reclaimed night-defense point: compact brazier, low timber barricade and a rope alarm between two stakes; portable camp defense, no tower, no character, no text",
+      "target": "reclaimed-night-defense-point-master-v1.png",
+      "checks": ["transparent-background", "side-view", "no-text", "no-character", "no-tower"]
+    },
+    {
+      "id": "thornwake-shadow-mark-anchor-master-v1",
+      "kind": "landmark",
+      "prompt": "minimal lateral pixel-art Thornwake shadow Mark anchor: crooked dark standing stone among thorny roots, a veiled Shar crescent carved into it with a few first shadow threads; no character, no text, no spider yet",
+      "target": "thornwake-shadow-mark-anchor-master-v1.png",
+      "checks": ["transparent-background", "side-view", "shar-veil", "no-text", "no-character"]
+    },
+    {
+      "id": "stonehook-shadow-mark-anchor-master-v1",
+      "kind": "landmark",
+      "prompt": "minimal lateral pixel-art Stonehook shadow Mark anchor: chipped gray mountain monolith with a veiled Shar crescent carved deep and torn shadow threads crossing it; no character, no text, no completed spider",
+      "target": "stonehook-shadow-mark-anchor-master-v1.png",
+      "checks": ["transparent-background", "side-view", "shar-to-lolth-transition", "no-text", "no-character"]
+    },
+    {
+      "id": "hollowroot-shadow-mark-anchor-master-v1",
+      "kind": "landmark",
+      "prompt": "minimal lateral pixel-art Hollowroot shadow Mark anchor: dark fungal root shrine with a damaged veiled Shar crescent, more shadow threads woven into the stone; no character, no text, no completed spider",
+      "target": "hollowroot-shadow-mark-anchor-master-v1.png",
+      "checks": ["transparent-background", "side-view", "shar-to-lolth-transition", "no-text", "no-character"]
+    },
+    {
+      "id": "glass-dunes-shadow-mark-anchor-master-v1",
+      "kind": "landmark",
+      "prompt": "minimal lateral pixel-art Glass Dunes shadow Mark anchor: half-buried violet glass obelisk, Shar crescent nearly broken apart by dense black-purple woven threads that only suggest an arachnid form; no character, no text",
+      "target": "glass-dunes-shadow-mark-anchor-master-v1.png",
+      "checks": ["transparent-background", "side-view", "shar-to-lolth-transition", "no-text", "no-character"]
+    },
+    {
+      "id": "dreamwater-shadow-mark-anchor-master-v1",
+      "kind": "landmark",
+      "prompt": "minimal lateral pixel-art Dreamwater shadow Mark anchor: half-submerged dark ruin arch with a final veiled crescent opened by black-purple threads into a clear but not glowing drow spider emblem; no character, no text, no UI",
+      "target": "dreamwater-shadow-mark-anchor-master-v1.png",
+      "checks": ["transparent-background", "side-view", "lolth-spider-emblem", "no-text", "no-character"]
+    }
+  ]
+}

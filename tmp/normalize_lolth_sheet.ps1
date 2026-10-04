@@ -1,0 +1,8 @@
+param([string]$Source,[string]$Destination,[int]$Columns,[int]$Rows,[int]$CellSize = 256,[double]$BodyHeight = 0.72,[double]$Baseline = 0.90)
+Add-Type -AssemblyName System.Drawing
+$input=[System.Drawing.Bitmap]::FromFile($Source)
+$cellW=[int]($input.Width/$Columns); $cellH=[int]($input.Height/$Rows)
+$output=[System.Drawing.Bitmap]::new($Columns*$CellSize,$Rows*$CellSize,[System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
+$graphics=[System.Drawing.Graphics]::FromImage($output); $graphics.Clear([System.Drawing.Color]::Transparent); $graphics.InterpolationMode=[System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
+for($row=0;$row -lt $Rows;$row++){for($column=0;$column -lt $Columns){$minX=$cellW;$minY=$cellH;$maxX=-1;$maxY=-1;for($y=$row*$cellH;$y -lt [Math]::Min(($row+1)*$cellH,$input.Height);$y++){for($x=$column*$cellW;$x -lt [Math]::Min(($column+1)*$cellW,$input.Width);$x++){if($input.GetPixel($x,$y).A -ge 32){$minX=[Math]::Min($minX,$x-$column*$cellW);$maxX=[Math]::Max($maxX,$x-$column*$cellW);$minY=[Math]::Min($minY,$y-$row*$cellH);$maxY=[Math]::Max($maxY,$y-$row*$cellH)}}};if($maxX -lt $minX){continue};$sourceRect=[System.Drawing.Rectangle]::new($column*$cellW+$minX,$row*$cellH+$minY,$maxX-$minX+1,$maxY-$minY+1);$scale=($CellSize*$BodyHeight)/$sourceRect.Height;$destW=[int]($sourceRect.Width*$scale);$destH=[int]($sourceRect.Height*$scale);$destX=$column*$CellSize+[int](($CellSize-$destW)/2);$destY=$row*$CellSize+[int]($CellSize*$Baseline-$destH);$graphics.DrawImage($input,[System.Drawing.Rectangle]::new($destX,$destY,$destW,$destH),$sourceRect,[System.Drawing.GraphicsUnit]::Pixel)}}
+$output.Save($Destination,[System.Drawing.Imaging.ImageFormat]::Png);$graphics.Dispose();$output.Dispose();$input.Dispose()

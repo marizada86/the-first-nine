@@ -1,0 +1,18 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-caravan-cave-visual-series-approval.md",
+    "plan_id": "2026-10-03-caravan-cave-visual-series",
+    "batch_id": "C-04"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel art with large silhouette-first clusters, cool blue-violet shadows, amber fire details, readable at 1280x720.",
+  "output_dir": ".atena/generated/2026-10-03-caravan-cave-visual-series",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "c-04-posts-web-anchor-v1",
+    "kind": "gameplay-reference",
+    "prompt": "Use case: stylized-concept. Asset type: side-view gameplay reference board for a 2D pixel-art game. Primary request: show two cured drow Thalestriel operating temporary regional assistance posts near their open wagon, one helping Lolth reach a resource and one defending against a shadow creature; beside it show a blocked continuous caravan road transformed by Lolth's shadow web into a solid permanent ground bridge for the horse-less wagon. Style: minimal lateral dark-fantasy pixel art, short palette, large readable forms. Constraints: at most two active helpers, helpers are contextual not player characters, no ally abandoned, no horse, no map selector, no readable text, no watermark, road remains flat and continuous once the web is formed.",
+    "target": ".atena/generated/2026-10-03-caravan-cave-visual-series/c-04-posts-web-anchor-v1.png",
+    "checks": ["two-contextual-posts", "permanent-web-ground", "continuous-wagon-road", "no-text", "no-watermark"]
+  }]
+}

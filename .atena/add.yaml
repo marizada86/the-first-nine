@@ -1,0 +1,48 @@
+﻿add_version: "0.2"
+methodology: Atena Driven Development
+project:
+  id: "PRJ-eclipse-game-jam"
+  name: "The First Nine"
+autonomy:
+  profile: "guarded-autopilot"
+  approval_selection: "required-per-plan"
+
+vault:
+  canon: vault/canon
+  drafts: vault/drafts
+  research: vault/research
+
+artifacts:
+  specs: specs
+  evidence: evidence
+  generated: generated
+
+interaction:
+  default_mode: "direct"
+  atena:
+    trigger: "explicit-address"
+    mode: "guided"
+  direct_execution:
+    allow_without_spec: true
+    reconciliation: "propose-after-change"
+specification:
+  require_zero_blocking_gaps: true
+  allow_explicit_defer: true
+  recommend_defaults: true
+bootstrap:
+  tooling_checks:
+    rtk:
+      enabled: true
+      required: false
+      ask_if_missing: true
+      ask_once: true
+      status: "available"
+      last_checked: "2026-10-03"
+      version: "0.48.0"
+      tracking: "unavailable in the sandbox because its private history database cannot be created"
+
+git:
+  local_commits: "project-policy"
+  direct_local_commits: "project-policy"
+  merge: "explicit-approval"
+  publish: "explicit-approval"

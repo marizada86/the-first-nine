@@ -1,0 +1,79 @@
+{
+  "approval": "approved",
+  "art_direction": "assets/concept-art/ART_DIRECTION.md",
+  "output_dir": "assets/art/characters",
+  "max_attempts": 3,
+  "source_references": [
+    "assets/art/characters/lolth-elf-gameplay-poses-v1.png"
+  ],
+  "scale_sheet": {
+    "lolth-elf-standing-pose-baseline": {
+      "asset": "assets/art/characters/lolth-elf-gameplay-poses-v1.png",
+      "cells": "first cell of 4x1",
+      "measurement": "alpha-bound figure height of the first grounded standing source cell, normalized by cell height",
+      "ground_pivot": "planted-boot-on-shared-ground-line"
+    }
+  },
+  "assets": [
+    {
+      "id": "lolth-elf-unified-idle-v1",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling idle sprite sheet for The First Nine. Input image: lolth-elf-gameplay-poses-v1 is the mandatory identity reference. Create exactly four equal full-body cells in a strict 2 by 2 grid, all facing screen-right, of the same Lolth elf. Skin lock: preserve her long ash-blonde hair, deep blue-charcoal cape with gold trim, warm ivory embroidered tunic and skirt panels, brown leather harness and bracers, antique-gold details, dark trousers and brown boots. Do not change her face, age, body, clothing, colors, materials, or silhouette. Reading order: calm breath, hair-and-cape settle, weight shift, calm breath return. Each square cell has a genuine transparent background and wide transparent gutters; the full body is contained in its cell, centered, crown-to-sole height matching the reference, with both boot soles on the same internal baseline at 90 percent of cell height. Full figure, side view, readable at 100 by 200 pixels. Style: polished painterly dark-fantasy gameplay sprite matching the input. Avoid text, UI, floor, shadow, VFX, extra characters, crop, colored fringe, alternate costume, drow skin, staff, purple magic, checkerboard, border, logo, watermark, photorealism. Runtime mirrors the canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-unified-idle-sheet-v1.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "two-by-two-grid", "skin-lock-to-source-reference", "consistent-costume", "shared-feet-baseline", "full-body", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-standing-pose-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "both-boot-soles-on-cell-baseline-y-0.90"
+    },
+    {
+      "id": "lolth-elf-unified-locomotion-v1",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling grounded locomotion sprite sheet for The First Nine. Input image: lolth-elf-gameplay-poses-v1 is the mandatory identity reference. Create exactly eight equal full-body cells in a strict 4 columns by 2 rows grid, all facing screen-right, of the same Lolth elf. Skin lock: long ash-blonde hair, deep blue-charcoal gold-trimmed cape, warm ivory embroidered tunic and skirt panels, brown leather harness and bracers, antique-gold details, dark trousers and brown boots; no changes to face, age, body, clothing, colors or materials. Reading order: left heel contact, left full contact, passing, right toe-off, right heel contact, right full contact, passing, left toe-off. This is a walk cycle, not a sprint or jump: in every frame at least one boot sole is visibly planted on the identical internal ground baseline at 90 percent of cell height; hips and head stay at stable walking height; steps stay low and controlled. Every square cell has genuine transparent background and broad transparent gutters; no body, hair, cape or limb crosses a cell edge. Full figure side view, centered, crown-to-sole height matching the source reference, readable at 100 by 200 pixels. Style: polished painterly dark-fantasy gameplay sprite matching the input. Avoid airborne pose, leap, run, text, UI, floor, shadow, VFX, extra characters, crop, colored fringe, alternate costume, drow skin, staff, purple magic, checkerboard, border, logo, watermark, photorealism. Runtime mirrors the canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-unified-locomotion-sheet-v1.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "four-by-two-grid", "skin-lock-to-source-reference", "consistent-costume", "planted-foot-every-frame", "shared-feet-baseline", "full-body", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-standing-pose-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "at-least-one-boot-sole-on-cell-baseline-y-0.90-every-frame"
+    },
+    {
+      "id": "lolth-elf-unified-aerial-v1",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling aerial sprite sheet for The First Nine. Input image: lolth-elf-gameplay-poses-v1 is the mandatory identity reference. Create exactly eight equal full-body cells in a strict 4 columns by 2 rows grid, all facing screen-right, of the same Lolth elf. Skin lock: long ash-blonde hair, deep blue-charcoal cape with gold trim, warm ivory embroidered tunic panels, brown leather harness and bracers, antique-gold details, dark trousers, brown boots. Do not change face, age, body, clothing, colors or materials. Reading order: jump anticipation with boots grounded, takeoff, rise one, rise two, apex, controlled fall one, controlled fall two, soft landing with boots grounded. The body remains wholly contained in each square cell and each cell has transparent gutters; the grounded anticipation and landing boot soles share the identical internal baseline at 90 percent of cell height. Rise and fall use a stable visual pivot without a sprinting or unrelated pose. Full figure side view, centered, crown-to-sole height matching source reference, readable at 100 by 200 pixels. Genuine transparent background. Style: polished painterly dark-fantasy gameplay sprite matching input. Avoid text, UI, floor, shadow, VFX, extra characters, crop, colored fringe, alternate costume, drow skin, staff, purple magic, checkerboard, border, logo, watermark, photorealism. Runtime mirrors canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-unified-aerial-sheet-v1.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "four-by-two-grid", "skin-lock-to-source-reference", "consistent-costume", "grounded-start-and-landing", "stable-aerial-pivot", "full-body", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-standing-pose-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "anticipation-and-landing-boot-soles-on-cell-baseline-y-0.90"
+    },
+    {
+      "id": "lolth-elf-unified-action-v1",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling primary-action sprite sheet for The First Nine. Input image: lolth-elf-gameplay-poses-v1 is the mandatory identity reference. Create exactly six equal full-body cells in a strict 3 columns by 2 rows grid, all facing screen-right, of the same Lolth elf. Skin lock: long ash-blonde hair, deep blue-charcoal gold-trimmed cape, warm ivory embroidered tunic and skirt panels, brown leather harness and bracers, antique-gold details, dark trousers and brown boots; no appearance change. Reading order: neutral ready, wind-up, committed short-range strike, impact, follow-through, recovery. The action is graceful and grounded, using an unarmed or short-blade-ready silhouette without introducing a staff or a different weapon. At least one boot sole is planted on the shared internal baseline at 90 percent of cell height in every cell. Square cells have genuine transparent background and transparent gutters; full figure contained and centered, crown-to-sole height matching source reference, readable at 100 by 200 pixels. Style: polished painterly dark-fantasy gameplay sprite matching input. Avoid text, UI, floor, cast shadow, VFX, extra characters, crop, colored fringe, alternate costume, drow skin, purple magic, checkerboard, border, logo, watermark, photorealism. Runtime mirrors canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-unified-action-sheet-v1.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "three-by-two-grid", "skin-lock-to-source-reference", "consistent-costume", "grounded-action", "shared-feet-baseline", "full-body", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-standing-pose-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "at-least-one-boot-sole-on-cell-baseline-y-0.90-every-frame"
+    },
+    {
+      "id": "lolth-elf-unified-interaction-v1",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling interaction and collect sprite sheet for The First Nine. Input image: lolth-elf-gameplay-poses-v1 is the mandatory identity reference. Create exactly four equal full-body cells in a strict 2 by 2 grid, all facing screen-right, of the same Lolth elf. Skin lock: long ash-blonde hair, deep blue-charcoal gold-trimmed cape, warm ivory embroidered tunic and skirt panels, brown leather harness and bracers, antique-gold details, dark trousers and brown boots; no appearance change. Reading order: approach-ready, grounded reach, collect-or-repair gesture, return ready. Keep the hands empty and do not introduce an item, wagon part, staff or separate prop. At least one boot sole stays planted on the shared internal baseline at 90 percent of cell height in every cell. Square cells have genuine transparent background and transparent gutters; full figure contained and centered, crown-to-sole height matching source reference, readable at 100 by 200 pixels. Style: polished painterly dark-fantasy gameplay sprite matching input. Avoid text, UI, floor, cast shadow, VFX, extra characters, crop, colored fringe, alternate costume, drow skin, purple magic, checkerboard, border, logo, watermark, photorealism. Runtime mirrors canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-unified-interaction-sheet-v1.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "two-by-two-grid", "skin-lock-to-source-reference", "consistent-costume", "grounded-interaction", "shared-feet-baseline", "full-body", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-standing-pose-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "at-least-one-boot-sole-on-cell-baseline-y-0.90-every-frame"
+    },
+    {
+      "id": "lolth-elf-unified-hurt-v1",
+      "kind": "character",
+      "prompt": "Use case: identity-preserve. Asset type: production-ready 2D side-scrolling hurt-reaction sprite sheet for The First Nine. Input image: lolth-elf-gameplay-poses-v1 is the mandatory identity reference. Create exactly three equal full-body cells in a strict 3 columns by 1 row grid, all facing screen-right, of the same Lolth elf. Skin lock: long ash-blonde hair, deep blue-charcoal gold-trimmed cape, warm ivory embroidered tunic and skirt panels, brown leather harness and bracers, antique-gold details, dark trousers and brown boots; no appearance change. Reading order: hit recoil, guarded pain, composed recovery. The motion is grounded and restrained, no collapse, no leap. At least one boot sole stays planted on the same internal baseline at 90 percent of cell height in every cell. Square cells have genuine transparent background and transparent gutters; full figure contained and centered, crown-to-sole height matching source reference, readable at 100 by 200 pixels. Style: polished painterly dark-fantasy gameplay sprite matching input. Avoid text, UI, floor, cast shadow, VFX, blood, extra characters, crop, colored fringe, alternate costume, drow skin, purple magic, checkerboard, border, logo, watermark, photorealism. Runtime mirrors canonical right-facing frames.",
+      "target": "assets/art/characters/lolth-elf-unified-hurt-sheet-v1.png",
+      "checks": ["transparent-background", "side-view-right", "no-text", "three-by-one-grid", "skin-lock-to-source-reference", "consistent-costume", "grounded-reaction", "shared-feet-baseline", "full-body", "clean-antialiased-edges"],
+      "scale_reference": "lolth-elf-standing-pose-baseline",
+      "target_height_ratio": 1.0,
+      "ground_pivot": "at-least-one-boot-sole-on-cell-baseline-y-0.90-every-frame"
+    }
+  ]
+}

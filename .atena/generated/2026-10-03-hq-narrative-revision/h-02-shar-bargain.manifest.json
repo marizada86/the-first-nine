@@ -1,0 +1,19 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-03-hq-narrative-revision.md",
+    "plan_id": "2026-10-03-hq-narrative-revision",
+    "batch_id": "H-02"
+  },
+  "art_direction": "Minimal lateral 2D dark-fantasy pixel-art-inspired storyboard; cool moonlit shadows, rare silver and amber focal lights, clean silhouette language, no copied external designs.",
+  "output_dir": ".atena/generated/2026-10-03-hq-narrative-revision",
+  "max_attempts": 2,
+  "assets": [{
+    "id": "h-02-shar-bargain-v1",
+    "kind": "storyboard",
+    "prompt": "A wordless six-panel post-first-boss comic reference: Shar arrives to examine the mortal untouched by calamities harming the Thalestriel; Lolth offers visions of her remembered former godhood from a prior plane; Shar accepts a bargain; Shar uses the ornate wand O Beijo de Shar to apply the Shadow Mark; Lolth transforms from elf to drow; Shar hands her the wand, which is visually tied to command over shadow creatures. No readable words.",
+    "target": ".atena/generated/2026-10-03-hq-narrative-revision/h-02-shar-bargain-v1.png",
+    "checks": ["six-panel-storyboard", "shar-arrival", "former-goddess-memory-bargain", "mark-and-drow-transformation", "wand-transfer", "shadow-command-cue", "no-readable-text", "no-watermark"]
+  }]
+}
+

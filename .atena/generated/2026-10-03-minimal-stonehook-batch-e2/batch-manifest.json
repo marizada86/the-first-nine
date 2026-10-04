@@ -1,0 +1,66 @@
+{
+  "batch_id": "2026-10-03-minimal-stonehook-batch-e2",
+  "status": "complete-user-approved-reference-only",
+  "tool": "built-in image generation",
+  "scope": "Five minimal Stonehook reference boards only; no runtime asset admission.",
+  "selected": [
+    {
+      "id": "E-M01",
+      "file": "stonehook-zone-minimal-v2.png",
+      "source_job": "exec-6caad155-1f2e-46be-838d-ac955c56bf95",
+      "attempt": 2,
+      "size": "1774x887",
+      "sha256": "0aafbd9101788831b74a3beba3bbbdce003c00851a2cfbe62a86102aa7817cfa",
+      "validation": "accepted for review: simplified lateral path, rope posts, sparse thorn transition and cold slate silhouette."
+    },
+    {
+      "id": "E-M02",
+      "file": "stonehook-resources-minimal-v1.png",
+      "source_job": "exec-e3ad5b9a-cc84-4369-80be-bc6371b04ce2",
+      "attempt": 1,
+      "size": "1983x793",
+      "sha256": "fe3ae65522a0721ac38d05dcc199ea726b1477bb7bd6a9436e73104112895dff",
+      "validation": "accepted for review: rope, axle scrap and repair tools read as separate salvage props."
+    },
+    {
+      "id": "E-M03",
+      "file": "stonehook-hazards-minimal-v2.png",
+      "source_job": "exec-35ac9c55-297e-4f83-b313-2c59b4b4ecc8",
+      "attempt": 2,
+      "size": "1983x793",
+      "sha256": "3e3fb0b26ab85db6782378da780368f6d7addfd0d351f6c222e3c976a06021f9",
+      "validation": "accepted for review: rope-secured route, loose scree and falling boulders separated with sparse shapes."
+    },
+    {
+      "id": "E-M04",
+      "file": "stonehook-regular-enemies-minimal-v1.png",
+      "source_job": "exec-482d4b6f-8adc-4d26-b384-a3d87ec850fb",
+      "attempt": 1,
+      "size": "1774x887",
+      "sha256": "3043d114ce52873843a0e7a5f2463f9db05a19e13a8feca597b9f189ede56e22",
+      "validation": "accepted for review: crawler and harrier have distinct nonhuman silhouettes."
+    },
+    {
+      "id": "E-M05",
+      "file": "stone-maw-minimal-v1.png",
+      "source_job": "exec-9af6b77d-ba15-4e16-b49e-cd6f497ae680",
+      "attempt": 1,
+      "size": "1536x1024",
+      "sha256": "e66ed7592829c4ac044cb2a30504fe72ae1662a9eff14024eaa5ddfdf16d9fc1",
+      "validation": "accepted for review: massive low rock creature with asymmetry and no humanoid anatomy."
+    }
+  ],
+  "superseded_candidates": [
+    {
+      "file": "stonehook-zone-minimal-v1.png",
+      "source_job": "exec-232324ca-602f-4bce-9267-715d398364fe",
+      "reason": "too detailed for the approved minimal direction"
+    },
+    {
+      "file": "stonehook-hazards-minimal-v1.png",
+      "source_job": "exec-a6a8f017-559e-4bb3-a5f4-2f9ecbbc93c6",
+      "reason": "too scenic and detailed for the approved minimal direction"
+    }
+  ],
+  "runtime_admission": "deferred"
+}
