@@ -55,7 +55,7 @@ const LAST_CAMP_KEY_ART := preload("res://assets/concept-art/key-art/the-last-ca
 const THALESTRIEL_PLAGUED_RUNTIME := preload("res://assets/runtime_v2/characters/thalestriel/thalestriel-plagued-survivors-sheet-v1.png")
 const THALESTRIEL_CURED_RUNTIME := preload("res://assets/runtime_v2/characters/thalestriel/thalestriel-cured-assists-sheet-v1.png")
 const ZONE_NAMES := ["THORNWAKE FOREST", "STONEHOOK MOUNTAINS", "HOLLOWROOT CAVERNS"]
-const ZONE_OBJECTIVES := ["Repair, defend, and open the Stonehook road.", "Recover metal. Install axle and brakes. Reach the mountain shrine.", "Defend the caravan, defeat Root Crown, and gather the third Mark."]
+const ZONE_OBJECTIVES := ["Gather supplies, return them to the Wagon, and protect the cave camp.", "Recover metal. Install axle and brakes. Reach the mountain shrine.", "Defend the caravan, defeat Root Crown, and gather the third Mark."]
 const DODGE_DURATION := 0.30
 const DODGE_COOLDOWN := 0.65
 const MAX_ACTIVE_POSTS := 2
@@ -165,6 +165,8 @@ var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
 var state := "journey" # opening, journey, comic, cure, victory, defeat
 var opening_beat := 0
+# Set only by run_self_test() so it can exercise prototype later-region logic.
+var self_test_travel_bypass := false
 var comic_panel := 0
 var passive_mission: Dictionary = {}
 var mission_selected := 0
@@ -317,6 +319,10 @@ func run_self_test() -> void:
 	try_advance_from_camp()
 	var first_mark_not_repeated := state == "journey" and mark_level == 1
 	enter_stonehook()
+	var direct_entry_blocked := zone == 0 and state == "journey"
+	self_test_travel_bypass = true
+	enter_stonehook()
+	self_test_travel_bypass = false
 	spawn_stonehook_night_enemies()
 	var mountain_enemies_ready := shades.size() == 2
 	shades.clear()
@@ -357,7 +363,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and shar_unlocked and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and shar_unlocked and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -856,14 +862,14 @@ func try_advance_from_camp() -> void:
 		message_time = 3.5
 
 func advance_to_stonehook() -> void:
-	if wagon_travel_locked():
+	enter_stonehook()
+
+# Prototype later-region entry. The travel lock holds unless the self-test bypass is set.
+func enter_stonehook() -> void:
+	if wagon_travel_locked() and not self_test_travel_bypass:
 		message = "The Wagon cannot leave the cave camp yet."
 		message_time = 3.0
 		return
-	enter_stonehook()
-
-# Prototype later-region entry. While travel is locked, only the self-test calls it directly.
-func enter_stonehook() -> void:
 	zone = 1
 	state = "journey"
 	stonehook_boss_defeated = false
@@ -1865,7 +1871,6 @@ func draw_comic() -> void:
 func draw_opening() -> void:
 	draw_rect(Rect2(Vector2.ZERO, VIEW), Color("0b0814"))
 	draw_string(ThemeDB.fallback_font, Vector2(0, 300), "THE FIRST NINE", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 42, Color("f8dc8c"))
-	draw_string(ThemeDB.fallback_font, Vector2(0, 352), "%d / %d" % [opening_beat + 1, H01_SHELL_BEATS.size()], HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 20, Color("d9c5ee"))
 	draw_string(ThemeDB.fallback_font, Vector2(0, 660), "E / click: continue   ·   Esc / Start: skip", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
 
 func draw_end_card(won: bool) -> void:
