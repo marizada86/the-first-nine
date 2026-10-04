@@ -1,0 +1,21 @@
+{
+  "name": "negative-no_mirror",
+  "exit_code": 1,
+  "passed": true,
+  "diagnostics": false,
+  "detections": [
+    "FACING FAIL BRIAR HOUND frame 0 raster is horizontal reflection",
+    "FACING FAIL BRIAR HOUND frame 1 raster is horizontal reflection",
+    "FACING FAIL BRIAR HOUND frame 2 raster is horizontal reflection",
+    "FACING FAIL BRIAR HOUND frame 3 raster is horizontal reflection",
+    "FACING FAIL STAG OF MIRE frame 0 raster is horizontal reflection",
+    "FACING FAIL STAG OF MIRE frame 1 raster is horizontal reflection",
+    "FACING FAIL STAG OF MIRE frame 2 raster is horizontal reflection",
+    "FACING FAIL STAG OF MIRE frame 3 raster is horizontal reflection",
+    "FACING FAIL ANTLERED HUNGER frame 0 raster is horizontal reflection",
+    "FACING FAIL ANTLERED HUNGER frame 1 raster is horizontal reflection",
+    "FACING FAIL ANTLERED HUNGER frame 2 raster is horizontal reflection",
+    "FACING FAIL ANTLERED HUNGER frame 3 raster is horizontal reflection"
+  ],
+  "error": null
+}

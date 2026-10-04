@@ -1,0 +1,8 @@
+{
+  "name": "headless-smoke",
+  "exit_code": 0,
+  "passed": true,
+  "diagnostics": false,
+  "detections": [],
+  "error": null
+}

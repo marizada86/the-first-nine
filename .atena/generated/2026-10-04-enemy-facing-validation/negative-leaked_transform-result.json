@@ -1,0 +1,30 @@
+{
+  "name": "negative-leaked_transform",
+  "exit_code": 1,
+  "passed": true,
+  "diagnostics": false,
+  "detections": [
+    "FACING FAIL BRIAR HOUND frame 0 labels/bars stay unmirrored",
+    "FACING FAIL BRIAR HOUND frame 0 subsequent world marker stays fixed",
+    "FACING FAIL BRIAR HOUND frame 1 labels/bars stay unmirrored",
+    "FACING FAIL BRIAR HOUND frame 1 subsequent world marker stays fixed",
+    "FACING FAIL BRIAR HOUND frame 2 labels/bars stay unmirrored",
+    "FACING FAIL BRIAR HOUND frame 2 subsequent world marker stays fixed",
+    "FACING FAIL BRIAR HOUND frame 3 subsequent world marker stays fixed",
+    "FACING FAIL STAG OF MIRE frame 0 labels/bars stay unmirrored",
+    "FACING FAIL STAG OF MIRE frame 0 subsequent world marker stays fixed",
+    "FACING FAIL STAG OF MIRE frame 1 labels/bars stay unmirrored",
+    "FACING FAIL STAG OF MIRE frame 1 subsequent world marker stays fixed",
+    "FACING FAIL STAG OF MIRE frame 2 labels/bars stay unmirrored",
+    "FACING FAIL STAG OF MIRE frame 2 subsequent world marker stays fixed",
+    "FACING FAIL STAG OF MIRE frame 3 subsequent world marker stays fixed",
+    "FACING FAIL ANTLERED HUNGER frame 0 labels/bars stay unmirrored",
+    "FACING FAIL ANTLERED HUNGER frame 0 subsequent world marker stays fixed",
+    "FACING FAIL ANTLERED HUNGER frame 1 labels/bars stay unmirrored",
+    "FACING FAIL ANTLERED HUNGER frame 1 subsequent world marker stays fixed",
+    "FACING FAIL ANTLERED HUNGER frame 2 labels/bars stay unmirrored",
+    "FACING FAIL ANTLERED HUNGER frame 2 subsequent world marker stays fixed",
+    "FACING FAIL ANTLERED HUNGER frame 3 subsequent world marker stays fixed"
+  ],
+  "error": null
+}

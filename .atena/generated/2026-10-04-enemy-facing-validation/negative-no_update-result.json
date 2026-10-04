@@ -1,0 +1,17 @@
+{
+  "name": "negative-no_update",
+  "exit_code": 1,
+  "passed": true,
+  "diagnostics": false,
+  "detections": [
+    "FACING FAIL BRIAR HOUND moves/faces -1.0",
+    "FACING FAIL BRIAR HOUND moves/faces 1.0",
+    "FACING FAIL STAG OF MIRE moves/faces -1.0",
+    "FACING FAIL STAG OF MIRE moves/faces 1.0",
+    "FACING FAIL ANTLERED HUNGER moves/faces -1.0",
+    "FACING FAIL ANTLERED HUNGER moves/faces 1.0",
+    "FACING FAIL generic negative-speed retreat faces actual left movement",
+    "FACING FAIL generic forward pursuit also faces left"
+  ],
+  "error": null
+}
