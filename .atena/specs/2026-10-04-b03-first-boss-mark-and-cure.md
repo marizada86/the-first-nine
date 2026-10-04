@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-b02-reconciliation-push
+status: implemented-awaiting-human-review
 approval_mode: per-plan
 approval_selection: user-explicit-2026-10-04
 approved: 2026-10-04
@@ -9,7 +9,12 @@ plan_id: 2026-10-04-b03-first-boss-mark-and-cure
 depends_on:
   - "[[2026-10-03-b00-opening-ending-and-production-resolution]]"
   - "[[2026-10-04-thornwake-day-night-tutorial]]"
-implementation_branch: claude/wonderful-planck-suynnk
+implementation_branch: b03-first-boss-mark-and-cure
+planned_branch: claude/wonderful-planck-suynnk
+implementation_base: 15e39eb
+implementation_commit: ac091fa
+implementation_evidence: "[[2026-10-04-b03-first-boss-implementation]]"
+push_pr_merge_approved: false
 ---
 
 # B-03 plan - first boss, Mark I and first cure
@@ -50,3 +55,10 @@ Do not use H-02 artwork or the old comic lines; do not generate final dialogue, 
 
 An English implementation note must list exact changed files, canon used, test output, known gaps, risks, and a B-04 recommendation. The branch remains unpushed until the user explicitly authorizes it.
 
+## Implementation status
+
+- **Status:** implemented, awaiting human review. The user has provisionally accepted the implementation pending this ADD record reconciliation. Push, pull request, and merge are not approved.
+- **Branch:** the work is on the local branch `b03-first-boss-mark-and-cure`, created from `origin/main` at `15e39eb`. The planned branch `claude/wonderful-planck-suynnk` was not used, because its pull request had already been merged.
+- **Commit:** the original implementation commit is `ac091fa`. This record reconciliation was amended into that same local commit, so the final commit hash differs from `ac091fa` and is reported outside the commit.
+- **Preconditions:** both were satisfied before implementation. `origin/main` at `15e39eb` contains the merged B-01/B-02 implementation and the B-00/B-02/B-03 records.
+- **Evidence:** `[[2026-10-04-b03-first-boss-mark-and-cure]]` and the implementation note `[[2026-10-04-b03-first-boss-implementation]]`.

@@ -49,7 +49,6 @@ const CAMP_PROPS := preload("res://assets/art/camp/last-camp-prop-sheet-v1.png")
 const CARAVAN_FLAME_RUNTIME := preload("res://assets/art/camp/caravan-flame-runtime-states-v1.png")
 const SHADOW_MARK_VFX := preload("res://assets/art/vfx/shadow-mark-effects-v1.png")
 const SHADOW_ACTIONS_VFX := preload("res://assets/runtime_v2/vfx/shadow-web-actions-v1.png")
-const KISS_OF_SHAR_STORYBOARD := preload("res://assets/concept-art/comic/the-kiss-of-shar-storyboard-v1.png")
 const SHADOW_CROWN_KEY_ART := preload("res://assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png")
 const LAST_CAMP_KEY_ART := preload("res://assets/concept-art/key-art/the-last-camp-elven-survivors-v2.png")
 const THALESTRIEL_PLAGUED_RUNTIME := preload("res://assets/runtime_v2/characters/thalestriel/thalestriel-plagued-survivors-sheet-v1.png")
@@ -95,17 +94,6 @@ const PASSIVE_MISSIONS := [
 	{"name": "TEND THE FLAME", "type": "flame", "reward": "The Caravan Flame burns brighter."},
 	{"name": "RECOVER DEBRIS", "type": "route", "reward": "The wagon repair advances."},
 ]
-const COMIC_LINES := [
-	"Rain darkens the camp. Eight Thalestriel fight for breath; Lolth alone remains untouched.",
-	"LOLTH: I remember the world before this one. I was a goddess.",
-	"LOLTH: When Eol remade the Material Plane, he stripped it all from me.",
-	"LOLTH: Take every memory. Give me a way to become a goddess again.",
-	"SHAR: I am forgetting. Your memories are a worthy price.",
-	"SHAR: The Kiss of Shar will make you a creature of shadow. Whoever holds it may command you.",
-	"LOLTH: Then no hand will hold it over me.",
-]
-# H-01 opening-comic shell. Identifiers only: they are never displayed to the player.
-# Final H-01 panels and dialogue require an approved English script and art admission.
 # B-02 Thornwake tutorial. Timings, ranges, and speeds are playtest data, not canon.
 const WHEEL_KIT_RECIPE := 1
 const TUTORIAL_NIGHT_WAVES := 2
@@ -120,16 +108,26 @@ const HOUND_LUNGE_SPEED := 300.0
 const HOUND_LUNGE_TIME := 0.35
 const HOUND_RECOVER := 0.7
 const MIN_TELEGRAPH_TIME := 0.5
+# B-03 first boss and Mark I. Values are playtest data, not canon.
+const ANTLERED_HUNGER_HEALTH := 8
+const BOSS_LUNGE_RANGE := 190.0
+const BOSS_WINDUP := 0.8
+const BOSS_LUNGE_SPEED := 360.0
+const BOSS_LUNGE_TIME := 0.45
+const BOSS_RECOVER := 1.0
+const BOSS_WAGON_WINDUP := 1.2
+const BOSS_WAGON_CHARGE_SPEED := 260.0
+const BOSS_WAGON_CHARGE_TIME := 3.5
+const BOSS_WAGON_DAMAGE := 15.0
+const FIRST_THREAD_RANGE := 150.0
+const FIRST_THREAD_DAMAGE := 2
+const FIRST_THREAD_COOLDOWN := 1.2
+# In Thornwake, progression stops at Mark I. Mark II and later belong to later batches.
+const THORNWAKE_MARK_CAP := 1
+# H-01 and H-02 shells. Identifiers only: they are never displayed to the player.
+# Final panels and dialogue require an approved English script and art admission.
 const H01_SHELL_BEATS := ["h01_golden_city_council", "h01_families_depart", "h01_caravan_departs", "h01_journey_calamities", "h01_plague_strikes", "h01_cave_arrival"]
-const COMIC_PANEL_SOURCES := [
-	Rect2(2, 0, 267, 941),
-	Rect2(272, 0, 238, 941),
-	Rect2(513, 0, 210, 941),
-	Rect2(726, 0, 222, 941),
-	Rect2(950, 0, 224, 941),
-	Rect2(1176, 0, 225, 941),
-	Rect2(1403, 0, 267, 941),
-]
+const H02_SHELL_BEATS := ["h02_beat_01", "h02_beat_02", "h02_beat_03", "h02_beat_04", "h02_beat_05", "h02_beat_06"]
 
 var player := Vector2(330, GROUND_Y - 38)
 var flame := 100.0
@@ -177,13 +175,15 @@ var mark_vfx_kind := ""
 var mark_vfx_pos := Vector2.ZERO
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
-var state := "journey" # opening, journey, comic, cure, victory, defeat
+var state := "journey" # opening, journey, shar_shell, cure, victory, defeat
 var opening_beat := 0
-var tutorial_phase := "day_salvage" # day_salvage, dusk, night_defense, safe_camp
+var tutorial_phase := "day_salvage" # day_salvage, dusk, night_defense, safe_camp, boss_encounter
 var dusk_time := 0.0
 # Set only by run_self_test() so it can exercise prototype later-region logic.
 var self_test_travel_bypass := false
-var comic_panel := 0
+var shar_beat := 0
+var antlered_hunger_defeated := false
+var first_thread_cooldown := 0.0
 var passive_mission: Dictionary = {}
 var mission_selected := 0
 var posted_allies: Array[String] = []
@@ -229,6 +229,10 @@ func setup_input_actions() -> void:
 	add_joy_button_action("post_toggle", JOY_BUTTON_RIGHT_SHOULDER)
 	add_key_action("skip", KEY_ESCAPE)
 	add_joy_button_action("skip", JOY_BUTTON_START)
+	add_key_action("camp_action", KEY_F)
+	add_joy_button_action("camp_action", JOY_BUTTON_LEFT_SHOULDER)
+	add_key_action("shadow_strike", KEY_C)
+	add_joy_button_action("shadow_strike", JOY_BUTTON_B)
 
 func ensure_action(action: String) -> void:
 	if not InputMap.has_action(action):
@@ -260,9 +264,10 @@ func add_joy_motion_action(action: String, axis: JoyAxis, axis_value: float) -> 
 	InputMap.action_add_event(action, event)
 
 func run_self_test() -> void:
-	var controls_bound := InputMap.action_get_events("move_left").size() >= 4 and InputMap.action_get_events("move_right").size() >= 4 and InputMap.action_get_events("primary").size() >= 3 and InputMap.action_get_events("jump").size() >= 2 and InputMap.action_get_events("shadow_action").size() >= 3 and InputMap.action_get_events("post_cycle").size() >= 2 and InputMap.action_get_events("skip").size() >= 2
+	var controls_bound := InputMap.action_get_events("move_left").size() >= 4 and InputMap.action_get_events("move_right").size() >= 4 and InputMap.action_get_events("primary").size() >= 3 and InputMap.action_get_events("jump").size() >= 2 and InputMap.action_get_events("shadow_action").size() >= 3 and InputMap.action_get_events("post_cycle").size() >= 2 and InputMap.action_get_events("skip").size() >= 2 and InputMap.action_get_events("camp_action").size() >= 2 and InputMap.action_get_events("shadow_strike").size() >= 2
 	var opening_cave_ready := run_opening_cave_self_test()
 	var thornwake_tutorial_ready := run_thornwake_tutorial_self_test()
+	var first_boss_ready := run_first_boss_self_test()
 	reset_to_prologue()
 	player = Vector2(VIEW.x - 60.0, GROUND_Y - PLAYER_FEET_OFFSET)
 	clock_seconds = DAY_DURATION + 1.0
@@ -306,12 +311,12 @@ func run_self_test() -> void:
 	var brazier_works := brazier_built
 	perform_dodge(1.0)
 	var dodge_works := dodge_time > 0.0 and hurt_cooldown > 0.0
-	mark_level = 1
-	shadow_echoes = 2
-	collect_echo(1)
-	var cure_prompted := state == "cure"
+	apply_mark_one()
+	var cure_prompted := state == "cure" and mark_level == 1
 	cure_selected_ally()
 	var provisions_before_aelira := provisions
+	# Prototype post regression only. Thornwake posts are unavailable in this slice.
+	posted_allies = ["AELIRA"]
 	player = ALLY_POSTS["AELIRA"]
 	add_to_load({"name": "TEST HERB", "type": "herb", "slots": 1})
 	var chosen_ally_helps := cured_allies.size() == 1 and awakened == 1 and provisions > provisions_before_aelira and state == "journey"
@@ -331,9 +336,8 @@ func run_self_test() -> void:
 	wagon_repair = 1
 	try_advance_from_camp()
 	var tutorial_never_starts_shar := state == "journey" and mark_level == 0
-	# Prototype Mark I and cure regression only. B-03 owns the real hand-off.
-	start_comic()
-	receive_first_mark()
+	# Prototype later-region regression only. The real hand-off is tested in run_first_boss_self_test().
+	apply_mark_one()
 	cure_selected_ally()
 	var first_cure_stays_at_cave := state == "journey" and zone == 0 and mark_level == 1 and wagon_travel_locked()
 	advance_to_stonehook()
@@ -385,7 +389,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -528,6 +532,165 @@ func run_thornwake_tutorial_self_test() -> bool:
 		push_error("SELF_TEST_B02_FAIL: day=%s loop=%s recipe=%s/%s consumed=%s stationed=%s travel=%s dusk=%s night=%s telegraph=%s/%s/%s enemies=%s rewards=%s safe=%s/%s resets=%s" % [day_holds, loop_done, recipe_shown, recipe_locked, inputs_consumed, wagon_stationed, still_no_travel, dusk_holds, night_begins, hound_telegraphs, stag_telegraphs, stag_hit_after_windup, seen_enemies, no_rewards, safe_camp, safe_camp_holds, resets])
 	return passed
 
+# Drives the real B-02 tutorial functions from a fresh cave start to the safe camp.
+func reach_safe_camp_for_test() -> void:
+	reset_to_prologue()
+	wagon_stock = [{"name": "WOOD", "type": "wood", "slots": 1}, {"name": "ROPE", "type": "rope", "slots": 1}, {"name": "WHEEL SALVAGE", "type": "salvage", "slots": 1}]
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	handle_primary()
+	advance_world_clock(DUSK_DURATION)
+	for _wave in TUTORIAL_NIGHT_WAVES:
+		for enemy in shades:
+			enemy.defeated = true
+		update_night_waves(0.0)
+		update_night_waves(NIGHT_WAVE_INTERVAL)
+
+func defeat_boss_for_test() -> int:
+	var hits := 0
+	while not shades.is_empty() and not shades[0].defeated and hits < 40:
+		player = shades[0].pos
+		combo_time = 0.0
+		health = max_health()
+		handle_primary()
+		hits += 1
+	return hits
+
+# B-03 checks: camp action, Antlered Hunger telegraphs, failure reset, Shar shell, Mark I, one cure, Echo cap, travel lock.
+func run_first_boss_self_test() -> bool:
+	reset_to_prologue()
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	use_camp_action()
+	var no_boss_before_safe_camp := tutorial_phase == "day_salvage" and shades.is_empty()
+	reach_safe_camp_for_test()
+	var safe_camp_reached := tutorial_phase == "safe_camp" and state == "journey" and mark_level == 0
+	advance_world_clock(DAY_DURATION * 3.0)
+	var boss_not_automatic := tutorial_phase == "safe_camp" and shades.is_empty() and not is_night()
+	player = Vector2(700.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	use_camp_action()
+	var needs_wagon := tutorial_phase == "safe_camp" and shades.is_empty()
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	use_camp_action()
+	var boss_started: bool = tutorial_phase == "boss_encounter" and shades.size() == 1 and String(shades[0].name) == "ANTLERED HUNGER" and is_night() and state == "journey"
+	if not boss_started:
+		push_error("SELF_TEST_B03_FAIL: before=%s safe=%s auto=%s wagon=%s started=%s" % [no_boss_before_safe_camp, safe_camp_reached, boss_not_automatic, needs_wagon, boss_started])
+		return false
+	var boss: Dictionary = shades[0]
+	var only_boss := shades.size() == 1
+	player = Vector2(float(boss.pos.x) - 150.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	var health_before := health
+	update_enemies(0.016)
+	var lunge_telegraphed: bool = String(boss.attack_state) == "windup" and String(boss.attack_target) == "lolth" and health == health_before
+	var lunge_time := 0.016
+	while health == health_before and lunge_time < 3.0:
+		update_enemies(0.016)
+		check_enemy_contact()
+		lunge_time += 0.016
+	var lunge_hits_after_windup := health < health_before and lunge_time >= MIN_TELEGRAPH_TIME and BOSS_WINDUP >= MIN_TELEGRAPH_TIME
+	boss.attack_state = "approach"
+	boss.attack_count = 2
+	boss.pos.x = 900.0
+	player = Vector2(700.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	hurt_cooldown = 99.0
+	var integrity_before := wagon_integrity
+	update_enemies(0.016)
+	var wagon_charge_telegraphed: bool = String(boss.attack_state) == "windup" and String(boss.attack_target) == "wagon" and wagon_integrity == integrity_before
+	var windup_x := float(boss.pos.x)
+	update_enemies(MIN_TELEGRAPH_TIME - 0.05)
+	wagon_charge_telegraphed = wagon_charge_telegraphed and String(boss.attack_state) == "windup" and float(boss.pos.x) == windup_x and BOSS_WAGON_WINDUP >= MIN_TELEGRAPH_TIME
+	var charge_time := MIN_TELEGRAPH_TIME - 0.034
+	while wagon_integrity == integrity_before and charge_time < 6.0:
+		update_enemies(0.016)
+		charge_time += 0.016
+	var charge_hits_after_windup := wagon_integrity < integrity_before and charge_time >= BOSS_WAGON_WINDUP and state == "journey"
+	hurt_cooldown = 0.0
+	for _hit in 6:
+		hurt_lolth()
+	var boss_failure_reset := state == "defeat"
+	restart_from_checkpoint()
+	boss_failure_reset = boss_failure_reset and is_cave_camp_start() and not antlered_hunger_defeated
+	reach_safe_camp_for_test()
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	use_camp_action()
+	var hits := defeat_boss_for_test()
+	var boss_defeated_by_melee := hits > 1 and antlered_hunger_defeated and state == "shar_shell" and mark_level == 0 and shadow_echoes == 0 and shades.is_empty()
+	advance_shar_shell()
+	var shell_advances := state == "shar_shell" and shar_beat == 1
+	skip_shar_shell()
+	var shell_skipped := state == "cure" and mark_level == 1
+	defeat_antlered_hunger()
+	apply_mark_one()
+	var mark_once := state == "cure" and mark_level == 1
+	var lolth_drow := lolth_form() == "drow"
+	var eight_choices := available_allies().size() == 8 and available_allies() == THALESTRIEL
+	var echoes_zero_before_cure := shadow_echoes == 0
+	collect_echo(2)
+	var no_echo_before_cure := shadow_echoes == 0
+	select_next_cure()
+	select_next_cure()
+	cure_selected_ally()
+	var chosen := String(THALESTRIEL[2])
+	var records := ally_records()
+	var cured_count := 0
+	var plagued_count := 0
+	for record in records:
+		if String(record.condition) == "cured":
+			cured_count += 1
+		elif String(record.condition) == "plagued" and String(record.form) == "elf":
+			plagued_count += 1
+	var one_cure := cured_allies == [chosen] and cured_count == 1 and plagued_count == 7 and String(records[2].form) == "drow" and not bool(records[2].controllable) and state == "journey" and posted_allies.is_empty()
+	cure_selected_ally()
+	var no_second_cure := cured_allies.size() == 1
+	var wagon_held := wagon_condition() == "stationed" and wagon_travel_locked()
+	advance_to_stonehook()
+	enter_stonehook()
+	var travel_blocked := zone == 0 and state == "journey"
+	spawn_enemy("BRIAR HOUND", Vector2(player.x + 40.0, GROUND_Y - 34), 1, 1)
+	player = shades.back().pos
+	combo_time = 0.0
+	handle_primary()
+	var echoes_after_cure := shadow_echoes == 1
+	collect_echo(10)
+	var echoes_capped := shadow_echoes == int(ECHO_THRESHOLDS[1]) and mark_level == 1 and state == "journey"
+	player = Vector2(500.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	spawn_enemy("BRIAR HOUND", Vector2(600.0, GROUND_Y - 34), 5, 1)
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	var thread_hits := int(shades.back().health) == 3 and first_thread_cooldown > 0.0
+	use_first_thread()
+	var thread_cooldown := int(shades.back().health) == 3
+	player = shades.back().pos
+	combo_time = 0.0
+	handle_primary()
+	var melee_still_works := int(shades.back().health) == 2
+	dodge_cooldown = 0.0
+	perform_dodge(1.0)
+	var dodge_still_works := dodge_time > 0.0
+	shades.clear()
+	wagon_integrity = 0.0
+	fail_run("first boss test")
+	restart_from_checkpoint()
+	var marked_restore := mark_level == 1 and cured_allies == [chosen] and zone == 0 and wagon_condition() == "stationed" and wagon_travel_locked() and state == "journey"
+	reset_to_prologue()
+	player = Vector2(500.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	spawn_enemy("BRIAR HOUND", Vector2(560.0, GROUND_Y - 34), 5, 1)
+	use_first_thread()
+	var no_thread_before_mark := mark_level == 0 and lolth_form() == "elf" and int(shades.back().health) == 5
+	shades.clear()
+	reach_safe_camp_for_test()
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	use_camp_action()
+	defeat_boss_for_test()
+	var new_run_reaches_shell := state == "shar_shell" and mark_level == 0
+	for _beat in H02_SHELL_BEATS.size():
+		advance_shar_shell()
+	var full_shell_applies_mark := state == "cure" and mark_level == 1 and shar_beat == 0
+	var passed := no_boss_before_safe_camp and safe_camp_reached and boss_not_automatic and needs_wagon and only_boss and lunge_telegraphed and lunge_hits_after_windup and wagon_charge_telegraphed and charge_hits_after_windup and boss_failure_reset and boss_defeated_by_melee and shell_advances and shell_skipped and mark_once and lolth_drow and eight_choices and echoes_zero_before_cure and no_echo_before_cure and one_cure and no_second_cure and wagon_held and travel_blocked and echoes_after_cure and echoes_capped and thread_hits and thread_cooldown and melee_still_works and dodge_still_works and marked_restore and no_thread_before_mark and new_run_reaches_shell and full_shell_applies_mark
+	if passed:
+		print("SELF_TEST_B03_PASS: camp action starts a telegraphed Antlered Hunger; victory reaches the Shar shell, Mark I, and exactly one cure with capped Echoes and a locked wagon (%d melee hits)" % hits)
+	else:
+		push_error("SELF_TEST_B03_FAIL: start=%s/%s/%s/%s boss=%s lunge=%s/%s charge=%s/%s reset=%s victory=%s shell=%s/%s mark=%s/%s choices=%s echoes=%s/%s cure=%s/%s wagon=%s travel=%s echo=%s/%s thread=%s/%s melee=%s dodge=%s restore=%s premark=%s replay=%s/%s" % [no_boss_before_safe_camp, safe_camp_reached, boss_not_automatic, needs_wagon, only_boss, lunge_telegraphed, lunge_hits_after_windup, wagon_charge_telegraphed, charge_hits_after_windup, boss_failure_reset, boss_defeated_by_melee, shell_advances, shell_skipped, mark_once, lolth_drow, eight_choices, echoes_zero_before_cure, no_echo_before_cure, one_cure, no_second_cure, wagon_held, travel_blocked, echoes_after_cure, echoes_capped, thread_hits, thread_cooldown, melee_still_works, dodge_still_works, marked_restore, no_thread_before_mark, new_run_reaches_shell, full_shell_applies_mark])
+	return passed
+
 func is_cave_camp_start() -> bool:
 	return state == "journey" and zone == 0 and mark_level == 0 and cured_allies.is_empty() and wagon_repair == 0 and wagon_condition() == "cave_damaged" and wagon_travel_locked() and lolth_form() == "elf" and not is_night() and shades.is_empty() and night_wave_total == 0 and tutorial_phase == "day_salvage"
 
@@ -583,7 +746,7 @@ func wagon_travel_locked() -> bool:
 func ally_records() -> Array[Dictionary]:
 	var records: Array[Dictionary] = []
 	for ally in THALESTRIEL:
-		records.append({"name": ally, "condition": "cured" if cured_allies.has(ally) else "plagued", "controllable": false})
+		records.append({"name": ally, "condition": "cured" if cured_allies.has(ally) else "plagued", "form": "drow" if cured_allies.has(ally) else "elf", "controllable": false})
 	return records
 
 func cave_camp_state() -> Dictionary:
@@ -654,9 +817,11 @@ func _process(delta: float) -> void:
 			advance_opening()
 		queue_redraw()
 		return
-	if state == "comic":
-		if Input.is_action_just_pressed("primary"):
-			advance_comic()
+	if state == "shar_shell":
+		if Input.is_action_just_pressed("skip"):
+			skip_shar_shell()
+		elif Input.is_action_just_pressed("primary"):
+			advance_shar_shell()
 		queue_redraw()
 		return
 	if state == "cure":
@@ -696,6 +861,7 @@ func _process(delta: float) -> void:
 	dodge_time = maxf(0.0, dodge_time - delta)
 	dodge_cooldown = maxf(0.0, dodge_cooldown - delta)
 	combo_time = maxf(0.0, combo_time - delta)
+	first_thread_cooldown = maxf(0.0, first_thread_cooldown - delta)
 	if combo_time <= 0.0:
 		combo_step = 0
 		combo_target = ""
@@ -705,6 +871,10 @@ func _process(delta: float) -> void:
 		handle_primary()
 	if Input.is_action_just_pressed("shadow_action"):
 		use_shadow_action(direction)
+	if Input.is_action_just_pressed("shadow_strike"):
+		use_first_thread()
+	if Input.is_action_just_pressed("camp_action"):
+		use_camp_action()
 	if Input.is_action_just_pressed("camp_menu"):
 		open_camp_menu()
 	if Input.is_action_just_pressed("post_cycle"):
@@ -715,10 +885,7 @@ func _process(delta: float) -> void:
 	update_enemies(delta)
 	update_night_waves(delta)
 	update_zone_hazards()
-	for shade in shades:
-		if not shade.defeated and hurt_cooldown <= 0.0 and player.distance_to(shade.pos) < PLAYER_RADIUS + 16.0:
-			hurt_lolth()
-			break
+	check_enemy_contact()
 	check_survival_failures()
 	queue_redraw()
 
@@ -728,6 +895,12 @@ func advance_world_clock(delta: float) -> void:
 		update_thornwake_tutorial(delta)
 	else:
 		update_clock(delta)
+
+func check_enemy_contact() -> void:
+	for shade in shades:
+		if not shade.defeated and hurt_cooldown <= 0.0 and player.distance_to(shade.pos) < PLAYER_RADIUS + 16.0:
+			hurt_lolth()
+			break
 
 func check_survival_failures() -> void:
 	if flame <= 0.0:
@@ -830,19 +1003,9 @@ func handle_primary() -> void:
 			shade.health = int(shade.health) - strike_power
 			trigger_mark_vfx("strike", shade.pos + Vector2(0, -32))
 			if int(shade.health) <= 0:
-				shade.defeated = true
-				shade.defeated_at = pulse
 				combo_step = 0
 				combo_target = ""
-				if mark_level > 0:
-					collect_echo(int(shade.echoes))
-				message = "%s falls. Lolth absorbs its shadow." % shade.name
-				if String(shade.name) == "STONE MAW":
-					stonehook_boss_defeated = true
-					try_advance_from_camp()
-				elif String(shade.name) == "ROOT CROWN":
-					hollowroot_boss_defeated = true
-					try_advance_from_camp()
+				defeat_enemy(shade)
 			else:
 				message = "%s is staggered. STRIKE %d/3." % [shade.name, combo_step]
 			message_time = 1.2
@@ -881,6 +1044,51 @@ func handle_primary() -> void:
 			return
 	message = "Stand near a resource, enemy, or the Wagon and press the primary action."
 	message_time = 2.0
+
+func defeat_enemy(shade: Dictionary) -> void:
+	shade.defeated = true
+	shade.defeated_at = pulse
+	if mark_level > 0:
+		collect_echo(int(shade.echoes))
+	message = "%s falls. Lolth absorbs its shadow." % shade.name
+	message_time = 1.2
+	if String(shade.name) == "STONE MAW":
+		stonehook_boss_defeated = true
+		try_advance_from_camp()
+	elif String(shade.name) == "ROOT CROWN":
+		hollowroot_boss_defeated = true
+		try_advance_from_camp()
+	elif String(shade.name) == "ANTLERED HUNGER":
+		defeat_antlered_hunger()
+
+# FIRST THREAD: a short-range shadow strike that supplements melee and dodge.
+func use_first_thread() -> void:
+	if mark_level < 1:
+		message = "Lolth has no shadow strike yet."
+		message_time = 1.5
+		return
+	if first_thread_cooldown > 0.0:
+		return
+	var target: Dictionary = {}
+	var best_distance := FIRST_THREAD_RANGE
+	for shade in shades:
+		var distance := player.distance_to(shade.pos)
+		if not shade.defeated and distance <= best_distance:
+			target = shade
+			best_distance = distance
+	if target.is_empty():
+		message = "FIRST THREAD finds no target in range."
+		message_time = 1.2
+		return
+	first_thread_cooldown = FIRST_THREAD_COOLDOWN
+	player_facing_left = float(target.pos.x) < player.x
+	target.health = int(target.health) - FIRST_THREAD_DAMAGE
+	trigger_mark_vfx("strike", target.pos + Vector2(0, -32))
+	if int(target.health) <= 0:
+		defeat_enemy(target)
+	else:
+		message = "FIRST THREAD strikes %s." % target.name
+		message_time = 1.2
 
 func load_capacity() -> int:
 	var might := int(current_stats().might)
@@ -1044,28 +1252,52 @@ func all_shades_defeated() -> bool:
 			return false
 	return true
 
-func start_comic() -> void:
-	state = "comic"
-	comic_panel = 0
+func start_shar_shell() -> void:
+	state = "shar_shell"
+	shar_beat = 0
 
-func advance_comic() -> void:
-	comic_panel += 1
-	if comic_panel >= COMIC_LINES.size():
-		receive_first_mark()
+func advance_shar_shell() -> void:
+	if state != "shar_shell":
+		return
+	shar_beat += 1
+	if shar_beat >= H02_SHELL_BEATS.size():
+		finish_shar_shell()
 
-func receive_first_mark() -> void:
+func skip_shar_shell() -> void:
+	if state != "shar_shell":
+		return
+	finish_shar_shell()
+
+func finish_shar_shell() -> void:
+	shar_beat = 0
+	apply_mark_one()
+
+# Mark I applies once: Lolth becomes drow, gains FIRST THREAD, and chooses one cure.
+func apply_mark_one() -> void:
+	if mark_level >= 1:
+		return
 	mark_level = 1
 	shadow_echoes = 0
+	health = max_health()
 	state = "cure"
 	selected_cure = 0
-	message = "FIRST THREAD — Choose the first Thalestriel to cure."
+	message = "FIRST THREAD — Choose one Thalestriel to cure."
 	message_time = 5.0
 
 func collect_echo(amount := 1) -> void:
 	if mark_level <= 0 or mark_level >= 9:
 		return
-	shadow_echoes += amount
 	var threshold: int = int(ECHO_THRESHOLDS[mark_level])
+	if zone == 0:
+		# Echoes begin only after the first cure and stop at the next Mark threshold.
+		if cured_allies.is_empty():
+			return
+		if mark_level >= THORNWAKE_MARK_CAP:
+			shadow_echoes = mini(shadow_echoes + amount, threshold)
+			message = "SHADOW ECHOES %d/%d." % [shadow_echoes, threshold]
+			message_time = 1.6
+			return
+	shadow_echoes += amount
 	if zone == 1 and mark_level == 1 and not stonehook_shar_ready:
 		if shadow_echoes >= threshold:
 			message = "The Echoes gather around the Stonehook shrine. Finish axle and brakes."
@@ -1174,6 +1406,10 @@ func reset_to_prologue() -> void:
 	selected_recipe = WHEEL_KIT_RECIPE
 	tutorial_phase = "day_salvage"
 	dusk_time = 0.0
+	antlered_hunger_defeated = false
+	first_thread_cooldown = 0.0
+	dodge_time = 0.0
+	dodge_cooldown = 0.0
 	brazier_built = false
 	crafted_recipes = {"cataplasm": 0, "wheel_kit": 0, "brazier": 0, "axle_brakes": 0}
 	clock_seconds = 0.0
@@ -1349,13 +1585,13 @@ func spawn_enemy(enemy_name: String, position: Vector2, enemy_health: int, echoe
 			behavior = "entangle"
 		"ROOT CROWN":
 			behavior = "crush"
-	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "defeated": false, "defeated_at": -1.0})
+	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "defeated": false, "defeated_at": -1.0})
 
 func update_enemies(delta: float) -> void:
 	for enemy in shades:
 		if enemy.defeated:
 			continue
-		if zone == 0 and String(enemy.get("behavior", "")) in ["pounce", "charge"]:
+		if zone == 0 and String(enemy.get("behavior", "")) in ["pounce", "charge", "relentless"]:
 			update_thornwake_attacker(enemy, delta)
 			continue
 		var target := player
@@ -1388,9 +1624,23 @@ func update_enemies(delta: float) -> void:
 				damage_wagon(STAG_WAGON_HIT_DAMAGE, String(enemy.name))
 
 # Thornwake attackers telegraph every strike: approach, wind up, strike, recover.
-# Stags of Mire charge the Wagon; Briar Hounds lunge at Lolth.
+# Stags of Mire charge the Wagon; Briar Hounds lunge at Lolth. The Antlered Hunger
+# lunges at Lolth and makes every third attack a long-telegraphed charge at the Wagon.
+func attack_profile(enemy: Dictionary) -> Dictionary:
+	match String(enemy.behavior):
+		"charge":
+			return {"wagon": true, "approach": 24.0, "range": STAG_CHARGE_RANGE, "windup": STAG_WINDUP, "speed": STAG_CHARGE_SPEED, "strike": STAG_CHARGE_TIME, "recover": STAG_WAGON_HIT_COOLDOWN, "damage": STAG_WAGON_HIT_DAMAGE}
+		"relentless":
+			if int(enemy.get("attack_count", 0)) % 3 == 2:
+				return {"wagon": true, "approach": 0.0, "range": VIEW.x, "windup": BOSS_WAGON_WINDUP, "speed": BOSS_WAGON_CHARGE_SPEED, "strike": BOSS_WAGON_CHARGE_TIME, "recover": BOSS_RECOVER, "damage": BOSS_WAGON_DAMAGE}
+			return {"wagon": false, "approach": 72.0, "range": BOSS_LUNGE_RANGE, "windup": BOSS_WINDUP, "speed": BOSS_LUNGE_SPEED, "strike": BOSS_LUNGE_TIME, "recover": BOSS_RECOVER, "damage": 0.0}
+	return {"wagon": false, "approach": 56.0, "range": HOUND_LUNGE_RANGE, "windup": HOUND_WINDUP, "speed": HOUND_LUNGE_SPEED, "strike": HOUND_LUNGE_TIME, "recover": HOUND_RECOVER, "damage": 0.0}
+
 func update_thornwake_attacker(enemy: Dictionary, delta: float) -> void:
-	var charges_wagon := String(enemy.behavior) == "charge"
+	if String(enemy.attack_state) == "approach":
+		enemy.attack_target = "wagon" if bool(attack_profile(enemy).wagon) else "lolth"
+	var profile := attack_profile(enemy)
+	var charges_wagon := String(enemy.get("attack_target", "lolth")) == "wagon"
 	var target_x := CARAVAN_X if charges_wagon else player.x
 	var distance := absf(target_x - float(enemy.pos.x))
 	var direction := signf(target_x - float(enemy.pos.x))
@@ -1398,10 +1648,10 @@ func update_thornwake_attacker(enemy: Dictionary, delta: float) -> void:
 	enemy.attack_time = maxf(0.0, float(enemy.attack_time) - delta)
 	match String(enemy.attack_state):
 		"approach":
-			speed = 24.0 if charges_wagon else 56.0
-			if distance < (STAG_CHARGE_RANGE if charges_wagon else HOUND_LUNGE_RANGE):
+			speed = float(profile.approach)
+			if distance < float(profile.range):
 				enemy.attack_state = "windup"
-				enemy.attack_time = STAG_WINDUP if charges_wagon else HOUND_WINDUP
+				enemy.attack_time = float(profile.windup)
 				enemy.attack_dir = direction if direction != 0.0 else -1.0
 				if charges_wagon:
 					message = "%s lowers its antlers at the Wagon!" % enemy.name
@@ -1409,21 +1659,22 @@ func update_thornwake_attacker(enemy: Dictionary, delta: float) -> void:
 		"windup":
 			if float(enemy.attack_time) <= 0.0:
 				enemy.attack_state = "strike"
-				enemy.attack_time = STAG_CHARGE_TIME if charges_wagon else HOUND_LUNGE_TIME
+				enemy.attack_time = float(profile.strike)
 		"strike":
-			speed = STAG_CHARGE_SPEED if charges_wagon else HOUND_LUNGE_SPEED
+			speed = float(profile.speed)
 			direction = float(enemy.attack_dir)
 			if charges_wagon and distance < 46.0:
 				speed = 0.0
-				damage_wagon(STAG_WAGON_HIT_DAMAGE, String(enemy.name))
+				damage_wagon(float(profile.damage), String(enemy.name))
 				enemy.attack_state = "recover"
-				enemy.attack_time = STAG_WAGON_HIT_COOLDOWN
+				enemy.attack_time = float(profile.recover)
 			elif float(enemy.attack_time) <= 0.0:
 				enemy.attack_state = "recover"
-				enemy.attack_time = STAG_WAGON_HIT_COOLDOWN if charges_wagon else HOUND_RECOVER
+				enemy.attack_time = float(profile.recover)
 		"recover":
 			if float(enemy.attack_time) <= 0.0:
 				enemy.attack_state = "approach"
+				enemy.attack_count = int(enemy.get("attack_count", 0)) + 1
 	enemy.pos.x = clampf(float(enemy.pos.x) + direction * speed * delta, 70.0, VIEW.x - 70.0)
 
 func update_zone_hazards() -> void:
@@ -1538,6 +1789,32 @@ func complete_tutorial_defense() -> void:
 	message = "DAWN — The Wagon holds. The cave camp is safe."
 	message_time = 5.0
 
+func use_camp_action() -> void:
+	if zone != 0 or mark_level != 0 or tutorial_phase != "safe_camp":
+		return
+	if player.x >= 305.0:
+		message = "Return to the Wagon to face the Antlered Hunger."
+		message_time = 2.0
+		return
+	begin_boss_encounter()
+
+func begin_boss_encounter() -> void:
+	tutorial_phase = "boss_encounter"
+	clock_seconds = DAY_DURATION
+	shades.clear()
+	spawn_enemy("ANTLERED HUNGER", Vector2(1060, GROUND_Y - 34), ANTLERED_HUNGER_HEALTH, 3)
+	message = "THE ANTLERED HUNGER — Watch its warnings and dodge its strikes."
+	message_time = 4.0
+
+func defeat_antlered_hunger() -> void:
+	if antlered_hunger_defeated:
+		return
+	antlered_hunger_defeated = true
+	shades.clear()
+	clock_seconds = 0.0
+	tutorial_phase = "safe_camp"
+	start_shar_shell()
+
 func current_objective() -> String:
 	if zone != 0 or mark_level != 0:
 		return ZONE_OBJECTIVES[zone]
@@ -1547,7 +1824,9 @@ func current_objective() -> String:
 		"night_defense":
 			return "Defend the cave camp and the Wagon until the threat passes."
 		"safe_camp":
-			return "The Wagon holds. The cave camp is safe."
+			return "The cave camp is safe. Face the Antlered Hunger from the Wagon."
+		"boss_encounter":
+			return "Defeat the Antlered Hunger. Dodge when it winds up."
 	if recipe_has_ingredients(RECIPES[WHEEL_KIT_RECIPE]):
 		return "Stand at the Wagon and craft the WHEEL KIT."
 	return "Gather WOOD, ROPE, and SALVAGE, then store them in the Wagon."
@@ -1623,20 +1902,22 @@ func select_next_cure() -> void:
 	message_time = 2.0
 
 func cure_selected_ally() -> void:
+	if state != "cure":
+		return
 	var available := available_allies()
 	if available.is_empty():
 		return
 	selected_cure = clampi(selected_cure, 0, available.size() - 1)
 	var ally := available[selected_cure]
 	cured_allies.append(ally)
-	if posted_allies.size() < MAX_ACTIVE_POSTS:
+	if zone != 0 and posted_allies.size() < MAX_ACTIVE_POSTS:
 		posted_allies.append(ally)
 	awakened = cured_allies.size()
 	ally_assists_used.clear()
 	state = "journey"
 	create_checkpoint()
 	if zone == 0 and mark_level == 1:
-		message = "%s wakes. The Wagon stays at the cave camp." % ally
+		message = "%s wakes as a drow. The Wagon stays at the cave camp." % ally
 	elif zone == 1 and mark_level == 2:
 		state = "stonehook_complete"
 		message = "%s wakes. The Wagon holds the mountain; Hollowroot waits below." % ally
@@ -1647,6 +1928,10 @@ func cure_selected_ally() -> void:
 	message_time = 4.0
 
 func cycle_post_ally() -> void:
+	if zone == 0:
+		message = "Ally posts are not available at the cave camp."
+		message_time = 2.0
+		return
 	if player.x >= 305.0:
 		message = "Return to the Wagon to manage ally posts."
 		message_time = 2.0
@@ -1660,6 +1945,10 @@ func cycle_post_ally() -> void:
 	message_time = 2.5
 
 func toggle_selected_post() -> void:
+	if zone == 0:
+		message = "Ally posts are not available at the cave camp."
+		message_time = 2.0
+		return
 	if player.x >= 305.0 or cured_allies.is_empty():
 		message = "Manage ally posts beside the Wagon."
 		message_time = 2.0
@@ -1732,14 +2021,16 @@ func _draw() -> void:
 	draw_foreground_overlay()
 	draw_mark_vfx()
 	draw_hud()
-	if state == "comic":
-		draw_comic()
+	if state == "shar_shell":
+		draw_shar_shell()
 	elif state == "cure":
 		draw_cure_menu()
 	elif zone == 0 and mark_level == 0 and tutorial_phase == "dusk":
 		draw_nightfall_banner()
 	elif zone == 0 and mark_level == 0 and tutorial_phase == "day_salvage" and state == "journey":
 		draw_wheel_kit_recipe()
+	elif zone == 0 and mark_level == 0 and tutorial_phase == "safe_camp" and state == "journey":
+		draw_boss_camp_action()
 	elif state == "victory":
 		draw_end_card(true)
 	elif state == "defeat":
@@ -1822,7 +2113,7 @@ func draw_shades() -> void:
 			sheet = LATER_REGION_THREATS_RUNTIME
 		elif String(shade.name) == "STAG OF MIRE":
 			sheet = STAG_OF_MIRE_RUNTIME
-		elif String(shade.name) == "Antlered Hunger":
+		elif String(shade.name) == "ANTLERED HUNGER":
 			sheet = ANTLERED_HUNGER_RUNTIME
 		var source_columns := 3.0 if zone == 2 else 2.0
 		var source_width := sheet.get_width() / source_columns
@@ -1843,9 +2134,13 @@ func draw_shades() -> void:
 		else:
 			var hover_frame := int(floor(pulse * 4.0)) % 2
 			source = Rect2(source_width * float(hover_frame), 0, source_width, source_height)
-		draw_texture_rect_region(sheet, Rect2(p.x - 48, p.y - 92, 96, 96), source)
+		if String(shade.name) == "ANTLERED HUNGER":
+			draw_texture_rect_region(sheet, Rect2(p.x - 80, p.y - 150, 160, 160), source)
+		else:
+			draw_texture_rect_region(sheet, Rect2(p.x - 48, p.y - 92, 96, 96), source)
 		if not shade.defeated:
-			draw_string(ThemeDB.fallback_font, p + Vector2(-50, -43), String(shade.name), HORIZONTAL_ALIGNMENT_CENTER, 100, 12, Color("dfb8f4"))
+			var label_width := 180.0 if String(shade.name) == "ANTLERED HUNGER" else 100.0
+			draw_string(ThemeDB.fallback_font, p + Vector2(-label_width / 2.0, -43), String(shade.name), HORIZONTAL_ALIGNMENT_CENTER, label_width, 12, Color("dfb8f4"))
 			if String(shade.get("behavior", "")) == "charge" and is_night() and zone == 0:
 				draw_string(ThemeDB.fallback_font, p + Vector2(-50, -58), "WAGON RUNNER", HORIZONTAL_ALIGNMENT_CENTER, 100, 10, Color("f3bc75"))
 			var enemy_health := float(int(shade.health)) / float(int(shade.get("max_health", shade.health))) * 100.0
@@ -1863,7 +2158,7 @@ func draw_attack_telegraphs() -> void:
 func draw_attack_telegraph(shade: Dictionary) -> void:
 	var p: Vector2 = shade.pos
 	var warning := Color(1.0, 0.42, 0.25, 0.7 + 0.3 * sin(pulse * 18.0))
-	if String(shade.behavior) == "charge":
+	if String(shade.get("attack_target", "lolth")) == "wagon":
 		draw_line(p + Vector2(0, -20), Vector2(CARAVAN_X, GROUND_Y - 40), warning, 4.0)
 		draw_string(ThemeDB.fallback_font, p + Vector2(-50, -112), "CHARGE!", HORIZONTAL_ALIGNMENT_CENTER, 100, 16, warning)
 	else:
@@ -2063,7 +2358,7 @@ func draw_hud() -> void:
 	draw_action_prompt(Vector2(460, 620), 2)
 	draw_action_prompt(Vector2(765, 620), 3)
 	var load_text: String = "EMPTY" if recovered_load.is_empty() else recovered_load[selected_load].name
-	draw_string(ThemeDB.fallback_font, Vector2(46, 648), "MOVE: A/D or stick  ·  JUMP: Space / bottom button  ·  PRIMARY: E / click / left face  ·  DODGE: Shift / right click / trigger", HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color("d9d1e1"))
+	draw_string(ThemeDB.fallback_font, Vector2(46, 648), "MOVE: A/D or stick  ·  JUMP: Space / bottom button  ·  PRIMARY: E / click / left face  ·  DODGE: Shift / right click / trigger" + ("  ·  FIRST THREAD: C / right face" if mark_level >= 1 else ""), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color("d9d1e1"))
 	var stats := current_stats()
 	var next_threshold: int = int(ECHO_THRESHOLDS[mark_level]) if mark_level > 0 and mark_level < 9 else 0
 	draw_string(ThemeDB.fallback_font, Vector2(46, 670), "LOAD %d/%d: %s  ·  STOCK %d/%d  ·  POSTS %d/%d  ·  ECHOES %d/%d  ·  M:%d V:%d G:%d S:%d W:%d" % [load_used(), load_capacity(), load_text, wagon_stock.size(), WAGON_STOCK_CAPACITY, posted_allies.size(), MAX_ACTIVE_POSTS, shadow_echoes, next_threshold, stats.might, stats.vigor, stats.grace, stats.shadow, stats.web], HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color("a9d9d0"))
@@ -2073,7 +2368,7 @@ func draw_hud() -> void:
 func draw_cure_menu() -> void:
 	draw_rect(Rect2(0, 0, VIEW.x, VIEW.y), Color(0.025, 0.01, 0.06, 0.88))
 	draw_string(ThemeDB.fallback_font, Vector2(0, 118), "%s" % MARK_NAMES[mark_level], HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 38, Color("efd0ff"))
-	draw_string(ThemeDB.fallback_font, Vector2(0, 160), "CHOOSE A THALESTRIEL TO CURE", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 20, Color("fff2df"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 160), "CHOOSE ONE THALESTRIEL TO CURE", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 20, Color("fff2df"))
 	var available := available_allies()
 	for index in available.size():
 		var column := index % 4
@@ -2127,17 +2422,17 @@ func draw_passive_mission_emblem(position: Vector2, mission_type: String) -> voi
 	var source := Rect2(emblem_width * float(emblem_index), 0, emblem_width, PASSIVE_MISSION_EMBLEMS.get_height())
 	draw_texture_rect_region(PASSIVE_MISSION_EMBLEMS, Rect2(position, Vector2(22, 22)), source)
 
-func draw_comic() -> void:
-	draw_rect(Rect2(0, 0, VIEW.x, VIEW.y), Color(0.025, 0.01, 0.06, 0.93))
-	var source: Rect2 = COMIC_PANEL_SOURCES[comic_panel]
-	var panel_height := 520.0
-	var panel_width := source.size.x / source.size.y * panel_height
-	var panel_rect := Rect2((VIEW.x - panel_width) / 2.0, 42, panel_width, panel_height)
-	draw_rect(panel_rect.grow(12.0), Color("231632"))
-	draw_texture_rect_region(KISS_OF_SHAR_STORYBOARD, panel_rect, source)
-	draw_string(ThemeDB.fallback_font, Vector2(160, 620), "THE KISS OF SHAR", HORIZONTAL_ALIGNMENT_CENTER, 960, 28, Color("efd0ff"))
-	draw_string(ThemeDB.fallback_font, Vector2(170, 654), COMIC_LINES[comic_panel], HORIZONTAL_ALIGNMENT_CENTER, 940, 18, Color("fff2df"))
-	draw_string(ThemeDB.fallback_font, Vector2(0, 690), "Press E to continue", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
+# Placeholder shell: no H-02 art, dialogue, or story text until H-02 is approved for runtime.
+func draw_shar_shell() -> void:
+	draw_rect(Rect2(Vector2.ZERO, VIEW), Color("07050f"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 660), "E / click: continue   ·   Esc / Start: skip", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
+
+func draw_boss_camp_action() -> void:
+	var panel := Rect2(24, 132, 420, 58)
+	draw_rect(panel, Color(0.035, 0.04, 0.1, 0.84))
+	draw_rect(panel, Color("b79857"), false, 1.5)
+	draw_string(ThemeDB.fallback_font, panel.position + Vector2(14, 22), "CAMP ACTION: FACE THE ANTLERED HUNGER", HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color("f8dc8c"))
+	draw_string(ThemeDB.fallback_font, panel.position + Vector2(14, 44), "At the Wagon, press F / left shoulder to begin.", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color("d8c9aa"))
 
 # Placeholder shell: no comic art or story text until H-01 is approved for runtime.
 func draw_opening() -> void:
