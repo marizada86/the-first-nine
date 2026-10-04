@@ -2238,7 +2238,21 @@ func spawn_enemy(enemy_name: String, position: Vector2, enemy_health: int, echoe
 			behavior = "entangle"
 		"ROOT CROWN":
 			behavior = "crush"
-	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0})
+	var initial_target_x := CARAVAN_X if zone == 0 and behavior == "charge" else player.x
+	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0, "facing_left": initial_target_x < position.x})
+
+func update_enemy_facing(enemy: Dictionary, horizontal_motion: float) -> void:
+	if not is_zero_approx(horizontal_motion):
+		enemy.facing_left = horizontal_motion < 0.0
+
+func enemy_facing_left(enemy: Dictionary) -> bool:
+	# Older snapshots/test dictionaries may predate persistent facing.
+	if enemy.has("facing_left"):
+		return bool(enemy.facing_left)
+	if String(enemy.get("attack_state", "")) in ["windup", "strike"] and not is_zero_approx(float(enemy.get("attack_dir", 0.0))):
+		return float(enemy.attack_dir) < 0.0
+	var target_x := CARAVAN_X if zone == 0 and String(enemy.get("behavior", "")) == "charge" else player.x
+	return target_x < float(enemy.pos.x)
 
 func update_enemies(delta: float) -> void:
 	for enemy in shades:
@@ -2269,7 +2283,9 @@ func update_enemies(delta: float) -> void:
 				speed = 58.0 if distance > 155.0 else 138.0
 			"entangle":
 				speed = 72.0 if distance < 210.0 else 34.0
-		enemy.pos.x = clampf(float(enemy.pos.x) + direction * speed * delta, 70.0, VIEW.x - 70.0)
+		var previous_x := float(enemy.pos.x)
+		enemy.pos.x = clampf(previous_x + direction * speed * delta, 70.0, VIEW.x - 70.0)
+		update_enemy_facing(enemy, float(enemy.pos.x) - previous_x)
 		if targets_wagon:
 			enemy.wagon_hit_cooldown = maxf(0.0, float(enemy.wagon_hit_cooldown) - delta)
 			if absf(float(enemy.pos.x) - CARAVAN_X) < 46.0 and float(enemy.wagon_hit_cooldown) <= 0.0:
@@ -2328,7 +2344,12 @@ func update_thornwake_attacker(enemy: Dictionary, delta: float) -> void:
 			if float(enemy.attack_time) <= 0.0:
 				enemy.attack_state = "approach"
 				enemy.attack_count = int(enemy.get("attack_count", 0)) + 1
-	enemy.pos.x = clampf(float(enemy.pos.x) + direction * speed * delta, 70.0, VIEW.x - 70.0)
+	var previous_x := float(enemy.pos.x)
+	enemy.pos.x = clampf(previous_x + direction * speed * delta, 70.0, VIEW.x - 70.0)
+	if String(enemy.attack_state) in ["windup", "strike"]:
+		update_enemy_facing(enemy, float(enemy.attack_dir))
+	else:
+		update_enemy_facing(enemy, float(enemy.pos.x) - previous_x)
 
 func update_zone_hazards() -> void:
 	if zone != 1 or hazard_cooldown > 0.0:
@@ -2839,7 +2860,7 @@ func draw_shades() -> void:
 		var geometry := enemy_draw_geometry(shade)
 		var tint := Color(2.2, 1.8, 1.8) if float(shade.get("hit_flash", 0.0)) > 0.0 else Color.WHITE
 		var size := enemy_visual_size(shade)
-		draw_texture_rect_region(geometry.sheet, geometry.destination, geometry.source, tint)
+		draw_enemy_sprite(shade, geometry, tint)
 		if not shade.defeated:
 			var top: float = geometry.body.position.y
 			var label_width := maxf(160.0, size)
@@ -2849,6 +2870,14 @@ func draw_shades() -> void:
 			var enemy_health := float(int(shade.health)) / float(int(shade.get("max_health", shade.health))) * 100.0
 			draw_rect(Rect2(p.x - 45, top - 16.0, 90, 6), Color("27182e"))
 			draw_rect(Rect2(p.x - 45, top - 16.0, 90 * enemy_health / 100.0, 6), Color("db7587"))
+
+func draw_enemy_sprite(shade: Dictionary, geometry: Dictionary, tint: Color) -> void:
+	if enemy_facing_left(shade):
+		# Reflect around the visible body's world center, not the atlas-cell center.
+		draw_set_transform(Vector2(float(shade.pos.x) * 2.0, 0.0), 0.0, Vector2(-1.0, 1.0))
+	draw_texture_rect_region(geometry.sheet, geometry.destination, geometry.source, tint)
+	# Do not reflect labels, health bars or subsequent scene drawing.
+	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 func prepare_enemy_frame_bounds() -> void:
 	var started := Time.get_ticks_usec()
