@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SELF_TEST_B01_PASS: opening shell reaches the day-start cave camp with eight plagued allies and a damaged, travel-locked wagon
+SELF_TEST_B02_PASS: day salvage, Wheel Kit repair, nightfall, telegraphed defense, safe camp, and pre-Mark-I resets are ready
+SELF_TEST_B03_PASS: camp action starts a telegraphed Antlered Hunger; victory reaches the Shar shell, Mark I, and exactly one cure with capped Echoes and a locked wagon (12 melee hits)
+SELF_TEST_B04_PASS: safe-wagon capture, post-Mark-I restore, preserved Mark I and cure, Echo gate and cap, and travel lock are ready
+SELF_TEST_B05_PASS: melee lands at visible contact, misses are distinct, and attack, dodge, and hurt visuals follow real damage
+SELF_TEST_PLAYTESTER_PASS: panel pause, Mark bounds, night waves, dawn cleanup, input isolation, and exact run restoration
+SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready

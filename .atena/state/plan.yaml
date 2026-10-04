@@ -353,7 +353,7 @@ active_plan:
   spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
   evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
   implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: approved-ready-for-external-execution
+  status: implemented-published-awaiting-final-technical-review
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
@@ -365,12 +365,54 @@ active_plan:
   source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
   implementation_approved: true
   source_push_approved: true
-  implementation_push_approved: false
+  implementation_push_approved: true
+  implementation_branch: b05-thornwake-combat-readability
+  published_commit: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+  branch_publication: "Owner authorized the original implementation push; the published feature branch was fetched locally. No B-05 PR or merge."
+  review_evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
+  approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
+  revision_execution: local
+  revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
+  followup_push_approved: true
+  followup_push_authority: "Owner explicitly authorized push of codex/b05-controls-wagon-inventory, including implementation and records, on 2026-10-04. IN_PLAN publication; no PR or merge."
+  revision_published: true
+  revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
+  revision_publication: "Normal push to origin/codex/b05-controls-wagon-inventory verified by ls-remote; implementation 43ab112 and owner-validation bb4a0d4 preserved. Publication reconciliation follows on the same branch."
   pull_request_approved: false
   merge_approved: false
   batch: B-05
-  checkpoint: opus-local-implementation
-plan_cursor: B-05-approved-ready-for-opus
+  checkpoint: published-enemy-geometry-final-technical-review
+  implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
+  implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+  prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
+  revision_branch: codex/b05-controls-wagon-inventory
+  revision_base: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+  revision_commit: "43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c"
+  human_validation_accepted: true
+  human_validation_date: "2026-10-04"
+  human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
+  published_revision_branch: codex/b05-controls-wagon-inventory
+  revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
+  revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
+  deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
+  geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
+  geometry_correction_classification: IN_PLAN
+  geometry_correction_approved: true
+  geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
+  geometry_correction_authority: "Owner explicitly authorized the proposed local Stag aspect/shared outline reach/startup preparation fix and tests; no push, PR or merge."
+  geometry_correction_push_approved: true
+  geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
+  geometry_correction_status: implemented-published-awaiting-final-technical-review
+  geometry_correction_published: true
+  geometry_correction_commit: "b8823c70c637fdbef9f36e6cf0da0925369faa47"
+  geometry_correction_human_validation_accepted: true
+  geometry_correction_human_validation_date: "2026-10-04"
+  geometry_correction_human_validation_source: "Owner stated: conferido. Vamos passar o próximo prompt para o opus 5.5. Accepted as IN_PLAN visual-review confirmation; no additional detailed tests inferred."
+  geometry_correction_publication_authority: "Owner explicitly authorized recording the confirmation and publishing the correction plus records on the existing branch after Opus reported b8823c7 unavailable. No PR or merge."
+  geometry_correction_publication: "Normal push to origin/codex/b05-controls-wagon-inventory advanced e6b614c to b8823c70c637fdbef9f36e6cf0da0925369faa47; verified with ls-remote. Remote main remains 9ea4fc1. Records reconciliation follows normally."
+  geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
+  geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
+plan_cursor: B-05-published-enemy-geometry-final-technical-review
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"
@@ -393,6 +435,19 @@ suspension: null
 deferred_requests: []
 pending_plan_change_requests: []
 approved_change_requests:
+  - id: "2026-10-04-b05-controls-and-wagon-menu-revision"
+    request_classification: PLAN_CHANGE_REQUEST
+    spec: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
+    canonical_decision: "[[2026-10-04-separated-controls-and-wagon-management]]"
+    evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
+    status: implemented-published-awaiting-technical-review
+    approval_mode: per-plan
+    approved: "2026-10-04"
+    approval_source: "Explicit owner request to implement here, then prepare results for Claude; subsequent instructions defer parry and request clean dash and larger enemies."
+    scope: "Independent inputs, Lolth inventory and wagon management; generic restore visuals, elapsed-time runtime validation, clean dash and Thornwake enemy proportions. Parry deferred."
+    blocking_gaps: []
+    published: true
+    publication_branch: codex/b05-controls-wagon-inventory
   - id: "2026-10-03-minimal-world-and-threat-assets"
     spec: "[[2026-10-03-minimal-world-and-threat-assets]]"
     generated_reference_receipt: "[[2026-10-03-minimal-world-and-threat-batch-w]]"

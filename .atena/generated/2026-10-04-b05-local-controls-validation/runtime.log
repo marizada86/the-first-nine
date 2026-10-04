@@ -1,0 +1,37 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1650
+
+LOCAL PASS gameplay left-click does not advance the opening
+LOCAL PASS E advances narrative confirmation
+LOCAL PASS E collects without attacking the overlapping enemy
+LOCAL PASS left-click attacks without collecting
+LOCAL PASS I opens carried inventory away from the Wagon
+LOCAL PASS inventory pauses world time and survival
+LOCAL PASS inventory selection click cannot attack or duplicate items
+LOCAL PASS closing inventory consumes the click
+LOCAL PASS M cannot open the Wagon away from camp
+LOCAL PASS M opens the Wagon near camp
+LOCAL PASS Wagon storage moves one existing item without duplication
+LOCAL PASS menu crafting preserves the Wheel Kit tutorial
+LOCAL PASS Allies lists all eight with locked Thornwake assignments
+LOCAL PASS callbacks cannot bypass cave role locks
+LOCAL PASS direct ally-management shortcuts are retired
+LOCAL PASS controller opens inventory away from camp
+LOCAL PASS controller opens Wagon near camp
+LOCAL PASS F4 closes management so panels cannot overlap
+LOCAL PASS F4 snapshot excludes UI nodes and input queues
+LOCAL PASS Shift remains dash at higher inspected Marks
+LOCAL PASS F4 restores prior state without duplicating inventory
+LOCAL PASS empty melee swing remains visible and deals no damage
+LOCAL PASS right-click parry remains reserved and inactive
+LOCAL PASS dash raster has no extra atlas overlay
+LOCAL PASS Briar Hound uses larger 160 px cell and adjusted melee reach
+LOCAL PASS Stag uses 200 px cell
+LOCAL PASS boss uses 260 px cell
+LOCAL PASS Space jumps with real keyboard input
+LOCAL PASS J provides independent keyboard melee
+LOCAL PASS controller left face attacks
+LOCAL PASS controller top face collects without attacking
+LOCAL PASS menu callbacks retain the two-post cap
+LOCAL PASS menu recall returns an existing post
+LOCAL_CONTROLS_PASS: 33/33 checks

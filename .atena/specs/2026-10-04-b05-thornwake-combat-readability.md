@@ -1,5 +1,5 @@
 ---
-status: approved-ready-for-external-execution
+status: implemented-published-awaiting-technical-review
 kind: bounded-runtime-fix-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b05-thornwake-combat-readability
@@ -12,6 +12,15 @@ depends_on:
   - "[[2026-10-04-playtester-debug-controls]]"
 evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
 implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
+implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
+implementation_branch: b05-thornwake-combat-readability
+implementation_base: 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b
+implementation_push_approved: true
+published_commit: 4400b59aab49ed2860c5c6369ba79b386a7d2e9a
+followup_push_approved: true
+revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
+pull_request_approved: false
+merge_approved: false
 ---
 
 # B-05 plan — Thornwake melee damage and animation readability
@@ -70,3 +79,24 @@ During a human playtest on 2026-10-04, the user confirmed the F4 playtester cont
 ## Approval checkpoint
 
 The owner selected `per-plan` for the single stable batch, `B-05`, on 2026-10-04. The separately authorized push of local commit `4ef349b` and the approval record `a31c12c` succeeded on remote `main`. The implementation is ready for Opus after it fetches and verifies the current source. This approval does not authorize a later implementation push, pull request or merge.
+
+## Implementation status
+
+- **Status:** implemented locally on `b05-thornwake-combat-readability`, from `origin/main` at `9ea4fc1`, and awaiting human review.
+- **Root causes found:**
+  - The 56 px hit test was narrower than the visible body contact (about 82 px for a Briar Hound).
+  - A miss gave no feedback.
+  - The hound's legitimate lunge damage followed the missed attack.
+  - A dodge was drawn as hurt, because the `dodge` VFX kind did not match the `dash` draw check and `hurt_cooldown` drove the hurt visuals.
+- **Fix:** measured melee reach at visible contact; a distinct miss swing; an enemy hit flash; and separate attack, dodge, and hurt states. Hurt visuals appear only after real health loss.
+- **Validation:** the Godot 4.7.2 headless self-test passes (B-01 to B-05 and playtester); 11 B-05 negative controls fail as expected; the real-input runner passes 9 of 9; normal and headless runs are error-free.
+- **Details:** exact health values, captures, and limitations are in `[[2026-10-04-b05-thornwake-combat-readability-implementation]]`.
+- **Historical approval state at implementation:** publication had not yet been approved. The later publication is recorded below.
+
+## Current review and requested revision
+
+The original approved implementation was subsequently published with owner authorization on `b05-thornwake-combat-readability` at `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. It has not been merged. The preparation and execution instructions above describe the original batch and its historical gate.
+
+Independent review found an uncleared hurt/action state on generic checkpoint restore and a frame-count-dependent real-input runner. Details and validation are in [[2026-10-04-b05-controls-and-wagon-menu-review]]. These corrections were accepted by the owner's "tudo validado, vamos continuar" on 2026-10-04, then published with explicit authorization to `codex/b05-controls-wagon-inventory`. B-05 awaits technical review; PR and merge remain unapproved.
+
+The owner's new input/management definition is canonical in [[2026-10-04-separated-controls-and-wagon-management]]. The bounded extension is in [[2026-10-04-b05-controls-and-wagon-menu-revision]]. The owner approved local implementation before returning to Claude, then explicitly deferred parry to a higher Mark and requested clean dash and larger enemies. Results and the authorized publication are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Do not use the original shared-primary instruction to implement the new controls. No PR or merge is authorized.
