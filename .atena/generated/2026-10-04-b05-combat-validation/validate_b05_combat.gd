@@ -133,8 +133,12 @@ func run() -> void:
 		return
 	# Miss beyond reach: a visible swing, no damage.
 	game.hurt_cooldown = 99.0
-	await walk_until(KEY_D, "STAG OF MIRE", game.melee_reach(stag) + 45.0)
+	# Hold a known animation phase for this real-input miss: current-frame widths
+	# now differ, so a threshold measured before walking can change on arrival.
+	# The independent geometry runner brackets every frame's alpha-derived reach.
+	await walk_until(KEY_D, "STAG OF MIRE", 210.0)
 	stag = live("STAG OF MIRE")
+	game.pulse = 0.0
 	var stag_before := int(stag.health)
 	var miss_gap := gap(stag)
 	mouse_attack(true)

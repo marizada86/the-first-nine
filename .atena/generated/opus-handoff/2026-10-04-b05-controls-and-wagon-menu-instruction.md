@@ -1,5 +1,5 @@
 ---
-status: published-results-prepared-not-dispatched
+status: local-geometry-results-prepared-not-dispatched
 kind: review-and-next-step-handoff
 created: 2026-10-04
 batch: B-05
@@ -11,6 +11,12 @@ implementation_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implem
 # B-05 local follow-up: results and review checkpoint
 
 The owner asked Atena to implement the revised controls and interfaces locally, then prepare results and the next step for Claude. The implementation is already done locally; do not reimplement it from the original shared-primary instruction.
+
+## Latest correction: local only
+
+Claude's delivered read-only review of `e6b614c` has been addressed within the owner-approved local geometry scope. Read [[2026-10-04-b05-enemy-geometry-followup]] (spec and evidence): Stag aspect is preserved, Thornwake melee shares the current-frame drawn outline, and 22 outlines are prepared before gameplay. Geometry 46/46, five isolated faulty-subclass detections, combat 9/9, menus 33/33, all self-tests and both 600-frame smoke runs pass. Final normal preparation is 645.064 ms; tested gameplay adds zero scans. No fixed damage/timing/contact-radius change, new parry, inventory pause change or higher-Mark binding was introduced.
+
+This correction exists only in the local follow-up commit on the same branch. The last fetched publication remains `e6b614c`; do not assume a remote checkout contains the correction until the owner separately authorizes and confirms its publication. The original `43ab112` human acceptance remains valid; corrected Stag proportions and per-pose reach await new local review. No push, PR, merge, external dispatch or B-06 is authorized by this handoff. The source/controls/results sections below preserve the prior published revision's history.
 
 ## Source and authority
 
@@ -53,3 +59,5 @@ Commands, logs, captures, changed files and limitations are in `.atena/evidence/
 Once the owner delivers this follow-up, perform a read-only review of the actual diff and evidence. Focus on input consumption and controller equivalence, wagon-only management eligibility, inventory identity/restore, melee reach versus visible contact, and clean dash sampling in both directions/forms. Run the supplied validation if the environment supports Godot. Return concrete findings and remaining human playtest items in English.
 
 Human validation has already been accepted; do not reset it to pending. A technical review may still report a concrete new regression or limitation, but do not invent additional human test results. Keep B-05 active at the appropriate publication/PR/merge checkpoint rather than marking it merged or automatically starting B-06. Prepare any later progression or higher-Mark parry only after a separately approved plan.
+
+Apply the latest-correction checkpoint above rather than treating this historical acceptance as approval of the new Stag change. Read-only review of that correction is the next external step only after separately authorized publication/delivery. Deferred findings are explicit: unchanged contact-damage balance, approved inventory pause, orphaned prototype higher-Mark Shift powers, cosmetic HUD crowding, and identical no-VFX dash comparators. Do not silently implement these as part of a review.

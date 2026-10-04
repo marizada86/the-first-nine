@@ -353,7 +353,7 @@ active_plan:
   spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
   evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
   implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: implemented-published-awaiting-technical-review
+  status: implemented-local-awaiting-geometry-review
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
@@ -381,7 +381,7 @@ active_plan:
   pull_request_approved: false
   merge_approved: false
   batch: B-05
-  checkpoint: published-controls-inventory-wagon-technical-review
+  checkpoint: local-enemy-geometry-human-review
   implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
   implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
   prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
@@ -395,7 +395,19 @@ active_plan:
   revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
   revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
   deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
-plan_cursor: B-05-published-awaiting-technical-review
+  geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
+  geometry_correction_classification: IN_PLAN
+  geometry_correction_approved: true
+  geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
+  geometry_correction_authority: "Owner explicitly authorized the proposed local Stag aspect/shared outline reach/startup preparation fix and tests; no push, PR or merge."
+  geometry_correction_push_approved: false
+  geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
+  geometry_correction_status: implemented-local-awaiting-geometry-review
+  geometry_correction_published: false
+  geometry_correction_human_validation_accepted: false
+  geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
+  geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
+plan_cursor: B-05-local-enemy-geometry-human-review
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

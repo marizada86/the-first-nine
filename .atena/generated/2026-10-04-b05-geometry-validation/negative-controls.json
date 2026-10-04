@@ -1,0 +1,87 @@
+[
+  {
+    "fault": "square_aspect",
+    "exit_code": 1,
+    "detected": true,
+    "detections": [
+      "GEOMETRY FAIL STAG OF MIRE frame 0 source/aspect",
+      "GEOMETRY FAIL STAG OF MIRE frame 1 source/aspect",
+      "GEOMETRY FAIL STAG OF MIRE frame 2 source/aspect",
+      "GEOMETRY FAIL STAG OF MIRE frame 3 source/aspect"
+    ]
+  },
+  {
+    "fault": "short_reach",
+    "exit_code": 1,
+    "detected": true,
+    "detections": [
+      "GEOMETRY FAIL BRIAR HOUND frame 0 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 1 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 2 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 3 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 0 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 1 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 2 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 3 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 0 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 1 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 2 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 3 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND native boundary hits",
+      "GEOMETRY FAIL STAG OF MIRE native boundary hits",
+      "GEOMETRY FAIL ANTLERED HUNGER native boundary hits"
+    ]
+  },
+  {
+    "fault": "long_reach",
+    "exit_code": 1,
+    "detected": true,
+    "detections": [
+      "GEOMETRY FAIL BRIAR HOUND frame 0 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 1 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 2 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 3 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 0 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 1 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 2 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 3 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 0 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 1 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 2 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 3 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND outside native boundary misses",
+      "GEOMETRY FAIL STAG OF MIRE outside native boundary misses",
+      "GEOMETRY FAIL ANTLERED HUNGER outside native boundary misses"
+    ]
+  },
+  {
+    "fault": "legacy_reach",
+    "exit_code": 1,
+    "detected": true,
+    "detections": [
+      "GEOMETRY FAIL BRIAR HOUND frame 0 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 1 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 2 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND frame 3 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 0 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 1 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 2 native shared reach",
+      "GEOMETRY FAIL STAG OF MIRE frame 3 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 0 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 1 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 2 native shared reach",
+      "GEOMETRY FAIL ANTLERED HUNGER frame 3 native shared reach",
+      "GEOMETRY FAIL BRIAR HOUND native boundary hits",
+      "GEOMETRY FAIL STAG OF MIRE native boundary hits",
+      "GEOMETRY FAIL ANTLERED HUNGER native boundary hits"
+    ]
+  },
+  {
+    "fault": "missing_prewarm",
+    "exit_code": 1,
+    "detected": true,
+    "detections": [
+      "GEOMETRY FAIL startup prepares all 22 runtime cells"
+    ]
+  }
+]

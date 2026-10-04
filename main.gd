@@ -5,11 +5,11 @@ const CARAVAN_X := 190.0
 const GROUND_Y := 555.0
 const PLAYER_RADIUS := 19.0
 const INTERACT_RADIUS := 56.0
-# B-05 melee reach, measured from the drawn sprites at 1280x720: Lolth's opaque body is
-# about 73-90 px wide (half ~40 px). Enemy half-widths are their drawn opaque bodies.
-# A strike lands when the bodies visibly touch: center gap <= Lolth half + enemy half + 4.
+# Lolth's measured half-body plus 4 px tolerance. Thornwake enemy widths come
+# from the same current-frame outline and uniform scale used for drawing.
 const MELEE_LOLTH_HALF_WIDTH := 44.0
 const MELEE_VERTICAL_REACH := 70.0
+# Retained only for prototype-region legacy melee; not Thornwake geometry.
 const MELEE_ENEMY_HALF_WIDTHS := {"BRIAR HOUND": 42.0, "STAG OF MIRE": 52.0, "ANTLERED HUNGER": 73.0}
 const MELEE_DEFAULT_ENEMY_HALF_WIDTH := 42.0
 const MISS_FEEDBACK_RANGE := 220.0
@@ -195,6 +195,8 @@ var hurt_flash_time := 0.0
 var ui_management
 var ui_gameplay_requests: Array[String] = []
 var ui_enemy_bounds: Dictionary = {}
+var ui_enemy_bounds_scans := 0
+var ui_enemy_bounds_startup_usec := 0
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
 var state := "journey" # opening, journey, shar_shell, cure, victory, defeat
@@ -238,6 +240,7 @@ var checkpoint := {"mark": 0, "zone": 0, "flame": 100.0, "provisions": 4.0, "awa
 
 func _ready() -> void:
 	setup_input_actions()
+	prepare_enemy_frame_bounds()
 	ui_management = preload("res://wagon_inventory_ui.gd").new()
 	add_child(ui_management)
 	ui_management.setup(self)
@@ -1570,6 +1573,8 @@ func handle_primary() -> void:
 	message_time = 2.0
 
 func melee_reach(shade: Dictionary) -> float:
+	if zone == 0 and THORNWAKE_ENEMY_SIZES.has(String(shade.name)):
+		return MELEE_LOLTH_HALF_WIDTH + enemy_draw_geometry(shade).body.size.x / 2.0
 	var old_size := 160.0 if String(shade.name) == "ANTLERED HUNGER" else 96.0
 	return MELEE_LOLTH_HALF_WIDTH + float(MELEE_ENEMY_HALF_WIDTHS.get(String(shade.name), MELEE_DEFAULT_ENEMY_HALF_WIDTH)) * enemy_visual_size(shade) / old_size
 
@@ -2771,46 +2776,72 @@ func draw_zone_traversal() -> void:
 		if not bool(route.used):
 			draw_string(ThemeDB.fallback_font, route.from + Vector2(-46, -18), "ROPE ROUTE", HORIZONTAL_ALIGNMENT_CENTER, 92, 11, Color("f6de9b"))
 
+func enemy_source_cell(sheet: Texture2D, column: int, row: int) -> Rect2:
+	# Integer edges cover odd atlas dimensions without sampling half a neighbor row.
+	var start := Vector2i(int(sheet.get_width() * column / 2.0), int(sheet.get_height() * row / 2.0))
+	var end := Vector2i(int(sheet.get_width() * (column + 1) / 2.0), int(sheet.get_height() * (row + 1) / 2.0))
+	return Rect2(start, end - start)
+
+func enemy_sprite_frame(shade: Dictionary) -> Dictionary:
+	var sheet: Texture2D = BRIAR_HOUND_RUNTIME
+	if zone == 1:
+		sheet = STONEHOOK_THREATS_RUNTIME
+	elif zone == 2:
+		sheet = LATER_REGION_THREATS_RUNTIME
+	elif String(shade.name) == "STAG OF MIRE":
+		sheet = STAG_OF_MIRE_RUNTIME
+	elif String(shade.name) == "ANTLERED HUNGER":
+		sheet = ANTLERED_HUNGER_RUNTIME
+	var column := 0
+	var row := 0
+	if shade.defeated:
+		column = 1
+		row = 1
+	elif zone == 1:
+		var index := 0 if String(shade.name) == "Scree Crawler" else 1 if String(shade.name) == "Cliff Harrier" else 3
+		column = index % 2
+		row = int(index / 2)
+	elif zone == 2:
+		var index := 3 if String(shade.name) == "ROOT CROWN" else 0
+		column = index % 3
+		row = int(index / 3)
+	elif player.distance_to(shade.pos) < 150.0:
+		row = 1
+	else:
+		column = int(floor(pulse * 4.0)) % 2
+	var source: Rect2
+	if zone == 0:
+		source = enemy_source_cell(sheet, column, row)
+	else:
+		# Prototype-region sampling/placement is deliberately unchanged in B-05.
+		var cell := Vector2(sheet.get_width() / (3.0 if zone == 2 else 2.0), sheet.get_height() / 2.0)
+		source = Rect2(cell * Vector2(column, row), cell)
+	return {"sheet": sheet, "source": source}
+
+func enemy_draw_geometry(shade: Dictionary) -> Dictionary:
+	var frame := enemy_sprite_frame(shade)
+	var sheet: Texture2D = frame.sheet
+	var source: Rect2 = frame.source
+	var bounds := enemy_frame_bounds(sheet, source)
+	var size := enemy_visual_size(shade)
+	var draw_size := source.size * (size / source.size.y) if zone == 0 else Vector2(size, size)
+	var scale_factor := draw_size / source.size
+	var p: Vector2 = shade.pos
+	var destination := Rect2(p.x - (float(bounds.position.x) + float(bounds.size.x) / 2.0) * scale_factor.x, p.y + 34.0 - float(bounds.end.y) * scale_factor.y, draw_size.x, draw_size.y)
+	var body := Rect2(destination.position + Vector2(bounds.position) * scale_factor, Vector2(bounds.size) * scale_factor)
+	return {"sheet": sheet, "source": source, "destination": destination, "body": body}
+
 func draw_shades() -> void:
 	for shade in shades:
+		if shade.defeated and pulse - shade.defeated_at > 0.42:
+			continue
 		var p: Vector2 = shade.pos
-		var sheet: Texture2D = BRIAR_HOUND_RUNTIME
-		if zone == 1:
-			sheet = STONEHOOK_THREATS_RUNTIME
-		elif zone == 2:
-			sheet = LATER_REGION_THREATS_RUNTIME
-		elif String(shade.name) == "STAG OF MIRE":
-			sheet = STAG_OF_MIRE_RUNTIME
-		elif String(shade.name) == "ANTLERED HUNGER":
-			sheet = ANTLERED_HUNGER_RUNTIME
-		var source_columns := 3.0 if zone == 2 else 2.0
-		var source_width := sheet.get_width() / source_columns
-		var source_height := sheet.get_height() / 2.0
-		var source := Rect2(0, 0, 0, 0)
-		if shade.defeated:
-			if pulse - shade.defeated_at > 0.42:
-				continue
-			source = Rect2(source_width, source_height, source_width, source_height)
-		elif zone == 1:
-			var stone_index := 0 if String(shade.name) == "Scree Crawler" else 1 if String(shade.name) == "Cliff Harrier" else 3
-			source = Rect2(source_width * float(stone_index % 2), source_height * float(int(stone_index / 2)), source_width, source_height)
-		elif zone == 2:
-			var later_index := 3 if String(shade.name) == "ROOT CROWN" else 0
-			source = Rect2(source_width * float(later_index % 3), source_height * float(int(later_index / 3)), source_width, source_height)
-		elif player.distance_to(p) < 150.0:
-			source = Rect2(0, source_height, source_width, source_height)
-		else:
-			var hover_frame := int(floor(pulse * 4.0)) % 2
-			source = Rect2(source_width * float(hover_frame), 0, source_width, source_height)
+		var geometry := enemy_draw_geometry(shade)
 		var tint := Color(2.2, 1.8, 1.8) if float(shade.get("hit_flash", 0.0)) > 0.0 else Color.WHITE
 		var size := enemy_visual_size(shade)
-		var bounds := enemy_frame_bounds(sheet, source)
-		var scale_factor := size / source.size.y
-		# Align opaque feet to the floor, rather than the padded atlas-cell bottom.
-		var destination := Rect2(p.x - float(bounds.position.x + bounds.size.x / 2.0) * size / source.size.x, p.y + 34.0 - float(bounds.end.y) * scale_factor, size, size)
-		draw_texture_rect_region(sheet, destination, source, tint)
+		draw_texture_rect_region(geometry.sheet, geometry.destination, geometry.source, tint)
 		if not shade.defeated:
-			var top := destination.position.y + float(bounds.position.y) * scale_factor
+			var top: float = geometry.body.position.y
 			var label_width := maxf(160.0, size)
 			draw_string(ThemeDB.fallback_font, Vector2(p.x - label_width / 2.0, top - 26.0), String(shade.name), HORIZONTAL_ALIGNMENT_CENTER, label_width, 13, Color("dfb8f4"))
 			if String(shade.get("behavior", "")) == "charge" and is_night() and zone == 0:
@@ -2819,23 +2850,45 @@ func draw_shades() -> void:
 			draw_rect(Rect2(p.x - 45, top - 16.0, 90, 6), Color("27182e"))
 			draw_rect(Rect2(p.x - 45, top - 16.0, 90 * enemy_health / 100.0, 6), Color("db7587"))
 
+func prepare_enemy_frame_bounds() -> void:
+	var started := Time.get_ticks_usec()
+	ui_enemy_bounds.clear()
+	ui_enemy_bounds_scans = 0
+	# Warm all runtime sheets before the first gameplay frame. Prototype geometry stays
+	# unchanged; prewarming it only removes the former first-draw scan cost.
+	var sheets := [BRIAR_HOUND_RUNTIME, STAG_OF_MIRE_RUNTIME, ANTLERED_HUNGER_RUNTIME, STONEHOOK_THREATS_RUNTIME, LATER_REGION_THREATS_RUNTIME]
+	for index in sheets.size():
+		var sheet: Texture2D = sheets[index]
+		var pixels := sheet.get_image()
+		var columns := 3 if index == 4 else 2
+		for row in 2:
+			for column in columns:
+				var cell := Vector2(sheet.get_width() / float(columns), sheet.get_height() / 2.0)
+				var source := enemy_source_cell(sheet, column, row) if index < 3 else Rect2(cell * Vector2(column, row), cell)
+				cache_enemy_frame_bounds(sheet, source, pixels)
+	ui_enemy_bounds_startup_usec = Time.get_ticks_usec() - started
+
+func cache_enemy_frame_bounds(sheet: Texture2D, source: Rect2, atlas: Image) -> void:
+	var pixels := atlas.get_region(Rect2i(source))
+	var used := pixels.get_used_rect()
+	var minimum := pixels.get_size()
+	var maximum := Vector2i(-1, -1)
+	# Ignore nearly transparent atlas noise. This scan is startup-only.
+	for y in range(used.position.y, used.end.y):
+		for x in range(used.position.x, used.end.x):
+			if pixels.get_pixel(x, y).a >= 0.25:
+				minimum.x = mini(minimum.x, x)
+				minimum.y = mini(minimum.y, y)
+				maximum.x = maxi(maximum.x, x)
+				maximum.y = maxi(maximum.y, y)
+	ui_enemy_bounds[sheet.resource_path + str(source)] = Rect2i(minimum, maximum - minimum + Vector2i.ONE) if maximum.x >= 0 else Rect2i(Vector2i.ZERO, Vector2i(source.size))
+	ui_enemy_bounds_scans += 1
+
 func enemy_frame_bounds(sheet: Texture2D, source: Rect2) -> Rect2i:
 	var key := sheet.resource_path + str(source)
 	if not ui_enemy_bounds.has(key):
-		var pixels := sheet.get_image().get_region(Rect2i(source))
-		var used := pixels.get_used_rect()
-		var minimum := pixels.get_size()
-		var maximum := Vector2i(-1, -1)
-		# Ignore nearly transparent atlas noise when finding the actual feet/head.
-		# This scan runs once per sprite cell and is cached, not every frame.
-		for y in range(used.position.y, used.end.y):
-			for x in range(used.position.x, used.end.x):
-				if pixels.get_pixel(x, y).a >= 0.25:
-					minimum.x = mini(minimum.x, x)
-					minimum.y = mini(minimum.y, y)
-					maximum.x = maxi(maximum.x, x)
-					maximum.y = maxi(maximum.y, y)
-		ui_enemy_bounds[key] = Rect2i(minimum, maximum - minimum + Vector2i.ONE) if maximum.x >= 0 else Rect2i(Vector2i.ZERO, Vector2i(source.size))
+		push_error("Enemy frame was not prepared before gameplay: " + key)
+		return Rect2i(Vector2i.ZERO, Vector2i(source.size))
 	return ui_enemy_bounds[key]
 
 # Drawn above the camp so a charge toward the Wagon stays readable.

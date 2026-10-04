@@ -8,6 +8,8 @@ var checks := 0
 var out_dir := "res://.atena/generated/2026-10-04-b05-local-controls-validation"
 
 func _initialize() -> void:
+	if OS.get_environment("OUT") != "":
+		out_dir = OS.get_environment("OUT")
 	call_deferred("run")
 
 func key(code: Key, pressed: bool) -> void:
@@ -196,7 +198,7 @@ func run() -> void:
 	game.mark_vfx_time = 0.0
 	await shot("enemy-proportions")
 	var hound: Dictionary = game.shades[0]
-	check("Briar Hound uses larger 160 px cell and adjusted melee reach", game.enemy_visual_size(hound) == 160.0 and is_equal_approx(game.melee_reach(hound), 114.0))
+	check("Briar Hound uses 160 px height and shared-outline reach", game.enemy_visual_size(hound) == 160.0 and is_equal_approx(game.melee_reach(hound), game.MELEE_LOLTH_HALF_WIDTH + game.enemy_draw_geometry(hound).body.size.x / 2.0))
 	game.shades.clear()
 	game.spawn_enemy("STAG OF MIRE", Vector2(780, game.GROUND_Y - 34), 2, 0)
 	await shot("stag-proportions")

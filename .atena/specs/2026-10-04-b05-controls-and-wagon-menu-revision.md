@@ -1,5 +1,5 @@
 ---
-status: implemented-published-awaiting-technical-review
+status: implemented-local-awaiting-geometry-review
 kind: bounded-plan-change
 created: 2026-10-04
 request_classification: PLAN_CHANGE_REQUEST
@@ -89,3 +89,9 @@ No new art, dependencies, Mark power, enemy, parry, direct companion control, cu
 Implemented as local commit `43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c` on `codex/b05-controls-wagon-inventory`, based on original published B-05 commit `4400b59`. Godot 4.7.2 self-tests passed, the revised normal-speed combat runner passed 9/9 and the controls/menu runner passed 33/33. Both dash forms and the three enemy proportions were visually inspected. See [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] for exact evidence and smoke-run results.
 
 On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation at the IN_PLAN human-review checkpoint. No additional specific tests are inferred from that statement. The owner then explicitly authorized publishing implementation and records to `origin/codex/b05-controls-wagon-inventory`. A normal push published `43ab112` and `bb4a0d4`, and remote verification confirmed the first publication at `bb4a0d4830563dfa487409eaab852aefe4ca5d81`. Publication reconciliation follows as an ordinary records commit on that branch, preserving original B-05 history and main. B-05 now awaits technical review. PR, merge and external dispatch remain unapproved. This is not a completion/merge record or authorization to start B-06.
+
+## Approved geometry correction after technical review
+
+Following Claude's read-only review of published `e6b614c`, the owner explicitly authorized the local IN_PLAN correction in [[2026-10-04-b05-enemy-geometry-followup]]. Criterion 10 now uses uniform source aspect and the same current-frame native-alpha outline for both drawing and Thornwake reach, superseding the original separately measured enemy component. Heights and all health/damage/timing/contact-radius rules remain unchanged. Outline scanning is prepared at startup, not on first gameplay draw.
+
+The new correction passes independent geometry 46/46, five faulty-subclass controls, real-input combat 9/9 and controls/menu 33/33, self-tests and both smoke runs. The evidence record with that identifier contains measurements, captures and deferred review observations. Prior acceptance/publication is preserved for its exact commits. The correction itself awaits human proportion review and is not published; push, PR, merge and B-06 are not authorized.

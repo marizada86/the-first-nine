@@ -37,6 +37,8 @@ Implementation uses the published original B-05 runtime at `4400b59`, not the ol
 
 ## Enemy proportions and dash correction
 
+Historical measurements below describe `43ab112`, whose human acceptance/publication remains preserved. They are superseded for the latest local geometry correction by [[2026-10-04-b05-enemy-geometry-followup]]; the earlier fixed reaches and lazy per-cell preparation are not the current runtime rule.
+
 | Thornwake enemy | Old cell size | New cell size | Revised melee center reach |
 | --- | --- | --- | --- |
 | Briar Hound | 96 px | 160 px | 114 px |
@@ -87,3 +89,7 @@ All paths are under `.atena/generated/2026-10-04-b05-local-controls-validation/`
 The human-review checkpoint was pending when commit `43ab112` was created. On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation. This IN_PLAN acceptance is recorded without inventing a test-by-test human checklist or additional machine results. Saved state remains in memory only. Higher-Mark parry needs a future approved unlock/mechanics decision. Thornwake posts/missions and travel remain locked. No release export was produced.
 
 B-05 stays active as `implemented-published-awaiting-technical-review`; B-04 remains the latest completed plan. After the owner explicitly authorized the branch publication on 2026-10-04, a normal push published implementation `43ab112` and validation record `bb4a0d4` to `origin/codex/b05-controls-wagon-inventory`. Remote verification confirmed first publication at `bb4a0d4830563dfa487409eaab852aefe4ca5d81`, with remote main unchanged at `9ea4fc1`. This publication reconciliation is an ordinary follow-up on the same authorized branch, without amend or force-push. No PR, merge or external handoff was authorized or performed. The English handoff is prepared in [[2026-10-04-b05-controls-and-wagon-menu-instruction]], not dispatched. B-06 is not started.
+
+## Subsequent local geometry correction
+
+After publication reconciliation at `e6b614c` and Claude's delivered read-only review, the owner approved a bounded local correction. See [[2026-10-04-b05-enemy-geometry-followup]] for preserved source aspect, shared per-pose native-outline reach, startup preparation, 46/46 independent checks, 5/5 faulty-subclass detections and repeated 9/9 combat, 33/33 controls, self-test and smoke results. This later correction is not covered by the publication or human acceptance of `43ab112`. Current active status is `implemented-local-awaiting-geometry-review`, with no new push, PR, merge or external dispatch. This record's front-matter publication/acceptance fields describe its original exact implementation, not the newer correction.
