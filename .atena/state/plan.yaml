@@ -319,8 +319,20 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan: null
-plan_cursor: complete
+active_plan:
+  id: "2026-10-04-b04-thornwake-mark-one-stabilization"
+  spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+  status: awaiting-b04-plan-publication
+  mode: guided
+  approval_mode: per-plan
+  approval_selection: user-explicit-2026-10-04
+  approved: "2026-10-04"
+  request_classification: NEW_PLAN
+  scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion, art, push, PR, merge, or publication."
+  blocking_gaps: []
+  evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+  exception: "B-04 plan publication is a separate external gate; travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, art admission, later regions, push, PR, merge, publication, and deletion remain out of scope."
+plan_cursor: B-04-awaiting-plan-publication
 suspension: null
 deferred_requests: []
 pending_plan_change_requests: []
