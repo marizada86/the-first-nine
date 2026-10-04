@@ -1,5 +1,5 @@
 ---
-status: implemented-published-awaiting-review
+status: complete-implementation-merged
 kind: b03-implementation-evidence
 recorded: 2026-10-04
 plan: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
@@ -9,8 +9,9 @@ implementation_base: 15e39eb
 implementation_commit: ac091fa
 published_commit: 4ac235960b52643562bd8f36036b21d5269ba3ef
 branch_publication_approved: true
-pull_request_approved: false
-merge_approved: false
+pull_request: "https://github.com/marizada86/the-first-nine/pull/2"
+merge_commit: ca8ea24645a85ec6616f32905ecd25f49feb5006
+feature_branch_preserved: true
 ---
 
 # Evidence - B-03 implementation
@@ -71,7 +72,10 @@ All runs used Godot 4.7.2 stable in a scratch copy of the project.
 
 The user provisionally accepted the implementation pending the ADD record reconciliation, which was amended into the B-03 commit.
 
-- **Branch publication:** the project owner approved it, and the branch `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`. `main` was not changed.
+- **Branch publication:** the project owner approved it, and the branch `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`. `main` was not changed by that push.
 - **Documentation follow-up:** a documentation-only follow-up commit recording this state was also approved and pushed to the same branch.
-- **Pull request and merge:** neither is approved, and neither has been performed.
-- **Review:** human review is still open.
+- **Pull request:** the owner approved pull request #2, which was opened from the branch into `main`.
+- **Merged:** pull request [#2](https://github.com/marizada86/the-first-nine/pull/2) was merged into `main` with the owner's approval. The merge commit is `ca8ea24645a85ec6616f32905ecd25f49feb5006`, and it preserves the B-03 commits `4ac2359` and `0b6d745`.
+- **Complete:** B-03 is complete.
+- **Feature branch:** `b03-first-boss-mark-and-cure` remains preserved on `origin`.
+- **B-04:** remains only a non-authorizing recommendation and requires its own approved plan.

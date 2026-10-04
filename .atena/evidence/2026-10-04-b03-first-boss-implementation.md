@@ -1,5 +1,5 @@
 ---
-status: implemented-published-awaiting-review
+status: complete-implementation-merged
 kind: implementation-note
 created: 2026-10-04
 batch: B-03
@@ -12,8 +12,9 @@ source_canon:
 implementation_branch: b03-first-boss-mark-and-cure
 base_commit: 15e39eb
 published_commit: 4ac235960b52643562bd8f36036b21d5269ba3ef
-pull_request_approved: false
-merge_approved: false
+pull_request: "https://github.com/marizada86/the-first-nine/pull/2"
+merge_commit: ca8ea24645a85ec6616f32905ecd25f49feb5006
+feature_branch_preserved: true
 ---
 
 # B-03 - first boss, Mark I and first cure
@@ -111,9 +112,11 @@ All runs used Godot 4.7.2 stable (official Linux x86_64 build, SHA-512 verified 
 
 ## Publication state
 
-- **Branch publication:** approved by the project owner and performed. The branch `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`. `main` was not changed.
-- **Pull request and merge:** neither is approved, and neither has been performed.
-- **Follow-up commit:** this documentation-only follow-up commit is also pushed to the same branch with the owner's approval. It changes no gameplay, asset, test, or project setting.
+- **Branch publication:** approved by the project owner and performed. The branch `b03-first-boss-mark-and-cure` was pushed to `origin` at `4ac235960b52643562bd8f36036b21d5269ba3ef`. `main` was not changed by that push.
+- **Follow-up commit:** the documentation-only commit `0b6d745` was pushed to the same branch with the owner's approval. It changes no gameplay, asset, test, or project setting.
+- **Merged:** pull request [#2](https://github.com/marizada86/the-first-nine/pull/2) was merged into `main` with the owner's approval. The merge commit is `ca8ea24645a85ec6616f32905ecd25f49feb5006`, and it preserves the B-03 commits `4ac2359` and `0b6d745`.
+- **Complete:** B-03 is complete.
+- **Feature branch:** `b03-first-boss-mark-and-cure` remains preserved on `origin`.
 
 ## B-04 recommendation (non-authorizing)
 
