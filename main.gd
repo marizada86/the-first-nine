@@ -107,7 +107,6 @@ const COMIC_LINES := [
 # H-01 opening-comic shell. Identifiers only: they are never displayed to the player.
 # Final H-01 panels and dialogue require an approved English script and art admission.
 const H01_SHELL_BEATS := ["h01_golden_city_council", "h01_families_depart", "h01_caravan_departs", "h01_journey_calamities", "h01_plague_strikes", "h01_cave_arrival"]
-const WAGON_REPAIR_MAX := 3
 const COMIC_PANEL_SOURCES := [
 	Rect2(2, 0, 267, 941),
 	Rect2(272, 0, 238, 941),
@@ -254,6 +253,8 @@ func run_self_test() -> void:
 	update_enemies(0.1)
 	var wagon_failure := state == "defeat"
 	reset_to_prologue()
+	clock_seconds = DAY_DURATION - 0.01
+	update_clock(0.02)
 	var first_wave_ready := night_wave == 1 and night_wave_total == 2 and not shades.is_empty() and String(shades[0].name) == "BRIAR HOUND"
 	for enemy in shades:
 		enemy.defeated = true
@@ -310,8 +311,12 @@ func run_self_test() -> void:
 	var shar_unlocked := state == "comic"
 	receive_first_mark()
 	cure_selected_ally()
-	var stonehook_ready := state == "thornwake_complete"
+	var first_cure_stays_at_cave := state == "journey" and zone == 0 and mark_level == 1 and wagon_travel_locked()
 	advance_to_stonehook()
+	var first_cure_travel_blocked := zone == 0 and state == "journey"
+	try_advance_from_camp()
+	var first_mark_not_repeated := state == "journey" and mark_level == 1
+	enter_stonehook()
 	spawn_stonehook_night_enemies()
 	var mountain_enemies_ready := shades.size() == 2
 	shades.clear()
@@ -352,7 +357,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and shar_unlocked and stonehook_ready and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and shar_unlocked and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -377,25 +382,27 @@ func run_opening_cave_self_test() -> bool:
 	var eight_plagued := allies.size() == 8
 	for ally in allies:
 		eight_plagued = eight_plagued and String(ally.condition) == "plagued" and not bool(ally.controllable)
-	var only_lolth_controllable := camp.controllable == ["LOLTH"]
+	var only_lolth_controllable: bool = camp.controllable == ["LOLTH"]
 	var wagon: Dictionary = camp.wagon
 	var wagon_damaged_and_locked := bool(wagon.open) and not bool(wagon.horse) and not bool(wagon.beds) and not bool(wagon.enclosed_rooms) and String(wagon.condition) == "cave_damaged" and String(wagon.travel) == "travel_locked" and int(wagon.repair) == 0
 	var relics_protected := bool(camp.relics.present) and bool(camp.relics.protected)
+	advance_to_stonehook()
+	var new_run_travel_blocked := zone == 0 and state == "journey" and is_cave_camp_start()
 	var lolth_is_elf := String(camp.lolth_form) == "elf"
 	wagon_integrity = 0.0
 	fail_run("opening test")
 	restart_from_checkpoint()
 	var failure_restores_cave := is_cave_camp_start()
 	var no_reference_board := not res_has_reference_board("res://")
-	var passed := opens_first and holds_last_beat and advance_reaches_cave and skip_reaches_cave and eight_plagued and only_lolth_controllable and wagon_damaged_and_locked and relics_protected and lolth_is_elf and failure_restores_cave and no_reference_board
+	var passed := opens_first and holds_last_beat and advance_reaches_cave and skip_reaches_cave and eight_plagued and only_lolth_controllable and wagon_damaged_and_locked and relics_protected and new_run_travel_blocked and lolth_is_elf and failure_restores_cave and no_reference_board
 	if passed:
-		print("SELF_TEST_B01_PASS: opening shell reaches the cave camp with eight plagued allies and a damaged, travel-locked wagon")
+		print("SELF_TEST_B01_PASS: opening shell reaches the day-start cave camp with eight plagued allies and a damaged, travel-locked wagon")
 	else:
-		push_error("SELF_TEST_B01_FAIL: opening=%s/%s/%s/%s allies=%s/%s wagon=%s relics=%s elf=%s failure=%s boards=%s" % [opens_first, holds_last_beat, advance_reaches_cave, skip_reaches_cave, eight_plagued, only_lolth_controllable, wagon_damaged_and_locked, relics_protected, lolth_is_elf, failure_restores_cave, no_reference_board])
+		push_error("SELF_TEST_B01_FAIL: opening=%s/%s/%s/%s allies=%s/%s wagon=%s relics=%s travel=%s elf=%s failure=%s boards=%s" % [opens_first, holds_last_beat, advance_reaches_cave, skip_reaches_cave, eight_plagued, only_lolth_controllable, wagon_damaged_and_locked, relics_protected, new_run_travel_blocked, lolth_is_elf, failure_restores_cave, no_reference_board])
 	return passed
 
 func is_cave_camp_start() -> bool:
-	return state == "journey" and zone == 0 and mark_level == 0 and cured_allies.is_empty() and wagon_repair == 0 and wagon_condition() == "cave_damaged" and wagon_travel_locked() and lolth_form() == "elf"
+	return state == "journey" and zone == 0 and mark_level == 0 and cured_allies.is_empty() and wagon_repair == 0 and wagon_condition() == "cave_damaged" and wagon_travel_locked() and lolth_form() == "elf" and not is_night() and shades.is_empty() and night_wave_total == 0
 
 # H-01 through H-03 boards are reference-only and must never be admitted into res://.
 func res_has_reference_board(path: String) -> bool:
@@ -437,8 +444,9 @@ func finish_opening() -> void:
 func lolth_form() -> String:
 	return "elf" if mark_level == 0 else "drow"
 
+# B-01 establishes only the damaged cave-start state. Repair transitions are deferred.
 func wagon_condition() -> String:
-	return "cave_damaged" if wagon_repair < WAGON_REPAIR_MAX else "stationed"
+	return "cave_damaged"
 
 # Travel requires Mark IV, four cures, a repaired wagon, and an assigned puller.
 # No runtime path unlocks it yet, so the wagon stays at the cave camp.
@@ -813,6 +821,8 @@ func open_camp_menu() -> void:
 
 func try_advance_from_camp() -> void:
 	if zone == 0:
+		if mark_level > 0:
+			return
 		if first_night_complete and int(crafted_recipes.cataplasm) >= 1 and int(crafted_recipes.wheel_kit) >= 1 and brazier_built:
 			start_comic()
 		else:
@@ -846,6 +856,14 @@ func try_advance_from_camp() -> void:
 		message_time = 3.5
 
 func advance_to_stonehook() -> void:
+	if wagon_travel_locked():
+		message = "The Wagon cannot leave the cave camp yet."
+		message_time = 3.0
+		return
+	enter_stonehook()
+
+# Prototype later-region entry. While travel is locked, only the self-test calls it directly.
+func enter_stonehook() -> void:
 	zone = 1
 	state = "journey"
 	stonehook_boss_defeated = false
@@ -1021,7 +1039,7 @@ func reset_to_prologue() -> void:
 	selected_recipe = 0
 	brazier_built = false
 	crafted_recipes = {"cataplasm": 0, "wheel_kit": 0, "brazier": 0, "axle_brakes": 0}
-	clock_seconds = DAY_DURATION
+	clock_seconds = 0.0
 	first_night_complete = false
 	night_wave = 0
 	night_wave_total = 0
@@ -1039,7 +1057,7 @@ func reset_to_prologue() -> void:
 	combo_target = ""
 	checkpoint = {"mark": 0, "zone": 0, "flame": flame, "provisions": provisions, "awakened": 0, "final_echo_phase": false, "wagon_repair": 0, "load": [], "stock": [], "wagon_integrity": wagon_integrity, "clock": clock_seconds, "echoes": 0, "cured": [], "posts": [], "downed": [], "first_night": false, "axle_brakes": false, "stonehook_boss": false, "stonehook_shar": false, "brazier": false, "crafted": {}}
 	spawn_zone()
-	message = "THORNWAKE CAVE CAMP — Night has fallen. Stay close to the Wagon."
+	message = "THORNWAKE CAVE CAMP — The damaged Wagon rests in the cave."
 	message_time = 5.0
 
 func is_night() -> bool:
@@ -1368,8 +1386,7 @@ func cure_selected_ally() -> void:
 	state = "journey"
 	create_checkpoint()
 	if zone == 0 and mark_level == 1:
-		state = "thornwake_complete"
-		message = "%s wakes. Thornwake is behind you; the Stonehook road is ready." % ally
+		message = "%s wakes. The Wagon stays at the cave camp." % ally
 	elif zone == 1 and mark_level == 2:
 		state = "stonehook_complete"
 		message = "%s wakes. The Wagon holds the mountain; Hollowroot waits below." % ally
@@ -1621,7 +1638,7 @@ func draw_caravan() -> void:
 	draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 195), "THE CAVE CAMP" if zone == 0 else "THE LAST CAMP", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("f9df96"))
 	draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 178), "WAGON REPAIR %d/3" % wagon_repair, HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color("d8c9aa"))
 	if zone == 0:
-		draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 160), "WAGON: %s · %s" % [wagon_condition().replace("_", " ").to_upper(), "TRAVEL LOCKED" if wagon_travel_locked() else "TRAVEL READY"], HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color("e9b878"))
+		draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 212), "WAGON: %s · %s" % [wagon_condition().replace("_", " ").to_upper(), "TRAVEL LOCKED" if wagon_travel_locked() else "TRAVEL READY"], HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color("e9b878"))
 	if zone == 1:
 		draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 160), "AXLE & BRAKES: %s" % ("INSTALLED" if axle_brakes_installed else "NEEDED"), HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color("9fd5d4") if axle_brakes_installed else Color("e9b878"))
 
