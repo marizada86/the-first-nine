@@ -1,28 +1,57 @@
 ﻿version: 2
 
 last_completed_plan:
-  id: "2026-10-04-b03-first-boss-mark-and-cure"
-  spec: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
+  id: "2026-10-04-b04-thornwake-mark-one-stabilization"
+  spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
   status: complete-implementation-merged
   mode: guided
   approval_mode: per-plan
+  approval_selection: user-explicit-2026-10-04
   approved: "2026-10-04"
   request_classification: NEW_PLAN
-  scope: "Implement approved B-03 Antlered Hunger, neutral Shar shell, Mark I, and one cure; no later progression, art admission, or later-region content."
+  scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion or art."
   blocking_gaps: []
-  evidence: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
-  implementation_evidence: "[[2026-10-04-b03-first-boss-implementation]]"
-  implementation_branch: b03-first-boss-mark-and-cure
-  implementation_base: "15e39eb"
-  published_commit: "4ac235960b52643562bd8f36036b21d5269ba3ef"
-  documentation_commit: "0b6d745246a0ba86028799a654c997b5b2ec8297"
-  pull_request: "https://github.com/marizada86/the-first-nine/pull/2"
-  merge_commit: "ca8ea24645a85ec6616f32905ecd25f49feb5006"
+  evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+  implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
+  implementation_branch: b04-thornwake-mark-one-stabilization
+  implementation_base: "9683a8c"
+  implementation_commit: "0a897fc (amended with the record reconciliation into the published commit)"
+  published_commit: "dfdf0be6b1e59b1158f172a10a12b8b84d90d076"
+  survivability_fix_commit: "b090847ec56bafb783c747755b00bce8243fa5ab"
+  validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, B-04, prototype suites); 13 B-04 negative controls and 5 B-03 regression controls failed as expected; 9/9 real-input runtime checks passed at 1280x720; normal 1280x720 and headless 600-frame runs exited 0 without script errors. Survivability fix: self-test passed, 3 terminal-capture negative controls failed as expected, the 13 B-04 controls still failed as expected, 9/9 runtime checks passed, and normal and headless runs exited 0."
+  known_limitations: "In-memory safe-wagon state only; restore uses the standard camp spawn point; night snapshots restore with waves cleared; no further Thornwake goal after the 3/3 cap; unchanged defeat-card wording and art; tuning needs a human playtest."
+  branch_publication_approved: true
+  branch_published: "origin/b04-thornwake-mark-one-stabilization at dfdf0be6b1e59b1158f172a10a12b8b84d90d076, then the approved survivability fix at b090847ec56bafb783c747755b00bce8243fa5ab"
+  remote_review_accepted: true
+  documentation_commit: "a8c2ac185516ae6b2a3b6198a0102c303cc358a5"
+  pull_request: "https://github.com/marizada86/the-first-nine/pull/3"
+  merge_commit: "36039cb2ad2803b0ac0c9d30f2d8dd9db158ce57"
+  preserved_commits: ["dfdf0be", "b090847", "a8c2ac1"]
   feature_branch_preserved: true
-  validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, prototype suites); 13 B-03 negative controls failed as expected; 14/14 real-input runtime checks passed; normal 1280x720 and headless 600-frame runs exited 0 without script errors."
-  next_recommendation: "B-04 post-Mark-I Thornwake stabilization and persistence, recorded in [[2026-10-04-b03-first-boss-implementation]] as a non-authorizing recommendation; it requires its own approved plan."
-  exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, new art or art admission, later-region content, and deletion remain out of scope."
+  next_recommendation: "A short human playtest of B-01 to B-04 at 1280x720 before planning further progression, recorded in [[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]] as a non-authorizing recommendation; any next batch requires its own approved plan."
+  exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, new art or art admission, later regions, disk persistence, and deletion remain out of scope."
 completed_plan_history:
+  - id: "2026-10-04-b03-first-boss-mark-and-cure"
+    spec: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
+    status: complete-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Implement approved B-03 Antlered Hunger, neutral Shar shell, Mark I, and one cure; no later progression, art admission, or later-region content."
+    blocking_gaps: []
+    evidence: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
+    implementation_evidence: "[[2026-10-04-b03-first-boss-implementation]]"
+    implementation_branch: b03-first-boss-mark-and-cure
+    implementation_base: "15e39eb"
+    published_commit: "4ac235960b52643562bd8f36036b21d5269ba3ef"
+    documentation_commit: "0b6d745246a0ba86028799a654c997b5b2ec8297"
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/2"
+    merge_commit: "ca8ea24645a85ec6616f32905ecd25f49feb5006"
+    feature_branch_preserved: true
+    validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, prototype suites); 13 B-03 negative controls failed as expected; 14/14 real-input runtime checks passed; normal 1280x720 and headless 600-frame runs exited 0 without script errors."
+    next_recommendation: "B-04 post-Mark-I Thornwake stabilization and persistence, recorded in [[2026-10-04-b03-first-boss-implementation]] as a non-authorizing recommendation; it requires its own approved plan."
+    exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, new art or art admission, later-region content, and deletion remain out of scope."
   - id: "2026-10-04-b02-thornwake-day-night-tutorial"
     spec: "[[2026-10-04-b02-thornwake-day-night-tutorial]]"
     status: complete-external-implementation-merged
@@ -319,33 +348,8 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan:
-  id: "2026-10-04-b04-thornwake-mark-one-stabilization"
-  spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
-  status: implemented-published-awaiting-pr
-  mode: guided
-  approval_mode: per-plan
-  approval_selection: user-explicit-2026-10-04
-  approved: "2026-10-04"
-  request_classification: NEW_PLAN
-  scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion, art, push, PR, merge, or publication."
-  blocking_gaps: []
-  evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
-  implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
-  implementation_branch: b04-thornwake-mark-one-stabilization
-  implementation_base: "9683a8c"
-  implementation_commit: "0a897fc (amended with the record reconciliation into the published commit)"
-  published_commit: "dfdf0be6b1e59b1158f172a10a12b8b84d90d076"
-  survivability_fix_commit: "b090847ec56bafb783c747755b00bce8243fa5ab"
-  validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, B-04, prototype suites); 13 B-04 negative controls and 5 B-03 regression controls failed as expected; 9/9 real-input runtime checks passed at 1280x720; normal 1280x720 and headless 600-frame runs exited 0 without script errors. Survivability fix: self-test passed, 3 terminal-capture negative controls failed as expected, the 13 B-04 controls still failed as expected, 9/9 runtime checks passed, and normal and headless runs exited 0."
-  known_limitations: "In-memory safe-wagon state only; restore uses the standard camp spawn point; night snapshots restore with waves cleared; no further Thornwake goal after the 3/3 cap; unchanged defeat-card wording and art; tuning needs a human playtest."
-  branch_publication_approved: true
-  branch_published: "origin/b04-thornwake-mark-one-stabilization at dfdf0be6b1e59b1158f172a10a12b8b84d90d076, then the approved survivability fix at b090847ec56bafb783c747755b00bce8243fa5ab"
-  remote_review_accepted: true
-  pull_request_approved: false
-  merge_approved: false
-  exception: "Pull request creation and merge have not been authorized or performed; main is unchanged. Travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, art admission, later regions, and deletion remain out of scope."
-plan_cursor: B-04-implemented-published-awaiting-pr
+active_plan: null
+plan_cursor: complete
 suspension: null
 deferred_requests: []
 pending_plan_change_requests: []

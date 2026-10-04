@@ -1,5 +1,5 @@
 ---
-status: implemented-published-awaiting-pr
+status: complete-implementation-merged
 kind: b04-implementation-evidence
 recorded: 2026-10-04
 plan: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
@@ -11,8 +11,11 @@ published_commit: dfdf0be6b1e59b1158f172a10a12b8b84d90d076
 survivability_fix_commit: b090847ec56bafb783c747755b00bce8243fa5ab
 branch_publication_approved: true
 remote_review_accepted: true
-pull_request_approved: false
-merge_approved: false
+documentation_commit: a8c2ac185516ae6b2a3b6198a0102c303cc358a5
+pull_request: "https://github.com/marizada86/the-first-nine/pull/3"
+merge_commit: 36039cb2ad2803b0ac0c9d30f2d8dd9db158ce57
+preserved_commits: [dfdf0be, b090847, a8c2ac1]
+feature_branch_preserved: true
 ---
 
 # Evidence — B-04 implementation
@@ -124,4 +127,9 @@ The user provisionally accepted the implementation pending the ADD record reconc
 - **Initial branch publication:** the project owner approved it, and `b04-thornwake-mark-one-stabilization` was pushed to `origin` at `dfdf0be6b1e59b1158f172a10a12b8b84d90d076`. `main` was not changed by that push.
 - **Survivability fix:** a review of the published commit found that a terminal camp state (Flame or Provisions at zero) could be captured at the Wagon and restore into the same failure. The fix was approved and published to the same branch at `b090847ec56bafb783c747755b00bce8243fa5ab`.
 - **Review:** the remote diff and the survivability fix have been reviewed and accepted.
-- **Pull request and merge:** neither has been authorized or performed. B-04 remains the active plan, with status `implemented-published-awaiting-pr`.
+- **Documentation follow-up:** the publication record was approved and pushed to the same branch as `a8c2ac1`.
+- **Pull request:** the owner approved pull request [#3](https://github.com/marizada86/the-first-nine/pull/3), opened from the branch into `main`.
+- **Merged:** the owner approved the merge. Pull request #3 was merged into `main` with a regular merge commit, `36039cb2ad2803b0ac0c9d30f2d8dd9db158ce57`, which preserves the three B-04 commits `dfdf0be`, `b090847`, and `a8c2ac1`.
+- **Complete:** B-04 is complete, with status `complete-implementation-merged`. The plan is closed.
+- **Feature branch:** `b04-thornwake-mark-one-stabilization` remains preserved on `origin`.
+- **Next steps:** any further recommendation remains non-authorizing and requires its own approved plan.
