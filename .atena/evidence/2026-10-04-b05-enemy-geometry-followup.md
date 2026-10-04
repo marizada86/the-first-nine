@@ -1,5 +1,5 @@
 ---
-status: implemented-local-awaiting-geometry-review
+status: implemented-published-awaiting-final-technical-review
 kind: bounded-review-correction-evidence
 created: 2026-10-04
 batch: B-05
@@ -9,9 +9,12 @@ spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
 parent_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
 implementation_branch: codex/b05-controls-wagon-inventory
 implementation_base: e6b614c3d3554d142fe93a90c05347176796d731
-geometry_human_validation_accepted: false
-push_approved: false
-published: false
+implementation_commit: b8823c70c637fdbef9f36e6cf0da0925369faa47
+geometry_human_validation_accepted: true
+geometry_human_validation_date: 2026-10-04
+push_approved: true
+published: true
+first_published_commit: b8823c70c637fdbef9f36e6cf0da0925369faa47
 pull_request_approved: false
 merge_approved: false
 ---
@@ -69,7 +72,15 @@ The game-visual-debugging skill informed controlled captures and explicit measur
 - Prototype higher-Mark Shift sense/Night Choir/Spider's Promise/Luraen assist: inaccessible through the new always-dash binding; intentionally deferred, not silently remapped or unlocked. Existing Mark 7 E gates remain as before.
 - Legacy HUD icons overlap hints and resources crowd labels: cosmetic follow-up, out of this correction.
 - Paired dash comparator images are expected to be identical when supplementary VFX is suppressed; not presented as pre-fix art evidence.
-- No new human acceptance is inferred for the corrected Stag appearance or per-pose reach. Earlier human validation remains accepted for `43ab112`.
+- At implementation time the new visual-review checkpoint was pending. The subsequent owner confirmation recorded below accepts that checkpoint without inventing additional detailed human tests. Earlier acceptance remains valid for `43ab112`; future balance changes would require their own review.
 - Full-file YAML parser verification remains unavailable without adding a dependency; the local validator checks contract/state invariants, links, gates and final logs instead. No parser-pass claim is made.
 
-The ordinary local follow-up commit carries runtime changes, isolated tests, captures and these records. Git records its final hash; no self-referential hash is fabricated inside the commit. The English handoff is updated but not sent. Nothing was pushed, no PR opened, no merge performed and no B-06 started. Current gate: review the corrected proportions locally, then obtain separate authorization before any publication.
+The correction commit `b8823c7` carries runtime changes, isolated tests, captures and the original local-only records. It was created before its own hash could be recorded in those files; no self-referential hash was fabricated. The original local-only gate is preserved as implementation history, not the current publication state.
+
+## Owner acceptance and authorized publication
+
+On 2026-10-04 the owner stated "conferido. Vamos passar o próximo prompt para o opus 5.5", confirming the requested visual-review checkpoint for `b8823c7`. No detailed human checklist, additional machine run or balance change is inferred. Opus subsequently reported that the commit and its spec/evidence were absent from GitHub and correctly stopped without reviewing the old version as a fix.
+
+The owner then explicitly authorized recording the confirmation and publishing the correction and records to the existing branch, without PR or merge. Classified IN_PLAN. A normal push advanced `origin/codex/b05-controls-wagon-inventory` from `e6b614c` to `b8823c70c637fdbef9f36e6cf0da0925369faa47`; `ls-remote` verified that exact hash and remote main unchanged at `9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b`. This reconciliation follows in an ordinary documentation/record-validator commit on that branch, not an amend or force-push.
+
+No runtime, asset, test-result log, validation metric or canonical rule changed in this reconciliation. The record validator is updated only for the now-accepted/published operational state. Existing runtime results above remain historical successful results, not fresh engine reruns. B-05 stays active for final technical review; B-04 remains the latest completed plan. The English resume instruction is prepared for the owner, not sent automatically. No PR, merge, branch deletion or B-06 was authorized or performed.

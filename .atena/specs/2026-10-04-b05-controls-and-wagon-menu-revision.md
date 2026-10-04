@@ -1,5 +1,5 @@
 ---
-status: implemented-local-awaiting-geometry-review
+status: implemented-published-awaiting-final-technical-review
 kind: bounded-plan-change
 created: 2026-10-04
 request_classification: PLAN_CHANGE_REQUEST
@@ -94,4 +94,4 @@ On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the l
 
 Following Claude's read-only review of published `e6b614c`, the owner explicitly authorized the local IN_PLAN correction in [[2026-10-04-b05-enemy-geometry-followup]]. Criterion 10 now uses uniform source aspect and the same current-frame native-alpha outline for both drawing and Thornwake reach, superseding the original separately measured enemy component. Heights and all health/damage/timing/contact-radius rules remain unchanged. Outline scanning is prepared at startup, not on first gameplay draw.
 
-The new correction passes independent geometry 46/46, five faulty-subclass controls, real-input combat 9/9 and controls/menu 33/33, self-tests and both smoke runs. The evidence record with that identifier contains measurements, captures and deferred review observations. Prior acceptance/publication is preserved for its exact commits. The correction itself awaits human proportion review and is not published; push, PR, merge and B-06 are not authorized.
+The new correction passes independent geometry 46/46, five faulty-subclass controls, real-input combat 9/9 and controls/menu 33/33, self-tests and both smoke runs. The evidence record with that identifier contains measurements, captures and deferred review observations. Prior acceptance/publication is preserved for its exact commits. The owner subsequently confirmed the corrected proportions with "conferido" and explicitly authorized recording that confirmation and publishing the correction and records. Normal branch publication of `b8823c70c637fdbef9f36e6cf0da0925369faa47` is verified; main is unchanged. Current gate: final technical review. PR, merge and B-06 remain unapproved.

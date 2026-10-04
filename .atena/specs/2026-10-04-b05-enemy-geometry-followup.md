@@ -1,5 +1,5 @@
 ---
-status: implemented-local-awaiting-geometry-review
+status: implemented-published-awaiting-final-technical-review
 kind: bounded-review-correction
 created: 2026-10-04
 request_classification: IN_PLAN
@@ -8,7 +8,12 @@ approval_source: explicit-owner-authorization-after-bounded-proposal
 parent_plan: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
 implementation_base: e6b614c3d3554d142fe93a90c05347176796d731
 implementation_branch: codex/b05-controls-wagon-inventory
-push_approved: false
+implementation_commit: b8823c70c637fdbef9f36e6cf0da0925369faa47
+geometry_human_validation_accepted: true
+geometry_human_validation_date: 2026-10-04
+push_approved: true
+published: true
+first_published_commit: b8823c70c637fdbef9f36e6cf0da0925369faa47
 pull_request_approved: false
 merge_approved: false
 implementation_preceded_spec: false
@@ -48,4 +53,6 @@ DEFERRED observations from the review: unchanged 35 px contact-damage radius ver
 
 ## Implemented outcome
 
-Implemented locally on the named branch with preserved published history. Independent native-alpha geometry checks pass 46/46; deliberately faulty subclasses are rejected 5/5; actual-input combat passes 9/9 and controls/menus 33/33. B-01 through B-05, F4 and the full self-test pass; normal and headless 600-frame smoke runs pass. See the evidence record with the same identifier for commands, captures, measurements and limitations. New human visual acceptance of the Stag correction remains pending; earlier owner acceptance of `43ab112` is preserved. No publication, PR, merge, external dispatch or B-06 was performed.
+Implemented as `b8823c70c637fdbef9f36e6cf0da0925369faa47` on the named branch with preserved published history. Independent native-alpha geometry checks pass 46/46; deliberately faulty subclasses are rejected 5/5; actual-input combat passes 9/9 and controls/menus 33/33. B-01 through B-05, F4 and the full self-test pass; normal and headless 600-frame smoke runs pass. See the evidence record with the same identifier for commands, captures, measurements and limitations.
+
+On 2026-10-04 the owner stated "conferido. Vamos passar o próximo prompt para o opus 5.5", accepting the requested local visual-review checkpoint; no additional test-by-test results are inferred. Earlier acceptance of `43ab112` is preserved. After Opus reported the correction absent remotely, the owner explicitly authorized recording this acceptance and publishing the correction and records. A normal push published `b8823c7` to `origin/codex/b05-controls-wagon-inventory`, verified with `ls-remote`; remote main remains `9ea4fc1`. These later approvals supersede the original local-only restriction solely for this branch publication. Records follow in an ordinary commit without amend or force-push. B-05 remains active pending final technical review. No PR, merge, direct external dispatch or B-06 is authorized or performed.
