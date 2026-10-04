@@ -322,7 +322,7 @@ completed_plan_history:
 active_plan:
   id: "2026-10-04-b04-thornwake-mark-one-stabilization"
   spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
-  status: awaiting-b04-plan-publication
+  status: implemented-published-awaiting-pr
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
@@ -331,8 +331,21 @@ active_plan:
   scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion, art, push, PR, merge, or publication."
   blocking_gaps: []
   evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
-  exception: "B-04 plan publication is a separate external gate; travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, art admission, later regions, push, PR, merge, publication, and deletion remain out of scope."
-plan_cursor: B-04-awaiting-plan-publication
+  implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
+  implementation_branch: b04-thornwake-mark-one-stabilization
+  implementation_base: "9683a8c"
+  implementation_commit: "0a897fc (amended with the record reconciliation into the published commit)"
+  published_commit: "dfdf0be6b1e59b1158f172a10a12b8b84d90d076"
+  survivability_fix_commit: "b090847ec56bafb783c747755b00bce8243fa5ab"
+  validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, B-04, prototype suites); 13 B-04 negative controls and 5 B-03 regression controls failed as expected; 9/9 real-input runtime checks passed at 1280x720; normal 1280x720 and headless 600-frame runs exited 0 without script errors. Survivability fix: self-test passed, 3 terminal-capture negative controls failed as expected, the 13 B-04 controls still failed as expected, 9/9 runtime checks passed, and normal and headless runs exited 0."
+  known_limitations: "In-memory safe-wagon state only; restore uses the standard camp spawn point; night snapshots restore with waves cleared; no further Thornwake goal after the 3/3 cap; unchanged defeat-card wording and art; tuning needs a human playtest."
+  branch_publication_approved: true
+  branch_published: "origin/b04-thornwake-mark-one-stabilization at dfdf0be6b1e59b1158f172a10a12b8b84d90d076, then the approved survivability fix at b090847ec56bafb783c747755b00bce8243fa5ab"
+  remote_review_accepted: true
+  pull_request_approved: false
+  merge_approved: false
+  exception: "Pull request creation and merge have not been authorized or performed; main is unchanged. Travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, art admission, later regions, and deletion remain out of scope."
+plan_cursor: B-04-implemented-published-awaiting-pr
 suspension: null
 deferred_requests: []
 pending_plan_change_requests: []

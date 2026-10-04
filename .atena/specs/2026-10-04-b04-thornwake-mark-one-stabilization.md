@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-plan-publication
+status: implemented-published-awaiting-pr
 kind: runtime-stabilization-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b04-thornwake-mark-one-stabilization
@@ -9,6 +9,16 @@ depends_on:
 approval_mode: per-plan
 approval_selection: user-explicit-2026-10-04
 approved: 2026-10-04
+implementation_branch: b04-thornwake-mark-one-stabilization
+implementation_base: 9683a8c
+implementation_commit: 0a897fc
+implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
+published_commit: dfdf0be6b1e59b1158f172a10a12b8b84d90d076
+survivability_fix_commit: b090847ec56bafb783c747755b00bce8243fa5ab
+branch_publication_approved: true
+remote_review_accepted: true
+pull_request_approved: false
+merge_approved: false
 ---
 
 # B-04 plan — Mark I Thornwake stabilization
@@ -51,3 +61,14 @@ Run the Godot self-test, targeted negative controls for the safe-wagon state, an
 3. Add deterministic positive and negative validation.
 4. Run headless and normal Godot validation and capture evidence.
 5. Request review before any push, pull request, or merge.
+
+## Implementation status
+
+- **Status:** implemented and published to its branch, awaiting a pull request. The user first accepted the implementation provisionally, pending the ADD record reconciliation. The plan remains active.
+- **Branch:** the work is on the local branch `b04-thornwake-mark-one-stabilization`, created from `origin/main` at `9683a8c`.
+- **Commit:** the original implementation commit was `0a897fc`. The record reconciliation was amended into it, producing the published commit `dfdf0be6b1e59b1158f172a10a12b8b84d90d076`.
+- **Initial branch publication:** the project owner approved it, and `b04-thornwake-mark-one-stabilization` was pushed to `origin` at `dfdf0be6b1e59b1158f172a10a12b8b84d90d076`. `main` was not changed by that push.
+- **Survivability fix:** a review of the published commit found that a terminal camp state (Flame or Provisions at zero) could be captured at the Wagon and restore into the same failure. The fix was approved and published to the same branch at `b090847ec56bafb783c747755b00bce8243fa5ab`.
+- **Review:** the remote diff and the survivability fix have been reviewed and accepted.
+- **Pull request and merge:** neither has been authorized or performed. B-04 remains the active plan, with status `implemented-published-awaiting-pr`.
+- **Evidence:** `[[2026-10-04-b04-thornwake-mark-one-stabilization]]` and the implementation note `[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]`, which records the exact changed files, tuning, test results, and known limitations.
