@@ -448,7 +448,7 @@ active_plan:
   id: "2026-10-04-enemy-facing-correction"
   spec: "[[2026-10-04-enemy-facing-correction]]"
   evidence: "[[2026-10-04-enemy-facing-correction]]"
-  status: implemented-awaiting-human-review
+  status: implemented-human-validated-awaiting-publication-authorization
   mode: guided
   request_classification: NEW_PLAN
   approval_mode: per-plan
@@ -458,20 +458,23 @@ active_plan:
   implementation_approved: true
   scope: "Track enemy facing and mirror existing sprites without changing geometry, reach, AI, controls, art or progression."
   blocking_gaps: []
-  checkpoint: local-validation-complete-human-review
+  checkpoint: accepted-local-fix-awaiting-publication-authorization
   steps: ["S-001-facing-and-rendering", "S-002-isolated-direction-validation", "S-003-regressions-evidence-review"]
   batches: ["B-001-enemy-facing-correction"]
   baseline_commit: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
   implementation_branch: codex/enemy-facing-correction
+  implementation_commit: "e7812e6ac969e899292a6c0c4845769ccaba2404"
   steps_completed: ["S-001", "S-002", "S-003"]
   validation: "Godot 4.7.2: headless facing 65/65, rendered facing 102/102, 3 rejected faulty subclasses (exit 1), independent geometry 46/46, actual-input combat 9/9, menus 33/33, full self-test and normal/headless 600-frame smoke passed. Zero new gameplay alpha scans; scoped records and preserved completed history checked."
-  human_validation_accepted: false
+  human_validation_accepted: true
+  human_validation_date: "2026-10-04"
+  human_validation_source: "Owner stated: aprovado. Accepted as IN_PLAN human review of e7812e6; no extra detailed tests or publication authority inferred."
   known_limitations: "Thornwake 12 poses are raster-verified; generic retreat/legacy fallback are state-verified, not all prototype artwork. Rendering tests use Godot-owned captures, not sealed harness/GPU profiling. Balance and other deferred B-05 items unchanged."
   push_approved: false
   pull_request_approved: false
   merge_approved: false
   exception: "B-05 remains completed. No B-06, new art, dependency, rule, balance change, unlock, external dispatch, push or merge."
-plan_cursor: enemy-facing-implemented-awaiting-human-review
+plan_cursor: enemy-facing-accepted-awaiting-publication-authorization
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

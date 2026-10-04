@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-human-validated-awaiting-publication-authorization
 kind: preparation-and-implementation-evidence
 created: 2026-10-04
 request_classification: NEW_PLAN
@@ -10,6 +10,10 @@ implementation_approved: true
 approval_mode: per-plan
 approval_source: explicit-owner-selection-1
 implementation_branch: codex/enemy-facing-correction
+implementation_commit: e7812e6ac969e899292a6c0c4845769ccaba2404
+human_validation_accepted: true
+human_validation_date: 2026-10-04
+human_validation_source: owner-stated-aprovado
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -69,6 +73,8 @@ An initial sandbox-only self-test printed passing suites but also sandbox log/ce
 
 ## Review and publication boundary
 
-S-001 through S-003 are complete locally; status is `implemented-awaiting-human-review`. The plan remains active for owner playtest/acceptance. B-05 remains last completed with its history unchanged; B-06 is not started. Any local correction commit preserves the implementation and records; its hash is reported after creation instead of embedding a self-referential hash.
+At implementation commit `e7812e6ac969e899292a6c0c4845769ccaba2404`, S-001 through S-003 were complete locally and human review was pending. The owner then stated "aprovado" on 2026-10-04, accepting that exact local correction. Classified IN_PLAN. This acceptance does not imply any additional detailed playtest results or approval to publish.
+
+Current status is `implemented-human-validated-awaiting-publication-authorization`; the plan remains at the separate publication-authority checkpoint. B-05 remains last completed with its history unchanged; B-06 is not started. This follow-up changes only spec/evidence/state and their operational validator. Saved runtime results, source code and captures are unchanged; no new engine run is claimed. The original correction commit is preserved without amend.
 
 No push, PR, merge, remote dispatch or branch deletion is approved/performed. The original source PNGs, canonical design and previous evidence remain unchanged. Deferred balance/contact-radius tuning, UI crowding, parry/higher Marks and disk persistence remain deferred. Visual verification covers all 12 Thornwake poses; generic movement/fallback tests do not claim complete visual validation of later prototype-region art.

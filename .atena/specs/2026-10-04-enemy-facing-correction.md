@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-human-validated-awaiting-publication-authorization
 kind: bounded-visual-correction-plan
 created: 2026-10-04
 plan_id: 2026-10-04-enemy-facing-correction
@@ -14,6 +14,10 @@ depends_on: "[[2026-10-04-b05-documentation-closure]]"
 implementation_approved: true
 implementation_branch: codex/enemy-facing-correction
 implementation_base: 39cd7d3d46a8afb3894889920e0840cbae573e7b
+implementation_commit: e7812e6ac969e899292a6c0c4845769ccaba2404
+human_validation_accepted: true
+human_validation_date: 2026-10-04
+human_validation_source: owner-stated-aprovado
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -72,4 +76,4 @@ Preserve B-05 completed state and previous history. Record actual test exits, vi
 
 Persistent facing is initialized at spawn, updated from signed motion on the generic path, and locked to committed attack direction through Thornwake windup/strike. Stationary recovery/defeat hold their orientation. Drawing reflects only the sprite around the visible-body center, then resets its transform. No art, shared geometry/reach, damage, timing or input rule changed.
 
-Godot 4.7.2: 65/65 headless direction checks; 102/102 rendered checks (12 pose reflection comparisons and unchanged labels/markers/full-scene exterior); three faulty subclasses rejected with exit 1; independent geometry 46/46; actual-input combat 9/9 and menus 33/33; full self-test and both 600-frame smoke runs pass. See the linked evidence for exact process results, captures, initial harness corrections and limitations. Human review of this fix is pending; no push, PR, merge or B-06.
+Godot 4.7.2: 65/65 headless direction checks; 102/102 rendered checks (12 pose reflection comparisons and unchanged labels/markers/full-scene exterior); three faulty subclasses rejected with exit 1; independent geometry 46/46; actual-input combat 9/9 and menus 33/33; full self-test and both 600-frame smoke runs pass. See the linked evidence for exact process results, captures, initial harness corrections and limitations. The owner subsequently accepted the local correction with "aprovado" on 2026-10-04. No additional human checklist or fresh engine results are inferred; no push, PR, merge or B-06 is authorized/performed. The active checkpoint now awaits separate publication authority.

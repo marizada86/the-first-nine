@@ -12,7 +12,9 @@ let links=0;
 const paths=['.atena/specs/2026-10-04-enemy-facing-correction.md','.atena/evidence/2026-10-04-enemy-facing-correction.md'];
 for(const file of paths){
   const text=fs.readFileSync(file,'utf8');
-  assert(text.includes('status: implemented-awaiting-human-review'));
+  assert(text.includes('status: implemented-human-validated-awaiting-publication-authorization'));
+  assert(text.includes('human_validation_accepted: true'));
+  assert(text.includes('implementation_commit: e7812e6ac969e899292a6c0c4845769ccaba2404'));
   assert(text.includes('implementation_approved: true'));
   assert(text.includes('approval_mode: per-plan'));
   assert(!/^(<<<<<<<|=======|>>>>>>>)/m.test(text));
@@ -21,10 +23,14 @@ for(const file of paths){
 const state=normalize(fs.readFileSync('.atena/state/plan.yaml','utf8'));
 const before=normalize(git('show',baseline+':.atena/state/plan.yaml'));
 const active=state.split(/^active_plan:\n/m)[1].split(/^plan_cursor:/m)[0];
-assert(active.includes('status: implemented-awaiting-human-review'));
+assert(active.includes('status: implemented-human-validated-awaiting-publication-authorization'));
 assert(active.includes('approval_mode: per-plan'));
 assert(active.includes('request_execution_classification: IN_PLAN'));
-assert(active.includes('human_validation_accepted: false'));
+assert(active.includes('human_validation_accepted: true'));
+assert(active.includes('implementation_commit: "e7812e6ac969e899292a6c0c4845769ccaba2404"'));
+assert(active.includes('checkpoint: accepted-local-fix-awaiting-publication-authorization'));
+git('merge-base','--is-ancestor','e7812e6ac969e899292a6c0c4845769ccaba2404','HEAD');
+assert.equal(git('diff','--name-only','e7812e6ac969e899292a6c0c4845769ccaba2404','--','main.gd','assets','project.godot','wagon_inventory_ui.gd').trim(),'','Acceptance reconciliation must not change the game');
 for(const gate of ['push_approved: false','pull_request_approved: false','merge_approved: false'])assert(active.includes(gate));
 assert.equal(state.replace(/^active_plan:\n[\s\S]*?^plan_cursor:.*$/m,'active_plan: null\nplan_cursor: complete'),before,'Completed history/unrelated state changed');
 assert(!/\t/.test(state));
