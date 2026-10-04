@@ -55,7 +55,13 @@ last_completed_plan:
   closure_record_commit: "c230975c3ead74ccf4f7844c6e93e51697bed1ca"
   closure_record_publication_authority: "Owner separately answered autorizado to publishing documentary closure c230975. This includes bounded reconciliation of that publication, not new work or standing push authority."
   closure_record_publication: "Normal push published c230975 on main above regular merge 7049063; exact remote refs verified and feature branch preserved at fb565d0. Publication reconciliation is documentation only, without amend or force-push."
-  next_recommendation: "A separately approved balance/feel playtest can evaluate deferred B-05 items. No B-06 is authorized or started."
+  integrated_playtest_accepted: true
+  integrated_playtest_date: "2026-10-04"
+  integrated_playtest_source: "Owner replied tudo funcionando after the recommended final Thornwake playtest. Overall human acceptance only; no item-by-item results, timings, fresh engine runs or tested-build hash inferred."
+  integrated_playtest_context_commit: "05eac1e7a639e213f39cff81b1e75305727ab4d0"
+  integrated_playtest_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
+  integrated_playtest_receipt_push_approved: false
+  next_recommendation: "Owner reports Thornwake functioning. Optionally prepare a bounded B-06 proposal for on-foot access to initial Stonehook and return to the stationed cave wagon, following approved continuous-world canon. No B-06 plan, execution, Mark II, wagon travel, parry or publication is authorized by the playtest confirmation."
   exception: "Only the separately authorized documentary closure and its publication reconciliation were published. No new runtime, art, dependency, gameplay rule, balance, unlock, external dispatch, unrelated push, B-06 or branch deletion. Prior completed plans and deferred items remain preserved."
 
 completed_plan_history:

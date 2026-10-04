@@ -69,3 +69,11 @@ The closure validator passes with 12 resolved links and the unchanged saved runt
 The owner answered "autorizado" to publishing closure `c230975c3ead74ccf4f7844c6e93e51697bed1ca`. A fresh fetch and scoped record/saved-result checks confirmed the one-commit, documentation-only boundary. Normal push published it on main, preserving its parent merge `7049063`; remote main was verified at `c230975` and the feature branch remained `fb565d0`.
 
 This documentary publication reconciliation records that completed action under the same bounded closure authorization. It changes only the four operational documents and their validator, without amending the published closure or touching source, art, captures, saved test results or older history. No new engine run, new PR, merge, branch deletion, dispatch, dependency or B-06. The plan stays complete with active_plan null and cursor complete; this approval does not authorize unrelated future publication.
+
+## Owner-reported integrated playtest acceptance
+
+After closure publication, the owner asked for the next step. The recommended final Godot playtest covered combat/facing/dash, separate controls and menus, day/night/defense/boss/Mark I/first cure, and failure restoration. The owner then replied "tudo funcionando" on 2026-10-04. This is overall human acceptance of the reported functioning slice, not a detailed per-item test log, performance measurement or authorization for new implementation/publication. No fresh engine execution is claimed.
+
+The local workspace is at `05eac1e7a639e213f39cff81b1e75305727ab4d0` when recording this confirmation; the owner did not separately specify the tested-build hash. Preserve the earlier implementation acceptance and machine results. The plan remains completed and active_plan remains null. This receipt update stays local, without push.
+
+A read-only canon check confirms the next broader progression direction: Lolth reaches early Stonehook on foot before four cures, while the repaired wagon and family remain at the cave hub; wagon travel stays locked until its approved conditions are met. Preparing a bounded B-06 proposal for that first expedition/return is a recommendation only. No B-06 spec, execution, Mark II, parry, new art or disk persistence is authorized or started by the playtest confirmation.
