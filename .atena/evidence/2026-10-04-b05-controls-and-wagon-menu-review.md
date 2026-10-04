@@ -1,5 +1,5 @@
 ---
-status: review-amendments-human-validated-awaiting-publication-approval
+status: review-amendments-published-awaiting-technical-review
 kind: review-and-plan-change-evidence
 created: 2026-10-04
 plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
@@ -44,4 +44,4 @@ The preparation statements above describe the earlier checkpoint, not the final 
 
 Local revision on `codex/b05-controls-wagon-inventory` resolves both review findings and implements the revised controls, inventory and wagon interface. Godot 4.7.2 headless suites passed; normal-speed combat passed 9/9 and controls/menu passed 33/33; normal/headless smoke runs passed. Final dash and enemy/menu captures were inspected. Full implementation, recovery history, acceptance results and limitations are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]].
 
-The owner accepted the local implementation with "tudo validado, vamos continuar" on 2026-10-04. This is IN_PLAN human validation of commit `43ab112`, not explicit approval to publish, open a PR, merge or start B-06. No new gameplay tests are claimed for this operational-record update. Nothing from this follow-up has been pushed or sent externally; the publication-approval checkpoint is next.
+The owner accepted the local implementation with "tudo validado, vamos continuar" on 2026-10-04. This was IN_PLAN human validation of commit `43ab112`, not by itself publication authority. The owner subsequently explicitly authorized the push of implementation and records to `codex/b05-controls-wagon-inventory`. A normal push published `43ab112` and `bb4a0d4`; the remote first-publication hash was verified as `bb4a0d4830563dfa487409eaab852aefe4ca5d81` and main remained at `9ea4fc1`. Publication reconciliation follows on the same branch. No new gameplay tests are claimed for this operational-record update. Technical review is next; no PR, merge, B-06 or external dispatch is authorized.

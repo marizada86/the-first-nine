@@ -1,5 +1,5 @@
 ---
-status: local-results-prepared-not-dispatched
+status: published-results-prepared-not-dispatched
 kind: review-and-next-step-handoff
 created: 2026-10-04
 batch: B-05
@@ -14,11 +14,11 @@ The owner asked Atena to implement the revised controls and interfaces locally, 
 
 ## Source and authority
 
-Local branch: `codex/b05-controls-wagon-inventory`, based on published B-05 commit `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. The original commit is preserved. Main remains at `9ea4fc1`; no B-05 PR or merge has been performed. This local follow-up has not been pushed or sent to Claude.
+Published branch: `origin/codex/b05-controls-wagon-inventory`, based on original B-05 commit `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. The original commit is preserved. Main remains at `9ea4fc1`; no B-05 PR or merge has been performed. The owner authorized publication of implementation and records on 2026-10-04. First publication was verified at `bb4a0d4830563dfa487409eaab852aefe4ca5d81`; publication reconciliation follows normally on this branch. Atena has not directly dispatched this handoff to Claude.
 
-Implementation commit: `43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c`. On 2026-10-04 the owner accepted it with "tudo validado, vamos continuar". Human validation is accepted, but publication remains a separate pending approval. Do not ask the owner to approve the implementation again merely because the older notes described human review as open.
+Implementation commit: `43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c`. On 2026-10-04 the owner accepted it with "tudo validado, vamos continuar", recorded in `bb4a0d4`. Human validation and branch publication are accepted. Do not ask the owner to approve them again merely because older notes described those gates as pending. PR and merge remain separate pending authorizations.
 
-If working in another environment, first confirm the owner has delivered the actual follow-up code and records. A fetch of the original B-05 branch does not deliver unpublished local work. Report missing files rather than reconstructing them from this summary. Do not push, open a PR, merge or start B-06 without separate owner authorization.
+If working in another environment, fetch and inspect `origin/codex/b05-controls-wagon-inventory`, not just the older `b05-thornwake-combat-readability` branch. Preserve existing work, report the exact inspected HEAD, and confirm it contains `43ab112` and `bb4a0d4` plus the publication reconciliation. Report missing files rather than reconstructing them from this summary. This is a read-only review handoff: do not edit, push, open a PR, merge or start B-06 without separate owner authorization.
 
 Read AGENTS.md, `.atena/add.yaml`, `.atena/state/plan.yaml`, the revised spec, the canonical separated-controls decision, and the new local implementation evidence. Earlier B-05 notes preserve the original implementation history; their old bindings are not the current controls.
 

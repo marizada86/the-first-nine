@@ -353,7 +353,7 @@ active_plan:
   spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
   evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
   implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
-  status: implemented-human-validated-awaiting-publication-approval
+  status: implemented-published-awaiting-technical-review
   mode: guided
   approval_mode: per-plan
   approval_selection: user-explicit-2026-10-04
@@ -373,11 +373,15 @@ active_plan:
   approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
   revision_execution: local
   revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
-  followup_push_approved: false
+  followup_push_approved: true
+  followup_push_authority: "Owner explicitly authorized push of codex/b05-controls-wagon-inventory, including implementation and records, on 2026-10-04. IN_PLAN publication; no PR or merge."
+  revision_published: true
+  revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
+  revision_publication: "Normal push to origin/codex/b05-controls-wagon-inventory verified by ls-remote; implementation 43ab112 and owner-validation bb4a0d4 preserved. Publication reconciliation follows on the same branch."
   pull_request_approved: false
   merge_approved: false
   batch: B-05
-  checkpoint: local-controls-inventory-wagon-publication-approval
+  checkpoint: published-controls-inventory-wagon-technical-review
   implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
   implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
   prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
@@ -387,11 +391,11 @@ active_plan:
   human_validation_accepted: true
   human_validation_date: "2026-10-04"
   human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
-  proposed_publication_branch: codex/b05-controls-wagon-inventory
+  published_revision_branch: codex/b05-controls-wagon-inventory
   revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
   revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
   deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
-plan_cursor: B-05-human-validated-awaiting-publication-approval
+plan_cursor: B-05-published-awaiting-technical-review
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"
@@ -419,13 +423,14 @@ approved_change_requests:
     spec: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
     canonical_decision: "[[2026-10-04-separated-controls-and-wagon-management]]"
     evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
-    status: implemented-human-validated-awaiting-publication-approval
+    status: implemented-published-awaiting-technical-review
     approval_mode: per-plan
     approved: "2026-10-04"
     approval_source: "Explicit owner request to implement here, then prepare results for Claude; subsequent instructions defer parry and request clean dash and larger enemies."
     scope: "Independent inputs, Lolth inventory and wagon management; generic restore visuals, elapsed-time runtime validation, clean dash and Thornwake enemy proportions. Parry deferred."
     blocking_gaps: []
-    published: false
+    published: true
+    publication_branch: codex/b05-controls-wagon-inventory
   - id: "2026-10-03-minimal-world-and-threat-assets"
     spec: "[[2026-10-03-minimal-world-and-threat-assets]]"
     generated_reference_receipt: "[[2026-10-03-minimal-world-and-threat-batch-w]]"

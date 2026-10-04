@@ -1,5 +1,5 @@
 ---
-status: implemented-human-validated-awaiting-publication-approval
+status: implemented-published-awaiting-technical-review
 kind: bounded-plan-change
 created: 2026-10-04
 request_classification: PLAN_CHANGE_REQUEST
@@ -88,4 +88,4 @@ No new art, dependencies, Mark power, enemy, parry, direct companion control, cu
 
 Implemented as local commit `43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c` on `codex/b05-controls-wagon-inventory`, based on original published B-05 commit `4400b59`. Godot 4.7.2 self-tests passed, the revised normal-speed combat runner passed 9/9 and the controls/menu runner passed 33/33. Both dash forms and the three enemy proportions were visually inspected. See [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] for exact evidence and smoke-run results.
 
-On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation at the IN_PLAN human-review checkpoint. No additional specific tests are inferred from that statement. B-05 now awaits publication approval, not another implementation approval. The proposed publication target is `origin/codex/b05-controls-wagon-inventory`, preserving the original published branch and main. Push, PR, merge and external dispatch remain unapproved. This is not a completion/merge record or authorization to start B-06.
+On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation at the IN_PLAN human-review checkpoint. No additional specific tests are inferred from that statement. The owner then explicitly authorized publishing implementation and records to `origin/codex/b05-controls-wagon-inventory`. A normal push published `43ab112` and `bb4a0d4`, and remote verification confirmed the first publication at `bb4a0d4830563dfa487409eaab852aefe4ca5d81`. Publication reconciliation follows as an ordinary records commit on that branch, preserving original B-05 history and main. B-05 now awaits technical review. PR, merge and external dispatch remain unapproved. This is not a completion/merge record or authorization to start B-06.
