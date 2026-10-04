@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-published-awaiting-pr
 kind: b04-implementation-evidence
 recorded: 2026-10-04
 plan: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
@@ -7,7 +7,10 @@ implementation_note: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implemen
 implementation_branch: b04-thornwake-mark-one-stabilization
 implementation_base: 9683a8c
 implementation_commit: 0a897fc
-push_approved: false
+published_commit: dfdf0be6b1e59b1158f172a10a12b8b84d90d076
+survivability_fix_commit: b090847ec56bafb783c747755b00bce8243fa5ab
+branch_publication_approved: true
+remote_review_accepted: true
 pull_request_approved: false
 merge_approved: false
 ---
@@ -32,7 +35,7 @@ The approved records and implementation instruction had to be published to `main
 
 ## Implementation
 
-Claude implemented B-04 on the local branch `b04-thornwake-mark-one-stabilization`, created from `origin/main` at `9683a8c`. The original implementation commit is `0a897fc`. This evidence reconciliation was amended into that same local commit, so the final commit hash differs and is reported outside the commit.
+Claude implemented B-04 on the local branch `b04-thornwake-mark-one-stabilization`, created from `origin/main` at `9683a8c`. The original implementation commit was `0a897fc`. The evidence reconciliation was amended into it, producing the published commit `dfdf0be6b1e59b1158f172a10a12b8b84d90d076`. The survivability fix followed as `b090847ec56bafb783c747755b00bce8243fa5ab`.
 
 The full implementation note, with exact changed files, behavior, the tuning table, and test results, is `[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]`. In summary:
 
@@ -116,4 +119,9 @@ A review found an edge case in the published B-04 commit `dfdf0be`. `update_safe
 
 ## Approval state
 
-The user provisionally accepted the implementation pending this ADD record reconciliation. Human review is still open, and the B-04 plan remains active. The user has not approved a push, pull request, merge, or publication, and none has been performed.
+The user provisionally accepted the implementation pending the ADD record reconciliation, which was amended into the B-04 commit.
+
+- **Initial branch publication:** the project owner approved it, and `b04-thornwake-mark-one-stabilization` was pushed to `origin` at `dfdf0be6b1e59b1158f172a10a12b8b84d90d076`. `main` was not changed by that push.
+- **Survivability fix:** a review of the published commit found that a terminal camp state (Flame or Provisions at zero) could be captured at the Wagon and restore into the same failure. The fix was approved and published to the same branch at `b090847ec56bafb783c747755b00bce8243fa5ab`.
+- **Review:** the remote diff and the survivability fix have been reviewed and accepted.
+- **Pull request and merge:** neither has been authorized or performed. B-04 remains the active plan, with status `implemented-published-awaiting-pr`.

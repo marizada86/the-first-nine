@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-review
+status: implemented-published-awaiting-pr
 kind: implementation-note
 created: 2026-10-04
 batch: B-04
@@ -10,7 +10,10 @@ source_canon:
   - "[[2026-10-04-first-boss-mark-and-cure]]"
 implementation_branch: b04-thornwake-mark-one-stabilization
 base_commit: 9683a8c
-push_approved: false
+published_commit: dfdf0be6b1e59b1158f172a10a12b8b84d90d076
+survivability_fix_commit: b090847ec56bafb783c747755b00bce8243fa5ab
+branch_publication_approved: true
+remote_review_accepted: true
 pull_request_approved: false
 merge_approved: false
 ---
@@ -143,7 +146,14 @@ A review found an edge case in the published B-04 commit `dfdf0be`. `update_safe
 - **After the cap.** Once Echoes reach 3/3, Thornwake has no further goal. Night waves continue but grant nothing.
 - **Defeat card.** The defeat card still says "Press E to return to your checkpoint" and uses the existing key art.
 - **Tuning.** The values are untuned beyond this pass. A human playtest should confirm the boss length and punish window.
-- **Records.** The B-04 spec, evidence, and plan state record the implementation as awaiting human review. The plan stays active until it is explicitly closed.
+- **Records.** The B-04 spec, evidence, and plan state record the implementation as published and awaiting a pull request. The plan stays active until it is explicitly closed.
+
+## Publication state
+
+- **Initial branch publication:** the project owner approved it, and `b04-thornwake-mark-one-stabilization` was pushed to `origin` at `dfdf0be6b1e59b1158f172a10a12b8b84d90d076`. `main` was not changed by that push.
+- **Survivability fix:** a review of the published commit found that a terminal camp state (Flame or Provisions at zero) could be captured at the Wagon and restore into the same failure. The fix was approved and published to the same branch at `b090847ec56bafb783c747755b00bce8243fa5ab`.
+- **Review:** the remote diff and the survivability fix have been reviewed and accepted.
+- **Pull request and merge:** neither has been authorized or performed. B-04 remains the active plan, with status `implemented-published-awaiting-pr`.
 
 ## Next recommendation (non-authorizing)
 
