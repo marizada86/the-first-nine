@@ -1,5 +1,5 @@
 ---
-status: historical-instruction-local-revision-awaiting-review
+status: historical-instruction-local-revision-human-validated
 kind: external-implementation-instruction
 created: 2026-10-04
 batch: B-05
@@ -10,9 +10,11 @@ plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
 
 ## Current follow-up checkpoint
 
-The original implementation described below was published at `4400b59` on `b05-thornwake-combat-readability`. It is not merged. The owner approved local independent controls, inventory and wagon management, then deferred parry to a higher Mark and requested clean dash and larger enemies. That follow-up is implemented locally and awaits human review; it has not been published. Read [[2026-10-04-b05-controls-and-wagon-menu-revision]], [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] and [[2026-10-04-b05-controls-and-wagon-menu-instruction]] for current results and review instructions. The remaining sections below preserve the original historical execution instruction, not authorization to reimplement or publish the new revision.
+The original implementation described below was published at `4400b59` on `b05-thornwake-combat-readability`. It is not merged. The owner approved local independent controls, inventory and wagon management, then deferred parry to a higher Mark and requested clean dash and larger enemies. That follow-up is implemented locally as `43ab112` and human validation was accepted on 2026-10-04; it has not been published. Read [[2026-10-04-b05-controls-and-wagon-menu-revision]], [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] and [[2026-10-04-b05-controls-and-wagon-menu-instruction]] for current results and review instructions. The remaining sections below preserve the original historical execution instruction, not authorization to reimplement or publish the new revision.
 
 ## Execution gate
+
+Current operational override: the owner accepted local revision `43ab112` on 2026-10-04. Human validation is no longer pending; follow-up publication, PR and merge still require explicit authorization. The rest of this section preserves the original execution gate.
 
 The project owner approved B-05 with `per-plan` approval on 2026-10-04. Remote `main` now contains the tested F4 playtester source commit `4ef349b` and the B-05 approval record `a31c12c`. Fetch the latest `origin/main` and report the exact starting commit before editing. Do not work from an older branch without F4, and do not silently recreate or omit the playtester changes.
 

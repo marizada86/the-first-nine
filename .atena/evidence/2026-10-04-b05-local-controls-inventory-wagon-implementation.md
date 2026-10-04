@@ -1,5 +1,5 @@
 ---
-status: implemented-local-awaiting-human-review
+status: implemented-human-validated-awaiting-publication-approval
 kind: local-implementation-evidence
 created: 2026-10-04
 batch: B-05
@@ -8,6 +8,9 @@ canonical_decision: "[[2026-10-04-separated-controls-and-wagon-management]]"
 approval_mode: per-plan
 implementation_branch: codex/b05-controls-wagon-inventory
 implementation_base: 4400b59aab49ed2860c5c6369ba79b386a7d2e9a
+implementation_commit: 43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c
+human_validation_accepted: true
+human_validation_date: 2026-10-04
 followup_push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -79,6 +82,6 @@ All paths are under `.atena/generated/2026-10-04-b05-local-controls-validation/`
 
 ## Remaining checkpoint and limits
 
-Human playtest of scale, reach, dash in both directions, menu/controller usability and the boss/cure/checkpoint flow is still pending. Saved state remains in memory only. Higher-Mark parry needs a future approved unlock/mechanics decision. Thornwake posts/missions and travel remain locked. No release export was produced.
+The human-review checkpoint was pending when commit `43ab112` was created. On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation. This IN_PLAN acceptance is recorded without inventing a test-by-test human checklist or additional machine results. Saved state remains in memory only. Higher-Mark parry needs a future approved unlock/mechanics decision. Thornwake posts/missions and travel remain locked. No release export was produced.
 
-B-05 stays active as `implemented-local-awaiting-human-review`; B-04 remains the latest completed plan. No follow-up push, PR, merge or external handoff was authorized or performed. The English handoff is prepared in [[2026-10-04-b05-controls-and-wagon-menu-instruction]], not dispatched.
+B-05 stays active as `implemented-human-validated-awaiting-publication-approval`; B-04 remains the latest completed plan. No follow-up push, PR, merge or external handoff was authorized or performed. The next proposed step is a normal push to the same-named remote branch `codex/b05-controls-wagon-inventory`, leaving original B-05 history and main unchanged, once the owner specifically authorizes it. The English handoff is prepared in [[2026-10-04-b05-controls-and-wagon-menu-instruction]], not dispatched. B-06 is not started.

@@ -1,5 +1,5 @@
 ---
-status: implemented-local-revision-awaiting-human-review
+status: implemented-human-validated-awaiting-publication-approval
 kind: bounded-runtime-fix-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b05-thornwake-combat-readability
@@ -97,6 +97,6 @@ The owner selected `per-plan` for the single stable batch, `B-05`, on 2026-10-04
 
 The original approved implementation was subsequently published with owner authorization on `b05-thornwake-combat-readability` at `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. It has not been merged. The preparation and execution instructions above describe the original batch and its historical gate.
 
-Independent review found an uncleared hurt/action state on generic checkpoint restore and a frame-count-dependent real-input runner. Details and local validation are in [[2026-10-04-b05-controls-and-wagon-menu-review]]. These corrections are now implemented locally; human acceptance remains pending.
+Independent review found an uncleared hurt/action state on generic checkpoint restore and a frame-count-dependent real-input runner. Details and local validation are in [[2026-10-04-b05-controls-and-wagon-menu-review]]. These corrections are now implemented locally and were accepted by the owner's "tudo validado, vamos continuar" on 2026-10-04. B-05 awaits explicit follow-up publication approval; PR and merge remain unapproved.
 
 The owner's new input/management definition is canonical in [[2026-10-04-separated-controls-and-wagon-management]]. The bounded extension is in [[2026-10-04-b05-controls-and-wagon-menu-revision]]. The owner approved local implementation before returning to Claude, then explicitly deferred parry to a higher Mark and requested clean dash and larger enemies. Local results are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Do not use the original shared-primary instruction to implement the new controls. No follow-up push, PR or merge is authorized.

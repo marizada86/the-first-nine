@@ -16,6 +16,8 @@ The owner asked Atena to implement the revised controls and interfaces locally, 
 
 Local branch: `codex/b05-controls-wagon-inventory`, based on published B-05 commit `4400b59aab49ed2860c5c6369ba79b386a7d2e9a`. The original commit is preserved. Main remains at `9ea4fc1`; no B-05 PR or merge has been performed. This local follow-up has not been pushed or sent to Claude.
 
+Implementation commit: `43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c`. On 2026-10-04 the owner accepted it with "tudo validado, vamos continuar". Human validation is accepted, but publication remains a separate pending approval. Do not ask the owner to approve the implementation again merely because the older notes described human review as open.
+
 If working in another environment, first confirm the owner has delivered the actual follow-up code and records. A fetch of the original B-05 branch does not deliver unpublished local work. Report missing files rather than reconstructing them from this summary. Do not push, open a PR, merge or start B-06 without separate owner authorization.
 
 Read AGENTS.md, `.atena/add.yaml`, `.atena/state/plan.yaml`, the revised spec, the canonical separated-controls decision, and the new local implementation evidence. Earlier B-05 notes preserve the original implementation history; their old bindings are not the current controls.
@@ -50,4 +52,4 @@ Commands, logs, captures, changed files and limitations are in `.atena/evidence/
 
 Once the owner delivers this follow-up, perform a read-only review of the actual diff and evidence. Focus on input consumption and controller equivalence, wagon-only management eligibility, inventory identity/restore, melee reach versus visible contact, and clean dash sampling in both directions/forms. Run the supplied validation if the environment supports Godot. Return concrete findings and remaining human playtest items in English.
 
-The owner should then playtest in Godot: gather/store/craft the Wheel Kit, defend at night, compare larger enemies and melee reach, exercise I/M/F4, and verify the boss/Shar/first-cure/safe-wagon flow. Automatic passes do not constitute human tuning acceptance. Keep B-05 active at this review checkpoint. Prepare any later progression or higher-Mark parry only after a separately approved plan.
+Human validation has already been accepted; do not reset it to pending. A technical review may still report a concrete new regression or limitation, but do not invent additional human test results. Keep B-05 active at the appropriate publication/PR/merge checkpoint rather than marking it merged or automatically starting B-06. Prepare any later progression or higher-Mark parry only after a separately approved plan.

@@ -1,5 +1,5 @@
 ---
-status: implemented-local-awaiting-human-review
+status: implemented-human-validated-awaiting-publication-approval
 kind: bounded-plan-change
 created: 2026-10-04
 request_classification: PLAN_CHANGE_REQUEST
@@ -86,4 +86,6 @@ No new art, dependencies, Mark power, enemy, parry, direct companion control, cu
 
 ## Current local implementation
 
-Implemented on `codex/b05-controls-wagon-inventory`, based on original published B-05 commit `4400b59`. Godot 4.7.2 self-tests passed, the revised normal-speed combat runner passed 9/9 and the controls/menu runner passed 33/33. Both dash forms and the three enemy proportions were visually inspected. See [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] for exact evidence and smoke-run results. B-05 remains active at human review; this is not a completion/merge record.
+Implemented as local commit `43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c` on `codex/b05-controls-wagon-inventory`, based on original published B-05 commit `4400b59`. Godot 4.7.2 self-tests passed, the revised normal-speed combat runner passed 9/9 and the controls/menu runner passed 33/33. Both dash forms and the three enemy proportions were visually inspected. See [[2026-10-04-b05-local-controls-inventory-wagon-implementation]] for exact evidence and smoke-run results.
+
+On 2026-10-04 the owner stated "tudo validado, vamos continuar", accepting the local implementation at the IN_PLAN human-review checkpoint. No additional specific tests are inferred from that statement. B-05 now awaits publication approval, not another implementation approval. The proposed publication target is `origin/codex/b05-controls-wagon-inventory`, preserving the original published branch and main. Push, PR, merge and external dispatch remain unapproved. This is not a completion/merge record or authorization to start B-06.

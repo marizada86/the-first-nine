@@ -5,7 +5,7 @@ created: 2026-10-04
 approval_source: direct-user-control-definition
 related_controls: "[[2026-10-02-cross-input-controls]]"
 related_plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
-implementation_status: implemented-local-awaiting-human-review
+implementation_status: implemented-human-validated-local
 ---
 
 # Separate combat, interaction, and wagon management

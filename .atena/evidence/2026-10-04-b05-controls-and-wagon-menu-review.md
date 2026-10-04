@@ -1,5 +1,5 @@
 ---
-status: review-amendments-implemented-local-awaiting-human-review
+status: review-amendments-human-validated-awaiting-publication-approval
 kind: review-and-plan-change-evidence
 created: 2026-10-04
 plan: "[[2026-10-04-b05-thornwake-combat-readability]]"
@@ -42,4 +42,6 @@ Prepared the English canonical decision, revision spec and Opus instruction. No 
 
 The preparation statements above describe the earlier checkpoint, not the final runtime state. The owner explicitly requested local implementation, then deferred parry to a higher Mark, asked for a clean body-only dash, and requested larger enemy proportions. These IN_PLAN clarifications were recorded without inventing an unlock level or bypassing publication gates.
 
-Local revision on `codex/b05-controls-wagon-inventory` now resolves both review findings and implements the revised controls, inventory and wagon interface. Godot 4.7.2 headless suites passed; normal-speed combat passed 9/9 and controls/menu passed 33/33; normal/headless smoke runs passed. Final dash and enemy/menu captures were inspected. Full implementation, recovery history, acceptance results and limitations are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]]. Human review remains open; nothing from this follow-up has been pushed or sent externally.
+Local revision on `codex/b05-controls-wagon-inventory` resolves both review findings and implements the revised controls, inventory and wagon interface. Godot 4.7.2 headless suites passed; normal-speed combat passed 9/9 and controls/menu passed 33/33; normal/headless smoke runs passed. Final dash and enemy/menu captures were inspected. Full implementation, recovery history, acceptance results and limitations are in [[2026-10-04-b05-local-controls-inventory-wagon-implementation]].
+
+The owner accepted the local implementation with "tudo validado, vamos continuar" on 2026-10-04. This is IN_PLAN human validation of commit `43ab112`, not explicit approval to publish, open a PR, merge or start B-06. No new gameplay tests are claimed for this operational-record update. Nothing from this follow-up has been pushed or sent externally; the publication-approval checkpoint is next.
