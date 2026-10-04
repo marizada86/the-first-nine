@@ -26,7 +26,9 @@ pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
 additional_record_push_approved: true
 merge_approved: true
 merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da
-closure_record_publication_approved: false
+closure_record_publication_approved: true
+closure_record_published: true
+closure_record_commit: c230975c3ead74ccf4f7844c6e93e51697bed1ca
 ---
 
 # Enemy direction diagnosis
@@ -111,4 +113,10 @@ GitHub confirmed the new head, clean mergeability, four commits and 62 changed f
 
 After fetching, local main was safely fast-forwarded to the merge. Its parents are prior main `39cd7d3d46a8afb3894889920e0840cbae573e7b` and final PR head `fb565d0`. The merged tree is identical to that head; all four correction commits remain ancestors. Remote main matches the merge, and `codex/enemy-facing-correction` is preserved at `fb565d0`. No branch deletion or other remote changes.
 
-Local status is now `complete-implementation-merged`. Spec, receipt, plan state and their validator are reconciled locally; prior B-05 moves unchanged to the first history entry, older history is preserved, and active_plan is null with cursor complete. Exact facts are in [[2026-10-04-enemy-facing-pull-request]]. This documentation closure is unpushed and separately gated; no new engine test, source change, art, dependency, dispatch, balance change or B-06.
+At closure commit `c230975`, status was `complete-implementation-merged`. Spec, receipt, plan state and their validator were reconciled locally; prior B-05 moved unchanged to the first history entry, older history was preserved, and active_plan was null with cursor complete. This documentation closure initially remained unpushed, pending its separate publication approval.
+
+## Authorized documentation closure publication
+
+The owner subsequently answered "autorizado" to sending documentary closure `c230975c3ead74ccf4f7844c6e93e51697bed1ca`. This is the separately gated publication of the completed correction, not a new execution plan or B-06. A fresh fetch confirmed exactly one local documentation-only commit ahead of main at merge `7049063`. The existing record/merge/saved-result checks passed, with 12 resolved links and completed history preserved (29 to 30 entries); no new engine run.
+
+A normal push moved remote main from `7049063358132aac6d85aa69c0f06ae53efa98da` to `c230975`, preserving the merge and all correction commits. Remote refs confirmed the feature branch stayed at `fb565d0`. The current publication facts are reconciled in spec, evidence, receipt, completed-plan state and their validator, as a bounded documentary follow-up to this authorized closure. No amend, force-push, source/art/test-result change, dependency, branch deletion, external dispatch, balance change or B-06. Exact facts are in [[2026-10-04-enemy-facing-pull-request]].

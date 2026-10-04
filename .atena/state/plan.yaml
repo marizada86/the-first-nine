@@ -50,10 +50,13 @@ last_completed_plan:
   preserved_commits: ["e7812e6", "523960b", "edb5623", "fb565d0"]
   feature_branch_preserved: true
   merge_validation: "Remote main and fetched merge agree; merged tree equals fb565d0, all four commits remain ancestors. GitHub closed/merged true. Final pre-merge head had zero check runs and statuses; no CI or fresh engine pass inferred."
-  closure_record_publication_approved: false
-  closure_record_publication: "Local operational closure only. The owner authorized fb565d0 publication and merge, not a further main documentation push."
+  closure_record_publication_approved: true
+  closure_record_published: true
+  closure_record_commit: "c230975c3ead74ccf4f7844c6e93e51697bed1ca"
+  closure_record_publication_authority: "Owner separately answered autorizado to publishing documentary closure c230975. This includes bounded reconciliation of that publication, not new work or standing push authority."
+  closure_record_publication: "Normal push published c230975 on main above regular merge 7049063; exact remote refs verified and feature branch preserved at fb565d0. Publication reconciliation is documentation only, without amend or force-push."
   next_recommendation: "A separately approved balance/feel playtest can evaluate deferred B-05 items. No B-06 is authorized or started."
-  exception: "No new runtime, art, dependency, gameplay rule, balance, unlock, external dispatch, further push or branch deletion. Prior completed plans and deferred items remain preserved."
+  exception: "Only the separately authorized documentary closure and its publication reconciliation were published. No new runtime, art, dependency, gameplay rule, balance, unlock, external dispatch, unrelated push, B-06 or branch deletion. Prior completed plans and deferred items remain preserved."
 
 completed_plan_history:
   - id: "2026-10-04-b05-thornwake-combat-readability"

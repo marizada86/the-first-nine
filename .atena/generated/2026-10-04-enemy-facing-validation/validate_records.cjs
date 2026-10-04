@@ -16,7 +16,8 @@ assert(receipt.includes('status: complete-implementation-merged'));
 assert(receipt.includes('pull_request: https://github.com/marizada86/the-first-nine/pull/5'));
 assert(receipt.includes('additional_record_push_approved: true'));
 assert(receipt.includes('merge_approved: true'));
-assert(receipt.includes('closure_record_publication_approved: false'));
+assert(receipt.includes('closure_record_publication_approved: true'));
+assert(receipt.includes('closure_record_published: true'));
 assert(receipt.includes('merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da'));
 for(const match of receipt.matchAll(/\[\[([^\]]+)\]\]/g)){assert(ids.has(match[1]),'Unresolved receipt link '+match[1]);links++;}
 for(const file of paths){
@@ -26,7 +27,9 @@ for(const file of paths){
   assert(text.includes('pull_request_head: fb565d0c430a8df3b0a12bd233c8a4109466f6a0'));
   assert(text.includes('additional_record_push_approved: true'));
   assert(text.includes('merge_approved: true'));
-  assert(text.includes('closure_record_publication_approved: false'));
+  assert(text.includes('closure_record_publication_approved: true'));
+  assert(text.includes('closure_record_published: true'));
+  assert(text.includes('closure_record_commit: c230975c3ead74ccf4f7844c6e93e51697bed1ca'));
   assert(text.includes('push_approved: true'));
   assert(text.includes('published: true'));
   assert(text.includes('first_published_commit: 523960b3b3c83832edabda8298de76e767828c43'));
@@ -55,7 +58,7 @@ assert(active.includes('first_published_commit: "523960b3b3c83832edabda8298de76e
 git('merge-base','--is-ancestor','523960b3b3c83832edabda8298de76e767828c43','refs/remotes/origin/codex/enemy-facing-correction');
 git('merge-base','--is-ancestor','e7812e6ac969e899292a6c0c4845769ccaba2404','HEAD');
 assert.equal(git('diff','--name-only','e7812e6ac969e899292a6c0c4845769ccaba2404','--','main.gd','assets','project.godot','wagon_inventory_ui.gd').trim(),'','Acceptance reconciliation must not change the game');
-for(const gate of ['pull_request_approved: true','additional_record_push_approved: true','merge_approved: true','closure_record_publication_approved: false'])assert(active.includes(gate));
+for(const gate of ['pull_request_approved: true','additional_record_push_approved: true','merge_approved: true','closure_record_publication_approved: true','closure_record_published: true'])assert(active.includes(gate));
 assert(active.includes('pull_request_state: merged'));
 assert(active.includes('pull_request_head: "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"'));
 assert(active.includes('pull_request_base: "39cd7d3d46a8afb3894889920e0840cbae573e7b"'));
@@ -64,6 +67,11 @@ assert.equal(git('rev-parse','refs/remotes/origin/codex/enemy-facing-correction'
 assert.equal(git('show','-s','--format=%P',merged).trim(),baseline+' '+head,'Regular merge parents changed');
 assert.equal(git('diff','--name-only',head,merged).trim(),'','Merge introduced extra content');
 git('merge-base','--is-ancestor',merged,'refs/remotes/origin/main');
+const closure='c230975c3ead74ccf4f7844c6e93e51697bed1ca';
+assert(active.includes('closure_record_commit: "'+closure+'"'));
+assert.equal(git('show','-s','--format=%P',closure).trim(),merged,'Closure parent changed');
+assert(git('diff','--name-only',merged,closure).trim().split('\n').every(file=>file.startsWith('.atena/')),'Published closure changed non-record content');
+git('merge-base','--is-ancestor',closure,'refs/remotes/origin/main');
 for(const commit of ['e7812e6','523960b','edb5623','fb565d0'])git('merge-base','--is-ancestor',commit,merged);
 const priorLast=before.match(/^last_completed_plan:\n([\s\S]*?)^completed_plan_history:/m)[1].trimEnd();
 const moved=priorLast.split('\n').map((line,index)=>index===0?line.replace(/^  id:/,'  - id:'):'  '+line).join('\n');
@@ -105,6 +113,6 @@ assert(fs.readFileSync(path.join(dir,'menus.log'),'utf8').includes('LOCAL_CONTRO
 for(const name of ['overview-left.png','overview-right.png'])assert(fs.existsSync(path.join(dir,name)));
 git('-c','core.whitespace=-blank-at-eof','diff','--check',baseline,'--');
 console.log('FACING_RECORDS_PASS: '+links+' links, ADD contract, per-plan approval/review gate, exact B-05 completed history, scope and unchanged combat/geometry functions.');
-console.log('FACING_MERGE_PASS: regular merge '+merged+', all four commits preserved, identical merged tree; active plan cleared, completed history '+(priorHistory.match(/^  - id:/gm)||[]).length+' -> '+(currentHistory.match(/^  - id:/gm)||[]).length+'. Closure remains local/unpublished.');
+console.log('FACING_MERGE_PASS: regular merge '+merged+', all four commits preserved, identical merged tree; active plan cleared, completed history '+(priorHistory.match(/^  - id:/gm)||[]).length+' -> '+(currentHistory.match(/^  - id:/gm)||[]).length+'. Documentary closure '+closure+' authorized and published.');
 console.log('FACING_RESULTS_PASS: 65/65 headless, 102/102 rendered, 3 rejected faults, geometry 46/46, combat 9/9, menus 33/33, self-tests and two smoke runs.');
 console.log('Saved runtime evidence only; no new engine execution. YAML structural checks only; no full parser/dependency installed. Native Godot log final blank lines retained.');

@@ -11,7 +11,9 @@ pull_request_approved: true
 additional_record_push_approved: true
 merge_approved: true
 merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da
-closure_record_publication_approved: false
+closure_record_publication_approved: true
+closure_record_published: true
+closure_record_commit: c230975c3ead74ccf4f7844c6e93e51697bed1ca
 ---
 
 # Enemy-facing correction PR receipt
@@ -58,6 +60,12 @@ The owner subsequently answered "autorizados" to both pending actions: publishin
 - Remote main verified at the merge; local main safely fast-forwarded to it. The merged tree is identical to the final PR head.
 - Feature branch preserved at `fb565d0`. No amend, force-push, auto-merge or deletion.
 
-The plan is completed locally, with prior B-05 preserved as the first history entry and active_plan cleared. Closure records remain local and unpushed. Validation checks merge ancestry/tree equality, saved results, record links and exact prior-history preservation; no new engine execution or detailed human tests are claimed.
+At documentary closure `c230975`, the plan was completed locally, with prior B-05 preserved as the first history entry and active_plan cleared. Closure records initially remained local and unpushed. Validation checked merge ancestry/tree equality, saved results, record links and exact prior-history preservation; no new engine execution or detailed human tests were claimed.
 
 The closure validator passes with 12 resolved links and the unchanged saved runtime results. Its first closure-history comparison rejected the required newline separating the newly moved B-05 entry from the older list. The assertion now requires exactly that single new separator and byte-equivalent normalized older content; no older entry or acceptance result was changed to pass the check. Scoped whitespace checks pass. YAML checks remain structural, not a full parser pass.
+
+## Separately authorized closure publication
+
+The owner answered "autorizado" to publishing closure `c230975c3ead74ccf4f7844c6e93e51697bed1ca`. A fresh fetch and scoped record/saved-result checks confirmed the one-commit, documentation-only boundary. Normal push published it on main, preserving its parent merge `7049063`; remote main was verified at `c230975` and the feature branch remained `fb565d0`.
+
+This documentary publication reconciliation records that completed action under the same bounded closure authorization. It changes only the four operational documents and their validator, without amending the published closure or touching source, art, captures, saved test results or older history. No new engine run, new PR, merge, branch deletion, dispatch, dependency or B-06. The plan stays complete with active_plan null and cursor complete; this approval does not authorize unrelated future publication.

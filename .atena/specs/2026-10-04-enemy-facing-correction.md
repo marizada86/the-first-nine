@@ -30,7 +30,9 @@ pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
 additional_record_push_approved: true
 merge_approved: true
 merge_commit: 7049063358132aac6d85aa69c0f06ae53efa98da
-closure_record_publication_approved: false
+closure_record_publication_approved: true
+closure_record_published: true
+closure_record_commit: c230975c3ead74ccf4f7844c6e93e51697bed1ca
 ---
 
 # Enemy facing correction
@@ -47,7 +49,7 @@ Track each enemy's facing direction and mirror the existing enemy sprite when fa
 
 Keep source images and frame selection, native aspect, centered visible body, grounded feet, widths/shared-outline melee reach, prewarmed caches, health, damage, contact radius and timing unchanged. Restore drawing transforms before labels, health bars or other scene elements. Do not mirror the entire scene or mutate source artwork.
 
-No new art, dependencies, adapter installation, GPU/performance profiling, controls, parry, progression, ally roles, disk saves or B-06. External publication is not implicit: the owner separately approved branch publication, PR creation, and subsequently receipt publication plus regular merge. A further documentation-closure push remains unapproved.
+No new art, dependencies, adapter installation, GPU/performance profiling, controls, parry, progression, ally roles, disk saves or B-06. External publication is not implicit: the owner separately approved branch publication, PR creation, receipt publication plus regular merge, and finally this bounded documentation closure. This is not standing authorization for other work or publication.
 
 ## Grounded decisions and gaps
 
@@ -92,4 +94,4 @@ The owner then explicitly authorized publishing the correction and records on `c
 
 The owner separately answered "autorizo" to opening a PR into main, with an English description and no merge. Classified IN_PLAN. At opening, PR #5 had head `edb5623`, base `39cd7d3`, three commits and 61 changed files. GitHub reported clean mergeability, zero check runs, zero commit statuses and auto-merge disabled. Receipt `fb565d0` was initially local and the plan awaited merge authority.
 
-The owner then answered "autorizados" to receipt publication and merge. A normal push published `fb565d0`; PR #5 was regularly merged at `7049063358132aac6d85aa69c0f06ae53efa98da`, preserving all four commits and the feature branch. The merged tree equals the final PR head. The local plan is completed, with prior B-05 moved unchanged into history and active_plan cleared. See [[2026-10-04-enemy-facing-pull-request]] for exact facts. This closure is local and unpushed; no fresh engine validation, further publication, dispatch, branch deletion or B-06 is authorized/performed.
+The owner then answered "autorizados" to receipt publication and merge. A normal push published `fb565d0`; PR #5 was regularly merged at `7049063358132aac6d85aa69c0f06ae53efa98da`, preserving all four commits and the feature branch. The merged tree equals the final PR head. Closure `c230975` initially remained local. The owner subsequently answered "autorizado" to publishing that documentary closure; a normal push published it on main, with the feature branch unchanged. This publication reconciliation updates operational records only, as part of the authorized closure. The plan is completed, prior B-05 is preserved in history, and active_plan is null. See [[2026-10-04-enemy-facing-pull-request]] for exact facts. No fresh engine validation, source change, dispatch, branch deletion, B-06 or unrelated publication.
