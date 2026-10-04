@@ -109,12 +109,14 @@ const HOUND_LUNGE_TIME := 0.35
 const HOUND_RECOVER := 0.7
 const MIN_TELEGRAPH_TIME := 0.5
 # B-03 first boss and Mark I. Values are playtest data, not canon.
-const ANTLERED_HUNGER_HEALTH := 8
+# B-04 playtest tuning: health 8 -> 12 and recovery 1.0 -> 1.2 s, so the fight lasts
+# about three full melee combos and each dodged lunge leaves a clearer punish window.
+const ANTLERED_HUNGER_HEALTH := 12
 const BOSS_LUNGE_RANGE := 190.0
 const BOSS_WINDUP := 0.8
 const BOSS_LUNGE_SPEED := 360.0
 const BOSS_LUNGE_TIME := 0.45
-const BOSS_RECOVER := 1.0
+const BOSS_RECOVER := 1.2
 const BOSS_WAGON_WINDUP := 1.2
 const BOSS_WAGON_CHARGE_SPEED := 260.0
 const BOSS_WAGON_CHARGE_TIME := 3.5
@@ -122,6 +124,7 @@ const BOSS_WAGON_DAMAGE := 15.0
 const FIRST_THREAD_RANGE := 150.0
 const FIRST_THREAD_DAMAGE := 2
 const FIRST_THREAD_COOLDOWN := 1.2
+# B-04 playtest review kept FIRST THREAD at 150 px, 2 damage, and a 1.2 s cooldown.
 # In Thornwake, progression stops at Mark I. Mark II and later belong to later batches.
 const THORNWAKE_MARK_CAP := 1
 # H-01 and H-02 shells. Identifiers only: they are never displayed to the player.
@@ -184,6 +187,10 @@ var self_test_travel_bypass := false
 var shar_beat := 0
 var antlered_hunger_defeated := false
 var first_thread_cooldown := 0.0
+# B-04 safe-wagon state: an in-memory operational snapshot, never written to disk.
+var camp_secured := false
+var safe_wagon_state: Dictionary = {}
+var was_at_safe_wagon := false
 var passive_mission: Dictionary = {}
 var mission_selected := 0
 var posted_allies: Array[String] = []
@@ -268,6 +275,7 @@ func run_self_test() -> void:
 	var opening_cave_ready := run_opening_cave_self_test()
 	var thornwake_tutorial_ready := run_thornwake_tutorial_self_test()
 	var first_boss_ready := run_first_boss_self_test()
+	var stabilization_ready := run_mark_one_stabilization_self_test()
 	reset_to_prologue()
 	player = Vector2(VIEW.x - 60.0, GROUND_Y - PLAYER_FEET_OFFSET)
 	clock_seconds = DAY_DURATION + 1.0
@@ -389,7 +397,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -691,6 +699,95 @@ func run_first_boss_self_test() -> bool:
 		push_error("SELF_TEST_B03_FAIL: start=%s/%s/%s/%s boss=%s lunge=%s/%s charge=%s/%s reset=%s victory=%s shell=%s/%s mark=%s/%s choices=%s echoes=%s/%s cure=%s/%s wagon=%s travel=%s echo=%s/%s thread=%s/%s melee=%s dodge=%s restore=%s premark=%s replay=%s/%s" % [no_boss_before_safe_camp, safe_camp_reached, boss_not_automatic, needs_wagon, only_boss, lunge_telegraphed, lunge_hits_after_windup, wagon_charge_telegraphed, charge_hits_after_windup, boss_failure_reset, boss_defeated_by_melee, shell_advances, shell_skipped, mark_once, lolth_drow, eight_choices, echoes_zero_before_cure, no_echo_before_cure, one_cure, no_second_cure, wagon_held, travel_blocked, echoes_after_cure, echoes_capped, thread_hits, thread_cooldown, melee_still_works, dodge_still_works, marked_restore, no_thread_before_mark, new_run_reaches_shell, full_shell_applies_mark])
 	return passed
 
+# B-04 checks: safe-wagon capture, post-Mark-I restore, preserved Mark I and cure, Echo gate and cap, travel lock.
+func run_mark_one_stabilization_self_test() -> bool:
+	var wagon_spot := Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	var field_spot := Vector2(700.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	reset_to_prologue()
+	wagon_integrity = 0.0
+	fail_run("pre-mark test")
+	restart_from_checkpoint()
+	var pre_mark_reset := is_cave_camp_start() and not camp_secured and safe_wagon_state.is_empty()
+	reach_safe_camp_for_test()
+	player = wagon_spot
+	use_camp_action()
+	defeat_boss_for_test()
+	skip_shar_shell()
+	collect_echo(2)
+	var no_early_echoes := state == "cure" and shadow_echoes == 0
+	for _step in 4:
+		select_next_cure()
+	cure_selected_ally()
+	var chosen := String(THALESTRIEL[4])
+	var first_cure := cured_allies == [chosen] and mark_level == 1 and state == "journey"
+	var return_objective := current_objective() == "Return to the Wagon to secure the camp." and not camp_secured
+	player = field_spot
+	update_safe_wagon()
+	var no_capture_away := not camp_secured and safe_wagon_state.is_empty()
+	var cure_stock := wagon_stock.size()
+	wagon_stock.append({"name": "LOST HERBS", "type": "herb", "slots": 1})
+	wagon_integrity = 0.0
+	fail_run("before safe return")
+	restart_from_checkpoint()
+	var cure_fallback := state == "journey" and mark_level == 1 and cured_allies == [chosen] and not camp_secured and wagon_stock.size() == cure_stock and wagon_integrity > 0.0
+	player = field_spot
+	update_safe_wagon()
+	wagon_stock.append({"name": "SAFE ROPE", "type": "rope", "slots": 1})
+	spawn_enemy("BRIAR HOUND", Vector2(CARAVAN_X + 60.0, GROUND_Y - 34), 1, 1)
+	player = wagon_spot
+	update_safe_wagon()
+	var no_unsafe_capture := not camp_secured
+	shades.clear()
+	update_safe_wagon()
+	var captured := camp_secured and not safe_wagon_state.is_empty() and message.begins_with("CAMP SECURED")
+	var secure_objective := current_objective() == "The Wagon is secure. Gather Shadow Echoes in Thornwake: 0/3."
+	var saved_integrity := wagon_integrity
+	var saved_stock := wagon_stock.size()
+	var saved_provisions := provisions
+	player = field_spot
+	update_safe_wagon()
+	wagon_stock.append({"name": "SPENT WOOD", "type": "wood", "slots": 1})
+	wagon_integrity = 35.0
+	collect_echo(1)
+	provisions = 0.0
+	check_survival_failures()
+	var failed_after_safe_return := state == "defeat"
+	restart_from_checkpoint()
+	var restored := state == "journey" and zone == 0 and wagon_integrity == saved_integrity and wagon_stock.size() == saved_stock and saved_stock == cure_stock + 1 and provisions == saved_provisions and shadow_echoes == 0 and camp_secured
+	var narrative_kept := mark_level == 1 and cured_allies == [chosen] and awakened == 1 and lolth_form() == "drow" and antlered_hunger_defeated
+	var wagon_kept := wagon_condition() == "stationed" and wagon_travel_locked()
+	player = field_spot
+	update_safe_wagon()
+	wagon_stock.append({"name": "DRY WOOD", "type": "wood", "slots": 1})
+	collect_echo(2)
+	player = wagon_spot
+	update_safe_wagon()
+	var latest_stock := wagon_stock.size()
+	var latest_objective := current_objective() == "The Wagon is secure. Gather Shadow Echoes in Thornwake: 2/3."
+	player = field_spot
+	update_safe_wagon()
+	wagon_stock.clear()
+	collect_echo(1)
+	health = 0.0
+	hurt_cooldown = 0.0
+	hurt_lolth()
+	restart_from_checkpoint()
+	var latest_restored := wagon_stock.size() == latest_stock and shadow_echoes == 2 and mark_level == 1 and cured_allies == [chosen]
+	collect_echo(10)
+	var capped := shadow_echoes == int(ECHO_THRESHOLDS[1]) and mark_level == 1 and state == "journey" and cured_allies.size() == 1
+	var cap_objective := current_objective() == "The Wagon is secure. No deeper Mark can awaken in Thornwake."
+	advance_to_stonehook()
+	enter_stonehook()
+	var travel_locked := zone == 0 and state == "journey" and wagon_travel_locked() and wagon_condition() == "stationed"
+	reset_to_prologue()
+	var new_run_clears := not camp_secured and safe_wagon_state.is_empty() and is_cave_camp_start()
+	var passed := pre_mark_reset and no_early_echoes and first_cure and return_objective and no_capture_away and cure_fallback and no_unsafe_capture and captured and secure_objective and failed_after_safe_return and restored and narrative_kept and wagon_kept and latest_objective and latest_restored and capped and cap_objective and travel_locked and new_run_clears
+	if passed:
+		print("SELF_TEST_B04_PASS: safe-wagon capture, post-Mark-I restore, preserved Mark I and cure, Echo gate and cap, and travel lock are ready")
+	else:
+		push_error("SELF_TEST_B04_FAIL: premark=%s early=%s cure=%s/%s away=%s fallback=%s unsafe=%s capture=%s/%s fail=%s restore=%s narrative=%s wagon=%s latest=%s/%s cap=%s/%s travel=%s newrun=%s" % [pre_mark_reset, no_early_echoes, first_cure, return_objective, no_capture_away, cure_fallback, no_unsafe_capture, captured, secure_objective, failed_after_safe_return, restored, narrative_kept, wagon_kept, latest_objective, latest_restored, capped, cap_objective, travel_locked, new_run_clears])
+	return passed
+
 func is_cave_camp_start() -> bool:
 	return state == "journey" and zone == 0 and mark_level == 0 and cured_allies.is_empty() and wagon_repair == 0 and wagon_condition() == "cave_damaged" and wagon_travel_locked() and lolth_form() == "elf" and not is_night() and shades.is_empty() and night_wave_total == 0 and tutorial_phase == "day_salvage"
 
@@ -886,6 +983,7 @@ func _process(delta: float) -> void:
 	update_night_waves(delta)
 	update_zone_hazards()
 	check_enemy_contact()
+	update_safe_wagon()
 	check_survival_failures()
 	queue_redraw()
 
@@ -1339,11 +1437,82 @@ func fail_run(reason: String) -> void:
 	message = "%s Checkpoint: %s." % [reason, checkpoint_label()]
 
 func checkpoint_label() -> String:
-	return "PROLOGUE" if int(checkpoint.mark) == 0 else MARK_NAMES[int(checkpoint.mark)]
+	if int(checkpoint.mark) == 0:
+		return "PROLOGUE"
+	if zone == 0 and camp_secured and not safe_wagon_state.is_empty():
+		return "SAFE WAGON"
+	return MARK_NAMES[int(checkpoint.mark)]
+
+# Lolth is at the safe Wagon when she stands in the Wagon interaction area with no living
+# enemy and no unfinished night defense.
+func is_at_safe_wagon() -> bool:
+	if state != "journey" or zone != 0 or mark_level < 1 or cured_allies.is_empty() or player.x >= 305.0:
+		return false
+	for shade in shades:
+		if not shade.defeated:
+			return false
+	return not is_night() or night_waves_complete
+
+# Captures the safe-wagon state each time Lolth arrives at the safe Wagon after the first cure.
+func update_safe_wagon() -> void:
+	var at_safe_wagon := is_at_safe_wagon()
+	if at_safe_wagon and not was_at_safe_wagon:
+		capture_safe_wagon_state()
+	was_at_safe_wagon = at_safe_wagon
+
+# Operational data only. Mark I and the chosen cure are narrative progression and are never
+# overwritten by a restore.
+func capture_safe_wagon_state() -> void:
+	var taken: Array[bool] = []
+	for item in salvage:
+		taken.append(bool(item.taken))
+	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken}
+	camp_secured = true
+	message = "CAMP SECURED — If Lolth falls, she returns to this moment at the Wagon."
+	message_time = 4.0
+
+func restore_safe_wagon_state() -> void:
+	var saved := safe_wagon_state
+	health = float(saved.health)
+	flame = float(saved.flame)
+	provisions = float(saved.provisions)
+	wagon_integrity = float(saved.wagon_integrity)
+	clock_seconds = float(saved.clock)
+	recovered_load = saved.load.duplicate(true)
+	wagon_stock = saved.stock.duplicate(true)
+	wagon_repair = int(saved.wagon_repair)
+	crafted_recipes = saved.crafted.duplicate(true)
+	brazier_built = bool(saved.brazier)
+	shadow_echoes = int(saved.echoes)
+	first_night_complete = bool(saved.first_night)
+	tutorial_phase = String(saved.tutorial_phase)
+	night_wave = int(saved.night_wave)
+	night_wave_total = int(saved.night_wave_total)
+	night_waves_complete = bool(saved.night_waves_complete)
+	night_wave_pause = 0.0
+	selected_load = 0
+	hurt_cooldown = 0.0
+	dodge_time = 0.0
+	dodge_cooldown = 0.0
+	first_thread_cooldown = 0.0
+	combo_step = 0
+	combo_time = 0.0
+	combo_target = ""
+	state = "journey"
+	spawn_zone()
+	var taken: Array = saved.salvage_taken
+	for index in mini(taken.size(), salvage.size()):
+		salvage[index].taken = bool(taken[index])
+	was_at_safe_wagon = false
+	message = "Restored at the safe Wagon. Mark I and %s's cure remain." % ", ".join(cured_allies)
+	message_time = 4.0
 
 func restart_from_checkpoint() -> void:
 	if int(checkpoint.mark) == 0:
 		reset_to_prologue()
+		return
+	if zone == 0 and mark_level >= 1 and camp_secured and not safe_wagon_state.is_empty():
+		restore_safe_wagon_state()
 		return
 	mark_level = int(checkpoint.mark)
 	awakened = int(checkpoint.awakened)
@@ -1408,6 +1577,9 @@ func reset_to_prologue() -> void:
 	dusk_time = 0.0
 	antlered_hunger_defeated = false
 	first_thread_cooldown = 0.0
+	camp_secured = false
+	safe_wagon_state = {}
+	was_at_safe_wagon = false
 	dodge_time = 0.0
 	dodge_cooldown = 0.0
 	brazier_built = false
@@ -1816,6 +1988,13 @@ func defeat_antlered_hunger() -> void:
 	start_shar_shell()
 
 func current_objective() -> String:
+	if zone == 0 and mark_level >= 1 and not cured_allies.is_empty():
+		if not camp_secured:
+			return "Return to the Wagon to secure the camp."
+		var threshold := int(ECHO_THRESHOLDS[mark_level])
+		if shadow_echoes >= threshold:
+			return "The Wagon is secure. No deeper Mark can awaken in Thornwake."
+		return "The Wagon is secure. Gather Shadow Echoes in Thornwake: %d/%d." % [shadow_echoes, threshold]
 	if zone != 0 or mark_level != 0:
 		return ZONE_OBJECTIVES[zone]
 	match tutorial_phase:
@@ -1917,7 +2096,10 @@ func cure_selected_ally() -> void:
 	state = "journey"
 	create_checkpoint()
 	if zone == 0 and mark_level == 1:
-		message = "%s wakes as a drow. The Wagon stays at the cave camp." % ally
+		camp_secured = false
+		safe_wagon_state = {}
+		was_at_safe_wagon = false
+		message = "%s wakes as a drow. Return to the Wagon to secure the camp." % ally
 	elif zone == 1 and mark_level == 2:
 		state = "stonehook_complete"
 		message = "%s wakes. The Wagon holds the mountain; Hollowroot waits below." % ally

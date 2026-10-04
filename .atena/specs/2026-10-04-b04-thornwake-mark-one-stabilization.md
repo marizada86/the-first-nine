@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-plan-publication
+status: implemented-awaiting-human-review
 kind: runtime-stabilization-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b04-thornwake-mark-one-stabilization
@@ -9,6 +9,13 @@ depends_on:
 approval_mode: per-plan
 approval_selection: user-explicit-2026-10-04
 approved: 2026-10-04
+implementation_branch: b04-thornwake-mark-one-stabilization
+implementation_base: 9683a8c
+implementation_commit: 0a897fc
+implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
+push_approved: false
+pull_request_approved: false
+merge_approved: false
 ---
 
 # B-04 plan — Mark I Thornwake stabilization
@@ -51,3 +58,11 @@ Run the Godot self-test, targeted negative controls for the safe-wagon state, an
 3. Add deterministic positive and negative validation.
 4. Run headless and normal Godot validation and capture evidence.
 5. Request review before any push, pull request, or merge.
+
+## Implementation status
+
+- **Status:** implemented, awaiting human review. The user provisionally accepted the implementation pending this ADD record reconciliation. The plan remains active.
+- **Branch:** the work is on the local branch `b04-thornwake-mark-one-stabilization`, created from `origin/main` at `9683a8c`.
+- **Commit:** the original implementation commit is `0a897fc`. This record reconciliation was amended into that same local commit, so the final commit hash differs from `0a897fc` and is reported outside the commit.
+- **Approvals:** push, pull request, and merge are not approved and have not been performed.
+- **Evidence:** `[[2026-10-04-b04-thornwake-mark-one-stabilization]]` and the implementation note `[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]`, which records the exact changed files, tuning, test results, and known limitations.
