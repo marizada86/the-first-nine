@@ -104,6 +104,10 @@ const COMIC_LINES := [
 	"SHAR: The Kiss of Shar will make you a creature of shadow. Whoever holds it may command you.",
 	"LOLTH: Then no hand will hold it over me.",
 ]
+# H-01 opening-comic shell. Identifiers only: they are never displayed to the player.
+# Final H-01 panels and dialogue require an approved English script and art admission.
+const H01_SHELL_BEATS := ["h01_golden_city_council", "h01_families_depart", "h01_caravan_departs", "h01_journey_calamities", "h01_plague_strikes", "h01_cave_arrival"]
+const WAGON_REPAIR_MAX := 3
 const COMIC_PANEL_SOURCES := [
 	Rect2(2, 0, 267, 941),
 	Rect2(272, 0, 238, 941),
@@ -160,7 +164,8 @@ var mark_vfx_kind := ""
 var mark_vfx_pos := Vector2.ZERO
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
-var state := "journey" # journey, comic, cure, victory, defeat
+var state := "journey" # opening, journey, comic, cure, victory, defeat
+var opening_beat := 0
 var comic_panel := 0
 var passive_mission: Dictionary = {}
 var mission_selected := 0
@@ -181,7 +186,7 @@ var checkpoint := {"mark": 0, "zone": 0, "flame": 100.0, "provisions": 4.0, "awa
 
 func _ready() -> void:
 	setup_input_actions()
-	spawn_zone()
+	start_new_run()
 	queue_redraw()
 	if "--self-test" in OS.get_cmdline_user_args():
 		call_deferred("run_self_test")
@@ -205,6 +210,8 @@ func setup_input_actions() -> void:
 	add_joy_button_action("post_cycle", JOY_BUTTON_Y)
 	add_key_action("post_toggle", KEY_R)
 	add_joy_button_action("post_toggle", JOY_BUTTON_RIGHT_SHOULDER)
+	add_key_action("skip", KEY_ESCAPE)
+	add_joy_button_action("skip", JOY_BUTTON_START)
 
 func ensure_action(action: String) -> void:
 	if not InputMap.has_action(action):
@@ -236,7 +243,8 @@ func add_joy_motion_action(action: String, axis: JoyAxis, axis_value: float) -> 
 	InputMap.action_add_event(action, event)
 
 func run_self_test() -> void:
-	var controls_bound := InputMap.action_get_events("move_left").size() >= 4 and InputMap.action_get_events("move_right").size() >= 4 and InputMap.action_get_events("primary").size() >= 3 and InputMap.action_get_events("jump").size() >= 2 and InputMap.action_get_events("shadow_action").size() >= 3 and InputMap.action_get_events("post_cycle").size() >= 2
+	var controls_bound := InputMap.action_get_events("move_left").size() >= 4 and InputMap.action_get_events("move_right").size() >= 4 and InputMap.action_get_events("primary").size() >= 3 and InputMap.action_get_events("jump").size() >= 2 and InputMap.action_get_events("shadow_action").size() >= 3 and InputMap.action_get_events("post_cycle").size() >= 2 and InputMap.action_get_events("skip").size() >= 2
+	var opening_cave_ready := run_opening_cave_self_test()
 	reset_to_prologue()
 	player = Vector2(VIEW.x - 60.0, GROUND_Y - PLAYER_FEET_OFFSET)
 	clock_seconds = DAY_DURATION + 1.0
@@ -344,12 +352,116 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and shar_unlocked and stonehook_ready and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and shar_unlocked and stonehook_ready and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
 		push_error("SELF_TEST_FAIL: Thornwake foundation did not complete")
 		get_tree().quit(1)
+
+# B-01 checks: opening shell to cave camp, eight plagued allies, damaged and travel-locked wagon.
+func run_opening_cave_self_test() -> bool:
+	start_new_run()
+	var opens_first := state == "opening" and opening_beat == 0
+	for _beat in H01_SHELL_BEATS.size() - 1:
+		advance_opening()
+	var holds_last_beat := state == "opening" and opening_beat == H01_SHELL_BEATS.size() - 1
+	advance_opening()
+	var advance_reaches_cave := is_cave_camp_start()
+	start_new_run()
+	advance_opening()
+	skip_opening()
+	var skip_reaches_cave := is_cave_camp_start()
+	var camp := cave_camp_state()
+	var allies: Array = camp.allies
+	var eight_plagued := allies.size() == 8
+	for ally in allies:
+		eight_plagued = eight_plagued and String(ally.condition) == "plagued" and not bool(ally.controllable)
+	var only_lolth_controllable := camp.controllable == ["LOLTH"]
+	var wagon: Dictionary = camp.wagon
+	var wagon_damaged_and_locked := bool(wagon.open) and not bool(wagon.horse) and not bool(wagon.beds) and not bool(wagon.enclosed_rooms) and String(wagon.condition) == "cave_damaged" and String(wagon.travel) == "travel_locked" and int(wagon.repair) == 0
+	var relics_protected := bool(camp.relics.present) and bool(camp.relics.protected)
+	var lolth_is_elf := String(camp.lolth_form) == "elf"
+	wagon_integrity = 0.0
+	fail_run("opening test")
+	restart_from_checkpoint()
+	var failure_restores_cave := is_cave_camp_start()
+	var no_reference_board := not res_has_reference_board("res://")
+	var passed := opens_first and holds_last_beat and advance_reaches_cave and skip_reaches_cave and eight_plagued and only_lolth_controllable and wagon_damaged_and_locked and relics_protected and lolth_is_elf and failure_restores_cave and no_reference_board
+	if passed:
+		print("SELF_TEST_B01_PASS: opening shell reaches the cave camp with eight plagued allies and a damaged, travel-locked wagon")
+	else:
+		push_error("SELF_TEST_B01_FAIL: opening=%s/%s/%s/%s allies=%s/%s wagon=%s relics=%s elf=%s failure=%s boards=%s" % [opens_first, holds_last_beat, advance_reaches_cave, skip_reaches_cave, eight_plagued, only_lolth_controllable, wagon_damaged_and_locked, relics_protected, lolth_is_elf, failure_restores_cave, no_reference_board])
+	return passed
+
+func is_cave_camp_start() -> bool:
+	return state == "journey" and zone == 0 and mark_level == 0 and cured_allies.is_empty() and wagon_repair == 0 and wagon_condition() == "cave_damaged" and wagon_travel_locked() and lolth_form() == "elf"
+
+# H-01 through H-03 boards are reference-only and must never be admitted into res://.
+func res_has_reference_board(path: String) -> bool:
+	var dir := DirAccess.open(path)
+	if dir == null:
+		return false
+	for file_name in dir.get_files():
+		var lower := file_name.to_lower()
+		if lower.contains("hq-narrative") or lower.begins_with("h-01") or lower.begins_with("h-02") or lower.begins_with("h-03"):
+			return true
+	for sub_dir in dir.get_directories():
+		if sub_dir.begins_with("."):
+			continue
+		if res_has_reference_board(path.path_join(sub_dir)):
+			return true
+	return false
+
+func start_new_run() -> void:
+	reset_to_prologue()
+	state = "opening"
+	opening_beat = 0
+
+func advance_opening() -> void:
+	if state != "opening":
+		return
+	opening_beat += 1
+	if opening_beat >= H01_SHELL_BEATS.size():
+		finish_opening()
+
+func skip_opening() -> void:
+	if state != "opening":
+		return
+	finish_opening()
+
+func finish_opening() -> void:
+	opening_beat = 0
+	reset_to_prologue()
+
+func lolth_form() -> String:
+	return "elf" if mark_level == 0 else "drow"
+
+func wagon_condition() -> String:
+	return "cave_damaged" if wagon_repair < WAGON_REPAIR_MAX else "stationed"
+
+# Travel requires Mark IV, four cures, a repaired wagon, and an assigned puller.
+# No runtime path unlocks it yet, so the wagon stays at the cave camp.
+func wagon_travel_locked() -> bool:
+	return true
+
+func ally_records() -> Array[Dictionary]:
+	var records: Array[Dictionary] = []
+	for ally in THALESTRIEL:
+		records.append({"name": ally, "condition": "cured" if cured_allies.has(ally) else "plagued", "controllable": false})
+	return records
+
+func cave_camp_state() -> Dictionary:
+	return {
+		"location": "thornwake_cave",
+		"lolth_form": lolth_form(),
+		"controllable": ["LOLTH"],
+		"wagon": {"open": true, "horse": false, "beds": false, "enclosed_rooms": false, "condition": wagon_condition(), "travel": "travel_locked" if wagon_travel_locked() else "travel_ready", "repair": wagon_repair, "integrity": wagon_integrity},
+		"relics": {"present": true, "protected": true},
+		"fire": flame,
+		"stock": wagon_stock.size(),
+		"allies": ally_records(),
+	}
 
 func spawn_zone() -> void:
 	player = Vector2(330, GROUND_Y - 38)
@@ -400,6 +512,13 @@ func spawn_zone() -> void:
 func _process(delta: float) -> void:
 	pulse += delta
 	message_time = maxf(0.0, message_time - delta)
+	if state == "opening":
+		if Input.is_action_just_pressed("skip"):
+			skip_opening()
+		elif Input.is_action_just_pressed("primary"):
+			advance_opening()
+		queue_redraw()
+		return
 	if state == "comic":
 		if Input.is_action_just_pressed("primary"):
 			advance_comic()
@@ -920,7 +1039,7 @@ func reset_to_prologue() -> void:
 	combo_target = ""
 	checkpoint = {"mark": 0, "zone": 0, "flame": flame, "provisions": provisions, "awakened": 0, "final_echo_phase": false, "wagon_repair": 0, "load": [], "stock": [], "wagon_integrity": wagon_integrity, "clock": clock_seconds, "echoes": 0, "cured": [], "posts": [], "downed": [], "first_night": false, "axle_brakes": false, "stonehook_boss": false, "stonehook_shar": false, "brazier": false, "crafted": {}}
 	spawn_zone()
-	message = "THORNWAKE FOREST — Night has fallen. Stay close to the Wagon."
+	message = "THORNWAKE CAVE CAMP — Night has fallen. Stay close to the Wagon."
 	message_time = 5.0
 
 func is_night() -> bool:
@@ -1327,6 +1446,9 @@ func resolve_mission() -> String:
 	return result
 
 func _draw() -> void:
+	if state == "opening":
+		draw_opening()
+		return
 	var backgrounds: Array[Color] = [Color("17132e"), Color("20213a"), Color("19172b")]
 	draw_rect(Rect2(Vector2.ZERO, VIEW), backgrounds[zone])
 	draw_background()
@@ -1496,8 +1618,10 @@ func draw_caravan() -> void:
 	var flame_source_width := CARAVAN_FLAME_RUNTIME.get_width() / 3.0
 	var flame_source := Rect2(flame_source_width * flame_index, 0, flame_source_width, CARAVAN_FLAME_RUNTIME.get_height())
 	draw_texture_rect_region(CARAVAN_FLAME_RUNTIME, Rect2(Vector2(base.x + 54, GROUND_Y - flame_size.y), flame_size), flame_source)
-	draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 195), "THE LAST CAMP", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("f9df96"))
+	draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 195), "THE CAVE CAMP" if zone == 0 else "THE LAST CAMP", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("f9df96"))
 	draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 178), "WAGON REPAIR %d/3" % wagon_repair, HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color("d8c9aa"))
+	if zone == 0:
+		draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 160), "WAGON: %s · %s" % [wagon_condition().replace("_", " ").to_upper(), "TRAVEL LOCKED" if wagon_travel_locked() else "TRAVEL READY"], HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color("e9b878"))
 	if zone == 1:
 		draw_string(ThemeDB.fallback_font, Vector2(base.x - 94, base.y - 160), "AXLE & BRAKES: %s" % ("INSTALLED" if axle_brakes_installed else "NEEDED"), HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color("9fd5d4") if axle_brakes_installed else Color("e9b878"))
 
@@ -1564,7 +1688,7 @@ func draw_portal() -> void:
 	draw_string(ThemeDB.fallback_font, p + Vector2(-66, 88), "DREAM GATE", HORIZONTAL_ALIGNMENT_CENTER, 132, 16, Color("f2d4ff"))
 
 func draw_player() -> void:
-	var pose_sheet: Texture2D = LOLTH_ELF_RUNTIME if mark_level == 0 else LOLTH_DROW_RUNTIME
+	var pose_sheet: Texture2D = LOLTH_ELF_RUNTIME if lolth_form() == "elf" else LOLTH_DROW_RUNTIME
 	var pose_index := 0
 	if mark_vfx_time > 0.0 and mark_vfx_kind == "strike":
 		pose_index = 3
@@ -1719,6 +1843,13 @@ func draw_comic() -> void:
 	draw_string(ThemeDB.fallback_font, Vector2(160, 620), "THE KISS OF SHAR", HORIZONTAL_ALIGNMENT_CENTER, 960, 28, Color("efd0ff"))
 	draw_string(ThemeDB.fallback_font, Vector2(170, 654), COMIC_LINES[comic_panel], HORIZONTAL_ALIGNMENT_CENTER, 940, 18, Color("fff2df"))
 	draw_string(ThemeDB.fallback_font, Vector2(0, 690), "Press E to continue", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
+
+# Placeholder shell: no comic art or story text until H-01 is approved for runtime.
+func draw_opening() -> void:
+	draw_rect(Rect2(Vector2.ZERO, VIEW), Color("0b0814"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 300), "THE FIRST NINE", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 42, Color("f8dc8c"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 352), "%d / %d" % [opening_beat + 1, H01_SHELL_BEATS.size()], HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 20, Color("d9c5ee"))
+	draw_string(ThemeDB.fallback_font, Vector2(0, 660), "E / click: continue   ·   Esc / Start: skip", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 17, Color("e3c5ff"))
 
 func draw_end_card(won: bool) -> void:
 	var backdrop: Texture2D = SHADOW_CROWN_KEY_ART if won else LAST_CAMP_KEY_ART
