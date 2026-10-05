@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-review
+status: implemented-branch-published-follow-up-awaiting-review
 kind: bounded-runtime-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -33,6 +33,12 @@ implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
 implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
 steps_completed: [S-001, S-002, S-003, S-004]
 human_review: pending
+branch_publication_approved: true
+branch_published: true
+published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
+publication_authority: owner-authorized-normal-push-of-the-branch-for-review
+follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
+follow_up_published: false
 ---
 
 # B-06 First Stonehook Foot Expedition
@@ -126,3 +132,11 @@ The assigned executor verified the delivered records on `origin/main` at `7e477b
 The implemented geometry, gate, camera, blended route art, finite ore, offscreen camp, restoration and validation results are recorded in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. The B-06 headless checks (30/30), the rendered real-input runner (40/40), the full self-test, the combat (9/9), menu (33/33), geometry (46/46) and headless facing (65/65) suites pass on Linux. All ten faulty controls are rejected. The rendered facing suite reports the same single pre-existing 101/102 difference on this Linux software renderer as the unchanged `7e477ba` baseline; it is left recorded as a failure, not adapted.
 
 Status is `implemented-awaiting-review`, at checkpoint `owner-review-of-local-implementation`. Human review is pending. Implementation push, PR, merge and dispatch remain unapproved and were not performed. B-07 was not started.
+
+## Authorized Branch Publication and Review Follow-up
+
+The owner explicitly authorized a normal push of `codex/b06-stonehook-foot-expedition` for review. Before pushing, the branch was verified at `ccc4fcf`, containing implementation `42bddf8` on base `7e477ba`, with a clean tree. A normal push with upstream created `origin/codex/b06-stonehook-foot-expedition` at `ccc4fcf69271d88e421e26a81841cf6cce834a37`; remote `main` stayed at `7e477ba`. The sections above describe the earlier pre-publication checkpoint and are kept as history.
+
+Atena then reviewed that exact build on Windows (Godot 4.7.2, GTX 1650) and reported: headless B-06 30/30, rendered facing 102/102, and passing combat, menus, geometry, self-tests and all ten faulty controls. The original route runner reached 36/40 there, because a resting physical right trigger (about 0.20–0.21) dashed during the keyboard-only test, and one walk was measured before deceleration finished. Atena also reported Lolth largely hidden by the foreground at x=1280 and near x=2998. These are Atena's Windows results; they were not reproduced here.
+
+The IN_PLAN follow-up commit `d2012a1` (local, not pushed) addresses all three without expanding B-06; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR, merge and dispatch remain unauthorized. B-07 was not started.

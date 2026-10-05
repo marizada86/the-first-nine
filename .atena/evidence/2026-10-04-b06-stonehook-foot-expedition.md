@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-review
+status: implemented-branch-published-follow-up-awaiting-review
 kind: planning-evidence
 created: 2026-10-04
 request_classification: NEW_PLAN
@@ -28,6 +28,12 @@ implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
 implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
 steps_completed: [S-001, S-002, S-003, S-004]
 human_review: pending
+branch_publication_approved: true
+branch_published: true
+published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
+publication_authority: owner-authorized-normal-push-of-the-branch-for-review
+follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
+follow_up_published: false
 ---
 
 # B-06 Expedition Planning Evidence
@@ -83,3 +89,11 @@ Delivery reconciliation validation passed with exit 0 and `B06_DELIVERY_PASS`: 1
 The assigned executor read this evidence, the spec, the instruction and the active plan from `origin/main` at `7e477ba`, confirmed the per-plan approval and the cleared delivery checkpoint, and created `codex/b06-stonehook-foot-expedition` from that commit. S-001 through S-004 were executed locally as IN_PLAN work without new batch or step approvals. Implementation commit `42bddf8` and the records follow-up are local only.
 
 Fresh engine results, negative controls, captures and limitations are in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. The preparation, approval and delivery validator under `.atena/generated/2026-10-04-b06-preparation/` checks those earlier documentation checkpoints only; it is superseded at this checkpoint by `.atena/generated/2026-10-04-b06-validation/validate_records.cjs`, and is left unchanged as historical evidence. Status is `implemented-awaiting-review`; human review, implementation publication, PR, merge and dispatch remain pending and unapproved.
+
+## Authorized Branch Publication and Review Follow-up
+
+The owner explicitly authorized a normal push of `codex/b06-stonehook-foot-expedition` for review. Before pushing, the branch was verified at `ccc4fcf`, containing implementation `42bddf8` on base `7e477ba`, with a clean tree. A normal push with upstream created `origin/codex/b06-stonehook-foot-expedition` at `ccc4fcf69271d88e421e26a81841cf6cce834a37`; remote `main` stayed at `7e477ba`. The sections above describe the earlier pre-publication checkpoint and are kept as history.
+
+Atena then reviewed that exact build on Windows (Godot 4.7.2, GTX 1650) and reported: headless B-06 30/30, rendered facing 102/102, and passing combat, menus, geometry, self-tests and all ten faulty controls. The original route runner reached 36/40 there, because a resting physical right trigger (about 0.20–0.21) dashed during the keyboard-only test, and one walk was measured before deceleration finished. Atena also reported Lolth largely hidden by the foreground at x=1280 and near x=2998. These are Atena's Windows results; they were not reproduced here.
+
+The IN_PLAN follow-up commit `d2012a1` (local, not pushed) addresses all three without expanding B-06; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR, merge and dispatch remain unauthorized. B-07 was not started.

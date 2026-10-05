@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-review
+status: implemented-branch-published-follow-up-awaiting-review
 kind: implementation-note
 created: 2026-10-05
 batch: B-06
@@ -26,7 +26,11 @@ human_review: pending
 push_approved: false
 pull_request_approved: false
 merge_approved: false
-published: false
+published: true
+branch_publication_approved: true
+published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
+follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
+follow_up_published: false
 ---
 
 # B-06 - first on-foot Stonehook expedition
@@ -335,3 +339,110 @@ This recommendation authorizes nothing. Each step needs the owner's separate app
 3. Rerun `run_validation.cjs all` on Windows to reproduce these results on the original platform, including whether the rendered facing suite returns to 102/102 there.
 
 Publication, a PR, a merge or further Stonehook content each need that separate owner approval.
+
+## Authorized branch publication
+
+The sections above record the state at records commit `ccc4fcf`, before publication, and are kept unchanged as history.
+
+- **Authority.** The owner explicitly authorized a normal push of `codex/b06-stonehook-foot-expedition` to origin for review. It did not authorize a push to `main`, an amend, a force-push, a PR, a merge, branch deletion or B-07.
+- **Pre-push check.** The branch held implementation `42bddf8` and records `ccc4fcf` on base `7e477ba`, with a clean tree. The branch did not exist on origin, and remote `main` was `7e477ba`.
+- **Push.** A normal `git push -u` created `origin/codex/b06-stonehook-foot-expedition` at `ccc4fcf69271d88e421e26a81841cf6cce834a37`, confirmed with `git ls-remote`. Remote `main` stayed at `7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc`.
+
+## Review follow-up (`d2012a1`, local)
+
+### Atena's Windows review of `ccc4fcf`
+
+Atena ran this exact build on Windows with Godot 4.7.2 and a GTX 1650. These results are Atena's, not reproduced here:
+
+- Headless B-06: 30/30. Rendered facing: 102/102. Combat, menus, geometry, self-tests and all ten faulty controls passed.
+- The original route runner reached 36/40. Physical right-trigger values of about 0.20–0.21 from an attached controller dashed during the keyboard-only test. That affected the movement bounds and the closed-path refusal messages.
+- With physical controller events filtered, it reached 39/40. The remaining Stag check recorded Lolth's position before deceleration ended: velocity was still about 217 px/s after the six fixed settle frames.
+- Waiting for an actual zero velocity with a timeout gave 40/40, with the same assertions and unchanged production code.
+- Lolth was largely hidden by the foreground at x=1280 and at the far-right limit near x=2998.
+
+Request classification: IN_PLAN follow-up for validation portability, corridor visibility and publication records. B-06 scope did not expand.
+
+### Changes
+
+- **Controller isolation (test only).** `validate_b06_runtime.gd` suspends every joypad button and motion binding in its own process's `InputMap` for the keyboard-only route section, releases the affected actions, and restores the bindings afterwards.
+  - Why a resting trigger dashed: `ensure_action()` adds actions with the default 0.2 deadzone, so a resting trigger at 0.21 presses `shadow_action`. The new metric `restored_trigger_021_dashes: true` records this with the bindings restored.
+  - Device settings, production thresholds, `setup_input_actions()` and normal gameplay controls are unchanged.
+  - Two new checks: a simulated 0.21 resting-trigger event is ignored while the bindings are suspended; after the restore, both bindings are back and a synthetic right trigger dashes again.
+  - The synthetic controller checks in the menu suite are untouched and still pass.
+- **Real stop (test only).** After releasing a movement key, `hold_until()` measures every frame until `velocity.x` is exactly zero, under a 3-second wall-clock timeout. A walk counts as done only when its condition holds after a real stop, so each assertion that used `done` now also requires the stop.
+  - The continuity bounds also cover the deceleration frames. No assertion, movement bound, faulty control or baseline comparison was removed or loosened, and FPS is not forced.
+  - In this Linux run, deceleration took 5–6 frames, which is why the fixed six-frame wait passed here and not on faster Windows frames.
+- **Foreground readability (production, `main.gd`).** `draw_foreground_readability()` runs after `draw_foreground_overlay()` and redraws Lolth's existing pose sprite and name label at alpha `FOREGROUND_READABILITY_ALPHA` (0.72), in front of the frame overlays. It applies only:
+  - while the route is open (`camera_limit_x() > 0`);
+  - inside `FOREGROUND_READABILITY_SPANS`: world x 980–1460 (the Ashen Way edge tree and its seam fade) and 2700–3040 (the Stonehook ruins arch);
+  - with 120-unit ramps at the inner span edges, so the effect has no pop.
+
+  How it is drawn:
+  - The pose selection moved unchanged into `player_sprite_frame()`, shared by both passes.
+  - `draw_player_sprite()` gained an optional `tint` (default white). It keeps the same reflection and world-origin reset; the test-only `unshifted_reflection` fault was updated to the new signature with its intent unchanged.
+  - No asset, overlay art, draw order of other layers, camera or floor changed. The closed route, the cave view, x=900 with the route open and the unoccluded foothills draw nothing extra, and cave-view parity with the pre-B-06 build stays at 0 differing pixels in all three scenarios.
+- **Readability measurement (test only).** For each problem location, day and night, and each facing, the runner measures Lolth's on-screen difference with the foreground drawn. It divides that by the same difference with the foreground omitted, using the test-only `readability_fixture.gd`. The check requires at least 0.5.
+  - The new faulty control `no_foreground_readability` (the pass removed, as in `ccc4fcf`) is rejected at all eight locations.
+- **Evidence capture correction.** In `ccc4fcf`, the render-fault runs ran after the real runner and wrote to the same filenames. The committed `translation-left-offset-1000.png` and `translation-right-offset-1000.png` there therefore show faulty-fixture output, not the real build.
+  - The real pixel metrics (0 differing pixels) and pass verdicts in that run were correct; only the saved images were replaced.
+  - The earlier "Captures inspected" list also included those two images, which were not individually viewed. Faulty runs now never write evidence captures, and both images are regenerated from the real build.
+- **Platform tagging.** Every `*-result.json` now records OS, architecture, Godot version, display mode and the reported render device. The records validator accepts rendered facing at 102/102 on any platform. It accepts the single known `ANTLERED HUNGER frame 1 labels/bars stay unmirrored` difference only on Linux with software OpenGL, where it reproduces on the unchanged `7e477ba` baseline.
+
+### Follow-up validation (Linux)
+
+Platform:
+- Godot `4.7.2.stable.official.ed1daf0bf`, Linux x86_64 container.
+- Rendered cases under Xvfb at 1280×720, `gl_compatibility`, device "Mesa llvmpipe (LLVM 20.1.2)".
+- A scratch project copy, with no fixed FPS and wall-clock timeouts.
+
+Command (same as before, now with one extra faulty control):
+
+```
+GODOT=<godot> B06_PROJECT=<copy> XVFB=1 node .atena/generated/2026-10-04-b06-validation/run_validation.cjs all
+```
+
+| Case | Exit | Result |
+| --- | --- | --- |
+| `b06-headless` | 0 | `B06_PASS: 30/30 checks` |
+| `b06-runtime` | 0 | `B06_RUNTIME_PASS: 51/51 checks` (the 40 earlier checks + 2 controller-isolation + 9 readability) |
+| `self-test` | 0 | B01 to B06, PLAYTESTER and `SELF_TEST_PASS` |
+| `combat` | 0 | 9/9, `B05_RUNTIME_PASS` |
+| `menus` | 0 | `LOCAL_CONTROLS_PASS: 33/33 checks` |
+| `geometry` | 0 | `GEOMETRY_PASS: 46/46 checks` |
+| `facing-headless` | 0 | `FACING_PASS: 65/65 checks` |
+| `facing-normal` | 1 | 101/102, the known Linux software-OpenGL difference only |
+| `normal-smoke`, `headless-smoke` | 0 | no project diagnostics |
+| 8 logic faults and 3 render faults | 1 each | all rejected with named detections and no project diagnostics |
+
+- **Walks.** Every walk settled with real zero velocity (5–6 frames) within the timeout. Each stayed monotonic, within `290 × frame time` per step, and in zone 0 on the floor.
+- **Parity.** Cave-view parity and translation identity: 0 differing pixels.
+- **Readability ratios** (visibility relative to unoccluded), against 0.06–0.21 with the pass removed:
+
+  | Location | Day, right | Day, left | Night, right | Night, left |
+  | --- | --- | --- | --- | --- |
+  | x=1280 | 0.85 | 0.86 | 0.84 | 0.85 |
+  | x=2998 | 0.72 | 0.75 | 0.73 | 0.79 |
+
+- **Windows.** No Windows run was performed here. Atena's 102/102 rendered-facing and 40/40 diagnostic route results above are reported, not reproduced.
+
+### New captures
+
+All are in `.atena/generated/2026-10-04-b06-validation/`:
+
+- `readability-{day,night}-{1280,2998}-{right,left}.png`: eight captures, each checked numerically. `readability-day-1280-left`, `readability-day-2998-right` and `readability-night-2998-left` were inspected visually; Lolth reads in front of the edge tree and the ruins arch.
+- `translation-left-offset-1000.png` was inspected visually and is regenerated from the real build: Lolth, Hound, Stag, labels and bars, with both markers in place.
+- The parity, route, `transition-*` and `seam-*` captures were regenerated by this run and checked numerically, not re-inspected one by one.
+
+### Remaining limitations
+
+- **Ghost appearance.** In the two spans Lolth appears semi-transparently in front of the overlay rather than behind it. This is a deliberate readability choice, not a final art solution.
+- **Far-limit framing.** At the far limit (x=2998) Lolth stands at screen x≈1238, 42 px from the edge, as at the original Thornwake edge. Her right side is partly clipped by the screen.
+- **Physical controller case.** Linux has no physical controller attached here, so the controller-isolation fix is exercised with synthetic events. The physical-trigger case is Atena's Windows observation.
+- **Earlier limitations.** All earlier limitations still apply: the mirrored seam echo, offscreen danger reported only through the HUD, the Hound waiting at the border, the restore position, Linux-only reproduction here, and untuned values.
+
+### State
+
+- **Plan state.** `implemented-branch-published-follow-up-awaiting-review`, checkpoint `owner-review-of-follow-up-corrections`.
+- **Published.** `ccc4fcf` is published on `origin/codex/b06-stonehook-foot-expedition`.
+- **Local only.** Follow-up `d2012a1` and the records commit that adds this section were not pushed.
+- **Not authorized.** Further push, PR, merge and dispatch remain unauthorized, and B-07 has not been started.

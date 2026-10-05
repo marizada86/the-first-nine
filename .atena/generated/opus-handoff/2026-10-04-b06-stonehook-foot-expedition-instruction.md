@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-review
+status: implemented-branch-published-follow-up-awaiting-review
 kind: external-implementation-instruction
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -23,6 +23,12 @@ implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
 implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
 steps_completed: [S-001, S-002, S-003, S-004]
 human_review: pending
+branch_publication_approved: true
+branch_published: true
+published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
+publication_authority: owner-authorized-normal-push-of-the-branch-for-review
+follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
+follow_up_published: false
 ---
 
 # B-06 Stonehook Foot Expedition Instructions for Opus 5.5
@@ -75,3 +81,7 @@ Write `.atena/evidence/2026-10-04-b06-stonehook-foot-expedition-implementation.m
 ## Execution Record
 
 The owner directed the assigned executor, in its chat session on 2026-10-05, to read this delivered instruction from the repository. Atena sent no external message, and `dispatch_approved` is unchanged. The executor verified the gate above and implemented the approved scope locally on `codex/b06-stonehook-foot-expedition` (implementation commit `42bddf8`, base `7e477ba`). Results are in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Nothing was pushed, and no PR, merge or B-07 work occurred.
+
+## Publication and Follow-up Record
+
+The owner separately authorized the branch push; `origin/codex/b06-stonehook-foot-expedition` was created at `ccc4fcf69271d88e421e26a81841cf6cce834a37`. The reviewed follow-up `d2012a1` is local only. See [[2026-10-04-b06-stonehook-foot-expedition-implementation]].
