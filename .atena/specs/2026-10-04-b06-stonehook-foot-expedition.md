@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-external-execution
+status: implemented-published-human-accepted-awaiting-pr
 kind: bounded-runtime-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -27,6 +27,31 @@ gameplay_baseline: 05eac1e7a639e213f39cff81b1e75305727ab4d0
 proposed_implementation_branch: codex/b06-stonehook-foot-expedition
 evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
 instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
+implementation_branch: codex/b06-stonehook-foot-expedition
+implementation_base: 7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc
+implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
+implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
+steps_completed: [S-001, S-002, S-003, S-004]
+human_review: accepted
+branch_publication_approved: true
+branch_published: true
+published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
+publication_authority: owner-authorized-normal-push-of-the-branch-for-review
+follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
+follow_up_published: true
+latest_published_commit: 7de6d6658a2e8b7aea5954320ef29902094d7215
+isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
+isolation_follow_up_published: true
+combat_isolation_follow_up: published-test-only
+combat_isolation_follow_up_commit: 7de6d6658a2e8b7aea5954320ef29902094d7215
+combat_isolation_follow_up_published: true
+combat_isolation_publication_source: owner-separately-authorized-normal-push-fast-forward-9640881-to-7de6d66
+human_acceptance: accepted
+human_acceptance_date: 2026-10-05
+human_acceptance_scope: overall-owner-aprovado-of-the-reviewed-B06-slice-at-7de6d66
+windows_review_7de6d66: atena-external-review-2026-10-05-not-reproduced-by-executor
+reconciliation_documentation_push_authority: owner-authorized-one-normal-documentation-commit-and-push-on-this-branch-only-separate-from-the-completed-implementation-publication
+pull_request_state: awaiting-separate-authorization
 ---
 
 # B-06 First Stonehook Foot Expedition
@@ -112,3 +137,65 @@ Write `.atena/evidence/2026-10-04-b06-stonehook-foot-expedition-implementation.m
 Use a codex-prefixed feature branch from the verified current approved baseline, preserving local work and all existing branches. Normal corrective commits are the recovery path; no destructive resets, force-pushes or amending published history. Acceptance `2f34635`, preparation `0a82ead` and approval `77ee387` were normally pushed to origin/main after explicit owner authorization; the remote HEAD was verified as `77ee387d5649a131ae20c5910b2dc7421c76f22f`. This documentation reconciliation accompanies that authorized delivery. Use the delivered reconciliation or a later verified descendant, not the obsolete pending-delivery records at the initial approval commit. A missing commit or record is a delivery blocker: do not reconstruct an unseen spec from a pasted summary.
 
 The English handoff is available through the authorized repository delivery but has not been sent as a message. It tells Opus to check the live approval mode, exact repository state and delivery before editing. No runtime, art, implementation branch publication or external message is performed during this documentation delivery. `push_approved: false` refers to future B-06 implementation publication, not the completed documentation push.
+
+## Implementation Checkpoint
+
+The assigned executor verified the delivered records on `origin/main` at `7e477ba` (acceptance `2f34635`, preparation `0a82ead`, approval `77ee387` and the delivery reconciliation), then executed S-001 through S-004 under the unchanged per-plan approval on the local branch `codex/b06-stonehook-foot-expedition`. Request classification: IN_PLAN. Implementation commit `42bddf8` changes `main.gd`, narrow wagon-proximity guards in `wagon_inventory_ui.gd` and validation artifacts under `.atena/generated/2026-10-04-b06-validation/`. No asset, scene, project setting, canon or dependency changed.
+
+The implemented geometry, gate, camera, blended route art, finite ore, offscreen camp, restoration and validation results are recorded in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. The B-06 headless checks (30/30), the rendered real-input runner (40/40), the full self-test, the combat (9/9), menu (33/33), geometry (46/46) and headless facing (65/65) suites pass on Linux. All ten faulty controls are rejected. The rendered facing suite reports the same single pre-existing 101/102 difference on this Linux software renderer as the unchanged `7e477ba` baseline; it is left recorded as a failure, not adapted.
+
+Status is `implemented-awaiting-review`, at checkpoint `owner-review-of-local-implementation`. Human review is pending. Implementation push, PR, merge and dispatch remain unapproved and were not performed. B-07 was not started.
+
+## Authorized Branch Publication and Review Follow-up
+
+The owner explicitly authorized a normal push of `codex/b06-stonehook-foot-expedition` for review. Before pushing, the branch was verified at `ccc4fcf`, containing implementation `42bddf8` on base `7e477ba`, with a clean tree. A normal push with upstream created `origin/codex/b06-stonehook-foot-expedition` at `ccc4fcf69271d88e421e26a81841cf6cce834a37`; remote `main` stayed at `7e477ba`. The sections above describe the earlier pre-publication checkpoint and are kept as history.
+
+Atena then reviewed that exact build on Windows (Godot 4.7.2, GTX 1650) and reported: headless B-06 30/30, rendered facing 102/102, and passing combat, menus, geometry, self-tests and all ten faulty controls. The original route runner reached 36/40 there, because a resting physical right trigger (about 0.20–0.21) dashed during the keyboard-only test, and one walk was measured before deceleration finished. Atena also reported Lolth largely hidden by the foreground at x=1280 and near x=2998. These are Atena's Windows results; they were not reproduced here.
+
+The IN_PLAN follow-up commit `d2012a1` (local, not pushed) addresses all three without expanding B-06; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR, merge and dispatch remain unauthorized. B-07 was not started.
+
+## Follow-up Publication and Test-Isolation Follow-up
+
+The owner then authorized a normal push of `d2012a1` and `7c781ab`. Before pushing, the branch was verified: `7c781ab` → `d2012a1` → published `ccc4fcf`, exactly two commits ahead and a clean tree. A normal fast-forward moved `origin/codex/b06-stonehook-foot-expedition` from `ccc4fcf` to `7c781ab65d75251af20880cf6e9548d1239be0dd`; remote `main` stayed at `7e477ba`. The earlier publication history above is unchanged.
+
+Atena's official Windows runs of `7c781ab` (Godot 4.7.2, GTX 1650):
+- B-06 headless 30/30.
+- Rendered route suite 50/51: only the first controller-isolation check failed.
+- Menu suite 32/33: only the inactive right-click/parry check failed.
+- Combat 9/9, geometry 46/46, facing 65/65 headless and 102/102 rendered, the full self-test and both smoke runs passed.
+- All 11 faulty controls were rejected, and all eight readability checks passed and were inspected.
+
+Separate Atena diagnostics, which are not official acceptance runs, traced both failures to physical controller input:
+- A `shadow_action` queued before suspension survives it.
+- Isolating before the opening skip gave 51/51.
+- Filtering physical controller dispatch gave 33/33.
+
+None of these Windows results were reproduced by the executor.
+
+The IN_PLAN test-only follow-up `b446b7b` (local, not pushed) corrects both isolation points without touching production; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR and merge remain unauthorized, and B-07 has not been started.
+
+## Isolation Publication and Combat Isolation Follow-up
+
+The owner authorized a normal push of `b446b7b` and `9640881`. Before pushing, the branch was verified: `9640881` contains `b446b7b` and descends from published `7c781ab`, with no remote divergence and a clean tree. A normal fast-forward moved `origin/codex/b06-stonehook-foot-expedition` from `7c781ab` to `9640881e2c56b010fb1be93b3818f22be91d3b9c`; remote `main` stayed at `7e477ba`. The earlier publication history above is unchanged.
+
+Findings supplied by the owner from Atena's Windows validation of `9640881` (native Godot 4.7.2):
+- B-06 headless 30/30, rendered route 53/53, menus 33/33, geometry 46/46, facing 65/65 headless and 102/102 rendered.
+- The full self-test and both smoke runs passed, and all 12 faulty controls were rejected.
+- The full runner still exited 1, because the historical combat validator passed 8/9. The out-of-reach miss kept the enemy at 2 health, with a `strike` pose and a `swing` effect, but the message was "Lolth needs a moment before dodging again."
+- A separate reviewer-only diagnostic isolated joypad motion bindings after the game's `_ready` and passed 9/9. Physical device 0 reported a right trigger of about 0.21958, above the 0.2 deadzone.
+
+That diagnostic does not replace the official 8/9 result. Atena's detailed receipt was not available in this checkout, so these findings come from the owner's request and were not reproduced by the executor.
+
+The IN_PLAN test-only combat isolation follow-up is local and unpublished; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Production files are unchanged. Human acceptance remains pending, further push, PR and merge remain unauthorized, and B-07 has not been started.
+
+## Combat Isolation Publication, Windows Review and Human Acceptance
+
+**Publication.** The owner separately authorized a normal push of `7de6d66`. The feature branch `codex/b06-stonehook-foot-expedition` was fast-forwarded from `9640881` to `7de6d6658a2e8b7aea5954320ef29902094d7215`, and Atena independently confirmed the resulting remote refs. Remote `main` stayed at `7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc`. The "local" and "unpublished" wording about the combat isolation follow-up in the sections above is a dated historical checkpoint from before this publication (as of `9640881`, 2026-10-04/05); it is preserved, not rewritten.
+
+**Official Windows review of `7de6d66` (2026-10-05).** Atena's official Windows review of `7de6d66`, performed on 2026-10-05 (external; not runs reproduced by the executor): Godot `4.7.2.stable.official.ed1daf0bf`, native Windows x64, OpenGL compatibility, 1280x720, GTX 1650, NVIDIA driver 616.92. The full official runner exited 0. B-06 headless 30/30; rendered route 53/53; combat 9/9 normally and 9/9 under continuous synthetic trigger noise; menus 33/33; geometry 46/46; facing 65/65 headless and 102/102 rendered; the full self-test and both 600-frame smoke runs passed. All 14 faulty controls were rejected with genuine exit 1 and named failures. All 25 case records were fresh Windows results, without project diagnostics or process errors. The published records validator exited 0, verifying 39 links, scoped files, preserved completed history and saved results. These are Atena's external results, supplied in the owner's request for this reconciliation. Atena's owner-local receipt `.atena/evidence/2026-10-05-b06-combat-isolation-windows-review.md` is not present in this checkout; the executor did not read it and did not copy its logs or captures. The earlier Linux results and the historical Windows combat failure at `9640881` (official combat 8/9, full runner exit 1) stay as recorded and are not overwritten by these later successes.
+
+**Human acceptance (2026-10-05).** After Atena's Windows report and visual/camera playtest recommendation, the owner replied `aprovado`. This records overall human acceptance of the reviewed B-06 slice at `7de6d66`. No item-by-item playtest results, timings, additional engine runs or independently verified tested-build hash are inferred. All documented limitations remain: Lolth transparency in the foreground spans, far-edge clipping at x=2998, the mirrored seam echo, camera and balance tuning, overlapping labels and in-memory saves.
+
+**State.** `implemented-published-human-accepted-awaiting-pr`: implemented, published, human accepted, awaiting a pull request. B-06 stays active; it is not merged or complete, and the plan is not cleared. `pull_request_approved`, `merge_approved` and `dispatch_approved` remain false, and B-07 has not been started.
+
+**Documentation authorization.** The owner separately authorized one normal documentation commit and push of these operational records on this branch only. It is distinct from the completed implementation publication above. A PR, merge and any later publication remain unauthorized. The outcome of that push is reported in the executor's response, not recorded here.

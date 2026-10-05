@@ -95,7 +95,7 @@ func toggle_wagon() -> void:
 func open_window(next_mode: String) -> void:
 	if game.state != "journey":
 		return
-	if next_mode == "wagon" and game.player.x >= 305.0:
+	if next_mode == "wagon" and not game.at_wagon():
 		game.message = "Return to the Wagon to manage supplies and allies."
 		game.message_time = 2.0
 		return
@@ -177,7 +177,7 @@ func show_inventory() -> void:
 		var item: Dictionary = game.recovered_load[index]
 		var prefix := "Selected · " if index == int(game.selected_load) else ""
 		button(content, "%s%s — %d space(s)" % [prefix, item.name, int(item.slots)], select_load.bind(index), "load_%d" % index)
-	if game.player.x < 305.0:
+	if game.at_wagon():
 		button(content, "Open Wagon menu [M]", open_window.bind("wagon"), "wagon")
 	else:
 		label(content, "Return to the Wagon to store items or craft.")
@@ -221,12 +221,12 @@ func select_recipe(index: int) -> void:
 	refresh()
 
 func store_load() -> void:
-	if mode == "wagon" and game.player.x < 305.0 and not game.recovered_load.is_empty():
+	if mode == "wagon" and game.at_wagon() and not game.recovered_load.is_empty():
 		game.store_selected_load()
 	refresh()
 
 func craft_recipe() -> void:
-	if mode == "wagon" and game.player.x < 305.0 and not recipe_locked(int(game.selected_recipe)):
+	if mode == "wagon" and game.at_wagon() and not recipe_locked(int(game.selected_recipe)):
 		game.craft_selected_recipe()
 	if game.state != "journey":
 		close_window()
@@ -268,14 +268,14 @@ func show_allies() -> void:
 		label(content, "Underway: " + String(game.passive_mission.name))
 
 func manage_ally(ally: String) -> void:
-	if mode != "wagon" or game.player.x >= 305.0 or game.zone == 0 or not game.cured_allies.has(ally):
+	if mode != "wagon" or not game.at_wagon() or game.zone == 0 or not game.cured_allies.has(ally):
 		return
 	game.selected_post_ally = game.cured_allies.find(ally)
 	game.toggle_selected_post()
 	refresh()
 
 func select_mission(index: int) -> void:
-	if mode == "wagon" and game.player.x < 305.0 and game.zone != 0 and not game.cured_allies.is_empty():
+	if mode == "wagon" and game.at_wagon() and game.zone != 0 and not game.cured_allies.is_empty():
 		game.mission_selected = index
 	refresh()
 

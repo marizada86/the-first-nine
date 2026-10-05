@@ -139,6 +139,31 @@ const FIRST_THREAD_COOLDOWN := 1.2
 # B-04 playtest review kept FIRST THREAD at 150 px, 2 damage, and a 1.2 s cooldown.
 # In Thornwake, progression stops at Mark I. Mark II and later belong to later batches.
 const THORNWAKE_MARK_CAP := 1
+# B-06 first on-foot expedition. One continuous floor-level corridor in world units;
+# these spans are playtest data, not lore. The cave hub keeps Thornwake's 0-1280 span
+# and its single Wagon anchor at CARAVAN_X. Lolth's displayed region never moves the hub.
+const ROUTE_THORNWAKE_END_X := 1280.0
+const ROUTE_TRANSITION_WIDTH := 480.0
+const ROUTE_FOOTHILLS_WIDTH := 1280.0
+const ROUTE_FOOTHILLS_START_X := ROUTE_THORNWAKE_END_X + ROUTE_TRANSITION_WIDTH
+const ROUTE_END_X := ROUTE_FOOTHILLS_START_X + ROUTE_FOOTHILLS_WIDTH
+const PLAYER_EDGE_MARGIN := 42.0
+const ENEMY_EDGE_MARGIN := 70.0
+# Wagon interaction is measured in world x, never in camera or screen x.
+const WAGON_INTERACT_MAX_X := 305.0
+# The view scrolls only when Lolth leaves this screen-space window, so the cave view
+# keeps a zero offset. The glide covers gate changes without a visible jump.
+const CAMERA_WINDOW_LEFT := 360.0
+const CAMERA_WINDOW_RIGHT := 920.0
+const CAMERA_GLIDE_SPEED := 2400.0
+const ROUTE_OVERLAY_FADE_WIDTH := 160.0
+# Spans (world x) where the existing frame overlays cover Lolth once the route is open:
+# the Ashen Way edge tree with its seam fade, and the Stonehook ruins arch at the far limit.
+const FOREGROUND_READABILITY_SPANS := [Vector2(980.0, 1460.0), Vector2(2700.0, ROUTE_END_X)]
+const FOREGROUND_READABILITY_RAMP := 120.0
+const FOREGROUND_READABILITY_ALPHA := 0.72
+const ROUTE_ORE_ID := "stonehook_iron_ore_01"
+const ROUTE_ORE_X := 2620.0
 # H-01 and H-02 shells. Identifiers only: they are never displayed to the player.
 # Final panels and dialogue require an approved English script and art admission.
 const H01_SHELL_BEATS := ["h01_golden_city_council", "h01_families_depart", "h01_caravan_departs", "h01_journey_calamities", "h01_plague_strikes", "h01_cave_arrival"]
@@ -212,6 +237,9 @@ var first_thread_cooldown := 0.0
 var camp_secured := false
 var safe_wagon_state: Dictionary = {}
 var was_at_safe_wagon := false
+# B-06 view offset along the route. Gameplay always uses world coordinates.
+var camera_x := 0.0
+var route_closed_notice := 0.0
 var passive_mission: Dictionary = {}
 var mission_selected := 0
 var posted_allies: Array[String] = []
@@ -361,7 +389,7 @@ func _input(event: InputEvent) -> void:
 		ui_management.toggle_inventory()
 		get_viewport().set_input_as_handled()
 	elif state == "journey" and event.is_action_pressed("camp_menu"):
-		if event is InputEventJoypadButton and player.x >= 305.0:
+		if event is InputEventJoypadButton and not at_wagon():
 			ui_management.toggle_inventory()
 		else:
 			open_camp_menu()
@@ -512,6 +540,7 @@ func run_self_test() -> void:
 	var first_boss_ready := run_first_boss_self_test()
 	var stabilization_ready := run_mark_one_stabilization_self_test()
 	var combat_readability_ready := run_combat_readability_self_test()
+	var expedition_ready := run_stonehook_expedition_self_test()
 	if not run_playtester_self_test():
 		get_tree().quit(1)
 		return
@@ -636,7 +665,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and expedition_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -1134,6 +1163,280 @@ func run_combat_readability_self_test() -> bool:
 		push_error("SELF_TEST_B05_FAIL: hit=%s miss=%s nearest=%s combo=%s dodge=%s/%s hurt=%s overlap=%s wave=%s" % [contact_hit, beyond_reach_misses, nearest_and_facing, combo_kept, dodge_visual, dodge_blocks, real_hurt, overlap_readable, hound_defeated_wave_advances])
 	return passed
 
+# B-06 test fixture: the legitimate first-cure path, then a safe return to the Wagon.
+func reach_expedition_ready_for_test() -> void:
+	reach_safe_camp_for_test()
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	use_camp_action()
+	defeat_boss_for_test()
+	skip_shar_shell()
+	cure_selected_ally()
+	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	was_at_safe_wagon = false
+	update_safe_wagon()
+	snap_camera()
+
+# Real movement physics frame by frame (velocity, gated clamp, camera and arrival capture),
+# without input devices. It stops at the target or when the route blocks Lolth.
+func walk_route_for_test(target_x: float, max_frames := 2400) -> Dictionary:
+	var dt := 1.0 / 60.0
+	var result := {"max_step": 0.0, "camera_step": 0.0, "camera_at_cave": 0.0, "regions": [], "frames": 0}
+	while absf(player.x - target_x) > 4.0 and int(result.frames) < max_frames:
+		var previous_x := player.x
+		var previous_camera := camera_x
+		velocity = Vector2(signf(target_x - player.x) * 290.0, 0.0)
+		move_player(dt)
+		update_camera(dt)
+		update_safe_wagon()
+		result.max_step = maxf(float(result.max_step), absf(player.x - previous_x))
+		result.camera_step = maxf(float(result.camera_step), absf(camera_x - previous_camera))
+		if player.x <= CAMERA_WINDOW_RIGHT:
+			result.camera_at_cave = maxf(float(result.camera_at_cave), camera_x)
+		if result.regions.is_empty() or String(result.regions.back()) != lolth_region():
+			result.regions.append(lolth_region())
+		result.frames = int(result.frames) + 1
+		if is_equal_approx(player.x, previous_x):
+			break
+	velocity = Vector2.ZERO
+	result.x = player.x
+	return result
+
+func simulate_frames_for_test(frames: int) -> void:
+	for _frame in frames:
+		_process(1.0 / 60.0)
+
+func load_has_pickup(pickup_id: String, items: Array) -> int:
+	var count := 0
+	for item in items:
+		if String(item.get("id", "")) == pickup_id:
+			count += 1
+	return count
+
+# B-06 checks. Each entry is a named assertion so faulty test subclasses can be identified.
+func stonehook_expedition_checks() -> Dictionary:
+	var checks := {}
+	var floor_y := GROUND_Y - PLAYER_FEET_OFFSET
+	var wagon_spot := Vector2(CARAVAN_X + 20.0, floor_y)
+	var thornwake_limit := VIEW.x - PLAYER_EDGE_MARGIN
+	var dt := 1.0 / 60.0
+	# A new run keeps Lolth inside Thornwake with the original zero view offset.
+	reset_to_prologue()
+	var ore := route_ore_state()
+	checks.new_run_ore_ready = not ore.is_empty() and not bool(ore.taken) and not bool(ore.renewable) and String(ore.type) == "metal" and int(ore.slots) == 1 and float(ore.pos.x) > ROUTE_FOOTHILLS_START_X and is_equal_approx(float(ore.pos.y), GROUND_Y - 34.0) and pickup_copies(ROUTE_ORE_ID) == 1
+	player = Vector2(1000, floor_y)
+	var walk := walk_route_for_test(ROUTE_END_X)
+	checks.new_run_blocked = not expedition_departure_allowed() and float(walk.x) <= thornwake_limit and camera_x == 0.0
+	reach_safe_camp_for_test()
+	player = Vector2(1000, floor_y)
+	walk = walk_route_for_test(ROUTE_END_X)
+	checks.pre_boss_blocked = mark_level == 0 and float(walk.x) <= thornwake_limit and camera_x == 0.0
+	player = wagon_spot
+	use_camp_action()
+	defeat_boss_for_test()
+	skip_shar_shell()
+	var uncured := state == "cure" and mark_level == 1 and not expedition_departure_allowed()
+	# Walk as if the cure prompt were bypassed: Mark I alone still cannot open the route.
+	state = "journey"
+	player = Vector2(1000, floor_y)
+	walk = walk_route_for_test(ROUTE_END_X)
+	checks.uncured_mark_blocked = uncured and float(walk.x) <= thornwake_limit and camera_x == 0.0
+	state = "cure"
+	cure_selected_ally()
+	player = Vector2(1000, floor_y)
+	walk = walk_route_for_test(ROUTE_END_X)
+	checks.unsecured_blocked = cured_allies.size() == 1 and not camp_secured and float(walk.x) <= thornwake_limit
+	checks.debug_mark_blocked = true
+	if playtester_available():
+		reset_to_prologue()
+		playtester_change_mark(1)
+		player = Vector2(1000, floor_y)
+		walk = walk_route_for_test(ROUTE_END_X)
+		var debug_blocked := mark_level == 1 and not expedition_departure_allowed() and float(walk.x) <= thornwake_limit and camera_x == 0.0
+		restore_playtester_session()
+		checks.debug_mark_blocked = debug_blocked and mark_level == 0 and not playtester_active
+	# Legitimate first cure plus a safe return opens the on-foot route only.
+	reach_expedition_ready_for_test()
+	var chosen: Array[String] = cured_allies.duplicate()
+	var hub_before := cave_camp_state()
+	hub_before.erase("lolth_region")
+	var secured_snapshot := safe_wagon_state.duplicate(true)
+	checks.legit_departure_allowed = expedition_departure_allowed() and camp_secured and wagon_travel_locked() and camera_x == 0.0 and lolth_region() == "thornwake"
+	walk = walk_route_for_test(ROUTE_END_X)
+	var max_walk_step := 290.0 * dt + 0.01
+	checks.full_route_outward = absf(float(walk.x) - (ROUTE_END_X - PLAYER_EDGE_MARGIN)) < 0.5 and float(walk.max_step) <= max_walk_step and float(walk.camera_step) <= max_walk_step and float(walk.camera_at_cave) == 0.0 and is_equal_approx(camera_x, ROUTE_END_X - VIEW.x) and walk.regions == ["thornwake", "stonehook_approach", "stonehook_foothills"] and zone == 0 and state == "journey" and player.y == floor_y
+	var hub_after := cave_camp_state()
+	hub_after.erase("lolth_region")
+	checks.hub_fixed = hub_after == hub_before and float(hub_after.anchor_x) == CARAVAN_X and wagon_travel_locked() and wagon_condition() == "stationed" and safe_wagon_state == secured_snapshot and cured_allies == chosen
+	# Remote Wagon access is impossible from the foothills, whatever the view shows.
+	player.x = ROUTE_FOOTHILLS_START_X + 40.0
+	var stock_before := wagon_stock.duplicate(true)
+	var crafted_before := crafted_recipes.duplicate(true)
+	recovered_load.assign([{"name": "TEST HERB", "type": "herb", "slots": 1}])
+	handle_primary()
+	var no_store := recovered_load.size() == 1 and wagon_stock == stock_before
+	recovered_load.clear()
+	wagon_stock.assign([{"name": "WOOD", "type": "wood", "slots": 1}, {"name": "ROPE", "type": "rope", "slots": 1}, {"name": "SALVAGE", "type": "salvage", "slots": 1}])
+	selected_recipe = WHEEL_KIT_RECIPE
+	handle_primary()
+	var no_craft := crafted_recipes == crafted_before and wagon_stock.size() == 3
+	open_camp_menu()
+	var menu_closed: bool = not ui_management.is_open()
+	ui_management.open_window("wagon")
+	menu_closed = menu_closed and not ui_management.is_open()
+	recovered_load.assign([{"name": "TEST HERB", "type": "herb", "slots": 1}])
+	ui_management.mode = "wagon"
+	ui_management.store_load()
+	ui_management.craft_recipe()
+	ui_management.manage_ally(chosen[0])
+	ui_management.select_mission(1)
+	ui_management.mode = ""
+	var callbacks_blocked := recovered_load.size() == 1 and wagon_stock.size() == 3 and crafted_recipes == crafted_before and posted_allies.is_empty() and passive_mission.is_empty()
+	recovered_load.clear()
+	wagon_stock = stock_before.duplicate(true)
+	checks.remote_wagon_blocked = no_store and no_craft and menu_closed and callbacks_blocked and not at_wagon()
+	was_at_safe_wagon = false
+	update_safe_wagon()
+	checks.remote_no_capture = safe_wagon_state == secured_snapshot
+	ui_management.open_window("inventory")
+	checks.remote_inventory_opens = ui_management.is_open() and ui_management.mode == "inventory"
+	ui_management.close_window()
+	# The single ore respects carried capacity and is collected once.
+	player.x = ROUTE_ORE_X
+	recovered_load.assign([{"name": "TEST WOOD", "type": "wood", "slots": 1}, {"name": "TEST ROPE", "type": "rope", "slots": 1}])
+	handle_primary()
+	checks.ore_full_load_retained = not bool(route_ore_state().taken) and recovered_load.size() == 2 and message.begins_with("RECOVERED LOAD is full")
+	recovered_load.clear()
+	handle_primary()
+	var collected := bool(route_ore_state().taken) and load_has_pickup(ROUTE_ORE_ID, recovered_load) == 1
+	handle_primary()
+	checks.ore_collected_once = collected and recovered_load.size() == 1 and pickup_copies(ROUTE_ORE_ID) == 1
+	# Border oscillation never respawns loot or enemies, or refills survival.
+	var pickup_count := salvage.size()
+	var enemy_count := shades.size()
+	var flame_before := flame
+	var provisions_before := provisions
+	for _crossing in 3:
+		walk_route_for_test(ROUTE_THORNWAKE_END_X - 100.0)
+		walk_route_for_test(ROUTE_FOOTHILLS_START_X + 100.0)
+	checks.border_no_respawn = salvage.size() == pickup_count and shades.size() == enemy_count and bool(route_ore_state().taken) and pickup_copies(ROUTE_ORE_ID) == 1 and flame <= flame_before and provisions <= provisions_before and safe_wagon_state == secured_snapshot
+	# A terminal failure in the foothills rolls the unsaved ore back to the cave snapshot.
+	walk_route_for_test(ROUTE_ORE_X)
+	provisions = 0.0
+	check_survival_failures()
+	var failed_away := state == "defeat"
+	restart_from_checkpoint()
+	checks.foothill_rollback = failed_away and state == "journey" and zone == 0 and player.x == 330.0 and camera_x == 0.0 and not bool(route_ore_state().taken) and load_has_pickup(ROUTE_ORE_ID, recovered_load) == 0 and pickup_copies(ROUTE_ORE_ID) == 1 and provisions > 0.0 and mark_level == 1 and cured_allies == chosen and camp_secured and expedition_departure_allowed()
+	# Carry the ore back. Arrival captures a consistent snapshot; deposit keeps one copy.
+	walk_route_for_test(ROUTE_ORE_X)
+	handle_primary()
+	walk = walk_route_for_test(wagon_spot.x)
+	var saved_taken: Dictionary = safe_wagon_state.get("pickup_taken", {})
+	checks.return_captures = at_wagon() and camera_x == 0.0 and float(walk.max_step) <= max_walk_step and camp_secured and bool(saved_taken.get(ROUTE_ORE_ID, false)) and load_has_pickup(ROUTE_ORE_ID, safe_wagon_state.load) == 1 and load_has_pickup(ROUTE_ORE_ID, safe_wagon_state.stock) == 0
+	var stock_saved := wagon_stock.duplicate(true)
+	wagon_stock.clear()
+	for index in WAGON_STOCK_CAPACITY:
+		wagon_stock.append({"name": "FULL %d" % index, "type": "wood", "slots": 1})
+	handle_primary()
+	checks.full_stock_retains_ore = load_has_pickup(ROUTE_ORE_ID, recovered_load) == 1 and wagon_stock.size() == WAGON_STOCK_CAPACITY and message.begins_with("WAGON STOCK is full")
+	wagon_stock = stock_saved
+	handle_primary()
+	checks.ore_deposited_once = load_has_pickup(ROUTE_ORE_ID, wagon_stock) == 1 and load_has_pickup(ROUTE_ORE_ID, recovered_load) == 0 and pickup_copies(ROUTE_ORE_ID) == 1
+	walk_route_for_test(700.0)
+	walk_route_for_test(wagon_spot.x)
+	saved_taken = safe_wagon_state.get("pickup_taken", {})
+	checks.recapture_consistent = bool(saved_taken.get(ROUTE_ORE_ID, false)) and load_has_pickup(ROUTE_ORE_ID, safe_wagon_state.stock) == 1 and load_has_pickup(ROUTE_ORE_ID, safe_wagon_state.load) == 0
+	flame = 0.0
+	check_survival_failures()
+	restart_from_checkpoint()
+	checks.deposit_survives_restore = state == "journey" and load_has_pickup(ROUTE_ORE_ID, wagon_stock) == 1 and bool(route_ore_state().taken) and pickup_copies(ROUTE_ORE_ID) == 1 and flame > 0.0
+	# The camp keeps living while Lolth is away: clock, survival, waves and a real Stag.
+	walk_route_for_test(ROUTE_FOOTHILLS_START_X + 600.0)
+	var away_x := player.x
+	var away_camera := camera_x
+	var health_before := health
+	clock_seconds = DAY_DURATION - 0.05
+	flame_before = flame
+	provisions_before = provisions
+	var clock_before := clock_seconds
+	simulate_frames_for_test(30)
+	checks.offscreen_clock_runs = is_night() and clock_seconds > clock_before and flame < flame_before and provisions < provisions_before and night_wave == 1 and shades.size() == 1 and String(shades[0].name) == "BRIAR HOUND"
+	simulate_frames_for_test(600)
+	checks.enemy_keeps_origin = not shades.is_empty() and float(shades[0].pos.x) <= ROUTE_THORNWAKE_END_X - ENEMY_EDGE_MARGIN and int(shades[0].get("origin_zone", -1)) == 0 and health == health_before and player.x == away_x and state == "journey"
+	shades.clear()
+	spawn_enemy("STAG OF MIRE", Vector2(CARAVAN_X + 300.0, GROUND_Y - 34), 2, 1)
+	var integrity_before := wagon_integrity
+	var saw_windup := false
+	for _frame in 600:
+		_process(dt)
+		saw_windup = saw_windup or (not shades.is_empty() and String(shades[0].attack_state) == "windup")
+		if wagon_integrity < integrity_before:
+			break
+	checks.offscreen_stag_damage = saw_windup and wagon_integrity < integrity_before and player.x == away_x and camera_x == away_camera and state == "journey"
+	wagon_integrity = 1.0
+	for _frame in 600:
+		_process(dt)
+		if state != "journey":
+			break
+	var destroyed := state == "defeat"
+	restart_from_checkpoint()
+	checks.offscreen_terminal_restore = destroyed and state == "journey" and player.x == 330.0 and camera_x == 0.0 and mark_level == 1 and cured_allies == chosen and wagon_integrity > 0.0 and not is_night() and load_has_pickup(ROUTE_ORE_ID, wagon_stock) == 1 and pickup_copies(ROUTE_ORE_ID) == 1
+	# F4 overrides cannot open the route but never trap Lolth, and restore is exact.
+	checks.f4_override_gate = true
+	checks.f4_exact_restore = true
+	if playtester_available():
+		walk_route_for_test(2200.0)
+		var before := {"player": player, "camera": camera_x, "salvage": salvage.duplicate(true), "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "safe": safe_wagon_state.duplicate(true), "secured": camp_secured, "clock": clock_seconds}
+		playtester_change_mark(1)
+		var override_blocks := not expedition_departure_allowed() and safe_wagon_state.is_empty()
+		walk_route_for_test(player.x - 200.0)
+		var returned_x := player.x
+		walk_route_for_test(ROUTE_END_X)
+		checks.f4_override_gate = override_blocks and returned_x < float(before.player.x) - 150.0 and player.x == returned_x
+		restore_playtester_session()
+		checks.f4_exact_restore = player == before.player and camera_x == before.camera and salvage == before.salvage and recovered_load == before.load and wagon_stock == before.stock and safe_wagon_state == before.safe and camp_secured == before.secured and clock_seconds == before.clock and mark_level == 1 and expedition_departure_allowed()
+	# The far route end, capped Echoes and old controls unlock nothing.
+	walk_route_for_test(ROUTE_END_X)
+	collect_echo(10)
+	try_advance_from_camp()
+	handle_primary()
+	advance_to_stonehook()
+	enter_stonehook()
+	use_camp_action()
+	checks.no_progression_unlock = zone == 0 and mark_level == 1 and shadow_echoes == int(ECHO_THRESHOLDS[1]) and state == "journey" and cured_allies == chosen and posted_allies.is_empty() and passive_mission.is_empty() and wagon_travel_locked() and not axle_brakes_installed and not stonehook_boss_defeated and not stonehook_shar_ready and mark_gates.is_empty() and ui_management.recipe_locked(3)
+	# Combat still uses world positions under a nonzero view offset.
+	walk_route_for_test(300.0)
+	walk_route_for_test(1150.0)
+	var offset := camera_x
+	shades.clear()
+	spawn_enemy("BRIAR HOUND", Vector2(player.x + 60.0, GROUND_Y - 34), 3, 1)
+	hurt_cooldown = 99.0
+	handle_attack()
+	var melee_hit := int(shades[0].health) == 2
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	checks.camera_offset_combat = offset > 0.0 and is_equal_approx(offset, player.x - CAMERA_WINDOW_RIGHT) and melee_hit and bool(shades[0].defeated)
+	shades.clear()
+	# A new run clears every expedition field and closes the route again.
+	reset_to_prologue()
+	var reset_ok := camera_x == 0.0 and player.x == 330.0 and not bool(route_ore_state().taken) and pickup_copies(ROUTE_ORE_ID) == 1 and not camp_secured and safe_wagon_state.is_empty() and wagon_stock.is_empty() and recovered_load.is_empty() and not expedition_departure_allowed()
+	player = Vector2(1000, floor_y)
+	walk = walk_route_for_test(ROUTE_END_X)
+	checks.new_run_resets = reset_ok and float(walk.x) <= thornwake_limit and camera_x == 0.0
+	reset_to_prologue()
+	return checks
+
+func run_stonehook_expedition_self_test() -> bool:
+	var checks := stonehook_expedition_checks()
+	var failed: Array[String] = []
+	for check_name in checks:
+		if not bool(checks[check_name]):
+			failed.append(String(check_name))
+	if failed.is_empty():
+		print("SELF_TEST_B06_PASS: legitimate on-foot departure, continuous route, fixed cave Wagon, single ore, offscreen camp, restore and new-run reset are ready (%d checks)" % checks.size())
+	else:
+		push_error("SELF_TEST_B06_FAIL: %s" % ", ".join(failed))
+	return failed.is_empty()
+
 func run_playtester_self_test() -> bool:
 	if not playtester_available():
 		print("SELF_TEST_PLAYTESTER_SKIP: debug tools unavailable in release")
@@ -1265,7 +1568,90 @@ func cave_camp_state() -> Dictionary:
 		"fire": flame,
 		"stock": wagon_stock.size(),
 		"allies": ally_records(),
+		"anchor_x": CARAVAN_X,
+		"lolth_region": lolth_region(),
 	}
+
+# B-06: the Wagon and family stay at one cave anchor. Wagon interaction uses world x,
+# so a camera offset or the displayed region can never create a second camp.
+func at_wagon() -> bool:
+	return player.x < WAGON_INTERACT_MAX_X
+
+# Lolth's displayed region along the route. The hub context (zone) stays Thornwake.
+func lolth_region() -> String:
+	if zone != 0 or player.x < ROUTE_THORNWAKE_END_X:
+		return ["thornwake", "stonehook", "hollowroot"][zone]
+	if player.x < ROUTE_FOOTHILLS_START_X:
+		return "stonehook_approach"
+	return "stonehook_foothills"
+
+func displayed_region_name() -> String:
+	match lolth_region():
+		"stonehook_approach":
+			return "STONEHOOK APPROACH"
+		"stonehook_foothills":
+			return "STONEHOOK FOOTHILLS"
+	return ZONE_NAMES[zone]
+
+func is_away_from_cave() -> bool:
+	return zone == 0 and player.x >= ROUTE_THORNWAKE_END_X
+
+# Departure needs the legitimate first-cure milestones and a survivable saved camp:
+# the real Antlered Hunger defeat, Mark I, exactly one cure, the repaired Wagon and a
+# captured safe-wagon state. Playtester overrides and the self-test travel bypass never
+# grant it. Only departure is gated; walking back is always allowed.
+func expedition_departure_allowed() -> bool:
+	return state == "journey" and zone == 0 and not playtester_active and antlered_hunger_defeated and mark_level == THORNWAKE_MARK_CAP and cured_allies.size() == 1 and wagon_condition() == "stationed" and camp_secured and not safe_wagon_state.is_empty()
+
+func route_east_limit_x() -> float:
+	if zone == 0 and expedition_departure_allowed():
+		return ROUTE_END_X - PLAYER_EDGE_MARGIN
+	return VIEW.x - PLAYER_EDGE_MARGIN
+
+func camera_limit_x() -> float:
+	if zone != 0:
+		return 0.0
+	if expedition_departure_allowed() or player.x > VIEW.x - PLAYER_EDGE_MARGIN:
+		return ROUTE_END_X - VIEW.x
+	return 0.0
+
+func camera_target_x() -> float:
+	var target := camera_x
+	var screen_x := player.x - camera_x
+	if screen_x > CAMERA_WINDOW_RIGHT:
+		target = player.x - CAMERA_WINDOW_RIGHT
+	elif screen_x < CAMERA_WINDOW_LEFT:
+		target = player.x - CAMERA_WINDOW_LEFT
+	return clampf(target, 0.0, camera_limit_x())
+
+func update_camera(delta: float) -> void:
+	camera_x = move_toward(camera_x, camera_target_x(), CAMERA_GLIDE_SPEED * delta)
+
+func snap_camera() -> void:
+	camera_x = 0.0
+	camera_x = camera_target_x()
+
+# The world-to-view translation. HUD and interfaces never use it.
+func world_draw_origin() -> Vector2:
+	return Vector2(-roundf(camera_x), 0.0)
+
+func route_ore_state() -> Dictionary:
+	for item in salvage:
+		if String(item.get("id", "")) == ROUTE_ORE_ID:
+			return item
+	return {}
+
+# Counts every copy of an identified pickup across the world, Lolth's load and Wagon stock.
+func pickup_copies(pickup_id: String) -> int:
+	var copies := 0
+	for item in salvage:
+		if String(item.get("id", "")) == pickup_id and not bool(item.taken):
+			copies += 1
+	for collection in [recovered_load, wagon_stock]:
+		for item in collection:
+			if String(item.get("id", "")) == pickup_id:
+				copies += 1
+	return copies
 
 func spawn_zone() -> void:
 	player = Vector2(330, GROUND_Y - 38)
@@ -1286,14 +1672,16 @@ func spawn_zone() -> void:
 		platforms.clear()
 		mark_gates.append({"pos": Vector2(1080, GROUND_Y - 48), "mark": 3, "name": "WEB ANCHOR", "opened": hollowroot_web_anchor_open})
 	if zone == 0:
-		salvage.append({"pos": Vector2(470, 432), "name": "HERBS", "type": "herb", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(610, 362), "name": "WATER", "type": "water", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(760, 362), "name": "WOOD", "type": "wood", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(835, 420), "name": "DRY BRANCHES", "type": "wood", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(920, 417), "name": "ROPE", "type": "rope", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(1060, 417), "name": "WHEEL SALVAGE", "type": "salvage", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(1105, 417), "name": "BRAZIER SALVAGE", "type": "salvage", "slots": 1, "taken": false, "renewable": true})
-		salvage.append({"pos": Vector2(1110, GROUND_Y - 34), "name": "KINDLING", "type": "kindling", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_herbs", "pos": Vector2(470, 432), "name": "HERBS", "type": "herb", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_water", "pos": Vector2(610, 362), "name": "WATER", "type": "water", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_wood", "pos": Vector2(760, 362), "name": "WOOD", "type": "wood", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_dry_branches", "pos": Vector2(835, 420), "name": "DRY BRANCHES", "type": "wood", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_rope", "pos": Vector2(920, 417), "name": "ROPE", "type": "rope", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_wheel_salvage", "pos": Vector2(1060, 417), "name": "WHEEL SALVAGE", "type": "salvage", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_brazier_salvage", "pos": Vector2(1105, 417), "name": "BRAZIER SALVAGE", "type": "salvage", "slots": 1, "taken": false, "renewable": true})
+		salvage.append({"id": "thornwake_kindling", "pos": Vector2(1110, GROUND_Y - 34), "name": "KINDLING", "type": "kindling", "slots": 1, "taken": false, "renewable": true})
+		# B-06: one finite foothill ore on the floor. It never renews and has a stable identity.
+		salvage.append({"id": ROUTE_ORE_ID, "pos": Vector2(ROUTE_ORE_X, GROUND_Y - 34), "name": "IRON ORE", "type": "metal", "slots": 1, "taken": false, "renewable": false})
 		if is_night():
 			spawn_thornwake_night_enemies()
 	elif zone == 1:
@@ -1312,6 +1700,8 @@ func spawn_zone() -> void:
 			spawn_hollowroot_night_enemies()
 	message = "%s — %s" % [ZONE_NAMES[zone], ZONE_OBJECTIVES[zone]]
 	message_time = 4.0
+	route_closed_notice = 0.0
+	snap_camera()
 
 func _process(delta: float) -> void:
 	if ui_management.is_open():
@@ -1371,6 +1761,7 @@ func _process(delta: float) -> void:
 		on_floor = false
 	velocity.y += GRAVITY * delta
 	move_player(delta)
+	update_camera(delta)
 	hurt_cooldown = maxf(0.0, hurt_cooldown - delta)
 	hazard_cooldown = maxf(0.0, hazard_cooldown - delta)
 	dodge_time = maxf(0.0, dodge_time - delta)
@@ -1427,7 +1818,15 @@ func check_survival_failures() -> void:
 		fail_run("One of the Nine could not endure.")
 
 func move_player(delta: float) -> void:
-	player.x = clampf(player.x + velocity.x * delta, 42.0, VIEW.x - 42.0)
+	# Departure is gated; once away, the current position is always a valid east limit.
+	var east_limit := maxf(route_east_limit_x(), player.x)
+	var desired_x := player.x + velocity.x * delta
+	player.x = clampf(desired_x, PLAYER_EDGE_MARGIN, east_limit)
+	route_closed_notice = maxf(0.0, route_closed_notice - delta)
+	if zone == 0 and mark_level >= 1 and desired_x > east_limit and east_limit < ROUTE_THORNWAKE_END_X and route_closed_notice <= 0.0:
+		route_closed_notice = 3.0
+		message = "The eastern path opens only after the first cure and a secured camp."
+		message_time = 2.5
 	player.y += velocity.y * delta
 	on_floor = false
 	var floor_y := GROUND_Y - 38.0
@@ -1553,7 +1952,7 @@ func handle_primary() -> void:
 				message = "%s yields to Lolth's Mark." % gate.name
 			message_time = 2.5
 			return
-	if player.x < 305.0:
+	if at_wagon():
 		if not recovered_load.is_empty():
 			store_selected_load()
 		else:
@@ -1727,7 +2126,7 @@ func store_selected_load() -> void:
 	message_time = 3.0
 
 func open_camp_menu() -> void:
-	if player.x >= 305.0:
+	if not at_wagon():
 		message = "Return to the Wagon to manage supplies and crafting."
 		message_time = 2.0
 		return
@@ -1916,7 +2315,7 @@ func checkpoint_label() -> String:
 # enemy, no unfinished night defense, and a survivable camp. A terminal Flame, Provisions,
 # health, or Wagon state is never captured, so the previous valid snapshot stays the fallback.
 func is_at_safe_wagon() -> bool:
-	if state != "journey" or zone != 0 or mark_level < 1 or cured_allies.is_empty() or player.x >= 305.0:
+	if state != "journey" or zone != 0 or mark_level < 1 or cured_allies.is_empty() or not at_wagon():
 		return false
 	if flame <= 0.0 or provisions <= 0.0 or health <= 0.0 or wagon_integrity <= 0.0:
 		return false
@@ -1936,9 +2335,13 @@ func update_safe_wagon() -> void:
 # overwritten by a restore.
 func capture_safe_wagon_state() -> void:
 	var taken: Array[bool] = []
+	# B-06: identified pickups (including the finite foothill ore) restore by identity.
+	var taken_by_id: Dictionary = {}
 	for item in salvage:
 		taken.append(bool(item.taken))
-	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken}
+		if item.has("id"):
+			taken_by_id[String(item.id)] = bool(item.taken)
+	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken, "pickup_taken": taken_by_id}
 	camp_secured = true
 	message = "CAMP SECURED — If Lolth falls, she returns to this moment at the Wagon."
 	message_time = 4.0
@@ -1977,8 +2380,14 @@ func restore_safe_wagon_state() -> void:
 	state = "journey"
 	spawn_zone()
 	var taken: Array = saved.salvage_taken
-	for index in mini(taken.size(), salvage.size()):
-		salvage[index].taken = bool(taken[index])
+	var taken_by_id: Dictionary = saved.get("pickup_taken", {})
+	for index in salvage.size():
+		var pickup_id := String(salvage[index].get("id", ""))
+		if taken_by_id.has(pickup_id):
+			salvage[index].taken = bool(taken_by_id[pickup_id])
+		elif index < taken.size():
+			salvage[index].taken = bool(taken[index])
+	# spawn_zone() returned Lolth to the cave camp and the view to its zero offset.
 	was_at_safe_wagon = false
 	message = "Restored at the safe Wagon. Mark I and %s's cure remain." % ", ".join(cured_allies)
 	message_time = 4.0
@@ -2239,7 +2648,14 @@ func spawn_enemy(enemy_name: String, position: Vector2, enemy_health: int, echoe
 		"ROOT CROWN":
 			behavior = "crush"
 	var initial_target_x := CARAVAN_X if zone == 0 and behavior == "charge" else player.x
-	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0, "facing_left": initial_target_x < position.x})
+	shades.append({"pos": position, "name": enemy_name, "health": enemy_health, "max_health": enemy_health, "echoes": echoes, "behavior": behavior, "wagon_hit_cooldown": 0.0, "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "attack_count": 0, "attack_target": "lolth", "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0, "facing_left": initial_target_x < position.x, "origin_zone": zone})
+
+# B-06: an enemy keeps its originating region. Thornwake attackers stay inside the cave
+# span even while Lolth walks the route, so they never follow her into Stonehook.
+func enemy_region_limits(enemy: Dictionary) -> Vector2:
+	var origin := int(enemy.get("origin_zone", zone))
+	var region_end := ROUTE_THORNWAKE_END_X if origin == 0 else VIEW.x
+	return Vector2(ENEMY_EDGE_MARGIN, region_end - ENEMY_EDGE_MARGIN)
 
 func update_enemy_facing(enemy: Dictionary, horizontal_motion: float) -> void:
 	if not is_zero_approx(horizontal_motion):
@@ -2284,7 +2700,8 @@ func update_enemies(delta: float) -> void:
 			"entangle":
 				speed = 72.0 if distance < 210.0 else 34.0
 		var previous_x := float(enemy.pos.x)
-		enemy.pos.x = clampf(previous_x + direction * speed * delta, 70.0, VIEW.x - 70.0)
+		var limits := enemy_region_limits(enemy)
+		enemy.pos.x = clampf(previous_x + direction * speed * delta, limits.x, limits.y)
 		update_enemy_facing(enemy, float(enemy.pos.x) - previous_x)
 		if targets_wagon:
 			enemy.wagon_hit_cooldown = maxf(0.0, float(enemy.wagon_hit_cooldown) - delta)
@@ -2345,7 +2762,8 @@ func update_thornwake_attacker(enemy: Dictionary, delta: float) -> void:
 				enemy.attack_state = "approach"
 				enemy.attack_count = int(enemy.get("attack_count", 0)) + 1
 	var previous_x := float(enemy.pos.x)
-	enemy.pos.x = clampf(previous_x + direction * speed * delta, 70.0, VIEW.x - 70.0)
+	var limits := enemy_region_limits(enemy)
+	enemy.pos.x = clampf(previous_x + direction * speed * delta, limits.x, limits.y)
 	if String(enemy.attack_state) in ["windup", "strike"]:
 		update_enemy_facing(enemy, float(enemy.attack_dir))
 	else:
@@ -2466,7 +2884,7 @@ func complete_tutorial_defense() -> void:
 func use_camp_action() -> void:
 	if zone != 0 or mark_level != 0 or tutorial_phase != "safe_camp":
 		return
-	if player.x >= 305.0:
+	if not at_wagon():
 		message = "Return to the Wagon to face the Antlered Hunger."
 		message_time = 2.0
 		return
@@ -2492,6 +2910,14 @@ func defeat_antlered_hunger() -> void:
 func current_objective() -> String:
 	if playtester_active:
 		return "PLAYTEST: Mark %d. Use F4 to change Mark/time or restore your run." % mark_level
+	if is_away_from_cave():
+		var ore := route_ore_state()
+		if not ore.is_empty() and not bool(ore.taken):
+			return "Recover the IRON ORE in the Stonehook foothills, then return to the Wagon."
+		for item in recovered_load:
+			if String(item.get("id", "")) == ROUTE_ORE_ID:
+				return "Carry the IRON ORE back to the Wagon in the cave."
+		return "Return to the Wagon in the cave."
 	if zone == 0 and mark_level >= 1 and not cured_allies.is_empty():
 		if not camp_secured:
 			return "Return to the Wagon to secure the camp."
@@ -2618,7 +3044,7 @@ func cycle_post_ally() -> void:
 		message = "Ally posts are not available at the cave camp."
 		message_time = 2.0
 		return
-	if player.x >= 305.0:
+	if not at_wagon():
 		message = "Return to the Wagon to manage ally posts."
 		message_time = 2.0
 		return
@@ -2635,7 +3061,7 @@ func toggle_selected_post() -> void:
 		message = "Ally posts are not available at the cave camp."
 		message_time = 2.0
 		return
-	if player.x >= 305.0 or cured_allies.is_empty():
+	if not at_wagon() or cured_allies.is_empty():
 		message = "Manage ally posts beside the Wagon."
 		message_time = 2.0
 		return
@@ -2656,7 +3082,7 @@ func select_mission() -> void:
 		message = "Missions are not available at the cave camp."
 		message_time = 2.0
 		return
-	if player.x >= 305.0:
+	if not at_wagon():
 		message = "Choose a camp mission beside the Caravan."
 		message_time = 2.0
 		return
@@ -2669,7 +3095,7 @@ func select_mission() -> void:
 	message_time = 3.5
 
 func assign_mission() -> void:
-	if zone == 0 or player.x >= 305.0 or cured_allies.is_empty():
+	if zone == 0 or not at_wagon() or cured_allies.is_empty():
 		message = "Missions require an eligible ally and a later-region wagon camp."
 		message_time = 2.5
 		return
@@ -2701,6 +3127,8 @@ func _draw() -> void:
 		return
 	var backgrounds: Array[Color] = [Color("17132e"), Color("20213a"), Color("19172b")]
 	draw_rect(Rect2(Vector2.ZERO, VIEW), backgrounds[zone])
+	# World layers share one horizontal translation; the HUD and every overlay below stay in screen space.
+	draw_set_transform(world_draw_origin(), 0.0, Vector2.ONE)
 	draw_background()
 	draw_ground()
 	draw_zone_traversal()
@@ -2713,7 +3141,10 @@ func _draw() -> void:
 	draw_portal()
 	draw_player()
 	draw_foreground_overlay()
+	draw_foreground_readability()
+	draw_route_markers()
 	draw_mark_vfx()
+	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	draw_hud()
 	if state == "shar_shell":
 		draw_shar_shell()
@@ -2737,10 +3168,13 @@ func _draw() -> void:
 func draw_background() -> void:
 	if zone == 0:
 		draw_texture_rect(ASHEN_WAY_BACKDROP, Rect2(Vector2.ZERO, VIEW), false)
+		draw_route_blend(ASHEN_WAY_BACKDROP, full_source(VEIL_RUINS_BACKDROP), VEIL_RUINS_BACKDROP, 0.0, VIEW.y, ROUTE_TRANSITION_WIDTH, true)
+		draw_texture_rect(VEIL_RUINS_BACKDROP, Rect2(ROUTE_FOOTHILLS_START_X, 0, ROUTE_FOOTHILLS_WIDTH, VIEW.y), false)
 		var night_alpha := 0.56 if is_night() else 0.08
 		if tutorial_phase == "dusk" and mark_level == 0:
 			night_alpha = lerpf(0.08, 0.56, 1.0 - dusk_time / DUSK_DURATION)
-		draw_rect(Rect2(Vector2.ZERO, VIEW), Color(0.035, 0.07, 0.16, night_alpha))
+		# The time-of-day tint covers the visible view wherever the camera is.
+		draw_rect(Rect2(Vector2(-world_draw_origin().x, 0.0), VIEW), Color(0.035, 0.07, 0.16, night_alpha))
 		return
 	if zone == 1:
 		draw_texture_rect(VEIL_RUINS_BACKDROP, Rect2(Vector2.ZERO, VIEW), false)
@@ -2770,17 +3204,69 @@ func draw_background() -> void:
 		draw_line(Vector2(x + 8, GROUND_Y - h), Vector2(x + 30, GROUND_Y - h - 35), Color("6c4f78"), 5.0)
 
 func draw_ground() -> void:
-	draw_rect(Rect2(0, GROUND_Y, VIEW.x, VIEW.y - GROUND_Y), Color("0c1123"))
+	var world_width := ROUTE_END_X if zone == 0 else VIEW.x
+	draw_rect(Rect2(0, GROUND_Y, world_width, VIEW.y - GROUND_Y), Color("0c1123"))
+	var ground_panel_width := ZONE_GROUND_BANDS_RUNTIME.get_width() / 3.0
 	if zone == 0:
 		draw_texture_rect(THORNWAKE_CONTINUOUS_GROUND, Rect2(0, GROUND_Y - 4, VIEW.x, VIEW.y - GROUND_Y + 4), false)
+		# B-06: the same floor continues; Thornwake ground thins into the Stonehook band.
+		var stone_ground := Rect2(ground_panel_width, 350, ground_panel_width, 443)
+		draw_route_blend(THORNWAKE_CONTINUOUS_GROUND, stone_ground, ZONE_GROUND_BANDS_RUNTIME, GROUND_Y - 4, VIEW.y - GROUND_Y + 4, ROUTE_TRANSITION_WIDTH, true)
+		draw_texture_rect_region(ZONE_GROUND_BANDS_RUNTIME, Rect2(ROUTE_FOOTHILLS_START_X, GROUND_Y - 4, ROUTE_FOOTHILLS_WIDTH, VIEW.y - GROUND_Y + 4), stone_ground)
 	else:
-		var ground_panel_width := ZONE_GROUND_BANDS_RUNTIME.get_width() / 3.0
 		var ground_source := Rect2(ground_panel_width * float(zone), 350, ground_panel_width, 443)
 		draw_texture_rect_region(ZONE_GROUND_BANDS_RUNTIME, Rect2(0, GROUND_Y, VIEW.x, VIEW.y - GROUND_Y), ground_source)
-	draw_line(Vector2(0, GROUND_Y), Vector2(VIEW.x, GROUND_Y), Color("b79857"), 2.0)
-	for i in 30:
+	draw_line(Vector2(0, GROUND_Y), Vector2(world_width, GROUND_Y), Color("b79857"), 2.0)
+	for i in int(ceilf(world_width / 48.0)) + 3:
 		var x := float(i * 48)
 		draw_line(Vector2(x, GROUND_Y + 28), Vector2(x + 22, GROUND_Y + 35), Color("272846"), 2.0)
+
+func full_source(texture: Texture2D) -> Rect2:
+	return Rect2(Vector2.ZERO, texture.get_size())
+
+# B-06 spatial blend across the transition band, not a temporal dissolve. Each side is
+# mirrored at its own seam, so the Thornwake art meets x=1280 and the Stonehook art meets
+# x=1760 without a cut. Opaque backdrops and ground cross the whole band; the frame-like
+# foreground overlays fade within a shorter width so their edge trees do not double up.
+func draw_route_blend(thornwake: Texture2D, stone_source: Rect2, stonehook: Texture2D, top: float, height: float, fade_width: float, opaque_base: bool) -> void:
+	var fade_share := fade_width / VIEW.x
+	var forest_source := Rect2(thornwake.get_width() * (1.0 - fade_share), 0, thornwake.get_width() * fade_share, thornwake.get_height())
+	var stone_width := ROUTE_TRANSITION_WIDTH if opaque_base else fade_width
+	var stone_band := Rect2(stone_source.position, Vector2(stone_source.size.x * stone_width / VIEW.x, stone_source.size.y))
+	draw_route_band(stonehook, stone_band, Rect2(ROUTE_FOOTHILLS_START_X - stone_width, top, stone_width, height), 1.0 if opaque_base else 0.0, 1.0, true)
+	draw_route_band(thornwake, forest_source, Rect2(ROUTE_THORNWAKE_END_X, top, fade_width, height), 1.0, 0.0, true)
+
+func draw_route_band(texture: Texture2D, source: Rect2, span: Rect2, alpha_left: float, alpha_right: float, mirrored: bool) -> void:
+	var texture_size := texture.get_size()
+	var uv_left := source.position.x / texture_size.x
+	var uv_right := source.end.x / texture_size.x
+	if mirrored:
+		var swap := uv_left
+		uv_left = uv_right
+		uv_right = swap
+	var uv_top := source.position.y / texture_size.y
+	var uv_bottom := source.end.y / texture_size.y
+	var points := PackedVector2Array([span.position, Vector2(span.end.x, span.position.y), span.end, Vector2(span.position.x, span.end.y)])
+	var left := Color(1, 1, 1, alpha_left)
+	var right := Color(1, 1, 1, alpha_right)
+	var colors := PackedColorArray([left, right, right, left])
+	var uvs := PackedVector2Array([Vector2(uv_left, uv_top), Vector2(uv_right, uv_top), Vector2(uv_right, uv_bottom), Vector2(uv_left, uv_bottom)])
+	draw_polygon(points, colors, uvs, texture)
+
+# Route signs appear only once the eastern path is open or Lolth is already away. They sit
+# above the pickup labels and in front of the frame overlays so they stay readable.
+func draw_route_markers() -> void:
+	if zone != 0 or camera_limit_x() <= 0.0:
+		return
+	var sign_color := Color("f2d59a")
+	var post_color := Color("6c5238")
+	var east_post := Vector2(ROUTE_THORNWAKE_END_X - 30.0, GROUND_Y)
+	draw_line(east_post, east_post + Vector2(0, -255), post_color, 5.0)
+	draw_string(ThemeDB.fallback_font, east_post + Vector2(-240, -259), "STONEHOOK FOOTHILLS  >", HORIZONTAL_ALIGNMENT_RIGHT, 230, 15, sign_color)
+	draw_string(ThemeDB.fallback_font, east_post + Vector2(-240, -241), "On foot. The Wagon stays in the cave.", HORIZONTAL_ALIGNMENT_RIGHT, 230, 12, Color("e5d9bd"))
+	var west_post := Vector2(ROUTE_FOOTHILLS_START_X + 40.0, GROUND_Y)
+	draw_line(west_post, west_post + Vector2(0, -255), post_color, 5.0)
+	draw_string(ThemeDB.fallback_font, west_post + Vector2(10, -259), "<  THE CAVE CAMP", HORIZONTAL_ALIGNMENT_LEFT, -1, 15, sign_color)
 
 func draw_zone_traversal() -> void:
 	if zone != 1:
@@ -2872,12 +3358,14 @@ func draw_shades() -> void:
 			draw_rect(Rect2(p.x - 45, top - 16.0, 90 * enemy_health / 100.0, 6), Color("db7587"))
 
 func draw_enemy_sprite(shade: Dictionary, geometry: Dictionary, tint: Color) -> void:
+	var origin := world_draw_origin()
 	if enemy_facing_left(shade):
-		# Reflect around the visible body's world center, not the atlas-cell center.
-		draw_set_transform(Vector2(float(shade.pos.x) * 2.0, 0.0), 0.0, Vector2(-1.0, 1.0))
+		# Reflect around the visible body's world center, not the atlas-cell center,
+		# then apply the same world-to-view translation as every other world layer.
+		draw_set_transform(Vector2(float(shade.pos.x) * 2.0, 0.0) + origin, 0.0, Vector2(-1.0, 1.0))
 	draw_texture_rect_region(geometry.sheet, geometry.destination, geometry.source, tint)
 	# Do not reflect labels, health bars or subsequent scene drawing.
-	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+	draw_set_transform(origin, 0.0, Vector2.ONE)
 
 func prepare_enemy_frame_bounds() -> void:
 	var started := Time.get_ticks_usec()
@@ -3051,7 +3539,8 @@ func draw_portal() -> void:
 	draw_texture_rect(DREAM_GATE_RUNTIME, Rect2(p - Vector2(100, 160), Vector2(200, 240)), false)
 	draw_string(ThemeDB.fallback_font, p + Vector2(-66, 88), "DREAM GATE", HORIZONTAL_ALIGNMENT_CENTER, 132, 16, Color("f2d4ff"))
 
-func draw_player() -> void:
+# The current pose cell and optional crop, shared by the normal and readability passes.
+func player_sprite_frame() -> Dictionary:
 	var pose_sheet: Texture2D = LOLTH_ELF_RUNTIME if lolth_form() == "elf" else LOLTH_DROW_RUNTIME
 	var pose_index := 0
 	match player_pose():
@@ -3077,12 +3566,16 @@ func draw_player() -> void:
 		var top_cut := 0.32 if lolth_form() == "elf" else 0.23
 		var left_cut := 0.0 if lolth_form() == "elf" else 0.15
 		crop = Rect2(pose_width * left_cut, pose_height * top_cut, pose_width * (1.0 - left_cut), pose_height * (1.0 - top_cut))
-	draw_player_sprite(pose_sheet, pose_source, PLAYER_SPRITE_HEIGHT, 1.0, crop)
+	return {"sheet": pose_sheet, "source": pose_source, "crop": crop}
+
+func draw_player() -> void:
+	var frame := player_sprite_frame()
+	draw_player_sprite(frame.sheet, frame.source, PLAYER_SPRITE_HEIGHT, 1.0, frame.crop)
 	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color("fff0b0"))
 	if player_hurt_visible():
 		draw_circle(player + Vector2(0, -62), 58, Color(0.85, 0.25, 0.45, 0.18))
 
-func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0, crop: Rect2 = Rect2()) -> void:
+func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0, crop: Rect2 = Rect2(), tint: Color = Color.WHITE) -> void:
 	var width := height * source.size.x / source.size.y
 	var destination := Rect2(player.x - width / 2.0, player.y + PLAYER_FEET_OFFSET - height * feet_ratio, width, height)
 	if crop.has_area():
@@ -3091,17 +3584,45 @@ func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_
 		destination.size = crop.size * source_scale
 		source = Rect2(source.position + crop.position, crop.size)
 	if player_facing_left:
-		draw_set_transform(Vector2(player.x * 2.0, 0.0), 0.0, Vector2(-1.0, 1.0))
-		draw_texture_rect_region(sheet, destination, source)
-		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+		var origin := world_draw_origin()
+		draw_set_transform(Vector2(player.x * 2.0, 0.0) + origin, 0.0, Vector2(-1.0, 1.0))
+		draw_texture_rect_region(sheet, destination, source, tint)
+		draw_set_transform(origin, 0.0, Vector2.ONE)
 		return
-	draw_texture_rect_region(sheet, destination, source)
+	draw_texture_rect_region(sheet, destination, source, tint)
+
+# B-06 readability: the frame-like foreground overlays hide Lolth at the Thornwake border
+# and at the far foothill limit. Inside those named spans only, and only while the route is
+# open, her existing sprite is redrawn semi-transparently in front of the overlay. Elsewhere,
+# including the whole original cave and tutorial view, nothing extra is drawn.
+func foreground_readability_alpha() -> float:
+	if zone != 0 or camera_limit_x() <= 0.0:
+		return 0.0
+	var strength := 0.0
+	for span in FOREGROUND_READABILITY_SPANS:
+		var rise := clampf((player.x - span.x) / FOREGROUND_READABILITY_RAMP, 0.0, 1.0)
+		# A span that ends at the route limit stays at full strength up to the limit.
+		var fall := clampf((span.y - player.x) / FOREGROUND_READABILITY_RAMP, 0.0, 1.0) if span.y < ROUTE_END_X else 1.0
+		if player.x >= span.x and player.x <= span.y:
+			strength = maxf(strength, minf(rise, fall))
+	return FOREGROUND_READABILITY_ALPHA * strength
+
+func draw_foreground_readability() -> void:
+	var alpha := foreground_readability_alpha()
+	if alpha <= 0.0:
+		return
+	var frame := player_sprite_frame()
+	draw_player_sprite(frame.sheet, frame.source, PLAYER_SPRITE_HEIGHT, 1.0, frame.crop, Color(1, 1, 1, alpha))
+	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color(1.0, 0.94, 0.69, alpha))
 
 func draw_foreground_overlay() -> void:
+	var panel_width := RUINS_FOREGROUND_OVERLAYS.get_width() / 2.0
 	if zone == 0:
 		draw_texture_rect(ASHEN_WAY_FOREGROUND_OVERLAY, Rect2(Vector2.ZERO, VIEW), false)
+		var stone_overlay := Rect2(0, 0, panel_width, RUINS_FOREGROUND_OVERLAYS.get_height())
+		draw_route_blend(ASHEN_WAY_FOREGROUND_OVERLAY, stone_overlay, RUINS_FOREGROUND_OVERLAYS, 0.0, VIEW.y, ROUTE_OVERLAY_FADE_WIDTH, false)
+		draw_texture_rect_region(RUINS_FOREGROUND_OVERLAYS, Rect2(ROUTE_FOOTHILLS_START_X, 0, ROUTE_FOOTHILLS_WIDTH, VIEW.y), stone_overlay)
 		return
-	var panel_width := RUINS_FOREGROUND_OVERLAYS.get_width() / 2.0
 	var source := Rect2(panel_width * float(zone - 1), 0, panel_width, RUINS_FOREGROUND_OVERLAYS.get_height())
 	draw_texture_rect_region(RUINS_FOREGROUND_OVERLAYS, Rect2(Vector2.ZERO, VIEW), source)
 
@@ -3124,13 +3645,13 @@ func draw_mark_vfx() -> void:
 		size = Vector2(104, 84)
 		alpha *= 0.45
 	var source := Rect2(cell_width * float(cell_index % 2), cell_height * float(int(cell_index / 2)), cell_width, cell_height)
-	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+	draw_set_transform(world_draw_origin(), 0.0, Vector2.ONE)
 	draw_texture_rect_region(SHADOW_ACTIONS_VFX, Rect2(mark_vfx_pos - size / 2.0, size), source, Color(1, 1, 1, alpha))
 
 func draw_hud() -> void:
 	draw_rect(Rect2(24, 22, 1232, 102), Color(0.035, 0.04, 0.1, 0.84))
 	draw_string(ThemeDB.fallback_font, Vector2(48, 54), "THE FIRST NINE", HORIZONTAL_ALIGNMENT_LEFT, -1, 25, Color("f8dc8c"))
-	draw_string(ThemeDB.fallback_font, Vector2(48, 82), "%s  ·  %s  ·  Objective: %s" % [ZONE_NAMES[zone], clock_label(), current_objective()], HORIZONTAL_ALIGNMENT_LEFT, -1, 17, Color("ddd6e8"))
+	draw_string(ThemeDB.fallback_font, Vector2(48, 82), "%s  ·  %s  ·  Objective: %s" % [displayed_region_name(), clock_label(), current_objective()], HORIZONTAL_ALIGNMENT_LEFT, -1, 17, Color("ddd6e8"))
 	draw_string(ThemeDB.fallback_font, Vector2(48, 108), "MARK: %s  ·  CURED: %d/8  ·  CHECKPOINT: %s" % [MARK_NAMES[mark_level] if mark_level > 0 else "UNMARKED", awakened, checkpoint_label()], HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color("cbb5eb"))
 	if zone == 0 and is_night() and night_wave_total > 0:
 		var wave_state := "CLEARED" if night_waves_complete else "PAUSE" if night_wave_pause > 0.0 else "ACTIVE"

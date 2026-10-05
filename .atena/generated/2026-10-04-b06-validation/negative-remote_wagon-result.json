@@ -1,0 +1,23 @@
+{
+  "name": "negative-remote_wagon",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.047,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL remote_wagon_blocked",
+    "B06 FAIL remote_no_capture",
+    "B06 FAIL border_no_respawn",
+    "B06 FAIL foothill_rollback"
+  ],
+  "error": null
+}

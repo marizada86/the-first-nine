@@ -1,0 +1,21 @@
+{
+  "name": "negative-progression_unlock",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.229,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL no_progression_unlock",
+    "B06 FAIL camera_offset_combat"
+  ],
+  "error": null
+}

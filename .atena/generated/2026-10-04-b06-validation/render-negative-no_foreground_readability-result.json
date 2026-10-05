@@ -1,0 +1,31 @@
+{
+  "name": "render-negative-no_foreground_readability",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": "Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)"
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 3.989,
+  "project_diagnostics": [],
+  "environment_diagnostics": [
+    "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)",
+    "ERROR: Condition \"status < 0\" is true. Returning: ERR_CANT_OPEN    at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)",
+    "WARNING: All audio drivers failed, falling back to the dummy driver.      at: initialize (servers/audio/audio_server.cpp:258)"
+  ],
+  "detections": [
+    "B06RT FAIL Lolth stays readable through the foreground at day-1280-right (visibility 0.14 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at day-1280-left (visibility 0.15 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at day-2998-right (visibility 0.06 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at day-2998-left (visibility 0.21 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at night-1280-right (visibility 0.13 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at night-1280-left (visibility 0.15 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at night-2998-right (visibility 0.06 of unoccluded)",
+    "B06RT FAIL Lolth stays readable through the foreground at night-2998-left (visibility 0.21 of unoccluded)"
+  ],
+  "error": null
+}
