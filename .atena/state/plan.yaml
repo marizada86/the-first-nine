@@ -1,102 +1,169 @@
 ﻿version: 2
 
 last_completed_plan:
-  id: "2026-10-04-b06-stonehook-foot-expedition"
-  spec: "[[2026-10-04-b06-stonehook-foot-expedition]]"
-  evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
-  instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
+  id: "2026-10-05-b07-stonehook-first-encounter"
+  spec: "[[2026-10-05-b07-stonehook-first-encounter]]"
+  evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
+  prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
+  instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
   status: complete-implementation-merged
   mode: guided
   request_classification: NEW_PLAN
   preparation_approved: true
-  preparation_authority: "Owner answered pode to preparing the proposed B-06 plan and English Opus prompt. This is preparation only, not implementation, publication or dispatch."
+  preparation_authority: "Owner replied aprovado, vamos continuar after integrated B-06 synchronization; authorizes next-proposal preparation, not its execution or publication."
   approval_mode: per-plan
   approval_selection: owner-selected-option-1
-  approved: "2026-10-04"
-  approval_source: "Owner selected 1 in response to the question approving the presented B-06 implementation scope and choosing per-plan approval."
+  approved: "2026-10-05"
+  approval_source: "Owner answered 1 to approving the presented B-07 scope and selecting per-plan approval. Publication, PR, merge and external dispatch were not authorized."
   request_execution_classification: IN_PLAN
   implementation_approved: true
   execution_target: opus-5.5
+  baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
+  proposed_implementation_branch: codex/b07-stonehook-first-encounter
+  checkpoint: complete
   documentation_publication_approved: true
-  documentation_publication_source: "Owner answered autorizado to publishing the three local documentation commits on main for Claude to read."
+  documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
+  publication_snapshot: delivered-and-verified
   documentation_published: true
-  documentation_publication_branch: main
-  delivery_commit: "77ee387d5649a131ae20c5910b2dc7421c76f22f"
+  delivery_commit: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
   delivery_verified: true
+  delivery_verification: "Owner handoff supplied fcc98b63e1919c54b6df563c8de0c7173a7affcb. Executor fetched origin: origin/main equals it, its parent is e189184 and the committed delivery checker passed (8 package files, 22 links). The pre-push snapshot fields described the earlier checkpoint; the local delivery checkpoint is cleared without a further publication commit."
+  implementation_branch: codex/b07-stonehook-first-encounter
+  implementation_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+  implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+  implementation_committed: true
+  implementation_published: true
+  human_acceptance: accepted
+  scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
+  blocking_gaps: []
+  steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
+  batches: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
+  steps_completed: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
+  batches_completed: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
+  resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
+  deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
   push_approved: true
   pull_request_approved: true
   merge_approved: true
   dispatch_approved: false
-  scope: "One reversible on-foot Thornwake-to-early-Stonehook corridor, gradual visual transition and one ore pickup; cave wagon/family stay fixed, existing camp simulation and safe/F4 restore are preserved."
-  blocking_gaps: []
-  checkpoint: complete
-  preparation_commit: "0a82ead8384969a11399f20ef3dcf3828734df27"
-  baseline_commit: "2f34635ff5adf735e51a7c144862e7c1bba37bed"
-  gameplay_baseline: "05eac1e7a639e213f39cff81b1e75305727ab4d0"
-  proposed_implementation_branch: codex/b06-stonehook-foot-expedition
-  implementation_branch: codex/b06-stonehook-foot-expedition
-  implementation_base: "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc"
-  implementation_commit: "42bddf87b64eafb2046a47b1f2695df3ad9d4075"
-  implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
-  implementation_published: true
-  branch_publication_approved: true
-  branch_publication_source: "Owner explicitly authorized a normal push of codex/b06-stonehook-foot-expedition to origin for review; no push to main, amend, force-push, PR, merge, deletion or B-07."
-  published_commit: "ccc4fcf69271d88e421e26a81841cf6cce834a37"
-  follow_up_commit: "d2012a1412f52d3066e4eff1216cfa9d57490acd"
-  follow_up_published: true
-  follow_up_publication_source: "Owner explicitly authorized a normal push of d2012a1 and 7c781ab to origin/codex/b06-stonehook-foot-expedition; no amend, force-push, main change, PR, merge, deletion or B-07."
-  latest_published_commit: "7de6d6658a2e8b7aea5954320ef29902094d7215"
-  isolation_follow_up_commit: "b446b7b507d6a5faa8fb2ac9d28197da34887e99"
-  isolation_follow_up_published: true
-  isolation_publication_source: "Owner explicitly authorized a normal push of b446b7b and 9640881; branch moved 7c781ab to 9640881; main unchanged at 7e477ba."
-  combat_isolation_follow_up: published-test-only
-  combat_isolation_follow_up_commit: "7de6d6658a2e8b7aea5954320ef29902094d7215"
-  combat_isolation_follow_up_published: true
-  combat_isolation_publication_source: "Owner separately authorized the normal push of 7de6d66; the feature branch was fast-forwarded from 9640881 to 7de6d66 and Atena independently confirmed the remote refs. Main unchanged at 7e477ba; no amend, force-push, PR, merge, deletion or B-07."
-  combat_isolation_scope: "Test-only wrapper combat_regression.gd over the unchanged historical combat validator: joypad motion bindings removed on the game's ready signal before any gameplay frame, proven by pulse 0 and opening state; combat-noise positive case and missing/late faulty controls. Production files unchanged."
-  windows_review_9640881: "Owner-supplied Atena findings (receipt not available in this checkout): native Windows Godot 4.7.2, headless 30/30, route 53/53, menus 33/33, geometry 46/46, facing 65/65 and 102/102, self-test and smoke pass, 12 faulty controls rejected; official combat 8/9 (out-of-reach miss message replaced by the dodge-cooldown message), so the full runner exited 1. A reviewer-only diagnostic with motion isolation passed 9/9 with a physical 0.21958 trigger; it does not replace the official 8/9. Not reproduced by the executor."
-  human_acceptance: accepted
-  human_acceptance_date: "2026-10-05"
-  human_acceptance_source: "Owner replied aprovado on 2026-10-05 after Atena's Windows report and visual/camera playtest recommendation. Overall human acceptance of the reviewed B-06 slice at 7de6d66 only; no item-by-item results, timings, additional engine runs or independently verified tested-build hash are inferred."
-  human_acceptance_limitations: "Documented limitations preserved: Lolth transparency in the foreground spans, far-edge clipping at x=2998, mirrored seam echo, camera and balance tuning, overlapping labels and in-memory saves."
-  isolation_follow_up_scope: "Test-only: route controller isolation before the first journey frame, idempotent suspension, deterministic stale-queue boundary check, live control and late_isolation faulty control, and a menu wrapper filtering joypad motion. Production code unchanged."
-  windows_review_7c781ab: "Official Atena runs, Windows, Godot 4.7.2, GTX 1650: headless B-06 30/30, route 50/51 (controller isolation), menus 32/33 (right-click parry), combat 9/9, geometry 46/46, facing 65/65 and 102/102, self-test and smoke pass, 11 faulty controls rejected, 8 readability checks passed and inspected. Separate non-official diagnostics: isolation before the opening skip 51/51; physical-controller filtering 33/33. Not reproduced by the executor."
-  follow_up_classification: IN_PLAN
-  follow_up_scope: "Validation portability (controller-isolated keyboard section, real-stop waits), foreground readability at x=1280 and the far limit with existing assets, evidence-capture correction and publication-record reconciliation. No B-06 expansion."
-  windows_review_7de6d66: "Atena's official Windows review of 7de6d66 on 2026-10-05 (external, not reproduced by the executor; the owner-local receipt .atena/evidence/2026-10-05-b06-combat-isolation-windows-review.md is absent from this checkout and was not read): Godot 4.7.2.stable.official.ed1daf0bf, native Windows x64, OpenGL compatibility, 1280x720, GTX 1650, NVIDIA driver 616.92. Full official runner exit 0; B-06 headless 30/30; rendered route 53/53; combat 9/9 normally and 9/9 under continuous synthetic trigger noise; menus 33/33; geometry 46/46; facing 65/65 headless and 102/102 rendered; full self-test and both 600-frame smoke runs passed; all 14 faulty controls rejected with genuine exit 1 and named failures; all 25 case records fresh Windows results without project diagnostics or process errors; published records validator exit 0 (39 links, scoped files, preserved completed history, saved results). Earlier Linux results and the historical Windows combat failure at 9640881 (8/9) are preserved, not overwritten."
-  documentation_reconciliation_push_authority: "Owner authorized one normal documentation commit and push of these operational records on codex/b06-stonehook-foot-expedition only, separate from the completed implementation publication. PR, merge and any later publication remain unauthorized; the push outcome is reported in the executor's response, not recorded here."
-  pull_request_state: merged
-  windows_review: "Reported by Atena for ccc4fcf on Windows, Godot 4.7.2, GTX 1650: headless B-06 30/30, rendered facing 102/102, combat/menus/geometry/self-tests and ten faulty controls passing; original route runner 36/40 from physical trigger noise and pre-stop measurement, 40/40 with filtered input and real-stop waits. Not reproduced by the executor."
-  human_review: accepted
-  validation: "Linux combat isolation follow-up, Godot 4.7.2 Xvfb llvmpipe: B-06 headless 30/30, rendered runtime 53/53, full self-test, combat 9/9 and combat-noise 9/9 via the isolation wrapper, menus 33/33, geometry 46/46, facing headless 65/65, both smoke runs; 14 faulty controls rejected. Rendered facing 101/102 is the known Linux software-OpenGL difference reproduced on 7e477ba; Windows facing 102/102 is Atena-reported."
-  steps: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]
-  batches: ["B-001-route-rendering", "B-002-camp-state", "B-003-validation-evidence"]
-  steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]
-  batches_completed: ["B-001-route-rendering", "B-002-camp-state", "B-003-validation-evidence"]
-  resolvable_defaults: "Approved route spans 1280+480+1280 world units with original cave at x=190 and floor y=555; legitimate Mark I/one cure/repair/safe return gates departure; one stable finite ore pickup, ongoing offscreen cave threats and restore to last valid cave snapshot. Technical/playtest defaults within this plan, not new canon."
-  deferred: "Stonehook combat/boss/shrine, Mark II and further cures, wagon travel, pullers/posts/missions, rope teleport, web gates, later regions, parry, new art/audio, disk saves and tuning."
-  delivery_gate: "Acceptance 2f34635, preparation 0a82ead and approval 77ee387 were normally pushed to origin/main and remote HEAD verified at 77ee387. This reconciliation clears documentation delivery; Opus must fetch/read it or a later descendant and verify the approved checkout before implementation."
   standing_publication_authority: none
-  pull_request: "https://github.com/marizada86/the-first-nine/pull/6"
-  pull_request_number: 6
-  pull_request_head: "cc87e1c3d88c837e16aca8f39bf7f0870f5b1246"
-  pull_request_base: "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc"
-  pull_request_authority: "Owner explicitly authorized opening only the B-06 pull request into main (IN_PLAN); not a merge, push or dispatch authorization."
-  pull_request_checks: "Zero check runs and zero commit statuses; GitHub mergeable clean; no reviews or comments. The repository has no configured CI and no CI result is inferred."
-  merge_authority: "Owner separately authorized a regular merge of PR #6 preserving all eight commits and the feature branch; not squash or rebase."
-  merge_commit: "e304badbbd15c6ce2bd93b114006dd26c0c7391e"
-  merge_parents: ["7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc", "cc87e1c3d88c837e16aca8f39bf7f0870f5b1246"]
-  merge_verified: true
-  merged_at: "2026-10-05T10:37:46Z"
-  preserved_commits: ["42bddf8", "ccc4fcf", "d2012a1", "7c781ab", "b446b7b", "9640881", "7de6d66", "cc87e1c"]
+  implementation_adjustments: "Within the approved defaults: crawler home x=2520 (proposed 2340) and a clear patrol span 2400-2860 inside the foothills, because the existing foothill foreground overlay is nearly opaque at x 1800-2200 and 2880-3040; one strike removes one existing hurt (1 of 3 health), the spec's 12-health wording having no counterpart in the 3-health model; lunge contact is tested after each frame's motion. Review required."
+  validation: "Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected."
+  next_recommendation: "Preparation only: revise B-08 against this integrated base and present it for separate scope/mode approval and authorized document delivery. No B-08 implementation."
+  implementation_commit: "4da953cd34469b8024eb2d3831ba7c8ae06cb34a"
+  human_acceptance_date: "2026-10-05"
+  human_acceptance_source: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
+  integration_authority: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
+  windows_review_receipt: "[[2026-10-05-b07-windows-review]]"
+  pull_request: "https://github.com/marizada86/the-first-nine/pull/7"
+  pull_request_number: 7
+  pull_request_head: "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"
+  pull_request_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+  merge_commit: "2684dac846bba30576eafb459f4ca7db039c83a3"
+  merge_parents: ["fcc98b63e1919c54b6df563c8de0c7173a7affcb", "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"]
+  merged_at: "2026-10-05T13:14:03Z"
   feature_branch_preserved: true
-  merge_validation: "Remote main equals the merge commit; the merged tree 0065a0d7258519fa94e77c80e22c5f4428cb8aeb equals the reviewed PR head tree; all eight commits remain ancestors of main; remote codex/b06-stonehook-foot-expedition stays at cc87e1c. No new engine run was made for the PR, merge or closure."
+  preserved_commits: ["4da953cd34469b8024eb2d3831ba7c8ae06cb34a", "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"]
+  pull_request_checks: "GitHub clean/mergeable before merge; no reviews and no check runs. No CI claim."
   closure_record_publication_approved: true
-  closure_record_publication_authority: "Owner authorized one documentation-only closure commit directly above the merge on main. Not standing push authority; its own hash and push outcome are reported by the executor and not recorded here."
-  next_recommendation: "Non-authorizing. Optionally playtest the merged B-01 to B-06 loop, decide whether to address the recorded visual and camera limitations, and scope a bounded proposal for the next Stonehook step. Any B-07 needs its own proposal, approval selection and approval; B-07 has not been started."
-  exception: "Publication of ccc4fcf, d2012a1, 7c781ab, b446b7b, 9640881, 7de6d66 and cc87e1c, the PR-only opening and the regular merge were each separately authorized; the single documentary closure commit is separately authorized. No gameplay, asset, canon, dependency, engine-test or saved-engine-result change in the closure, no CI claim, no new engine run, no branch deletion, no external dispatch and no B-07. Prior completed plans and history are preserved."
+  closure_record_publication_authority: "Owner aceito, borah authorized documentary closure publication on main as part of the bounded B-07 integration bundle. No standing push or B-08 execution authority."
 
 completed_plan_history:
+  - id: "2026-10-04-b06-stonehook-foot-expedition"
+    spec: "[[2026-10-04-b06-stonehook-foot-expedition]]"
+    evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
+    instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
+    status: complete-implementation-merged
+    mode: guided
+    request_classification: NEW_PLAN
+    preparation_approved: true
+    preparation_authority: "Owner answered pode to preparing the proposed B-06 plan and English Opus prompt. This is preparation only, not implementation, publication or dispatch."
+    approval_mode: per-plan
+    approval_selection: owner-selected-option-1
+    approved: "2026-10-04"
+    approval_source: "Owner selected 1 in response to the question approving the presented B-06 implementation scope and choosing per-plan approval."
+    request_execution_classification: IN_PLAN
+    implementation_approved: true
+    execution_target: opus-5.5
+    documentation_publication_approved: true
+    documentation_publication_source: "Owner answered autorizado to publishing the three local documentation commits on main for Claude to read."
+    documentation_published: true
+    documentation_publication_branch: main
+    delivery_commit: "77ee387d5649a131ae20c5910b2dc7421c76f22f"
+    delivery_verified: true
+    push_approved: true
+    pull_request_approved: true
+    merge_approved: true
+    dispatch_approved: false
+    scope: "One reversible on-foot Thornwake-to-early-Stonehook corridor, gradual visual transition and one ore pickup; cave wagon/family stay fixed, existing camp simulation and safe/F4 restore are preserved."
+    blocking_gaps: []
+    checkpoint: complete
+    preparation_commit: "0a82ead8384969a11399f20ef3dcf3828734df27"
+    baseline_commit: "2f34635ff5adf735e51a7c144862e7c1bba37bed"
+    gameplay_baseline: "05eac1e7a639e213f39cff81b1e75305727ab4d0"
+    proposed_implementation_branch: codex/b06-stonehook-foot-expedition
+    implementation_branch: codex/b06-stonehook-foot-expedition
+    implementation_base: "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc"
+    implementation_commit: "42bddf87b64eafb2046a47b1f2695df3ad9d4075"
+    implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
+    implementation_published: true
+    branch_publication_approved: true
+    branch_publication_source: "Owner explicitly authorized a normal push of codex/b06-stonehook-foot-expedition to origin for review; no push to main, amend, force-push, PR, merge, deletion or B-07."
+    published_commit: "ccc4fcf69271d88e421e26a81841cf6cce834a37"
+    follow_up_commit: "d2012a1412f52d3066e4eff1216cfa9d57490acd"
+    follow_up_published: true
+    follow_up_publication_source: "Owner explicitly authorized a normal push of d2012a1 and 7c781ab to origin/codex/b06-stonehook-foot-expedition; no amend, force-push, main change, PR, merge, deletion or B-07."
+    latest_published_commit: "7de6d6658a2e8b7aea5954320ef29902094d7215"
+    isolation_follow_up_commit: "b446b7b507d6a5faa8fb2ac9d28197da34887e99"
+    isolation_follow_up_published: true
+    isolation_publication_source: "Owner explicitly authorized a normal push of b446b7b and 9640881; branch moved 7c781ab to 9640881; main unchanged at 7e477ba."
+    combat_isolation_follow_up: published-test-only
+    combat_isolation_follow_up_commit: "7de6d6658a2e8b7aea5954320ef29902094d7215"
+    combat_isolation_follow_up_published: true
+    combat_isolation_publication_source: "Owner separately authorized the normal push of 7de6d66; the feature branch was fast-forwarded from 9640881 to 7de6d66 and Atena independently confirmed the remote refs. Main unchanged at 7e477ba; no amend, force-push, PR, merge, deletion or B-07."
+    combat_isolation_scope: "Test-only wrapper combat_regression.gd over the unchanged historical combat validator: joypad motion bindings removed on the game's ready signal before any gameplay frame, proven by pulse 0 and opening state; combat-noise positive case and missing/late faulty controls. Production files unchanged."
+    windows_review_9640881: "Owner-supplied Atena findings (receipt not available in this checkout): native Windows Godot 4.7.2, headless 30/30, route 53/53, menus 33/33, geometry 46/46, facing 65/65 and 102/102, self-test and smoke pass, 12 faulty controls rejected; official combat 8/9 (out-of-reach miss message replaced by the dodge-cooldown message), so the full runner exited 1. A reviewer-only diagnostic with motion isolation passed 9/9 with a physical 0.21958 trigger; it does not replace the official 8/9. Not reproduced by the executor."
+    human_acceptance: accepted
+    human_acceptance_date: "2026-10-05"
+    human_acceptance_source: "Owner replied aprovado on 2026-10-05 after Atena's Windows report and visual/camera playtest recommendation. Overall human acceptance of the reviewed B-06 slice at 7de6d66 only; no item-by-item results, timings, additional engine runs or independently verified tested-build hash are inferred."
+    human_acceptance_limitations: "Documented limitations preserved: Lolth transparency in the foreground spans, far-edge clipping at x=2998, mirrored seam echo, camera and balance tuning, overlapping labels and in-memory saves."
+    isolation_follow_up_scope: "Test-only: route controller isolation before the first journey frame, idempotent suspension, deterministic stale-queue boundary check, live control and late_isolation faulty control, and a menu wrapper filtering joypad motion. Production code unchanged."
+    windows_review_7c781ab: "Official Atena runs, Windows, Godot 4.7.2, GTX 1650: headless B-06 30/30, route 50/51 (controller isolation), menus 32/33 (right-click parry), combat 9/9, geometry 46/46, facing 65/65 and 102/102, self-test and smoke pass, 11 faulty controls rejected, 8 readability checks passed and inspected. Separate non-official diagnostics: isolation before the opening skip 51/51; physical-controller filtering 33/33. Not reproduced by the executor."
+    follow_up_classification: IN_PLAN
+    follow_up_scope: "Validation portability (controller-isolated keyboard section, real-stop waits), foreground readability at x=1280 and the far limit with existing assets, evidence-capture correction and publication-record reconciliation. No B-06 expansion."
+    windows_review_7de6d66: "Atena's official Windows review of 7de6d66 on 2026-10-05 (external, not reproduced by the executor; the owner-local receipt .atena/evidence/2026-10-05-b06-combat-isolation-windows-review.md is absent from this checkout and was not read): Godot 4.7.2.stable.official.ed1daf0bf, native Windows x64, OpenGL compatibility, 1280x720, GTX 1650, NVIDIA driver 616.92. Full official runner exit 0; B-06 headless 30/30; rendered route 53/53; combat 9/9 normally and 9/9 under continuous synthetic trigger noise; menus 33/33; geometry 46/46; facing 65/65 headless and 102/102 rendered; full self-test and both 600-frame smoke runs passed; all 14 faulty controls rejected with genuine exit 1 and named failures; all 25 case records fresh Windows results without project diagnostics or process errors; published records validator exit 0 (39 links, scoped files, preserved completed history, saved results). Earlier Linux results and the historical Windows combat failure at 9640881 (8/9) are preserved, not overwritten."
+    documentation_reconciliation_push_authority: "Owner authorized one normal documentation commit and push of these operational records on codex/b06-stonehook-foot-expedition only, separate from the completed implementation publication. PR, merge and any later publication remain unauthorized; the push outcome is reported in the executor's response, not recorded here."
+    pull_request_state: merged
+    windows_review: "Reported by Atena for ccc4fcf on Windows, Godot 4.7.2, GTX 1650: headless B-06 30/30, rendered facing 102/102, combat/menus/geometry/self-tests and ten faulty controls passing; original route runner 36/40 from physical trigger noise and pre-stop measurement, 40/40 with filtered input and real-stop waits. Not reproduced by the executor."
+    human_review: accepted
+    validation: "Linux combat isolation follow-up, Godot 4.7.2 Xvfb llvmpipe: B-06 headless 30/30, rendered runtime 53/53, full self-test, combat 9/9 and combat-noise 9/9 via the isolation wrapper, menus 33/33, geometry 46/46, facing headless 65/65, both smoke runs; 14 faulty controls rejected. Rendered facing 101/102 is the known Linux software-OpenGL difference reproduced on 7e477ba; Windows facing 102/102 is Atena-reported."
+    steps: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]
+    batches: ["B-001-route-rendering", "B-002-camp-state", "B-003-validation-evidence"]
+    steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]
+    batches_completed: ["B-001-route-rendering", "B-002-camp-state", "B-003-validation-evidence"]
+    resolvable_defaults: "Approved route spans 1280+480+1280 world units with original cave at x=190 and floor y=555; legitimate Mark I/one cure/repair/safe return gates departure; one stable finite ore pickup, ongoing offscreen cave threats and restore to last valid cave snapshot. Technical/playtest defaults within this plan, not new canon."
+    deferred: "Stonehook combat/boss/shrine, Mark II and further cures, wagon travel, pullers/posts/missions, rope teleport, web gates, later regions, parry, new art/audio, disk saves and tuning."
+    delivery_gate: "Acceptance 2f34635, preparation 0a82ead and approval 77ee387 were normally pushed to origin/main and remote HEAD verified at 77ee387. This reconciliation clears documentation delivery; Opus must fetch/read it or a later descendant and verify the approved checkout before implementation."
+    standing_publication_authority: none
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/6"
+    pull_request_number: 6
+    pull_request_head: "cc87e1c3d88c837e16aca8f39bf7f0870f5b1246"
+    pull_request_base: "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc"
+    pull_request_authority: "Owner explicitly authorized opening only the B-06 pull request into main (IN_PLAN); not a merge, push or dispatch authorization."
+    pull_request_checks: "Zero check runs and zero commit statuses; GitHub mergeable clean; no reviews or comments. The repository has no configured CI and no CI result is inferred."
+    merge_authority: "Owner separately authorized a regular merge of PR #6 preserving all eight commits and the feature branch; not squash or rebase."
+    merge_commit: "e304badbbd15c6ce2bd93b114006dd26c0c7391e"
+    merge_parents: ["7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc", "cc87e1c3d88c837e16aca8f39bf7f0870f5b1246"]
+    merge_verified: true
+    merged_at: "2026-10-05T10:37:46Z"
+    preserved_commits: ["42bddf8", "ccc4fcf", "d2012a1", "7c781ab", "b446b7b", "9640881", "7de6d66", "cc87e1c"]
+    feature_branch_preserved: true
+    merge_validation: "Remote main equals the merge commit; the merged tree 0065a0d7258519fa94e77c80e22c5f4428cb8aeb equals the reviewed PR head tree; all eight commits remain ancestors of main; remote codex/b06-stonehook-foot-expedition stays at cc87e1c. No new engine run was made for the PR, merge or closure."
+    closure_record_publication_approved: true
+    closure_record_publication_authority: "Owner authorized one documentation-only closure commit directly above the merge on main. Not standing push authority; its own hash and push outcome are reported by the executor and not recorded here."
+    next_recommendation: "Non-authorizing. Optionally playtest the merged B-01 to B-06 loop, decide whether to address the recorded visual and camera limitations, and scope a bounded proposal for the next Stonehook step. Any B-07 needs its own proposal, approval selection and approval; B-07 has not been started."
+    exception: "Publication of ccc4fcf, d2012a1, 7c781ab, b446b7b, 9640881, 7de6d66 and cc87e1c, the PR-only opening and the regular merge were each separately authorized; the single documentary closure commit is separately authorized. No gameplay, asset, canon, dependency, engine-test or saved-engine-result change in the closure, no CI claim, no new engine run, no branch deletion, no external dispatch and no B-07. Prior completed plans and history are preserved."
+
   - id: "2026-10-04-enemy-facing-correction"
     spec: "[[2026-10-04-enemy-facing-correction]]"
     evidence: "[[2026-10-04-enemy-facing-correction]]"
@@ -600,62 +667,8 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan:
-  id: "2026-10-05-b07-stonehook-first-encounter"
-  spec: "[[2026-10-05-b07-stonehook-first-encounter]]"
-  evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
-  prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
-  instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
-  status: implemented-published-human-accepted-awaiting-merge
-  mode: guided
-  request_classification: NEW_PLAN
-  preparation_approved: true
-  preparation_authority: "Owner replied aprovado, vamos continuar after integrated B-06 synchronization; authorizes next-proposal preparation, not its execution or publication."
-  approval_mode: per-plan
-  approval_selection: owner-selected-option-1
-  approved: "2026-10-05"
-  approval_source: "Owner answered 1 to approving the presented B-07 scope and selecting per-plan approval. Publication, PR, merge and external dispatch were not authorized."
-  request_execution_classification: IN_PLAN
-  implementation_approved: true
-  execution_target: opus-5.5
-  baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
-  proposed_implementation_branch: codex/b07-stonehook-first-encounter
-  checkpoint: authorized-pr-and-merge
-  documentation_publication_approved: true
-  documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
-  publication_snapshot: delivered-and-verified
-  documentation_published: true
-  delivery_commit: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
-  delivery_verified: true
-  delivery_verification: "Owner handoff supplied fcc98b63e1919c54b6df563c8de0c7173a7affcb. Executor fetched origin: origin/main equals it, its parent is e189184 and the committed delivery checker passed (8 package files, 22 links). The pre-push snapshot fields described the earlier checkpoint; the local delivery checkpoint is cleared without a further publication commit."
-  implementation_branch: codex/b07-stonehook-first-encounter
-  implementation_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
-  implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
-  implementation_committed: true
-  implementation_published: true
-  human_acceptance: accepted
-  scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
-  blocking_gaps: []
-  steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
-  batches: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
-  steps_completed: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
-  batches_completed: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
-  resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
-  deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
-  push_approved: true
-  pull_request_approved: true
-  merge_approved: true
-  dispatch_approved: false
-  standing_publication_authority: none
-  implementation_adjustments: "Within the approved defaults: crawler home x=2520 (proposed 2340) and a clear patrol span 2400-2860 inside the foothills, because the existing foothill foreground overlay is nearly opaque at x 1800-2200 and 2880-3040; one strike removes one existing hurt (1 of 3 health), the spec's 12-health wording having no counterpart in the 3-health model; lunge contact is tested after each frame's motion. Review required."
-  validation: "Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected."
-  next_recommendation: "Authorized B-07 PR, regular merge and closure; then prepare the revised B-08 proposal for separate approval. No B-08 implementation."
-  implementation_commit: "4da953cd34469b8024eb2d3831ba7c8ae06cb34a"
-  human_acceptance_date: "2026-10-05"
-  human_acceptance_source: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
-  integration_authority: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
-  windows_review_receipt: "[[2026-10-05-b07-windows-review]]"
-plan_cursor: B-07-human-accepted-authorized-pr-and-merge
+active_plan: null
+plan_cursor: complete
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

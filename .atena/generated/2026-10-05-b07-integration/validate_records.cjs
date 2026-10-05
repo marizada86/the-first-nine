@@ -32,7 +32,7 @@ if (!closed) {
   const oldLast = old.match(/^last_completed_plan:\n([\s\S]*?)\ncompleted_plan_history:/m)[1];
   const oldHistory = old.match(/^completed_plan_history:\n([\s\S]*?)^active_plan:/m)[1];
   const history = state.match(/^completed_plan_history:\n([\s\S]*?)^active_plan:/m)[1];
-  assert.equal(history, oldLast.split('\n').map((line,i)=> i===0?'  - '+line.trimStart():'  '+line).join('\n')+'\n'+oldHistory, 'Prior last plan/history changed');
+  assert.equal(history, oldLast.split('\n').map((line,i)=> i===0?'  - '+line.trimStart():line?'  '+line:'').join('\n')+'\n'+oldHistory, 'Prior last plan/history changed');
   assert(state.includes('last_completed_plan:\n  id: "2026-10-05-b07-stonehook-first-encounter"'));
   const merge = state.match(/^  merge_commit: "([a-f0-9]{40})"$/m)?.[1];
   const head = state.match(/^  pull_request_head: "([a-f0-9]{40})"$/m)?.[1];

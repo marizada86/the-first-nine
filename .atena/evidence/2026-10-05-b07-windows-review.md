@@ -9,7 +9,10 @@ implementation_base: fcc98b63e1919c54b6df563c8de0c7173a7affcb
 request_execution_classification: IN_PLAN
 engine_rerun: true
 human_acceptance: accepted
-publication_of_this_receipt: authorized-awaiting-push
+publication_of_this_receipt: published-in-pr-7
+merge_commit: 2684dac846bba30576eafb459f4ca7db039c83a3
+pull_request: https://github.com/marizada86/the-first-nine/pull/7
+feature_branch_preserved: true
 ---
 
 # B07 Windows Technical Review
@@ -64,3 +67,9 @@ B08 remains an inactive proposal. Before its approval, reconcile the proposed te
 ## Subsequent Owner Acceptance and Integration Authority
 
 On 2026-10-05, Owner replied "aceito, borah" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred. The earlier remaining-decision section describes the technical-review checkpoint before that acceptance. PR opening, merge and closure remain pending at this publication checkpoint. Raw Windows evidence stays owner-local; only this review receipt is delivered externally.
+
+## Integrated Closure
+
+PR #7 (https://github.com/marizada86/the-first-nine/pull/7) was regularly merged on 2026-10-05 at 13:14:03 UTC. Merge commit `2684dac846bba30576eafb459f4ca7db039c83a3` has parents `fcc98b63e1919c54b6df563c8de0c7173a7affcb` and `523421ebbf3a0c70fd14ce7664a570ebbe12ccbe`. The merged tree equals the reviewed PR head tree; implementation `4da953c` and records `523421e` remain in history, and the feature branch is preserved at `523421ebbf3a0c70fd14ce7664a570ebbe12ccbe`.
+
+The Windows review, owner's overall acceptance and disclosed limitations are retained. B-07 is complete and no longer active. Earlier awaiting-merge wording is a dated checkpoint. This authorized closure is documentation-only; no new engine run, gameplay fix, CI result or B-08 implementation is claimed. B-08 proposal preparation is authorized, but execution and publication of its package require separate approval.

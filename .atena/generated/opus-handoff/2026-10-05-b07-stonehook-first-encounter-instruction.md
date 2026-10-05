@@ -1,5 +1,5 @@
 ---
-status: implemented-published-human-accepted-awaiting-merge
+status: complete-implementation-merged
 kind: external-implementation-instruction
 created: 2026-10-05
 plan_id: 2026-10-05-b07-stonehook-first-encounter
@@ -29,6 +29,9 @@ human_acceptance_date: 2026-10-05
 implementation_commit: 4da953cd34469b8024eb2d3831ba7c8ae06cb34a
 implementation_published: true
 windows_review: "[[2026-10-05-b07-windows-review]]"
+merge_commit: 2684dac846bba30576eafb459f4ca7db039c83a3
+pull_request: https://github.com/marizada86/the-first-nine/pull/7
+feature_branch_preserved: true
 ---
 
 # B07 First Stonehook Encounter Instructions for Opus 5.5
@@ -106,3 +109,9 @@ Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0
 Owner replied "aceito, borah" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred.
 
 The accepted limitations are static art, unreviewed balance, foreground occlusion, overlapping labels/ore and in-memory saves; F4 encounter restore was headless-tested. No new executor Linux run or CI result is claimed. Opening and merging the PR are authorized but have not occurred at this records checkpoint. B-08 remains an inactive preparation-only proposal.
+
+## Integrated Closure
+
+PR #7 (https://github.com/marizada86/the-first-nine/pull/7) was regularly merged on 2026-10-05 at 13:14:03 UTC. Merge commit `2684dac846bba30576eafb459f4ca7db039c83a3` has parents `fcc98b63e1919c54b6df563c8de0c7173a7affcb` and `523421ebbf3a0c70fd14ce7664a570ebbe12ccbe`. The merged tree equals the reviewed PR head tree; implementation `4da953c` and records `523421e` remain in history, and the feature branch is preserved at `523421ebbf3a0c70fd14ce7664a570ebbe12ccbe`.
+
+The Windows review, owner's overall acceptance and disclosed limitations are retained. B-07 is complete and no longer active. Earlier awaiting-merge wording is a dated checkpoint. This authorized closure is documentation-only; no new engine run, gameplay fix, CI result or B-08 implementation is claimed. B-08 proposal preparation is authorized, but execution and publication of its package require separate approval.
