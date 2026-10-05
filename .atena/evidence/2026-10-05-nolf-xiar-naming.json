@@ -1,0 +1,49 @@
+{
+  "id": "2026-10-05-nolf-xiar-naming",
+  "created": "2026-10-05",
+  "status": "complete-local-validation",
+  "origin": "planned",
+  "implementation_preceded_spec": false,
+  "request_classification": "PLAN_CHANGE_REQUEST",
+  "approval_mode": "per-plan",
+  "authority": "Owner explicitly instructed Lolth -> Nolf, Shar -> Xiar and Kiss of shar -> Xiar's kiss, retaining all other names.",
+  "spec": "../specs/2026-10-05-nolf-xiar-naming.md",
+  "canonical_decision": "../vault/canon/2026-10-05-nolf-xiar-naming.md",
+  "change_receipt": "../generated/2026-10-05-nolf-xiar-naming/changes.json",
+  "validation_receipt": "../generated/2026-10-05-nolf-xiar-naming/validation.json",
+  "scope": "Runtime display strings and current narrative/production text; historical receipts, paths, internal identifiers and visuals retained.",
+  "changed_existing_files": 15,
+  "acceptance": {
+    "protagonist": "Nolf / NOLF",
+    "deity": "Xiar",
+    "wand": "Xiar's kiss / XIAR'S KISS",
+    "other_names": "Preserved, including Drow/Drows, Eol, Thalestriel, survivor names, regions and title",
+    "panels": "20 existing panel IDs and order preserved; current captions and beats use new names",
+    "active_plan": "Existing B-09 ID and ART-003 cursor preserved against immediate pre-edit snapshot; naming amendment attached. ART-002 at initial inspection advanced concurrently before the edit.",
+    "gameplay": "Non-string runtime code unchanged; existing self-test and menus pass"
+  },
+  "checks": {
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "import_exit": 0,
+    "full_self_test_exit": 0,
+    "full_self_test_marker": "SELF_TEST_PASS",
+    "rendered_menus": "33/33, exit 0; keyboard, mouse and controller",
+    "wiki_links_resolved": 33,
+    "required_ADD_paths": "present",
+    "remaining_names_and_resource_references": "verified",
+    "scoped_whitespace": "passed",
+    "visual_inspection": "inventory-carried.png inspected: NOLF'S INVENTORY and Nolf description readable with no clipping",
+    "yaml_validation": "scoped textual metadata/state comparison; no full YAML-parser claim"
+  },
+  "environment_and_repairs": [
+    "Initial editor run could not create external Godot profile directories. Final import and self-test used a workspace-local profile.",
+    "Initial menu run passed 33/33 logic checks but could not save captures because the fresh output folder was missing. Folder created; menu runner rerun passed and saved all captures.",
+    "Reference lookup initially considered only Markdown; corrected to include the existing PNG asset referenced as c-01-prologue-comic-v1.",
+    "Final engine runs retain a sandbox-related Windows root-certificate-store diagnostic; no remaining project diagnostics."
+  ],
+  "screenshots": ["../generated/2026-10-05-nolf-xiar-naming/menus/inventory-carried.png"],
+  "publication": false,
+  "commit": false,
+  "asset_regeneration": false,
+  "legal_clearance_claim": false
+}

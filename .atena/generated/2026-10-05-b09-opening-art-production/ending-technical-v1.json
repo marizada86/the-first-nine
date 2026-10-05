@@ -1,0 +1,226 @@
+{
+  "status": "complete-art-human-accepted",
+  "owner_acceptance": {
+    "date": "2026-10-05",
+    "authority": "Owner replied aprovado after delivery of the five revised ending panels.",
+    "scope": "Five selected H03 panels only; no runtime admission."
+  },
+  "provider": "built-in-imagegen",
+  "runtime_admitted": false,
+  "items": [
+    {
+      "id": "h03-01",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png",
+      "raw_dimensions": [
+        1671,
+        941
+      ],
+      "raw_sha256": "e4777c7eb490c6003aab19e9df34db88472790474f86c444c5d1925d38d0136a",
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor scaling; original unchanged",
+      "crop": [
+        3,
+        2,
+        1664,
+        936
+      ],
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-01.png",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "master_sha256": "fb4154fe680f4ffd01b597ff90af49f21957af307da1574888a66e0e19a26420",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-01.png",
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "review_sha256": "46f558fe6377baedea2983e29577aa0571bf76ee5253b4bebe375f2153601418",
+      "crop_visual_review": "passed-local-inspection",
+      "caption": "Nolf's transformation was complete.",
+      "runtime_admitted": false,
+      "visual_checks": {
+        "project_drow_front_shadow_spider": true,
+        "opaque_clothing": true,
+        "no_duplicate_nolf": true,
+        "no_baked_text": true,
+        "caption_area": true,
+        "companions_shown": 0,
+        "open_relic_wagon": "not-shown"
+      }
+    },
+    {
+      "id": "h03-02",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "raw_dimensions": [
+        1671,
+        941
+      ],
+      "raw_sha256": "851bab70275b1d61ead36e1ac86f313d18e6df139e5ad3d1bb7f1ccb18ebd75b",
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor scaling; original unchanged",
+      "crop": [
+        3,
+        2,
+        1664,
+        936
+      ],
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-02.png",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "master_sha256": "5899ce55dea3d818e61d23f817868dfa25d2822db16f547b755643e24e5b86da",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-02.png",
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "review_sha256": "06c7d832ee6fa6a4366ffb5981d66436043067b506e10d46249868bdbcd477cd",
+      "crop_visual_review": "passed-local-inspection",
+      "caption": "She opened a passage to the Dream Plane.",
+      "runtime_admitted": false,
+      "visual_checks": {
+        "project_drow_front_shadow_spider": true,
+        "opaque_clothing": true,
+        "no_duplicate_nolf": true,
+        "no_baked_text": true,
+        "caption_area": true,
+        "companions_shown": 0,
+        "open_relic_wagon": "not-shown"
+      }
+    },
+    {
+      "id": "h03-03",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "3bc619431376cd86bc2a63927eaa6b70e3fb09543259069b557aa1f7da53c08e",
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor scaling; original unchanged",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-03.png",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "master_sha256": "1eadaa00cf438393cd967691e8cf2399d0c8604a2acc9e322abc118d3e470918",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-03.png",
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "review_sha256": "df6c336e743abf6514a84541df24a73e47bbc9dd91d1d081a9df97a0ca620985",
+      "crop_visual_review": "passed-local-inspection",
+      "caption": "All nine crossed together. No one, and no relic, was left behind.",
+      "runtime_admitted": false,
+      "visual_checks": {
+        "project_drow_front_shadow_spider": true,
+        "opaque_clothing": true,
+        "no_duplicate_nolf": true,
+        "no_baked_text": true,
+        "caption_area": true,
+        "companions_shown": 8,
+        "open_relic_wagon": true
+      }
+    },
+    {
+      "id": "h03-04",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "a5e8f95371ff60a9275ef6577ebfdcc7c89bc886c6bfa1280374ee1396da688b",
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor scaling; original unchanged",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-04.png",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "master_sha256": "61eac124fde5eaf939afe205a24e1bd87f6580a816e4e5005dfe9a160d15e2f2",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-04.png",
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "review_sha256": "ca6a7e5c5a6d8274c76739ea1b961874c4f677d3c612afa779f64124b0e61949",
+      "crop_visual_review": "passed-local-inspection",
+      "caption": "In the Golden City of Dreams, they found their home.",
+      "runtime_admitted": false,
+      "visual_checks": {
+        "project_drow_front_shadow_spider": true,
+        "opaque_clothing": true,
+        "no_duplicate_nolf": true,
+        "no_baked_text": true,
+        "caption_area": true,
+        "companions_shown": 8,
+        "open_relic_wagon": true
+      }
+    },
+    {
+      "id": "h03-05",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "b6aa9d21e4654171293b1fa9d27dfee1ef0823a0e806a24508e31fee79584024",
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor scaling; original unchanged",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-05.png",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "master_sha256": "f48c3b1ae8fb10107801f46ec29dd775bc7ff60eafce57b3a0b9d67a9945413a",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-05.png",
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "review_sha256": "b7cf4ec9daadb17758a6350773c16b2f89fc911074f8667ee781ba959697a64a",
+      "crop_visual_review": "passed-local-inspection",
+      "caption": "XIAR'S KISS remained in the eight drows' care. Nolf remained with them.",
+      "runtime_admitted": false,
+      "visual_checks": {
+        "project_drow_front_shadow_spider": true,
+        "opaque_clothing": true,
+        "no_duplicate_nolf": true,
+        "no_baked_text": true,
+        "caption_area": true,
+        "companions_shown": 8,
+        "open_relic_wagon": true
+      }
+    }
+  ],
+  "contact_sheet": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/ending-contact-sheet.png",
+  "contact_sheet_sha256": "bc5ea834e60f9f9ac1eff2f43527a56beffbc49885050d16d0091ff3c201746b",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "rendered_game_validation": "not-run; offline art only",
+  "visual_limitations": [
+    "Far-side legs and lower segments overlap in some perspectives and behind companions/wagon. No independent image-segmentation count is claimed.",
+    "Technical and local visual review are not owner acceptance or runtime admission."
+  ]
+}

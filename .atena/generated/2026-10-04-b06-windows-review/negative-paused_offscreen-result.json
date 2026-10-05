@@ -1,0 +1,16 @@
+{
+  "name": "negative-paused_offscreen",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.64,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL offscreen_clock_runs",
+    "B06 FAIL enemy_keeps_origin",
+    "B06 FAIL offscreen_stag_damage",
+    "B06 FAIL offscreen_terminal_restore"
+  ],
+  "error": null
+}

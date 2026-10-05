@@ -1,0 +1,20 @@
+{
+  "id": "h01-05",
+  "attempt": 2,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": null,
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-be0ec0f2-4e89-4762-8263-74384fd257e8.png",
+  "prompt": "Edit this single comic panel only: remove the metal sword from Lolth's lowered left hand and make that hand visibly empty. Preserve the raised angry hand, pale elf skin, white hair, fully opaque trousers/boots, black cloak, wagon, surrounding elves and attackers, lighting, pixel-art style, composition, no text and landscape size. Do not remove weapons from attackers or other family guards. No replacement object, no new VFX, no new scene.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v2.png",
+  "visual_checks": {
+    "single_panel": true,
+    "no_text": true,
+    "clothing": true,
+    "narrative_beat": true,
+    "lolth_empty_hands": true
+  },
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

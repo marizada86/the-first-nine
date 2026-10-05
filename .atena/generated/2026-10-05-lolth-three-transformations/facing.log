@@ -1,0 +1,111 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+ERROR: Can't create shader cache folder, no shader caching will happen: user://
+   at: RasterizerGLES3 (drivers/gles3/rasterizer_gles3.cpp:345)
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1650
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+FACING PASS all 22 atlas cells are prepared
+FACING PASS BRIAR HOUND spawn faces its left target
+FACING PASS BRIAR HOUND spawn faces its right target
+FACING PASS BRIAR HOUND moves/faces -1.0
+FACING PASS BRIAR HOUND moves/faces 1.0
+FACING PASS BRIAR HOUND windup locks -1.0 despite target crossing
+FACING PASS BRIAR HOUND strike moves/faces locked -1.0
+FACING PASS BRIAR HOUND windup locks 1.0 despite target crossing
+FACING PASS BRIAR HOUND strike moves/faces locked 1.0
+FACING PASS BRIAR HOUND stationary recovery retains facing
+FACING PASS BRIAR HOUND defeated retains position and facing
+FACING PASS STAG OF MIRE spawn faces its left target
+FACING PASS STAG OF MIRE spawn faces its right target
+FACING PASS STAG OF MIRE moves/faces -1.0
+FACING PASS STAG OF MIRE moves/faces 1.0
+FACING PASS STAG OF MIRE windup locks -1.0 despite target crossing
+FACING PASS STAG OF MIRE strike moves/faces locked -1.0
+FACING PASS STAG OF MIRE windup locks 1.0 despite target crossing
+FACING PASS STAG OF MIRE strike moves/faces locked 1.0
+FACING PASS STAG OF MIRE stationary recovery retains facing
+FACING PASS STAG OF MIRE defeated retains position and facing
+FACING PASS ANTLERED HUNGER spawn faces its left target
+FACING PASS ANTLERED HUNGER spawn faces its right target
+FACING PASS ANTLERED HUNGER moves/faces -1.0
+FACING PASS ANTLERED HUNGER moves/faces 1.0
+FACING PASS ANTLERED HUNGER windup locks -1.0 despite target crossing
+FACING PASS ANTLERED HUNGER strike moves/faces locked -1.0
+FACING PASS ANTLERED HUNGER windup locks 1.0 despite target crossing
+FACING PASS ANTLERED HUNGER strike moves/faces locked 1.0
+FACING PASS ANTLERED HUNGER stationary recovery retains facing
+FACING PASS ANTLERED HUNGER defeated retains position and facing
+FACING PASS zero horizontal distance does not flicker
+FACING PASS legacy dictionary fallback uses locked attack direction
+FACING PASS legacy dictionary fallback faces target
+FACING PASS generic spawn faces right target
+FACING PASS generic negative-speed retreat faces actual left movement
+FACING PASS generic forward pursuit also faces left
+FACING PASS clamped zero-motion retains facing
+FACING PASS F4 deep snapshot restores enemy facing
+FACING PASS safe-wagon restore clears threats and preserves Mark/cure
+FACING PASS BRIAR HOUND frame 0 mirrored geometry/feet/reach unchanged
+FACING PASS BRIAR HOUND frame 0 raster is horizontal reflection
+FACING PASS BRIAR HOUND frame 0 labels/bars stay unmirrored
+FACING PASS BRIAR HOUND frame 0 subsequent world marker stays fixed
+FACING PASS BRIAR HOUND frame 1 mirrored geometry/feet/reach unchanged
+FACING PASS BRIAR HOUND frame 1 raster is horizontal reflection
+FACING PASS BRIAR HOUND frame 1 labels/bars stay unmirrored
+FACING PASS BRIAR HOUND frame 1 subsequent world marker stays fixed
+FACING PASS BRIAR HOUND frame 2 mirrored geometry/feet/reach unchanged
+FACING PASS BRIAR HOUND frame 2 raster is horizontal reflection
+FACING PASS BRIAR HOUND frame 2 labels/bars stay unmirrored
+FACING PASS BRIAR HOUND frame 2 subsequent world marker stays fixed
+FACING PASS BRIAR HOUND frame 3 mirrored geometry/feet/reach unchanged
+FACING PASS BRIAR HOUND frame 3 raster is horizontal reflection
+FACING PASS BRIAR HOUND frame 3 labels/bars stay unmirrored
+FACING PASS BRIAR HOUND frame 3 subsequent world marker stays fixed
+FACING PASS STAG OF MIRE frame 0 mirrored geometry/feet/reach unchanged
+FACING PASS STAG OF MIRE frame 0 raster is horizontal reflection
+FACING PASS STAG OF MIRE frame 0 labels/bars stay unmirrored
+FACING PASS STAG OF MIRE frame 0 subsequent world marker stays fixed
+FACING PASS STAG OF MIRE frame 1 mirrored geometry/feet/reach unchanged
+FACING PASS STAG OF MIRE frame 1 raster is horizontal reflection
+FACING PASS STAG OF MIRE frame 1 labels/bars stay unmirrored
+FACING PASS STAG OF MIRE frame 1 subsequent world marker stays fixed
+FACING PASS STAG OF MIRE frame 2 mirrored geometry/feet/reach unchanged
+FACING PASS STAG OF MIRE frame 2 raster is horizontal reflection
+FACING PASS STAG OF MIRE frame 2 labels/bars stay unmirrored
+FACING PASS STAG OF MIRE frame 2 subsequent world marker stays fixed
+FACING PASS STAG OF MIRE frame 3 mirrored geometry/feet/reach unchanged
+FACING PASS STAG OF MIRE frame 3 raster is horizontal reflection
+FACING PASS STAG OF MIRE frame 3 labels/bars stay unmirrored
+FACING PASS STAG OF MIRE frame 3 subsequent world marker stays fixed
+FACING PASS ANTLERED HUNGER frame 0 mirrored geometry/feet/reach unchanged
+FACING PASS ANTLERED HUNGER frame 0 raster is horizontal reflection
+FACING PASS ANTLERED HUNGER frame 0 labels/bars stay unmirrored
+FACING PASS ANTLERED HUNGER frame 0 subsequent world marker stays fixed
+FACING PASS ANTLERED HUNGER frame 1 mirrored geometry/feet/reach unchanged
+FACING PASS ANTLERED HUNGER frame 1 raster is horizontal reflection
+FACING PASS ANTLERED HUNGER frame 1 labels/bars stay unmirrored
+FACING PASS ANTLERED HUNGER frame 1 subsequent world marker stays fixed
+FACING PASS ANTLERED HUNGER frame 2 mirrored geometry/feet/reach unchanged
+FACING PASS ANTLERED HUNGER frame 2 raster is horizontal reflection
+FACING PASS ANTLERED HUNGER frame 2 labels/bars stay unmirrored
+FACING PASS ANTLERED HUNGER frame 2 subsequent world marker stays fixed
+FACING PASS ANTLERED HUNGER frame 3 mirrored geometry/feet/reach unchanged
+FACING PASS ANTLERED HUNGER frame 3 raster is horizontal reflection
+FACING PASS ANTLERED HUNGER frame 3 labels/bars stay unmirrored
+FACING PASS ANTLERED HUNGER frame 3 subsequent world marker stays fixed
+FACING PASS BRIAR HOUND -1.0-side hit boundary
+FACING PASS BRIAR HOUND -1.0-side miss boundary
+FACING PASS BRIAR HOUND 1.0-side hit boundary
+FACING PASS BRIAR HOUND 1.0-side miss boundary
+FACING PASS STAG OF MIRE -1.0-side hit boundary
+FACING PASS STAG OF MIRE -1.0-side miss boundary
+FACING PASS STAG OF MIRE 1.0-side hit boundary
+FACING PASS STAG OF MIRE 1.0-side miss boundary
+FACING PASS ANTLERED HUNGER -1.0-side hit boundary
+FACING PASS ANTLERED HUNGER -1.0-side miss boundary
+FACING PASS ANTLERED HUNGER 1.0-side hit boundary
+FACING PASS ANTLERED HUNGER 1.0-side miss boundary
+FACING PASS facing changes add zero alpha scans
+FACING_OVERVIEW: sprite_changes=87911 outside=0 bounds=(1280, 720)..(0, 0) allowed=[[P: (408.4689, 404.4418), S: (160.0, 160.0)], [P: (411.5311, 404.4418), S: (160.0, 160.0)], [P: (556.298, 355.0), S: (400.4515, 200.0)], [P: (603.2505, 355.0), S: (400.4515, 200.0)], [P: (943.7799, 295.0), S: (260.0, 260.0)], [P: (956.2201, 295.0), S: (260.0, 260.0)]]
+FACING PASS production scene changes only enemy sprites, not Lolth/HUD/wagon/background
+FACING_PASS: 102/102 checks fault=

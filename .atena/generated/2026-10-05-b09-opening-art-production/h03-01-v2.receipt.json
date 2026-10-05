@@ -1,0 +1,23 @@
+{
+  "id": "h03-01",
+  "attempt": 2,
+  "status": "rejected-anatomy-interpretation",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9fa95e8d-ab66-4fa1-aca6-9a9c208abe98.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v2.png",
+  "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. Transformation panel: one solitary complete shadow spider in the forest, replacing the central standing woman and all her attached appendages. Give the spider enough width to separate four legs on each side; exactly eight walking legs, small mouthparts must not look like extra legs. Retain the forest, moon, dark purple lighting and quiet foreground. No allies or wagon.",
+  "source_references": [
+    ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png"
+  ],
+  "visual_checks": {
+    "fully_arachnid": true,
+    "human_duplicate": false,
+    "eight_legs": true,
+    "no_text": true,
+    "story_beat": true
+  },
+  "provider": "built-in-imagegen",
+  "runtime_admitted": false,
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "reason": "The owner clarified the existing design: complete drow body as spider head/front, not an ordinary spider."
+}

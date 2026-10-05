@@ -1,0 +1,49 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1650
+
+B06RT PASS cave view at zero offset matches the pre-B-06 build (day, 0 differing pixels)
+B06RT PASS cave view at zero offset matches the pre-B-06 build (night, 0 differing pixels)
+B06RT PASS cave view at zero offset matches the pre-B-06 build (secured, 0 differing pixels)
+B06RT PASS world translation keeps right-facing Lolth, enemies, labels and bars identical on screen (0 differing pixels)
+B06RT PASS world marker after reflected sprites and screen marker stay in place (right)
+B06RT PASS world translation keeps left-facing Lolth, enemies, labels and bars identical on screen (0 differing pixels)
+B06RT PASS world marker after reflected sprites and screen marker stay in place (left)
+B06RT PASS legitimate first cure and safe return open the on-foot route
+B06RT_TRACE D frames=1309 monotonic=true step_ok=false camera_ok=true context_ok=true max_step=41.83 max_step_ratio=1.639
+B06RT PASS real D input reaches the far foothill limit
+B06RT FAIL outward motion has no reset, jump, region screen or floor change
+B06RT PASS view offset stays zero while Lolth is inside the cave window
+B06RT PASS displayed region crosses Thornwake, the approach and the foothills
+B06RT PASS Wagon and family keep one cave anchor while Lolth is away
+B06RT_TRACE A frames=168 monotonic=true step_ok=false camera_ok=true context_ok=true max_step=13.07 max_step_ratio=1.617
+B06RT PASS real E collects the single foothill ore
+B06RT PASS a second E press finds nothing more
+B06RT FAIL M cannot open the Wagon from the foothills
+B06RT PASS I opens Lolth's inventory away from the Wagon and pauses the world
+B06RT PASS Esc closes the inventory
+B06RT PASS left-click in the foothills swings without a target or a world interaction
+B06RT_TRACE A frames=1110 monotonic=true step_ok=false camera_ok=true context_ok=true max_step=3.26 max_step_ratio=1.617
+B06RT FAIL real A input returns along the same route to the cave Wagon
+B06RT PASS arrival secures a consistent snapshot with the carried ore
+B06RT PASS real E deposits the ore once at the cave Wagon
+B06RT_TRACE D frames=950 monotonic=true step_ok=false camera_ok=true context_ok=true max_step=24.89 max_step_ratio=1.619
+B06RT FAIL the cave Stag telegraphs and damages the Wagon while Lolth stays in the foothills
+B06RT PASS Wagon destruction away from the cave reaches the defeat card
+B06RT PASS E restores the cave snapshot with Mark I, the cure and one ore
+B06RT_TRACE D frames=394 monotonic=true step_ok=false camera_ok=true context_ok=true max_step=3.35 max_step_ratio=1.627
+B06RT PASS left-click melee and C First Thread hit by world position under a 251 px view offset
+B06RT PASS M near the Thornwake border still cannot open the Wagon
+B06RT PASS frozen day capture at x=1000 uses view offset 80
+B06RT PASS frozen day capture at x=1280 uses view offset 360
+B06RT PASS frozen day capture at x=1520 uses view offset 600
+B06RT PASS frozen day capture at x=1760 uses view offset 840
+B06RT PASS frozen day capture at x=2400 uses view offset 1480
+B06RT PASS frozen night capture at x=1000 uses view offset 80
+B06RT PASS frozen night capture at x=1280 uses view offset 360
+B06RT PASS frozen night capture at x=1520 uses view offset 600
+B06RT PASS frozen night capture at x=1760 uses view offset 840
+B06RT PASS frozen night capture at x=2400 uses view offset 1480
+B06RT PASS HUD title stays fixed in screen space at every position
+B06RT PASS no visible cut at the x=1280 seam (0.0006 vs typical 0.0130)
+B06RT PASS no visible cut at the x=1760 seam (0.0023 vs typical 0.0158)
+B06_RUNTIME_FAIL: 36/40 checks

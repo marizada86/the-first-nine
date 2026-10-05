@@ -1,0 +1,13 @@
+{
+  "name": "render-negative-unshifted_reflection",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 4.139,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06RT FAIL world translation keeps left-facing Lolth, enemies, labels and bars identical on screen (11773 differing pixels)"
+  ],
+  "error": null
+}

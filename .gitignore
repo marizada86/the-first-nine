@@ -1,1 +1,7 @@
 .godot/
+
+# Local validation replicas and engine profiles are not project deliverables.
+/.atena/generated/**/checkout/
+/.atena/generated/**/godot-profile/
+/.atena/generated/2026-10-05-main-integration/scratch/
+__pycache__/

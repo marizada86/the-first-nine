@@ -1,0 +1,856 @@
+{
+  "kind": "official-windows-technical-review",
+  "status": "technical-review-passed-awaiting-owner-playtest",
+  "created": "2026-10-05T14:28:02.522Z",
+  "reviewed_commit": "052ec6466ee2a8252cf54f6f72ed11f0cc26e045",
+  "branch": "codex/b08-stonehook-cliff-harrier",
+  "baseline_commit": "4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1",
+  "request_classification": "IN_PLAN",
+  "publication": {
+    "owner_authorized_branch_push": true,
+    "remote_branch_verified": "052ec6466ee2a8252cf54f6f72ed11f0cc26e045",
+    "remote_main_verified": "4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1",
+    "operational_records_still_pre_publication": true,
+    "reconciliation_not_performed": true
+  },
+  "provenance": "Fresh native Windows runs by Atena in an isolated clone; no Linux result is counted as a Windows run. Published Linux evidence remains in commit 052ec64. Fresh outputs replaced only the isolated review copy's B08 validation artifacts.",
+  "skill": {
+    "name": "game-visual-debugging",
+    "adapter_available": false,
+    "method": "Project-owned runner, rendered telemetry and captures; not a sealed game-dev adapter bundle."
+  },
+  "environment": {
+    "engine": "D:/Godot/godot.exe",
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "os": "win32",
+    "arch": "x64",
+    "renderer": "OpenGL compatibility",
+    "resolution": [
+      1280,
+      720
+    ],
+    "gpu": "NVIDIA GeForce GTX 1650",
+    "driver": "616.92"
+  },
+  "execution": {
+    "checkout": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b08-windows-review/checkout",
+    "command": "rtk proxy node .atena/generated/2026-10-05-b08-validation/run_validation.cjs all",
+    "runner_exit_code": 0,
+    "case_count": 26,
+    "positive_cases": 15,
+    "negative_cases": 11,
+    "all_expected_outcomes": true,
+    "project_diagnostics": 0,
+    "engine_import_exit_code": 0,
+    "records_validator_before_and_after_exit_code": 0,
+    "resolved_links": 33
+  },
+  "summary": {
+    "b08_headless": "34/34",
+    "b08_real_input": "33/33",
+    "b07": "24/24 and 28/28",
+    "b06": "30/30 and 53/53",
+    "combat": "9/9",
+    "combat_with_trigger_noise": "9/9",
+    "menus": "33/33",
+    "geometry": "46/46",
+    "facing": "65/65 headless and 102/102 rendered",
+    "self_test": "B01-B08, playtester and full self-test pass",
+    "smoke": "600 frames normal and headless, exit 0 each",
+    "negative_controls": "11 genuine exit-1 rejections on their named assertions; no parser/import/script crashes"
+  },
+  "technical_review": {
+    "blocking_findings": [],
+    "tuning": "170 attack-initiation distance is supported by body reach 113.1 plus capped dive travel 66; the cosmetic 18 px dip and time-left cap remain tuning for owner review, not canonical changes.",
+    "scope": "Only main.gd changes in production; historical suites, assets, controls, menus and completed plan history preserved.",
+    "criterion_comparison": "All seven technical acceptance criteria passed in tests and inspected captures. Human acceptance and balance review remain pending."
+  },
+  "visual_review": {
+    "inspected_capture_count": 12,
+    "observations": "Own bird crop with wings and claws; visible hover gap, correct mirroring by day/night; readable ground warning. Hit and miss show Lolth's attack pose without a false hurt pose. Both actors and their labels can overlap in combat; static artwork remains.",
+    "captures": [
+      {
+        "name": "harrier-day-right",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-day-right.png",
+        "sha256": "e1f1451a7e8f512e3237de6e45dd64e7b345e5a0b0713f718172fae58e326300"
+      },
+      {
+        "name": "harrier-day-left",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-day-left.png",
+        "sha256": "11a1408b2313fe8c307ae89ea62c3edd045ffc5d66e9d577bc8a5d64f86deee7"
+      },
+      {
+        "name": "harrier-night-right",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-night-right.png",
+        "sha256": "4a2df760ed4f18cb92790c41b0d5a503d5abd11cf3a1eeda7d5bb91714347805"
+      },
+      {
+        "name": "harrier-night-left",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-night-left.png",
+        "sha256": "4d4b6d5d27c386401f690b500a47f5300cf563d5193531cfbb8b2c16268b0097"
+      },
+      {
+        "name": "harrier-windup",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-windup.png",
+        "sha256": "33b8d6c5136aadaef076a01016d95dd57db3cf7843c8c6e58b6f8df5be93d695"
+      },
+      {
+        "name": "harrier-hit",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-hit.png",
+        "sha256": "9f717ca31dd7621ea391a9747c223d2ff415d05df12f78673f011defe42e43aa"
+      },
+      {
+        "name": "harrier-miss",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-miss.png",
+        "sha256": "9d15327cc2f92edb690b484f4814fb6731561ee69786e65be22f827c15e6ba55"
+      },
+      {
+        "name": "harrier-recovery",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-recovery.png",
+        "sha256": "c6cc091badc936aacef305214a15e9ba02c6ae3ca7d241c06314f4846758b0e1"
+      },
+      {
+        "name": "harrier-retreat",
+        "file": ".atena/generated/2026-10-05-b08-validation/harrier-retreat.png",
+        "sha256": "a40291917592905813b036af99c342eb2a84a2e5a0a40322a0f911befa3c362a"
+      },
+      {
+        "name": "both-actors-day",
+        "file": ".atena/generated/2026-10-05-b08-validation/both-actors-day.png",
+        "sha256": "26250ed10cc5d35749f8e805e6d228764bcac368041e798ef32b86af1a647d78"
+      },
+      {
+        "name": "both-actors-night",
+        "file": ".atena/generated/2026-10-05-b08-validation/both-actors-night.png",
+        "sha256": "48b63a922a595473eb8c922a3d0fb138c6785509785d88f833852acccf035df5"
+      },
+      {
+        "name": "both-actors-fight",
+        "file": ".atena/generated/2026-10-05-b08-validation/both-actors-fight.png",
+        "sha256": "368228c2f0f7827c351314e6673c2a8ea5f02c018f604693f01192e4069feb9f"
+      }
+    ]
+  },
+  "limitations": [
+    "No owner playtest or human acceptance inferred.",
+    "Static bird frame; no wing animation.",
+    "Balance, 170 initiation and 18 px dip need owner review.",
+    "Actors and labels may overlap; existing Iron Ore label overlap remains.",
+    "B06 foreground occlusion, far-edge/seam/camera limitations remain.",
+    "Saves remain in memory.",
+    "No CI result."
+  ],
+  "next_step": "Owner playtest and acceptance; separately authorized publication-record reconciliation, PR, merge and operational closure. B09 is undefined and not started.",
+  "safeguards": {
+    "owner_checkout_head": "4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1",
+    "owner_tracked_change_preserved": ".atena/state/plan.yaml",
+    "production_unchanged_by_review": true,
+    "branch_switch_on_owner_checkout": false,
+    "commit_created": false,
+    "push_performed": false,
+    "pull_request_created": false,
+    "merge_performed": false,
+    "b09_started": false
+  },
+  "cases": [
+    {
+      "name": "b06-headless",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 3.253,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "b06-headless-result.json",
+      "result_sha256": "c8b2821df94cd6298094d25adac6a963ab14d2b3999b4bd0cfde1e4d7e956b97",
+      "log_sha256": "4f2f408e5c66fb37ec22734a9ebccad4a4d7eaeaf8e682c41135b82538059e87"
+    },
+    {
+      "name": "b06-runtime",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 62.829,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "b06-runtime-result.json",
+      "result_sha256": "dbad8e6f314acdfc5d3d972d7502ce2f68cd5989f7a95101886351cbf8805536",
+      "log_sha256": "e8de8a1a8b4e4433b526ce7ac21d9d6ea1b31939c9c064404c7ad3c8771e02b8"
+    },
+    {
+      "name": "b07-headless",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 2.918,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "b07-headless-result.json",
+      "result_sha256": "620611f27fb542d8728f237c3e91f533151409393082785c6f6dedf2c99dc586",
+      "log_sha256": "6d5e4a3769cff6ef2946b00aced98f7bbeebed890bdd2696eefd223699169556"
+    },
+    {
+      "name": "b07-runtime",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 41.336,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "b07-runtime-result.json",
+      "result_sha256": "cb91e7c16fb79981c341efc70ef1b1c8ea6ace701cd4e10c6f1e94e59342f0c2",
+      "log_sha256": "b8cfc27a0bac4c69d83b3804c4e04abc8dce82e5bf119e65b0e0b889b60d3661"
+    },
+    {
+      "name": "b08-headless",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 5.418,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "b08-headless-result.json",
+      "result_sha256": "d45e8a8bdffefbdd7b59fcbfb9db7f820617a0b22bdb0158d50d1fee211bce8b",
+      "log_sha256": "0a861fe9b4800dbb5c0830cfb928ed9c93bad0167d84c0ef60d6daf2b9f69fca"
+    },
+    {
+      "name": "b08-runtime",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 56.133,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "b08-runtime-result.json",
+      "result_sha256": "eefad4ec5aa999bdccc1a14d2a0857326a1ad8050782948944a026affb2f5e03",
+      "log_sha256": "21dfa1171089178fa695b30fb670fe7831f9e7ad0ac0a85afc499363f0499591"
+    },
+    {
+      "name": "combat-noise",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 12.717,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "combat-noise-result.json",
+      "result_sha256": "de808d147c841a501d5c9b1dff9b09651294d86b12285cc14ada00dbc512f87b",
+      "log_sha256": "74a477c78864763a1e57bba0518529a9e503eb97dfd9ea8f945ed832fd47c491"
+    },
+    {
+      "name": "combat",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 12.49,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "combat-result.json",
+      "result_sha256": "fe02bc1ddfd30dc7e8751936f8ee1463957c3db070d482f4b80b7cae07e932b2",
+      "log_sha256": "3b0feb6fb7e1f6a8c989031996ff397d67d6f538602cf23bfea73d717ea8b226"
+    },
+    {
+      "name": "facing-headless",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 3.541,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "facing-headless-result.json",
+      "result_sha256": "2f560400bc58dec93c857a8b6248d785c14e62ef6d3a76c4a4c5d93da59a0fa9",
+      "log_sha256": "05107797997ca49503cbaf4e4e140ebbcacd967e1c082ace468ae8bd0a4697b3"
+    },
+    {
+      "name": "facing-normal",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 7.254,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "facing-normal-result.json",
+      "result_sha256": "6240462e4e337e830a96fccfd327a548c2f07ef41a48bccbf71afa18d22e88c4",
+      "log_sha256": "b589935d2a1182175e4b75596bb02546c166316233e1e1aa3795c69fef0e2fc6"
+    },
+    {
+      "name": "geometry",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 5.417,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "geometry-result.json",
+      "result_sha256": "07d0dca54a3a4b11dd24e14d59180a41c34102e1ea84ee9610bb0e569881c4c4",
+      "log_sha256": "debedaee9d7732878bafe3120b9b6ba1ff466b886ade845ea1ec42c59f3375b2"
+    },
+    {
+      "name": "headless-smoke",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 8.46,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "headless-smoke-result.json",
+      "result_sha256": "bb3074357edf9da936e57ca4c86ea5ca8b8ad97308e5a76f5ba14957042e1470",
+      "log_sha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+    },
+    {
+      "name": "menus",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 7.824,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "menus-result.json",
+      "result_sha256": "3abad79dcefd761568cd4c75c8187cb7aa62ece24f55955f221a4fad5aea3981",
+      "log_sha256": "cb8e30d1e6421259f403c5eaed8d578ffef1f55a6fd1edd114834f126730019e"
+    },
+    {
+      "name": "negative-boundary_escape",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 6.067,
+      "expected_rejection": "B08 FAIL harrier_stays_in_bounds",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_cancels_outside_foothills",
+        "B08 FAIL harrier_stays_in_bounds"
+      ],
+      "error": null,
+      "result_file": "negative-boundary_escape-result.json",
+      "result_sha256": "eebb450d411e98fb4074321ce0993507a6c1e81e30879f42d05e4e96c0075ec6",
+      "log_sha256": "76fdf01c3523d4b05a36d8da2942cc4edc936778cd25ae85b78e45720cb04ced"
+    },
+    {
+      "name": "negative-duplicate_reward",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 4.809,
+      "expected_rejection": "B08 FAIL independent_defeat_and_reward",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL independent_defeat_and_reward"
+      ],
+      "error": null,
+      "result_file": "negative-duplicate_reward-result.json",
+      "result_sha256": "6ec84e52d9f01f4067d16fff1e082d38620a918cd063db1f7364d869bd46c467",
+      "log_sha256": "e861f3934c6559174e7d6acf178bd2beff843d9cbce8185408777fe57c91fb87"
+    },
+    {
+      "name": "negative-duplicate_spawn",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 4.282,
+      "expected_rejection": "B08 FAIL harrier_activation_at_2600",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_activation_at_2600",
+        "B08 FAIL harrier_grounded_melee_hit_miss",
+        "B08 FAIL harrier_first_thread_hit_miss",
+        "B08 FAIL harrier_vertical_reach_follows_display",
+        "B08 FAIL save_combo_neither",
+        "B08 FAIL save_combo_crawler_only"
+      ],
+      "error": null,
+      "result_file": "negative-duplicate_spawn-result.json",
+      "result_sha256": "5f848c5aafac74209ef926834007f8b8950f80546d78089c688d4dc68f86edea",
+      "log_sha256": "04f41019b55f2b7b9177177592fbebd30620dd8f2bb1974d2ab8df324fb67cbe"
+    },
+    {
+      "name": "negative-incomplete_f4_restore",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 4.429,
+      "expected_rejection": "B08 FAIL f4_restores_both_exactly",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL f4_restores_both_exactly"
+      ],
+      "error": null,
+      "result_file": "negative-incomplete_f4_restore-result.json",
+      "result_sha256": "8400899d7e4e7337be047cfb688d528e92e1853dd5b9e1d314a499b96c00dc40",
+      "log_sha256": "6d839b4f65151e14f1840a11f38be31b296ec889f97f6e56a01ed93ec5af30f3"
+    },
+    {
+      "name": "negative-incomplete_rollback",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 5.013,
+      "expected_rejection": "B08 FAIL save_combo_neither",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL save_combo_neither",
+        "B08 FAIL save_combo_crawler_only"
+      ],
+      "error": null,
+      "result_file": "negative-incomplete_rollback-result.json",
+      "result_sha256": "83cd6d6c452885eb1d5b7c4103e4bdbae02318bf01af412fbb9c62810595cd7f",
+      "log_sha256": "c100f7e4a29d6634f9d3b0d01755321cd7b5565c53300351e40b3f0f90b3f00a"
+    },
+    {
+      "name": "negative-late_bounds",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 6.074,
+      "expected_rejection": "B08 FAIL harrier_bounds_ready_before_first_frame",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_bounds_prepared_once",
+        "B08 FAIL harrier_bounds_ready_before_first_frame"
+      ],
+      "error": null,
+      "result_file": "negative-late_bounds-result.json",
+      "result_sha256": "b14fb463497ae03c59d7d4f30a960dd26761690a4ce1378210ed1103c2986045",
+      "log_sha256": "f20b30a79513433362edb2481244cce5d54e827a2116bde6f55889a07531c091"
+    },
+    {
+      "name": "negative-repeated_damage",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 3.447,
+      "expected_rejection": "B08 FAIL harrier_single_hit_per_dive",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_single_hit_per_dive",
+        "B08 FAIL harrier_dash_avoids_dive",
+        "B08 FAIL simultaneous_combat_single_hits"
+      ],
+      "error": null,
+      "result_file": "negative-repeated_damage-result.json",
+      "result_sha256": "9952d873922033ddcfdc1b629e5e3b101aa8fd68123fa4af87cdabf8ad2a596d",
+      "log_sha256": "b00d3a0293f055d72b0b073a3ad959c222cd5249347ef072c6f3f3bca271d070"
+    },
+    {
+      "name": "negative-retargeting",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 4.043,
+      "expected_rejection": "B08 FAIL harrier_windup_locks_target",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_windup_locks_target"
+      ],
+      "error": null,
+      "result_file": "negative-retargeting-result.json",
+      "result_sha256": "645e0e50758e8fcd66aae3704cb59809c92211ac3103264856cbe3feb1321e5d",
+      "log_sha256": "f6087dc591b9708c7eb4d4ff7d06a952e0d380237221e06d432d6bd8f6aa86c6"
+    },
+    {
+      "name": "negative-shared_defeat_state",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 6.251,
+      "expected_rejection": "B08 FAIL independent_defeat_and_reward",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL independent_defeat_and_reward",
+        "B08 FAIL save_combo_harrier_only"
+      ],
+      "error": null,
+      "result_file": "negative-shared_defeat_state-result.json",
+      "result_sha256": "bb96818d3319f2d03f1676c72e3387e377a218e184135458f98fe01c477c2e48",
+      "log_sha256": "6ed748bf8f3691ddf96b661e7bbea423f7f5385659cdae9ea0673d9128b4e15d"
+    },
+    {
+      "name": "negative-unreachable_flight",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 6.403,
+      "expected_rejection": "B08 FAIL harrier_reachable_in_live_flight",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_hover_and_bob",
+        "B08 FAIL harrier_reachable_in_live_flight",
+        "B08 FAIL harrier_single_hit_per_dive",
+        "B08 FAIL harrier_dash_avoids_dive",
+        "B08 FAIL simultaneous_combat_single_hits"
+      ],
+      "error": null,
+      "result_file": "negative-unreachable_flight-result.json",
+      "result_sha256": "ad87a9b703fa799937edda6f84f2a26d01146b8fe5f5545ca8b03b16483d1dd1",
+      "log_sha256": "c445d072b5833a6fff2e411954349cc6351e3e9a4a8b4f3918c183a63b01795a"
+    },
+    {
+      "name": "negative-wrong_artwork",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 1,
+      "signal": null,
+      "passed": true,
+      "seconds": 7.848,
+      "expected_rejection": "B08 FAIL harrier_geometry_crop",
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [
+        "B08 FAIL harrier_geometry_crop"
+      ],
+      "error": null,
+      "result_file": "negative-wrong_artwork-result.json",
+      "result_sha256": "158d71e7c1ad95365073e4b3db510316ffba3076d9fdd534632a7855cc331a0a",
+      "log_sha256": "0813516ede1019ead487c5e1544a0d12143a09cfcc4d26c00cd6393150985173"
+    },
+    {
+      "name": "normal-smoke",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 7.93,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "normal-smoke-result.json",
+      "result_sha256": "443332a9ac1272be7b06a084604152cd8f55e5ac6a6e9f7263eb124ec1fd1ac8",
+      "log_sha256": "2104300e69f65eb136667e81673c017f08344ac794eca3c720a17552d087357a"
+    },
+    {
+      "name": "self-test",
+      "platform": {
+        "os": "win32",
+        "arch": "x64",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "display": "native",
+        "device": null
+      },
+      "exit_code": 0,
+      "signal": null,
+      "passed": true,
+      "seconds": 3.504,
+      "expected_rejection": null,
+      "project_diagnostics": [],
+      "environment_diagnostics": [],
+      "detections": [],
+      "error": null,
+      "result_file": "self-test-result.json",
+      "result_sha256": "f2bdece962aa62e6ce3886f2d436c7a2ff1d364ff53aeba94f2caf4e5ab12f24",
+      "log_sha256": "c58a1cbce2026c0f797d2447b306ee7c6b8a47112b59cb71cf67f70fb9b90ed2"
+    }
+  ],
+  "metrics": {
+    "activation": {
+      "first_spawn_player_x": 2601.63012695313,
+      "spawned_early": false
+    },
+    "day_mirror_overlap": 0.997947515027122,
+    "defeat": {
+      "echoes_after": 2,
+      "echoes_before": 0
+    },
+    "isolation": {
+      "added_frame": 0,
+      "first_gameplay_frame": 1,
+      "isolated_frame": 0,
+      "pulse": 0,
+      "state": "opening",
+      "trigger_021_matched_after": false,
+      "trigger_021_matched_before": true
+    },
+    "joypad_bindings_before_suspension": {
+      "attack": 1,
+      "camp_action": 1,
+      "camp_menu": 1,
+      "jump": 1,
+      "move_left": 2,
+      "move_right": 2,
+      "primary": 1,
+      "shadow_action": 1,
+      "shadow_strike": 1,
+      "skip": 1,
+      "ui_colorpicker_delete_preset": 1,
+      "ui_down": 2,
+      "ui_left": 2,
+      "ui_right": 2,
+      "ui_select": 1,
+      "ui_up": 2
+    },
+    "night_mirror_overlap": 0.999110188343467,
+    "noise": {
+      "dashed": false,
+      "moved": 0,
+      "queued": false
+    },
+    "retreat": {
+      "harrier_x": 2469.08813476563,
+      "lolth_x": 1698.58935546875,
+      "state_at_capture": "windup"
+    },
+    "view_day-left": {
+      "body_fraction": 0.446108567691302,
+      "camera_x": 1420,
+      "center_offset": 0,
+      "expected_bottom": 525,
+      "lowest_row": 524,
+      "padding_changes": 0,
+      "padding_pixels": 3300
+    },
+    "view_day-right": {
+      "body_fraction": 0.445781556572923,
+      "camera_x": 1420,
+      "center_offset": 0.5,
+      "expected_bottom": 525,
+      "lowest_row": 524,
+      "padding_changes": 0,
+      "padding_pixels": 3300
+    },
+    "view_night-left": {
+      "body_fraction": 0.440353172007848,
+      "camera_x": 1420,
+      "center_offset": 0,
+      "expected_bottom": 525,
+      "lowest_row": 524,
+      "padding_changes": 0,
+      "padding_pixels": 3300
+    },
+    "view_night-right": {
+      "body_fraction": 0.441007194244604,
+      "camera_x": 1420,
+      "center_offset": 0,
+      "expected_bottom": 525,
+      "lowest_row": 524,
+      "padding_changes": 0,
+      "padding_pixels": 3300
+    },
+    "windup_warning": {
+      "label_changes": 271,
+      "locked_target": 2400,
+      "strip_changes": 1897
+    }
+  }
+}

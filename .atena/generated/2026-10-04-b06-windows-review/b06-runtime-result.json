@@ -1,0 +1,11 @@
+{
+  "name": "b06-runtime",
+  "exit_code": 1,
+  "signal": null,
+  "passed": false,
+  "seconds": 53.577,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

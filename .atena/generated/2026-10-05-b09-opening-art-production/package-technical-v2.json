@@ -1,0 +1,1588 @@
+{
+  "status": "technically-validated-awaiting-remaining-owner-review",
+  "runtime_admitted": false,
+  "items": [
+    {
+      "id": "h01-01",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-01-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "6b7538cec6a0efef2231a56f97b78fe159a715bd470559c95676a7e6def26ea3",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-01.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-01.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "e2e6a1d95e54810dd322bc7003d349c95ead58c10594f39b2dce1a2a40356fcf",
+      "review_sha256": "8e501e29d0e339b66e4e668b1d00bfcf70f26a62e44eb5f487cd0351d5082684",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-02",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-02-v1.png",
+      "raw_dimensions": [
+        1672,
+        940
+      ],
+      "raw_sha256": "83d9edefb113244bb00cf0b0b847de7bcc29dbbcf77e4a1298129d9bd06ebd02",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-02.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-02.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "3e0e56713cec72af98e8ca6d5537558852d46a911e3fe03a49889317e060d5e5",
+      "review_sha256": "7f0f21070431891926aa3b7b9e27d4d27aa28b3dea93fc610f37eedd8e7c937c",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-03",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-03-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "c2dc6f46863ca574a2edb1d9a54a534ec372ee3a4a580e4bddd5971ac84c7aa8",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-03.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-03.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "4c02e4ac72f265b2057c4d38db4402589e42430485579531364bfefcd1c8e507",
+      "review_sha256": "2154e277c145387189781343abf676494e2c1a76bc33306a8fc3ac204c62fc88",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-04",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-04-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "ee4035b8cc154c50b2f6404d97e2fe5c6a08207cd03c444fdc544c632ef94539",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-04.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-04.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "5ed67b3fad08fc7fda58adc03bcf9e7707ed7bb2c445372ef40e12c3ea8370df",
+      "review_sha256": "84ed289cdddf85b6c6e7560b89086e3cb6093b4cdb9d41ecd4381febad7876dd",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-05",
+      "kind": "comic",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v2.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "ff13f8739c59c3bf2c563e1da0d5097dcdfc75520a1b621810df281e7f75f7d4",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-05.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-05.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "35552abdf252a1dd67f8b5712ffaa7dd6ff163e512d66942efb2c2b2e7539061",
+      "review_sha256": "522bbff58a1f4d04721731f0ea9be936450b5fdaca92dda4bee1e7333c351e03",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-06",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-06-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "ab891fbc4977a89c3a7af99c2ed1874c34a64e16c9de905ef5887b5cadf277e5",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-06.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-06.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "51648358ea5365afa3fff260c133f2e79a0ff8f1142526a4d7502957b1d6ecef",
+      "review_sha256": "ff7b48c8b6b6f78d0063e6d8119a1b8c0576abfdc14b6c8b92933891681721d4",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-07",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-07-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "37f64d4d34a88e3bff31673cf7929469937063a4add44412044077a31cdf15c6",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-07.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-07.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "5781b5f758d440102cbb85920015d02a8636e2f2e6b32512976366d0a4a79342",
+      "review_sha256": "b42a46718e63fc9a8f65c4d8afa84bd4b58f5a6aefb0f0fda4f8e320829ebac8",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-08",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-08-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "fb8648569193b817f80af70420bd5457797c228359289c82a9f2841c5dc800eb",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-08.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-08.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "1c1dd8d659b6c4fbe8057f06483416a0b9002552687e54c50a92a7bf4bb29c28",
+      "review_sha256": "1fef5d38e8028f66a59b1cc3d95f9e0118e4440db0732406367a385d63260ccf",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h01-09",
+      "kind": "comic",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v2.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "a54086fb01d0a1f18146268e63296cc656c3b5a4133c4b99a1be0598bc9eeae6",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h01-09.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h01-09.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "ea5aef101e3e426e9709feb344dcd1d2bc1e7b91081c408d338f8ed3f888d025",
+      "review_sha256": "8b2a9d4f6d549258253bd9f77120888bcc6d4b5a27afed4ce9fe93a16d2e26e4",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h02-01",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-01-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "d860d90ef1a08931be2c8aa623ebc52acd3ba2345122c4cf159fb4c24c3d66e5",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h02-01.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h02-01.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "83c9d6b6ee257d934f82225c287116a43eb49e8aa1e039e8c3d5a1178cc7f163",
+      "review_sha256": "63234edef9f65a321c8d18ce78b4eb6b27d2caa9214805423cd422e522d83def",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h02-02",
+      "kind": "comic",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v3.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "58abc7481e8a4d05d9ec68470598213251579c06d0cdf9d6f89d88449b55cfd7",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h02-02.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h02-02.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "4f7464bb12b868efa1fc2a56a194aaaace44e73e1b56621d34732834f4b12272",
+      "review_sha256": "73fd89ae90bef8a688634ab0c295640b13cdcb4979832a23aaac067ba0e3b4c7",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h02-03",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-03-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "a14ea4dffb7333ae39478be8d06a41891aa750913267725e582dfe0349d2b345",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h02-03.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h02-03.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "1ffdf49a95b9d981f4fa422c66ed42decdfb4a2f5ea1468f88e9b66ffb5481a0",
+      "review_sha256": "b8a9713819becc7c81c535d1d679f1126856fc332c2f994c0c424f9cc8993762",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h02-04",
+      "kind": "comic",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v2.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "d004d471662e7fe9e45eb8929200ed3af9fceda5a45716bfb9bf75b33e4301be",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h02-04.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h02-04.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "76002e78fe6e398cc72c261bb033b060283f204c38ca37c6a4df4fed1c7c9524",
+      "review_sha256": "c4281f534c1ab7fb6b9d7ecdb3fca0ef891ebee9f339678596446ba3fa9dd25e",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h02-05",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-05-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "dad6856cb92d3c229394c5211e4a59aadc4b0b0e25dd7b4a22697b625d559ca0",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h02-05.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h02-05.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "5188f70abf504a81918733801f9dda374c5e81e76159de443c95ffd33ab1260b",
+      "review_sha256": "aea5dc1d6131c2a7d138df58bc3b0a97fc5f9a10a21721b94712b76a9750d183",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h02-06",
+      "kind": "comic",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-06-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "ae7caf3cd97e08d97926efeb490de671e8a7af45e6ade08026ee2742ecfda0e0",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h02-06.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h02-06.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "edabbed77982e749b87b27aaa53d76f80272b92210617804276d270f03142785",
+      "review_sha256": "41619243f8ccf9d22d3a01332205bc523f9f049a496d10e29ad1bae0c4766430",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "h03-01",
+      "kind": "comic",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png",
+      "raw_dimensions": [
+        1671,
+        941
+      ],
+      "raw_sha256": "e4777c7eb490c6003aab19e9df34db88472790474f86c444c5d1925d38d0136a",
+      "owner_accepted": true,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h03-01.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h03-01.png",
+      "crop": [
+        3,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "fb4154fe680f4ffd01b597ff90af49f21957af307da1574888a66e0e19a26420",
+      "review_sha256": "46f558fe6377baedea2983e29577aa0571bf76ee5253b4bebe375f2153601418",
+      "technical_acceptance": "pass-owner-accepted"
+    },
+    {
+      "id": "h03-02",
+      "kind": "comic",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "raw_dimensions": [
+        1671,
+        941
+      ],
+      "raw_sha256": "851bab70275b1d61ead36e1ac86f313d18e6df139e5ad3d1bb7f1ccb18ebd75b",
+      "owner_accepted": true,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h03-02.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h03-02.png",
+      "crop": [
+        3,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "5899ce55dea3d818e61d23f817868dfa25d2822db16f547b755643e24e5b86da",
+      "review_sha256": "06c7d832ee6fa6a4366ffb5981d66436043067b506e10d46249868bdbcd477cd",
+      "technical_acceptance": "pass-owner-accepted"
+    },
+    {
+      "id": "h03-03",
+      "kind": "comic",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "3bc619431376cd86bc2a63927eaa6b70e3fb09543259069b557aa1f7da53c08e",
+      "owner_accepted": true,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h03-03.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h03-03.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "1eadaa00cf438393cd967691e8cf2399d0c8604a2acc9e322abc118d3e470918",
+      "review_sha256": "df6c336e743abf6514a84541df24a73e47bbc9dd91d1d081a9df97a0ca620985",
+      "technical_acceptance": "pass-owner-accepted"
+    },
+    {
+      "id": "h03-04",
+      "kind": "comic",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "a5e8f95371ff60a9275ef6577ebfdcc7c89bc886c6bfa1280374ee1396da688b",
+      "owner_accepted": true,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h03-04.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h03-04.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "61eac124fde5eaf939afe205a24e1bd87f6580a816e4e5005dfe9a160d15e2f2",
+      "review_sha256": "ca6a7e5c5a6d8274c76739ea1b961874c4f677d3c612afa779f64124b0e61949",
+      "technical_acceptance": "pass-owner-accepted"
+    },
+    {
+      "id": "h03-05",
+      "kind": "comic",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "b6aa9d21e4654171293b1fa9d27dfee1ef0823a0e806a24508e31fee79584024",
+      "owner_accepted": true,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/h03-05.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/h03-05.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "f48c3b1ae8fb10107801f46ec29dd775bc7ff60eafce57b3a0b9d67a9945413a",
+      "review_sha256": "b7cf4ec9daadb17758a6350773c16b2f89fc911074f8667ee781ba959697a64a",
+      "technical_acceptance": "pass-owner-accepted"
+    },
+    {
+      "id": "cave-interior",
+      "kind": "environment",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v2.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "21b8f3a210710e361cb6356616655ba283331c7734fd1e77b298cc42fefcdb40",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/cave-interior.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/cave-interior.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "bf5b81006b9e8351c8144584ba451a093bbc4ef5b230d5e13b075e7c02d8987a",
+      "review_sha256": "3e606c4f86ac56a8b3824210d663a2df11871c841659fe4be7f75534902c542b",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "cave-exterior-entrance",
+      "kind": "environment",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-exterior-entrance-v1.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "db1768908d7c40ce7663a1d8a053662e90586e4b62a706864f3a045c68c2e06f",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/cave-exterior-entrance.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/cave-exterior-entrance.png",
+      "crop": [
+        4,
+        2,
+        1664,
+        936
+      ],
+      "normalization": "Centered largest integer 16:9 crop; uniform nearest-neighbor resize; originals preserved.",
+      "master_dimensions": [
+        1920,
+        1080
+      ],
+      "review_dimensions": [
+        1280,
+        720
+      ],
+      "master_sha256": "f49ab048e02c2c0af774e61a000f29afdc548ca92bc95ef76fc8d00d25349462",
+      "review_sha256": "d176044466f167fc3a9478286797318dea1cb1a70cce7d1a53a301c67fc4bebc",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "aelira-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/aelira-resting-v1.png",
+      "raw_dimensions": [
+        1618,
+        972
+      ],
+      "raw_sha256": "92dead0b6a90fff0ceeff972fa3221259e00df7e356e781c555dee94eeb1b0c4",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/aelira-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/aelira-resting.png",
+      "raw_alpha_counts": [
+        1277806,
+        682,
+        294208
+      ],
+      "raw_visible_bounds": [
+        80,
+        378,
+        1529,
+        720
+      ],
+      "landmarks": [
+        [
+          168,
+          488
+        ],
+        [
+          358,
+          555
+        ],
+        [
+          720,
+          560
+        ],
+        [
+          1030,
+          610
+        ],
+        [
+          1440,
+          650
+        ]
+      ],
+      "raw_anatomical_length": 1289.454615488374,
+      "uniform_scale": 0.031020866899491625,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 1.0140249789481905,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        10,
+        46,
+        54,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3830,
+        266,
+        0
+      ],
+      "master_sha256": "0fa308300eaa47c03e88dd50320f4967e64fafcf69603cbe7858c7de15fcd77c",
+      "review_sha256": "1e323e6e64aedeefbac6738cfd5c3b9d9be6205b6f223dcd783419cf7577b274",
+      "normalized_landmarks": [
+        [
+          12,
+          49
+        ],
+        [
+          18,
+          51
+        ],
+        [
+          29,
+          51
+        ],
+        [
+          39,
+          53
+        ],
+        [
+          52,
+          54
+        ]
+      ],
+      "raster_landmark_length": 40.560999157927625,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "vaelun-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/vaelun-resting-v1.png",
+      "raw_dimensions": [
+        1254,
+        1254
+      ],
+      "raw_sha256": "422ffc1046c15e8290d2b71b00061f7586899e5677fab9f76c1afb4a26816f40",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/vaelun-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/vaelun-resting.png",
+      "raw_alpha_counts": [
+        1349765,
+        622,
+        222129
+      ],
+      "raw_visible_bounds": [
+        39,
+        545,
+        1223,
+        871
+      ],
+      "landmarks": [
+        [
+          115,
+          660
+        ],
+        [
+          244,
+          740
+        ],
+        [
+          640,
+          778
+        ],
+        [
+          850,
+          805
+        ],
+        [
+          1130,
+          824
+        ]
+      ],
+      "raw_anatomical_length": 1041.9841783811776,
+      "uniform_scale": 0.03838829881480911,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 0.9992966759676005,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        10,
+        44,
+        54,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3789,
+        307,
+        0
+      ],
+      "master_sha256": "278748046789c4e828120fcf0f02e6ba1dd4cb39bb4c2f4c20a3e82562ec205b",
+      "review_sha256": "45961649dcd06fed67b4f197ae8adb79a11b08af1b6bce0e5e12c1a5b5a235cc",
+      "normalized_landmarks": [
+        [
+          12,
+          48
+        ],
+        [
+          17,
+          51
+        ],
+        [
+          32,
+          52
+        ],
+        [
+          40,
+          53
+        ],
+        [
+          51,
+          54
+        ]
+      ],
+      "raster_landmark_length": 39.97186703870402,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "nimara-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/nimara-resting-v1.png",
+      "raw_dimensions": [
+        1254,
+        1254
+      ],
+      "raw_sha256": "d0970ef2da00cfc69a4468f5f5474a456ca16dafd576d9d0599b564ebf0f1bcc",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/nimara-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/nimara-resting.png",
+      "raw_alpha_counts": [
+        1361784,
+        973,
+        209759
+      ],
+      "raw_visible_bounds": [
+        32,
+        560,
+        1217,
+        829
+      ],
+      "landmarks": [
+        [
+          128,
+          614
+        ],
+        [
+          248,
+          716
+        ],
+        [
+          602,
+          728
+        ],
+        [
+          856,
+          753
+        ],
+        [
+          1149,
+          783
+        ]
+      ],
+      "raw_anatomical_length": 1061.4553699440046,
+      "uniform_scale": 0.03768410913226633,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 1.012459021893525,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        10,
+        46,
+        54,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3802,
+        294,
+        0
+      ],
+      "master_sha256": "a11b90b4708a68e2c7a5466be845cae676ad5feb71df430f04868c1ca8b76e46",
+      "review_sha256": "fcf92a635a0ba2eb2a16a17d56c85afbb049f32e8d3cb9a41590aba31e0cc6d5",
+      "normalized_landmarks": [
+        [
+          13,
+          48
+        ],
+        [
+          18,
+          52
+        ],
+        [
+          31,
+          52
+        ],
+        [
+          41,
+          53
+        ],
+        [
+          52,
+          54
+        ]
+      ],
+      "raster_landmark_length": 40.498360875741,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "thaviel-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/thaviel-resting-v1.png",
+      "raw_dimensions": [
+        1774,
+        887
+      ],
+      "raw_sha256": "56c68114bdeb1812f699ba2f101a220675a17272d64a9ce7aba292b4d15fae19",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/thaviel-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/thaviel-resting.png",
+      "raw_alpha_counts": [
+        1186774,
+        1449,
+        385315
+      ],
+      "raw_visible_bounds": [
+        43,
+        328,
+        1735,
+        691
+      ],
+      "landmarks": [
+        [
+          211,
+          379
+        ],
+        [
+          329,
+          485
+        ],
+        [
+          879,
+          521
+        ],
+        [
+          1180,
+          558
+        ],
+        [
+          1648,
+          586
+        ]
+      ],
+      "raw_anatomical_length": 1481.8983818786596,
+      "uniform_scale": 0.02699240412779887,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 0.9685674995231934,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        10,
+        47,
+        54,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3833,
+        263,
+        0
+      ],
+      "master_sha256": "54ebd1a1a6e548114e417dcb982c12b62ef26d5aa9e4831517f1aaed9baabe4e",
+      "review_sha256": "f81197a50a9169b4037fe8e3965e0ac28330a85871d2cee2dfe4a39a4cb0001a",
+      "normalized_landmarks": [
+        [
+          14,
+          48
+        ],
+        [
+          17,
+          50
+        ],
+        [
+          32,
+          51
+        ],
+        [
+          40,
+          52
+        ],
+        [
+          52,
+          53
+        ]
+      ],
+      "raster_landmark_length": 38.74269998092774,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "ilyren-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/ilyren-resting-v1.png",
+      "raw_dimensions": [
+        1774,
+        887
+      ],
+      "raw_sha256": "87e26bf1c0f9ea26292cdda25bf64bdb002399eb2960cd8fd89c1c05f69056a0",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/ilyren-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/ilyren-resting.png",
+      "raw_alpha_counts": [
+        1213045,
+        1455,
+        359038
+      ],
+      "raw_visible_bounds": [
+        117,
+        412,
+        1673,
+        757
+      ],
+      "landmarks": [
+        [
+          233,
+          468
+        ],
+        [
+          414,
+          603
+        ],
+        [
+          852,
+          611
+        ],
+        [
+          1180,
+          680
+        ],
+        [
+          1605,
+          688
+        ]
+      ],
+      "raw_anatomical_length": 1424.1281945068813,
+      "uniform_scale": 0.028087359097507654,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 1.0155667173681435,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        11,
+        47,
+        53,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3821,
+        275,
+        0
+      ],
+      "master_sha256": "f6a523e3090f9a59b24ab220ee21f27f2dc55fed6c5d6f1df36f63ce5f03cafd",
+      "review_sha256": "d333196ad033ccf6f7ec0b5c2b4a8bbe6ec183b679b4052b5af2b28b49ea8b09",
+      "normalized_landmarks": [
+        [
+          13,
+          48
+        ],
+        [
+          18,
+          52
+        ],
+        [
+          31,
+          52
+        ],
+        [
+          40,
+          54
+        ],
+        [
+          52,
+          54
+        ]
+      ],
+      "raster_landmark_length": 40.62266869472574,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "orisya-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/orisya-resting-v1.png",
+      "raw_dimensions": [
+        1774,
+        887
+      ],
+      "raw_sha256": "db61fafe99f5832a242118f6de08f9981298194823fc8f24fc66874e8f28083b",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/orisya-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/orisya-resting.png",
+      "raw_alpha_counts": [
+        1157870,
+        2036,
+        413632
+      ],
+      "raw_visible_bounds": [
+        32,
+        310,
+        1732,
+        741
+      ],
+      "landmarks": [
+        [
+          154,
+          476
+        ],
+        [
+          348,
+          570
+        ],
+        [
+          1010,
+          611
+        ],
+        [
+          1260,
+          639
+        ],
+        [
+          1630,
+          646
+        ]
+      ],
+      "raw_anatomical_length": 1500.471399236828,
+      "uniform_scale": 0.02665828886864812,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 0.987560189393955,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        10,
+        45,
+        54,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3820,
+        276,
+        0
+      ],
+      "master_sha256": "75abfa85153a196ad1031a1c53c1e2c3d6470b6287a67b641e8a75da795a4a4f",
+      "review_sha256": "4ff4d7067a24e5820108826542bb7aa1ab48db9dad3463ffdc325cbc1039851a",
+      "normalized_landmarks": [
+        [
+          13,
+          49
+        ],
+        [
+          18,
+          51
+        ],
+        [
+          35,
+          53
+        ],
+        [
+          42,
+          53
+        ],
+        [
+          52,
+          53
+        ]
+      ],
+      "raster_landmark_length": 39.5024075757582,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "soreth-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/soreth-resting-v1.png",
+      "raw_dimensions": [
+        1774,
+        887
+      ],
+      "raw_sha256": "9557f702ff00e0a31ba3a005f55b5901b77429dc07f21bfec53f6918b38b6e35",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/soreth-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/soreth-resting.png",
+      "raw_alpha_counts": [
+        1192832,
+        1143,
+        379563
+      ],
+      "raw_visible_bounds": [
+        122,
+        311,
+        1652,
+        679
+      ],
+      "landmarks": [
+        [
+          234,
+          391
+        ],
+        [
+          413,
+          487
+        ],
+        [
+          898,
+          554
+        ],
+        [
+          1203,
+          616
+        ],
+        [
+          1600,
+          626
+        ]
+      ],
+      "raw_anatomical_length": 1401.0879319914352,
+      "uniform_scale": 0.02854924311791483,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 1.0021541299939096,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        11,
+        46,
+        53,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3793,
+        303,
+        0
+      ],
+      "master_sha256": "05b325fd9db99bdfcf991e2ea3632a0dce944b7eca1948d3f669a16c598b7c47",
+      "review_sha256": "2a2517ba60db0a9007a55f8cb7c2fa2c5b70e3f4c504eb1f3010c25c99cd417a",
+      "normalized_landmarks": [
+        [
+          13,
+          48
+        ],
+        [
+          18,
+          51
+        ],
+        [
+          32,
+          52
+        ],
+        [
+          41,
+          54
+        ],
+        [
+          52,
+          54
+        ]
+      ],
+      "raster_landmark_length": 40.08616519975639,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    },
+    {
+      "id": "luraen-resting",
+      "kind": "patient",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/luraen-resting-v1.png",
+      "raw_dimensions": [
+        1774,
+        887
+      ],
+      "raw_sha256": "b4722bb96e7780408f7b595bfa419ee983934d9e553e7a0e1bc3dbb6291ef09a",
+      "owner_accepted": false,
+      "runtime_admitted": false,
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-masters-v2/luraen-resting.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/luraen-resting.png",
+      "raw_alpha_counts": [
+        1197033,
+        1728,
+        374777
+      ],
+      "raw_visible_bounds": [
+        97,
+        333,
+        1698,
+        692
+      ],
+      "landmarks": [
+        [
+          233,
+          396
+        ],
+        [
+          430,
+          504
+        ],
+        [
+          868,
+          551
+        ],
+        [
+          1250,
+          622
+        ],
+        [
+          1610,
+          629
+        ]
+      ],
+      "raw_anatomical_length": 1413.7866363820176,
+      "uniform_scale": 0.028292812345689516,
+      "normalized_anatomical_length": 40,
+      "body_ratio": 0.9982534599697652,
+      "measurement_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+      "normalization": "Uniform nearest sample to 64 cell; alpha128 threshold; sixteen-color quantization; translate to ground y56. Originals preserved.",
+      "master_dimensions": [
+        64,
+        64
+      ],
+      "review_dimensions": [
+        512,
+        512
+      ],
+      "normalized_bounds": [
+        10,
+        46,
+        54,
+        56
+      ],
+      "palette_colors": 16,
+      "ground_pivot": [
+        32,
+        56
+      ],
+      "normalized_alpha_counts": [
+        3802,
+        294,
+        0
+      ],
+      "master_sha256": "c45c6741da81aff5b8c5824130de6d9f6fa6932b7afb3406b75d3e1f94446358",
+      "review_sha256": "462106ec7cf290d4d05d8065df68e555e6f8f66c4391325653bc3c4dc53b5c4e",
+      "normalized_landmarks": [
+        [
+          13,
+          48
+        ],
+        [
+          19,
+          51
+        ],
+        [
+          31,
+          52
+        ],
+        [
+          42,
+          54
+        ],
+        [
+          52,
+          54
+        ]
+      ],
+      "raster_landmark_length": 39.93013839879061,
+      "measurement_uncertainty": "Manually placed source landmarks; nearest-pixel rounding. Review measurements, not independently segmented anatomy.",
+      "technical_acceptance": "pass-pending-owner-visual-review"
+    }
+  ],
+  "contact_sheets": [
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/opening-contact-sheet.png",
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/bargain-contact-sheet.png",
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/cave-contact-sheet.png",
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/package-review-v2/patients-contact-sheet.png"
+  ],
+  "generation_attempts": 44,
+  "targets": 30,
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "owner_acceptance": {
+    "date": "2026-10-05",
+    "scope": "Five revised H03 ending panels only",
+    "authority": "Owner replied aprovado after delivery of ending contact sheet."
+  },
+  "normalization_note": "Version1 normalized all thirty targets. Version2 replaces only the cave interior source after floor correction; patient output hashes verified identical. Version1 files retained. Full first-run JSON was recovered on a compact rerun after output truncation; version2 PNG hashes and headers were freshly measured."
+}

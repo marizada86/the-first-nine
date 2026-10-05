@@ -1,0 +1,11 @@
+{
+  "name": "combat",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 16.516,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

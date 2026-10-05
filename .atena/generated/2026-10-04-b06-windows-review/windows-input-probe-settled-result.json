@@ -1,0 +1,11 @@
+{
+  "name": "windows-input-probe-settled",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 55.372,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

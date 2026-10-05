@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "accepted_targets": 30,
+  "newly_accepted_targets": 25,
+  "previously_accepted_targets": 5,
+  "accepted_image_hashes_preserved": true,
+  "history_entries_before": 33,
+  "history_entries_after": 34,
+  "preceding_completed_plan_moved_unchanged": true,
+  "earlier_history_preserved": true,
+  "unrelated_state_preserved": true,
+  "state_bom_preserved": true,
+  "production_hashes_preserved": {
+    "main.gd": "02e37ad96825d61ea2d08b0ec57c537054dd020c03070b2612fe8b7c7dfa1d81",
+    "wagon_inventory_ui.gd": "479dea706d192c2082aed34a1ae93e2fb7c678046c82727beded1561939c2c79",
+    "README.md": "de7378539ac458e6bf5365b5093579acb24103c4fc38642e36d43d7ede6ad95a"
+  },
+  "negative_controls": [
+    {
+      "name": "unauthorized-runtime-admission",
+      "rejected_on": "authority-boundaries"
+    },
+    {
+      "name": "missing-accepted-target",
+      "rejected_on": "acceptance-count"
+    },
+    {
+      "name": "changed-accepted-hash",
+      "rejected_on": "accepted-hashes"
+    }
+  ],
+  "active_plan": null,
+  "plan_cursor": "complete",
+  "runtime_admitted": false,
+  "gameplay_implementation_approved": false,
+  "b08_owner_acceptance_pending": true,
+  "new_engine_run": false,
+  "new_remote_verification": false,
+  "yaml_parser_validation": false,
+  "comparison": "Scoped state text comparison normalizes universal CR/LF line endings; no semantic YAML-parser claim."
+}

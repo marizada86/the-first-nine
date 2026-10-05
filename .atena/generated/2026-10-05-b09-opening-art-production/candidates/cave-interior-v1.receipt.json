@@ -1,0 +1,20 @@
+{
+  "id": "cave-interior",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9d2fe249-d2dc-4406-a0d1-6cee7e3898bd.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "prompt": "Use case: stylized-concept. Asset type: one reusable 16:9 lateral pixel-art cave background for The First Nine, target 1920x1080. Scene: true interior of a spacious Thornwake refuge cave; enclosing gray rock wall and continuous ceiling overhead, two gnarled roots frame a tall opening at the right end, neutral dim forest visible beyond. A perfectly level continuous walkable floor crosses the image at three quarters height; broad uncluttered interior space can later hold a wagon, campfire and eight lying patients. Camera: flat side view for a 2D platformer, NOT a receding central corridor or stairs. Style: deliberate large square pixel clusters, simple silhouettes, short cool gray-blue/black palette, minimal detail, no painterly texture. Ambient neutral cool lighting, no sunbeams, moon or glowing fire; compatible with later dynamic day/night. Lower quarter quiet dark earth. No people, animals, wagons, campfire, chests, bedding, tools, props, labels, lettering, UI, frame, collage, watermark. Background only.",
+  "visual_checks": {
+    "true_cave_interior": true,
+    "continuous_flat_floor": true,
+    "root_framed_exit": true,
+    "no_baked_actors_props_ui": true,
+    "pixel_clusters": true
+  },
+  "ratio": null
+}

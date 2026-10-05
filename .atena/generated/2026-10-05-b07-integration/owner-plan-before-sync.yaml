@@ -1,0 +1,751 @@
+﻿version: 2
+
+last_completed_plan:
+  id: "2026-10-04-b06-stonehook-foot-expedition"
+  spec: "[[2026-10-04-b06-stonehook-foot-expedition]]"
+  evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
+  instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
+  status: complete-implementation-merged
+  mode: guided
+  request_classification: NEW_PLAN
+  preparation_approved: true
+  preparation_authority: "Owner answered pode to preparing the proposed B-06 plan and English Opus prompt. This is preparation only, not implementation, publication or dispatch."
+  approval_mode: per-plan
+  approval_selection: owner-selected-option-1
+  approved: "2026-10-04"
+  approval_source: "Owner selected 1 in response to the question approving the presented B-06 implementation scope and choosing per-plan approval."
+  request_execution_classification: IN_PLAN
+  implementation_approved: true
+  execution_target: opus-5.5
+  documentation_publication_approved: true
+  documentation_publication_source: "Owner answered autorizado to publishing the three local documentation commits on main for Claude to read."
+  documentation_published: true
+  documentation_publication_branch: main
+  delivery_commit: "77ee387d5649a131ae20c5910b2dc7421c76f22f"
+  delivery_verified: true
+  push_approved: true
+  pull_request_approved: true
+  merge_approved: true
+  dispatch_approved: false
+  scope: "One reversible on-foot Thornwake-to-early-Stonehook corridor, gradual visual transition and one ore pickup; cave wagon/family stay fixed, existing camp simulation and safe/F4 restore are preserved."
+  blocking_gaps: []
+  checkpoint: complete
+  preparation_commit: "0a82ead8384969a11399f20ef3dcf3828734df27"
+  baseline_commit: "2f34635ff5adf735e51a7c144862e7c1bba37bed"
+  gameplay_baseline: "05eac1e7a639e213f39cff81b1e75305727ab4d0"
+  proposed_implementation_branch: codex/b06-stonehook-foot-expedition
+  implementation_branch: codex/b06-stonehook-foot-expedition
+  implementation_base: "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc"
+  implementation_commit: "42bddf87b64eafb2046a47b1f2695df3ad9d4075"
+  implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
+  implementation_published: true
+  branch_publication_approved: true
+  branch_publication_source: "Owner explicitly authorized a normal push of codex/b06-stonehook-foot-expedition to origin for review; no push to main, amend, force-push, PR, merge, deletion or B-07."
+  published_commit: "ccc4fcf69271d88e421e26a81841cf6cce834a37"
+  follow_up_commit: "d2012a1412f52d3066e4eff1216cfa9d57490acd"
+  follow_up_published: true
+  follow_up_publication_source: "Owner explicitly authorized a normal push of d2012a1 and 7c781ab to origin/codex/b06-stonehook-foot-expedition; no amend, force-push, main change, PR, merge, deletion or B-07."
+  latest_published_commit: "7de6d6658a2e8b7aea5954320ef29902094d7215"
+  isolation_follow_up_commit: "b446b7b507d6a5faa8fb2ac9d28197da34887e99"
+  isolation_follow_up_published: true
+  isolation_publication_source: "Owner explicitly authorized a normal push of b446b7b and 9640881; branch moved 7c781ab to 9640881; main unchanged at 7e477ba."
+  combat_isolation_follow_up: published-test-only
+  combat_isolation_follow_up_commit: "7de6d6658a2e8b7aea5954320ef29902094d7215"
+  combat_isolation_follow_up_published: true
+  combat_isolation_publication_source: "Owner separately authorized the normal push of 7de6d66; the feature branch was fast-forwarded from 9640881 to 7de6d66 and Atena independently confirmed the remote refs. Main unchanged at 7e477ba; no amend, force-push, PR, merge, deletion or B-07."
+  combat_isolation_scope: "Test-only wrapper combat_regression.gd over the unchanged historical combat validator: joypad motion bindings removed on the game's ready signal before any gameplay frame, proven by pulse 0 and opening state; combat-noise positive case and missing/late faulty controls. Production files unchanged."
+  windows_review_9640881: "Owner-supplied Atena findings (receipt not available in this checkout): native Windows Godot 4.7.2, headless 30/30, route 53/53, menus 33/33, geometry 46/46, facing 65/65 and 102/102, self-test and smoke pass, 12 faulty controls rejected; official combat 8/9 (out-of-reach miss message replaced by the dodge-cooldown message), so the full runner exited 1. A reviewer-only diagnostic with motion isolation passed 9/9 with a physical 0.21958 trigger; it does not replace the official 8/9. Not reproduced by the executor."
+  human_acceptance: accepted
+  human_acceptance_date: "2026-10-05"
+  human_acceptance_source: "Owner replied aprovado on 2026-10-05 after Atena's Windows report and visual/camera playtest recommendation. Overall human acceptance of the reviewed B-06 slice at 7de6d66 only; no item-by-item results, timings, additional engine runs or independently verified tested-build hash are inferred."
+  human_acceptance_limitations: "Documented limitations preserved: Lolth transparency in the foreground spans, far-edge clipping at x=2998, mirrored seam echo, camera and balance tuning, overlapping labels and in-memory saves."
+  isolation_follow_up_scope: "Test-only: route controller isolation before the first journey frame, idempotent suspension, deterministic stale-queue boundary check, live control and late_isolation faulty control, and a menu wrapper filtering joypad motion. Production code unchanged."
+  windows_review_7c781ab: "Official Atena runs, Windows, Godot 4.7.2, GTX 1650: headless B-06 30/30, route 50/51 (controller isolation), menus 32/33 (right-click parry), combat 9/9, geometry 46/46, facing 65/65 and 102/102, self-test and smoke pass, 11 faulty controls rejected, 8 readability checks passed and inspected. Separate non-official diagnostics: isolation before the opening skip 51/51; physical-controller filtering 33/33. Not reproduced by the executor."
+  follow_up_classification: IN_PLAN
+  follow_up_scope: "Validation portability (controller-isolated keyboard section, real-stop waits), foreground readability at x=1280 and the far limit with existing assets, evidence-capture correction and publication-record reconciliation. No B-06 expansion."
+  windows_review_7de6d66: "Atena's official Windows review of 7de6d66 on 2026-10-05 (external, not reproduced by the executor; the owner-local receipt .atena/evidence/2026-10-05-b06-combat-isolation-windows-review.md is absent from this checkout and was not read): Godot 4.7.2.stable.official.ed1daf0bf, native Windows x64, OpenGL compatibility, 1280x720, GTX 1650, NVIDIA driver 616.92. Full official runner exit 0; B-06 headless 30/30; rendered route 53/53; combat 9/9 normally and 9/9 under continuous synthetic trigger noise; menus 33/33; geometry 46/46; facing 65/65 headless and 102/102 rendered; full self-test and both 600-frame smoke runs passed; all 14 faulty controls rejected with genuine exit 1 and named failures; all 25 case records fresh Windows results without project diagnostics or process errors; published records validator exit 0 (39 links, scoped files, preserved completed history, saved results). Earlier Linux results and the historical Windows combat failure at 9640881 (8/9) are preserved, not overwritten."
+  documentation_reconciliation_push_authority: "Owner authorized one normal documentation commit and push of these operational records on codex/b06-stonehook-foot-expedition only, separate from the completed implementation publication. PR, merge and any later publication remain unauthorized; the push outcome is reported in the executor's response, not recorded here."
+  pull_request_state: merged
+  windows_review: "Reported by Atena for ccc4fcf on Windows, Godot 4.7.2, GTX 1650: headless B-06 30/30, rendered facing 102/102, combat/menus/geometry/self-tests and ten faulty controls passing; original route runner 36/40 from physical trigger noise and pre-stop measurement, 40/40 with filtered input and real-stop waits. Not reproduced by the executor."
+  human_review: accepted
+  validation: "Linux combat isolation follow-up, Godot 4.7.2 Xvfb llvmpipe: B-06 headless 30/30, rendered runtime 53/53, full self-test, combat 9/9 and combat-noise 9/9 via the isolation wrapper, menus 33/33, geometry 46/46, facing headless 65/65, both smoke runs; 14 faulty controls rejected. Rendered facing 101/102 is the known Linux software-OpenGL difference reproduced on 7e477ba; Windows facing 102/102 is Atena-reported."
+  steps: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]
+  batches: ["B-001-route-rendering", "B-002-camp-state", "B-003-validation-evidence"]
+  steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]
+  batches_completed: ["B-001-route-rendering", "B-002-camp-state", "B-003-validation-evidence"]
+  resolvable_defaults: "Approved route spans 1280+480+1280 world units with original cave at x=190 and floor y=555; legitimate Mark I/one cure/repair/safe return gates departure; one stable finite ore pickup, ongoing offscreen cave threats and restore to last valid cave snapshot. Technical/playtest defaults within this plan, not new canon."
+  deferred: "Stonehook combat/boss/shrine, Mark II and further cures, wagon travel, pullers/posts/missions, rope teleport, web gates, later regions, parry, new art/audio, disk saves and tuning."
+  delivery_gate: "Acceptance 2f34635, preparation 0a82ead and approval 77ee387 were normally pushed to origin/main and remote HEAD verified at 77ee387. This reconciliation clears documentation delivery; Opus must fetch/read it or a later descendant and verify the approved checkout before implementation."
+  standing_publication_authority: none
+  pull_request: "https://github.com/marizada86/the-first-nine/pull/6"
+  pull_request_number: 6
+  pull_request_head: "cc87e1c3d88c837e16aca8f39bf7f0870f5b1246"
+  pull_request_base: "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc"
+  pull_request_authority: "Owner explicitly authorized opening only the B-06 pull request into main (IN_PLAN); not a merge, push or dispatch authorization."
+  pull_request_checks: "Zero check runs and zero commit statuses; GitHub mergeable clean; no reviews or comments. The repository has no configured CI and no CI result is inferred."
+  merge_authority: "Owner separately authorized a regular merge of PR #6 preserving all eight commits and the feature branch; not squash or rebase."
+  merge_commit: "e304badbbd15c6ce2bd93b114006dd26c0c7391e"
+  merge_parents: ["7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc", "cc87e1c3d88c837e16aca8f39bf7f0870f5b1246"]
+  merge_verified: true
+  merged_at: "2026-10-05T10:37:46Z"
+  preserved_commits: ["42bddf8", "ccc4fcf", "d2012a1", "7c781ab", "b446b7b", "9640881", "7de6d66", "cc87e1c"]
+  feature_branch_preserved: true
+  merge_validation: "Remote main equals the merge commit; the merged tree 0065a0d7258519fa94e77c80e22c5f4428cb8aeb equals the reviewed PR head tree; all eight commits remain ancestors of main; remote codex/b06-stonehook-foot-expedition stays at cc87e1c. No new engine run was made for the PR, merge or closure."
+  closure_record_publication_approved: true
+  closure_record_publication_authority: "Owner authorized one documentation-only closure commit directly above the merge on main. Not standing push authority; its own hash and push outcome are reported by the executor and not recorded here."
+  next_recommendation: "Non-authorizing. Optionally playtest the merged B-01 to B-06 loop, decide whether to address the recorded visual and camera limitations, and scope a bounded proposal for the next Stonehook step. Any B-07 needs its own proposal, approval selection and approval; B-07 has not been started."
+  exception: "Publication of ccc4fcf, d2012a1, 7c781ab, b446b7b, 9640881, 7de6d66 and cc87e1c, the PR-only opening and the regular merge were each separately authorized; the single documentary closure commit is separately authorized. No gameplay, asset, canon, dependency, engine-test or saved-engine-result change in the closure, no CI claim, no new engine run, no branch deletion, no external dispatch and no B-07. Prior completed plans and history are preserved."
+
+completed_plan_history:
+  - id: "2026-10-04-enemy-facing-correction"
+    spec: "[[2026-10-04-enemy-facing-correction]]"
+    evidence: "[[2026-10-04-enemy-facing-correction]]"
+    status: complete-implementation-merged
+    mode: guided
+    request_classification: NEW_PLAN
+    approval_mode: per-plan
+    approval_selection: user-explicit-2026-10-04
+    approved: "2026-10-04"
+    request_execution_classification: IN_PLAN
+    implementation_approved: true
+    scope: "Track enemy facing and mirror existing sprites without changing geometry, reach, AI, controls, art or progression."
+    blocking_gaps: []
+    checkpoint: complete
+    steps: ["S-001-facing-and-rendering", "S-002-isolated-direction-validation", "S-003-regressions-evidence-review"]
+    batches: ["B-001-enemy-facing-correction"]
+    baseline_commit: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
+    implementation_branch: codex/enemy-facing-correction
+    implementation_commit: "e7812e6ac969e899292a6c0c4845769ccaba2404"
+    steps_completed: ["S-001", "S-002", "S-003"]
+    validation: "Godot 4.7.2: headless facing 65/65, rendered facing 102/102, 3 rejected faulty subclasses (exit 1), independent geometry 46/46, actual-input combat 9/9, menus 33/33, full self-test and normal/headless 600-frame smoke passed. Zero new gameplay alpha scans; scoped records and preserved completed history checked."
+    human_validation_accepted: true
+    human_validation_date: "2026-10-04"
+    human_validation_source: "Owner stated: aprovado. Accepted as IN_PLAN human review of e7812e6; no extra detailed tests or publication authority inferred."
+    known_limitations: "Thornwake 12 poses are raster-verified; generic retreat/legacy fallback are state-verified, not all prototype artwork. Rendering tests use Godot-owned captures, not sealed harness/GPU profiling. Balance and other deferred B-05 items unchanged."
+    push_approved: true
+    published: true
+    first_published_commit: "523960b3b3c83832edabda8298de76e767828c43"
+    publication_authority: "Owner explicitly authorized publishing the correction and records on codex/enemy-facing-correction, without PR or merge. IN_PLAN; approval is separate from execution and human acceptance."
+    publication: "Normal push created the feature branch at 523960b; reconciliation edb5623 and subsequently authorized receipt fb565d0 were pushed normally. Main stayed at 39cd7d3 until the separately authorized regular merge 7049063; no amend or force-push."
+    pull_request_approved: true
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/5"
+    pull_request_state: merged
+    pull_request_opening_head: "edb5623d2609152c7df5dffffe10a34e6f3e2ba0"
+    pull_request_head: "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"
+    pull_request_base: "39cd7d3d46a8afb3894889920e0840cbae573e7b"
+    pull_request_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
+    pull_request_authority: "Owner explicitly authorized opening the correction PR into main with an English description and without merge. Classified IN_PLAN; separate from earlier branch publication."
+    additional_record_push_approved: true
+    merge_approved: true
+    additional_record_push_authority: "Owner answered autorizados to publishing local receipt fb565d0 and regularly merging PR #5. IN_PLAN; not standing authorization for another documentation push."
+    additional_record_push_commit: "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"
+    merge_authority: "Same explicit owner approval authorized a regular merge after publishing fb565d0, preserving the branch and all four commits."
+    merge_commit: "7049063358132aac6d85aa69c0f06ae53efa98da"
+    merge_parents: ["39cd7d3d46a8afb3894889920e0840cbae573e7b", "fb565d0c430a8df3b0a12bd233c8a4109466f6a0"]
+    merge_verified: true
+    preserved_commits: ["e7812e6", "523960b", "edb5623", "fb565d0"]
+    feature_branch_preserved: true
+    merge_validation: "Remote main and fetched merge agree; merged tree equals fb565d0, all four commits remain ancestors. GitHub closed/merged true. Final pre-merge head had zero check runs and statuses; no CI or fresh engine pass inferred."
+    closure_record_publication_approved: true
+    closure_record_published: true
+    closure_record_commit: "c230975c3ead74ccf4f7844c6e93e51697bed1ca"
+    closure_record_publication_authority: "Owner separately answered autorizado to publishing documentary closure c230975. This includes bounded reconciliation of that publication, not new work or standing push authority."
+    closure_record_publication: "Normal push published c230975 on main above regular merge 7049063; exact remote refs verified and feature branch preserved at fb565d0. Publication reconciliation is documentation only, without amend or force-push."
+    integrated_playtest_accepted: true
+    integrated_playtest_date: "2026-10-04"
+    integrated_playtest_source: "Owner replied tudo funcionando after the recommended final Thornwake playtest. Overall human acceptance only; no item-by-item results, timings, fresh engine runs or tested-build hash inferred."
+    integrated_playtest_context_commit: "05eac1e7a639e213f39cff81b1e75305727ab4d0"
+    integrated_playtest_receipt: "[[2026-10-04-enemy-facing-pull-request]]"
+    integrated_playtest_receipt_push_approved: false
+    next_recommendation: "Owner reports Thornwake functioning. Optionally prepare a bounded B-06 proposal for on-foot access to initial Stonehook and return to the stationed cave wagon, following approved continuous-world canon. No B-06 plan, execution, Mark II, wagon travel, parry or publication is authorized by the playtest confirmation."
+    exception: "Only the separately authorized documentary closure and its publication reconciliation were published. No new runtime, art, dependency, gameplay rule, balance, unlock, external dispatch, unrelated push, B-06 or branch deletion. Prior completed plans and deferred items remain preserved."
+  - id: "2026-10-04-b05-thornwake-combat-readability"
+    spec: "[[2026-10-04-b05-thornwake-combat-readability]]"
+    evidence: "[[2026-10-04-b05-thornwake-combat-readability]]"
+    implementation_instruction: "[[2026-10-04-b05-thornwake-combat-readability-instruction]]"
+    status: complete-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approval_selection: user-explicit-2026-10-04
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Reproduce and fix Thornwake primary melee damage/readability and attack, dodge and hurt visual separation while preserving B-01 through B-04 and F4 playtesting."
+    blocking_gaps: []
+    source_publication_approved: true
+    source_published: "origin/main contains F4 commit 4ef349b and B-05 approval commit a31c12c; verified by push on 2026-10-04."
+    implementation_approved: true
+    source_push_approved: true
+    implementation_push_approved: true
+    implementation_branch: codex/b05-controls-wagon-inventory
+    published_commit: "e5832da604226b33f424d18248b24f0825c568aa"
+    branch_publication: "Original 4400b59 was published on b05-thornwake-combat-readability; current merged PR head is e5832da on codex/b05-controls-wagon-inventory. Both branches are retained."
+    review_evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
+    approved_revision: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
+    revision_execution: local
+    revision_approval: "Owner approved local independent inputs, inventory and wagon management before returning to Claude; later IN_PLAN clarifications defer parry to a higher Mark and request clean dash and larger enemy proportions."
+    followup_push_approved: true
+    followup_push_authority: "Historical revision publication approval on 2026-10-04. PR, merge and closure received separate later owner approvals, recorded below."
+    revision_published: true
+    revision_first_published_commit: "bb4a0d4830563dfa487409eaab852aefe4ca5d81"
+    revision_publication: "First revision publication at bb4a0d4; publication reconciliation at e6b614c; corrected geometry b8823c7 and acceptance/publication records e5832da later merged through PR #4."
+    pull_request_approved: true
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/4"
+    pull_request_base: "main at 9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+    pull_request_head: "e5832da604226b33f424d18248b24f0825c568aa"
+    pull_request_branch: codex/b05-controls-wagon-inventory
+    pull_request_status: merged
+    pull_request_opening_authority: "Owner explicitly authorized opening the B-05 PR into main without merge. IN_PLAN; no additional push, auto-merge, deletion or B-06."
+    pull_request_evidence: "[[2026-10-04-b05-pull-request]]"
+    pull_request_receipt_published_before_closure: false
+    merge_approved: true
+    original_merge_authority: "Owner explicitly authorized a regular merge of PR #4 preserving six commits and both branches. IN_PLAN; documentation closure/push, deletion and B-06 remain separate."
+    merge_commit: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
+    merge_parents: ["9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b", "e5832da604226b33f424d18248b24f0825c568aa"]
+    merge_verified: true
+    merged_main: "bc7796e0fad33f5d7b773af3eaefc07749ec81b4"
+    preserved_commits: ["4400b59", "43ab112", "bb4a0d4", "e6b614c", "b8823c7", "e5832da"]
+    feature_branches_preserved: true
+    local_pr_receipt_commit: "f0ee44f36a1ed4ef47463d4c198b25fb927ef201"
+    documentation_closure_approved: true
+    batch: B-05
+    checkpoint: complete
+    implementation_evidence: "[[2026-10-04-b05-thornwake-combat-readability-implementation]]"
+    implementation_base: "9ea4fc1bbfabd5be50a2d7f334b9b11325b8a77b"
+    prior_validation: "Original B-05: Godot 4.7.2 self-tests and 11 negative controls passed; Windows real-input check passed with fixed FPS and exposed a frame-count timeout at ordinary speed. Preserved as historical evidence."
+    revision_branch: codex/b05-controls-wagon-inventory
+    revision_base: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+    revision_commit: "43ab1128f62f164bdcce64d92ea1fe8bd0dfef4c"
+    human_validation_accepted: true
+    human_validation_date: "2026-10-04"
+    human_validation_source: "Owner stated: tudo validado, vamos continuar. Accepted as IN_PLAN human review; no specific additional test results inferred."
+    published_revision_branch: codex/b05-controls-wagon-inventory
+    revision_evidence: "[[2026-10-04-b05-local-controls-inventory-wagon-implementation]]"
+    revision_validation: "Godot 4.7.2 Windows: B-01 through B-05, playtester and full self-test passed; normal-speed combat 9/9 and controls/menu 33/33 passed; normal and headless 600-frame smoke runs passed; captures inspected. No fixed FPS required."
+    deferred_parry: "Reserved for a higher Mark; exact unlock and mechanics need a future approved plan. Right-click is inactive now."
+    geometry_correction_spec: "[[2026-10-04-b05-enemy-geometry-followup]]"
+    geometry_correction_classification: IN_PLAN
+    geometry_correction_approved: true
+    geometry_correction_base: "e6b614c3d3554d142fe93a90c05347176796d731"
+    geometry_correction_authority: "Initial scope authorized the local geometry fix and tests only. Later explicit owner approvals authorized its publication, PR #4, regular merge and documentation closure; no deletion or B-06."
+    geometry_correction_push_approved: true
+    geometry_correction_evidence: "[[2026-10-04-b05-enemy-geometry-followup]]"
+    geometry_correction_status: complete-implementation-merged
+    geometry_correction_published: true
+    geometry_correction_commit: "b8823c70c637fdbef9f36e6cf0da0925369faa47"
+    geometry_correction_human_validation_accepted: true
+    geometry_correction_human_validation_date: "2026-10-04"
+    geometry_correction_human_validation_source: "Owner stated: conferido. Vamos passar o próximo prompt para o opus 5.5. Accepted as IN_PLAN visual-review confirmation; no additional detailed tests inferred."
+    geometry_correction_publication_authority: "Owner separately authorized normal branch publication of the correction and acceptance records, followed by explicit PR, merge and main-documentation-closure approvals."
+    geometry_correction_publication: "Historical geometry publication verified at b8823c7 with main then at 9ea4fc1; records at e5832da and regular merge bc7796e integrated that corrected version into main."
+    geometry_correction_validation: "Godot 4.7.2: independent geometry 46/46 normal/headless; 5/5 deliberately faulty subclasses rejected; actual-input combat 9/9 and controls/menu 33/33; B-01 through B-05, F4 and full self-test passed; normal/headless 600-frame smoke passed. Prepared 22 cells, final normal preparation 645.064 ms; gameplay-added scans 0. Original 11 B-05 mutations not rerun."
+    geometry_correction_deferred: "Contact-radius balance, inventory pause changes, prototype higher-Mark Shift abilities, HUD overlap and further progression remain outside this correction."
+    final_technical_review: "Owner-delivered Opus report reviewed e5832da, found no blockers and reported Linux Godot 4.7.2 reproduction of 46/46 geometry, 5 rejected faults, 9/9 combat, 33/33 menus, self-tests and smoke runs. Reviewer evidence, not fresh Atena or CI results. Historical/current record clarity is reconciled in this closure."
+    pull_request_opening_checks: "At PR opening, GitHub: mergeable=true, merged=false; 0 check runs, 0 statuses and 0 PR-triggered workflow runs. Historical pre-merge check; no CI success inferred."
+    merge_validation: "GitHub confirms closed/merged=true at bc7796e; local fetch and remote refs agree, merged tree is identical to e5832da, all six PR commits remain ancestors of main and both remote feature branches remain at their original heads. No new engine runs or extra file-content change claimed."
+    original_implementation_branch: b05-thornwake-combat-readability
+    original_published_commit: "4400b59aab49ed2860c5c6369ba79b386a7d2e9a"
+    merged_feature_head: "e5832da604226b33f424d18248b24f0825c568aa"
+    closure_evidence: "[[2026-10-04-b05-documentation-closure]]"
+    documentation_closure_authority: "Owner explicitly authorized closing B-05, fixing the record inconsistencies and publishing documentation only on main. IN_PLAN; no runtime change or B-06."
+    documentation_publication_approved: true
+    pull_request_receipt_included_in_closure: true
+    preserved_local_merge_receipt_commit: "3b37c9f5e24b15ddb98fccd9963c9e04c9f7fcde"
+    receipt_recovery_branch: codex/b05-controls-wagon-inventory
+    closure_validation: "ADD contract/links, completed-plan and exact prior-history preservation checks, saved runtime evidence diagnostics, whitespace and documentation-only Git boundary checks. No new engine run; existing validated merge tree remains unchanged outside .atena."
+    next_recommendation: "Optional separately approved 1280x720 balance/feel playtest of pose-dependent reach, unchanged 35 px contact damage, approved inventory pause and startup latency; outcome would be a tuning plan, not new features or automatic B-06."
+    exception: "No new runtime, art, dependencies, canonical gameplay rules, travel, Mark power, ally roles, disk persistence, branch deletion or B-06. All deferred items remain visible."
+  - id: "2026-10-04-b04-thornwake-mark-one-stabilization"
+    spec: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+    status: complete-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approval_selection: user-explicit-2026-10-04
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Stabilize post-Mark-I Thornwake saving, failure restoration, objectives, and bounded playtest tuning; no progression expansion or art."
+    blocking_gaps: []
+    evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization]]"
+    implementation_evidence: "[[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]]"
+    implementation_branch: b04-thornwake-mark-one-stabilization
+    implementation_base: "9683a8c"
+    implementation_commit: "0a897fc (amended with the record reconciliation into the published commit)"
+    published_commit: "dfdf0be6b1e59b1158f172a10a12b8b84d90d076"
+    survivability_fix_commit: "b090847ec56bafb783c747755b00bce8243fa5ab"
+    validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, B-04, prototype suites); 13 B-04 negative controls and 5 B-03 regression controls failed as expected; 9/9 real-input runtime checks passed at 1280x720; normal 1280x720 and headless 600-frame runs exited 0 without script errors. Survivability fix: self-test passed, 3 terminal-capture negative controls failed as expected, the 13 B-04 controls still failed as expected, 9/9 runtime checks passed, and normal and headless runs exited 0."
+    known_limitations: "In-memory safe-wagon state only; restore uses the standard camp spawn point; night snapshots restore with waves cleared; no further Thornwake goal after the 3/3 cap; unchanged defeat-card wording and art; tuning needs a human playtest."
+    branch_publication_approved: true
+    branch_published: "origin/b04-thornwake-mark-one-stabilization at dfdf0be6b1e59b1158f172a10a12b8b84d90d076, then the approved survivability fix at b090847ec56bafb783c747755b00bce8243fa5ab"
+    remote_review_accepted: true
+    documentation_commit: "a8c2ac185516ae6b2a3b6198a0102c303cc358a5"
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/3"
+    merge_commit: "36039cb2ad2803b0ac0c9d30f2d8dd9db158ce57"
+    preserved_commits: ["dfdf0be", "b090847", "a8c2ac1"]
+    feature_branch_preserved: true
+    next_recommendation: "A short human playtest of B-01 to B-04 at 1280x720 before planning further progression, recorded in [[2026-10-04-b04-thornwake-mark-one-stabilization-implementation]] as a non-authorizing recommendation; any next batch requires its own approved plan."
+    exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, pullers, new art or art admission, later regions, disk persistence, and deletion remain out of scope."
+  - id: "2026-10-04-b03-first-boss-mark-and-cure"
+    spec: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
+    status: complete-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Implement approved B-03 Antlered Hunger, neutral Shar shell, Mark I, and one cure; no later progression, art admission, or later-region content."
+    blocking_gaps: []
+    evidence: "[[2026-10-04-b03-first-boss-mark-and-cure]]"
+    implementation_evidence: "[[2026-10-04-b03-first-boss-implementation]]"
+    implementation_branch: b03-first-boss-mark-and-cure
+    implementation_base: "15e39eb"
+    published_commit: "4ac235960b52643562bd8f36036b21d5269ba3ef"
+    documentation_commit: "0b6d745246a0ba86028799a654c997b5b2ec8297"
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/2"
+    merge_commit: "ca8ea24645a85ec6616f32905ecd25f49feb5006"
+    feature_branch_preserved: true
+    validation: "Godot 4.7.2 headless self-test passed (B-01, B-02, B-03, prototype suites); 13 B-03 negative controls failed as expected; 14/14 real-input runtime checks passed; normal 1280x720 and headless 600-frame runs exited 0 without script errors."
+    next_recommendation: "B-04 post-Mark-I Thornwake stabilization and persistence, recorded in [[2026-10-04-b03-first-boss-implementation]] as a non-authorizing recommendation; it requires its own approved plan."
+    exception: "Travel, Stonehook access, Mark II and later progression, further cures, ally posts, new art or art admission, later-region content, and deletion remain out of scope."
+  - id: "2026-10-04-b02-thornwake-day-night-tutorial"
+    spec: "[[2026-10-04-b02-thornwake-day-night-tutorial]]"
+    status: complete-external-implementation-merged
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-04"
+    request_classification: NEW_PLAN
+    scope: "Implement the approved pre-boss Thornwake day/night tutorial through Wheel Kit repair and one defense; no B-03 content, art admission, push, PR, merge, or publication."
+    blocking_gaps: []
+    evidence: "[[2026-10-04-b02-thornwake-day-night-tutorial]]"
+    exception: "B-03 content, art admission, later regions, publication, and deletion remain out of scope."
+  - id: "2026-10-03-b00-opening-ending-and-production-resolution"
+    spec: "[[2026-10-03-b00-opening-ending-and-production-resolution]]"
+    status: complete-canon-reconciliation-and-handoff-preparation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Record approved B-00 canon resolutions and prepare a non-dispatched B-01 instruction for Opus; no runtime or art execution."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-b00-opening-ending-and-production-resolution]]"
+    exception: "Runtime implementation, art generation, asset admission, external dispatch, publication, and deletion remain out of scope."
+  - id: "2026-10-03-hq-narrative-revision"
+    spec: "[[2026-10-03-hq-narrative-revision]]"
+    status: complete-canon-and-reference-generation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Record approved three-HQ narrative revision and generate three replacement reference boards; no runtime admission or external dispatch."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-hq-narrative-revision]]"
+    exception: "Godot changes, runtime admission, external dispatch, publication, and deletion remain out of scope."
+  - id: "2026-10-03-caravan-cave-visual-series"
+    spec: "[[2026-10-03-caravan-cave-visual-series]]"
+    status: complete-reference-generation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate and automatically curate four cave/caravan/prologue visual reference batches; no runtime admission or external dispatch."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-caravan-cave-visual-series]]"
+    exception: "Runtime admission, final atlas conversion, Godot changes, external dispatch, dependencies, publication and deletion remain out of scope."
+  - id: "2026-10-03-caravan-relics-cave-prologue-and-travel-clarification"
+    spec: "[[2026-10-03-caravan-relics-cave-prologue-and-travel-clarification]]"
+    status: complete-canon-and-handoff-prepared
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Consolidate approved caravan/relics/cave-prologue/travel canon and prepare a non-dispatched Opus documentation delta; no runtime implementation."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-caravan-relics-cave-prologue-and-travel]]"
+    exception: "Godot implementation, asset generation, external dispatch, dependencies, publication and deletion remain out of scope."
+  - id: "2026-10-03-comprehensive-opus-readiness-audit"
+    spec: "[[2026-10-03-comprehensive-opus-readiness-audit]]"
+    status: complete-ready-with-conditions-for-opus-handoff
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Audit local project readiness and prepare an evidence-based Opus 5.5 handoff gate; no external dispatch or project modifications."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-comprehensive-opus-readiness-audit]]"
+    exception: "External dispatch, build/submission, runtime changes, asset changes, dependencies, canonical changes, publication and deletion remain out of scope."
+  - id: "2026-10-03-p17-hollowroot-playable-chapter"
+    spec: "[[2026-10-03-p17-hollowroot-playable-chapter-plan]]"
+    status: complete-user-approved-runtime-migration
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Make Hollowroot the next playable chapter after Stonehook using approved runtime_v2 assets."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p17-hollowroot-playable-chapter]]"
+    exception: "Glass Dunes, Dreamwater, audio and final balance remain deferred."
+  - id: "2026-10-03-p14-runtime-v2-core-migration"
+    spec: "[[2026-10-03-p14-runtime-v2-core-migration-plan]]"
+    status: complete-user-approved-runtime-migration
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Create runtime_v2 core assets and migrate Thornwake rendering only; preserve legacy assets."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p14-runtime-v2-core-migration]]"
+    exception: "All other asset families and runtime changes remain deferred."
+  - id: "2026-10-03-p13-runtime-art-readiness-audit"
+    spec: "[[2026-10-03-p13-runtime-art-readiness-audit-plan]]"
+    status: complete-user-approved-audit
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Audit runtime art against P0-P11 masters only; no runtime modification."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p13-runtime-art-readiness-audit]]"
+    exception: "Production and runtime asset admission remain deferred."
+  - id: "2026-10-03-p12-opus-technical-package-reconciliation"
+    spec: "[[2026-10-03-p12-opus-technical-package-reconciliation-plan]]"
+    status: complete-user-approved-documentation
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Reconcile the Opus technical package with P0-P11 masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p12-opus-technical-package-reconciliation]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p11-route-landmark-masters"
+    spec: "[[2026-10-03-p11-route-landmark-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual route-landmark reference masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p11-route-landmark-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p10-survival-interface-masters"
+    spec: "[[2026-10-03-p10-survival-interface-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual survival interface masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p10-survival-interface-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p9-regional-environment-prop-masters"
+    spec: "[[2026-10-03-p9-regional-environment-prop-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual regional environment prop masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p9-regional-environment-prop-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p8-gameplay-vfx-masters"
+    spec: "[[2026-10-03-p8-gameplay-vfx-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual gameplay VFX masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p8-gameplay-vfx-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p7-salvage-web-gate-prop-masters"
+    spec: "[[2026-10-03-p7-salvage-web-gate-prop-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate ten individual salvage and web-gate prop masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p7-salvage-web-gate-prop-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p6-individual-character-sprite-masters"
+    spec: "[[2026-10-03-p6-individual-character-sprite-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate eighteen individual character sprite masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p6-individual-character-sprite-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p5-individual-monster-sprite-masters"
+    spec: "[[2026-10-03-p5-individual-monster-sprite-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate fifteen individual monster sprite masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p5-individual-monster-sprite-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-opus-final-reference-handoff"
+    spec: "[[2026-10-03-opus-final-reference-handoff-plan]]"
+    status: complete-prepared-not-dispatched
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Prepare an Opus 5.5 final-reference handoff only; no runtime asset admission or external dispatch."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-opus-final-reference-handoff]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p4-marks-shar-dream-production-masters"
+    spec: "[[2026-10-03-p4-marks-shar-dream-production-masters-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five P4 narrative production-reference masters only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p4-marks-shar-dream-production-masters]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-continuous-ground-web-gates"
+    spec: "[[2026-10-03-continuous-ground-web-gates-plan]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Record continuous caravan-ground canon and revise four P3 terrain/transition masters as v2; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-continuous-ground-web-gates]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-p0-p2-style-rebase"
+    spec: "[[2026-10-03-p0-p2-style-rebase]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Rebase fifteen P0-P2 production masters to the approved lateral visual direction; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-p0-p2-style-rebase]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-dreamwater-reference-refresh"
+    spec: "[[2026-10-03-minimal-dreamwater-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Dreamwater reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-dreamwater-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-glass-dunes-reference-refresh"
+    spec: "[[2026-10-03-minimal-glass-dunes-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Glass Dunes reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-glass-dunes-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-hollowroot-reference-refresh"
+    spec: "[[2026-10-03-minimal-hollowroot-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Hollowroot reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-hollowroot-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-minimal-stonehook-reference-refresh"
+    spec: "[[2026-10-03-minimal-stonehook-reference-refresh]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: NEW_PLAN
+    scope: "Generate five minimal Stonehook reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-minimal-stonehook-reference-refresh]]"
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-interface-vfx-reference-batch-i"
+    spec: "[[2026-10-03-interface-vfx-reference-batch-i]]"
+    status: complete-user-approved-reference-only
+    mode: guided
+    approved: "2026-10-03"
+    request_classification: IN_PLAN
+    scope: "Prepare four minimal interface and VFX reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-interface-vfx-minimal-delta]]"
+    legacy_approval_preserved: true
+    exception: "Runtime asset admission remains deferred."
+  - id: "2026-10-03-dreamwater-reference-batch-h"
+    spec: "[[2026-10-03-dreamwater-reference-batch-h]]"
+    status: complete-autocurated-reference
+    mode: guided
+    approved: "2026-10-03"
+    request_classification: IN_PLAN
+    scope: "Generate and automatically validate five Dreamwater reference boards only; no runtime asset admission."
+    blocking_gaps: []
+    evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
+    exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
+active_plan:
+  id: "2026-10-05-b07-stonehook-first-encounter"
+  spec: "[[2026-10-05-b07-stonehook-first-encounter]]"
+  evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
+  prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
+  instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
+  status: approved-awaiting-document-delivery
+  mode: guided
+  request_classification: NEW_PLAN
+  preparation_approved: true
+  preparation_authority: "Owner replied aprovado, vamos continuar after integrated B-06 synchronization; authorizes next-proposal preparation, not its execution or publication."
+  approval_mode: per-plan
+  approval_selection: owner-selected-option-1
+  approved: "2026-10-05"
+  approval_source: "Owner answered 1 to approving the presented B-07 scope and selecting per-plan approval. Publication, PR, merge and external dispatch were not authorized."
+  request_execution_classification: IN_PLAN
+  implementation_approved: true
+  execution_target: opus-5.5
+  baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
+  proposed_implementation_branch: codex/b07-stonehook-first-encounter
+  checkpoint: awaiting-authorized-document-delivery-verification
+  documentation_publication_approved: true
+  documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
+  publication_snapshot: pre-push
+  documentation_published: false
+  delivery_verified: false
+  scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
+  blocking_gaps: []
+  steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
+  batches: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
+  steps_completed: []
+  batches_completed: []
+  resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
+  deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
+  push_approved: false
+  pull_request_approved: false
+  merge_approved: false
+  dispatch_approved: false
+  standing_publication_authority: none
+plan_cursor: B-07-approved-awaiting-document-delivery
+last_direct_execution:
+  id: "2026-10-04-playtester-debug-controls"
+  spec: "[[2026-10-04-playtester-debug-controls]]"
+  evidence: "[[2026-10-04-playtester-debug-controls]]"
+  origin: post-hoc
+  implementation_preceded_spec: true
+  mode: direct
+  request_classification: NEW_DIRECT_REQUEST
+  execution_authority: direct-user-request-2026-10-04
+  status: complete-local-validation
+  implementation_base: "787b1a1"
+  scope: "Debug-only English F4 panel: reversible Mark 0-9 and next-day/night controls; no canonical progression changes. Initial F8 binding corrected after user feedback."
+  validation: "Godot 4.7.2: B-01 to B-04, playtester, and full self-test passed; F4 binding and normal-rendering keyboard/mouse runner passed at 1280x720; captures inspected."
+  published: true
+  publication: "Approved F4 source commit 4ef349b was pushed to origin/main with B-05 approval record a31c12c on 2026-10-04."
+  committed: true
+  blocking_gaps: []
+  exception: "No B-05 implementation, automatic cures, travel unlock, new art, animation fix, disk persistence, or release export. B-04 completion history is unchanged."
+suspension: null
+deferred_requests:
+  - id: DEV-001-b08-preparation
+    request_classification: PLAN_DEVIATION
+    request: "Prepare the next B-08 Cliff Harrier plan and English handoff while B-07 executes externally."
+    authority: "Owner selected option 1 for preparation now only, not implementation, approval-mode selection, publication or external dispatch."
+    spec: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
+    evidence: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
+    instruction: "[[2026-10-05-b08-stonehook-cliff-harrier-instruction]]"
+    status: proposal-prepared-execution-deferred
+    preparation_complete: true
+    deviation_resolution: prepared-now-returned-to-b07
+    active_plan_replaced: false
+    external_executor_interrupted: false
+    depends_on: "2026-10-05-b07-stonehook-first-encounter"
+    dependency_state: "Owner reports B-07 execution; actual final implementation, validation, acceptance, merge and closure are not yet verified here."
+    execution_gate: "B-07 accepted/merged/closed, B-08 dependency review, zero blocking execution gaps, separate scope approval/mode selection and future activation/delivery."
+    approval_mode: unconfigured
+    implementation_approved: false
+    push_approved: false
+    pull_request_approved: false
+    merge_approved: false
+    dispatch_approved: false
+pending_plan_change_requests: []
+approved_change_requests:
+  - id: "2026-10-04-b05-controls-and-wagon-menu-revision"
+    request_classification: PLAN_CHANGE_REQUEST
+    spec: "[[2026-10-04-b05-controls-and-wagon-menu-revision]]"
+    canonical_decision: "[[2026-10-04-separated-controls-and-wagon-management]]"
+    evidence: "[[2026-10-04-b05-controls-and-wagon-menu-review]]"
+    status: complete-implementation-merged
+    approval_mode: per-plan
+    approved: "2026-10-04"
+    approval_source: "Explicit owner request to implement here, then prepare results for Claude; subsequent instructions defer parry and request clean dash and larger enemies."
+    scope: "Independent inputs, Lolth inventory and wagon management; generic restore visuals, elapsed-time runtime validation, clean dash and Thornwake enemy proportions. Parry deferred."
+    blocking_gaps: []
+    published: true
+    publication_branch: codex/b05-controls-wagon-inventory
+  - id: "2026-10-03-minimal-world-and-threat-assets"
+    spec: "[[2026-10-03-minimal-world-and-threat-assets]]"
+    generated_reference_receipt: "[[2026-10-03-minimal-world-and-threat-batch-w]]"
+    evidence: "[[2026-10-03-minimal-world-and-threat-assets]]"
+    status: complete-user-approved-reference-only
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Generate and curate minimal reference boards for Thornwake wagon/camp, terrain, salvage pickups, and three regional threats; no runtime admission."
+  - id: "2026-10-03-minimal-character-asset-overhaul"
+    spec: "[[2026-10-03-minimal-character-asset-overhaul]]"
+    canonical_decision: "[[2026-10-03-minimal-character-visual-direction]]"
+    generated_reference_receipt: "[[2026-10-03-minimal-character-batch-m]]"
+    conversion_contract: "[[m-06-production-grid]]"
+    evidence: "[[2026-10-03-minimal-character-asset-overhaul]]"
+    status: complete-references-generated-curated-not-admitted
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Replace character reference direction for Lolth, Shar, and the eight Thalestriel in plagued and cured forms with minimal pixel-art references and a conversion contract; no runtime admission."
+  - id: "2026-10-03-caravan-survival-slow-travel-revision"
+    spec: "[[2026-10-03-caravan-survival-slow-travel-revision]]"
+    canonical_decision: "[[2026-10-03-caravan-survival-slow-travel]]"
+    implementation_manifest: "[[2026-10-03-opus-5-5-caravan-implementation-manifest]]"
+    prepared_briefs: "[[2026-10-03-opus-5-5-caravan-reference-briefs]]"
+    evidence: "[[2026-10-03-caravan-survival-slow-travel-preparation]]"
+    generated_reference_receipt: "[[2026-10-03-caravan-reference-batch-c]]"
+    status: complete-references-generated-curated-not-admitted
+    approval_mode: per-plan
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Revise survival, cures, wagon capacity, foot expeditions, slow horse-less travel, puller assignment, location attraction, and gradient world transitions; prepare—but do not execute—Opus 5.5 reference and implementation handoffs."
+  - id: "2026-10-03-decision-reconciliation-and-opus-reference-plan"
+    spec: "[[2026-10-03-decision-reconciliation-and-opus-reference-plan]]"
+    reconciliation_register: "[[2026-10-03-decision-reconciliation-register]]"
+    reference_manifest: "[[2026-10-03-opus-5-5-reference-manifest-reconciled]]"
+    evidence: "[[2026-10-03-decision-reconciliation-and-opus-reference-plan]]"
+    approval_mode: per-plan
+    canonical_resolution: "[[2026-10-03-reconciliation-resolutions]]"
+    approved_reference_manifest: "[[2026-10-03-opus-reference-manifest-approval]]"
+    prepared_briefs: "[[2026-10-03-opus-p0-reference-briefs]]"
+    status: complete-briefs-prepared-generation-not-authorized
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Audit all canonical decisions and relevant specifications, reconcile story and mechanics, then prepare—but do not generate—an approved reference manifest for Opus 5.5."
+  - id: "2026-10-03-caravan-action-loop-adaptation"
+    spec: "[[2026-10-03-caravan-action-loop-adaptation]]"
+    implementation_spec: "[[2026-10-03-thornwake-caravan-action-loop-implementation]]"
+    status: implemented-awaiting-human-validation
+    evidence: "[[2026-10-03-thornwake-caravan-action-loop]]"
+    approved: "2026-10-03"
+    request_classification: PLAN_CHANGE_REQUEST
+    scope: "Adapt Thornwake into a compact caravan action/defense loop; preserve the active interface/VFX reference batch and all canonical gameplay boundaries."

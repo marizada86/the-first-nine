@@ -1,0 +1,1108 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "ai_generated": true,
+  "approval": "per-plan owner option 1 on 2026-10-05",
+  "prompts": "prompts.json",
+  "stages": {
+    "3": {
+      "status": "accepted-human-reviewed",
+      "human_acceptance": "accepted",
+      "attempts": [
+        {
+          "attempt": 1,
+          "file": "mark-3-attempt-1.png",
+          "sha256": "319ac79839735777a5c2221f901759bb0a834f0b4a0485081d74b3906f2a72f8",
+          "source": "assets/runtime_v2/characters/lolth/lolth-drow-core-sheet-v1.png",
+          "source_sha256": "8da11089f0e8507e8c64aaab0e240f4c2e13acc837c229772798950c35f73fe8",
+          "assessment": "Rejected: ornate costume and inadequate separation.",
+          "status": "rejected"
+        },
+        {
+          "attempt": 2,
+          "file": "mark-3-attempt-2.png",
+          "sha256": "218f6abd98c0e78a21a2a1dc335c093a2f003502614ad2523a15932db8bdd6c5",
+          "source": ".atena/generated/2026-10-03-p6-individual-character-sprite-masters/lolth-drow-master-v1.png",
+          "source_sha256": "c23194fef06a810e3db34addb7835b8e9d177fbe7363051ba675e9457a771f97",
+          "assessment": "Rejected: excessive detail and unequal generated grid; not a runtime atlas.",
+          "status": "rejected"
+        },
+        {
+          "attempt": 3,
+          "file": "mark-3-attempt-3.png",
+          "sha256": "cacb62eb7ed75794478b155f35799b246e9a9479f45103eea1a29d9f79ce8cb7",
+          "source": null,
+          "source_sha256": null,
+          "assessment": "Selected for technical conversion: simplified silhouette and 36 separate characters.",
+          "status": "selected-for-conversion"
+        }
+      ],
+      "outputs": [
+        {
+          "file": "lolth-mark-3-atlas-v1.png",
+          "sha256": "58456e7ae00e7a93dd1329798b5b9d194d7bee84aa8647421c77691ae23b8e8a",
+          "bytes": 37171
+        },
+        {
+          "file": "lolth-mark-3-master-v1.png",
+          "sha256": "16ac4ea1d92081caf5a74f5eda411b3562fb8a81accbb33312572b349dd5edb1",
+          "bytes": 3263
+        },
+        {
+          "file": "lolth-mark-3-animation-v1.json",
+          "sha256": "5c1b84671633d81f2634c32291a92a7afd34030e122ede59188d604e5d152b66",
+          "bytes": 757
+        },
+        {
+          "file": "lolth-mark-3-animations-v1.gif",
+          "sha256": "0481c78f4abbb5b92be28846745539cdb6d752993c3efa7960f952b3fd81bf4c",
+          "bytes": 187839
+        }
+      ],
+      "validation": {
+        "atlas_size": [
+          672,
+          672
+        ],
+        "palette": 12,
+        "unique_frames": 36,
+        "cell_bounds": [
+          [
+            38,
+            59,
+            63,
+            100
+          ],
+          [
+            38,
+            59,
+            63,
+            100
+          ],
+          [
+            37,
+            59,
+            63,
+            100
+          ],
+          [
+            38,
+            59,
+            64,
+            100
+          ],
+          [
+            37,
+            61,
+            69,
+            100
+          ],
+          [
+            37,
+            61,
+            70,
+            100
+          ],
+          [
+            39,
+            61,
+            75,
+            100
+          ],
+          [
+            49,
+            60,
+            83,
+            100
+          ],
+          [
+            44,
+            59,
+            77,
+            100
+          ],
+          [
+            39,
+            60,
+            73,
+            100
+          ],
+          [
+            36,
+            60,
+            70,
+            100
+          ],
+          [
+            35,
+            63,
+            76,
+            100
+          ],
+          [
+            35,
+            49,
+            99,
+            100
+          ],
+          [
+            37,
+            59,
+            69,
+            100
+          ],
+          [
+            37,
+            63,
+            67,
+            100
+          ],
+          [
+            40,
+            69,
+            71,
+            100
+          ],
+          [
+            37,
+            59,
+            70,
+            100
+          ],
+          [
+            40,
+            64,
+            69,
+            100
+          ],
+          [
+            40,
+            72,
+            73,
+            100
+          ],
+          [
+            40,
+            56,
+            68,
+            100
+          ],
+          [
+            45,
+            57,
+            73,
+            100
+          ],
+          [
+            42,
+            55,
+            74,
+            100
+          ],
+          [
+            38,
+            56,
+            72,
+            100
+          ],
+          [
+            40,
+            61,
+            70,
+            100
+          ],
+          [
+            37,
+            61,
+            67,
+            100
+          ],
+          [
+            37,
+            59,
+            64,
+            100
+          ],
+          [
+            37,
+            68,
+            75,
+            100
+          ],
+          [
+            36,
+            67,
+            77,
+            100
+          ],
+          [
+            40,
+            63,
+            79,
+            100
+          ],
+          [
+            37,
+            57,
+            70,
+            100
+          ],
+          [
+            33,
+            54,
+            72,
+            100
+          ],
+          [
+            37,
+            57,
+            64,
+            100
+          ],
+          [
+            32,
+            63,
+            72,
+            100
+          ],
+          [
+            34,
+            60,
+            69,
+            100
+          ],
+          [
+            28,
+            50,
+            90,
+            101
+          ],
+          [
+            37,
+            57,
+            64,
+            100
+          ]
+        ],
+        "sha256": "58456e7ae00e7a93dd1329798b5b9d194d7bee84aa8647421c77691ae23b8e8a",
+        "clips": {
+          "collect": [
+            17,
+            3,
+            10.0,
+            false
+          ],
+          "dodge": [
+            14,
+            3,
+            10.0,
+            false
+          ],
+          "fall": [
+            22,
+            2,
+            8.0,
+            true
+          ],
+          "hurt": [
+            24,
+            2,
+            4.444444,
+            false
+          ],
+          "idle": [
+            0,
+            4,
+            5.0,
+            true
+          ],
+          "rise": [
+            20,
+            2,
+            8.0,
+            true
+          ],
+          "run": [
+            4,
+            6,
+            10.0,
+            true
+          ],
+          "signature": [
+            32,
+            4,
+            6.0,
+            false
+          ],
+          "strike": [
+            10,
+            4,
+            14.285714,
+            false
+          ],
+          "transform": [
+            26,
+            6,
+            7.5,
+            false
+          ]
+        }
+      },
+      "measured_raw_standing_body_height": 107,
+      "normalized_idle_heights": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "body_ratio_to_baseline": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "5": {
+      "status": "accepted-human-reviewed",
+      "human_acceptance": "accepted",
+      "attempts": [
+        {
+          "attempt": 1,
+          "file": "mark-5-attempt-1.png",
+          "sha256": "2b1864089b869309e9fa95406588543615da45d33b39c15ae36cfd70d26b8e78",
+          "source": ".atena/generated/2026-10-05-lolth-three-transformations/mark-3-attempt-2.png",
+          "source_sha256": "218f6abd98c0e78a21a2a1dc335c093a2f003502614ad2523a15932db8bdd6c5",
+          "assessment": "Rejected: inherited detail, unstable spacing.",
+          "status": "rejected"
+        },
+        {
+          "attempt": 2,
+          "file": "mark-5-attempt-2.png",
+          "sha256": "143b36460396c05d4af4eabe523bcf83a1b1b6459170541b42a71a4fd0e79bc3",
+          "source": ".atena/generated/2026-10-05-lolth-three-transformations/mark-3-attempt-3.png",
+          "source_sha256": "cacb62eb7ed75794478b155f35799b246e9a9479f45103eea1a29d9f79ce8cb7",
+          "assessment": "Rejected: excessive signature burst and ambiguous appendage spaces.",
+          "status": "rejected"
+        },
+        {
+          "attempt": 3,
+          "file": "mark-5-attempt-3.png",
+          "sha256": "cc12bd6491bc6989a9639afa4677aa13f336c9996a3b9dbdbca48bf52d05f00c",
+          "source": ".atena/generated/2026-10-05-lolth-three-transformations/mark-5-attempt-2.png",
+          "source_sha256": "143b36460396c05d4af4eabe523bcf83a1b1b6459170541b42a71a4fd0e79bc3",
+          "assessment": "Selected for conversion: four distinct appendage tips; smaller effects.",
+          "status": "selected-for-conversion"
+        }
+      ],
+      "outputs": [
+        {
+          "file": "lolth-mark-5-atlas-v1.png",
+          "sha256": "d8bc6d6cfd3ae2ea00b58e9d6f91650f3890ebdce0aa7317541b4e27d5f6e0bb",
+          "bytes": 45960
+        },
+        {
+          "file": "lolth-mark-5-master-v1.png",
+          "sha256": "a55343ee5759ed0c211934cd89d05a9e9c597f91b609fb4b605f292fd5a9f885",
+          "bytes": 3825
+        },
+        {
+          "file": "lolth-mark-5-animation-v1.json",
+          "sha256": "a0be2fb833e254d85b718154edd6bc656fd47b818467e93783a1761f244b9be0",
+          "bytes": 757
+        },
+        {
+          "file": "lolth-mark-5-animations-v1.gif",
+          "sha256": "84dc3b7f68df28f73dc1c43033212966776734aa8d62cc12d084a5e07e867507",
+          "bytes": 225358
+        }
+      ],
+      "validation": {
+        "atlas_size": [
+          672,
+          672
+        ],
+        "palette": 12,
+        "unique_frames": 36,
+        "cell_bounds": [
+          [
+            32,
+            54,
+            73,
+            100
+          ],
+          [
+            30,
+            54,
+            70,
+            100
+          ],
+          [
+            32,
+            54,
+            72,
+            100
+          ],
+          [
+            30,
+            54,
+            72,
+            100
+          ],
+          [
+            32,
+            55,
+            77,
+            100
+          ],
+          [
+            31,
+            57,
+            78,
+            100
+          ],
+          [
+            34,
+            57,
+            80,
+            100
+          ],
+          [
+            40,
+            57,
+            90,
+            100
+          ],
+          [
+            37,
+            57,
+            85,
+            100
+          ],
+          [
+            29,
+            56,
+            80,
+            100
+          ],
+          [
+            28,
+            56,
+            76,
+            100
+          ],
+          [
+            30,
+            59,
+            79,
+            100
+          ],
+          [
+            31,
+            57,
+            85,
+            100
+          ],
+          [
+            30,
+            55,
+            72,
+            100
+          ],
+          [
+            31,
+            55,
+            77,
+            100
+          ],
+          [
+            28,
+            60,
+            76,
+            100
+          ],
+          [
+            32,
+            57,
+            77,
+            100
+          ],
+          [
+            32,
+            59,
+            78,
+            100
+          ],
+          [
+            30,
+            66,
+            76,
+            100
+          ],
+          [
+            33,
+            55,
+            73,
+            100
+          ],
+          [
+            37,
+            54,
+            81,
+            100
+          ],
+          [
+            36,
+            53,
+            79,
+            100
+          ],
+          [
+            32,
+            55,
+            78,
+            100
+          ],
+          [
+            32,
+            57,
+            77,
+            100
+          ],
+          [
+            34,
+            58,
+            79,
+            100
+          ],
+          [
+            30,
+            57,
+            71,
+            100
+          ],
+          [
+            34,
+            60,
+            76,
+            100
+          ],
+          [
+            33,
+            56,
+            82,
+            100
+          ],
+          [
+            28,
+            57,
+            79,
+            100
+          ],
+          [
+            29,
+            55,
+            78,
+            100
+          ],
+          [
+            31,
+            57,
+            75,
+            100
+          ],
+          [
+            30,
+            56,
+            72,
+            100
+          ],
+          [
+            28,
+            58,
+            82,
+            100
+          ],
+          [
+            30,
+            57,
+            78,
+            100
+          ],
+          [
+            29,
+            59,
+            85,
+            100
+          ],
+          [
+            31,
+            56,
+            75,
+            100
+          ]
+        ],
+        "sha256": "d8bc6d6cfd3ae2ea00b58e9d6f91650f3890ebdce0aa7317541b4e27d5f6e0bb",
+        "clips": {
+          "collect": [
+            17,
+            3,
+            10.0,
+            false
+          ],
+          "dodge": [
+            14,
+            3,
+            10.0,
+            false
+          ],
+          "fall": [
+            22,
+            2,
+            8.0,
+            true
+          ],
+          "hurt": [
+            24,
+            2,
+            4.444444,
+            false
+          ],
+          "idle": [
+            0,
+            4,
+            5.0,
+            true
+          ],
+          "rise": [
+            20,
+            2,
+            8.0,
+            true
+          ],
+          "run": [
+            4,
+            6,
+            10.0,
+            true
+          ],
+          "signature": [
+            32,
+            4,
+            6.0,
+            false
+          ],
+          "strike": [
+            10,
+            4,
+            14.285714,
+            false
+          ],
+          "transform": [
+            26,
+            6,
+            7.5,
+            false
+          ]
+        }
+      },
+      "measured_raw_standing_body_height": 111,
+      "normalized_idle_heights": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "body_ratio_to_baseline": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "7": {
+      "status": "accepted-human-reviewed",
+      "human_acceptance": "accepted",
+      "attempts": [
+        {
+          "attempt": 1,
+          "file": "mark-7-attempt-1.png",
+          "sha256": "92268626463ddc972a56cff78cdc8980e279437edbd7b0c2330e73a30a36f5ca",
+          "source": ".atena/generated/2026-10-05-lolth-three-transformations/mark-5-attempt-1.png",
+          "source_sha256": "2b1864089b869309e9fa95406588543615da45d33b39c15ae36cfd70d26b8e78",
+          "assessment": "Rejected: excessive aura and unclear limb separation.",
+          "status": "rejected"
+        },
+        {
+          "attempt": 2,
+          "file": "mark-7-attempt-2.png",
+          "sha256": "f067c54a31295f8f54f829fa5cded00ebe521bea72672e70df72f3c16a6d7b94",
+          "source": ".atena/generated/2026-10-03-p6-individual-character-sprite-masters/lolth-drow-master-v1.png",
+          "source_sha256": "c23194fef06a810e3db34addb7835b8e9d177fbe7363051ba675e9457a771f97",
+          "assessment": "Rejected: eight limb tips not clearly distinguishable.",
+          "status": "rejected"
+        },
+        {
+          "attempt": 3,
+          "file": "mark-7-attempt-3.png",
+          "sha256": "3c192a1300bad51b10de42afcc19fc93cb729c578072c309ed6b8a201ea9d44f",
+          "source": ".atena/generated/2026-10-05-lolth-three-transformations/mark-5-attempt-3.png",
+          "source_sha256": "cc12bd6491bc6989a9639afa4677aa13f336c9996a3b9dbdbca48bf52d05f00c",
+          "assessment": "Selected for conversion: eight separate appendage tips; 36 disconnected primary silhouettes.",
+          "status": "selected-for-conversion"
+        }
+      ],
+      "outputs": [
+        {
+          "file": "lolth-mark-7-atlas-v1.png",
+          "sha256": "e1a8debe85197ec422f6842034f953aa27297083f724a7266c2ef2976ba009e3",
+          "bytes": 58232
+        },
+        {
+          "file": "lolth-mark-7-master-v1.png",
+          "sha256": "d4ca796c5110293d13d451f7a4035684d183a25c9e3eb6ac38ed8507c55bc2d3",
+          "bytes": 4409
+        },
+        {
+          "file": "lolth-mark-7-animation-v1.json",
+          "sha256": "7507059973242210851afbe3a6b042655a68ffdccda084e406cadb4008a1148b",
+          "bytes": 757
+        },
+        {
+          "file": "lolth-mark-7-animations-v1.gif",
+          "sha256": "87545e1e16a49830184cf3b00fd7216c692ea00867eb9bdd65d35c838c352805",
+          "bytes": 280318
+        }
+      ],
+      "validation": {
+        "atlas_size": [
+          672,
+          672
+        ],
+        "palette": 12,
+        "unique_frames": 36,
+        "cell_bounds": [
+          [
+            28,
+            53,
+            78,
+            100
+          ],
+          [
+            26,
+            54,
+            77,
+            100
+          ],
+          [
+            27,
+            53,
+            78,
+            100
+          ],
+          [
+            25,
+            53,
+            78,
+            100
+          ],
+          [
+            30,
+            54,
+            85,
+            100
+          ],
+          [
+            29,
+            52,
+            85,
+            100
+          ],
+          [
+            32,
+            53,
+            86,
+            100
+          ],
+          [
+            39,
+            52,
+            95,
+            100
+          ],
+          [
+            35,
+            53,
+            91,
+            100
+          ],
+          [
+            29,
+            53,
+            84,
+            100
+          ],
+          [
+            26,
+            52,
+            79,
+            100
+          ],
+          [
+            28,
+            54,
+            82,
+            100
+          ],
+          [
+            30,
+            54,
+            101,
+            100
+          ],
+          [
+            25,
+            52,
+            78,
+            100
+          ],
+          [
+            28,
+            52,
+            83,
+            100
+          ],
+          [
+            28,
+            56,
+            84,
+            100
+          ],
+          [
+            28,
+            53,
+            83,
+            100
+          ],
+          [
+            35,
+            54,
+            90,
+            100
+          ],
+          [
+            29,
+            61,
+            84,
+            100
+          ],
+          [
+            25,
+            53,
+            80,
+            100
+          ],
+          [
+            38,
+            52,
+            91,
+            100
+          ],
+          [
+            32,
+            49,
+            82,
+            100
+          ],
+          [
+            30,
+            51,
+            84,
+            100
+          ],
+          [
+            28,
+            54,
+            86,
+            100
+          ],
+          [
+            30,
+            56,
+            83,
+            100
+          ],
+          [
+            25,
+            55,
+            79,
+            100
+          ],
+          [
+            30,
+            61,
+            84,
+            100
+          ],
+          [
+            30,
+            56,
+            83,
+            100
+          ],
+          [
+            32,
+            57,
+            88,
+            100
+          ],
+          [
+            33,
+            55,
+            88,
+            100
+          ],
+          [
+            26,
+            54,
+            81,
+            100
+          ],
+          [
+            24,
+            54,
+            79,
+            100
+          ],
+          [
+            27,
+            56,
+            102,
+            100
+          ],
+          [
+            29,
+            54,
+            82,
+            100
+          ],
+          [
+            28,
+            55,
+            83,
+            100
+          ],
+          [
+            27,
+            52,
+            81,
+            100
+          ]
+        ],
+        "sha256": "e1a8debe85197ec422f6842034f953aa27297083f724a7266c2ef2976ba009e3",
+        "clips": {
+          "collect": [
+            17,
+            3,
+            10.0,
+            false
+          ],
+          "dodge": [
+            14,
+            3,
+            10.0,
+            false
+          ],
+          "fall": [
+            22,
+            2,
+            8.0,
+            true
+          ],
+          "hurt": [
+            24,
+            2,
+            4.444444,
+            false
+          ],
+          "idle": [
+            0,
+            4,
+            5.0,
+            true
+          ],
+          "rise": [
+            20,
+            2,
+            8.0,
+            true
+          ],
+          "run": [
+            4,
+            6,
+            10.0,
+            true
+          ],
+          "signature": [
+            32,
+            4,
+            6.0,
+            false
+          ],
+          "strike": [
+            10,
+            4,
+            14.285714,
+            false
+          ],
+          "transform": [
+            26,
+            6,
+            7.5,
+            false
+          ]
+        }
+      },
+      "measured_raw_standing_body_height": 112,
+      "normalized_idle_heights": [
+        40,
+        40,
+        41,
+        40
+      ],
+      "body_ratio_to_baseline": [
+        1.0,
+        1.0,
+        1.025,
+        1.0
+      ]
+    }
+  },
+  "runtime_checks": {
+    "passed": 196,
+    "failed": []
+  },
+  "captures": 63,
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "normalization": "Component isolation, uniform stage scale, binary alpha, shared 12-color palette; no poses synthesized from a single still.",
+  "human_acceptance": {
+    "status": "accepted",
+    "date": "2026-10-05",
+    "source": "Owner replied aprovados after delivery of the three skins and animated previews.",
+    "owner_response": "aprovados",
+    "marks": [
+      3,
+      5,
+      7
+    ],
+    "scope": "The three delivered Lolth skins and animations with bounded local presentation integration."
+  }
+}

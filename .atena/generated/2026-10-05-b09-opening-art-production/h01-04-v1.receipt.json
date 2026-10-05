@@ -1,0 +1,20 @@
+{
+  "id": "h01-04",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": null,
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-7bc2bb40-8a1a-4f28-ba0c-0f5c4afdf266.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Creature attack on the travelling family. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: Nocturnal forest road, several Briar Hounds attack the crowded elven caravan. Lolth in foreground, long white hair, pale elf skin, open black hooded mantle, opaque slate trousers and boots, furiously raises fist toward the sky while protecting the same open relic wagon. Many elves in background; no one has transformed into a drow.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-04-v1.png",
+  "visual_checks": {
+    "single_panel": true,
+    "no_text": true,
+    "clothing": true,
+    "narrative_beat": true,
+    "lolth_empty_hands": true
+  },
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

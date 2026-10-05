@@ -1,0 +1,131 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-05-nolf-final-shadow-spider.md",
+    "plan_id": "2026-10-05-b09-opening-art-production",
+    "batch_id": "ART-003"
+  },
+  "art_direction": "Owner-approved final form: complete non-humanoid shadow spider with eight legs. Preserve existing English ending, eight drows, open relic wagon and Dream City. No runtime admission.",
+  "output_dir": ".atena/generated/2026-10-05-b09-opening-art-production",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "h03-01",
+      "kind": "comic-panel",
+      "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. Transformation panel: one solitary complete shadow spider in the forest, replacing the central standing woman and all her attached appendages. Give the spider enough width to separate four legs on each side; exactly eight walking legs, small mouthparts must not look like extra legs. Retain the forest, moon, dark purple lighting and quiet foreground. No allies or wagon.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v2.png",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "complete-non-humanoid-spider",
+        "eight-readable-legs",
+        "one-nolf-no-human-duplicate",
+        "eight-drows-where-shown",
+        "open-wagon-where-shown",
+        "no-baked-text",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Nolf's transformation was complete."
+    },
+    {
+      "id": "h03-02",
+      "kind": "comic-panel",
+      "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. Portal panel: image 2 is ONLY the new spider identity reference. Keep the oval gold-violet portal and its view of the Golden City of Dreams unchanged. Replace the left humanoid woman and her appendages with the same complete shadow spider on the forest floor, turned toward the portal. Do not add arms or a hand to open it; the scene shows the already opened portal and spider. Exactly eight legs with separate silhouettes, no other people.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "complete-non-humanoid-spider",
+        "eight-readable-legs",
+        "one-nolf-no-human-duplicate",
+        "eight-drows-where-shown",
+        "open-wagon-where-shown",
+        "no-baked-text",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "She opened a passage to the Dream Plane."
+    },
+    {
+      "id": "h03-03",
+      "kind": "comic-panel",
+      "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. United crossing panel: image 2 is ONLY the new spider identity reference. Keep the EIGHT existing white-haired drow companions and the ONE OPEN WOODEN WAGON filled with relic chests. Replace only the rightmost crowned woman and her attached spider appendages with the same complete shadow spider, walking through the threshold beside the family. Exactly eight humanoids plus one spider equals all nine family members. Never add a ninth humanoid. Keep the eight clothing identities olive ranger, brown fighter, red scarf, brown hood, gray mage, pale-green healer, dark-green scout, purple scholar. Wagon has no horse or canopy. Widen spacing only if needed so spider legs do not hide anyone.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v2.png",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "complete-non-humanoid-spider",
+        "eight-readable-legs",
+        "one-nolf-no-human-duplicate",
+        "eight-drows-where-shown",
+        "open-wagon-where-shown",
+        "no-baked-text",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "All nine crossed together. No one, and no relic, was left behind."
+    },
+    {
+      "id": "h03-04",
+      "kind": "comic-panel",
+      "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. Dream City arrival panel: image 2 is ONLY the new spider identity reference. Remove only the central crowned humanoid woman and her old appendages; the other EIGHT white-haired drow companions stay. Place the same complete shadow spider on the terrace with them, adjust their spacing minimally so all eight companions and the spider remain clearly readable. Preserve the ONE OPEN WOODEN RELIC WAGON and the gold/lavender Dream City. Exactly eight humanoids, one spider, one wagon; no extra residents. Show spider's eight legs without overlap mistaken for an ally.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "complete-non-humanoid-spider",
+        "eight-readable-legs",
+        "one-nolf-no-human-duplicate",
+        "eight-drows-where-shown",
+        "open-wagon-where-shown",
+        "no-baked-text",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "In the Golden City of Dreams, they found their home."
+    },
+    {
+      "id": "h03-05",
+      "kind": "comic-panel",
+      "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. Collective custody panel: image 2 is ONLY the new spider identity reference. Replace the left standing crowned woman and her old appendages with the same complete shadow spider, resting next to the group on the terrace. No human arm or hand, no handover gesture. Keep the SAME SHORT violet-tipped WAND lying on the central LOW RELIC CHEST before all EIGHT seated drow companions, visibly in their shared custody. Preserve their eight distinct clothing identities and the single open relic wagon behind. Nolf remains beside them as the spider; no portal exit, no humanoid Nolf duplicate, no new magic effect.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v2.png",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "complete-non-humanoid-spider",
+        "eight-readable-legs",
+        "one-nolf-no-human-duplicate",
+        "eight-drows-where-shown",
+        "open-wagon-where-shown",
+        "no-baked-text",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "XIAR'S KISS remained in the eight drows' care. Nolf remained with them."
+    }
+  ],
+  "scale_sheet": {
+    "id": "lolth-common-anatomical-baseline-40-logical-pixels",
+    "body_height": 40,
+    "source": ".atena/specs/2026-10-05-lolth-three-transformations.md",
+    "measurement_gate": "Normalize common body baseline after measured source landmarks; do not accept an unmeasurable candidate."
+  },
+  "revision_spec": ".atena/specs/2026-10-05-b09-final-shadow-spider-art-revision.md",
+  "prior_attempts_per_item": 1
+}

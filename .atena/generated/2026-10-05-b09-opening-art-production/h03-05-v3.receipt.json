@@ -1,0 +1,30 @@
+{
+  "id": "h03-05",
+  "attempt": 3,
+  "status": "generated-normalized-awaiting-owner-review",
+  "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+  "reason": "Duplicated brown hood removed: exactly eight companions, one integrated Nolf, shared short wand and open relic wagon.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-05705ccf-f457-4dfc-a3ca-c787ed8c51b4.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+  "prompt": "Use case: precise-object-edit. Correct only TWO mistakes in Image 1, the ending collective-custody panel. (1) There are NINE seated drow companions because a brown-hooded person was duplicated. REMOVE the SECOND brown-hooded companion immediately between the first brown hood and the gray-robed mage. Keep exactly EIGHT seated companions, left-to-right: olive ranger, brown fighter, red scarf, ONE brown hood, gray mage, pale-green healer, dark-green scout, purple scholar. No new faces, no substitute figure in the gap. (2) The shadow-spider creature at the left is clipped. Pull back the framing enough to show her entire abdomen and all eight spider legs inside the frame with visible left margin, while keeping all eight companions visible. Keep her EXACT existing integrated drow-front anatomy, silver hair, opaque white segmented chitin, shadow abdomen; no separate standing Nolf, no rider, no redesign. Preserve one open wooden relic wagon, the violet-tipped SHORT WAND on the same LOW CHEST in the group's shared custody and the Dream City background. Same landscape pixel art, no text, no balloons, no new props. Nolf plus EIGHT companions only.",
+  "source_references": [
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v2.png"
+  ],
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "declared_ratio": null,
+  "measured_ratio": null,
+  "ground_pivot": "not-applicable-narrative-panel",
+  "visual_checks": {
+    "project_anatomy": true,
+    "one_nolf": true,
+    "clothing": true,
+    "family_count": 8,
+    "open_wagon": true,
+    "no_text": true,
+    "framing": true,
+    "leg_visibility": "Some far-side or lower leg segments are occluded by perspective, shadow or foreground companions. No independent anatomy segmentation test is claimed."
+  }
+}

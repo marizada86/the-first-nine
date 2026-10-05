@@ -1,74 +1,162 @@
 ﻿version: 2
 
 last_completed_plan:
-  id: "2026-10-05-b07-stonehook-first-encounter"
-  spec: "[[2026-10-05-b07-stonehook-first-encounter]]"
-  evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
-  prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
-  instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
-  status: complete-implementation-merged
+  id: "2026-10-05-b09-opening-art-production"
+  spec: "[[2026-10-05-b09-opening-art-production]]"
+  evidence: "[[2026-10-05-b09-opening-art-production]]"
+  approval_record: "[[2026-10-05-b09-opening-art-production-approval]]"
+  status: complete-art-human-accepted
   mode: guided
-  request_classification: NEW_PLAN
-  preparation_approved: true
-  preparation_authority: "Owner replied aprovado, vamos continuar after integrated B-06 synchronization; authorizes next-proposal preparation, not its execution or publication."
+  request_classification: PLAN_CHANGE_REQUEST
   approval_mode: per-plan
-  approval_selection: owner-selected-option-1
-  approved: "2026-10-05"
-  approval_source: "Owner answered 1 to approving the presented B-07 scope and selecting per-plan approval. Publication, PR, merge and external dispatch were not authorized."
-  request_execution_classification: IN_PLAN
   implementation_approved: true
-  execution_target: opus-5.5
-  baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
-  proposed_implementation_branch: codex/b07-stonehook-first-encounter
+  production_approved: true
+  approved: "2026-10-05"
+  approval_source: "Owner selected per-plan approval, then stated the Lolth visuals were finished and asked to continue."
+  dependency_state: "Lolth visual plan is locally completed with human review pending; active slot was cleared before activation."
   checkpoint: complete
-  documentation_publication_approved: true
-  documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
-  publication_snapshot: delivered-and-verified
-  documentation_published: true
-  delivery_commit: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
-  delivery_verified: true
-  delivery_verification: "Owner handoff supplied fcc98b63e1919c54b6df563c8de0c7173a7affcb. Executor fetched origin: origin/main equals it, its parent is e189184 and the committed delivery checker passed (8 package files, 22 links). The pre-push snapshot fields described the earlier checkpoint; the local delivery checkpoint is cleared without a further publication commit."
-  implementation_branch: codex/b07-stonehook-first-encounter
-  implementation_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
-  implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
-  implementation_committed: true
-  implementation_published: true
-  human_acceptance: accepted
-  scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
+  final_form_revision_spec: "[[2026-10-05-b09-final-shadow-spider-art-revision]]"
+  final_form_revision_evidence: "[[2026-10-05-b09-final-shadow-spider-art-revision]]"
+  final_form_revision_status: complete-art-human-accepted
+  final_form_human_acceptance: accepted
+  final_form_acceptance_authority: "Owner replied aprovado after receiving the five revised ending panels."
+  final_form_acceptance_date: "2026-10-05"
+  final_form_reference: "assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png"
+  final_form_clarification: "Owner specified the existing integrated drow body as spider head/front, superseding the ordinary-spider interpretation."
+  ending_review_receipt: ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json"
+  final_form_revision_execution_approved: true
+  final_form_revision_approved: "2026-10-05"
+  final_form_revision_authority: "Owner replied aprovado, refaça os 5 finais."
+  current_execution_classification: IN_PLAN
+  batches: [ART-001, ART-002, ART-003, ART-004, ART-005, ART-006]
+  batches_completed: [ART-001, ART-002, ART-003, ART-004, ART-005, ART-006]
+  generation_attempts: 44
+  selected_art_targets: 30
+  human_accepted_targets: 30
+  human_review_pending_targets: 0
+  package_selection: ".atena/generated/2026-10-05-b09-opening-art-production/package-selection-v2.json"
+  package_technical_receipt: ".atena/generated/2026-10-05-b09-opening-art-production/package-technical-v2.json"
+  package_validation_receipt: ".atena/generated/2026-10-05-b09-opening-art-production/package-validation-v2.json"
+  package_review_guide: ".atena/generated/2026-10-05-b09-opening-art-production/README.md"
   blocking_gaps: []
-  steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
-  batches: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
-  steps_completed: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
-  batches_completed: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
-  resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
-  deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
-  push_approved: true
-  pull_request_approved: true
-  merge_approved: true
+  runtime_admission_approved: false
+  publication_approved: false
+  push_approved: false
+  merge_approved: false
   dispatch_approved: false
-  standing_publication_authority: none
-  implementation_adjustments: "Within the approved defaults: crawler home x=2520 (proposed 2340) and a clear patrol span 2400-2860 inside the foothills, because the existing foothill foreground overlay is nearly opaque at x 1800-2200 and 2880-3040; one strike removes one existing hurt (1 of 3 health), the spec's 12-health wording having no counterpart in the 3-health model; lunge contact is tested after each frame's motion. Review required."
-  validation: "Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected."
-  next_recommendation: "Preparation only: revise B-08 against this integrated base and present it for separate scope/mode approval and authorized document delivery. No B-08 implementation."
-  implementation_commit: "4da953cd34469b8024eb2d3831ba7c8ae06cb34a"
-  human_acceptance_date: "2026-10-05"
-  human_acceptance_source: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
-  integration_authority: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
-  windows_review_receipt: "[[2026-10-05-b07-windows-review]]"
-  pull_request: "https://github.com/marizada86/the-first-nine/pull/7"
-  pull_request_number: 7
-  pull_request_head: "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"
-  pull_request_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
-  merge_commit: "2684dac846bba30576eafb459f4ca7db039c83a3"
-  merge_parents: ["fcc98b63e1919c54b6df563c8de0c7173a7affcb", "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"]
-  merged_at: "2026-10-05T13:14:03Z"
-  feature_branch_preserved: true
-  preserved_commits: ["4da953cd34469b8024eb2d3831ba7c8ae06cb34a", "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"]
-  pull_request_checks: "GitHub clean/mergeable before merge; no reviews and no check runs. No CI claim."
-  closure_record_publication_approved: true
-  closure_record_publication_authority: "Owner aceito, borah authorized documentary closure publication on main as part of the bounded B-07 integration bundle. No standing push or B-08 execution authority."
+
+  naming_revision: 2026-10-05-nolf-xiar-naming
+  naming_revision_classification: PLAN_CHANGE_REQUEST
+  naming_revision_approved: true
+  naming_revision_status: complete-local-validation
+  naming_revision_evidence: .atena/evidence/2026-10-05-nolf-xiar-naming.json
+  naming_revision_approval_mode: per-plan
+  naming_revision_authority: Owner explicitly instructed Nolf, Xiar and Xiar's kiss, retaining all other names.
+  completed: "2026-10-05"
+  human_acceptance: accepted
+  completion_scope: offline-art-only
+  acceptance_authority: "Owner replied aprovado to the remaining twenty-five images; all thirty selected images are accepted."
+  acceptance_receipt: ".atena/generated/2026-10-05-b09-opening-art-production/package-acceptance-v1.json"
+  closure_validation_receipt: ".atena/generated/2026-10-05-b09-opening-art-production/art-closure-validation-v1.json"
+  gameplay_implementation_approved: false
+
 
 completed_plan_history:
+  - id: "2026-10-05-lolth-three-transformations"
+    spec: "[[2026-10-05-lolth-three-transformations]]"
+    evidence: "[[2026-10-05-lolth-three-transformations-production]]"
+    canonical_decision: "[[2026-10-05-lolth-three-transformation-visual-stages]]"
+    status: complete-human-accepted
+    mode: direct-analysis-then-approved-plan
+    request_classification: NEW_DIRECT_REQUEST
+    request_execution_classification: IN_PLAN
+    approval_mode: per-plan
+    implementation_approved: true
+    approved: "2026-10-05"
+    approval_source: "Owner replied 1 to the presented visual direction, entire scope and approval selection."
+    checkpoint: complete-human-accepted
+    steps: ["S-001", "S-002", "S-003", "S-004"]
+    batches: ["B-001", "B-002", "B-003", "B-004"]
+    steps_completed: ["S-001", "S-002", "S-003", "S-004"]
+    batches_completed: ["B-001", "B-002", "B-003", "B-004"]
+    blocking_gaps: []
+    scope: "Three additional Lolth skins at Marks III/V/VII, 108 animation frames, animated previews and bounded local presentation integration."
+    validation: "Godot 4.7.2 Windows GTX 1650: 196/196 forms assertions, full self-test, combat 9/9, menus 33/33, geometry 46/46, rendered enemy facing 102/102, 63 fresh form/cure captures; 108 distinct normalized frames, 12 colors, transparent gutters."
+    human_acceptance: accepted
+    human_acceptance_date: "2026-10-05"
+    human_acceptance_source: "Owner replied aprovados after delivery of the three skins and animated previews."
+    publication_approved: false
+    push_approved: false
+    merge_approved: false
+    dispatch_approved: false
+    published: false
+    deferred: "Full Mark IX spider art, new powers, broad original-skin animation rewrites and external publication."
+  - id: "2026-10-05-b07-stonehook-first-encounter"
+    spec: "[[2026-10-05-b07-stonehook-first-encounter]]"
+    evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
+    prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
+    instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
+    status: complete-implementation-merged
+    mode: guided
+    request_classification: NEW_PLAN
+    preparation_approved: true
+    preparation_authority: "Owner replied aprovado, vamos continuar after integrated B-06 synchronization; authorizes next-proposal preparation, not its execution or publication."
+    approval_mode: per-plan
+    approval_selection: owner-selected-option-1
+    approved: "2026-10-05"
+    approval_source: "Owner answered 1 to approving the presented B-07 scope and selecting per-plan approval. Publication, PR, merge and external dispatch were not authorized."
+    request_execution_classification: IN_PLAN
+    implementation_approved: true
+    execution_target: opus-5.5
+    baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
+    proposed_implementation_branch: codex/b07-stonehook-first-encounter
+    checkpoint: complete
+    documentation_publication_approved: true
+    documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
+    publication_snapshot: delivered-and-verified
+    documentation_published: true
+    delivery_commit: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+    delivery_verified: true
+    delivery_verification: "Owner handoff supplied fcc98b63e1919c54b6df563c8de0c7173a7affcb. Executor fetched origin: origin/main equals it, its parent is e189184 and the committed delivery checker passed (8 package files, 22 links). The pre-push snapshot fields described the earlier checkpoint; the local delivery checkpoint is cleared without a further publication commit."
+    implementation_branch: codex/b07-stonehook-first-encounter
+    implementation_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+    implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+    implementation_committed: true
+    implementation_published: true
+    human_acceptance: accepted
+    scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
+    blocking_gaps: []
+    steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
+    batches: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
+    steps_completed: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
+    batches_completed: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
+    resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
+    deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
+    push_approved: true
+    pull_request_approved: true
+    merge_approved: true
+    dispatch_approved: false
+    standing_publication_authority: none
+    implementation_adjustments: "Within the approved defaults: crawler home x=2520 (proposed 2340) and a clear patrol span 2400-2860 inside the foothills, because the existing foothill foreground overlay is nearly opaque at x 1800-2200 and 2880-3040; one strike removes one existing hurt (1 of 3 health), the spec's 12-health wording having no counterpart in the 3-health model; lunge contact is tested after each frame's motion. Review required."
+    validation: "Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected."
+    next_recommendation: "Preparation only: revise B-08 against this integrated base and present it for separate scope/mode approval and authorized document delivery. No B-08 implementation."
+    implementation_commit: "4da953cd34469b8024eb2d3831ba7c8ae06cb34a"
+    human_acceptance_date: "2026-10-05"
+    human_acceptance_source: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
+    integration_authority: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
+    windows_review_receipt: "[[2026-10-05-b07-windows-review]]"
+    pull_request: "https://github.com/marizada86/the-first-nine/pull/7"
+    pull_request_number: 7
+    pull_request_head: "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"
+    pull_request_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+    merge_commit: "2684dac846bba30576eafb459f4ca7db039c83a3"
+    merge_parents: ["fcc98b63e1919c54b6df563c8de0c7173a7affcb", "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"]
+    merged_at: "2026-10-05T13:14:03Z"
+    feature_branch_preserved: true
+    preserved_commits: ["4da953cd34469b8024eb2d3831ba7c8ae06cb34a", "523421ebbf3a0c70fd14ce7664a570ebbe12ccbe"]
+    pull_request_checks: "GitHub clean/mergeable before merge; no reviews and no check runs. No CI claim."
+    closure_record_publication_approved: true
+    closure_record_publication_authority: "Owner aceito, borah authorized documentary closure publication on main as part of the bounded B-07 integration bundle. No standing push or B-08 execution authority."
   - id: "2026-10-04-b06-stonehook-foot-expedition"
     spec: "[[2026-10-04-b06-stonehook-foot-expedition]]"
     evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
@@ -688,8 +776,62 @@ last_direct_execution:
   blocking_gaps: []
   exception: "No B-05 implementation, automatic cures, travel unlock, new art, animation fix, disk persistence, or release export. B-04 completion history is unchanged."
 suspension: null
-deferred_requests: []
-pending_plan_change_requests: []
+deferred_requests:
+  - id: DEV-001-b08-preparation
+    request_classification: PLAN_DEVIATION
+    request: "Prepare the next B-08 Cliff Harrier plan and English handoff while B-07 executes externally."
+    authority: "Owner selected option 1 for preparation now only, not implementation, approval-mode selection, publication or external dispatch."
+    spec: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
+    evidence: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
+    instruction: "[[2026-10-05-b08-stonehook-cliff-harrier-instruction]]"
+    status: proposal-dependency-cleared-awaiting-mode
+    preparation_complete: true
+    deviation_resolution: prepared-now-returned-to-b07
+    active_plan_replaced: false
+    external_executor_interrupted: false
+    depends_on: "2026-10-05-b07-stonehook-first-encounter"
+    dependency_state: "B-07 technically reviewed, owner-accepted, merged in PR #7 and closed on main at 4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1."
+    execution_gate: "B-08 approval-mode selection, planned-record persistence and activation in the receiving cloud checkout; owner may deliver scope with the self-contained English prompt."
+    approval_mode: unconfigured
+    scope_approved: true
+    scope_approval_source: "Owner approved delivery of the revised English B-08 cloud prompt; explicit per-plan selection is supplied when the owner sends that prompt."
+    implementation_base: "4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1"
+    implementation_approved: false
+    push_approved: false
+    pull_request_approved: false
+    merge_approved: false
+    dispatch_approved: false
+pending_plan_change_requests:
+  - id: PCR-001-b09-opening-cave-care
+    request_classification: PLAN_CHANGE_REQUEST
+    current_plan_relationship: PLAN_DEVIATION
+    spec: "[[2026-10-05-b09-opening-cave-care-and-continuous-journey]]"
+    evidence: "[[2026-10-05-b09-opening-cave-care-and-continuous-journey]]"
+    canonical_decision: "[[2026-10-05-opening-cave-care-and-continuous-journey]]"
+    status: prepared-production-approved-awaiting-dependencies-and-implementation-approval
+    execution_target: local-atena
+    approval_mode: unconfigured
+    implementation_approved: false
+    blocking_gaps: []
+    execution_prerequisite: "Separate B-08 human acceptance, authorized integration and verified base; no implicit completion or replacement."
+    active_plan_dependency: "2026-10-05-lolth-three-transformations"
+    active_plan_routing: "Preserve the executing visual plan and B-001 cursor; activate B-09 only after completion or an explicit owner routing decision. No interruption or suspension authorized here."
+    production_decision: "Owner selected production here, then approved the concrete 30-image package per plan; queued behind the executing Lolth visual plan."
+    production_spec: "[[2026-10-05-b09-opening-art-production]]"
+    production_evidence: "[[2026-10-05-b09-opening-art-production]]"
+    production_route_accepted: true
+    production_approved: true
+    production_approval_mode: per-plan
+    production_approval_record: "[[2026-10-05-b09-opening-art-production-approval]]"
+    production_status: complete-art-human-accepted
+    production_checkpoint: complete
+    production_batches: [ART-001, ART-002, ART-003, ART-004, ART-005, ART-006]
+    runtime_admission_approved: false
+    active_plan_replaced: false
+    push_approved: false
+    pull_request_approved: false
+    merge_approved: false
+    dispatch_approved: false
 approved_change_requests:
   - id: "2026-10-04-b05-controls-and-wagon-menu-revision"
     request_classification: PLAN_CHANGE_REQUEST

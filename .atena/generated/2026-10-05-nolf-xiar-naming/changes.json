@@ -1,0 +1,80 @@
+{
+  "decision": "2026-10-05-nolf-xiar-naming",
+  "files": [
+    {
+      "path": "main.gd",
+      "before_sha256": "a23ffb2f204c7f0408e15f0101263b1eb05114a3d203f02d269358fd74ff88fd",
+      "after_sha256": "02e37ad96825d61ea2d08b0ec57c537054dd020c03070b2612fe8b7c7dfa1d81"
+    },
+    {
+      "path": "wagon_inventory_ui.gd",
+      "before_sha256": "34113a9b715e62c1b8bb7da8433fbd4e364a90a99a73fd42e4678dc650bee874",
+      "after_sha256": "479dea706d192c2082aed34a1ae93e2fb7c678046c82727beded1561939c2c79"
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "bdbd66165c508e7d92518dd9fefda263377ca15f6b7cecdbfcb2f5e47a35fa2f",
+      "after_sha256": "de7378539ac458e6bf5365b5093579acb24103c4fc38642e36d43d7ede6ad95a"
+    },
+    {
+      "path": ".atena/vault/canon/2026-10-02-thalestriel-exodus-game-intent.md",
+      "before_sha256": "ed87fc9cc10ec350ade95651f7383a9aff437190ce1e9575bea051d5be82d1a6",
+      "after_sha256": "1c49e96407f8265d268527f1e5e34b1ad43722c1428178dbd102ba49667fdea4"
+    },
+    {
+      "path": ".atena/vault/canon/2026-10-03-hq-narrative-revision.md",
+      "before_sha256": "b8fc6fe375d3130e2d75333ffb9c638da94d1f41075984cd9585ab325cc56e10",
+      "after_sha256": "3b6283d07eed5b8f24d120488f62873e2ff94cd8054de6f299abd9c113f0e9f0"
+    },
+    {
+      "path": ".atena/vault/canon/2026-10-03-b00-opening-ending-and-production-resolution.md",
+      "before_sha256": "58a1f258d4e374d08773805203d3adc440fc993f28629e330102e956c2aafd7e",
+      "after_sha256": "43c1ee8cdec008bab89d571e9e960f0182152ed96c535ab3a26831804b2c63b7"
+    },
+    {
+      "path": ".atena/vault/canon/2026-10-05-opening-cave-care-and-continuous-journey.md",
+      "before_sha256": "b1270bf54530c1fec517f9135d4c7a77d34679af3313e3fc3ba0d71b9418a06a",
+      "after_sha256": "c983c6c65799948aba7d28cedfaae8e3ccd349071052108bf28948ce2463e04e"
+    },
+    {
+      "path": ".atena/specs/2026-10-05-b09-opening-art-production.md",
+      "before_sha256": "c0ce71d5fda3e1b086ed6f9abd38f091ad201fee8a9310e52dfa589a61d435e7",
+      "after_sha256": "9a07ba9a4f75419b53df053cabca1c9e55b790481620373ca10683ddcdff3e3f"
+    },
+    {
+      "path": ".atena/specs/2026-10-05-b09-opening-cave-care-and-continuous-journey.md",
+      "before_sha256": "3318eab6e30eea717e54ab68fcf39420f27cf04e4215c900926b9cf1aabab472",
+      "after_sha256": "485f0de99125902e58de3ab183179ead79b1a4c7dfc11c9b86dad19c64e5ad45"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/panel-text.en.json",
+      "before_sha256": "69d497e5c81b5ad75ba11ebd5a725d7a9a92471f18c64f0ea6fc789ca662f536",
+      "after_sha256": "be8c39a6f639fb1d3a660d1df87a687ff0305f795265759218bc754ec1318c74"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/art-001.manifest.json",
+      "before_sha256": "ad238c7d5df61295a21fadf3332874135fdda30dd8136ccb33972c0bf25b9944",
+      "after_sha256": "d710731c7c0dd96b0b3a0382120c36adf28fc6afd6e1d3520d11c11bc0d1d201"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/art-002.manifest.json",
+      "before_sha256": "d954d42e51339802b2e9ba9504b9755559050a3d86ca526bbefd96b4ea4a9351",
+      "after_sha256": "3ba9fe6a276b5ec91c19311cad54a88d1d2a6fe4e02271a1b7761c63cc911ae3"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/art-003.manifest.json",
+      "before_sha256": "56d1d9c1d57a182071ac0740dbecad265de6192c993b2d9e01cb1cb871cd307e",
+      "after_sha256": "e880cfda1f979a1aeb7b9fc8ebbda3b08eb16ee4b39aedb1ebc88dd39799057b"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/art-005.manifest.json",
+      "before_sha256": "5e868d2c98c73b1294ff0759765686c6f952cb4e10cdf68f038ead80bbe7abd9",
+      "after_sha256": "ccc113f23ae195ea854abd91ea9edc65d30e27d3bfff76e25091581de9fc1bd9"
+    },
+    {
+      "path": ".atena/state/plan.yaml",
+      "before_sha256": "f5bbccead9e1f00a8ccbc986d308f595e001da1083068afaab9b42bbf43b3643",
+      "after_sha256": "34b37c7f3fb6b03977fce0c31d8501e25a31dd9f388de2988991bd3bd4f94151"
+    }
+  ]
+}

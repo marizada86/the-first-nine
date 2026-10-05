@@ -1,0 +1,875 @@
+{
+  "status": "complete-art-human-accepted",
+  "acceptance_receipt": "package-acceptance-v1.json",
+  "runtime_admitted": false,
+  "attempts": [
+    {
+      "id": "h01-01",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-59dd5f2c-7f6d-4844-85e2-c87a342c4adc.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-01-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Crowded Golden City, only elves; no identifiable Lolth. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Additional composition: a panoramic elven city overflowing with clearly pointed-ear elves on layered terraces, pale gold towers and crowded bridges; no identifiable Lolth in this establishing panel. Deliberate simplified pixel clusters consistent with the project's established minimalist sprites. Entire image is ONE scene, not a sprite sheet.",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "city_only_elves": true,
+        "no_identifiable_lolth": true,
+        "clothed": true
+      },
+      "ratio": null
+    },
+    {
+      "id": "h01-02",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-1d4f9942-9220-40cb-a7e0-d36e06ef0c0d.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-02-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Elven council; no identifiable Lolth. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: One scene inside the Golden City council hall: a small council of clearly elven family representatives discussing departure; no Lolth identifiable, no city panorama inset. Simplified broad pixel masses.",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "caption_area": true
+      },
+      "ratio": null
+    },
+    {
+      "id": "h01-03",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-7f0a3500-ca39-422d-9558-bc92de855948.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-03-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Thalestriel departure, more than one hundred elves and open relic wagon. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: One scene outside the same Golden City: a very long single-file procession of more than one hundred elves visibly stretching deep into the distance. One uncovered relic wagon in foreground; no horse. Lolth clearly visible pale-skinned elf woman, long white hair, black hooded mantle over opaque slate trousers and boots, raising a clenched fist in anger at Eol. No speech bubbles.",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "caption_area": true
+      },
+      "ratio": null
+    },
+    {
+      "id": "h01-04",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": null,
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-7bc2bb40-8a1a-4f28-ba0c-0f5c4afdf266.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Creature attack on the travelling family. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: Nocturnal forest road, several Briar Hounds attack the crowded elven caravan. Lolth in foreground, long white hair, pale elf skin, open black hooded mantle, opaque slate trousers and boots, furiously raises fist toward the sky while protecting the same open relic wagon. Many elves in background; no one has transformed into a drow.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-04-v1.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "lolth_empty_hands": true
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-05",
+      "attempt": 1,
+      "status": "rejected",
+      "reason": "Unapproved sword introduced in Lolth's hand",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-f35cd622-8bca-4fd0-9b81-976b068ee015.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Hostile attackers, family protecting the relic wagon. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: Hostile armed attackers ambush the same caravan on the forest road; Lolth protects the open relic wagon with a furious shout toward the sky, not smiling or pleading. Pale elf skin, white hair, black hooded mantle, slate trousers and boots. Non-graphic danger; keep white-haired family elves visually distinct from attackers.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v1.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "lolth_empty_hands": false
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-05",
+      "attempt": 2,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": null,
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-be0ec0f2-4e89-4762-8263-74384fd257e8.png",
+      "prompt": "Edit this single comic panel only: remove the metal sword from Lolth's lowered left hand and make that hand visibly empty. Preserve the raised angry hand, pale elf skin, white hair, fully opaque trousers/boots, black cloak, wagon, surrounding elves and attackers, lighting, pixel-art style, composition, no text and landscape size. Do not remove weapons from attackers or other family guards. No replacement object, no new VFX, no new scene.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v2.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "lolth_empty_hands": true
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-06",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-cdbe1473-d76e-4079-81b0-9c0206ec843a.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Natural disaster strikes the caravan. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: a flash flood and rockslide on the mountain road, the same open relic wagon caught at the edge of rushing water with one wheel damaged, clothed elves struggling to keep together. Pale elf Lolth with long white hair, black hooded cloak, slate trousers and boots, both hands empty, cursing angrily toward the storm clouds. No sword, wand, drow transformation or supernatural power. One wagon only. Clear non-graphic peril.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-06-v1.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "lolth_unmarked": true,
+        "non_graphic": true
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-07",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9184a4a5-ed9a-4c32-98dc-fac5f24f85c0.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Plague takes hold; Lolth remains unaffected. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: forest road camp during the plague, many fully clothed pale elves lying sick on blankets around the same open wagon, some coughing, no wounds or blood. Lolth alone stands robust and unaffected, long white hair, pale elf skin, black hooded mantle, opaque slate trousers and boots, hands empty, glaring angrily at the sky. No healing magic or cure, no drows. Portrait expressions kept simple, dusk blues and sparse amber lantern.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-07-v1.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "lolth_unmarked": true,
+        "non_graphic": true
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-08",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": null,
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-b2b2d3ff-9ad9-4912-bc82-72716cd6aafd.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Most of the caravan lost, non-graphic mourning. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: after the plague, many quiet unmarked earth burial mounds along a forest road convey the caravan's losses, no corpses or exposed remains, no crosses or new religious symbols. The damaged open relic wagon and the remaining sick elves rest further along the road. Lolth, pale unaffected elf woman with white hair and black hooded cloak over opaque trousers and boots, clenches empty hands and angrily curses toward the sky. Sole scene, no swords in her hands, no magic.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-08-v1.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "patients_count": null,
+        "lying_patients": false,
+        "role_palette": false
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-09",
+      "attempt": 1,
+      "status": "rejected",
+      "reason": "Patient hair and identity colors inconsistent with roster references",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-63e56893-2afb-4ffc-bb2f-06fbcdea7dd2.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Damaged wagon and exactly eight plagued elves lying inside the cave, with Lolth. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: clearly INSIDE a rock-and-root cave, walls and ceiling enclosing the refuge. Wide view with exactly EIGHT sick pale elves lying full-length on separate blankets: four visible in a back row and four visible in a foreground row, heads and bodies countable, no seated or standing patient. One healthy Lolth stands to the side, making NINE persons total; no people outside entrance or hidden extras. Lolth has pale elf skin, white hair, black hooded mantle, opaque trousers/boots, empty hand raised angrily toward the entrance while cursing Eol. One damaged uncovered wooden wagon with broken wheel and family relic chests beside it, no horse. Small fire, no blood, no magic, no speech bubbles or text.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v1.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "patients_count": 8,
+        "lying_patients": true,
+        "role_palette": false
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h01-09",
+      "attempt": 2,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": null,
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-f70e7846-cbb5-4af7-9d64-8ba18fb2585a.png",
+      "prompt": "Edit only the eight reclining patients' identity colors in this single cave comic panel. Keep EXACTLY eight reclining elves plus one standing Lolth, same composition, faces/body positions, roots, cave, open damaged wagon, relics and fire. All eight patients have WHITE hair and pointed ears; change the four black-haired patients to white hair. Back row from left: olive-green forager clothing; brown carrier clothing; dark clothing with muted red scarf; brown flame-keeper hood. Front row from left: gray repairer clothing; muted green-and-light healer clothing; dark sentinel cloak; muted purple dreamer clothing. All retain opaque trousers and boots. Keep Lolth's white hair and black mantle, but make her face visibly furious and mouth open as she curses toward the entrance. No text, speech bubbles, magic, new props or extra people.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v2.png",
+      "visual_checks": {
+        "single_panel": true,
+        "no_text": true,
+        "clothing": true,
+        "narrative_beat": true,
+        "patients_count": 8,
+        "lying_patients": true,
+        "role_palette": true
+      },
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-01",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": null,
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-fcc287e7-6737-4230-9b78-719dba7a2c93.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Shar appears after Antlered Hunger is defeated. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: aftermath of the first boss in Thornwake forest, small fallen antlered shadow creature in far background, no gore. Pale elf Lolth stands alone, long white hair, black hooded mantle and opaque trousers/boots, empty hands. Shar appears facing her: tall hooded faceless apparition in deep violet-black robe, white crescent at chest, faint violet motes, holding one short silver wand with violet-shadow tip, not a staff. No exposed human face or skin on Shar, no nudity, no seated throne, no other people. Clear encounter without Mark or drow transformation yet.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-01-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-02",
+      "attempt": 1,
+      "status": "rejected",
+      "reason": "Premature dark drow skin, exterior wagon and staff",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9af08660-2000-475e-ac72-15fabca12942.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth's former godhood presented as a memory, not a new divine identity design. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: in the same forest clearing, pale elf Lolth faces the same tall faceless hooded Shar in purple-black robes with white crescent chest, recounting her past divinity. Between them floats a single abstract, dim violet recollection of Lolth's humanoid silhouette encircled by fading light, no second physical Lolth, no gods or other people. No specific former-plane costume, throne, temple or named deity. Real Lolth's white hair, black cloak, opaque slate trousers and boots remain unchanged. Shadow memory clearly is a translucent vision, not a third character or split panel. Short wand remains in Shar's hand.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-02",
+      "attempt": 2,
+      "status": "rejected",
+      "reason": "Real Lolth face still reads as dark drow before Mark",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-b60f1cc1-8556-4ffa-84c7-c9050610501b.png",
+      "prompt": "Edit this memory-bargain comic panel only. The real Lolth at left is STILL A PALE ELF, NOT a dark-skinned drow: restore visibly pale face and ears, keep white hair, black cloak, opaque trousers/boots, no Mark. Remove the wagon completely at right and fill that area with matching empty forest; the wagon is inside the cave elsewhere, not at this encounter. Replace Shar's orb-topped staff with a short slender silver wand with tiny violet tip, same short design as the second reference (arrival panel); no staff or orb. Make the translucent abstract former-divinity memory clearly wear the same cloak, opaque trousers and boots rather than a bare-body silhouette. Keep Shar faceless and hooded, violet-black robes, crescent chest. Preserve single scene, no text, no extra people, landscape style.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v2.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-02",
+      "attempt": 3,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": null,
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-c9d6c873-d4c7-4a47-9f5d-028fd06203f2.png",
+      "prompt": "Correct ONLY the real Lolth's visible face and skin on the left of this panel. Her face is currently dark/black and incorrectly reads as a drow. Paint her visible profile skin LIGHT PALE IVORY, the SAME light value as her pointed ear: cheek, forehead, nose, chin and neck must be obviously light pale elf skin even in this night scene. Keep her white hair, black clothes, posture, ghost-memory, faceless Shar, short wand, forest and no-text composition exactly unchanged. Do NOT change the ghost memory skin. She has not yet received the Mark; no dark drow skin or black face silhouette on the real left figure.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v3.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-03",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-7bc1cc26-eed7-40ab-9e78-d29c7ba471a6.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth offers the memories; Shar accepts. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: medium full-body two-person scene, the same moonlit forest clearing with NO wagon. PALE IVORY ELF Lolth, clearly LIGHT face/ears/hands, long white hair, black hooded cloak, opaque trousers/boots, offers a few fading abstract violet memory motes from her empty palm. Shar, tall faceless hooded violet-black robe with white crescent chest, reaches to accept, holding the SAME short slender silver wand with tiny violet tip in the other hand. The exchange is memories, no physical coin, contract scroll, temple, orb-staff or third person. No drow skin or Mark yet, no nudity.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-03-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-04",
+      "attempt": 1,
+      "status": "rejected",
+      "reason": "Costume drift: upper-chest opening introduced at Mark application.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-742999a5-4149-43a8-8007-6b2e265679e1.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Shar applies the Shadow Mark with her wand. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: only two real figures in same empty forest clearing, no wagon or other people. Pale ivory ELF Lolth, white hair, black hooded cloak, fully opaque trousers and boots, stands with both empty hands near her sides. Faceless hooded Shar in violet-black robe, white crescent chest, touches the tip of ONE SHORT slender silver wand with tiny violet light to Lolth's clothed upper chest/shoulder, applying one compact violet Shadow Mark. The glow is small and readable, no body exposure, no staff, no giant beam, no duplicated Lolth, still pale elf at the beginning of this moment.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-04",
+      "attempt": 2,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": "Targeted edit restored opaque high-neck clothing; Mark remains on the fabric.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-4c3bbf36-6f57-496e-a1c3-15b72e22b0d9.png",
+      "prompt": "Edit only Lolth's neckline in this panel: cover the light exposed upper-chest triangle with opaque black clothing continuous with her existing high-neck outfit. The violet Mark must glow ON TOP OF that CLOTH, not exposed chest skin. Preserve the silver wand tip, Lolth's pale elf face and hands, white hair, trousers/boots, Shar, forest and composition. No other change, no new text or people.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v2.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-05",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": "Reviewed: drow identity, fully clothed, Shar faceless, short wand and no exterior wagon; no baked text.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-a00a19e9-de6b-49ac-be53-17c3bd48d248.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Fully clothed elf-to-drow transformation. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Show one and only one Lolth, now unmistakably dark violet drow skin with long white hair, black high-neck opaque mantle, black trousers and boots, modest small purple shadow aura over the clothing at her chest. Full body on a forest floor; she looks at her newly changed hands. Shar is one faceless hooded violet-black figure behind her, white crescent on her robe, still holding the same short slender purple-tipped wand. Exactly these two figures, no before/after split, no second Lolth, no wagon, no allies, no blade, no staff. Simple broad pixels, restrained details, blank bottom caption strip.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-05-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h02-06",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "reason": "Reviewed: drow identity, fully clothed, Shar faceless, short wand and no exterior wagon; no baked text.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-4b9e9f89-7d12-4aae-9bec-f761563c13d6.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Wand handed to Lolth, restrained shadow-creature command cue. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Exactly two main figures: left Shar, a faceless hooded apparition in opaque violet-black robe with white crescent on chest; right Lolth, dark violet-skinned drow with long white hair, opaque black high-neck mantle, trousers, boots. Shar passes a SHORT SLENDER handheld wand with a tiny purple tip directly into Lolth's open hand, not a staff or orb. In the forest behind them exactly two small thorny shadow hounds hold still with lowered heads as a restrained command cue. No wagon, no other people, no blade, no exposed chest. One scene, readable silhouettes and broad deliberate pixel clusters. Quiet dark lower 15 percent without writing.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-06-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h03-01",
+      "attempt": 1,
+      "status": "superseded-owner-final-spider-request",
+      "reason": "Owner's subsequent final-form request supersedes this humanoid arachnid portrayal.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-a9029110-7989-4822-968c-5602e62ab4cb.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth completes her established final transformation. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. One solitary Lolth in the already established final form: dark violet drow face, white hair, black spiked crown, a fully opaque high-neck black mantle and black segmented clothing covering torso and legs to boots. Large angular black arachnid appendages extend symmetrically behind her like the established final shadow-spider silhouette, not a new creature or nude torso. Calm upright humanoid core, restrained violet shadow light; no weapon, no Shar, no allies or wagon in this close single-figure transformation panel. Dark rocky forest backdrop simplified in broad pixel clusters. Bottom caption space empty.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h03-02",
+      "attempt": 1,
+      "status": "superseded-owner-final-spider-request",
+      "reason": "Owner's subsequent final-form request supersedes this humanoid arachnid portrayal.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-1e216318-23bb-4ab0-9713-d4c9c9ed2c2a.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Portal opens to the Dream Plane. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. Frame focus: one solitary Lolth, dark violet drow with white hair, black spiked crown and fully opaque black high-neck mantle, covered legs and boots, angular shadow-spider appendages behind her as in the established final form. Viewed from behind in the shadowy forest she opens one luminous oval portal. Inside the portal glimpse the distant Golden City of Dreams: pale gold towers on floating dreamlike terraces amid cool lavender clouds. No companions shown in this panel, no wagon, no horses, no staff, no second Lolth. Single scene, large readable pixel clusters, limited gold/violet palette, no visible lettering, lower caption area quiet.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h03-03",
+      "attempt": 1,
+      "status": "superseded-owner-final-spider-request",
+      "reason": "Humanoid body with arachnid appendages does not meet owner's subsequent request for a complete shadow-spider final form.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-a91714e7-5335-4fd3-9ad6-5c61488c7b8f.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth and exactly eight drows cross with the open wagon and relics. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. Wide lateral crossing shot. EXACTLY NINE clearly separated figures TOTAL: one crowned white-haired Lolth with black shadow-spider appendages leading, and EIGHT white-haired dark-violet drows behind her. Put the eight in a readable four-and-four arrangement flanking one open wooden wagon loaded with small family relic chests. Distinct clothing in order: olive ranger, brown fighter, dark-red scarf, brown hood, gray mage, light-green healer, dark-green scout, purple scholar; all opaque trousers and boots. One ally pulls the wagon by its wooden shafts, no horse, no canopy. Everyone moves right across the threshold of one broad gold-violet portal into floating Golden Dream City terraces. No crowd beyond, no background people, no silhouette that could be a tenth person. Show all nine bodies visibly countable, wagon unobscured. Minimal pixel clusters, quiet bottom caption zone.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h03-04",
+      "attempt": 1,
+      "status": "superseded-owner-final-spider-request",
+      "reason": "Humanoid body with arachnid appendages does not meet owner's subsequent request for a complete shadow-spider final form.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-d1fd83b0-65b5-42f6-98d4-f5a85184d990.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: All nine remain together in the Golden City of Dreams. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. One quiet panoramic terrace in the Golden City of Dreams: floating pale-gold spires, gold-leaved trees and lavender dream clouds. EXACTLY NINE visible figures, NO background residents: one crowned white-haired Lolth, fully clothed black mantle with shadow-spider appendages, and exactly eight white-haired dark-violet drows in one countable row. Eight clothing identities: olive ranger, brown fighter, dark-red scarf, brown hood, gray mage, pale-green healer, dark-green scout, purple scholar; opaque trousers and boots. They rest around ONE open wooden relic wagon with family chests, no cover or horse. Lolth stands with them, not leaving through a portal. No extra statues resembling people, no text, no weapons raised. Large deliberate pixel clusters, limited violet/gold palette, lower 15 percent quiet floor.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h03-05",
+      "attempt": 1,
+      "status": "superseded-owner-final-spider-request",
+      "reason": "Humanoid body with arachnid appendages does not meet owner's subsequent request for a complete shadow-spider final form.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9f11144b-de7c-49dd-ad6d-c3a0c9e62d30.png",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth leaves the wand in the eight drows' collective custody and stays with them. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. Final single panel, Golden City of Dreams terrace. EXACTLY NINE figures total, all faces visible and countable: left Lolth, dark-violet skin, white hair, established black crown and shadow-spider appendages, opaque high-neck black mantle and boots; right EIGHT white-haired dark-violet drow family members (olive ranger, brown fighter, dark-red scarf, brown hood, gray mage, pale-green healer, dark-green scout, purple scholar) in a shallow single arc facing her. Lolth sets the SAME SHORT slender violet-tipped wand on a low relic chest BETWEEN all eight as shared custody, hands withdrawing; no selected ruler, no duplication of wand, no orb staff. One open wooden wagon with relic chests directly behind the group, no canopy, no horse. Lolth stays in the scene beside them. Quiet hopeful gold/lavender light, simple chunky pixel art, no text, no background people, bottom15percent clear.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false
+    },
+    {
+      "id": "h03-01",
+      "attempt": 2,
+      "status": "rejected-anatomy-interpretation",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9fa95e8d-ab66-4fa1-aca6-9a9c208abe98.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one individual fullscreen ending comic panel for The First Nine. Input image 1 is the existing panel to revise. Replace ONLY the humanoid Nolf with Nolf's complete SHADOW SPIDER form. Entirely arachnid anatomy: low horizontal black cephalothorax and large rounded black abdomen, exactly EIGHT articulated legs, FOUR on each side, individually readable; restrained violet edge glow. NO human torso, NO human head or face, NO hair, NO crown, NO clothes on the spider, NO drider or half-human hybrid. Keep established simplified dark-fantasy pixel art, broad deliberate pixel clusters, limited palette. Preserve one scene and landscape 16:9 composition, quiet bottom caption space. NO text, balloons, logos, labels or watermark; no gore. Other people, when present, remain fully clothed with trousers and boots. No extra people, no second spider. Preserve all story elements apart from the approved final-body correction. Transformation panel: one solitary complete shadow spider in the forest, replacing the central standing woman and all her attached appendages. Give the spider enough width to separate four legs on each side; exactly eight walking legs, small mouthparts must not look like extra legs. Retain the forest, moon, dark purple lighting and quiet foreground. No allies or wagon.",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png"
+      ],
+      "visual_checks": {
+        "fully_arachnid": true,
+        "human_duplicate": false,
+        "eight_legs": true,
+        "no_text": true,
+        "story_beat": true
+      },
+      "provider": "built-in-imagegen",
+      "runtime_admitted": false,
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "reason": "The owner clarified the existing design: complete drow body as spider head/front, not an ordinary spider."
+    },
+    {
+      "id": "h03-01",
+      "attempt": 3,
+      "status": "generated-normalized-awaiting-owner-review",
+      "reason": "Project drow body integrated as head/front; large shadow abdomen, opaque chitin and no extra Nolf.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9ae402fa-dc7c-4778-93cc-641ba4ba79eb.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one fullscreen ending comic panel for The First Nine. Image 1: existing comic panel/edit target. Image 2: authoritative SHADOW CROWN anatomy reference, not a background to copy. Replace Nolf's previous merely standing humanoid-plus-appendages with the project's established FINAL SHADOW CREATURE. Her complete recognisable drow body forms the HEAD/FRONT of the enormous spider: blue-gray/violet drow face, very long silver-white hair, elongated ears, fully opaque bone-white segmented chitin clothing. Her head, torso and arms are integral to the front cephalothorax. Behind and around this front grows a LARGE HORIZONTAL black-violet ABDOMEN and exactly EIGHT long articulated spider LEGS made of shadow, smoke and web. FOUR legs each side, readable silhouettes. Nolf is NOT riding a spider, NOT a woman standing in front of a separate spider, NOT just wearing spider appendages, NOT a face pasted onto an ordinary spider. One united being. No nudity, exposed chest, gore or extra walking humanoid legs; cover all human anatomy in opaque chitin/clothing. Use broad deliberate pixel clusters and limited palette consistent with the existing panel, not the painterly microtexture of the anatomy reference. Retain ONE landscape 16:9 scene and empty lower caption area. NO text, balloons, logos, labels or watermark. Eight companions, when shown, remain fully clothed and unchanged; no ninth companion or human duplicate of Nolf. Single transformation panel: replace the central humanoid Nolf and her old appendages with this giant unified drow-front shadow-spider creature, low broad shadow abdomen clearly visible behind the silver-haired drow front. Show eight shadow spider legs separated against the forest. Retain the dark forest, moon, lighting and quiet foreground. No other people or wagon.",
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png",
+        "assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png"
+      ],
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "declared_ratio": null,
+      "measured_ratio": null,
+      "ground_pivot": "not-applicable-narrative-panel",
+      "visual_checks": {
+        "project_anatomy": true,
+        "no_text": true,
+        "one_nolf": true,
+        "clothing": true,
+        "family_count": 0,
+        "clipping": false
+      },
+      "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-01.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-01.png",
+      "raw_dimensions": [
+        1671,
+        941
+      ],
+      "raw_sha256": "e4777c7eb490c6003aab19e9df34db88472790474f86c444c5d1925d38d0136a",
+      "master_sha256": "fb4154fe680f4ffd01b597ff90af49f21957af307da1574888a66e0e19a26420",
+      "visual_limitations": [
+        "Far-side legs and lower segments overlap in some perspectives and behind companions/wagon. No independent image-segmentation count is claimed.",
+        "Technical and local visual review are not owner acceptance or runtime admission."
+      ]
+    },
+    {
+      "id": "h03-02",
+      "attempt": 2,
+      "status": "generated-normalized-awaiting-owner-review",
+      "reason": "Portal preserved; project creature anatomy and integrated drow arm.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-44191d26-9270-44d8-83a7-a205afea1e29.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one fullscreen ending comic panel for The First Nine. Image 1: existing comic panel/edit target. Image 2: authoritative SHADOW CROWN anatomy reference, not a background to copy. Replace Nolf's previous merely standing humanoid-plus-appendages with the project's established FINAL SHADOW CREATURE. Her complete recognisable drow body forms the HEAD/FRONT of the enormous spider: blue-gray/violet drow face, very long silver-white hair, elongated ears, fully opaque bone-white segmented chitin clothing. Her head, torso and arms are integral to the front cephalothorax. Behind and around this front grows a LARGE HORIZONTAL black-violet ABDOMEN and exactly EIGHT long articulated spider LEGS made of shadow, smoke and web. FOUR legs each side, readable silhouettes. Nolf is NOT riding a spider, NOT a woman standing in front of a separate spider, NOT just wearing spider appendages, NOT a face pasted onto an ordinary spider. One united being. No nudity, exposed chest, gore or extra walking humanoid legs; cover all human anatomy in opaque chitin/clothing. Use broad deliberate pixel clusters and limited palette consistent with the existing panel, not the painterly microtexture of the anatomy reference. Retain ONE landscape 16:9 scene and empty lower caption area. NO text, balloons, logos, labels or watermark. Eight companions, when shown, remain fully clothed and unchanged; no ninth companion or human duplicate of Nolf. Portal panel: preserve the oval gold-violet portal and its dream-city view. Nolf in the referenced integrated drow-front shadow-spider anatomy stands to the left facing the portal, not a separate woman. Her silver hair, opaque bone-white chitin and enormous shadow abdomen read clearly together. She can extend her own drow arm toward the portal, integral to the creature. Exactly eight shadow legs. No other people. Image 3 is the corrected first comic panel; preserve Nolf's creature proportions and anatomy from it, in the portal scene.",
+      "source_references": [
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v1.png",
+        "D:/dev/eclipse-game-jam/assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png",
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png"
+      ],
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "declared_ratio": null,
+      "measured_ratio": null,
+      "ground_pivot": "not-applicable-narrative-panel",
+      "visual_checks": {
+        "project_anatomy": true,
+        "no_text": true,
+        "one_nolf": true,
+        "clothing": true,
+        "family_count": 0,
+        "clipping": false
+      },
+      "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-02.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-02.png",
+      "raw_dimensions": [
+        1671,
+        941
+      ],
+      "raw_sha256": "851bab70275b1d61ead36e1ac86f313d18e6df139e5ad3d1bb7f1ccb18ebd75b",
+      "master_sha256": "5899ce55dea3d818e61d23f817868dfa25d2822db16f547b755643e24e5b86da",
+      "visual_limitations": [
+        "Far-side legs and lower segments overlap in some perspectives and behind companions/wagon. No independent image-segmentation count is claimed.",
+        "Technical and local visual review are not owner acceptance or runtime admission."
+      ]
+    },
+    {
+      "id": "h03-03",
+      "attempt": 2,
+      "status": "rejected",
+      "reason": "Creature's rightmost leg is clipped by the right canvas boundary.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-6902072e-6132-45e2-a984-9e431abde2b0.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one fullscreen ending comic panel for The First Nine. Image 1: existing comic panel/edit target. Image 2: authoritative SHADOW CROWN anatomy reference, not a background to copy. Replace Nolf's previous merely standing humanoid-plus-appendages with the project's established FINAL SHADOW CREATURE. Her complete recognisable drow body forms the HEAD/FRONT of the enormous spider: blue-gray/violet drow face, very long silver-white hair, elongated ears, fully opaque bone-white segmented chitin clothing. Her head, torso and arms are integral to the front cephalothorax. Behind and around this front grows a LARGE HORIZONTAL black-violet ABDOMEN and exactly EIGHT long articulated spider LEGS made of shadow, smoke and web. FOUR legs each side, readable silhouettes. Nolf is NOT riding a spider, NOT a woman standing in front of a separate spider, NOT just wearing spider appendages, NOT a face pasted onto an ordinary spider. One united being. No nudity, exposed chest, gore or extra walking humanoid legs; cover all human anatomy in opaque chitin/clothing. Use broad deliberate pixel clusters and limited palette consistent with the existing panel, not the painterly microtexture of the anatomy reference. Retain ONE landscape 16:9 scene and empty lower caption area. NO text, balloons, logos, labels or watermark. Eight companions, when shown, remain fully clothed and unchanged; no ninth companion or human duplicate of Nolf. United crossing panel: preserve exactly EIGHT existing white-haired drow companions and ONE OPEN wooden wagon of relic chests. Only replace the far-right crowned standing woman and old appendages with Nolf's much larger unified drow-front shadow-spider form. She proceeds with them through the portal; eight humanoid companions plus this one united being make NINE family members. Preserve all eight roles (olive ranger, brown fighter, red scarf, brown hood, gray mage, pale-green healer, dark-green scout, purple scholar). No horse, canopy or extra wagon. Allow spacing to keep every companion and the wagon readable; do not lose a companion behind the spider. Image 3 is the corrected first comic panel; use its same integrated creature proportions, chitin and shadow texture. Keep exactly eight companions clearly countable. Enlarge the panoramic spacing instead of hiding a companion or cropping the creature.",
+      "source_references": [
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v1.png",
+        "D:/dev/eclipse-game-jam/assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png",
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png"
+      ],
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "declared_ratio": null,
+      "measured_ratio": null,
+      "ground_pivot": "not-applicable-narrative-panel",
+      "visual_checks": {
+        "project_anatomy": true,
+        "no_text": true,
+        "one_nolf": true,
+        "clothing": true,
+        "family_count": 8,
+        "clipping": true
+      }
+    },
+    {
+      "id": "h03-05",
+      "attempt": 2,
+      "status": "rejected",
+      "reason": "Nine companions instead of eight: duplicated brown hood between original brown hood and gray mage; spider is clipped at the left edge.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9972810d-02bf-4c85-9091-ca9f0e7dc523.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one fullscreen ending comic panel for The First Nine. Image 1: existing comic panel/edit target. Image 2: authoritative SHADOW CROWN anatomy reference, not a background to copy. Replace Nolf's previous merely standing humanoid-plus-appendages with the project's established FINAL SHADOW CREATURE. Her complete recognisable drow body forms the HEAD/FRONT of the enormous spider: blue-gray/violet drow face, very long silver-white hair, elongated ears, fully opaque bone-white segmented chitin clothing. Her head, torso and arms are integral to the front cephalothorax. Behind and around this front grows a LARGE HORIZONTAL black-violet ABDOMEN and exactly EIGHT long articulated spider LEGS made of shadow, smoke and web. FOUR legs each side, readable silhouettes. Nolf is NOT riding a spider, NOT a woman standing in front of a separate spider, NOT just wearing spider appendages, NOT a face pasted onto an ordinary spider. One united being. No nudity, exposed chest, gore or extra walking humanoid legs; cover all human anatomy in opaque chitin/clothing. Use broad deliberate pixel clusters and limited palette consistent with the existing panel, not the painterly microtexture of the anatomy reference. Retain ONE landscape 16:9 scene and empty lower caption area. NO text, balloons, logos, labels or watermark. Eight companions, when shown, remain fully clothed and unchanged; no ninth companion or human duplicate of Nolf. Collective custody panel: preserve the EIGHT seated drow companions, the single OPEN relic wagon and the short violet-tipped wand lying on the central low relic chest in the eight's shared custody. Replace only left standing Nolf with the same unified drow-front shadow-spider form, resting beside the family, with large shadow abdomen and eight shadow legs clearly belonging to her. Nolf's drow front may rest her arm near the chest but is never a rider. Keep everyone clearly countable, no new figures, no new spell, no portal exit. All remain together. Image 3 is the corrected first comic panel; preserve that same integrated shadow creature with opaque bone-white chitin, drow front, silver hair and black-violet abdomen. Keep enough margin on the left for the entire creature, do not clip its body. The EIGHT seated companions must all remain visible. The shared wand stays short and on the chest, never a staff.",
+      "source_references": [
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v1.png",
+        "D:/dev/eclipse-game-jam/assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png",
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png"
+      ],
+      "provider": "built-in-imagegen",
+      "runtime_admitted": false,
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "visual_checks": {
+        "family_count": 9,
+        "clipping": true,
+        "project_anatomy": true,
+        "wand_on_shared_chest": true
+      }
+    },
+    {
+      "id": "h03-03",
+      "attempt": 3,
+      "status": "generated-normalized-awaiting-owner-review",
+      "reason": "Framing corrected; eight companions, one open relic wagon and integrated Nolf all remain visible.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-c74cce88-3da7-4f88-9231-726767df56c4.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+      "prompt": "Use case: precise-object-edit. Image 1 is the crossing comic panel to correct. Fix ONLY the framing/cut-off of the complete Nolf shadow-spider creature at the right. Slightly pull back the overall camera or extend the visible composition within the same landscape canvas so ALL eight shadow legs and the drow-front head/body fit comfortably inside the panel, at least a 4 percent margin from the right edge. Do not crop any part of the creature. Preserve exactly the existing EIGHT white-haired drow companions, their same clothes and positions relative to each other, the ONE OPEN wooden relic wagon, portal and Golden Dream City. The spider is ONE integrated being: same bone-white opaque chitin, silver hair, integral drow front and black-violet shadow abdomen, not a rider. Exactly eight companions plus one Nolf, no new people, no ninth humanoid. Keep the same pixel-art rendering and no text. Do not redesign anything; only correct the framed scale/spacing so the silhouette is fully visible.",
+      "source_references": [
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v2.png"
+      ],
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "declared_ratio": null,
+      "measured_ratio": null,
+      "ground_pivot": "not-applicable-narrative-panel",
+      "visual_checks": {
+        "project_anatomy": true,
+        "one_nolf": true,
+        "clothing": true,
+        "family_count": 8,
+        "open_wagon": true,
+        "no_text": true,
+        "framing": true,
+        "leg_visibility": "Some far-side or lower leg segments are occluded by perspective, shadow or foreground companions. No independent anatomy segmentation test is claimed."
+      },
+      "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-03.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-03.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "3bc619431376cd86bc2a63927eaa6b70e3fb09543259069b557aa1f7da53c08e",
+      "master_sha256": "1eadaa00cf438393cd967691e8cf2399d0c8604a2acc9e322abc118d3e470918",
+      "visual_limitations": [
+        "Far-side legs and lower segments overlap in some perspectives and behind companions/wagon. No independent image-segmentation count is claimed.",
+        "Technical and local visual review are not owner acceptance or runtime admission."
+      ]
+    },
+    {
+      "id": "h03-04",
+      "attempt": 2,
+      "status": "generated-normalized-awaiting-owner-review",
+      "reason": "Eight companions beside one open relic wagon, integrated Nolf behind the group in Dream City.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-d910741a-4d02-4860-b839-f7b73d9844b5.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one fullscreen ending comic panel for The First Nine. Image 1: existing comic panel/edit target. Image 2: authoritative SHADOW CROWN anatomy reference, not a background to copy. Replace Nolf's previous merely standing humanoid-plus-appendages with the project's established FINAL SHADOW CREATURE. Her complete recognisable drow body forms the HEAD/FRONT of the enormous spider: blue-gray/violet drow face, very long silver-white hair, elongated ears, fully opaque bone-white segmented chitin clothing. Her head, torso and arms are integral to the front cephalothorax. Behind and around this front grows a LARGE HORIZONTAL black-violet ABDOMEN and exactly EIGHT long articulated spider LEGS made of shadow, smoke and web. FOUR legs each side, readable silhouettes. Nolf is NOT riding a spider, NOT a woman standing in front of a separate spider, NOT just wearing spider appendages, NOT a face pasted onto an ordinary spider. One united being. No nudity, exposed chest, gore or extra walking humanoid legs; cover all human anatomy in opaque chitin/clothing. Use broad deliberate pixel clusters and limited palette consistent with the existing panel, not the painterly microtexture of the anatomy reference. Retain ONE landscape 16:9 scene and empty lower caption area. NO text, balloons, logos, labels or watermark. Eight companions, when shown, remain fully clothed and unchanged; no ninth companion or human duplicate of Nolf. Dream-city arrival panel: preserve exactly EIGHT white-haired drow companions and the ONE OPEN relic wagon. Replace the central standing humanoid Nolf with the same large unified drow-front shadow-spider form, with bone-white chitin, silver hair and a visible horizontal black-violet abdomen. Move her unified creature slightly behind/beside the group as necessary to keep all eight companions countable and all eight shadow legs readable. Keep the gold-lavender dream-city terrace, no additional residents. One integrated Nolf, never a humanoid plus a separate spider. Image 3 is the corrected first panel: use that same integral creature, not separate human and spider. Position the large creature behind the eight-person group on the terrace so it does not obscure the eight faces. Preserve the eight humanoid clothing identities and at least one open wagon wheel and all the relic chests.",
+      "source_references": [
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v1.png",
+        "D:/dev/eclipse-game-jam/assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png",
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png"
+      ],
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "declared_ratio": null,
+      "measured_ratio": null,
+      "ground_pivot": "not-applicable-narrative-panel",
+      "visual_checks": {
+        "project_anatomy": true,
+        "one_nolf": true,
+        "clothing": true,
+        "family_count": 8,
+        "open_wagon": true,
+        "no_text": true,
+        "framing": true,
+        "leg_visibility": "Some far-side or lower leg segments are occluded by perspective, shadow or foreground companions. No independent anatomy segmentation test is claimed."
+      },
+      "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-04.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-04.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "a5e8f95371ff60a9275ef6577ebfdcc7c89bc886c6bfa1280374ee1396da688b",
+      "master_sha256": "61eac124fde5eaf939afe205a24e1bd87f6580a816e4e5005dfe9a160d15e2f2",
+      "visual_limitations": [
+        "Far-side legs and lower segments overlap in some perspectives and behind companions/wagon. No independent image-segmentation count is claimed.",
+        "Technical and local visual review are not owner acceptance or runtime admission."
+      ]
+    },
+    {
+      "id": "h03-05",
+      "attempt": 3,
+      "status": "generated-normalized-awaiting-owner-review",
+      "reason": "Duplicated brown hood removed: exactly eight companions, one integrated Nolf, shared short wand and open relic wagon.",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-05705ccf-f457-4dfc-a3ca-c787ed8c51b4.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+      "prompt": "Use case: precise-object-edit. Correct only TWO mistakes in Image 1, the ending collective-custody panel. (1) There are NINE seated drow companions because a brown-hooded person was duplicated. REMOVE the SECOND brown-hooded companion immediately between the first brown hood and the gray-robed mage. Keep exactly EIGHT seated companions, left-to-right: olive ranger, brown fighter, red scarf, ONE brown hood, gray mage, pale-green healer, dark-green scout, purple scholar. No new faces, no substitute figure in the gap. (2) The shadow-spider creature at the left is clipped. Pull back the framing enough to show her entire abdomen and all eight spider legs inside the frame with visible left margin, while keeping all eight companions visible. Keep her EXACT existing integrated drow-front anatomy, silver hair, opaque white segmented chitin, shadow abdomen; no separate standing Nolf, no rider, no redesign. Preserve one open wooden relic wagon, the violet-tipped SHORT WAND on the same LOW CHEST in the group's shared custody and the Dream City background. Same landscape pixel art, no text, no balloons, no new props. Nolf plus EIGHT companions only.",
+      "source_references": [
+        "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v2.png"
+      ],
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "declared_ratio": null,
+      "measured_ratio": null,
+      "ground_pivot": "not-applicable-narrative-panel",
+      "visual_checks": {
+        "project_anatomy": true,
+        "one_nolf": true,
+        "clothing": true,
+        "family_count": 8,
+        "open_wagon": true,
+        "no_text": true,
+        "framing": true,
+        "leg_visibility": "Some far-side or lower leg segments are occluded by perspective, shadow or foreground companions. No independent anatomy segmentation test is claimed."
+      },
+      "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+      "master": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-masters-v1/h03-05.png",
+      "review": "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/ending-review-v1/h03-05.png",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "raw_sha256": "b6aa9d21e4654171293b1fa9d27dfee1ef0823a0e806a24508e31fee79584024",
+      "master_sha256": "f48c3b1ae8fb10107801f46ec29dd775bc7ff60eafce57b3a0b9d67a9945413a",
+      "visual_limitations": [
+        "Far-side legs and lower segments overlap in some perspectives and behind companions/wagon. No independent image-segmentation count is claimed.",
+        "Technical and local visual review are not owner acceptance or runtime admission."
+      ]
+    },
+    {
+      "id": "cave-interior",
+      "attempt": 1,
+      "status": "rejected-floor-baseline",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9d2fe249-d2dc-4406-a0d1-6cee7e3898bd.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: one reusable 16:9 lateral pixel-art cave background for The First Nine, target 1920x1080. Scene: true interior of a spacious Thornwake refuge cave; enclosing gray rock wall and continuous ceiling overhead, two gnarled roots frame a tall opening at the right end, neutral dim forest visible beyond. A perfectly level continuous walkable floor crosses the image at three quarters height; broad uncluttered interior space can later hold a wagon, campfire and eight lying patients. Camera: flat side view for a 2D platformer, NOT a receding central corridor or stairs. Style: deliberate large square pixel clusters, simple silhouettes, short cool gray-blue/black palette, minimal detail, no painterly texture. Ambient neutral cool lighting, no sunbeams, moon or glowing fire; compatible with later dynamic day/night. Lower quarter quiet dark earth. No people, animals, wagons, campfire, chests, bedding, tools, props, labels, lettering, UI, frame, collage, watermark. Background only.",
+      "visual_checks": {
+        "true_cave_interior": true,
+        "continuous_flat_floor": true,
+        "root_framed_exit": true,
+        "no_baked_actors_props_ui": true,
+        "pixel_clusters": true
+      },
+      "ratio": null,
+      "rejection": "Floor at about64 percent height instead of lower quarter; retained as superseded candidate."
+    },
+    {
+      "id": "cave-exterior-entrance",
+      "attempt": 1,
+      "status": "candidate-visual-pass-pending-package-checks",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-97050d67-ba1b-4787-82b6-0d2dd92059c6.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-exterior-entrance-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: one reusable 16:9 side-view environment background for The First Nine, target1920x1080. Thornwake Forest exterior cave entrance: tall dark mouth at the left side framed by gray-blue rock and TWO thick gnarled brown roots arching together, like a pointed oval root arch. Root-covered cave cliff occupies left third; cool layered forest continues unobstructed to the right. Flat continuous horizontal walkable base crosses whole image at lower quarter, opening meets the SAME level as the forest path, generous opening to later pass a wagon. Camera flat lateral 2D platformer view, not a forward-facing corridor, no perspective stairs. Style simplified dark fantasy PIXEL ART with large square pixel clusters, short cool gray-blue/black and restrained root-brown palette, minimal texture. Ambient neutral lighting for dynamic day/night: no sunlight beams, sun, moon, fires or special effects. Bottom quiet dark earth. Empty background only: NO people, beasts, wagon, fire, tools, chests, bedding, props, UI, text, labels, watermark, collage. Recognizable cave entrance without blocking the straight floor.",
+      "visual_checks": {
+        "continuous_flat_floor": true,
+        "root_framed_exit": true,
+        "no_baked_actors_props_ui": true,
+        "pixel_clusters": true
+      },
+      "ratio": null
+    },
+    {
+      "id": "aelira-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-74f66d6f-67d3-4b5e-a822-23850e804d81.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/aelira-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: AELIRA the forager, olive-green tunic and mantle, dark olive trousers and brown closed boots, short tousled white hair, slim adult elf. Lying on her left side, cheek on a folded forearm, upper hand limp at waist, one leg nearly extended and the other slightly bent. Small natural cloth folds, no bag or held object.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "vaelun-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-f152daa6-947f-437b-b82e-e71994034d40.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/vaelun-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: VAELUN the porter, brown long-sleeved travel tunic, broad brown leather shoulder straps without bag, dark brown opaque trousers, sturdy boots, short white hair. Adult elf with a somewhat sturdier build. Lying on his back, head relaxed to one side, hands resting loosely across abdomen, one knee slightly bent and the other leg fully extended. Exhausted sick expression, no held props.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "nimara-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-b050d7c1-6edd-4d35-9a75-e99f60271e2f.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/nimara-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: NIMARA the scout, charcoal travel tunic and cloak with a muted red scarf at neck, opaque charcoal trousers and dark closed boots, short white hair. Slim adult elf lying on her side with head on one forearm, other hand against chest, hips relaxed, both legs extended with a small bend at knees; scarf rests limply on shoulder, not flying. Natural exhausted breathing posture.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "thaviel-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-d4c3dc4f-b869-445b-aac7-4c6706d38440.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/thaviel-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: THAVIEL the keeper of flame, brown hooded robe/tunic with hood worn over white hair, dark brown opaque trousers, brown closed boots. Pale adult elf, pointed ear partly peeking from hood. Lying on his back with face angled sideways, one relaxed hand on stomach and other arm extended loosely along ground, legs nearly extended with subtle one-knee bend. No flame, lantern, staff or objects. Hood cloth rests naturally.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "ilyren-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-fa48d615-18a3-4adb-96ea-53c2ccbd4e3e.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/ilyren-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: ILYREN the mender, gray practical tunic with dark charcoal shoulder cape, dark gray opaque trousers, gray-brown boots, short white hair, pale adult elf. Genuinely resting on his side, arms folded loosely under cheek, one leg straight and one modestly bent, torso leaning into gravity rather than braced. Identity is clothing only, no wrench or tools. Keep wide transparent margins around toes and hair.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "orisya-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-a8013d69-8c04-4aca-9b87-cdb5644bf2b2.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/orisya-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: ORISYA the healer, muted sage-green sleeves and hoodless mantle, pale ivory-green travel tunic, dark sage opaque trousers and brown boots, short white hair, pale adult elf. Lying on her back, face tilted softly toward viewer, both hands loosely joined over stomach, one nearly straight leg and one lightly bent knee. No bag, medical symbol or potion; clothing preserves healer identity. Closed tired eyes.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "soreth-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-dba78742-ff82-4332-b02a-7fa0c8f3d3e0.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/soreth-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: SORETH the warden, dark charcoal-blue sentinel cloak and plain dark tunic, opaque charcoal trousers, dark boots, short white hair, pale adult elf. Lying on his side with one forearm under head, other arm relaxed along hip, one leg nearly straight and the other gently bent; mantle lies limply along torso. No staff or armor additions. Extremely simple silhouette, no embroidered details, complete safe padding around hair and boots.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "luraen-resting",
+      "attempt": 1,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9a598b90-8f11-47e4-8f2c-18a448d6f38e.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/luraen-resting-v1.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: LURAEN the dreamer, muted purple mantle and simple purple travel tunic, opaque gray-purple trousers and brown-gray boots, short white hair, pale adult elf. Lying on his side with cheek supported by a loosely folded forearm, other palm open beside waist, knees slightly relaxed with one leg extending. Purple mantle drapes naturally onto ground level, NOT flowing dramatically. No gem, glowing charm, dream effects or objects. Plain clothing and short palette.",
+      "visual_checks": {},
+      "ratio": null
+    },
+    {
+      "id": "cave-interior",
+      "attempt": 2,
+      "status": "candidate-generated-pending-technical-review",
+      "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-581103e1-5721-4a0c-bec3-d6366b3d19d3.png",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v2.png",
+      "provider": "built-in-imagegen",
+      "ai_disclosure_required": true,
+      "license_verification": "not-independently-verified",
+      "runtime_admitted": false,
+      "prompt": "Use case: precise-object-edit. Image1 is the edit target, the cave INTERIOR background. Change only the vertical placement of its horizontal walkable floor: lower it from roughly64 percent canvas height to75 percent canvas height, so it matches the exterior ground baseline. Extend the existing gray cave wall and two gnarled-root exit arch downward naturally to meet the new floor. Keep one perfectly flat continuous floor; no extra platform, stairs, raised threshold, gap or obstacle. Preserve enclosing rock ceiling, cave side view, neutral cool palette, broad EMPTY refuge area and right-side forest opening, deliberate large square pixel clusters. Keep background only: no wagon, people, fire, props, bedding, UI, text, labels or watermark. Landscape16:9. No other scene redesign.",
+      "visual_checks": {
+        "true_cave": true,
+        "flat_floor": true,
+        "lower_quarter_floor": true,
+        "no_baked_actors_props_ui": true
+      },
+      "ratio": null,
+      "source_references": [
+        ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v1.png"
+      ]
+    }
+  ]
+}

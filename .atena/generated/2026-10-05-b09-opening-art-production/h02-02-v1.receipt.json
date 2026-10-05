@@ -1,0 +1,13 @@
+{
+  "id": "h02-02",
+  "attempt": 1,
+  "status": "rejected",
+  "reason": "Premature dark drow skin, exterior wagon and staff",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9af08660-2000-475e-ac72-15fabca12942.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth's former godhood presented as a memory, not a new divine identity design. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: in the same forest clearing, pale elf Lolth faces the same tall faceless hooded Shar in purple-black robes with white crescent chest, recounting her past divinity. Between them floats a single abstract, dim violet recollection of Lolth's humanoid silhouette encircled by fading light, no second physical Lolth, no gods or other people. No specific former-plane costume, throne, temple or named deity. Real Lolth's white hair, black cloak, opaque slate trousers and boots remain unchanged. Shadow memory clearly is a translucent vision, not a third character or split panel. Short wand remains in Shar's hand.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

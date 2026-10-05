@@ -1,0 +1,13 @@
+{
+  "id": "h03-05",
+  "attempt": 1,
+  "status": "superseded-owner-final-spider-request",
+  "reason": "Humanoid body with arachnid appendages does not meet owner's subsequent request for a complete shadow-spider final form.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-9f11144b-de7c-49dd-ad6d-c3a0c9e62d30.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth leaves the wand in the eight drows' collective custody and stays with them. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. Final single panel, Golden City of Dreams terrace. EXACTLY NINE figures total, all faces visible and countable: left Lolth, dark-violet skin, white hair, established black crown and shadow-spider appendages, opaque high-neck black mantle and boots; right EIGHT white-haired dark-violet drow family members (olive ranger, brown fighter, dark-red scarf, brown hood, gray mage, pale-green healer, dark-green scout, purple scholar) in a shallow single arc facing her. Lolth sets the SAME SHORT slender violet-tipped wand on a low relic chest BETWEEN all eight as shared custody, hands withdrawing; no selected ruler, no duplication of wand, no orb staff. One open wooden wagon with relic chests directly behind the group, no canopy, no horse. Lolth stays in the scene beside them. Quiet hopeful gold/lavender light, simple chunky pixel art, no text, no background people, bottom15percent clear.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

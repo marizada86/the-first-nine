@@ -1,0 +1,14 @@
+{
+  "name": "negative-progression_unlock",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.653,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL no_progression_unlock",
+    "B06 FAIL camera_offset_combat"
+  ],
+  "error": null
+}

@@ -1,0 +1,13 @@
+{
+  "id": "h02-02",
+  "attempt": 3,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": null,
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-c9d6c873-d4c7-4a47-9f5d-028fd06203f2.png",
+  "prompt": "Correct ONLY the real Lolth's visible face and skin on the left of this panel. Her face is currently dark/black and incorrectly reads as a drow. Paint her visible profile skin LIGHT PALE IVORY, the SAME light value as her pointed ear: cheek, forehead, nose, chin and neck must be obviously light pale elf skin even in this night scene. Keep her white hair, black clothes, posture, ghost-memory, faceless Shar, short wand, forest and no-text composition exactly unchanged. Do NOT change the ghost memory skin. She has not yet received the Mark; no dark drow skin or black face silhouette on the real left figure.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v3.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

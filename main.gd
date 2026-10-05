@@ -35,6 +35,7 @@ const STAG_WAGON_HIT_DAMAGE := 10.0
 const STAG_WAGON_HIT_COOLDOWN := 1.4
 const LOLTH_ELF_RUNTIME := preload("res://assets/runtime_v2/characters/lolth/lolth-elf-core-sheet-v1.png")
 const LOLTH_DROW_RUNTIME := preload("res://assets/runtime_v2/characters/lolth/lolth-drow-core-sheet-v1.png")
+const LOLTH_TRANSFORMATIONS := preload("res://lolth_transformations.gd")
 const BRIAR_HOUND_RUNTIME := preload("res://assets/runtime_v2/enemies/thornwake/briar-hound-core-v1.png")
 const STAG_OF_MIRE_RUNTIME := preload("res://assets/runtime_v2/enemies/thornwake/stag-of-mire-core-v1.png")
 const ANTLERED_HUNGER_RUNTIME := preload("res://assets/runtime_v2/enemies/thornwake/antlered-hunger-core-v1.png")
@@ -233,6 +234,10 @@ var mark_vfx_pos := Vector2.ZERO
 # B-05: the most recent player action drives the pose; hurt visuals follow real damage only.
 var player_action := ""
 var player_action_time := 0.0
+var player_action_duration := 0.0
+var player_animation_pose := "idle"
+var player_animation_time := 0.0
+var lolth_transform_time := 0.0
 var hurt_flash_time := 0.0
 var ui_management
 var ui_gameplay_requests: Array[String] = []
@@ -484,8 +489,10 @@ func playtester_change_mark(amount: int) -> void:
 	var target_mark := clampi(mark_level + amount, 0, MARK_NAMES.size() - 1)
 	if target_mark == mark_level:
 		return
+	var previous_mark := mark_level
 	prepare_playtester_override()
 	mark_level = target_mark
+	begin_lolth_transformation(previous_mark)
 	shadow_echoes = 0
 	health = max_health()
 	first_thread_cooldown = 0.0
@@ -718,7 +725,7 @@ func run_opening_cave_self_test() -> bool:
 	var eight_plagued := allies.size() == 8
 	for ally in allies:
 		eight_plagued = eight_plagued and String(ally.condition) == "plagued" and not bool(ally.controllable)
-	var only_lolth_controllable: bool = camp.controllable == ["LOLTH"]
+	var only_lolth_controllable: bool = camp.controllable == ["NOLF"]
 	var wagon: Dictionary = camp.wagon
 	var wagon_damaged_and_locked := bool(wagon.open) and not bool(wagon.horse) and not bool(wagon.beds) and not bool(wagon.enclosed_rooms) and String(wagon.condition) == "cave_damaged" and String(wagon.travel) == "travel_locked" and int(wagon.repair) == 0
 	var relics_protected := bool(camp.relics.present) and bool(camp.relics.protected)
@@ -991,7 +998,7 @@ func run_first_boss_self_test() -> bool:
 	var full_shell_applies_mark := state == "cure" and mark_level == 1 and shar_beat == 0
 	var passed := no_boss_before_safe_camp and safe_camp_reached and boss_not_automatic and needs_wagon and only_boss and lunge_telegraphed and lunge_hits_after_windup and wagon_charge_telegraphed and charge_hits_after_windup and boss_failure_reset and boss_defeated_by_melee and shell_advances and shell_skipped and mark_once and lolth_drow and eight_choices and echoes_zero_before_cure and no_echo_before_cure and one_cure and no_second_cure and wagon_held and travel_blocked and echoes_after_cure and echoes_capped and thread_hits and thread_cooldown and melee_still_works and dodge_still_works and marked_restore and no_thread_before_mark and new_run_reaches_shell and full_shell_applies_mark
 	if passed:
-		print("SELF_TEST_B03_PASS: camp action starts a telegraphed Antlered Hunger; victory reaches the Shar shell, Mark I, and exactly one cure with capped Echoes and a locked wagon (%d melee hits)" % hits)
+		print("SELF_TEST_B03_PASS: camp action starts a telegraphed Antlered Hunger; victory reaches the Xiar shell, Mark I, and exactly one cure with capped Echoes and a locked wagon (%d melee hits)" % hits)
 	else:
 		push_error("SELF_TEST_B03_FAIL: start=%s/%s/%s/%s boss=%s lunge=%s/%s charge=%s/%s reset=%s victory=%s shell=%s/%s mark=%s/%s choices=%s echoes=%s/%s cure=%s/%s wagon=%s travel=%s echo=%s/%s thread=%s/%s melee=%s dodge=%s restore=%s premark=%s replay=%s/%s" % [no_boss_before_safe_camp, safe_camp_reached, boss_not_automatic, needs_wagon, only_boss, lunge_telegraphed, lunge_hits_after_windup, wagon_charge_telegraphed, charge_hits_after_windup, boss_failure_reset, boss_defeated_by_melee, shell_advances, shell_skipped, mark_once, lolth_drow, eight_choices, echoes_zero_before_cure, no_echo_before_cure, one_cure, no_second_cure, wagon_held, travel_blocked, echoes_after_cure, echoes_capped, thread_hits, thread_cooldown, melee_still_works, dodge_still_works, marked_restore, no_thread_before_mark, new_run_reaches_shell, full_shell_applies_mark])
 	return passed
@@ -1965,7 +1972,7 @@ func cave_camp_state() -> Dictionary:
 	return {
 		"location": "thornwake_cave",
 		"lolth_form": lolth_form(),
-		"controllable": ["LOLTH"],
+		"controllable": ["NOLF"],
 		"wagon": {"open": true, "horse": false, "beds": false, "enclosed_rooms": false, "condition": wagon_condition(), "travel": "travel_locked" if wagon_travel_locked() else "travel_ready", "repair": wagon_repair, "integrity": wagon_integrity},
 		"relics": {"present": true, "protected": true},
 		"fire": flame,
@@ -2119,6 +2126,7 @@ func _process(delta: float) -> void:
 		ui_gameplay_requests.clear()
 		return
 	pulse += delta
+	update_lolth_presentation(delta)
 	message_time = maxf(0.0, message_time - delta)
 	if state == "opening":
 		if Input.is_action_just_pressed("skip"):
@@ -2241,7 +2249,7 @@ func move_player(delta: float) -> void:
 		velocity.y = 0.0
 		on_floor = true
 	if player.y > VIEW.y + 80.0:
-		fail_run("Lolth fell into the ruins.")
+		fail_run("Nolf fell into the ruins.")
 
 func hurt_lolth() -> void:
 	if dodge_time > 0.0:
@@ -2255,17 +2263,17 @@ func hurt_lolth() -> void:
 	hurt_cooldown = 1.0
 	hurt_flash_time = HURT_FLASH_TIME
 	set_player_action("hurt", HURT_FLASH_TIME)
-	message = "Lolth is wounded."
+	message = "Nolf is wounded."
 	message_time = 1.5
 	if health <= 0.0:
-		fail_run("Lolth could not return to the Caravan.")
+		fail_run("Nolf could not return to the Caravan.")
 
 func use_shadow_action(direction: float) -> void:
 	perform_dodge(direction)
 
 func perform_dodge(direction: float) -> void:
 	if dodge_cooldown > 0.0:
-		message = "Lolth needs a moment before dodging again."
+		message = "Nolf needs a moment before dodging again."
 		message_time = 0.7
 		return
 	var dodge_direction := direction if absf(direction) > 0.1 else -1.0 if player_facing_left else 1.0
@@ -2276,12 +2284,16 @@ func perform_dodge(direction: float) -> void:
 	hurt_cooldown = DODGE_DURATION
 	trigger_mark_vfx("dash", player + Vector2(0, -72))
 	set_player_action("dodge", DODGE_DURATION)
-	message = "LOLTH DODGES"
+	message = "NOLF DODGES"
 	message_time = 0.7
 
 func clear_combat_visuals() -> void:
 	player_action = ""
 	player_action_time = 0.0
+	player_action_duration = 0.0
+	player_animation_pose = "idle"
+	player_animation_time = 0.0
+	lolth_transform_time = 0.0
 	hurt_flash_time = 0.0
 	dodge_time = 0.0
 	dodge_cooldown = 0.0
@@ -2332,14 +2344,14 @@ func handle_attack() -> void:
 	combo_step = 0
 	combo_time = 0.0
 	combo_target = ""
-	message = "Out of reach — step closer to strike the %s." % nearby.name if not nearby.is_empty() else "Lolth swings. No enemy in reach."
+	message = "Out of reach — step closer to strike the %s." % nearby.name if not nearby.is_empty() else "Nolf swings. No enemy in reach."
 	message_time = 1.2
 
 # Interaction cannot damage an enemy, even when it overlaps a pickup.
 func handle_primary() -> void:
 	if zone == 2 and mark_level == 9 and absf(player.x - PORTAL_X) < 90.0:
 		state = "victory"
-		message = "Their old memories are gone. Lolth leaves the Kiss of Shar with the First Nine."
+		message = "Their old memories are gone. Nolf leaves Xiar's kiss with the First Nine."
 		return
 	if use_rope_route():
 		return
@@ -2353,9 +2365,9 @@ func handle_primary() -> void:
 			if String(gate.name) == "WEB ANCHOR":
 				hollowroot_web_anchor_open = true
 				trigger_mark_vfx("gate", gate.pos)
-				message = "Lolth binds a solid web floor across the Web Anchor."
+				message = "Nolf binds a solid web floor across the Web Anchor."
 			else:
-				message = "%s yields to Lolth's Mark." % gate.name
+				message = "%s yields to Nolf's Mark." % gate.name
 			message_time = 2.5
 			return
 	if at_wagon():
@@ -2414,6 +2426,23 @@ func nearest_live_enemy(range_limit: float) -> Dictionary:
 func set_player_action(action: String, duration: float) -> void:
 	player_action = action
 	player_action_time = duration
+	player_action_duration = duration
+	player_animation_pose = action
+	player_animation_time = 0.0
+
+func begin_lolth_transformation(previous_mark: int) -> void:
+	var new_stage := LOLTH_TRANSFORMATIONS.stage_for_mark(mark_level)
+	if new_stage > LOLTH_TRANSFORMATIONS.stage_for_mark(previous_mark):
+		lolth_transform_time = LOLTH_TRANSFORMATIONS.TRANSFORM_DURATION
+
+func update_lolth_presentation(delta: float) -> void:
+	lolth_transform_time = maxf(0.0, lolth_transform_time - delta)
+	var pose := player_pose()
+	if pose != player_animation_pose:
+		player_animation_pose = pose
+		player_animation_time = 0.0
+	else:
+		player_animation_time += delta
 
 func player_pose() -> String:
 	if player_action_time > 0.0 and player_action != "":
@@ -2435,7 +2464,7 @@ func defeat_enemy(shade: Dictionary) -> void:
 		return
 	if mark_level > 0:
 		collect_echo(int(shade.echoes))
-	message = "%s falls. Lolth absorbs its shadow." % shade.name
+	message = "%s falls. Nolf absorbs its shadow." % shade.name
 	message_time = 1.2
 	if String(shade.name) == "STONE MAW":
 		stonehook_boss_defeated = true
@@ -2449,7 +2478,7 @@ func defeat_enemy(shade: Dictionary) -> void:
 # FIRST THREAD: a short-range shadow strike that supplements melee and dodge.
 func use_first_thread() -> void:
 	if mark_level < 1:
-		message = "Lolth has no shadow strike yet."
+		message = "Nolf has no shadow strike yet."
 		message_time = 1.5
 		return
 	if first_thread_cooldown > 0.0:
@@ -2519,7 +2548,7 @@ func add_to_load(item: Dictionary) -> bool:
 	if ally_is_near("AELIRA") and String(item.type) in ["herb", "water", "food"] and not bool(ally_assists_used.get("aelira", false)):
 		ally_assists_used.aelira = true
 		provisions = minf(8.0, provisions + 1.0)
-		message = "AELIRA finds enough for the group while Lolth gathers supplies."
+		message = "AELIRA finds enough for the group while Nolf gathers supplies."
 		message_time = 2.5
 	return true
 
@@ -2695,14 +2724,16 @@ func trigger_mark_vfx(kind: String, position: Vector2) -> void:
 	mark_vfx_time = 0.42
 
 func advance_mark() -> void:
+	var previous_mark := mark_level
 	mark_level += 1
+	begin_lolth_transformation(previous_mark)
 	health = max_health()
 	if mark_level <= 8:
 		state = "cure"
 		selected_cure = 0
 		message = "%s — Choose a Thalestriel to cure." % MARK_NAMES[mark_level]
 	else:
-		message = "SHADOW CROWN — Shar takes the First Drows' memories as Lolth becomes a vast shadow spider."
+		message = "SHADOW CROWN — Xiar takes the First Drows' memories as Nolf becomes a vast shadow spider."
 	create_checkpoint()
 	message_time = 4.5
 
@@ -2754,7 +2785,7 @@ func capture_safe_wagon_state() -> void:
 			taken_by_id[String(item.id)] = bool(item.taken)
 	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken, "pickup_taken": taken_by_id, "crawler": scree_crawler_state()}
 	camp_secured = true
-	message = "CAMP SECURED — If Lolth falls, she returns to this moment at the Wagon."
+	message = "CAMP SECURED — If Nolf falls, she returns to this moment at the Wagon."
 	message_time = 4.0
 
 func restore_safe_wagon_state() -> void:
@@ -3197,7 +3228,7 @@ func update_scree_crawler(crawler: Dictionary, delta: float) -> void:
 func scree_crawler_strike_lands(crawler: Dictionary) -> void:
 	crawler.strike_spent = true
 	if dodge_time > 0.0:
-		message = "Lolth dashes through the SCREE CRAWLER's lunge."
+		message = "Nolf dashes through the SCREE CRAWLER's lunge."
 		message_time = 1.2
 		return
 	if hurt_cooldown > 0.0:
@@ -3211,7 +3242,7 @@ func defeat_scree_crawler() -> void:
 		crawler_reward_paid = true
 		if mark_level > 0:
 			collect_echo(1)
-	message = "SCREE CRAWLER falls. Lolth absorbs its shadow."
+	message = "SCREE CRAWLER falls. Nolf absorbs its shadow."
 	message_time = 1.2
 
 func scree_crawler_state() -> Dictionary:
@@ -3356,7 +3387,7 @@ func use_rope_route() -> bool:
 			velocity = Vector2.ZERO
 			on_floor = false
 			trigger_mark_vfx("sense", route.to + Vector2(0, -54))
-			message = "Lolth climbs the rope route above the scree."
+			message = "Nolf climbs the rope route above the scree."
 			message_time = 2.0
 			return true
 	return false
@@ -4146,6 +4177,21 @@ func draw_portal() -> void:
 
 # The current pose cell and optional crop, shared by the normal and readability passes.
 func player_sprite_frame() -> Dictionary:
+	if LOLTH_TRANSFORMATIONS.stage_for_mark(mark_level) > 0:
+		var pose := player_pose()
+		var clip := pose
+		var elapsed := player_animation_time if pose == player_animation_pose else 0.0
+		var progress := -1.0
+		if player_action_time > 0.0 and player_action_duration > 0.0:
+			progress = clampf(1.0-player_action_time/player_action_duration, 0.0, 1.0)
+		elif lolth_transform_time > 0.0 and on_floor:
+			clip = "transform"
+			elapsed = LOLTH_TRANSFORMATIONS.TRANSFORM_DURATION-lolth_transform_time
+		if clip == "walk":
+			clip = "run"
+		elif clip == "air":
+			clip = "rise" if velocity.y <= 80.0 else "fall"
+		return LOLTH_TRANSFORMATIONS.sprite_frame(mark_level, clip, elapsed, progress)
 	var pose_sheet: Texture2D = LOLTH_ELF_RUNTIME if lolth_form() == "elf" else LOLTH_DROW_RUNTIME
 	var pose_index := 0
 	match player_pose():
@@ -4175,8 +4221,8 @@ func player_sprite_frame() -> Dictionary:
 
 func draw_player() -> void:
 	var frame := player_sprite_frame()
-	draw_player_sprite(frame.sheet, frame.source, PLAYER_SPRITE_HEIGHT, 1.0, frame.crop)
-	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color("fff0b0"))
+	draw_player_sprite(frame.sheet, frame.source, float(frame.get("height", PLAYER_SPRITE_HEIGHT)), float(frame.get("feet_ratio", 1.0)), frame.crop)
+	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "NOLF", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color("fff0b0"))
 	if player_hurt_visible():
 		draw_circle(player + Vector2(0, -62), 58, Color(0.85, 0.25, 0.45, 0.18))
 
@@ -4217,8 +4263,8 @@ func draw_foreground_readability() -> void:
 	if alpha <= 0.0:
 		return
 	var frame := player_sprite_frame()
-	draw_player_sprite(frame.sheet, frame.source, PLAYER_SPRITE_HEIGHT, 1.0, frame.crop, Color(1, 1, 1, alpha))
-	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color(1.0, 0.94, 0.69, alpha))
+	draw_player_sprite(frame.sheet, frame.source, float(frame.get("height", PLAYER_SPRITE_HEIGHT)), float(frame.get("feet_ratio", 1.0)), frame.crop, Color(1, 1, 1, alpha))
+	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "NOLF", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color(1.0, 0.94, 0.69, alpha))
 
 func draw_foreground_overlay() -> void:
 	var panel_width := RUINS_FOREGROUND_OVERLAYS.get_width() / 2.0
@@ -4293,6 +4339,14 @@ func draw_cure_menu() -> void:
 		draw_rect(rect, Color("f6d47f") if selected else Color("725683"), false, 2.0)
 		draw_string(ThemeDB.fallback_font, rect.position + Vector2(0, 43), available[index], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22, Color("fff2df"))
 		draw_string(ThemeDB.fallback_font, rect.position + Vector2(0, 70), "Press E to awaken", HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 14, Color("d9c6e8"))
+	if lolth_transform_time > 0.0 and LOLTH_TRANSFORMATIONS.stage_for_mark(mark_level) > 0:
+		# Acquisition happens beneath this modal. Present the same six-frame clip in its
+		# free lower area so the cure choices remain immediately available and unobscured.
+		var frame := LOLTH_TRANSFORMATIONS.sprite_frame(mark_level, "transform", LOLTH_TRANSFORMATIONS.TRANSFORM_DURATION-lolth_transform_time)
+		var preview_scale := 2.0
+		var size: Vector2 = frame.source.size*preview_scale
+		var position := Vector2(640,584)-Vector2(56,100)*preview_scale
+		draw_texture_rect_region(frame.sheet,Rect2(position,size),frame.source)
 	draw_string(ThemeDB.fallback_font, Vector2(0, 600), "A/D or stick: choose   ·   E / top face: cure", HORIZONTAL_ALIGNMENT_CENTER, VIEW.x, 18, Color("fff2df"))
 
 func draw_meter(position: Vector2, label: String, value: float, color: Color, icon_index: int) -> void:

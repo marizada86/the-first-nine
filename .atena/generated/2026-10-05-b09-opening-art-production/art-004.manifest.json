@@ -1,0 +1,53 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-05-b09-opening-art-production-approval.md",
+    "plan_id": "2026-10-05-b09-opening-art-production",
+    "batch_id": "ART-004"
+  },
+  "art_direction": "Established lateral minimal dark-fantasy pixel art; approved sources and spec; no new lore, clothing exposure or covered/horse wagon.",
+  "output_dir": ".atena/generated/2026-10-05-b09-opening-art-production",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "cave-interior",
+      "kind": "environment",
+      "prompt": "Use case: stylized-concept. Asset type: one reusable side-view environment background for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Wide true interior of the root-lined Thornwake cave. Empty side-view playable refuge, rock walls and ceiling clearly overhead, flat continuous floor near the lower quarter, matching tall root-framed opening at one end. Reserve unobstructed floor space for one wagon, a fire and eight lying patients to be placed later. No people, wagon, fire, chests, UI or labels baked into the image; ambient cool cave lighting suitable for dynamic day/night.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "genuine-cave-or-matching-entrance",
+        "flat-floor",
+        "no-baked-actors-props-ui",
+        "16:9-measured",
+        "pixel-clusters"
+      ]
+    },
+    {
+      "id": "cave-exterior-entrance",
+      "kind": "environment",
+      "prompt": "Use case: stylized-concept. Asset type: one reusable side-view environment background for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Side-view exterior of the same root-lined cave entrance in Thornwake Forest. Recognizable dark opening framed by gray rock and two gnarled roots. Flat walkable base continuous with the forest route, opening large enough for the single wagon; no steps or blocked floor. No people, wagons, fires, labels or UI; neutral lighting suitable for dynamic day/night.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-exterior-entrance-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "genuine-cave-or-matching-entrance",
+        "flat-floor",
+        "no-baked-actors-props-ui",
+        "16:9-measured",
+        "pixel-clusters"
+      ]
+    }
+  ],
+  "scale_sheet": {
+    "id": "lolth-common-anatomical-baseline-40-logical-pixels",
+    "body_height": 40,
+    "source": ".atena/specs/2026-10-05-lolth-three-transformations.md",
+    "measurement_gate": "Normalize common body baseline after measured source landmarks; do not accept an unmeasurable candidate."
+  }
+}

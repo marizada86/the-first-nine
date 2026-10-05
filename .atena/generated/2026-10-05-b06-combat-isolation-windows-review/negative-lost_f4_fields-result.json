@@ -1,0 +1,20 @@
+{
+  "name": "negative-lost_f4_fields",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.257,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL f4_exact_restore"
+  ],
+  "error": null
+}

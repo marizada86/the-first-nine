@@ -1,0 +1,20 @@
+{
+  "id": "h01-06",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-cdbe1473-d76e-4079-81b0-9c0206ec843a.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Natural disaster strikes the caravan. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: a flash flood and rockslide on the mountain road, the same open relic wagon caught at the edge of rushing water with one wheel damaged, clothed elves struggling to keep together. Pale elf Lolth with long white hair, black hooded cloak, slate trousers and boots, both hands empty, cursing angrily toward the storm clouds. No sword, wand, drow transformation or supernatural power. One wagon only. Clear non-graphic peril.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-06-v1.png",
+  "visual_checks": {
+    "single_panel": true,
+    "no_text": true,
+    "clothing": true,
+    "narrative_beat": true,
+    "lolth_unmarked": true,
+    "non_graphic": true
+  },
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

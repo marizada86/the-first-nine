@@ -1,0 +1,12 @@
+{
+  "id": "h02-03",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-7bc1cc26-eed7-40ab-9e78-d29c7ba471a6.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth offers the memories; Shar accepts. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: medium full-body two-person scene, the same moonlit forest clearing with NO wagon. PALE IVORY ELF Lolth, clearly LIGHT face/ears/hands, long white hair, black hooded cloak, opaque trousers/boots, offers a few fading abstract violet memory motes from her empty palm. Shar, tall faceless hooded violet-black robe with white crescent chest, reaches to accept, holding the SAME short slender silver wand with tiny violet tip in the other hand. The exchange is memories, no physical coin, contract scroll, temple, orb-staff or third person. No drow skin or Mark yet, no nudity.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-03-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

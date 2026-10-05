@@ -1,0 +1,119 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-05-b09-opening-art-production-approval.md",
+    "plan_id": "2026-10-05-b09-opening-art-production",
+    "batch_id": "ART-003"
+  },
+  "art_direction": "Established lateral minimal dark-fantasy pixel art; approved sources and spec; no new lore, clothing exposure or covered/horse wagon.",
+  "output_dir": ".atena/generated/2026-10-05-b09-opening-art-production",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "h03-01",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth completes her established final transformation. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth's transformation was complete."
+    },
+    {
+      "id": "h03-02",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Portal opens to the Dream Plane. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "She opened a passage to the Dream Plane."
+    },
+    {
+      "id": "h03-03",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth and exactly eight drows cross with the open wagon and relics. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "All nine crossed together. No one, and no relic, was left behind."
+    },
+    {
+      "id": "h03-04",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: All nine remain together in the Golden City of Dreams. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "In the Golden City of Dreams, they found their home."
+    },
+    {
+      "id": "h03-05",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth leaves the wand in the eight drows' collective custody and stays with them. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "THE KISS OF SHAR remained in the eight drows' care. Lolth remained with them."
+    }
+  ],
+  "scale_sheet": {
+    "id": "lolth-common-anatomical-baseline-40-logical-pixels",
+    "body_height": 40,
+    "source": ".atena/specs/2026-10-05-lolth-three-transformations.md",
+    "measurement_gate": "Normalize common body baseline after measured source landmarks; do not accept an unmeasurable candidate."
+  }
+}

@@ -42,7 +42,7 @@ func setup(owner_game: Node) -> void:
 	stack.add_child(tabs)
 	button(tabs, "Supplies", show_section.bind("supplies"), "supplies")
 	button(tabs, "Allies", show_section.bind("allies"), "allies")
-	button(tabs, "Lolth inventory [I]", open_window.bind("inventory"), "inventory")
+	button(tabs, "Nolf inventory [I]", open_window.bind("inventory"), "inventory")
 	var scroll := ScrollContainer.new()
 	scroll.follow_focus = true
 	scroll.custom_minimum_size = Vector2(660, 355)
@@ -151,7 +151,7 @@ func refresh() -> void:
 		content.remove_child(child)
 		child.queue_free()
 	tabs.visible = mode == "wagon"
-	heading.text = "THE WAGON" if mode == "wagon" else "LOLTH'S INVENTORY"
+	heading.text = "THE WAGON" if mode == "wagon" else "NOLF'S INVENTORY"
 	summary.text = "World paused · E: confirm · Arrows / Tab: navigate"
 	if mode == "inventory":
 		show_inventory()
@@ -170,7 +170,7 @@ func refresh() -> void:
 
 func show_inventory() -> void:
 	label(content, "CARRIED LOAD: %d / %d spaces" % [game.load_used(), game.load_capacity()], 20)
-	label(content, "These items travel with Lolth. Wagon stock is separate.")
+	label(content, "These items travel with Nolf. Wagon stock is separate.")
 	if game.recovered_load.is_empty():
 		label(content, "Your inventory is empty. Explore and press E to gather supplies.")
 	for index in game.recovered_load.size():

@@ -1,0 +1,16 @@
+{
+  "name": "negative-bypass_departure",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.647,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL uncured_mark_blocked",
+    "B06 FAIL unsecured_blocked",
+    "B06 FAIL debug_mark_blocked",
+    "B06 FAIL f4_override_gate"
+  ],
+  "error": null
+}

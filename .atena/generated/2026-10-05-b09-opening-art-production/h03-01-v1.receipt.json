@@ -1,0 +1,13 @@
+{
+  "id": "h03-01",
+  "attempt": 1,
+  "status": "superseded-owner-final-spider-request",
+  "reason": "Owner's subsequent final-form request supersedes this humanoid arachnid portrayal.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-a9029110-7989-4822-968c-5602e62ab4cb.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth completes her established final transformation. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. Exactly nine family members where the group is shown: Lolth and eight distinct drow survivors; relic wagon travels with them; Lolth remains with them. No ninth ally. One solitary Lolth in the already established final form: dark violet drow face, white hair, black spiked crown, a fully opaque high-neck black mantle and black segmented clothing covering torso and legs to boots. Large angular black arachnid appendages extend symmetrically behind her like the established final shadow-spider silhouette, not a new creature or nude torso. Calm upright humanoid core, restrained violet shadow light; no weapon, no Shar, no allies or wagon in this close single-figure transformation panel. Dark rocky forest backdrop simplified in broad pixel clusters. Bottom caption space empty.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

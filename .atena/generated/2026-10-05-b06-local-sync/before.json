@@ -1,0 +1,1502 @@
+{
+  "base": "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc",
+  "target": "e189184e1928efca8172ce4a9c65996be81c206a",
+  "files": [
+    {
+      "path": ".atena/evidence/2026-10-04-b06-followup-windows-review.md",
+      "sha256": "186d4687c31cfd557e24e7b96e94899cf2949837de3b7c36ec5938b72f73147f"
+    },
+    {
+      "path": ".atena/evidence/2026-10-04-b06-isolation-windows-review.md",
+      "sha256": "ebdfb0dd1f32d171071de294ca7c596be3e1bf7a1047480c23ee19a53358a10e"
+    },
+    {
+      "path": ".atena/evidence/2026-10-04-b06-windows-review.md",
+      "sha256": "78acd48a90cc70b32e1944d2716f3eb65e7edbee52951ec51d614b0af2c19ebd"
+    },
+    {
+      "path": ".atena/evidence/2026-10-05-b06-combat-isolation-windows-review.md",
+      "sha256": "d95e955556265ca954ee01d5cf1f09e95f4dd28d5c92548fe0c30c4234b5653a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/b06-headless-result.json",
+      "sha256": "995ddb63ab9d4e7c05cfd312a8dada4ededcc772fce3ce800936d8def3a341f3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/b06-headless.log",
+      "sha256": "4f2f408e5c66fb37ec22734a9ebccad4a4d7eaeaf8e682c41135b82538059e87"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/b06-runtime-result.json",
+      "sha256": "7a7993a7a0e0de31c56d864e47ce7b28fb82a561690222c68842cc8f890a238a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/b06-runtime.log",
+      "sha256": "f4ed50968609d2047a7adefdfe955c79117aa88c4a3a0cd94f3937734694db51"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/camera-offset-melee.png",
+      "sha256": "d7f4b6948e79e0f13739c14d051ebeee25a8ba0064e51b300ff82fcd3995666d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/foothills-inventory.png",
+      "sha256": "e218950e253d270d468991a63716daa7a5cbbfb12b985653c13caa375d25f3c0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/offscreen-defeat.png",
+      "sha256": "70b53cd6c291634fd1045227ac958efa083f37b3d1e0654e16cf16e02bc9092f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/offscreen-stag-damage-night.png",
+      "sha256": "b4c64d8c8346dbbe9528e28e0bb3c2676365814b73952c14d2a7131bf945098f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/parity-day.png",
+      "sha256": "07dccead182bc4adb34458b8ca3218471184968d0b6cb425678ccfa0e4b39e03"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/parity-night.png",
+      "sha256": "369135e8bf0ca633acecb34735c9478183433e5850838445d94a5c7eda8182c7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/parity-secured.png",
+      "sha256": "860b95201eb9fed825759daeac4c56ad02d3f2cd1f25d68005e05093decdb7d6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-day-1280-left.png",
+      "sha256": "96fd013d4fe7c495804a18109fb547f100fc24a5bf7f1dec75fd724935f40b41"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-day-1280-right.png",
+      "sha256": "07ed2ce346c48bc16c05a0d7deafeb277a7f36469cb168014b5fec7f5c8a5c2a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-day-2998-left.png",
+      "sha256": "c3bf3477c69921af70e7c6739791065b488fb504b6a5d70a2d5d119a84a6a9cb"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-day-2998-right.png",
+      "sha256": "ae7da2598cf968da57216370401947ff15606bea3d8b5459d07c343cb679c524"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-night-1280-left.png",
+      "sha256": "69e6117d48408721db9b9c7f17cd984e21a8e25a447a434f6f233716ee173314"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-night-1280-right.png",
+      "sha256": "2635bcf17690cd4fb8a297f9336492f8b134860e66ced28b879e4622a9acef02"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-night-2998-left.png",
+      "sha256": "54ddb14981d8cdef7bcfd57413d74294aeca341c859d2426421aafd4d7743808"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/readability-night-2998-right.png",
+      "sha256": "b34306b8b44c2522de42db359184e230ed927627ebffe1e6f40fac1027936212"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/route-cave-secured.png",
+      "sha256": "364e1f0705122e14c86c25e6abf7e1c82233d4bd5879d053175af16971679bc2"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/route-far-end.png",
+      "sha256": "a047ce648b6f6517c9272651c901df78e35fcb9fc78d70bb826a9196824cd7b3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/route-returned-deposit.png",
+      "sha256": "2293e60a15b5bb53507c88b6da9deb7c9e95d5aa910e12601ac8e23b3f7b8399"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/seam-1280.png",
+      "sha256": "35f907227e429a69648888456aaa3d6b1f62b17697ff508c8d74060ac47f9f2b"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/seam-1760.png",
+      "sha256": "cfc797319f7ae5365e6ce4833983a90ded56b21a75f949b4c2fadd0b431d2598"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-day-1000.png",
+      "sha256": "8fd83104f8bf08f383e475d4d08a70b2188b8f9a49a3ff63005d57ab091f5680"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-day-1280.png",
+      "sha256": "f12774c5619350194a1880687c1f68487c2994873a1aae9d5e9057dfc4b86147"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-day-1520.png",
+      "sha256": "b4a79f2f6e281211bbb4e688f7c60da160d8e8c03afe360bc9d8a03e290722f0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-day-1760.png",
+      "sha256": "db2a738d29044512d5f610e9c498178376861f5b2ce14ebc2ece1827a12fd710"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-day-2400.png",
+      "sha256": "3be64b202a2810cee44480e190ec6e034f2f4d6d4123dceb8f19b38553aa337c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-night-1000.png",
+      "sha256": "d58b09dd4f210f797b7e1d5e79ea7a0101ab9efc0c7d8d74e5925a1c76289c75"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-night-1280.png",
+      "sha256": "29105c9cf72cab6248cb116f4520be6abe528a3315f593a89661fd9e09ac54aa"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-night-1520.png",
+      "sha256": "19f97053fa1fa502c2eac1e4565ce7198ebfa880a5c83dfe052cfdee7a58cd6c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-night-1760.png",
+      "sha256": "51161d87af3276ece4ef8eee3644053e4341af9c2fcb48613a353696219b2b43"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/transition-night-2400.png",
+      "sha256": "a4003b15c5cc5324a4dfc930e5d3271ba6f7d63e44bca1e7dd5486cea86fc7e3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/translation-left-offset-1000.png",
+      "sha256": "50232b442bec11785d0f7b6f37a529b31876e99a5a10fd0c2db850b65674c3c4"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/captures/translation-right-offset-1000.png",
+      "sha256": "addd7b48c5b125dbd44915305a8dc132d4881d1aeaa8f9cdf2e433eb058daf47"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/combat-result.json",
+      "sha256": "00d15692868986cf5a0c868af8aa67c6f5021948b3974f587a95bc3f3f63b8ad"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/combat.log",
+      "sha256": "68560cfd9f3ca73616f2b198dbd64aac9ae2459e8b5843a99ad826b9ee2202ab"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/diagnostic-exits.json",
+      "sha256": "329bfb46bae7ea7854d9c685544ddeecbe709cbbccba20383560e6884daf73d3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/early-isolation-diagnostic-result.json",
+      "sha256": "2ee0e85234c9f4e52b5857414396e1da70c90ea9994f9d900ed4703a11d13dbb"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/early-isolation-diagnostic.log",
+      "sha256": "e6f53bbec0d877637ff2d1c74e5ac1e1f2628ee38699a0453bf8e6ead0b6e138"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/early-isolation-runtime-metrics.json",
+      "sha256": "5a658bc509b41aabc8a13c96d023129d0668627c38844e4057ba6b967f796797"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/run_validation.cjs",
+      "sha256": "479b582cf4b633b81292b26288706e1ad78cec87449eaa0fde918310156a47a3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/validate_b06_runtime.gd",
+      "sha256": "a241c5acd16a695ce703d32ed2c7a937a7651d30ec60059c5ae38f57ebd969e9"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows-import.log",
+      "sha256": "8d171b539032be9f8833803f9ac940c4ecd60d76abcf3e71aa2428adb19a0c1b"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows-isolation-probe.log",
+      "sha256": "ee94a6e514990cd06dee288afaf62077a5d747fe6b1f6691084eada83add9594"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows-menus-physical-filter.log",
+      "sha256": "34d41419db3aecbafc7313e2be9e17e4f58c5c0e1dadcd8d0360fde6d3337b4c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows_diagnostic_runner.cjs",
+      "sha256": "c7128e77bb4e1326551e67ee4c99b393f8d6cffeb537a8c24bb2c61e927df014"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows_isolation_probe.gd",
+      "sha256": "590621768b0bdaf68c3053c1c044ed47a5e79979cd47a46c57b83cb9c852fe2a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows_menus_physical_filter.gd",
+      "sha256": "27741c8288573ecc9bc883b141bf4bc2f27c45125c70f0ea6cf7739a0b318653"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/diagnostics/windows_runtime_early_isolation.gd",
+      "sha256": "c22cb39e9c40d8a7b145527728a5332d20d3d943fef83c3d1efff975cdc50046"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/facing-headless-result.json",
+      "sha256": "8d875a8bdd131641a27b9c2ae27c334a4bbaee77a4b075ce042cd33aa2f90442"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/facing-headless.log",
+      "sha256": "05107797997ca49503cbaf4e4e140ebbcacd967e1c082ace468ae8bd0a4697b3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/facing-normal-baseline-7e477ba.log",
+      "sha256": "396e7f182b4dda356b2466c048c4dc26a6307caf5bb4a9277c1379cdb3b6d69c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/facing-normal-result.json",
+      "sha256": "ec28f8c6a4b30dd5b26d1fa27f8a3890c26bf09abc71ea15da10edfa19a9611b"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/facing-normal.log",
+      "sha256": "b589935d2a1182175e4b75596bb02546c166316233e1e1aa3795c69fef0e2fc6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/geometry-result.json",
+      "sha256": "30420c59f31b442fc6716446b8a530fc31bec88aa3ddcef5c167a2c95d897383"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/geometry.log",
+      "sha256": "3b835e1c477f4ca20ba349649c4b67f2861f03efcd9f8b37e16e595a841fbf4f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/headless-smoke-result.json",
+      "sha256": "86b11295978c2e768b9cc383a1c0b63636fb64811ced02209690ea96ac881405"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/headless-smoke.log",
+      "sha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/menus-result.json",
+      "sha256": "a74f871e24a473689b29e85c1e96476e39ebf16ce07e6fd0add4ac1225c6126f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/menus.log",
+      "sha256": "dca44bc934d53e164ef7b0474123928648427c0d31426b6a7539a4bfaff19963"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-border_respawn-result.json",
+      "sha256": "8a1b3edfb30ca7949381c85fcff56cdab83868f68896bd0639ac375365cec7bc"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-border_respawn.log",
+      "sha256": "99770a92b843c86915b6bfcd2d61621e325d1f7eeabd200531f1ff7a9c1cf3ed"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-bypass_departure-result.json",
+      "sha256": "1664d5d731b8da7a3ca2f04725e752eb95b9a88794ed9eaf2f5a205157b2a257"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-bypass_departure.log",
+      "sha256": "94e3bec92a479fd9dc5a15d52f879541f3e45fc88c5e739559a1cc2cba744209"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-lost_f4_fields-result.json",
+      "sha256": "3d842eb50e27b5f3106eb476152aed92be3f0aa084bd99110e2e7e1c79ed921b"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-lost_f4_fields.log",
+      "sha256": "a679b37270efcdabc047f175bd293258837ecdf1cb12e9271b696706af90dbfc"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-lost_route_restore-result.json",
+      "sha256": "7d0ec15b860ece5b3d416157a7a4650e2e7ebcca7b1c5c207700f9a6ba98b367"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-lost_route_restore.log",
+      "sha256": "f1869d5886bbce648d7fa3448533f711229eea12b61038fa46de9620ed2fa149"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-new_run_keeps_route-result.json",
+      "sha256": "ae7e03d5231d91b4ae8df4eeff466004d738ae8fc9041a2566394577dbe1be5b"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-new_run_keeps_route.log",
+      "sha256": "440d91d7d43aff9f151dca7f3c11c7be92902b875723cb35f4dd13b98ce9a77f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-paused_offscreen-result.json",
+      "sha256": "f7decb02e01978f28e75b1b60b25a6df3f695fcbfda45a1b07f7e7c75dce27d1"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-paused_offscreen.log",
+      "sha256": "cf4d8528fca98af0e67ed78c0a9bc7d9a2fa46712313369640b16222b375ef59"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-progression_unlock-result.json",
+      "sha256": "a118b6a4a2605e85c4094032cce564cdc2a48e731f3894f35e44730a3700a632"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-progression_unlock.log",
+      "sha256": "4a8a71e05bac146457b8906adee20cf2c10ccb8d3dfd7326059da7a23fb1c6fd"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-remote_wagon-result.json",
+      "sha256": "e60aef8dd0abbc284074dacb2d4fbc359794b20cf15e7dac869ddee2df0409bd"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/negative-remote_wagon.log",
+      "sha256": "0a99e4ba91debddb32e828d34e5d26c241b9ea490b5edf3d50a242688bf9d553"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/normal-smoke-result.json",
+      "sha256": "8ea507589f9a2b1e6e5afbce5aca4cdd12b6b02e6e5cedda2661ac058ad7a197"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/normal-smoke.log",
+      "sha256": "2104300e69f65eb136667e81673c017f08344ac794eca3c720a17552d087357a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/render-negative-leaked_camera_transform-result.json",
+      "sha256": "623a880423ef99e7b59304974e74cd3c396725c47b7bfaf3f0fef38a2430ec71"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/render-negative-leaked_camera_transform.log",
+      "sha256": "8c95fc3fb829308e3fd593bfc1c36e3a9817cac07915c4c31c2bf428fe865440"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/render-negative-no_foreground_readability-result.json",
+      "sha256": "a8dd57001ce936cd6020416be1420f0023bf4e961ae8eb54d0dc4a92afdf6ad6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/render-negative-no_foreground_readability.log",
+      "sha256": "c91ec59e425bbfc5dc59b1b132db5accd69d2ddd2e460d14ac63c3c75e7662ba"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/render-negative-unshifted_reflection-result.json",
+      "sha256": "28f180459a2b7157cd67d7de322c5e8cd194eb1bb78a03e94e9f6adbf12d40cd"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/render-negative-unshifted_reflection.log",
+      "sha256": "920318caefb6d0ead87831b061a3acb058f29c356931a9859b5b6d631b92280d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/review-manifest.json",
+      "sha256": "14e3ec260c604960aa563c891501b74bf39bf2015054de8b813a6dbbaf51ba3f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/runtime-metrics.json",
+      "sha256": "074a440478354e9eaa4ab2c9b282105ab5dbe74692a64ad6806c23cdee298a4e"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/self-test-result.json",
+      "sha256": "e1a18e4c98ad05e33b1543fcfcdbc394cebe5d341d67e401a9182f5bab568249"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/self-test.log",
+      "sha256": "81ec9d815a4dd455185453e491d24435dbd307ff660acc4e2ce81732d4047d21"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-followup-windows-review/validate_review_records.cjs",
+      "sha256": "9f7106cbbbd3523e8e2d1086009f1bbbab9247ac82b397d9cb0d3aec14174539"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/b06-headless-result.json",
+      "sha256": "12aba9bb4327ab8307ed6acdb3594842f5a69d4afc2dd0fc0027e5cf68a6c618"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/b06-headless.log",
+      "sha256": "4f2f408e5c66fb37ec22734a9ebccad4a4d7eaeaf8e682c41135b82538059e87"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/b06-runtime-result.json",
+      "sha256": "ee41a97f1206a94b9ca81d3a3ca7dfc411204393d285e4a5f16239616f0c025a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/b06-runtime.log",
+      "sha256": "90a756cd6dbfdace5d78add0ed5dc44fe3251bccc51906b76d62e60c95135288"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/camera-offset-melee.png",
+      "sha256": "b041078cdaa4789bc156f9d5b63ccae6a7bcbcad8f02d27a971274304cd8cb4d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/foothills-inventory.png",
+      "sha256": "e218950e253d270d468991a63716daa7a5cbbfb12b985653c13caa375d25f3c0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/offscreen-defeat.png",
+      "sha256": "70b53cd6c291634fd1045227ac958efa083f37b3d1e0654e16cf16e02bc9092f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/offscreen-stag-damage-night.png",
+      "sha256": "99e570b1b671aa0f78cccd4ad37217294512772a3a5664541fdb4db8b4b7a951"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/parity-day.png",
+      "sha256": "07dccead182bc4adb34458b8ca3218471184968d0b6cb425678ccfa0e4b39e03"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/parity-night.png",
+      "sha256": "369135e8bf0ca633acecb34735c9478183433e5850838445d94a5c7eda8182c7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/parity-secured.png",
+      "sha256": "860b95201eb9fed825759daeac4c56ad02d3f2cd1f25d68005e05093decdb7d6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-day-1280-left.png",
+      "sha256": "96fd013d4fe7c495804a18109fb547f100fc24a5bf7f1dec75fd724935f40b41"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-day-1280-right.png",
+      "sha256": "07ed2ce346c48bc16c05a0d7deafeb277a7f36469cb168014b5fec7f5c8a5c2a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-day-2998-left.png",
+      "sha256": "c3bf3477c69921af70e7c6739791065b488fb504b6a5d70a2d5d119a84a6a9cb"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-day-2998-right.png",
+      "sha256": "ae7da2598cf968da57216370401947ff15606bea3d8b5459d07c343cb679c524"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-night-1280-left.png",
+      "sha256": "69e6117d48408721db9b9c7f17cd984e21a8e25a447a434f6f233716ee173314"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-night-1280-right.png",
+      "sha256": "2635bcf17690cd4fb8a297f9336492f8b134860e66ced28b879e4622a9acef02"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-night-2998-left.png",
+      "sha256": "54ddb14981d8cdef7bcfd57413d74294aeca341c859d2426421aafd4d7743808"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/readability-night-2998-right.png",
+      "sha256": "b34306b8b44c2522de42db359184e230ed927627ebffe1e6f40fac1027936212"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/route-cave-secured.png",
+      "sha256": "c3aea76434b5dc54f02941f8005288ee14714c94ef2d0d14e225bf3b4c96cab5"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/route-far-end.png",
+      "sha256": "ef52b8b487fd9e3ef66811d9041196fb395cc3f514087631aa5dd538c06d1fb1"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/route-returned-deposit.png",
+      "sha256": "e249515b93d4c8a742a00395cce984fa0f33681f469c5aeeaa274e342514c000"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/seam-1280.png",
+      "sha256": "61ee1d9784cd2c8148da8b878c3e0303bf46994906ff35e8fa6bf5a9f02a4a98"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/seam-1760.png",
+      "sha256": "4913cddb2f68c10ae9c8bbf854aa2ab6a6a33ccb582f9694f5ea296c317df19a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-day-1000.png",
+      "sha256": "4052235596174912bd739fc2cae7ae7b53ee3bb374d41acaae7d8b3a480d51e5"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-day-1280.png",
+      "sha256": "9af828066c4f1d420c7635c91cc6e9a1c9dd21bf5e5267dd9b3e9e8141d8c119"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-day-1520.png",
+      "sha256": "96d0e54041f35c62003559f1c81364dcf99ab54df02bdf7958c48a6d8b14a51c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-day-1760.png",
+      "sha256": "a8b2d87f0baea19ba445e9fc1378b5d5c35900bbc60c75e3edcd9ca66305b4e4"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-day-2400.png",
+      "sha256": "3be64b202a2810cee44480e190ec6e034f2f4d6d4123dceb8f19b38553aa337c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-night-1000.png",
+      "sha256": "c3868028223453e212f269cd994e76cdd682b97fa63d37876afebeb6044fe6f0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-night-1280.png",
+      "sha256": "1d88cb57a21c0a97361a8fd9689723144d6c1f2550ca0c6637fdcd1c18fb2f5d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-night-1520.png",
+      "sha256": "453aba4b3fa1902a4e18ec5c09850826de4377bbbcbe3afe9c3fcc4167deb4a7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-night-1760.png",
+      "sha256": "6238dc76140e54d9eccbc4d7696e2279685476341c078453781d78ab860855d7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/transition-night-2400.png",
+      "sha256": "a4003b15c5cc5324a4dfc930e5d3271ba6f7d63e44bca1e7dd5486cea86fc7e3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/translation-left-offset-1000.png",
+      "sha256": "50232b442bec11785d0f7b6f37a529b31876e99a5a10fd0c2db850b65674c3c4"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/captures/translation-right-offset-1000.png",
+      "sha256": "addd7b48c5b125dbd44915305a8dc132d4881d1aeaa8f9cdf2e433eb058daf47"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/combat-result.json",
+      "sha256": "b16429ac38d40d0dba5b140f7bd03d3529674a411d28dfd7ce0e14793279cea9"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/combat.log",
+      "sha256": "e2b68b5b2f64b1df008bf8ff4d74251f859ab073dafc9b685d0ef07887c319c5"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/b05-dodge.png",
+      "sha256": "78928c02c322c8669be70ee9baea8c634a339995229a2903669205c63dd8d54f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/b05-hit.png",
+      "sha256": "cccf897bcc3211534f24a2034f740ebdcb5a4e0c3577f6bb34ab8ccd4b9767c8"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/b05-hurt.png",
+      "sha256": "d5c0f8bb879e9d51d06201e81463ed92d72a05b90efb3f0515f00e247a772320"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/b05-miss.png",
+      "sha256": "ddf8c58fd4f23ba33d1681939ed5a4ba5e89cd6e4695466382bc6e8a58e69c51"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/combat_motion_isolation_probe.gd",
+      "sha256": "11a0787dc50ee694ee1ed4cb2a549c60938e9852a37de23f6eff11988f50bfb8"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/diagnostic-result.json",
+      "sha256": "e538a8b1593b1c61c4fad75fcd8cf7d8a15ed34458ef09b492701ce1163079e7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/diagnostic.log",
+      "sha256": "3348c764d95075f239b73ccc1e365648dd333e407a2d08ebd51140890f19184a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/diagnostics/run_combat_diagnostic.cjs",
+      "sha256": "c1a684b83f3738288e54bcda86a5a5bf367ea59cd44f5ce3f77a1327aac33054"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/facing-headless-result.json",
+      "sha256": "89f98704065b294f7bde037e024130a2f05280df76768e48f209a06fb3311179"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/facing-headless.log",
+      "sha256": "05107797997ca49503cbaf4e4e140ebbcacd967e1c082ace468ae8bd0a4697b3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/facing-normal-baseline-7e477ba.log",
+      "sha256": "396e7f182b4dda356b2466c048c4dc26a6307caf5bb4a9277c1379cdb3b6d69c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/facing-normal-result.json",
+      "sha256": "e79448265afe2896b6f92a4f87486ec8cca191b97b5c5a9f670ece2c0bbe0f32"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/facing-normal.log",
+      "sha256": "b589935d2a1182175e4b75596bb02546c166316233e1e1aa3795c69fef0e2fc6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/geometry-result.json",
+      "sha256": "65553c61de6199e99d45ed7263c3e3ca4a7893c9493ed2b503179fbb09dcde1d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/geometry.log",
+      "sha256": "09202027f2af1aa47f19b694e7b2274dfa1a7486d0bb571a505e562bfd5c31f1"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/headless-smoke-result.json",
+      "sha256": "908f97a21aad497f448c5ddb979c9472d32cfd79066f49c4c16d981544fab610"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/headless-smoke.log",
+      "sha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/isolation-negative-late_isolation-result.json",
+      "sha256": "eb36f8dcc7e878f43b4d20d9788e069bf02369b99ee4c67e5ec0d25d0f702b4d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/isolation-negative-late_isolation.log",
+      "sha256": "de73a0de7dbbe99019e03bd1959f496f05d1a7979093812ddac87574e0c8a139"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/menus-result.json",
+      "sha256": "102c1c750516dc5625baeb157c58c53abb49c6db7f71e562b80f0b06238a9e23"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/menus.log",
+      "sha256": "cb8e30d1e6421259f403c5eaed8d578ffef1f55a6fd1edd114834f126730019e"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-border_respawn-result.json",
+      "sha256": "d3b6bfe8585615ffc36743022113a975c2d5b8cc411a15c554afa81a40ea024f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-border_respawn.log",
+      "sha256": "99770a92b843c86915b6bfcd2d61621e325d1f7eeabd200531f1ff7a9c1cf3ed"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-bypass_departure-result.json",
+      "sha256": "e7e7e44a8b365af1a2c4458b7e295a3f7289b3799931c5e89874a9d1f41d2eaf"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-bypass_departure.log",
+      "sha256": "94e3bec92a479fd9dc5a15d52f879541f3e45fc88c5e739559a1cc2cba744209"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-lost_f4_fields-result.json",
+      "sha256": "b71b868e3d2138e50b119ad6af2c22d46b61efdc0b6c720aceffa6a74854860a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-lost_f4_fields.log",
+      "sha256": "a679b37270efcdabc047f175bd293258837ecdf1cb12e9271b696706af90dbfc"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-lost_route_restore-result.json",
+      "sha256": "9ea5adadbd488f581041ab6ae60ce567115a43c742dcfc88eaee6583c4b86324"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-lost_route_restore.log",
+      "sha256": "f1869d5886bbce648d7fa3448533f711229eea12b61038fa46de9620ed2fa149"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-new_run_keeps_route-result.json",
+      "sha256": "10695c6ae58ffac33ba56887e8e3d534c608b6d930a9198bc2436db25ee4bf99"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-new_run_keeps_route.log",
+      "sha256": "440d91d7d43aff9f151dca7f3c11c7be92902b875723cb35f4dd13b98ce9a77f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-paused_offscreen-result.json",
+      "sha256": "86678fdb220fdfdcfb0f37d5f58300ed58b395c7f28ee24a4b512e771114c681"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-paused_offscreen.log",
+      "sha256": "cf4d8528fca98af0e67ed78c0a9bc7d9a2fa46712313369640b16222b375ef59"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-progression_unlock-result.json",
+      "sha256": "38dce56a40c63c0dd20d182133b533c196a46f55e5ec36cee7a2cf214e534679"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-progression_unlock.log",
+      "sha256": "4a8a71e05bac146457b8906adee20cf2c10ccb8d3dfd7326059da7a23fb1c6fd"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-remote_wagon-result.json",
+      "sha256": "da3ab2ac58ef70c7b957e4e5214d651eea503d337544dea86e22a387ccc8ce31"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/negative-remote_wagon.log",
+      "sha256": "0a99e4ba91debddb32e828d34e5d26c241b9ea490b5edf3d50a242688bf9d553"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/normal-smoke-result.json",
+      "sha256": "0e0b715e82abb7e27a288181c2f2889734944237409d35814fe7eae40ed5ebb0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/normal-smoke.log",
+      "sha256": "2104300e69f65eb136667e81673c017f08344ac794eca3c720a17552d087357a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/render-negative-leaked_camera_transform-result.json",
+      "sha256": "a9522e50545678e42387e618c4ba7ab8c509283f84e2f0a2a22226c066b5d2bf"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/render-negative-leaked_camera_transform.log",
+      "sha256": "8c95fc3fb829308e3fd593bfc1c36e3a9817cac07915c4c31c2bf428fe865440"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/render-negative-no_foreground_readability-result.json",
+      "sha256": "493750b3c29d2ec82c5bf18a5f4233d124bf85c4f120982e2e4e83c24af9e4c7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/render-negative-no_foreground_readability.log",
+      "sha256": "c91ec59e425bbfc5dc59b1b132db5accd69d2ddd2e460d14ac63c3c75e7662ba"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/render-negative-unshifted_reflection-result.json",
+      "sha256": "7630401b0f12d1611b8fc75bcf111b7ca92853332385cfdb7b3f3c319fe6853f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/render-negative-unshifted_reflection.log",
+      "sha256": "920318caefb6d0ead87831b061a3acb058f29c356931a9859b5b6d631b92280d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/review-manifest.json",
+      "sha256": "e6a306457eaf22c55ec7e45dc3151a80eac9d623f383182c0a09fbb5aa74666a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/reviewed-sources/menus_regression.gd",
+      "sha256": "a242bc0cadc06f048c2a7f7c582742325620965db54cb2c039f04c481de36786"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/reviewed-sources/run_validation.cjs",
+      "sha256": "f5a7f547b396a6bac471049fc3555448e8ce917675cf6eb8dfa0cae0766eff3a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/reviewed-sources/validate_b06_runtime.gd",
+      "sha256": "a6cb53ee5e3a4aa7c43364357e4f37aafee7df9906da13523905e34c6c43db2c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/reviewed-sources/validate_records.cjs",
+      "sha256": "0642f6a7db84363657b509ea59d77af0394d3c14568c7634f7f4e2f5354f8bea"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/runtime-metrics.json",
+      "sha256": "846a36b45703a99aee22ea514cbd28104c25e570aabe2eaa112d414def24d2a0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/self-test-result.json",
+      "sha256": "2f4b7778abe73f550543c197e1a32e56ca1308d2238e849814fadfffd125d4eb"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/self-test.log",
+      "sha256": "81ec9d815a4dd455185453e491d24435dbd307ff660acc4e2ce81732d4047d21"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/validate_review_records.cjs",
+      "sha256": "eb47f8a7e31a79d1952f038e49c0971053633c4d8fe36f2f6a94f4717276fbe0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-isolation-windows-review/windows-import.log",
+      "sha256": "1c6a4cea2c1e0f784bdee31f8326586ff3b8f983b98a62217758d8312e375708"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/b06-headless-result.json",
+      "sha256": "525a051e06f49b71f30049c4c38774963e7f29722db1315fb60cdcc949a8d7ee"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/b06-headless.log",
+      "sha256": "4f2f408e5c66fb37ec22734a9ebccad4a4d7eaeaf8e682c41135b82538059e87"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/b06-runtime-result.json",
+      "sha256": "165412cfda51730590f948ed26d883c5388d30134ad692980106496410e9e642"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/b06-runtime.log",
+      "sha256": "e72c07eef87db15c59af9cbe24f7f73112be3aa431fbbb187139df6a5a294baa"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/combat-result.json",
+      "sha256": "1e924069eb37ad0388fab351cbb832ebba180532c717bdc3fe697cebf2fdfdc9"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/combat.log",
+      "sha256": "346162b48a58722f8322fa356bac205a51da2384f2743773eb6904844f324af3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/camera-offset-melee.png",
+      "sha256": "0f600b4295c5831316e69bf617eb31008e53d6e89f0ea5c344e5259a885e532f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/foothills-inventory.png",
+      "sha256": "e218950e253d270d468991a63716daa7a5cbbfb12b985653c13caa375d25f3c0"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/offscreen-defeat.png",
+      "sha256": "70b53cd6c291634fd1045227ac958efa083f37b3d1e0654e16cf16e02bc9092f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/offscreen-stag-damage-night.png",
+      "sha256": "d6559b2867613081ec6a9d9d3c8422f214b216dc6c2fbe063a9eb11ed8f7ef75"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/route-cave-secured.png",
+      "sha256": "b8cf23176c5879ec23d4c4ac6d23e7d1f39122b75127fc0e151665f92b52a445"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/route-far-end.png",
+      "sha256": "ba61465cc2c90523634cba1fb7d8963de77c97b7eee0f858d5224c4a269c19b3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/route-returned-deposit.png",
+      "sha256": "3205f32201114f41ab9b958edcf46a3c4a1047d5fdbbaf21e1b12b97bb4d40b1"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/seam-1280.png",
+      "sha256": "d07db064e22965b91ad23580b5c80f29944a7b3407f99b043a38dfe9134c9715"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/seam-1760.png",
+      "sha256": "5a4a54239d100643561a098cea5f8b7b657d804b62f2144f8effbb5350ba9a09"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-day-1000.png",
+      "sha256": "017d3e8b617dfcf9c8e03df35adb90253d923667b52c78825cccfd71c16ebc74"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-day-1280.png",
+      "sha256": "80e4ac7422fd400bbc22205f48f6c9d696375da8c8436a3b95525bc809271412"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-day-1520.png",
+      "sha256": "1a9073c9ca0b8f28558b1c087cc0a87ec336669eaf17b05a25b63716badea734"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-day-1760.png",
+      "sha256": "a0cad3a7ca7e4e359e6810802690b39b0935b9a24a25ccf4b0202897b86e0bb3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-day-2400.png",
+      "sha256": "3be64b202a2810cee44480e190ec6e034f2f4d6d4123dceb8f19b38553aa337c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-night-1000.png",
+      "sha256": "e77b5272c74e8dfcdf8f524b469102a43233030b34054353aa5a4c08fdf4f998"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-night-1280.png",
+      "sha256": "0ef1be6c65e3f24e00fadf04bdd8b311588ce6ba032be22e9b1168c513c7d6a9"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-night-1520.png",
+      "sha256": "9fc7c5ce930758a07f39518425e2554bc082dd88f7992c8673fbfcde910f64b8"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-night-1760.png",
+      "sha256": "fd0a0b7cd0d6a4c196e9f3947bb01755125e7f27e443a96712c2794358fd5204"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-captures/transition-night-2400.png",
+      "sha256": "a4003b15c5cc5324a4dfc930e5d3271ba6f7d63e44bca1e7dd5486cea86fc7e3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/diagnostic-runtime-metrics.json",
+      "sha256": "d4de19d85093810f580acdeef64351fa778d10d6f6bf4c5e9b3a845393120efd"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/facing-headless-result.json",
+      "sha256": "b317c1b6a23a0084a45c45260153686072aa21cfae3de6feac81b318b96c0708"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/facing-headless.log",
+      "sha256": "05107797997ca49503cbaf4e4e140ebbcacd967e1c082ace468ae8bd0a4697b3"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/facing-normal-result.json",
+      "sha256": "a03584f4af3a20cbc499935684783718cacdda8d6c3f92d82ed55a7967b4744c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/facing-normal.log",
+      "sha256": "b589935d2a1182175e4b75596bb02546c166316233e1e1aa3795c69fef0e2fc6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/geometry-result.json",
+      "sha256": "72767038e3f3950d980d3a909d1fa8063e17acfc8cc183aed878cb141ccf0bb1"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/geometry.log",
+      "sha256": "cfc4ceaaddb178bc8af62491fb5908b0331cf59bca60dd6dc01eb3b7943648c6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/headless-smoke-result.json",
+      "sha256": "52048092e1f4685d91cbe562f34660d279d48f68ac91c35f9fcdae07bae93c1c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/headless-smoke.log",
+      "sha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/menus-result.json",
+      "sha256": "7ef7adf1e98f52279b1f7a854ec03056231fab4d419a66621a21c121927aafcb"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/menus.log",
+      "sha256": "34d41419db3aecbafc7313e2be9e17e4f58c5c0e1dadcd8d0360fde6d3337b4c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-border_respawn-result.json",
+      "sha256": "dd271037e0f38f59512fb8c79759659c63ed18e10b98330b6489597fbceed07e"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-border_respawn.log",
+      "sha256": "99770a92b843c86915b6bfcd2d61621e325d1f7eeabd200531f1ff7a9c1cf3ed"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-bypass_departure-result.json",
+      "sha256": "92c606d80a736e36e52ef715eb6e4025d1635ad6e24314df08886d5057c0e48f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-bypass_departure.log",
+      "sha256": "94e3bec92a479fd9dc5a15d52f879541f3e45fc88c5e739559a1cc2cba744209"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-lost_f4_fields-result.json",
+      "sha256": "243ee3fc8827830760445ac258a746883677c46d925ba7d9eab114e10c0befb6"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-lost_f4_fields.log",
+      "sha256": "a679b37270efcdabc047f175bd293258837ecdf1cb12e9271b696706af90dbfc"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-lost_route_restore-result.json",
+      "sha256": "7bd154cc92a6c7f02942c809a29d42af8e8d4a5c2ed5cb4970353d1f959076cf"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-lost_route_restore.log",
+      "sha256": "f1869d5886bbce648d7fa3448533f711229eea12b61038fa46de9620ed2fa149"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-new_run_keeps_route-result.json",
+      "sha256": "17a4eba401ecf1e9488d89b9a77ee0b6c4310e0567f5e0660ba1d4f57956d22f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-new_run_keeps_route.log",
+      "sha256": "440d91d7d43aff9f151dca7f3c11c7be92902b875723cb35f4dd13b98ce9a77f"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-paused_offscreen-result.json",
+      "sha256": "e1ea8c4791c3faf7efc2d62875529741052a980cb33f054da70cc8dd2558cf3c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-paused_offscreen.log",
+      "sha256": "cf4d8528fca98af0e67ed78c0a9bc7d9a2fa46712313369640b16222b375ef59"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-progression_unlock-result.json",
+      "sha256": "0545c39661886a114af8bcce400e313cc4a3686781c22cc9b8a2b28d1cd5ecfa"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-progression_unlock.log",
+      "sha256": "4a8a71e05bac146457b8906adee20cf2c10ccb8d3dfd7326059da7a23fb1c6fd"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-remote_wagon-result.json",
+      "sha256": "365177256bf5a954bb6b64d3eb6ed09458c7441f15f7c575c2175b0a221536f4"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/negative-remote_wagon.log",
+      "sha256": "0a99e4ba91debddb32e828d34e5d26c241b9ea490b5edf3d50a242688bf9d553"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/normal-smoke-result.json",
+      "sha256": "a5f7b78140575fd368d4e505f17ff793e7f6db466da2823a5cc27d035deb557c"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/normal-smoke.log",
+      "sha256": "2104300e69f65eb136667e81673c017f08344ac794eca3c720a17552d087357a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/render-negative-leaked_camera_transform-result.json",
+      "sha256": "b2405d9ee206e0bfdfa022c893803dabb133a7ec534aaa204f6a5b0c3147b8c7"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/render-negative-leaked_camera_transform.log",
+      "sha256": "8c95fc3fb829308e3fd593bfc1c36e3a9817cac07915c4c31c2bf428fe865440"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/render-negative-unshifted_reflection-result.json",
+      "sha256": "46de66bde095586647543c5b5a4fc4f6a463da0e04de5129dc2b6507b2104991"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/render-negative-unshifted_reflection.log",
+      "sha256": "920318caefb6d0ead87831b061a3acb058f29c356931a9859b5b6d631b92280d"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/review-manifest.json",
+      "sha256": "76db563b2cd663b6564783a0e5bccf0c053c19c8bd3890fed20a353a11e5a3f1"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/run_validation.cjs",
+      "sha256": "5e27947c6334fd3762deeb72bc13897d97a6accb2df783de73d7c13d50d2d01a"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/self-test-result.json",
+      "sha256": "a93f5bbb99e30354a7e6a17226949e5e3b907cb205af35325c2e3f121b7aed63"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/self-test.log",
+      "sha256": "81ec9d815a4dd455185453e491d24435dbd307ff660acc4e2ce81732d4047d21"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/validate_review_records.cjs",
+      "sha256": "3f4f3818054bccaea764e2ded9da3b9b6a9c50910be2b2ce5b68063c459945f2"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows-hardware-input-probe.log",
+      "sha256": "793c365100195188ed1c9c1061a5e3b634b6001996f5bfd37037951483e512fc"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows-input-probe-result.json",
+      "sha256": "cb6fc6d71dcb2fa7606ff43ec4eb546cf1aa9fc38f50dd27f299d802073ab963"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows-input-probe-settled-result.json",
+      "sha256": "6c66d984f2729528997e18485a895e20e3a0cc97131f4a26e80808bfd4ef9a02"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows-input-probe-settled.log",
+      "sha256": "9536742cdb211f67e510fa8b46d98a7c3a08880c6d5663b011fff0bfdbd58402"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows-input-probe.log",
+      "sha256": "c8e096380faf2a6e99be4dc318ec40002172530555c7ba63c403c6955989a821"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows_hardware_input_probe.gd",
+      "sha256": "2fe26d7df935e722a52a463f0c7aaf9c5bd9eab63370285eea8e9f5e041a00f4"
+    },
+    {
+      "path": ".atena/generated/2026-10-04-b06-windows-review/windows_input_probe.gd",
+      "sha256": "72208d03755236772a093f970b16c2771cf19018c40ae55370ab948a008a45d4"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/b06-headless-result.json",
+      "sha256": "b941faaa3d0efed27f0c7792354bb5c9876c656802522f79e2e90066d9c4c65a"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/b06-headless.log",
+      "sha256": "4f2f408e5c66fb37ec22734a9ebccad4a4d7eaeaf8e682c41135b82538059e87"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/b06-runtime-result.json",
+      "sha256": "2b809eb68b62344abf66acfc162757c721ef6645a2dd3b686afd9af58cbd064a"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/b06-runtime.log",
+      "sha256": "ecd09408887379e81896be85579cb792b9a9056054fccf2feb8432e54f061c13"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/camera-offset-melee.png",
+      "sha256": "5ef2e41e831fa984131b2508e7a87099d7ecc3f279a7fc7c20223d537c46b26e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/foothills-inventory.png",
+      "sha256": "e218950e253d270d468991a63716daa7a5cbbfb12b985653c13caa375d25f3c0"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/offscreen-defeat.png",
+      "sha256": "70b53cd6c291634fd1045227ac958efa083f37b3d1e0654e16cf16e02bc9092f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/offscreen-stag-damage-night.png",
+      "sha256": "298403b9034afb725d897c91989bc90c0444701c67494a20149953714c9f04c3"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/parity-day.png",
+      "sha256": "07dccead182bc4adb34458b8ca3218471184968d0b6cb425678ccfa0e4b39e03"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/parity-night.png",
+      "sha256": "369135e8bf0ca633acecb34735c9478183433e5850838445d94a5c7eda8182c7"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/parity-secured.png",
+      "sha256": "860b95201eb9fed825759daeac4c56ad02d3f2cd1f25d68005e05093decdb7d6"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-day-1280-left.png",
+      "sha256": "96fd013d4fe7c495804a18109fb547f100fc24a5bf7f1dec75fd724935f40b41"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-day-1280-right.png",
+      "sha256": "07ed2ce346c48bc16c05a0d7deafeb277a7f36469cb168014b5fec7f5c8a5c2a"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-day-2998-left.png",
+      "sha256": "c3bf3477c69921af70e7c6739791065b488fb504b6a5d70a2d5d119a84a6a9cb"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-day-2998-right.png",
+      "sha256": "ae7da2598cf968da57216370401947ff15606bea3d8b5459d07c343cb679c524"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-night-1280-left.png",
+      "sha256": "69e6117d48408721db9b9c7f17cd984e21a8e25a447a434f6f233716ee173314"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-night-1280-right.png",
+      "sha256": "2635bcf17690cd4fb8a297f9336492f8b134860e66ced28b879e4622a9acef02"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-night-2998-left.png",
+      "sha256": "54ddb14981d8cdef7bcfd57413d74294aeca341c859d2426421aafd4d7743808"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/readability-night-2998-right.png",
+      "sha256": "b34306b8b44c2522de42db359184e230ed927627ebffe1e6f40fac1027936212"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/route-cave-secured.png",
+      "sha256": "f0bb126874e3b1f81e7d4bb66189336a5b16f1080585ee1c55cc2c0c925f6477"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/route-far-end.png",
+      "sha256": "1746b3b12f98ac381d28cdf43f7f04260a306f016ba474bd2ce842ef137541a2"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/route-returned-deposit.png",
+      "sha256": "047a035bd380a2b05a1bb3e0e354203f708fe2ab1a663660dee15dcd3e0a0b86"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/seam-1280.png",
+      "sha256": "41589a72412c390f695781cc00f9a448ffd95ad162175d263150f14f8a771046"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/seam-1760.png",
+      "sha256": "de78f2d86013231f9043af307cd9218693df2799cc6b1e199a8becdbf9ed5a2e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-day-1000.png",
+      "sha256": "a53087969f137158cd9b87ad40152f7535d5f2bb11cd9e8cdfc0b39767073212"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-day-1280.png",
+      "sha256": "7638b0b494effb3c70368adcfa489f641ac852873d60417c1428b0a98da08e4c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-day-1520.png",
+      "sha256": "f98e8f8b391dd029e0e5146c465549a01f833b6fe0200fcc0784857258f5937f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-day-1760.png",
+      "sha256": "c4ae868072c512319a935eb82d889c707d72cd6a26a16a3f427dbad105999d5c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-day-2400.png",
+      "sha256": "3be64b202a2810cee44480e190ec6e034f2f4d6d4123dceb8f19b38553aa337c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-night-1000.png",
+      "sha256": "0e8f8006bc9a4c13362a786e300613b48e09f29d80418bf4b6f8a3ea52b64e46"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-night-1280.png",
+      "sha256": "fa1c99677a5817010f23b249a657d98b4a19e809334a313a96e11ad54010e532"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-night-1520.png",
+      "sha256": "6d58f3d0c568259e8af168f76b3eae9cb17707e27799313a9d90126ffa0ed0f3"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-night-1760.png",
+      "sha256": "d736154b4ed5fcb9eb8dc7472924550cd56f2b2390b6e4c006f3bced81c88c43"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/transition-night-2400.png",
+      "sha256": "a4003b15c5cc5324a4dfc930e5d3271ba6f7d63e44bca1e7dd5486cea86fc7e3"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/translation-left-offset-1000.png",
+      "sha256": "50232b442bec11785d0f7b6f37a529b31876e99a5a10fd0c2db850b65674c3c4"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/captures/translation-right-offset-1000.png",
+      "sha256": "addd7b48c5b125dbd44915305a8dc132d4881d1aeaa8f9cdf2e433eb058daf47"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-negative-late_isolation-result.json",
+      "sha256": "a2f16e41d3ce25c9b127547d04dd8475dbfdc727a41e59519854a22bd37f87f1"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-negative-late_isolation.log",
+      "sha256": "4700e75b108544b083a19c44d7d2350dcbe611c54ad998054bc6087a8a77614f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-negative-missing_isolation-result.json",
+      "sha256": "c34e87f75b954dae02f3051bb2862eeed053a15c304f225c11cc0fa7efbed6d4"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-negative-missing_isolation.log",
+      "sha256": "a12d315459af07b89d0a1800a129599dac1d7df7531ad178803f294dae1cc4fd"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-noise-result.json",
+      "sha256": "7d2b7ac3eb9cd1a9203719b422444d3cd0bc31cb027a2da3fd00b308943fed6c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-noise.log",
+      "sha256": "ec03a7ce533d2087f995f3b226369778e224f70390fe9f3079194d37ee4fd3c7"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat-result.json",
+      "sha256": "510d948160805023f7275920a4b42f980cfc27d26ca7203a5b34183464d0155f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/combat.log",
+      "sha256": "73933be60d5d0e1130af663191b4f1c380ced65d611d54b3e27a62143d84c21d"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/facing-headless-result.json",
+      "sha256": "ad7e9a6d08274abefb631def3946749a803ab7f5919e7c8ae3e733eabfc42103"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/facing-headless.log",
+      "sha256": "05107797997ca49503cbaf4e4e140ebbcacd967e1c082ace468ae8bd0a4697b3"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/facing-normal-baseline-7e477ba.log",
+      "sha256": "396e7f182b4dda356b2466c048c4dc26a6307caf5bb4a9277c1379cdb3b6d69c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/facing-normal-result.json",
+      "sha256": "3e5a84c762b5d6cec5c0ef68d79b7a238f0322f8586079ffda978636f88aa35f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/facing-normal.log",
+      "sha256": "b589935d2a1182175e4b75596bb02546c166316233e1e1aa3795c69fef0e2fc6"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/geometry-result.json",
+      "sha256": "f7e8e9789a51091002bdd857a71ddd8462866847fb9c123584beec1a8849fd02"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/geometry.log",
+      "sha256": "52a9cd777362e1bbd29f336b2648e7512c5289c2889c8945bac73cd7cae5aaaf"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/headless-smoke-result.json",
+      "sha256": "876d59e967c247638e5dc4dedeed32eb4f598852614f524482d650345a6dd86c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/headless-smoke.log",
+      "sha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/isolation-negative-late_isolation-result.json",
+      "sha256": "746549b38ad9f6025fd33fe0816f037dee362ac447531d71f3308603cc35f781"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/isolation-negative-late_isolation.log",
+      "sha256": "de73a0de7dbbe99019e03bd1959f496f05d1a7979093812ddac87574e0c8a139"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/menus-result.json",
+      "sha256": "d5da0a8f2b4f4dd7f6d5594b9430f013091062c31d6cb13118352923be355eef"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/menus.log",
+      "sha256": "cb8e30d1e6421259f403c5eaed8d578ffef1f55a6fd1edd114834f126730019e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-border_respawn-result.json",
+      "sha256": "04a76103974a9f4a94feb9b6bd696d81e86e2cbd0a8752f1eb561ebaa2dac013"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-border_respawn.log",
+      "sha256": "99770a92b843c86915b6bfcd2d61621e325d1f7eeabd200531f1ff7a9c1cf3ed"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-bypass_departure-result.json",
+      "sha256": "9749481c531a0b9ee673632e60d8aad08d599c7d4819f3b2b0ab365a285cf99c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-bypass_departure.log",
+      "sha256": "94e3bec92a479fd9dc5a15d52f879541f3e45fc88c5e739559a1cc2cba744209"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-lost_f4_fields-result.json",
+      "sha256": "caa88134bb5b51017a2e218470cba370ffcb8e183c9a93014e16d86944582137"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-lost_f4_fields.log",
+      "sha256": "a679b37270efcdabc047f175bd293258837ecdf1cb12e9271b696706af90dbfc"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-lost_route_restore-result.json",
+      "sha256": "27d24cd1fcb0001f98ab19712f1f9d8e00ab53e829e0ee2498c3af12cc506e5f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-lost_route_restore.log",
+      "sha256": "f1869d5886bbce648d7fa3448533f711229eea12b61038fa46de9620ed2fa149"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-new_run_keeps_route-result.json",
+      "sha256": "6ce7fab2f5ea9414526f5cc3069c6bff255714de57cb1da1d51798fba05cdec0"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-new_run_keeps_route.log",
+      "sha256": "440d91d7d43aff9f151dca7f3c11c7be92902b875723cb35f4dd13b98ce9a77f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-paused_offscreen-result.json",
+      "sha256": "0a99688901d89577bc1d49fc6232aec9acad9c2d0e604f216ba9a840cb934dcf"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-paused_offscreen.log",
+      "sha256": "cf4d8528fca98af0e67ed78c0a9bc7d9a2fa46712313369640b16222b375ef59"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-progression_unlock-result.json",
+      "sha256": "562079d4888e739f7bd7ba20c9c8477ad4137960dc781a9a79c49bb98bbbf697"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-progression_unlock.log",
+      "sha256": "4a8a71e05bac146457b8906adee20cf2c10ccb8d3dfd7326059da7a23fb1c6fd"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-remote_wagon-result.json",
+      "sha256": "be478813a38bb6c47d841057ea33e5f633005021d81ed851502bffc64e1f6fce"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/negative-remote_wagon.log",
+      "sha256": "0a99e4ba91debddb32e828d34e5d26c241b9ea490b5edf3d50a242688bf9d553"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/normal-smoke-result.json",
+      "sha256": "dbe834c01adc30ea6f1f8260bce2f6d57eb142a8f0960711b980c747a8d0d330"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/normal-smoke.log",
+      "sha256": "2104300e69f65eb136667e81673c017f08344ac794eca3c720a17552d087357a"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/records-validation.log",
+      "sha256": "95b478d136c54611696cdbe79ac4209fc7d63a6b22d16be8489d71f37bba43ec"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat-noise/b05-dodge.png",
+      "sha256": "92f0eeff0b539d5656b467c815047488c638ae9d9b57da477d0cd0285dc77c06"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat-noise/b05-hit.png",
+      "sha256": "167b216309923cea7d415e0368e04387b30785049863525cb6708f67f49cfbb0"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat-noise/b05-hurt.png",
+      "sha256": "357ae3615f1a408e110ca257fe6b57eeaef43bec0674cee85f09a3ebf0d7a556"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat-noise/b05-miss.png",
+      "sha256": "685193ac3b5968f5a3aa2036827aeb4fac3b8287df634eeb025a0b6118229d8e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat/b05-dodge.png",
+      "sha256": "03e142a5dd15b9bafd8d3f9dea3e1b64d83b764f7791877b39375785ec3d7b03"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat/b05-hit.png",
+      "sha256": "4cf667083f69933c8c8508b20132429e0e14ee04ec2b20e6f871bee6458a064e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat/b05-hurt.png",
+      "sha256": "e4ce38c65fba4debd009bf7993895921755a02d52fff0f4d586760a15e661fd3"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/combat/b05-miss.png",
+      "sha256": "7ca8ccbbbc92bd35040f013997b08fdc907d205b7ffe12fabdf3da151a7e738e"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/antlered-hunger-left-isolated.png",
+      "sha256": "784b2c9481e071d69fd026db4719ee628a024347e1206e38f5c165bc80a0f18f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/antlered-hunger-right-isolated.png",
+      "sha256": "34b6c9c6aebb232da47758f2821aac83eddf9fd02ed90a5cd50926bbd9f08a09"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/briar-hound-left-isolated.png",
+      "sha256": "8b662a51346503161b378af9716ba98aecf8e281250beb1b48d6199161698c49"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/briar-hound-right-isolated.png",
+      "sha256": "01fc576cf436d35ebca0171d188e633613c5dba8d0bc7c7984a86589839ab85c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/facing-headless-metrics.json",
+      "sha256": "216ba7f26a1de90de1796e2e4d3bd722155e78f12af2de822ad24a9306cbe786"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/facing-normal-metrics.json",
+      "sha256": "30537640f2313c1ebbeb06fb67be1802ed86d0cb7201577d7436b5a12e7515a9"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/overview-left.png",
+      "sha256": "544b5d9fa16638846fe64ec9e4975327c5a63347fefaa6201b495dea92c0d525"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/overview-right.png",
+      "sha256": "478f5cd60f4efc75ac1dc16449d2e67286aea08f3d0caaf1aa411b9296ca204c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/render_fixture.gd",
+      "sha256": "daeb78cb01b7e724eae94ae1d81a32dc8a5b42a0d4ae3aac28aeca0e1b3c150f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/stag-of-mire-left-isolated.png",
+      "sha256": "dd6bfc5c51961ba84c1c2aef68ac4c6272c4443781e78148db2daa7920cbc517"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/facing/stag-of-mire-right-isolated.png",
+      "sha256": "c238e9d6d5663abb17a8125350bb45169c5354dc6c3adfdd91a1592f9ccf28ae"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/geometry/antlered-hunger-aspect.png",
+      "sha256": "5ea74bd3d76dcecbac59a64a2a65610791ef92dc349756473d9c34b552ea45e0"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/geometry/briar-hound-aspect.png",
+      "sha256": "3c63430c3c623dcf08dd69710d231ce2a19b173fa003f2b3a2a85f3013e4e99f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/geometry/geometry-metrics.json",
+      "sha256": "1a65b1bf1f493e3c160e702f577d42b44c786a7c4eb32efa78c5ecca707e22ee"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/regressions/geometry/stag-of-mire-aspect.png",
+      "sha256": "5b5223df0c4faf6b15632f97bcbffa395d2cae42e0080e304977ae571a97640d"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/render-negative-leaked_camera_transform-result.json",
+      "sha256": "f41a153930aa8eca6c3ecc3be748acde2c26afd6761ab894c43e4b71a4e15562"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/render-negative-leaked_camera_transform.log",
+      "sha256": "8c95fc3fb829308e3fd593bfc1c36e3a9817cac07915c4c31c2bf428fe865440"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/render-negative-no_foreground_readability-result.json",
+      "sha256": "b71a5a5eec2a0ce0bd449b6c4fb7bda99b378a4c519c072dd4a2ca2462aa1282"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/render-negative-no_foreground_readability.log",
+      "sha256": "c91ec59e425bbfc5dc59b1b132db5accd69d2ddd2e460d14ac63c3c75e7662ba"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/render-negative-unshifted_reflection-result.json",
+      "sha256": "7a613968f4d1214f4cbf335b5757036d5428daa0890284559c068f47a0c49276"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/render-negative-unshifted_reflection.log",
+      "sha256": "920318caefb6d0ead87831b061a3acb058f29c356931a9859b5b6d631b92280d"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/review-manifest.json",
+      "sha256": "fb85db84805c2084bcd100341fab2196912f3a75d1d7ffe9bf52e6e61e6dabbf"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/reviewed-sources/combat_regression.gd",
+      "sha256": "4f4c193bb7768948cf5a37345a62a19ebd5d17efb4b164d49e283dddf7b8af01"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/reviewed-sources/menus_regression.gd",
+      "sha256": "a242bc0cadc06f048c2a7f7c582742325620965db54cb2c039f04c481de36786"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/reviewed-sources/run_validation.cjs",
+      "sha256": "843bb24de31620384b78a78021bc3514b97f2ab78f4e2c1e044e08e16e391ecf"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/reviewed-sources/validate_b06_runtime.gd",
+      "sha256": "a6cb53ee5e3a4aa7c43364357e4f37aafee7df9906da13523905e34c6c43db2c"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/reviewed-sources/validate_records.cjs",
+      "sha256": "a2c3d23a3b431bc56723a9ac72fa1c18951f1f51ea41bc35677633e266dd8e5f"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/runtime-metrics.json",
+      "sha256": "795ee8dce8563eab37b76cb68eeb81f8856e29894652451211a2560f1b33eed7"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/self-test-result.json",
+      "sha256": "8aa40afd9cdc6b222220d9a290ae69d1e627e9d207fbd778caeb65fd0e6d1852"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/self-test.log",
+      "sha256": "81ec9d815a4dd455185453e491d24435dbd307ff660acc4e2ce81732d4047d21"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/validate_review_records.cjs",
+      "sha256": "b109e2774bf5021c70064b5601f2785591219fe3f38abf5413098d2e5a8e00ca"
+    },
+    {
+      "path": ".atena/generated/2026-10-05-b06-combat-isolation-windows-review/windows-import.log",
+      "sha256": "1c6a4cea2c1e0f784bdee31f8326586ff3b8f983b98a62217758d8312e375708"
+    }
+  ]
+}

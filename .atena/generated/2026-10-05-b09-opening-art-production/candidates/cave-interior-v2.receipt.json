@@ -1,0 +1,14 @@
+{
+  "id": "cave-interior",
+  "attempt": 2,
+  "status": "candidate-generated-pending-technical-review",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-581103e1-5721-4a0c-bec3-d6366b3d19d3.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v2.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "prompt": "Use case: precise-object-edit. Image1 is the edit target, the cave INTERIOR background. Change only the vertical placement of its horizontal walkable floor: lower it from roughly64 percent canvas height to75 percent canvas height, so it matches the exterior ground baseline. Extend the existing gray cave wall and two gnarled-root exit arch downward naturally to meet the new floor. Keep one perfectly flat continuous floor; no extra platform, stairs, raised threshold, gap or obstacle. Preserve enclosing rock ceiling, cave side view, neutral cool palette, broad EMPTY refuge area and right-side forest opening, deliberate large square pixel clusters. Keep background only: no wagon, people, fire, props, bedding, UI, text, labels or watermark. Landscape16:9. No other scene redesign.",
+  "visual_checks": {},
+  "ratio": null
+}

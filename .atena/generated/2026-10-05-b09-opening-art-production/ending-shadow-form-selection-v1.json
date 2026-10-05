@@ -1,0 +1,36 @@
+{
+  "status": "generated-awaiting-technical-and-owner-review",
+  "runtime_admitted": false,
+  "items": [
+    {
+      "id": "h03-01",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png",
+      "caption": "Nolf's transformation was complete."
+    },
+    {
+      "id": "h03-02",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "caption": "She opened a passage to the Dream Plane."
+    },
+    {
+      "id": "h03-03",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+      "caption": "All nine crossed together. No one, and no relic, was left behind."
+    },
+    {
+      "id": "h03-04",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "caption": "In the Golden City of Dreams, they found their home."
+    },
+    {
+      "id": "h03-05",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+      "caption": "XIAR'S KISS remained in the eight drows' care. Nolf remained with them."
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-05-b09-opening-art-production-approval.md",
+    "plan_id": "2026-10-05-b09-opening-art-production",
+    "batch_id": "ART-005"
+  },
+  "art_direction": "Established lateral minimal dark-fantasy pixel art; approved sources and spec; no new lore, clothing exposure or covered/horse wagon.",
+  "output_dir": ".atena/generated/2026-10-05-b09-opening-art-production",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "aelira-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named aelira, reference identity number 1 from left in the M-03 lineup, olive-green forager clothing. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/aelira-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "vaelun-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named vaelun, reference identity number 2 from left in the M-03 lineup, brown carrier clothing. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/vaelun-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "nimara-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named nimara, reference identity number 3 from left in the M-03 lineup, dark clothing with muted red scarf. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/nimara-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "thaviel-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named thaviel, reference identity number 4 from left in the M-03 lineup, brown hood of flame keeper. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/thaviel-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "ilyren-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named ilyren, reference identity number 5 from left in the M-03 lineup, gray repairer clothing. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/ilyren-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "orisya-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named orisya, reference identity number 6 from left in the M-03 lineup, muted green and light healer clothing. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/orisya-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "soreth-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named soreth, reference identity number 7 from left in the M-03 lineup, dark sentinel cloak. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/soreth-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    },
+    {
+      "id": "luraen-resting",
+      "kind": "character",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent game sprite, NOT a sheet or lineup. One full-body plagued elf named luraen, reference identity number 8 from left in the M-03 lineup, muted purple dreamer clothing. Genuinely lying on the ground on their side or back with anatomically coherent legs and arms, exhausted but alive, no gore. Preserve white hair, pointed ears and personal clothing from identity reference, fully opaque trousers and boots. Simple large pixel clusters, short palette, no microtexture, no background or text. Intended common 64x64 logical cell, reclining body crown-to-heel length 40 logical pixels, same anatomical body scale as Lolth, no foreshortening; limbs may be lightly bent but measurable. Ground contact aligned, entire body within cell with transparent gutter. No held weapon, role power or standing figure rotated sideways.",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/luraen-resting-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-03-thalestriel-plagued-lineup-v1.png"
+      ],
+      "checks": [
+        "real-alpha",
+        "one-genuinely-reclining-elf",
+        "clothing-identity",
+        "short-palette",
+        "body-ratio-within-five-percent",
+        "ground-contact",
+        "safe-gutter"
+      ],
+      "scale_reference": "lolth-common-anatomical-baseline-40-logical-pixels",
+      "target_height_ratio": 1,
+      "ground_pivot": "body-ground-contact-line-at-y-56-in-64-logical-cell",
+      "measurement_note": "Crown-to-heel anatomical length, not vertical recumbent bbox; measurable landmarks required before acceptance."
+    }
+  ],
+  "scale_sheet": {
+    "id": "lolth-common-anatomical-baseline-40-logical-pixels",
+    "body_height": 40,
+    "source": ".atena/specs/2026-10-05-lolth-three-transformations.md",
+    "measurement_gate": "Normalize common body baseline after measured source landmarks; do not accept an unmeasurable candidate."
+  }
+}

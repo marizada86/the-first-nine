@@ -1,0 +1,30 @@
+{
+  "id": "h03-03",
+  "attempt": 3,
+  "status": "generated-normalized-awaiting-owner-review",
+  "technical_receipt": ".atena/generated/2026-10-05-b09-opening-art-production/ending-technical-v1.json",
+  "reason": "Framing corrected; eight companions, one open relic wagon and integrated Nolf all remain visible.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-c74cce88-3da7-4f88-9231-726767df56c4.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+  "prompt": "Use case: precise-object-edit. Image 1 is the crossing comic panel to correct. Fix ONLY the framing/cut-off of the complete Nolf shadow-spider creature at the right. Slightly pull back the overall camera or extend the visible composition within the same landscape canvas so ALL eight shadow legs and the drow-front head/body fit comfortably inside the panel, at least a 4 percent margin from the right edge. Do not crop any part of the creature. Preserve exactly the existing EIGHT white-haired drow companions, their same clothes and positions relative to each other, the ONE OPEN wooden relic wagon, portal and Golden Dream City. The spider is ONE integrated being: same bone-white opaque chitin, silver hair, integral drow front and black-violet shadow abdomen, not a rider. Exactly eight companions plus one Nolf, no new people, no ninth humanoid. Keep the same pixel-art rendering and no text. Do not redesign anything; only correct the framed scale/spacing so the silhouette is fully visible.",
+  "source_references": [
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v2.png"
+  ],
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "declared_ratio": null,
+  "measured_ratio": null,
+  "ground_pivot": "not-applicable-narrative-panel",
+  "visual_checks": {
+    "project_anatomy": true,
+    "one_nolf": true,
+    "clothing": true,
+    "family_count": 8,
+    "open_wagon": true,
+    "no_text": true,
+    "framing": true,
+    "leg_visibility": "Some far-side or lower leg segments are occluded by perspective, shadow or foreground companions. No independent anatomy segmentation test is claimed."
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-05-b09-opening-art-production-approval.md",
+    "plan_id": "2026-10-05-b09-opening-art-production",
+    "batch_id": "ART-001"
+  },
+  "art_direction": "Established lateral minimal dark-fantasy pixel art; approved sources and spec; no new lore, clothing exposure or covered/horse wagon.",
+  "output_dir": ".atena/generated/2026-10-05-b09-opening-art-production",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "h01-01",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Crowded Golden City, only elves; no identifiable Lolth. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-01-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "The Golden City could no longer shelter all its people."
+    },
+    {
+      "id": "h01-02",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Elven council; no identifiable Lolth. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-02-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "The great families would leave, each seeking a new home for the elves."
+    },
+    {
+      "id": "h01-03",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Thalestriel departure, more than one hundred elves and open relic wagon. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-03-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Eol, damn you. You have driven us from our home."
+    },
+    {
+      "id": "h01-04",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Creature attack on the travelling family. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-04-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Curse you, Eol! Must your creatures hunt us too?"
+    },
+    {
+      "id": "h01-05",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Hostile attackers, family protecting the relic wagon. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Damn you, Eol. Every road becomes another trap."
+    },
+    {
+      "id": "h01-06",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Natural disaster strikes the caravan. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-06-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Eol, you bastard! Even the land turns against us."
+    },
+    {
+      "id": "h01-07",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Plague takes hold; Lolth remains unaffected. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-07-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Curse you, Eol. Now you send sickness after them."
+    },
+    {
+      "id": "h01-08",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Most of the caravan lost, non-graphic mourning. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-08-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Damn you, Eol. I will not leave the others behind."
+    },
+    {
+      "id": "h01-09",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Damaged wagon and exactly eight plagued elves lying inside the cave, with Lolth. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn). ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Curse you, Eol. We are still here, and we stay together."
+    }
+  ],
+  "scale_sheet": {
+    "id": "lolth-common-anatomical-baseline-40-logical-pixels",
+    "body_height": 40,
+    "source": ".atena/specs/2026-10-05-lolth-three-transformations.md",
+    "measurement_gate": "Normalize common body baseline after measured source landmarks; do not accept an unmeasurable candidate."
+  }
+}

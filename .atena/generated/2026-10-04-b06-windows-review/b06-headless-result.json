@@ -1,0 +1,11 @@
+{
+  "name": "b06-headless",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.272,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

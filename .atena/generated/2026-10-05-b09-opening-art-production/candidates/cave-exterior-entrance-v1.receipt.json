@@ -1,0 +1,19 @@
+{
+  "id": "cave-exterior-entrance",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-97050d67-ba1b-4787-82b6-0d2dd92059c6.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-exterior-entrance-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "prompt": "Use case: stylized-concept. Asset type: one reusable 16:9 side-view environment background for The First Nine, target1920x1080. Thornwake Forest exterior cave entrance: tall dark mouth at the left side framed by gray-blue rock and TWO thick gnarled brown roots arching together, like a pointed oval root arch. Root-covered cave cliff occupies left third; cool layered forest continues unobstructed to the right. Flat continuous horizontal walkable base crosses whole image at lower quarter, opening meets the SAME level as the forest path, generous opening to later pass a wagon. Camera flat lateral 2D platformer view, not a forward-facing corridor, no perspective stairs. Style simplified dark fantasy PIXEL ART with large square pixel clusters, short cool gray-blue/black and restrained root-brown palette, minimal texture. Ambient neutral lighting for dynamic day/night: no sunlight beams, sun, moon, fires or special effects. Bottom quiet dark earth. Empty background only: NO people, beasts, wagon, fire, tools, chests, bedding, props, UI, text, labels, watermark, collage. Recognizable cave entrance without blocking the straight floor.",
+  "visual_checks": {
+    "continuous_flat_floor": true,
+    "root_framed_exit": true,
+    "no_baked_actors_props_ui": true,
+    "pixel_clusters": true
+  },
+  "ratio": null
+}

@@ -1,0 +1,377 @@
+{
+  "status": "pass",
+  "attempts": 33,
+  "distinctTargets": 20,
+  "normalizedEndingPanels": 5,
+  "allOriginalsPreserved": true,
+  "distinctMasterHashes": 5,
+  "contractPathsChecked": 8,
+  "wikiLinksResolved": 25,
+  "engineRun": false,
+  "runtimeAdmitted": false,
+  "attemptTechnicalChecks": [
+    {
+      "id": "h01-01",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-01-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "6b7538cec6a0efef2231a56f97b78fe159a715bd470559c95676a7e6def26ea3",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-02",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-02-v1.png",
+      "dimensions": [
+        1672,
+        940
+      ],
+      "sha256": "83d9edefb113244bb00cf0b0b847de7bcc29dbbcf77e4a1298129d9bd06ebd02",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-03",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-03-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "c2dc6f46863ca574a2edb1d9a54a534ec372ee3a4a580e4bddd5971ac84c7aa8",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-04",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-04-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ee4035b8cc154c50b2f6404d97e2fe5c6a08207cd03c444fdc544c632ef94539",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-05",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "844aefb85616b64cbad7b79b9bf15b40afc143f16967bd77818fe22d113f0c6e",
+      "status": "rejected"
+    },
+    {
+      "id": "h01-05",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ff13f8739c59c3bf2c563e1da0d5097dcdfc75520a1b621810df281e7f75f7d4",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-06",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-06-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ab891fbc4977a89c3a7af99c2ed1874c34a64e16c9de905ef5887b5cadf277e5",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-07",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-07-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "37f64d4d34a88e3bff31673cf7929469937063a4add44412044077a31cdf15c6",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-08",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-08-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "fb8648569193b817f80af70420bd5457797c228359289c82a9f2841c5dc800eb",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h01-09",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ad98c04ce6659811a146290afb61ed4b48eaceb7a471d98d2f0c9c2f6f742dd6",
+      "status": "rejected"
+    },
+    {
+      "id": "h01-09",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "a54086fb01d0a1f18146268e63296cc656c3b5a4133c4b99a1be0598bc9eeae6",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h02-01",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-01-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "d860d90ef1a08931be2c8aa623ebc52acd3ba2345122c4cf159fb4c24c3d66e5",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h02-02",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "74f50e70a556a5098125358f5cef5bf6535eb7d8b2905ea1abd2978f83d7793f",
+      "status": "rejected"
+    },
+    {
+      "id": "h02-02",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "6eec52a4a37ca1b6123e4257468cdc99f68cf2c19adb9feba62e4a023fb6121c",
+      "status": "rejected"
+    },
+    {
+      "id": "h02-02",
+      "attempt": 3,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v3.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "58abc7481e8a4d05d9ec68470598213251579c06d0cdf9d6f89d88449b55cfd7",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h02-03",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-03-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "a14ea4dffb7333ae39478be8d06a41891aa750913267725e582dfe0349d2b345",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h02-04",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "16701c48b83e84d691c2dcbbc607e6a93f858a8e20caf18b969752b7f803080f",
+      "status": "rejected"
+    },
+    {
+      "id": "h02-04",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "d004d471662e7fe9e45eb8929200ed3af9fceda5a45716bfb9bf75b33e4301be",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h02-05",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-05-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "dad6856cb92d3c229394c5211e4a59aadc4b0b0e25dd7b4a22697b625d559ca0",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h02-06",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-06-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ae7caf3cd97e08d97926efeb490de671e8a7af45e6ade08026ee2742ecfda0e0",
+      "status": "candidate-visual-pass-pending-package-checks"
+    },
+    {
+      "id": "h03-01",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ba28fe3a7cc75a5ea1a7e701e73128062c1b8c403f641275b17593cc60663f21",
+      "status": "superseded-owner-final-spider-request"
+    },
+    {
+      "id": "h03-02",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "1baec104289c53f8e2d42696ad067ab8e1d7006c079ca5692175e35833fc08d3",
+      "status": "superseded-owner-final-spider-request"
+    },
+    {
+      "id": "h03-03",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "5f9d38da81242e5822bcf319b0b946d4646d3e92b44082e30e5f6f23c1498361",
+      "status": "superseded-owner-final-spider-request"
+    },
+    {
+      "id": "h03-04",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "4ae78453439d22d01947a6e80d72f7ec724656121e09ba8b5be9f9a815e214ba",
+      "status": "superseded-owner-final-spider-request"
+    },
+    {
+      "id": "h03-05",
+      "attempt": 1,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "4dc1c7326a6e480da450258ceea627316113bb7f38ec26c727ccbfe1533c4d43",
+      "status": "superseded-owner-final-spider-request"
+    },
+    {
+      "id": "h03-01",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "6e5c7c04f115f421455c11f302ad9b5fa26d658d8b3a035fe4a5ec70543c4b3e",
+      "status": "rejected-anatomy-interpretation"
+    },
+    {
+      "id": "h03-01",
+      "attempt": 3,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png",
+      "dimensions": [
+        1671,
+        941
+      ],
+      "sha256": "e4777c7eb490c6003aab19e9df34db88472790474f86c444c5d1925d38d0136a",
+      "status": "generated-normalized-awaiting-owner-review"
+    },
+    {
+      "id": "h03-02",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "dimensions": [
+        1671,
+        941
+      ],
+      "sha256": "851bab70275b1d61ead36e1ac86f313d18e6df139e5ad3d1bb7f1ccb18ebd75b",
+      "status": "generated-normalized-awaiting-owner-review"
+    },
+    {
+      "id": "h03-03",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "8456040e90618b8e07cc929b27e9d3fb8a26c9c2004d2e7ecd367818e593105e",
+      "status": "rejected"
+    },
+    {
+      "id": "h03-05",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "5f1920ab97e58316875af54ffccd6b0e7773325d9a253d27452d5c1dc1d4b7b5",
+      "status": "rejected"
+    },
+    {
+      "id": "h03-03",
+      "attempt": 3,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "3bc619431376cd86bc2a63927eaa6b70e3fb09543259069b557aa1f7da53c08e",
+      "status": "generated-normalized-awaiting-owner-review"
+    },
+    {
+      "id": "h03-04",
+      "attempt": 2,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "a5e8f95371ff60a9275ef6577ebfdcc7c89bc886c6bfa1280374ee1396da688b",
+      "status": "generated-normalized-awaiting-owner-review"
+    },
+    {
+      "id": "h03-05",
+      "attempt": 3,
+      "path": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "b6aa9d21e4654171293b1fa9d27dfee1ef0823a0e806a24508e31fee79584024",
+      "status": "generated-normalized-awaiting-owner-review"
+    }
+  ]
+}

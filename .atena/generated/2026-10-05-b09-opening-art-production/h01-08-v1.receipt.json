@@ -1,0 +1,22 @@
+{
+  "id": "h01-08",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": null,
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-b2b2d3ff-9ad9-4912-bc82-72716cd6aafd.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Most of the caravan lost, non-graphic mourning. Lolth, when present: unaffected pale elf woman, long white hair, dark mantle, pointed ears, visibly angry and blaming Eol (dialogue added later, never drawn).  Composition: after the plague, many quiet unmarked earth burial mounds along a forest road convey the caravan's losses, no corpses or exposed remains, no crosses or new religious symbols. The damaged open relic wagon and the remaining sick elves rest further along the road. Lolth, pale unaffected elf woman with white hair and black hooded cloak over opaque trousers and boots, clenches empty hands and angrily curses toward the sky. Sole scene, no swords in her hands, no magic.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-08-v1.png",
+  "visual_checks": {
+    "single_panel": true,
+    "no_text": true,
+    "clothing": true,
+    "narrative_beat": true,
+    "patients_count": null,
+    "lying_patients": false,
+    "role_palette": false
+  },
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

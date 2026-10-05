@@ -1,0 +1,9 @@
+{
+  "kind": "review-diagnostic-not-official-acceptance",
+  "exit_code": 0,
+  "passed": true,
+  "checks": 9,
+  "error": null,
+  "signal": null,
+  "os": "win32"
+}

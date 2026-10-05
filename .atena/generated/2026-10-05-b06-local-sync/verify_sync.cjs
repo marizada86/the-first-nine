@@ -1,0 +1,40 @@
+// Local fast-forward verification. No game execution or remote publication.
+const fs=require('node:fs');
+const path=require('node:path');
+const crypto=require('node:crypto');
+const assert=require('node:assert/strict');
+const {execFileSync}=require('node:child_process');
+const dir='.atena/generated/2026-10-05-b06-local-sync';
+const target='e189184e1928efca8172ce4a9c65996be81c206a';
+const base='7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc';
+const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const lines=s=>s?s.split(/\r?\n/):[];
+assert.equal(git('branch','--show-current'),'main');
+assert.equal(git('rev-parse','origin/main'),target,'Remote main changed');
+assert.equal(git('diff','--name-only'),'','Tracked changes');
+assert.equal(git('diff','--cached','--name-only'),'','Staged changes');
+if(process.argv[2]==='before'){
+  assert.equal(git('rev-parse','HEAD'),base);
+  git('merge-base','--is-ancestor','HEAD','origin/main');
+  assert.equal(git('rev-list','--left-right','--count','HEAD...origin/main'),'0\t10');
+  const incoming=new Set(lines(git('ls-tree','-r','--name-only',target)));
+  const files=lines(git('-c','core.quotePath=false','ls-files','--others','--exclude-standard')).filter(f=>!f.startsWith(dir+'/'));
+  for(const file of files)assert(!incoming.has(file),'Untracked collision: '+file);
+  const hashes=files.map(file=>({path:file,sha256:hash(file)}));
+  fs.writeFileSync(path.join(dir,'before.json'),JSON.stringify({base,target,files:hashes},null,2)+'\n');
+  console.log('LOCAL_SYNC_PREFLIGHT_PASS: main behind 10, no tracked/staged changes or untracked collisions; '+hashes.length+' local files hashed.');
+}else if(process.argv[2]==='after'){
+  assert.equal(git('rev-parse','HEAD'),target);
+  assert.equal(git('rev-list','--left-right','--count','HEAD...origin/main'),'0\t0');
+  const before=JSON.parse(fs.readFileSync(path.join(dir,'before.json'),'utf8'));
+  assert.equal(before.base,base);assert.equal(before.target,target);
+  for(const file of before.files)assert.equal(hash(file.path),file.sha256,'Local evidence changed: '+file.path);
+  const state=fs.readFileSync('.atena/state/plan.yaml','utf8');
+  assert(/^active_plan: null\r?$/m.test(state));assert(/^plan_cursor: complete\r?$/m.test(state));
+  assert(state.includes('id: "2026-10-04-b06-stonehook-foot-expedition"'));
+  assert(state.includes('status: complete-implementation-merged'));
+  const after={kind:'authorized-local-fast-forward-receipt',date:'2026-10-05',request_classification:'IN_PLAN',previous_main:base,main:target,remote_divergence:'0/0',preserved_files:before.files.length,hashes_match:true,tracked_changes:[],staged_changes:[],active_plan:null,plan_cursor:'complete',engine_rerun:false,push_performed:false,b07_started:false};
+  fs.writeFileSync(path.join(dir,'after.json'),JSON.stringify(after,null,2)+'\n');
+  console.log('LOCAL_SYNC_PASS: main equals origin/main at e189184; '+before.files.length+' local files preserved byte-for-byte, tracked/staged clean, B06 completed and active plan null. No engine rerun, commit, push or B07.');
+}else throw Error('Use before or after');

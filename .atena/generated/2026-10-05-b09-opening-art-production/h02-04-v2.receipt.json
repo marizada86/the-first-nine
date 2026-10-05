@@ -1,0 +1,13 @@
+{
+  "id": "h02-04",
+  "attempt": 2,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": "Targeted edit restored opaque high-neck clothing; Mark remains on the fabric.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-4c3bbf36-6f57-496e-a1c3-15b72e22b0d9.png",
+  "prompt": "Edit only Lolth's neckline in this panel: cover the light exposed upper-chest triangle with opaque black clothing continuous with her existing high-neck outfit. The violet Mark must glow ON TOP OF that CLOTH, not exposed chest skin. Preserve the silver wand tip, Lolth's pale elf face and hands, white hair, trousers/boots, Shar, forest and composition. No other change, no new text or people.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v2.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

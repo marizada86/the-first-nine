@@ -1,0 +1,13 @@
+{
+  "id": "h02-05",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": "Reviewed: drow identity, fully clothed, Shar faceless, short wand and no exterior wagon; no baked text.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-a00a19e9-de6b-49ac-be53-17c3bd48d248.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Fully clothed elf-to-drow transformation. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Show one and only one Lolth, now unmistakably dark violet drow skin with long white hair, black high-neck opaque mantle, black trousers and boots, modest small purple shadow aura over the clothing at her chest. Full body on a forest floor; she looks at her newly changed hands. Shar is one faceless hooded violet-black figure behind her, white crescent on her robe, still holding the same short slender purple-tipped wand. Exactly these two figures, no before/after split, no second Lolth, no wagon, no allies, no blade, no staff. Simple broad pixels, restrained details, blank bottom caption strip.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-05-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

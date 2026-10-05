@@ -1,0 +1,11 @@
+{
+  "name": "windows-input-probe",
+  "exit_code": 1,
+  "signal": null,
+  "passed": false,
+  "seconds": 55.106,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

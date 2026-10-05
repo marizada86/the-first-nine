@@ -10,4 +10,4 @@ Vertical slice em Godot 4 para a game jam. A família Thalestriel deixa a Cidade
 - Ação de sombra: `Shift`, clique direito ou gatilho direito
 - Acampamento/carga: `M` ou botão Menu/Select
 
-Lolth é a única personagem controlável. Ela explora ruínas verticais, combate sombras e recupera recursos em `RECOVERED LOAD`, cuja capacidade cresce com seu `Might`. Os oito Thalestriel ficam na caravana e realizam uma missão passiva por vez.
+Nolf é a única personagem controlável. Ela explora ruínas verticais, combate sombras e recupera recursos em `RECOVERED LOAD`, cuja capacidade cresce com seu `Might`. Os oito Thalestriel ficam na caravana e realizam uma missão passiva por vez.

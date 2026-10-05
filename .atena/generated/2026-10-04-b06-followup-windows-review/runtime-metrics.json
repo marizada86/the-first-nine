@@ -1,0 +1,64 @@
+{
+	"foreground_readability": {
+		"day-1280-left": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.866545634385846
+		},
+		"day-1280-right": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.847774064510319
+		},
+		"day-2998-left": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.752138839564286
+		},
+		"day-2998-right": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.718142147515878
+		},
+		"night-1280-left": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.847332045833538
+		},
+		"night-1280-right": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.837933592771823
+		},
+		"night-2998-left": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.792327347486423
+		},
+		"night-2998-right": {
+			"alpha": 0.72,
+			"visibility_ratio": 0.736295795111149
+		}
+	},
+	"hud_title_glyph_pixels": [
+		827,
+		827,
+		827,
+		827,
+		827,
+		827,
+		827,
+		827,
+		827,
+		827
+	],
+	"outward_frames": 1389,
+	"outward_max_step": 41.0350952148438,
+	"parity_day_differing_pixels": 0,
+	"parity_night_differing_pixels": 0,
+	"parity_secured_differing_pixels": 0,
+	"restored_trigger_021_dashes": true,
+	"seam_1280": {
+		"seam_column_difference": 0.000617438499941259,
+		"typical_column_difference": 0.012806981136025
+	},
+	"seam_1760": {
+		"seam_column_difference": 0.00231400367321698,
+		"typical_column_difference": 0.0157599780782859
+	},
+	"translation_left_differing_pixels": 0,
+	"translation_right_differing_pixels": 0
+}

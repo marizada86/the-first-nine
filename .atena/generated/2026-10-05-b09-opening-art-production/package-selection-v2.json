@@ -1,0 +1,416 @@
+{
+  "status": "selected-for-offline-normalization",
+  "landmark_method": "Manual visible anatomical crown, neck, hip, extended-leg knee and heel; excludes hair, ears, cloak, empty canvas; approximate 2D measurement, not medical anatomy or automatic segmentation.",
+  "reference_body_length": 40,
+  "reference_display_height": 191.5888,
+  "items": [
+    {
+      "id": "h01-01",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-01-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-02",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-02-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-03",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-03-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-04",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-04-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-05",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-05-v2.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-06",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-06-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-07",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-07-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-08",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-08-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h01-09",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v2.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h02-01",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-01-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h02-02",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v3.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h02-03",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-03-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h02-04",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v2.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h02-05",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-05-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h02-06",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-06-v1.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "h03-01",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": true
+    },
+    {
+      "id": "h03-02",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-02-v2.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": true
+    },
+    {
+      "id": "h03-03",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v3.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": true
+    },
+    {
+      "id": "h03-04",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-04-v2.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": true
+    },
+    {
+      "id": "h03-05",
+      "attempt": 3,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-05-v3.png",
+      "kind": "comic",
+      "landmarks": null,
+      "owner_accepted": true
+    },
+    {
+      "id": "cave-interior",
+      "attempt": 2,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-interior-v2.png",
+      "kind": "environment",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "cave-exterior-entrance",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/cave-exterior-entrance-v1.png",
+      "kind": "environment",
+      "landmarks": null,
+      "owner_accepted": false
+    },
+    {
+      "id": "aelira-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/aelira-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          168,
+          488
+        ],
+        [
+          358,
+          555
+        ],
+        [
+          720,
+          560
+        ],
+        [
+          1030,
+          610
+        ],
+        [
+          1440,
+          650
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "vaelun-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/vaelun-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          115,
+          660
+        ],
+        [
+          244,
+          740
+        ],
+        [
+          640,
+          778
+        ],
+        [
+          850,
+          805
+        ],
+        [
+          1130,
+          824
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "nimara-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/nimara-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          128,
+          614
+        ],
+        [
+          248,
+          716
+        ],
+        [
+          602,
+          728
+        ],
+        [
+          856,
+          753
+        ],
+        [
+          1149,
+          783
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "thaviel-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/thaviel-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          211,
+          379
+        ],
+        [
+          329,
+          485
+        ],
+        [
+          879,
+          521
+        ],
+        [
+          1180,
+          558
+        ],
+        [
+          1648,
+          586
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "ilyren-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/ilyren-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          233,
+          468
+        ],
+        [
+          414,
+          603
+        ],
+        [
+          852,
+          611
+        ],
+        [
+          1180,
+          680
+        ],
+        [
+          1605,
+          688
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "orisya-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/orisya-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          154,
+          476
+        ],
+        [
+          348,
+          570
+        ],
+        [
+          1010,
+          611
+        ],
+        [
+          1260,
+          639
+        ],
+        [
+          1630,
+          646
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "soreth-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/soreth-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          234,
+          391
+        ],
+        [
+          413,
+          487
+        ],
+        [
+          898,
+          554
+        ],
+        [
+          1203,
+          616
+        ],
+        [
+          1600,
+          626
+        ]
+      ],
+      "owner_accepted": false
+    },
+    {
+      "id": "luraen-resting",
+      "attempt": 1,
+      "source": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/luraen-resting-v1.png",
+      "kind": "patient",
+      "landmarks": [
+        [
+          233,
+          396
+        ],
+        [
+          430,
+          504
+        ],
+        [
+          868,
+          551
+        ],
+        [
+          1250,
+          622
+        ],
+        [
+          1610,
+          629
+        ]
+      ],
+      "owner_accepted": false
+    }
+  ]
+}

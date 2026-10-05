@@ -1,0 +1,29 @@
+{
+  "id": "h03-03",
+  "attempt": 2,
+  "status": "rejected",
+  "reason": "Creature's rightmost leg is clipped by the right canvas boundary.",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-6902072e-6132-45e2-a984-9e431abde2b0.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v2.png",
+  "prompt": "Use case: precise-object-edit. Asset type: one fullscreen ending comic panel for The First Nine. Image 1: existing comic panel/edit target. Image 2: authoritative SHADOW CROWN anatomy reference, not a background to copy. Replace Nolf's previous merely standing humanoid-plus-appendages with the project's established FINAL SHADOW CREATURE. Her complete recognisable drow body forms the HEAD/FRONT of the enormous spider: blue-gray/violet drow face, very long silver-white hair, elongated ears, fully opaque bone-white segmented chitin clothing. Her head, torso and arms are integral to the front cephalothorax. Behind and around this front grows a LARGE HORIZONTAL black-violet ABDOMEN and exactly EIGHT long articulated spider LEGS made of shadow, smoke and web. FOUR legs each side, readable silhouettes. Nolf is NOT riding a spider, NOT a woman standing in front of a separate spider, NOT just wearing spider appendages, NOT a face pasted onto an ordinary spider. One united being. No nudity, exposed chest, gore or extra walking humanoid legs; cover all human anatomy in opaque chitin/clothing. Use broad deliberate pixel clusters and limited palette consistent with the existing panel, not the painterly microtexture of the anatomy reference. Retain ONE landscape 16:9 scene and empty lower caption area. NO text, balloons, logos, labels or watermark. Eight companions, when shown, remain fully clothed and unchanged; no ninth companion or human duplicate of Nolf. United crossing panel: preserve exactly EIGHT existing white-haired drow companions and ONE OPEN wooden wagon of relic chests. Only replace the far-right crowned standing woman and old appendages with Nolf's much larger unified drow-front shadow-spider form. She proceeds with them through the portal; eight humanoid companions plus this one united being make NINE family members. Preserve all eight roles (olive ranger, brown fighter, red scarf, brown hood, gray mage, pale-green healer, dark-green scout, purple scholar). No horse, canopy or extra wagon. Allow spacing to keep every companion and the wagon readable; do not lose a companion behind the spider. Image 3 is the corrected first comic panel; use its same integrated creature proportions, chitin and shadow texture. Keep exactly eight companions clearly countable. Enlarge the panoramic spacing instead of hiding a companion or cropping the creature.",
+  "source_references": [
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-03-v1.png",
+    "D:/dev/eclipse-game-jam/assets/concept-art/key-art/shadow-crown-drow-body-shadow-form-v1.png",
+    "D:/dev/eclipse-game-jam/.atena/generated/2026-10-05-b09-opening-art-production/candidates/h03-01-v3.png"
+  ],
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "declared_ratio": null,
+  "measured_ratio": null,
+  "ground_pivot": "not-applicable-narrative-panel",
+  "visual_checks": {
+    "project_anatomy": true,
+    "no_text": true,
+    "one_nolf": true,
+    "clothing": true,
+    "family_count": 8,
+    "clipping": true
+  }
+}

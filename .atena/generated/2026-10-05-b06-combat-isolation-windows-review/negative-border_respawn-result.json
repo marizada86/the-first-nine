@@ -1,0 +1,25 @@
+{
+  "name": "negative-border_respawn",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.248,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL border_no_respawn",
+    "B06 FAIL return_captures",
+    "B06 FAIL ore_deposited_once",
+    "B06 FAIL recapture_consistent",
+    "B06 FAIL deposit_survives_restore",
+    "B06 FAIL offscreen_terminal_restore"
+  ],
+  "error": null
+}

@@ -1,0 +1,79 @@
+{
+	"ai_generated": true,
+	"atlas": "lolth-mark-5-atlas-v1.png",
+	"body_height": 40,
+	"cell_size": [
+		112,
+		112
+	],
+	"clips": {
+		"collect": [
+			17,
+			3,
+			10.0,
+			false
+		],
+		"dodge": [
+			14,
+			3,
+			10.0,
+			false
+		],
+		"fall": [
+			22,
+			2,
+			8.0,
+			true
+		],
+		"hurt": [
+			24,
+			2,
+			4.444444,
+			false
+		],
+		"idle": [
+			0,
+			4,
+			5.0,
+			true
+		],
+		"rise": [
+			20,
+			2,
+			8.0,
+			true
+		],
+		"run": [
+			4,
+			6,
+			10.0,
+			true
+		],
+		"signature": [
+			32,
+			4,
+			6.0,
+			false
+		],
+		"strike": [
+			10,
+			4,
+			14.285714,
+			false
+		],
+		"transform": [
+			26,
+			6,
+			7.5,
+			false
+		]
+	},
+	"columns": 6,
+	"display_body_height": 191.588785046729,
+	"mark": 5,
+	"pivot": [
+		56,
+		100
+	],
+	"source": "mark-5-attempt-3.png"
+}

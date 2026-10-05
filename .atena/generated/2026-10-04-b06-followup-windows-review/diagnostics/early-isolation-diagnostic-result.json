@@ -1,0 +1,9 @@
+{
+  "kind": "diagnostic-not-unmodified-acceptance",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "signal": null,
+  "os": "win32",
+  "checks": "all 51 inherited unchanged; keyboard isolation starts before skip"
+}

@@ -1,0 +1,105 @@
+{
+  "language": "en",
+  "panels": [
+    {
+      "id": "H01-01",
+      "beat": "Crowded Golden City, only elves; no identifiable Nolf",
+      "text": "The Golden City could no longer shelter all its people."
+    },
+    {
+      "id": "H01-02",
+      "beat": "Elven council; no identifiable Nolf",
+      "text": "The great families would leave, each seeking a new home for the elves."
+    },
+    {
+      "id": "H01-03",
+      "beat": "Thalestriel departure, more than one hundred elves and open relic wagon",
+      "text": "Nolf: Eol, damn you. You have driven us from our home."
+    },
+    {
+      "id": "H01-04",
+      "beat": "Creature attack on the travelling family",
+      "text": "Nolf: Curse you, Eol! Must your creatures hunt us too?"
+    },
+    {
+      "id": "H01-05",
+      "beat": "Hostile attackers, family protecting the relic wagon",
+      "text": "Nolf: Damn you, Eol. Every road becomes another trap."
+    },
+    {
+      "id": "H01-06",
+      "beat": "Natural disaster strikes the caravan",
+      "text": "Nolf: Eol, you bastard! Even the land turns against us."
+    },
+    {
+      "id": "H01-07",
+      "beat": "Plague takes hold; Nolf remains unaffected",
+      "text": "Nolf: Curse you, Eol. Now you send sickness after them."
+    },
+    {
+      "id": "H01-08",
+      "beat": "Most of the caravan lost, non-graphic mourning",
+      "text": "Nolf: Damn you, Eol. I will not leave the others behind."
+    },
+    {
+      "id": "H01-09",
+      "beat": "Damaged wagon and exactly eight plagued elves lying inside the cave, with Nolf",
+      "text": "Nolf: Curse you, Eol. We are still here, and we stay together."
+    },
+    {
+      "id": "H02-01",
+      "beat": "Xiar appears after Antlered Hunger is defeated",
+      "text": "Xiar: Every calamity reaches your family. None touches you. Who are you?"
+    },
+    {
+      "id": "H02-02",
+      "beat": "Nolf's former godhood presented as a memory, not a new divine identity design",
+      "text": "Nolf: I remember another plane. There, I was a goddess."
+    },
+    {
+      "id": "H02-03",
+      "beat": "Nolf offers the memories; Xiar accepts",
+      "text": "Nolf: Take those memories. Give me a path to power and divinity here. Xiar: Agreed."
+    },
+    {
+      "id": "H02-04",
+      "beat": "Xiar applies the Shadow Mark with her wand",
+      "text": "Xiar: Receive the Shadow Mark."
+    },
+    {
+      "id": "H02-05",
+      "beat": "Fully clothed elf-to-drow transformation",
+      "text": "The bargain remade Nolf as a drow."
+    },
+    {
+      "id": "H02-06",
+      "beat": "Wand handed to Nolf, restrained shadow-creature command cue",
+      "text": "Xiar: XIAR'S KISS is yours. Its bearer can command all shadow creatures."
+    },
+    {
+      "id": "H03-01",
+      "beat": "Nolf completes her established final transformation",
+      "text": "Nolf's transformation was complete."
+    },
+    {
+      "id": "H03-02",
+      "beat": "Portal opens to the Dream Plane",
+      "text": "She opened a passage to the Dream Plane."
+    },
+    {
+      "id": "H03-03",
+      "beat": "Nolf and exactly eight drows cross with the open wagon and relics",
+      "text": "All nine crossed together. No one, and no relic, was left behind."
+    },
+    {
+      "id": "H03-04",
+      "beat": "All nine remain together in the Golden City of Dreams",
+      "text": "In the Golden City of Dreams, they found their home."
+    },
+    {
+      "id": "H03-05",
+      "beat": "Nolf leaves the wand in the eight drows' collective custody and stays with them",
+      "text": "XIAR'S KISS remained in the eight drows' care. Nolf remained with them."
+    }
+  ]
+}

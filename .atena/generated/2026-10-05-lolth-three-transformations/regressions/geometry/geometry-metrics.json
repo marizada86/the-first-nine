@@ -1,0 +1,75 @@
+{
+	"checks": 46,
+	"failures": 0,
+	"frames": {
+		"ANTLERED HUNGER": [
+			{
+				"body_width": 247.559814453125,
+				"frame": 0,
+				"reach": 167.779907226563
+			},
+			{
+				"body_width": 253.365234375,
+				"frame": 1,
+				"reach": 170.6826171875
+			},
+			{
+				"body_width": 253.779907226563,
+				"frame": 2,
+				"reach": 170.889953613281
+			},
+			{
+				"body_width": 253.365234375,
+				"frame": 3,
+				"reach": 170.6826171875
+			}
+		],
+		"BRIAR HOUND": [
+			{
+				"body_width": 147.751190185547,
+				"frame": 0,
+				"reach": 117.875595092773
+			},
+			{
+				"body_width": 150.047836303711,
+				"frame": 1,
+				"reach": 119.023918151855
+			},
+			{
+				"body_width": 156.172241210938,
+				"frame": 2,
+				"reach": 122.086120605469
+			},
+			{
+				"body_width": 157.192977905273,
+				"frame": 3,
+				"reach": 122.596488952637
+			}
+		],
+		"STAG OF MIRE": [
+			{
+				"body_width": 232.505645751953,
+				"frame": 0,
+				"reach": 160.252822875977
+			},
+			{
+				"body_width": 320.090301513672,
+				"frame": 1,
+				"reach": 204.045150756836
+			},
+			{
+				"body_width": 380.630615234375,
+				"frame": 2,
+				"reach": 234.315307617188
+			},
+			{
+				"body_width": 378.828826904297,
+				"frame": 3,
+				"reach": 233.414413452148
+			}
+		]
+	},
+	"gameplay_added_scans": 0,
+	"startup_cells": 22,
+	"startup_ms": 741.04
+}

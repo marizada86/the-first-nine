@@ -1,0 +1,71 @@
+{
+  "id": "2026-10-05-dnd-name-audit",
+  "date": "2026-10-05",
+  "kind": "analytical-evidence",
+  "spec": "../specs/2026-10-05-dnd-name-audit.yaml",
+  "status": "analysis-complete-no-renames",
+  "method": "Case-insensitive searches of local gd/md/json/yaml/yml/txt/godot/tscn/csv files, runtime string review, filename inventory and selected image inspection. Excluded .git, .godot, tmp and .codex. Public verification sent no project files or story text.",
+  "limits": "Not an exhaustive OCR review of every image or a legal clearance. No build export, engine validation, license activation, canonical rename, production change or publication performed.",
+  "findings": [
+    {
+      "name": "Lolth",
+      "classification": "confirmed-D&D-character",
+      "recommendation": "Replace the character name and ensure the released character is an original adaptation rather than merely relabeling the D&D deity.",
+      "local_refs": ["../../main.gd:4225", "../../main.gd:4267", "../../wagon_inventory_ui.gd:45", "../../README.md:13", "../../lolth_transformations.gd:5"],
+      "public_source": "https://www.dndbeyond.com/posts/320-the-spider-queens-web-the-truth-about-the-drow"
+    },
+    {
+      "name": "Shar",
+      "classification": "confirmed-D&D-character",
+      "recommendation": "Replace the deity name and independently review her identity, narrative and visual portrayal.",
+      "local_refs": ["../../main.gd:2736", "../../main.gd:46", "../vault/canon/2026-10-03-hq-narrative-revision.md", "../specs/2026-10-05-b09-opening-art-production.md"],
+      "public_source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/appendix-b-gods-of-the-multiverse"
+    },
+    {
+      "name": "Kiss of Shar / The Kiss of Shar / O Beijo de Shar",
+      "classification": "project-item-name-derived-from-confirmed-D&D-character",
+      "recommendation": "Rename the item because its name carries Shar. No claim that the item itself is a published D&D item.",
+      "local_refs": ["../../main.gd:2354", "../../assets/concept-art/comic/the-kiss-of-shar-storyboard-v1.png", "../../assets/concept-art/key-art/the-kiss-of-shar-v1.png", "../specs/2026-10-05-b09-opening-art-production.md"]
+    },
+    {
+      "name": "Drow / Drows / First Drows / first drow",
+      "classification": "D&D-associated-term-with-SRD-licensed-content",
+      "recommendation": "Optional original species name for independence. Do not label the term automatically prohibited: SRD 5.1 includes Elf, Drow and SRD 5.2 includes Drow lineage under CC-BY-4.0. Licensed SRD content does not license unrelated Lolth/Shar lore or official character artwork.",
+      "local_refs": ["../../main.gd:2736", "../../main.gd:3408", "../../main.gd:3628", "../../main.gd:4436", "../../assets/runtime_v2/characters/lolth/lolth-drow-core-sheet-v1.png"],
+      "public_sources": ["https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1.pdf", "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.pdf"]
+    },
+    {
+      "name": "Eol",
+      "classification": "no-confirmed-D&D-association-additional-name-collision-review",
+      "recommendation": "Review separately because Eöl is a Tolkien character. The local Eol is a plane-recreating deity; a similar spelling alone does not establish that the local character was copied.",
+      "local_refs": ["../vault/canon/2026-10-02-thalestriel-exodus-game-intent.md", "../specs/2026-10-05-b09-opening-art-production.md"],
+      "public_source": "https://tolkiengateway.net/wiki/E%C3%B6l"
+    }
+  ],
+  "no_D&D_association_found": {
+    "identity": ["The First Nine", "Nottgard", "Thalestriel"],
+    "survivors": ["Aelira", "Vaelun", "Nimara", "Thaviel", "Ilyren", "Orisya", "Soreth", "Luraen"],
+    "regions": ["Thornwake Forest", "Stonehook Mountains", "Hollowroot Caverns", "The Glass Dunes", "The Dreamwater Run"],
+    "generic_terms": ["Golden City", "Golden City of Dreams", "Dream Plane", "Material Plane", "Shadow Mark", "elves", "web", "shadow"],
+    "note": "No rename requirement identified by this D&D-focused audit; not a global uniqueness or trademark clearance. Current enemy and Mark names did not yield a confirmed D&D-specific association."
+  },
+  "asset_observations": {
+    "inspected": ["../../assets/concept-art/comic/the-kiss-of-shar-storyboard-v1.png", "../generated/2026-10-03-hq-narrative-revision/h-02-shar-bargain-v1.png", "../../assets/runtime_v2/marks/shar-to-lolth-progression-v1.png"],
+    "readable_names_seen_in_these_bitmaps": false,
+    "note": "The H-02 board is a reference, not admitted runtime comic art. B-09 proposes captions outside the bitmap. Text cleanup must include those future captions and existing runtime labels/messages. Asset filenames also retain names; changing filenames alone does not change character identity."
+  },
+  "jam_rule": {
+    "source": "https://itch.io/jam/eclipse-publishingjam",
+    "verified": "2026-10-05",
+    "finding": "The public rules prohibit fan games built on another company's characters and trademarks, as well as ripped IP. Crediting a character does not resolve this submission condition."
+  },
+  "validation": {
+    "broad_name_search": "Matched Lolth, Shar, Drow/Drows, Eol and Thalestriel; no matches for the additional known D&D deity/location/creature list searched.",
+    "license_crosscheck": "Drow located in SRD 5.1 and 5.2; Lolth and Shar not found in those two PDFs.",
+    "runtime_changes": false,
+    "canonical_changes": false,
+    "active_plan_changes_by_this_audit": false,
+    "records_validation": "24 local references resolved and all required ADD paths exist.",
+    "concurrent_state_observation": "The same B-09 production plan advanced from ART-001 at initial read to ART-002 at final read. No plan-state write was performed by this audit."
+  }
+}

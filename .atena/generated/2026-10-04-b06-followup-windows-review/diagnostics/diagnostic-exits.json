@@ -1,0 +1,5 @@
+{
+  "provenance": "Actual final direct Godot process exits observed during Atena Windows review; diagnostic runs, not official acceptance cases",
+  "isolation_probe": {"exit_code": 0, "verdicts": "2/3; queued-trigger counterexample intentionally fails its observation; script exits 0 for inspection"},
+  "menus_physical_filter": {"exit_code": 0, "checks": "33/33", "original_assertions_preserved": true, "synthetic_controller_checks_preserved": true}
+}

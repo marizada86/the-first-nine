@@ -1,0 +1,46 @@
+id: 2026-10-05-dnd-name-audit
+created: '2026-10-05'
+kind: analytical-preparation
+origin: planned
+implementation_preceded_spec: false
+status: analysis-delivered-no-implementation
+request_classification: PLAN_DEVIATION
+authority: explicit-owner-request-for-project-analysis
+active_plan_relationship:
+  id: 2026-10-05-b09-opening-art-production
+  cursor_at_initial_read: ART-001
+  cursor_at_final_read: ART-002
+  observation: Existing production advanced concurrently. This audit did not edit plan state.
+  replaced: false
+  suspended: false
+  execution: no-production-or-gameplay-work-in-this-audit
+scope:
+  - Inspect local source, asset filenames, canonical lore, drafts and production proposals.
+  - Verify D&D associations and the jam rule with public sources, without uploading project context.
+  - Deliver confirmed names, derivatives, conditional cases and concrete locations.
+non_goals:
+  - Rename characters, species, files or identifiers.
+  - Change canonical intent, approved art, active production or plan state.
+  - Certify legal clearance or submission eligibility.
+  - Publish, send, commit or export anything.
+acceptance:
+  - Distinguish Lolth and Shar from their project-created derived item name.
+  - Distinguish licensed SRD use of Drow from proprietary character lore.
+  - Identify Eol as an additional collision review, not a confirmed D&D deity.
+  - Identify runtime examples and the pending comic text separately.
+impacts: analysis-records-only
+blocking_gaps: []
+deferred:
+  - Any replacement names and narrative or visual adaptation need a separately approved canonical decision.
+  - Keeping SRD material requires review of the applicable attribution and licensed-content boundary.
+plan_of_flight:
+  - Inspect minimum ADD state and canonical records.
+  - Search project text and filenames; inspect selected relevant images.
+  - Cross-check primary D&D publications and current jam rules.
+  - Record evidence and deliver the analytical result.
+validation:
+  - Verify evidence references and required ADD paths.
+  - Confirm scoped writes exclude plan state and reconcile concurrently observed production progress.
+  - No Godot run required because runtime and art are unchanged.
+evidence: ../evidence/2026-10-05-dnd-name-audit.json
+reconciliation: No canonical edits or new executable production plan. Findings remain analysis.

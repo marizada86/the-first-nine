@@ -1,0 +1,13 @@
+{
+  "id": "h02-01",
+  "attempt": 1,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": null,
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-fcc287e7-6737-4230-9b78-719dba7a2c93.png",
+  "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Shar appears after Antlered Hunger is defeated. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter.  Composition: aftermath of the first boss in Thornwake forest, small fallen antlered shadow creature in far background, no gore. Pale elf Lolth stands alone, long white hair, black hooded mantle and opaque trousers/boots, empty hands. Shar appears facing her: tall hooded faceless apparition in deep violet-black robe, white crescent at chest, faint violet motes, holding one short silver wand with violet-shadow tip, not a staff. No exposed human face or skin on Shar, no nudity, no seated throne, no other people. Clear encounter without Mark or drow transformation yet.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-01-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

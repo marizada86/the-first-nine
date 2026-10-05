@@ -1,0 +1,22 @@
+{
+  "name": "render-negative-leaked_camera_transform",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 3.57,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06RT FAIL world translation keeps right-facing Lolth, enemies, labels and bars identical on screen (35067 differing pixels)",
+    "B06RT FAIL world marker after reflected sprites and screen marker stay in place (right)",
+    "B06RT FAIL world translation keeps left-facing Lolth, enemies, labels and bars identical on screen (2108 differing pixels)"
+  ],
+  "error": null
+}

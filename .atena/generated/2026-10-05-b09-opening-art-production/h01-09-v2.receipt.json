@@ -1,0 +1,22 @@
+{
+  "id": "h01-09",
+  "attempt": 2,
+  "status": "candidate-visual-pass-pending-package-checks",
+  "reason": null,
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-f70e7846-cbb5-4af7-9d64-8ba18fb2585a.png",
+  "prompt": "Edit only the eight reclining patients' identity colors in this single cave comic panel. Keep EXACTLY eight reclining elves plus one standing Lolth, same composition, faces/body positions, roots, cave, open damaged wagon, relics and fire. All eight patients have WHITE hair and pointed ears; change the four black-haired patients to white hair. Back row from left: olive-green forager clothing; brown carrier clothing; dark clothing with muted red scarf; brown flame-keeper hood. Front row from left: gray repairer clothing; muted green-and-light healer clothing; dark sentinel cloak; muted purple dreamer clothing. All retain opaque trousers and boots. Keep Lolth's white hair and black mantle, but make her face visibly furious and mouth open as she curses toward the entrance. No text, speech bubbles, magic, new props or extra people.",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h01-09-v2.png",
+  "visual_checks": {
+    "single_panel": true,
+    "no_text": true,
+    "clothing": true,
+    "narrative_beat": true,
+    "patients_count": 8,
+    "lying_patients": true,
+    "role_palette": true
+  },
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false
+}

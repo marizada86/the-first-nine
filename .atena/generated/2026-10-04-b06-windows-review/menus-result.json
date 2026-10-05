@@ -1,0 +1,11 @@
+{
+  "name": "menus",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 7.456,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

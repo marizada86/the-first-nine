@@ -1,0 +1,11 @@
+{
+  "name": "facing-normal",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 6.657,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

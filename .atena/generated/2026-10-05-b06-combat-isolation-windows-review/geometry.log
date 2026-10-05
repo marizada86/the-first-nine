@@ -1,0 +1,54 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1650
+
+GEOMETRY PASS startup prepares all 22 runtime cells
+GEOMETRY_PREPARE: cells=22 time_ms=624.412
+GEOMETRY PASS BRIAR HOUND frame 0 source/aspect
+GEOMETRY PASS BRIAR HOUND frame 0 native outline/centering/floor
+GEOMETRY PASS BRIAR HOUND frame 0 native shared reach
+GEOMETRY PASS BRIAR HOUND frame 1 source/aspect
+GEOMETRY PASS BRIAR HOUND frame 1 native outline/centering/floor
+GEOMETRY PASS BRIAR HOUND frame 1 native shared reach
+GEOMETRY PASS BRIAR HOUND frame 2 source/aspect
+GEOMETRY PASS BRIAR HOUND frame 2 native outline/centering/floor
+GEOMETRY PASS BRIAR HOUND frame 2 native shared reach
+GEOMETRY PASS BRIAR HOUND frame 3 source/aspect
+GEOMETRY PASS BRIAR HOUND frame 3 native outline/centering/floor
+GEOMETRY PASS BRIAR HOUND frame 3 native shared reach
+GEOMETRY PASS STAG OF MIRE frame 0 source/aspect
+GEOMETRY PASS STAG OF MIRE frame 0 native outline/centering/floor
+GEOMETRY PASS STAG OF MIRE frame 0 native shared reach
+GEOMETRY PASS STAG OF MIRE frame 1 source/aspect
+GEOMETRY PASS STAG OF MIRE frame 1 native outline/centering/floor
+GEOMETRY PASS STAG OF MIRE frame 1 native shared reach
+GEOMETRY PASS STAG OF MIRE frame 2 source/aspect
+GEOMETRY PASS STAG OF MIRE frame 2 native outline/centering/floor
+GEOMETRY PASS STAG OF MIRE frame 2 native shared reach
+GEOMETRY PASS STAG OF MIRE frame 3 source/aspect
+GEOMETRY PASS STAG OF MIRE frame 3 native outline/centering/floor
+GEOMETRY PASS STAG OF MIRE frame 3 native shared reach
+GEOMETRY PASS ANTLERED HUNGER frame 0 source/aspect
+GEOMETRY PASS ANTLERED HUNGER frame 0 native outline/centering/floor
+GEOMETRY PASS ANTLERED HUNGER frame 0 native shared reach
+GEOMETRY PASS ANTLERED HUNGER frame 1 source/aspect
+GEOMETRY PASS ANTLERED HUNGER frame 1 native outline/centering/floor
+GEOMETRY PASS ANTLERED HUNGER frame 1 native shared reach
+GEOMETRY PASS ANTLERED HUNGER frame 2 source/aspect
+GEOMETRY PASS ANTLERED HUNGER frame 2 native outline/centering/floor
+GEOMETRY PASS ANTLERED HUNGER frame 2 native shared reach
+GEOMETRY PASS ANTLERED HUNGER frame 3 source/aspect
+GEOMETRY PASS ANTLERED HUNGER frame 3 native outline/centering/floor
+GEOMETRY PASS ANTLERED HUNGER frame 3 native shared reach
+GEOMETRY PASS BRIAR HOUND native boundary hits
+GEOMETRY PASS BRIAR HOUND outside native boundary misses
+GEOMETRY_BOUNDARY: BRIAR HOUND last_hit=122
+GEOMETRY PASS STAG OF MIRE native boundary hits
+GEOMETRY PASS STAG OF MIRE outside native boundary misses
+GEOMETRY_BOUNDARY: STAG OF MIRE last_hit=160
+GEOMETRY PASS ANTLERED HUNGER native boundary hits
+GEOMETRY PASS ANTLERED HUNGER outside native boundary misses
+GEOMETRY_BOUNDARY: ANTLERED HUNGER last_hit=167
+GEOMETRY PASS enlarged visual overlap does not rebalance contact damage
+GEOMETRY PASS existing close contact still causes genuine damage
+GEOMETRY PASS frames/waves/boss/attacks perform zero gameplay pixel scans
+GEOMETRY_PASS: 46/46 checks fault=

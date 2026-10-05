@@ -1,0 +1,139 @@
+{
+  "approval": "plan-approved",
+  "plan_approval": {
+    "record": ".atena/vault/canon/2026-10-05-b09-opening-art-production-approval.md",
+    "plan_id": "2026-10-05-b09-opening-art-production",
+    "batch_id": "ART-002"
+  },
+  "art_direction": "Established lateral minimal dark-fantasy pixel art; approved sources and spec; no new lore, clothing exposure or covered/horse wagon.",
+  "output_dir": ".atena/generated/2026-10-05-b09-opening-art-production",
+  "max_attempts": 3,
+  "assets": [
+    {
+      "id": "h02-01",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Shar appears after Antlered Hunger is defeated. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-01-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Shar: Every calamity reaches your family. None touches you. Who are you?"
+    },
+    {
+      "id": "h02-02",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth's former godhood presented as a memory, not a new divine identity design. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-02-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: I remember another plane. There, I was a goddess."
+    },
+    {
+      "id": "h02-03",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Lolth offers the memories; Shar accepts. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-03-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Lolth: Take those memories. Give me a path to power and divinity here. Shar: Agreed."
+    },
+    {
+      "id": "h02-04",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Shar applies the Shadow Mark with her wand. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-04-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Shar: Receive the Shadow Mark."
+    },
+    {
+      "id": "h02-05",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Fully clothed elf-to-drow transformation. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-05-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "The bargain remade Lolth as a drow."
+    },
+    {
+      "id": "h02-06",
+      "kind": "comic-panel",
+      "prompt": "Use case: illustration-story. Asset type: one complete fullscreen comic panel for The First Nine, NOT a storyboard or collage. Style: simplified dark-fantasy pixel art, deliberate large pixel clusters, short palettes, silhouette first, minimal faces, no painted microtexture. Landscape 16:9, target 1920x1080. Keep key figures within safe margins and bottom 15 percent low-detail for later caption overlay. No text, letters, speech balloons, symbols of cursing, gutters, labels or watermark. All people fully clothed, opaque trousers and boots; no nudity or gore. One open wooden family wagon, no horse, no canopy or covered wagon whenever the wagon is present. References are style/identity guidance, not layouts to copy. Do not add unrequested characters or narrative events. Scene: Wand handed to Lolth, restrained shadow-creature command cue. Preserve established Lolth identity: white hair, dark mantle. Elf before bargain, dark-skinned drow after Mark, fully clothed. Shar is the established narrative apparition, not a playable fighter. ",
+      "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/h02-06-v1.png",
+      "source_references": [
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-01-minimal-character-language-v3.png",
+        ".atena/generated/2026-10-03-minimal-character-batch-m/m-02-lolth-elf-poses-v1.png"
+      ],
+      "checks": [
+        "one-panel",
+        "no-baked-text",
+        "clothing",
+        "narrative-continuity",
+        "pixel-clusters",
+        "safe-caption-area",
+        "16:9-measured"
+      ],
+      "caption": "Shar: THE KISS OF SHAR is yours. Its bearer can command all shadow creatures."
+    }
+  ],
+  "scale_sheet": {
+    "id": "lolth-common-anatomical-baseline-40-logical-pixels",
+    "body_height": 40,
+    "source": ".atena/specs/2026-10-05-lolth-three-transformations.md",
+    "measurement_gate": "Normalize common body baseline after measured source landmarks; do not accept an unmeasurable candidate."
+  }
+}

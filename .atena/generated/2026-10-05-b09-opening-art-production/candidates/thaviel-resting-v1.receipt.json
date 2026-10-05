@@ -1,0 +1,14 @@
+{
+  "id": "thaviel-resting",
+  "attempt": 1,
+  "status": "candidate-generated-pending-technical-review",
+  "source": "C:/Users/gui-m/.codex/generated_images/01a10319-09fb-7bb2-8722-88e577679f2b/exec-d4c3dc4f-b869-445b-aac7-4c6706d38440.png",
+  "target": ".atena/generated/2026-10-05-b09-opening-art-production/candidates/thaviel-resting-v1.png",
+  "provider": "built-in-imagegen",
+  "ai_disclosure_required": true,
+  "license_verification": "not-independently-verified",
+  "runtime_admitted": false,
+  "prompt": "Use case: stylized-concept. Asset type: ONE isolated full-body plagued elf RESTING sprite for The First Nine. Transparent background with genuine alpha, no floor, shadow, blanket, bed, bedding, tools, weapons, symbols, text or UI. Side-on orthographic view; head LEFT, boots RIGHT, body HORIZONTAL. This is a naturally lying, exhausted but alive patient, NOT a standing pose rotated: cheek relaxed, limbs resting with believable gravity. Whole body fully visible, no foreshortening; keep a long measurable crown-neck-hip-knee-heel chain. White/silver hair and clearly pointed pale elf ears, pale skin, fully opaque trousers to closed boots. Minimal pixel art, crisp LARGE square pixel clusters, dark simple outlines, restricted short palette, no painterly shading or tiny texture, no glow. Intended 64x64 logical cell: approx40 logical-pixel anatomical body length, ample transparent padding, ground contact would be y56 when packaged. One figure only, no duplicate or inset or sheet. Subject: THAVIEL the keeper of flame, brown hooded robe/tunic with hood worn over white hair, dark brown opaque trousers, brown closed boots. Pale adult elf, pointed ear partly peeking from hood. Lying on his back with face angled sideways, one relaxed hand on stomach and other arm extended loosely along ground, legs nearly extended with subtle one-knee bend. No flame, lantern, staff or objects. Hood cloth rests naturally.",
+  "visual_checks": {},
+  "ratio": null
+}
