@@ -1,5 +1,5 @@
 ---
-status: implemented-branch-published-follow-up-awaiting-review
+status: implemented-branch-published-isolation-follow-up-awaiting-review
 kind: bounded-runtime-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -38,7 +38,10 @@ branch_published: true
 published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
 publication_authority: owner-authorized-normal-push-of-the-branch-for-review
 follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
-follow_up_published: false
+follow_up_published: true
+latest_published_commit: 7c781ab65d75251af20880cf6e9548d1239be0dd
+isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
+isolation_follow_up_published: false
 ---
 
 # B-06 First Stonehook Foot Expedition
@@ -140,3 +143,23 @@ The owner explicitly authorized a normal push of `codex/b06-stonehook-foot-exped
 Atena then reviewed that exact build on Windows (Godot 4.7.2, GTX 1650) and reported: headless B-06 30/30, rendered facing 102/102, and passing combat, menus, geometry, self-tests and all ten faulty controls. The original route runner reached 36/40 there, because a resting physical right trigger (about 0.20–0.21) dashed during the keyboard-only test, and one walk was measured before deceleration finished. Atena also reported Lolth largely hidden by the foreground at x=1280 and near x=2998. These are Atena's Windows results; they were not reproduced here.
 
 The IN_PLAN follow-up commit `d2012a1` (local, not pushed) addresses all three without expanding B-06; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR, merge and dispatch remain unauthorized. B-07 was not started.
+
+## Follow-up Publication and Test-Isolation Follow-up
+
+The owner then authorized a normal push of `d2012a1` and `7c781ab`. Before pushing, the branch was verified: `7c781ab` → `d2012a1` → published `ccc4fcf`, exactly two commits ahead and a clean tree. A normal fast-forward moved `origin/codex/b06-stonehook-foot-expedition` from `ccc4fcf` to `7c781ab65d75251af20880cf6e9548d1239be0dd`; remote `main` stayed at `7e477ba`. The earlier publication history above is unchanged.
+
+Atena's official Windows runs of `7c781ab` (Godot 4.7.2, GTX 1650):
+- B-06 headless 30/30.
+- Rendered route suite 50/51: only the first controller-isolation check failed.
+- Menu suite 32/33: only the inactive right-click/parry check failed.
+- Combat 9/9, geometry 46/46, facing 65/65 headless and 102/102 rendered, the full self-test and both smoke runs passed.
+- All 11 faulty controls were rejected, and all eight readability checks passed and were inspected.
+
+Separate Atena diagnostics, which are not official acceptance runs, traced both failures to physical controller input:
+- A `shadow_action` queued before suspension survives it.
+- Isolating before the opening skip gave 51/51.
+- Filtering physical controller dispatch gave 33/33.
+
+None of these Windows results were reproduced by the executor.
+
+The IN_PLAN test-only follow-up `b446b7b` (local, not pushed) corrects both isolation points without touching production; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR and merge remain unauthorized, and B-07 has not been started.

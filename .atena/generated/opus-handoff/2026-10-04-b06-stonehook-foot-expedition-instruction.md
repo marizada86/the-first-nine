@@ -1,5 +1,5 @@
 ---
-status: implemented-branch-published-follow-up-awaiting-review
+status: implemented-branch-published-isolation-follow-up-awaiting-review
 kind: external-implementation-instruction
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -28,7 +28,10 @@ branch_published: true
 published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
 publication_authority: owner-authorized-normal-push-of-the-branch-for-review
 follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
-follow_up_published: false
+follow_up_published: true
+latest_published_commit: 7c781ab65d75251af20880cf6e9548d1239be0dd
+isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
+isolation_follow_up_published: false
 ---
 
 # B-06 Stonehook Foot Expedition Instructions for Opus 5.5
@@ -85,3 +88,7 @@ The owner directed the assigned executor, in its chat session on 2026-10-05, to 
 ## Publication and Follow-up Record
 
 The owner separately authorized the branch push; `origin/codex/b06-stonehook-foot-expedition` was created at `ccc4fcf69271d88e421e26a81841cf6cce834a37`. The reviewed follow-up `d2012a1` is local only. See [[2026-10-04-b06-stonehook-foot-expedition-implementation]].
+
+## Follow-up Publication and Isolation Record
+
+The owner separately authorized publishing `d2012a1` and `7c781ab`; the branch now stands at `7c781ab65d75251af20880cf6e9548d1239be0dd`. The test-only isolation follow-up `b446b7b` is local. See [[2026-10-04-b06-stonehook-foot-expedition-implementation]].

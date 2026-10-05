@@ -8,7 +8,9 @@ const base = '7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc';
 const implementation = '42bddf87b64eafb2046a47b1f2695df3ad9d4075';
 const published = 'ccc4fcf69271d88e421e26a81841cf6cce834a37';
 const followUp = 'd2012a1412f52d3066e4eff1216cfa9d57490acd';
-const status = 'status: implemented-branch-published-follow-up-awaiting-review';
+const latest = '7c781ab65d75251af20880cf6e9548d1239be0dd';
+const isolation = 'b446b7b507d6a5faa8fb2ac9d28197da34887e99';
+const status = 'status: implemented-branch-published-isolation-follow-up-awaiting-review';
 const dir = '.atena/generated/2026-10-04-b06-validation';
 const git = (...args) => execFileSync('git', args, {encoding: 'utf8'}).replace(/\r\n/g, '\n');
 const normalize = text => text.replace(/^﻿/, '').replace(/\r\n/g, '\n').trimEnd();
@@ -30,7 +32,7 @@ let links = 0;
 for (const file of [spec, planning, instruction, note]) {
   const text = fs.readFileSync(file, 'utf8');
   assert(text.includes(status), 'Status not reconciled in ' + file);
-  for (const fact of ['branch_publication_approved: true', 'published_commit: ' + published, 'follow_up_commit: ' + followUp, 'follow_up_published: false']) assert(text.includes(fact), 'Publication fact ' + fact + ' missing in ' + file);
+  for (const fact of ['branch_publication_approved: true', 'published_commit: ' + published, 'follow_up_commit: ' + followUp, 'follow_up_published: true', 'latest_published_commit: ' + latest, 'isolation_follow_up_commit: ' + isolation, 'isolation_follow_up_published: false']) assert(text.includes(fact), 'Publication fact ' + fact + ' missing in ' + file);
   assert(text.includes('approval_mode: per-plan'), 'Approval mode missing in ' + file);
   assert(text.includes('push_approved: false'), 'Push gate missing in ' + file);
   assert(text.includes(implementation), 'Implementation commit missing in ' + file);
@@ -46,15 +48,15 @@ for (const file of [spec, planning, instruction]) {
   assert(text.includes('implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"'), 'Implementation link missing in ' + file);
 }
 const noteText = fs.readFileSync(note, 'utf8');
-for (const fact of ['origin: planned', 'implementation_preceded_spec: false', 'human_review: pending', 'pull_request_approved: false', 'merge_approved: false', 'published: true', 'base_commit: ' + base, '## Authorized branch publication', '## Review follow-up']) assert(noteText.includes(fact), 'Note missing ' + fact);
+for (const fact of ['origin: planned', 'implementation_preceded_spec: false', 'human_review: pending', 'pull_request_approved: false', 'merge_approved: false', 'published: true', 'base_commit: ' + base, '## Authorized branch publication', '## Review follow-up', '## Follow-up publication', '## Test-isolation follow-up']) assert(noteText.includes(fact), 'Note missing ' + fact);
 
 // Plan state: only the active plan block and cursor change; completed history is preserved exactly.
 const state = normalize(fs.readFileSync('.atena/state/plan.yaml', 'utf8'));
 const before = normalize(git('show', base + ':.atena/state/plan.yaml'));
 const active = state.match(/^active_plan:\n([\s\S]*?)^plan_cursor:/m)[1];
-for (const fact of ['id: "2026-10-04-b06-stonehook-foot-expedition"', 'status: implemented-branch-published-follow-up-awaiting-review', 'approval_mode: per-plan', 'implementation_approved: true', 'checkpoint: owner-review-of-follow-up-corrections', 'branch_publication_approved: true', 'published_commit: "' + published + '"', 'follow_up_commit: "' + followUp + '"', 'follow_up_published: false', 'follow_up_classification: IN_PLAN', 'implementation_branch: codex/b06-stonehook-foot-expedition', 'implementation_base: "' + base + '"', 'implementation_commit: "' + implementation + '"', 'implementation_published: true', 'human_review: pending', 'push_approved: false', 'pull_request_approved: false', 'merge_approved: false', 'dispatch_approved: false', 'blocking_gaps: []', 'steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]']) assert(active.includes(fact), 'Plan state missing ' + fact);
+for (const fact of ['id: "2026-10-04-b06-stonehook-foot-expedition"', 'status: implemented-branch-published-isolation-follow-up-awaiting-review', 'approval_mode: per-plan', 'implementation_approved: true', 'checkpoint: owner-review-of-test-isolation-follow-up', 'latest_published_commit: "' + latest + '"', 'isolation_follow_up_commit: "' + isolation + '"', 'isolation_follow_up_published: false', 'branch_publication_approved: true', 'published_commit: "' + published + '"', 'follow_up_commit: "' + followUp + '"', 'follow_up_published: true', 'follow_up_classification: IN_PLAN', 'implementation_branch: codex/b06-stonehook-foot-expedition', 'implementation_base: "' + base + '"', 'implementation_commit: "' + implementation + '"', 'implementation_published: true', 'human_review: pending', 'push_approved: false', 'pull_request_approved: false', 'merge_approved: false', 'dispatch_approved: false', 'blocking_gaps: []', 'steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]']) assert(active.includes(fact), 'Plan state missing ' + fact);
 for (const match of active.matchAll(/\[\[([^\]]+)\]\]/g)) { assert(ids.has(match[1]), 'Unresolved plan link ' + match[1]); links++; }
-assert(state.includes('plan_cursor: B-06-follow-up-awaiting-owner-review'), 'Plan cursor not reconciled');
+assert(state.includes('plan_cursor: B-06-isolation-follow-up-awaiting-owner-review'), 'Plan cursor not reconciled');
 const strip = text => text.replace(/^active_plan:\n[\s\S]*?^plan_cursor:.*$/m, 'ACTIVE');
 assert.equal(strip(state), strip(before), 'Completed plans or history changed');
 assert(!/\t/.test(state), 'Tab in plan state');
@@ -64,6 +66,10 @@ git('merge-base', '--is-ancestor', base, 'HEAD');
 git('merge-base', '--is-ancestor', implementation, 'HEAD');
 git('merge-base', '--is-ancestor', published, 'HEAD');
 git('merge-base', '--is-ancestor', followUp, 'HEAD');
+git('merge-base', '--is-ancestor', latest, 'HEAD');
+git('merge-base', '--is-ancestor', isolation, 'HEAD');
+// The isolation follow-up is test-only: production files are identical to the latest published commit.
+assert.equal(git('diff', '--name-only', latest, 'HEAD', '--', 'main.gd', 'wagon_inventory_ui.gd', 'project.godot', 'main.tscn', 'assets').trim(), '', 'Production changed after ' + latest);
 const allowed = new Set(['main.gd', 'wagon_inventory_ui.gd', spec, planning, instruction, note, '.atena/state/plan.yaml']);
 const changed = git('diff', '--name-only', base, '--').trim().split('\n').filter(Boolean);
 const untracked = git('ls-files', '--others', '--exclude-standard').trim().split('\n').filter(Boolean);
@@ -80,13 +86,13 @@ for (const name of ['b06-headless', 'b06-runtime', 'self-test', 'combat', 'menus
   assert(record.passed === true && record.exit_code === 0 && record.project_diagnostics.length === 0, 'Saved result not passing: ' + name);
 }
 assert(log('b06-headless').includes('B06_PASS: 30/30 checks'));
-assert(log('b06-runtime').includes('B06_RUNTIME_PASS: 51/51 checks'));
+assert(log('b06-runtime').includes('B06_RUNTIME_PASS: 53/53 checks'));
 assert(log('self-test').includes('SELF_TEST_B06_PASS') && log('self-test').includes('SELF_TEST_PASS:'));
-assert(log('menus').includes('LOCAL_CONTROLS_PASS: 33/33 checks'));
+assert(log('menus').includes('LOCAL_CONTROLS_PASS: 33/33 checks') && log('menus').includes('MENU_ISOLATION PASS'));
 assert(log('geometry').includes('GEOMETRY_PASS: 46/46 checks'));
 assert(log('facing-headless').includes('FACING_PASS: 65/65 checks'));
 assert.equal((log('combat').match(/^RUNTIME PASS /gm) || []).length, 9);
-const negatives = ['bypass_departure', 'border_respawn', 'remote_wagon', 'paused_offscreen', 'lost_route_restore', 'lost_f4_fields', 'progression_unlock', 'new_run_keeps_route'].map(f => 'negative-' + f).concat(['render-negative-leaked_camera_transform', 'render-negative-unshifted_reflection', 'render-negative-no_foreground_readability']);
+const negatives = ['bypass_departure', 'border_respawn', 'remote_wagon', 'paused_offscreen', 'lost_route_restore', 'lost_f4_fields', 'progression_unlock', 'new_run_keeps_route'].map(f => 'negative-' + f).concat(['render-negative-leaked_camera_transform', 'render-negative-unshifted_reflection', 'render-negative-no_foreground_readability', 'isolation-negative-late_isolation']);
 for (const name of negatives) {
   const record = result(name);
   assert(record.passed === true && record.exit_code === 1 && record.detections.length > 0 && record.project_diagnostics.length === 0, 'Faulty control not rejected: ' + name);
@@ -108,6 +114,8 @@ const metrics = JSON.parse(fs.readFileSync(path.join(dir, 'runtime-metrics.json'
 for (const key of ['parity_day_differing_pixels', 'parity_night_differing_pixels', 'parity_secured_differing_pixels', 'translation_left_differing_pixels', 'translation_right_differing_pixels']) assert.equal(metrics[key], 0, key);
 assert.equal(new Set(metrics.hud_title_glyph_pixels).size, 1);
 assert.equal(metrics.restored_trigger_021_dashes, true, 'Root-cause record of the 0.2 deadzone missing');
+assert.deepEqual(metrics.isolation_control, {dashed: true, queued: true}, 'Live stale-queue control did not demonstrate the failure mode');
+assert.deepEqual(metrics.isolation_boundary, {dashed: false, queued: false}, 'Isolation boundary queued or dashed');
 const readability = Object.entries(metrics.foreground_readability || {});
 assert.equal(readability.length, 8, 'Expected eight readability locations');
 for (const [label, entry] of readability) {
@@ -115,4 +123,4 @@ for (const [label, entry] of readability) {
   assert(fs.existsSync(path.join(dir, 'readability-' + label + '.png')), 'Missing readability capture ' + label);
 }
 for (const capture of ['day', 'night']) for (const x of ['1000', '1280', '1520', '1760', '2400']) assert(fs.existsSync(path.join(dir, `transition-${capture}-${x}.png`)), 'Missing capture ' + capture + x);
-console.log('B06_SAVED_RESULTS_PASS: 9 passing suites, 11 rejected faulty controls, 51/51 rendered route checks, pixel-exact cave parity and translation, 10 transition and 8 readability captures; rendered facing ' + (facing.passed ? '102/102' : '101/102 (known Linux software-OpenGL difference)') + ' on ' + facing.platform.os + '.');
+console.log('B06_SAVED_RESULTS_PASS: 9 passing suites, 12 rejected faulty controls, 53/53 rendered route checks, live stale-queue control and clean isolation boundary, pixel-exact cave parity and translation, 10 transition and 8 readability captures; rendered facing ' + (facing.passed ? '102/102' : '101/102 (known Linux software-OpenGL difference)') + ' on ' + facing.platform.os + '.');

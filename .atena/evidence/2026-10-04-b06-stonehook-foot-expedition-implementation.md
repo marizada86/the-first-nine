@@ -1,5 +1,5 @@
 ---
-status: implemented-branch-published-follow-up-awaiting-review
+status: implemented-branch-published-isolation-follow-up-awaiting-review
 kind: implementation-note
 created: 2026-10-05
 batch: B-06
@@ -30,7 +30,10 @@ published: true
 branch_publication_approved: true
 published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
 follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
-follow_up_published: false
+follow_up_published: true
+latest_published_commit: 7c781ab65d75251af20880cf6e9548d1239be0dd
+isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
+isolation_follow_up_published: false
 ---
 
 # B-06 - first on-foot Stonehook expedition
@@ -446,3 +449,96 @@ All are in `.atena/generated/2026-10-04-b06-validation/`:
 - **Published.** `ccc4fcf` is published on `origin/codex/b06-stonehook-foot-expedition`.
 - **Local only.** Follow-up `d2012a1` and the records commit that adds this section were not pushed.
 - **Not authorized.** Further push, PR, merge and dispatch remain unauthorized, and B-07 has not been started.
+
+## Follow-up publication (`d2012a1`, `7c781ab`)
+
+The sections above record the state before this publication and are kept unchanged as history.
+
+- **Authority.** The owner explicitly authorized a normal push of `d2012a1` and `7c781ab` to `origin/codex/b06-stonehook-foot-expedition`. This did not cover an amend, a force-push, a change to `main`, a PR, a merge, branch deletion or B-07.
+- **Pre-push check.** On the correct branch, `7c781ab` → `d2012a1` → `ccc4fcf` (the remote head), exactly two commits ahead, nothing remote-only and a clean tree.
+- **Push.** A normal fast-forward moved the branch from `ccc4fcf` to `7c781ab65d75251af20880cf6e9548d1239be0dd`, confirmed with `git ls-remote`. Remote `main` stayed at `7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc`.
+
+## Test-isolation follow-up (`b446b7b`, local)
+
+### Atena's Windows review of `7c781ab`
+
+**Official runs** (Godot 4.7.2, NVIDIA GTX 1650), reported by Atena and not reproduced here:
+
+| Suite | Result |
+| --- | --- |
+| B-06 headless | 30/30 |
+| Rendered route suite | 50/51: only the controller-isolation check failed |
+| Menu suite | 32/33: only "right-click parry remains reserved and inactive" failed |
+| Combat | 9/9 |
+| Geometry | 46/46 |
+| Facing | 65/65 headless, 102/102 rendered |
+| Full self-test and both smoke runs | pass |
+| 11 faulty controls | all rejected |
+| 8 readability checks | all passed; Atena also inspected all eight captures visually |
+
+**Separate Atena diagnostics**, which are not official acceptance runs:
+
+1. Suspending controller bindings after the opening skip is too late. A `shadow_action` already in `ui_gameplay_requests` survives both the binding removal and the action release. A deterministic 0.21-trigger counterexample confirmed this.
+2. Starting isolation before the opening skip gave 51/51, with every original assertion kept.
+3. Filtering physical controller dispatch, while keeping synthetic controller-button dispatch, gave 33/33 in the menu suite.
+
+Request classification: IN_PLAN, test-input isolation and publication-record reconciliation only. No production gameplay change was authorized and none was made. `main.gd` and `wagon_inventory_ui.gd` are byte-identical to `7c781ab`. The accepted foreground readability implementation is unchanged.
+
+### Changes (test-only)
+
+- **Route isolation starts before the first journey frame.** `start_route_game()` suspends every joypad binding immediately after `add_child()`. That is after the game's `_ready()` defines the production bindings, and before any frame runs. It used to happen after the opening skip.
+- **Idempotent suspension.** `suspend_joypad_bindings()` merges into the saved set instead of clearing it. A second call during the route start keeps every binding saved by the first. A new check compares all joypad binding counts before suspension with those after `restore_joypad_bindings()`.
+- **Deterministic boundary check.** `boundary_trigger()` pauses gameplay processing for one dispatch and sends a 0.21 right trigger. It then records whether `shadow_action` reached `ui_gameplay_requests`, and resumes and records whether Lolth dashed.
+  - The route-start check requires: suspension active, nothing queued, no dash, and the journey state reached.
+  - It replaces the earlier "resting trigger ignored" check, which tested after the boundary.
+- **Live control in the official run.** A separate game instance, with live bindings and suspension applied only after the queueing, must queue and dash: `queued: true`, `dashed: true`. This proves the boundary check can detect the stale-queue failure. All bindings are then restored.
+- **New faulty control.** `B06_ISOLATION_FAULT=late_isolation` runs the route start with the published ordering: isolation after the first journey frame and after a boundary trigger. It is rejected with exit 1 and the named failure "controller isolation starts before the first journey frame: a 0.21 trigger at the boundary neither queues nor performs a dash".
+- **Menu suite wrapper.** `menus_regression.gd` extends the historical `validate_controls_and_menus.gd` without modifying it or its evidence.
+  - It removes only joypad motion bindings (sticks and triggers, 7 in this run) from the test process's `InputMap`. This happens when the game node emits `ready`: after `_ready()` defines the bindings, before its first frame.
+  - The suite sends only synthetic controller buttons (Back, X, Y), and their bindings stay in place, so all synthetic controller checks still exercise production bindings.
+  - The wrapper prints `MENU_ISOLATION PASS` when applied, and `LOCAL FAIL` if not. The runner requires both `LOCAL_CONTROLS_PASS: 33/33` and `MENU_ISOLATION PASS`.
+- **Unchanged.** Production controls, the 0.2 action deadzone, device settings, movement bounds, wall-clock timeouts, baseline comparisons and every existing faulty control.
+
+### Validation (Linux, isolated copy)
+
+- **Platform.** Godot `4.7.2.stable.official.ed1daf0bf`, Linux x86_64. Rendered cases under Xvfb at 1280×720, `gl_compatibility`, device "Mesa llvmpipe (LLVM 20.1.2)".
+- **Setup.** A scratch project copy with freshly copied production files and validators, and cleared output directories. No fixed FPS.
+- **Command.**
+
+  ```
+  GODOT=<godot> B06_PROJECT=<copy> XVFB=1 node .atena/generated/2026-10-04-b06-validation/run_validation.cjs all
+  ```
+
+| Case | Exit | Result |
+| --- | --- | --- |
+| `b06-headless` | 0 | `B06_PASS: 30/30 checks` |
+| `b06-runtime` | 0 | `B06_RUNTIME_PASS: 53/53 checks` (51 earlier + the live control + repeated-suspension restore; the boundary check replaces the earlier isolation check) |
+| `self-test` | 0 | B01 to B06, PLAYTESTER and `SELF_TEST_PASS` |
+| `combat` | 0 | 9/9, `B05_RUNTIME_PASS` |
+| `menus` (via `menus_regression.gd`) | 0 | `MENU_ISOLATION PASS` (7 motion bindings removed, button bindings kept) and `LOCAL_CONTROLS_PASS: 33/33 checks` |
+| `geometry` | 0 | `GEOMETRY_PASS: 46/46 checks` |
+| `facing-headless` | 0 | `FACING_PASS: 65/65 checks` |
+| `facing-normal` | 1 | 101/102, the known Linux software-OpenGL difference only |
+| `normal-smoke`, `headless-smoke` | 0 | no project diagnostics |
+| 8 logic, 3 render and 1 isolation faulty controls | 1 each | all 12 rejected with named detections and no project diagnostics |
+
+- **Metrics.**
+  - `isolation_control`: queued true, dashed true.
+  - `isolation_boundary`: queued false, dashed false.
+  - `restored_trigger_021_dashes`: true. With bindings restored, 0.21 still passes the 0.2 deadzone, as recorded before.
+- **Captures unchanged.** Readability ratios, parity, translation and transition results are unchanged from the previous follow-up. Faulty runs write no captures.
+- **Diagnostics.** The only diagnostics are the container's missing audio device and V-Sync control.
+
+### Remaining limitations
+
+- **No physical controller here.** Linux has none attached, so both isolation fixes are exercised with synthetic events. Their effect on Atena's physical controller still needs an official Windows run.
+- **What the menu wrapper filters.** It filters controller motion (sticks and triggers), not physical controller buttons. A physical button held down during the run could still interfere; a resting controller produces no button events.
+- **Readability, not yet accepted by a human.** The semi-transparent Lolth in the two foreground spans and the clipping at the far edge (x=2998, 42 px from the screen border) remain documented limitations pending human acceptance.
+- **Earlier limitations.** All the limitations listed earlier still apply.
+
+### State
+
+- **Plan state.** `implemented-branch-published-isolation-follow-up-awaiting-review`, checkpoint `owner-review-of-test-isolation-follow-up`.
+- **Published.** `origin/codex/b06-stonehook-foot-expedition` is at `7c781ab`.
+- **Local only.** Isolation follow-up `b446b7b` and the records commit that adds this section were not pushed.
+- **Not authorized.** Further push, PR, merge and dispatch, and B-07 has not been started.
