@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-document-delivery
+status: implemented-published-human-accepted-awaiting-merge
 kind: bounded-runtime-plan
 created: 2026-10-05
 plan_id: 2026-10-05-b07-stonehook-first-encounter
@@ -21,12 +21,22 @@ evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
 instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
 documentation_publication_approved: true
 documentation_publication_source: owner-authorized-one-documentation-commit-and-normal-push-to-main
-publication_snapshot: pre-push
-documentation_published: false
-push_approved: false
-pull_request_approved: false
-merge_approved: false
+publication_snapshot: delivered-and-verified
+documentation_published: true
+delivery_commit: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+delivery_verified: true
+implementation_branch: codex/b07-stonehook-first-encounter
+implementation_base: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+human_acceptance: accepted
+push_approved: true
+pull_request_approved: true
+merge_approved: true
 dispatch_approved: false
+human_acceptance_date: 2026-10-05
+implementation_commit: 4da953cd34469b8024eb2d3831ba7c8ae06cb34a
+implementation_published: true
+windows_review: "[[2026-10-05-b07-windows-review]]"
 ---
 
 # B07 First Stonehook Encounter
@@ -100,3 +110,17 @@ Exercise lifecycle, attacks/misses/First Thread/dash, regional fences, cave thre
 Reject faulty controls for duplicate spawn, wrong creature cell, wrong reach, omitted warning, repeated hit, pursuit past bounds, cave-wave actor erasure, remote safe-capture confusion, repeated reward, incomplete failure rollback and incomplete F4 restore. A negative result needs a genuine nonzero exit and the named assertion, not a parser/import crash. Do not claim these controls were run during preparation.
 
 Save raw logs, case manifests and captures, then compare every criterion with evidence. Keep completed-plan history and old test results unchanged. Reconcile implementation status and any separately authorized publication facts; completion requires review and human acceptance, not just self-test output.
+
+## Delivery Verification and Implementation Checkpoint
+
+On 2026-10-05, the owner supplied the published documentation commit `fcc98b63e1919c54b6df563c8de0c7173a7affcb` and the explicit implementation handoff. The executor fetched origin and verified that commit as `origin/main`, a direct child of `e189184`; the committed delivery checker passed. The local delivery checkpoint was then cleared. The earlier `pre-push` snapshot and false publication field describe the dated pre-push checkpoint and are superseded here, not rewritten. S-001 through S-003 were executed locally on `codex/b07-stonehook-first-encounter` from that commit. Results, implementation decisions and limitations are in [[2026-10-05-b07-stonehook-first-encounter-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-08 work has started.
+
+## Publication Review and Owner Acceptance
+
+The previously local-only implementation checkpoint is superseded by the verified publication of `4da953cd34469b8024eb2d3831ba7c8ae06cb34a` on `origin/codex/b07-stonehook-first-encounter`. Earlier sections remain dated implementation history.
+
+Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected.
+
+Owner replied "aceito, borah" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred.
+
+The accepted limitations are static art, unreviewed balance, foreground occlusion, overlapping labels/ore and in-memory saves; F4 encounter restore was headless-tested. No new executor Linux run or CI result is claimed. Opening and merging the PR are authorized but have not occurred at this records checkpoint. B-08 remains an inactive preparation-only proposal.

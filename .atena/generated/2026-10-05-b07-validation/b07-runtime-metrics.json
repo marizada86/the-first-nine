@@ -1,0 +1,160 @@
+{
+	"dash": {
+		"approach_ms": 45,
+		"windup_seconds_observed": 1.432
+	},
+	"day_mirror_overlap": 0.990833947131517,
+	"defeat": {
+		"defeated": true,
+		"echoes_after_kill": 1,
+		"echoes_before": 0,
+		"reward_paid": true
+	},
+	"isolation": {
+		"added_frame": 0,
+		"first_gameplay_frame": 1,
+		"isolated_frame": 0,
+		"pulse": 0.0,
+		"state": "opening",
+		"trigger_021_matched_after": false,
+		"trigger_021_matched_before": true
+	},
+	"joypad_bindings_before_suspension": {
+		"attack": 1,
+		"camp_action": 1,
+		"camp_menu": 1,
+		"jump": 1,
+		"move_left": 2,
+		"move_right": 2,
+		"primary": 1,
+		"shadow_action": 1,
+		"shadow_strike": 1,
+		"skip": 1,
+		"ui_colorpicker_delete_preset": 1,
+		"ui_down": 2,
+		"ui_left": 2,
+		"ui_right": 2,
+		"ui_select": 1,
+		"ui_up": 2
+	},
+	"night_mirror_overlap": 0.992615081644375,
+	"noise": {
+		"dashed": false,
+		"moved": 0.0,
+		"queued": false
+	},
+	"ore_run": {
+		"crawler_health": 3,
+		"health_after": 2.0
+	},
+	"retreat": {
+		"crawler_max_x": 2490.14501953125,
+		"crawler_min_x": 2490.14501953125,
+		"frames": 46,
+		"lolth_x": 1679.90295410156,
+		"outcome_after_windup": "strike",
+		"state_at_capture": "windup"
+	},
+	"strike_trace": {
+		"frames": [
+			{
+				"delta": 0.053906,
+				"dodge": 0.0,
+				"gap": 175.14501953125,
+				"health": 3.0,
+				"spent": false,
+				"state": "strike"
+			},
+			{
+				"delta": 0.041278,
+				"dodge": 0.0,
+				"gap": 165.44189453125,
+				"health": 3.0,
+				"spent": false,
+				"state": "strike"
+			},
+			{
+				"delta": 0.0383,
+				"dodge": 0.0,
+				"gap": 158.011962890625,
+				"health": 3.0,
+				"spent": false,
+				"state": "strike"
+			},
+			{
+				"delta": 0.029712,
+				"dodge": 0.0,
+				"gap": 151.117919921875,
+				"health": 3.0,
+				"spent": false,
+				"state": "strike"
+			},
+			{
+				"delta": 0.0483393333333332,
+				"dodge": 0.0,
+				"gap": 145.769775390625,
+				"health": 3.0,
+				"spent": false,
+				"state": "strike"
+			},
+			{
+				"delta": 0.0481740000000001,
+				"dodge": 0.0,
+				"gap": 137.068603515625,
+				"health": 3.0,
+				"spent": false,
+				"state": "strike"
+			},
+			{
+				"delta": 0.0631123333333333,
+				"dodge": 0.0,
+				"gap": 128.397216796875,
+				"health": 2.0,
+				"spent": true,
+				"state": "recover"
+			}
+		],
+		"reach": 134.144927978516
+	},
+	"view_day-left": {
+		"body_fraction": 0.562569060773481,
+		"camera_x": 1410.0,
+		"center_offset": 0.0,
+		"lowest_row": 555,
+		"padding_changes": 0,
+		"padding_pixels": 4440
+	},
+	"view_day-right": {
+		"body_fraction": 0.557504604051565,
+		"camera_x": 1410.0,
+		"center_offset": 0.0,
+		"lowest_row": 555,
+		"padding_changes": 0,
+		"padding_pixels": 4440
+	},
+	"view_night-left": {
+		"body_fraction": 0.56109576427256,
+		"camera_x": 1410.0,
+		"center_offset": 0.0,
+		"lowest_row": 555,
+		"padding_changes": 0,
+		"padding_pixels": 4440
+	},
+	"view_night-right": {
+		"body_fraction": 0.557044198895028,
+		"camera_x": 1410.0,
+		"center_offset": 0.0,
+		"lowest_row": 555,
+		"padding_changes": 0,
+		"padding_pixels": 4440
+	},
+	"walk_in": {
+		"frames": 126,
+		"settle_frames": 5,
+		"x": 1941.76831054688
+	},
+	"windup_warning": {
+		"label_changes": 362,
+		"strip_changes": 1130
+	}
+}

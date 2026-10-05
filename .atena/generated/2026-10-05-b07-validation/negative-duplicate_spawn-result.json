@@ -1,0 +1,23 @@
+{
+  "name": "negative-duplicate_spawn",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.547,
+  "expected_rejection": "B07 FAIL legit_entry_spawns_one",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B07 FAIL legit_entry_spawns_one",
+    "B07 FAIL undefeated_recreated_once",
+    "B07 FAIL saved_defeat_stays_defeated"
+  ],
+  "error": null
+}

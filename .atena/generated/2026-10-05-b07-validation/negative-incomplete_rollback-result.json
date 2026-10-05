@@ -1,0 +1,23 @@
+{
+  "name": "negative-incomplete_rollback",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.428,
+  "expected_rejection": "B07 FAIL failure_rolls_back_together",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B07 FAIL section_fixtures_ready",
+    "B07 FAIL failure_rolls_back_together",
+    "B07 FAIL undefeated_recreated_once"
+  ],
+  "error": null
+}

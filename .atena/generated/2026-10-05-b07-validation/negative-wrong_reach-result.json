@@ -1,0 +1,21 @@
+{
+  "name": "negative-wrong_reach",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.347,
+  "expected_rejection": "B07 FAIL reach_matches_body",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B07 FAIL reach_matches_body"
+  ],
+  "error": null
+}

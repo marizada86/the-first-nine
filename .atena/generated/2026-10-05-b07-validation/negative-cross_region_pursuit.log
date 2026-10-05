@@ -1,0 +1,27 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+B07 PASS section_fixtures_ready
+B07 PASS locked_contexts_no_crawler
+B07 PASS legit_entry_spawns_one
+B07 PASS oscillation_and_days_keep_actor
+B07 PASS geometry_crawler_crop
+B07 PASS reach_matches_body
+B07 PASS melee_hit_and_miss
+B07 PASS first_thread_hit_and_miss
+B07 PASS windup_precedes_strike
+B07 PASS single_hit_per_strike
+B07 PASS dash_avoids_strike
+B07 FAIL retreat_cancels_pending_strike
+B07 FAIL crawler_stays_in_foothills
+B07 PASS crawler_does_not_stall_waves
+B07 PASS offscreen_stag_with_crawler
+B07 PASS safe_capture_with_live_crawler
+B07 PASS ore_independent_of_crawler
+B07 PASS reward_once_within_cap
+B07 PASS failure_rolls_back_together
+B07 PASS undefeated_recreated_once
+B07 PASS saved_defeat_stays_defeated
+B07 PASS f4_exact_restore
+B07 PASS new_run_resets_encounter
+B07 PASS bounds_prepared_once
+B07_FAIL: 22/24 checks (fault: cross_region_pursuit)
