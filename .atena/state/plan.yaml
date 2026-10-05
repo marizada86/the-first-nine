@@ -606,7 +606,7 @@ active_plan:
   evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
   prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
   instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
-  status: implemented-awaiting-human-review
+  status: implemented-published-human-accepted-awaiting-merge
   mode: guided
   request_classification: NEW_PLAN
   preparation_approved: true
@@ -620,7 +620,7 @@ active_plan:
   execution_target: opus-5.5
   baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
   proposed_implementation_branch: codex/b07-stonehook-first-encounter
-  checkpoint: implementation-awaiting-human-review
+  checkpoint: authorized-pr-and-merge
   documentation_publication_approved: true
   documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
   publication_snapshot: delivered-and-verified
@@ -631,9 +631,9 @@ active_plan:
   implementation_branch: codex/b07-stonehook-first-encounter
   implementation_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
   implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
-  implementation_committed: local-only
-  implementation_published: false
-  human_acceptance: pending
+  implementation_committed: true
+  implementation_published: true
+  human_acceptance: accepted
   scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
   blocking_gaps: []
   steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
@@ -642,15 +642,20 @@ active_plan:
   batches_completed: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
   resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
   deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
-  push_approved: false
-  pull_request_approved: false
-  merge_approved: false
+  push_approved: true
+  pull_request_approved: true
+  merge_approved: true
   dispatch_approved: false
   standing_publication_authority: none
   implementation_adjustments: "Within the approved defaults: crawler home x=2520 (proposed 2340) and a clear patrol span 2400-2860 inside the foothills, because the existing foothill foreground overlay is nearly opaque at x 1800-2200 and 2880-3040; one strike removes one existing hurt (1 of 3 health), the spec's 12-health wording having no counterpart in the 3-health model; lunge contact is tested after each frame's motion. Review required."
-  validation: "Linux executor run only, see implementation evidence; no Windows or CI result is claimed."
-  next_recommendation: "Non-authorizing. Owner review of the local implementation, captures and limitations, then official Windows validation by Atena; any push, PR or merge needs separate explicit authority."
-plan_cursor: B-07-implemented-awaiting-human-review
+  validation: "Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected."
+  next_recommendation: "Authorized B-07 PR, regular merge and closure; then prepare the revised B-08 proposal for separate approval. No B-08 implementation."
+  implementation_commit: "4da953cd34469b8024eb2d3831ba7c8ae06cb34a"
+  human_acceptance_date: "2026-10-05"
+  human_acceptance_source: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
+  integration_authority: "Owner replied \"aceito, borah\" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred."
+  windows_review_receipt: "[[2026-10-05-b07-windows-review]]"
+plan_cursor: B-07-human-accepted-authorized-pr-and-merge
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

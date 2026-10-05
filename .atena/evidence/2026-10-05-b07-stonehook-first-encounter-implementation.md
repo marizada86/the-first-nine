@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implemented-published-human-accepted-awaiting-merge
 kind: implementation-evidence
 created: 2026-10-05
 plan_id: 2026-10-05-b07-stonehook-first-encounter
@@ -17,11 +17,15 @@ delivery_verified: true
 implementation_branch: codex/b07-stonehook-first-encounter
 implementation_base: fcc98b63e1919c54b6df563c8de0c7173a7affcb
 engine_rerun: true
-human_acceptance: pending
-push_approved: false
-pull_request_approved: false
-merge_approved: false
+human_acceptance: accepted
+push_approved: true
+pull_request_approved: true
+merge_approved: true
 dispatch_approved: false
+human_acceptance_date: 2026-10-05
+implementation_commit: 4da953cd34469b8024eb2d3831ba7c8ae06cb34a
+implementation_published: true
+windows_review: "[[2026-10-05-b07-windows-review]]"
 ---
 
 # B07 First Stonehook Encounter Implementation
@@ -141,3 +145,13 @@ Overall acceptance requires human review.
   - Saves remain in memory only.
 - There is no new animation art. The crawler is one static frame with facing, tint and procedural warning.
 - Recommended review: play with F4 off from a new run through the first cure and expedition. Fight, dash, retreat at night and fail once, comparing against the captures listed above.
+
+## Publication Review and Owner Acceptance
+
+The previously local-only implementation checkpoint is superseded by the verified publication of `4da953cd34469b8024eb2d3831ba7c8ae06cb34a` on `origin/codex/b07-stonehook-first-encounter`. Earlier sections remain dated implementation history.
+
+Fresh Atena Windows review of 4da953c: Godot 4.7.2, GTX 1650, full runner exit 0; B07 24/24 and real-input 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing 65/65 and 102/102; self-test and both 600-frame smoke passes; 11 faulty controls genuinely rejected, zero project diagnostics; eight fresh captures inspected.
+
+Owner replied "aceito, borah" after the Windows technical report, accepting B-07 with its listed limitations and explicitly authorizing record publication, PR opening, regular merge, operational closure and B-08 proposal preparation only. No itemized owner playtest or B-08 implementation approval is inferred.
+
+The accepted limitations are static art, unreviewed balance, foreground occlusion, overlapping labels/ore and in-memory saves; F4 encounter restore was headless-tested. No new executor Linux run or CI result is claimed. Opening and merging the PR are authorized but have not occurred at this records checkpoint. B-08 remains an inactive preparation-only proposal.
