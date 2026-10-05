@@ -1,0 +1,25 @@
+{
+  "name": "negative-cave_wave_erasure",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.336,
+  "expected_rejection": "B07 FAIL crawler_does_not_stall_waves",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B07 FAIL section_fixtures_ready",
+    "B07 FAIL oscillation_and_days_keep_actor",
+    "B07 FAIL crawler_does_not_stall_waves",
+    "B07 FAIL offscreen_stag_with_crawler",
+    "B07 FAIL safe_capture_with_live_crawler"
+  ],
+  "error": null
+}

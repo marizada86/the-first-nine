@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-document-delivery
+status: implemented-awaiting-human-review
 kind: bounded-runtime-plan
 created: 2026-10-05
 plan_id: 2026-10-05-b07-stonehook-first-encounter
@@ -21,8 +21,14 @@ evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
 instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
 documentation_publication_approved: true
 documentation_publication_source: owner-authorized-one-documentation-commit-and-normal-push-to-main
-publication_snapshot: pre-push
-documentation_published: false
+publication_snapshot: delivered-and-verified
+documentation_published: true
+delivery_commit: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+delivery_verified: true
+implementation_branch: codex/b07-stonehook-first-encounter
+implementation_base: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+human_acceptance: pending
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -100,3 +106,7 @@ Exercise lifecycle, attacks/misses/First Thread/dash, regional fences, cave thre
 Reject faulty controls for duplicate spawn, wrong creature cell, wrong reach, omitted warning, repeated hit, pursuit past bounds, cave-wave actor erasure, remote safe-capture confusion, repeated reward, incomplete failure rollback and incomplete F4 restore. A negative result needs a genuine nonzero exit and the named assertion, not a parser/import crash. Do not claim these controls were run during preparation.
 
 Save raw logs, case manifests and captures, then compare every criterion with evidence. Keep completed-plan history and old test results unchanged. Reconcile implementation status and any separately authorized publication facts; completion requires review and human acceptance, not just self-test output.
+
+## Delivery Verification and Implementation Checkpoint
+
+On 2026-10-05, the owner supplied the published documentation commit `fcc98b63e1919c54b6df563c8de0c7173a7affcb` and the explicit implementation handoff. The executor fetched origin and verified that commit as `origin/main`, a direct child of `e189184`; the committed delivery checker passed. The local delivery checkpoint was then cleared. The earlier `pre-push` snapshot and false publication field describe the dated pre-push checkpoint and are superseded here, not rewritten. S-001 through S-003 were executed locally on `codex/b07-stonehook-first-encounter` from that commit. Results, implementation decisions and limitations are in [[2026-10-05-b07-stonehook-first-encounter-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-08 work has started.

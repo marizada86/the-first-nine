@@ -163,6 +163,23 @@ const FOREGROUND_READABILITY_SPANS := [Vector2(980.0, 1460.0), Vector2(2700.0, R
 const FOREGROUND_READABILITY_RAMP := 120.0
 const FOREGROUND_READABILITY_ALPHA := 0.72
 const ROUTE_ORE_ID := "stonehook_iron_ore_01"
+# B-07 first Stonehook encounter: one finite Scree Crawler in the foothills. Numbers are
+# playtest defaults, not lore. The source is the crawler's own upper-left artwork in the
+# existing Stonehook atlas; the crop stops above the rope of the creature below it.
+const SCREE_CRAWLER_ID := "stonehook_scree_crawler_01"
+const SCREE_CRAWLER_SOURCE := Rect2(0, 0, 768, 480)
+const SCREE_CRAWLER_HOME_X := 2520.0
+# The foothill foreground overlay is nearly opaque over the floor band at x 1800-2200 and
+# 2880-3040, and hides Lolth there too. The crawler patrols a clear span, set so that Lolth
+# also stands in the clear whenever its lunge can be triggered from the left.
+const SCREE_CRAWLER_PATROL := Vector2(2400.0, 2860.0)
+const SCREE_CRAWLER_BODY_HEIGHT := 120.0
+const SCREE_CRAWLER_HEALTH := 3
+const SCREE_CRAWLER_SPEED := 48.0
+const SCREE_CRAWLER_WINDUP := 0.7
+const SCREE_CRAWLER_LUNGE_TIME := 0.25
+const SCREE_CRAWLER_LUNGE_SPEED := 180.0
+const SCREE_CRAWLER_RECOVER := 1.0
 const ROUTE_ORE_X := 2620.0
 # H-01 and H-02 shells. Identifiers only: they are never displayed to the player.
 # Final panels and dialogue require an approved English script and art admission.
@@ -222,6 +239,9 @@ var ui_gameplay_requests: Array[String] = []
 var ui_enemy_bounds: Dictionary = {}
 var ui_enemy_bounds_scans := 0
 var ui_enemy_bounds_startup_usec := 0
+# Encounter-specific source crops, prepared once at startup like the 22 atlas cells above.
+var ui_encounter_bounds: Dictionary = {}
+var ui_encounter_bounds_scans := 0
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
 var state := "journey" # opening, journey, shar_shell, cure, victory, defeat
@@ -240,6 +260,12 @@ var was_at_safe_wagon := false
 # B-06 view offset along the route. Gameplay always uses world coordinates.
 var camera_x := 0.0
 var route_closed_notice := 0.0
+# B-07 encounter. The live actor is transient world state; the three flags are operational
+# progress saved with the safe-wagon snapshot. It never joins the cave's shades.
+var scree_crawler: Dictionary = {}
+var crawler_activated := false
+var crawler_defeated := false
+var crawler_reward_paid := false
 var passive_mission: Dictionary = {}
 var mission_selected := 0
 var posted_allies: Array[String] = []
@@ -269,6 +295,7 @@ var checkpoint := {"mark": 0, "zone": 0, "flame": 100.0, "provisions": 4.0, "awa
 func _ready() -> void:
 	setup_input_actions()
 	prepare_enemy_frame_bounds()
+	prepare_encounter_bounds()
 	ui_management = preload("res://wagon_inventory_ui.gd").new()
 	add_child(ui_management)
 	ui_management.setup(self)
@@ -541,6 +568,7 @@ func run_self_test() -> void:
 	var stabilization_ready := run_mark_one_stabilization_self_test()
 	var combat_readability_ready := run_combat_readability_self_test()
 	var expedition_ready := run_stonehook_expedition_self_test()
+	var encounter_ready := run_stonehook_encounter_self_test()
 	if not run_playtester_self_test():
 		get_tree().quit(1)
 		return
@@ -665,7 +693,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and expedition_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and expedition_ready and encounter_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -1164,7 +1192,10 @@ func run_combat_readability_self_test() -> bool:
 	return passed
 
 # B-06 test fixture: the legitimate first-cure path, then a safe return to the Wagon.
-func reach_expedition_ready_for_test() -> void:
+# B-06 corridor fixtures run with the B-07 encounter already resolved (flagged defeated before
+# the safe capture, without paying its Echo), so their assertions keep their pre-B-07 meaning.
+# B-07 checks pass with_encounter = true and exercise the crawler explicitly.
+func reach_expedition_ready_for_test(with_encounter := false) -> void:
 	reach_safe_camp_for_test()
 	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
 	use_camp_action()
@@ -1172,6 +1203,9 @@ func reach_expedition_ready_for_test() -> void:
 	skip_shar_shell()
 	cure_selected_ally()
 	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
+	if not with_encounter:
+		crawler_activated = true
+		crawler_defeated = true
 	was_at_safe_wagon = false
 	update_safe_wagon()
 	snap_camera()
@@ -1437,6 +1471,375 @@ func run_stonehook_expedition_self_test() -> bool:
 		push_error("SELF_TEST_B06_FAIL: %s" % ", ".join(failed))
 	return failed.is_empty()
 
+# B-07 test fixtures. Encounter frames run the crawler with Lolth's own combat timers.
+func encounter_frames_for_test(frames: int, dt: float = 1.0 / 60.0) -> void:
+	for _frame in frames:
+		hurt_cooldown = maxf(0.0, hurt_cooldown - dt)
+		dodge_time = maxf(0.0, dodge_time - dt)
+		update_foothill_encounter(dt)
+
+func enter_foothills_for_test(x: float = ROUTE_FOOTHILLS_START_X + 140.0) -> void:
+	player = Vector2(x, GROUND_Y - PLAYER_FEET_OFFSET)
+	velocity = Vector2.ZERO
+	encounter_frames_for_test(1)
+
+# Re-establishes a live crawler when an earlier section lost it, so that a fault fails its
+# named assertion instead of crashing later sections. Baseline runs never need the re-setup.
+func ensure_crawler_for_test(checks: Dictionary) -> bool:
+	if scree_crawler.is_empty():
+		reach_expedition_ready_for_test(true)
+		enter_foothills_for_test()
+		checks.section_fixtures_ready = false
+	return not scree_crawler.is_empty()
+
+# Holds the crawler still (a long recovery) so attacks can be measured at exact gaps.
+func hold_crawler_for_test(health_value: int, x: float = SCREE_CRAWLER_HOME_X) -> void:
+	if scree_crawler.is_empty():
+		return
+	scree_crawler.health = health_value
+	scree_crawler.pos = Vector2(x, GROUND_Y - 34)
+	scree_crawler.attack_state = "recover"
+	scree_crawler.attack_time = 99.0
+	scree_crawler.hit_flash = 0.0
+
+func arm_crawler_for_test(x: float = SCREE_CRAWLER_HOME_X) -> void:
+	if scree_crawler.is_empty():
+		return
+	scree_crawler.health = 10
+	scree_crawler.pos = Vector2(x, GROUND_Y - 34)
+	scree_crawler.attack_state = "approach"
+	scree_crawler.attack_time = 0.0
+	scree_crawler.strike_spent = false
+
+# B-07 checks. Each entry is a named assertion so faulty test subclasses can be identified.
+func stonehook_encounter_checks() -> Dictionary:
+	var checks := {"section_fixtures_ready": true}
+	var floor_y := GROUND_Y - PLAYER_FEET_OFFSET
+	var scans_before := ui_enemy_bounds_scans
+	# Only legitimate foothill entry creates the crawler. Lolth is placed past closed gates
+	# here on purpose, to prove the spawn guard itself rather than the route clamp.
+	reset_to_prologue()
+	enter_foothills_for_test()
+	encounter_frames_for_test(30)
+	var new_run_locked := scree_crawler.is_empty() and not crawler_activated
+	reach_safe_camp_for_test()
+	enter_foothills_for_test()
+	var tutorial_locked := scree_crawler.is_empty() and not crawler_activated
+	reach_safe_camp_for_test()
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	use_camp_action()
+	defeat_boss_for_test()
+	skip_shar_shell()
+	cure_selected_ally()
+	enter_foothills_for_test()
+	var unsecured_locked := scree_crawler.is_empty() and not crawler_activated
+	var debug_locked := true
+	if playtester_available():
+		reset_to_prologue()
+		playtester_change_mark(1)
+		enter_foothills_for_test()
+		debug_locked = scree_crawler.is_empty() and not crawler_activated
+		restore_playtester_session()
+	checks.locked_contexts_no_crawler = new_run_locked and tutorial_locked and unsecured_locked and debug_locked
+	reach_expedition_ready_for_test(true)
+	var cave_clear := scree_crawler.is_empty() and not crawler_activated
+	player = Vector2(ROUTE_FOOTHILLS_START_X - 40.0, floor_y)
+	encounter_frames_for_test(10)
+	var band_clear := scree_crawler.is_empty()
+	enter_foothills_for_test()
+	checks.legit_entry_spawns_one = cave_clear and band_clear and not scree_crawler.is_empty() and String(scree_crawler.encounter_id) == SCREE_CRAWLER_ID and String(scree_crawler.region) == "stonehook_foothills" and int(scree_crawler.health) == SCREE_CRAWLER_HEALTH and float(scree_crawler.pos.x) == SCREE_CRAWLER_HOME_X and live_scree_crawler_count() == 1 and crawler_activated and shades.is_empty() and zone == 0
+	# Border oscillation, nightfall and dawn keep the same live actor and its health.
+	var actor := scree_crawler
+	scree_crawler.health = 2
+	for _crossing in 3:
+		player.x = ROUTE_FOOTHILLS_START_X - 260.0
+		encounter_frames_for_test(20)
+		player.x = ROUTE_FOOTHILLS_START_X + 140.0
+		encounter_frames_for_test(20)
+	clock_seconds = DAY_DURATION - 0.01
+	update_clock(0.02)
+	var night_kept := is_same(scree_crawler, actor) and is_night() and night_wave == 1
+	clock_seconds = DAY_DURATION + NIGHT_DURATION - 0.01
+	update_clock(0.02)
+	checks.oscillation_and_days_keep_actor = night_kept and is_same(scree_crawler, actor) and not is_night() and int(scree_crawler.health) == 2 and live_scree_crawler_count() == 1
+	# Geometry: the crawler's own crop, native aspect, grounded feet, a 120 px visible body.
+	if not ensure_crawler_for_test(checks):
+		return checks
+	hold_crawler_for_test(10)
+	var geometry := enemy_draw_geometry(scree_crawler)
+	var source: Rect2 = geometry.source
+	var destination: Rect2 = geometry.destination
+	var body: Rect2 = geometry.body
+	var cached := enemy_frame_bounds(STONEHOOK_THREATS_RUNTIME, source)
+	var uniform := is_equal_approx(destination.size.x / source.size.x, destination.size.y / source.size.y)
+	checks.geometry_crawler_crop = source == Rect2(0, 0, 768, 480) and source.end.y < 484.0 and source.end.x <= 768.0 and cached == Rect2i(84, 59, 622, 414) and uniform and absf(body.size.y - SCREE_CRAWLER_BODY_HEIGHT) < 0.01 and is_equal_approx(body.end.y, GROUND_Y) and is_equal_approx(body.get_center().x, float(scree_crawler.pos.x))
+	var reach := melee_reach(scree_crawler)
+	checks.reach_matches_body = is_equal_approx(reach, MELEE_LOLTH_HALF_WIDTH + body.size.x / 2.0) and body.size.x / 2.0 > 60.0
+	# Melee and FIRST THREAD hit inside the visible reach and miss outside it.
+	var crawler_x := float(scree_crawler.pos.x)
+	player = Vector2(crawler_x - (reach - 2.0), floor_y)
+	combo_time = 0.0
+	hurt_flash_time = 0.0
+	handle_attack()
+	var melee_hit := int(scree_crawler.health) == 9 and player_pose() == "strike" and not player_hurt_visible()
+	player.x = crawler_x - (reach + 2.0)
+	combo_time = 0.0
+	handle_attack()
+	var melee_miss := int(scree_crawler.health) == 9 and message.begins_with("Out of reach") and not player_hurt_visible()
+	player.y = floor_y - (MELEE_VERTICAL_REACH + 8.0)
+	player.x = crawler_x - (reach - 2.0)
+	combo_time = 0.0
+	handle_attack()
+	var vertical_miss := int(scree_crawler.health) == 9
+	player.y = floor_y
+	checks.melee_hit_and_miss = melee_hit and melee_miss and vertical_miss
+	var thread_reach := maxf(FIRST_THREAD_RANGE, reach)
+	player.x = crawler_x - (thread_reach - 2.0)
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	var thread_hit := int(scree_crawler.health) == 7 and first_thread_cooldown > 0.0
+	player.x = crawler_x - (thread_reach + 2.0)
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	checks.first_thread_hit_and_miss = thread_hit and int(scree_crawler.health) == 7 and message.begins_with("FIRST THREAD finds no target")
+	# Windup precedes every strike, keeps a visible warning and locks the lunge direction.
+	arm_crawler_for_test()
+	health = max_health()
+	hurt_cooldown = 0.0
+	dodge_time = 0.0
+	player = Vector2(float(scree_crawler.pos.x) - (scree_crawler_strike_range() - 4.0), floor_y)
+	encounter_frames_for_test(1)
+	var windup_started := String(scree_crawler.attack_state) == "windup" and scree_crawler_warning_visible()
+	var locked_dir := float(scree_crawler.attack_dir)
+	var windup_frames := 1
+	var warning_throughout := true
+	player.x = float(scree_crawler.pos.x) + 60.0
+	while String(scree_crawler.attack_state) == "windup" and windup_frames < 200:
+		warning_throughout = warning_throughout and scree_crawler_warning_visible()
+		encounter_frames_for_test(1)
+		windup_frames += 1
+	var windup_seconds := float(windup_frames) / 60.0
+	var lunge_from := float(scree_crawler.pos.x)
+	encounter_frames_for_test(5)
+	checks.windup_precedes_strike = windup_started and warning_throughout and windup_seconds >= MIN_TELEGRAPH_TIME and absf(windup_seconds - SCREE_CRAWLER_WINDUP) <= 2.0 / 60.0 and locked_dir < 0.0 and float(scree_crawler.attack_dir) == locked_dir and float(scree_crawler.pos.x) < lunge_from
+	# One strike wounds Lolth at most once, even with no hurt cooldown left to protect her.
+	# Armed clear of the patrol bound so the full lunge can travel.
+	arm_crawler_for_test(SCREE_CRAWLER_HOME_X + 120.0)
+	health = max_health()
+	var health_before_strike := health
+	player = Vector2(float(scree_crawler.pos.x) - (scree_crawler_strike_range() - 4.0), floor_y)
+	var strike_frames := 0
+	while strike_frames < 200 and String(scree_crawler.attack_state) != "recover":
+		hurt_cooldown = 0.0
+		encounter_frames_for_test(1)
+		strike_frames += 1
+	var hit_at_60 := health == health_before_strike - 1.0 and bool(scree_crawler.strike_spent) and state == "journey"
+	# The same unavoided lunge at 16 frames per second (four exact 0.0625 s lunge frames)
+	# still connects exactly once; contact is tested after each frame's motion.
+	arm_crawler_for_test(SCREE_CRAWLER_HOME_X + 120.0)
+	health = max_health()
+	player = Vector2(float(scree_crawler.pos.x) - (scree_crawler_strike_range() - 4.0), floor_y)
+	strike_frames = 0
+	while strike_frames < 100 and String(scree_crawler.attack_state) != "recover":
+		hurt_cooldown = 0.0
+		encounter_frames_for_test(1, 1.0 / 16.0)
+		strike_frames += 1
+	checks.single_hit_per_strike = hit_at_60 and health == max_health() - 1.0 and bool(scree_crawler.strike_spent) and state == "journey"
+	# Dash invulnerability avoids the lunge, which is then spent.
+	arm_crawler_for_test(SCREE_CRAWLER_HOME_X + 120.0)
+	health = max_health()
+	hurt_cooldown = 0.0
+	player = Vector2(float(scree_crawler.pos.x) - (scree_crawler_strike_range() - 4.0), floor_y)
+	while String(scree_crawler.attack_state) != "strike":
+		encounter_frames_for_test(1)
+	dodge_time = DODGE_DURATION
+	while String(scree_crawler.attack_state) == "strike":
+		encounter_frames_for_test(1)
+	checks.dash_avoids_strike = health == max_health() and bool(scree_crawler.strike_spent)
+	# Retreat out of the foothills cancels a pending strike; the crawler never follows or hits.
+	arm_crawler_for_test(scree_crawler_limits().x)
+	health = max_health()
+	hurt_cooldown = 0.0
+	player = Vector2(float(scree_crawler.pos.x) - (scree_crawler_strike_range() - 4.0), floor_y)
+	encounter_frames_for_test(2)
+	var pending := String(scree_crawler.attack_state) == "windup"
+	player.x = ROUTE_FOOTHILLS_START_X - 6.0
+	encounter_frames_for_test(1)
+	var cancelled := String(scree_crawler.attack_state) == "approach"
+	var held_x := float(scree_crawler.pos.x)
+	var integrity_before := wagon_integrity
+	for _frame in 900:
+		encounter_frames_for_test(1)
+	checks.retreat_cancels_pending_strike = pending and cancelled and health == max_health() and float(scree_crawler.pos.x) == held_x and wagon_integrity == integrity_before and String(scree_crawler.attack_state) == "approach"
+	# With Lolth just inside the border, approach and lunges stop at the patrol bound.
+	player.x = ROUTE_FOOTHILLS_START_X + 6.0
+	hurt_cooldown = 99.0
+	var min_body_x := INF
+	for _frame in 900:
+		hurt_cooldown = 99.0
+		encounter_frames_for_test(1)
+		min_body_x = minf(min_body_x, enemy_draw_geometry(scree_crawler).body.position.x)
+	checks.crawler_stays_in_foothills = min_body_x >= ROUTE_FOOTHILLS_START_X - 0.01 and min_body_x >= SCREE_CRAWLER_PATROL.x - 0.01 and is_equal_approx(float(scree_crawler.pos.x), scree_crawler_limits().x) and wagon_integrity == integrity_before
+	# Cave waves, wave completion, dawn and real Stag damage coexist with a live crawler.
+	reach_expedition_ready_for_test(true)
+	enter_foothills_for_test(ROUTE_END_X - PLAYER_EDGE_MARGIN)
+	var coexisting := scree_crawler
+	scree_crawler.health = 2
+	clock_seconds = DAY_DURATION - 0.05
+	simulate_frames_for_test(30)
+	var night_with_crawler := is_night() and night_wave == 1 and shades.size() == 1 and is_same(scree_crawler, coexisting) and int(scree_crawler.health) == 2
+	for _wave in TUTORIAL_NIGHT_WAVES:
+		for enemy in shades:
+			enemy.defeated = true
+		update_night_waves(0.0)
+		update_night_waves(NIGHT_WAVE_INTERVAL)
+	checks.crawler_does_not_stall_waves = night_with_crawler and night_waves_complete and live_scree_crawler_count() == 1 and is_same(scree_crawler, coexisting)
+	shades.clear()
+	spawn_enemy("STAG OF MIRE", Vector2(CARAVAN_X + 300.0, GROUND_Y - 34), 2, 1)
+	var wagon_before := wagon_integrity
+	for _frame in 600:
+		_process(1.0 / 60.0)
+		if wagon_integrity < wagon_before:
+			break
+	checks.offscreen_stag_with_crawler = wagon_integrity < wagon_before and state == "journey" and live_scree_crawler_count() == 1 and is_same(scree_crawler, coexisting)
+	shades.clear()
+	clock_seconds = DAY_DURATION + NIGHT_DURATION - 0.01
+	update_clock(0.02)
+	var dawn_kept := is_same(scree_crawler, coexisting) and not is_night()
+	# A live foothill crawler neither blocks a valid cave capture nor makes an unsafe cave safe.
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	was_at_safe_wagon = false
+	var captured_before := safe_wagon_state.duplicate(true)
+	spawn_enemy("BRIAR HOUND", Vector2(CARAVAN_X + 90.0, GROUND_Y - 34), 1, 1)
+	update_safe_wagon()
+	var unsafe_kept := safe_wagon_state == captured_before
+	shades.clear()
+	was_at_safe_wagon = false
+	update_safe_wagon()
+	var saved_crawler: Dictionary = safe_wagon_state.get("crawler", {})
+	checks.safe_capture_with_live_crawler = dawn_kept and unsafe_kept and safe_wagon_state != captured_before and bool(saved_crawler.get("activated", false)) and not bool(saved_crawler.get("defeated", true)) and live_scree_crawler_count() == 1
+	# The ore and the deposit loop do not require defeating the crawler.
+	player = Vector2(ROUTE_ORE_X, floor_y)
+	recovered_load.clear()
+	handle_primary()
+	var ore_carried := load_has_pickup(ROUTE_ORE_ID, recovered_load) == 1
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	handle_primary()
+	checks.ore_independent_of_crawler = ore_carried and load_has_pickup(ROUTE_ORE_ID, wagon_stock) == 1 and pickup_copies(ROUTE_ORE_ID) == 1 and not crawler_defeated and live_scree_crawler_count() == 1
+	# One defeat pays at most one Echo; nothing beyond the capped Echo unlocks.
+	reach_expedition_ready_for_test(true)
+	enter_foothills_for_test()
+	var echoes_before := shadow_echoes
+	hold_crawler_for_test(1)
+	player.x = float(scree_crawler.pos.x) - (melee_reach(scree_crawler) - 4.0)
+	combo_time = 0.0
+	handle_attack()
+	var paid_once := crawler_defeated and crawler_reward_paid and shadow_echoes == echoes_before + 1
+	defeat_enemy(scree_crawler)
+	encounter_frames_for_test(5)
+	var no_second_pay := shadow_echoes == echoes_before + 1 and scree_crawler_spawn_allowed() == false and live_scree_crawler_count() == 0
+	crawler_defeated = false
+	crawler_reward_paid = false
+	scree_crawler = {}
+	shadow_echoes = int(ECHO_THRESHOLDS[1])
+	enter_foothills_for_test()
+	hold_crawler_for_test(1)
+	player.x = float(scree_crawler.pos.x) - (melee_reach(scree_crawler) - 4.0)
+	combo_time = 0.0
+	handle_attack()
+	var capped := shadow_echoes == int(ECHO_THRESHOLDS[1]) and crawler_defeated
+	advance_to_stonehook()
+	enter_stonehook()
+	try_advance_from_camp()
+	checks.reward_once_within_cap = paid_once and no_second_pay and capped and mark_level == 1 and cured_allies.size() == 1 and state == "journey" and zone == 0 and wagon_travel_locked() and not stonehook_boss_defeated and not stonehook_shar_ready and mark_gates.is_empty() and ui_management.recipe_locked(3)
+	# Failure rolls back an unsaved defeat, its Echo and the ore together.
+	reach_expedition_ready_for_test(true)
+	enter_foothills_for_test()
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	was_at_safe_wagon = false
+	update_safe_wagon()
+	var saved_echoes := shadow_echoes
+	enter_foothills_for_test()
+	hold_crawler_for_test(1)
+	player.x = float(scree_crawler.pos.x) - (melee_reach(scree_crawler) - 4.0)
+	combo_time = 0.0
+	handle_attack()
+	player = Vector2(ROUTE_ORE_X, floor_y)
+	handle_primary()
+	var unsaved := crawler_defeated and shadow_echoes == saved_echoes + 1 and bool(route_ore_state().taken)
+	provisions = 0.0
+	check_survival_failures()
+	restart_from_checkpoint()
+	var rolled_back := unsaved and state == "journey" and not crawler_defeated and not crawler_reward_paid and crawler_activated and shadow_echoes == saved_echoes and not bool(route_ore_state().taken) and scree_crawler.is_empty() and mark_level == 1
+	enter_foothills_for_test()
+	var recreated_fresh := not scree_crawler.is_empty() and int(scree_crawler.health) == SCREE_CRAWLER_HEALTH and float(scree_crawler.pos.x) == SCREE_CRAWLER_HOME_X
+	var recreated := scree_crawler
+	encounter_frames_for_test(5)
+	player.x = ROUTE_FOOTHILLS_START_X - 200.0
+	encounter_frames_for_test(5)
+	enter_foothills_for_test()
+	checks.failure_rolls_back_together = rolled_back
+	checks.undefeated_recreated_once = rolled_back and recreated_fresh and live_scree_crawler_count() == 1 and is_same(scree_crawler, recreated)
+	# A safe-saved defeat stays defeated after a later failure.
+	if not ensure_crawler_for_test(checks):
+		return checks
+	hold_crawler_for_test(1)
+	player.x = float(scree_crawler.pos.x) - (melee_reach(scree_crawler) - 4.0)
+	combo_time = 0.0
+	handle_attack()
+	var defeated_echoes := shadow_echoes
+	player = Vector2(ROUTE_FOOTHILLS_START_X + 600.0, floor_y)
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	was_at_safe_wagon = false
+	update_safe_wagon()
+	flame = 0.0
+	check_survival_failures()
+	restart_from_checkpoint()
+	enter_foothills_for_test()
+	encounter_frames_for_test(5)
+	checks.saved_defeat_stays_defeated = crawler_defeated and crawler_reward_paid and shadow_echoes == defeated_echoes and scree_crawler.is_empty() and live_scree_crawler_count() == 0
+	# F4 restores the live actor, its timers and the flags exactly.
+	checks.f4_exact_restore = true
+	if playtester_available():
+		reach_expedition_ready_for_test(true)
+		enter_foothills_for_test()
+		scree_crawler.health = 2
+		scree_crawler.pos = Vector2(2600.0, GROUND_Y - 34)
+		scree_crawler.attack_state = "windup"
+		scree_crawler.attack_time = 0.31
+		scree_crawler.attack_dir = -1.0
+		scree_crawler.facing_left = true
+		var actor_before := scree_crawler.duplicate(true)
+		var flags_before := scree_crawler_state()
+		playtester_change_mark(1)
+		scree_crawler.health = 1
+		scree_crawler.pos = Vector2(2700.0, GROUND_Y - 34)
+		scree_crawler.attack_state = "recover"
+		crawler_defeated = true
+		restore_playtester_session()
+		checks.f4_exact_restore = scree_crawler == actor_before and scree_crawler_state() == flags_before and mark_level == 1
+	# A new run clears every encounter field and the gate closes again.
+	reset_to_prologue()
+	var reset_clear := scree_crawler.is_empty() and not crawler_activated and not crawler_defeated and not crawler_reward_paid
+	enter_foothills_for_test()
+	checks.new_run_resets_encounter = reset_clear and scree_crawler.is_empty()
+	# Startup prepared the crop once; nothing above rescanned pixels.
+	checks.bounds_prepared_once = ui_encounter_bounds_scans == 1 and ui_enemy_bounds_scans == scans_before and ui_enemy_bounds_scans == 22 and ui_enemy_bounds.size() == 22
+	reset_to_prologue()
+	return checks
+
+func run_stonehook_encounter_self_test() -> bool:
+	var checks := stonehook_encounter_checks()
+	var failed: Array[String] = []
+	for check_name in checks:
+		if not bool(checks[check_name]):
+			failed.append(String(check_name))
+	if failed.is_empty():
+		print("SELF_TEST_B07_PASS: one legitimate Scree Crawler with its own crop, telegraphed single-hit lunges, foothill bounds, cave coexistence, capped reward and consistent restoration (%d checks)" % checks.size())
+	else:
+		push_error("SELF_TEST_B07_FAIL: %s" % ", ".join(failed))
+	return failed.is_empty()
+
 func run_playtester_self_test() -> bool:
 	if not playtester_available():
 		print("SELF_TEST_PLAYTESTER_SKIP: debug tools unavailable in release")
@@ -1660,6 +2063,8 @@ func spawn_zone() -> void:
 	ally_assists_used.clear()
 	salvage.clear()
 	shades.clear()
+	# The foothill actor is transient like the cave threats; its saved flags decide re-creation.
+	scree_crawler = {}
 	mark_gates.clear()
 	zone_hazards.clear()
 	rope_routes.clear()
@@ -1775,7 +2180,7 @@ func _process(delta: float) -> void:
 	mark_vfx_time = maxf(0.0, mark_vfx_time - delta)
 	player_action_time = maxf(0.0, player_action_time - delta)
 	hurt_flash_time = maxf(0.0, hurt_flash_time - delta)
-	for shade in shades:
+	for shade in combat_targets():
 		shade.hit_flash = maxf(0.0, float(shade.get("hit_flash", 0.0)) - delta)
 	var requests := ui_gameplay_requests.duplicate()
 	ui_gameplay_requests.clear()
@@ -1791,6 +2196,7 @@ func _process(delta: float) -> void:
 		use_camp_action()
 	update_wagon_threat(delta)
 	update_enemies(delta)
+	update_foothill_encounter(delta)
 	update_night_waves(delta)
 	update_zone_hazards()
 	check_enemy_contact()
@@ -1972,19 +2378,21 @@ func handle_primary() -> void:
 	message_time = 2.0
 
 func melee_reach(shade: Dictionary) -> float:
-	if zone == 0 and THORNWAKE_ENEMY_SIZES.has(String(shade.name)):
+	if is_scree_crawler(shade) or (zone == 0 and THORNWAKE_ENEMY_SIZES.has(String(shade.name))):
 		return MELEE_LOLTH_HALF_WIDTH + enemy_draw_geometry(shade).body.size.x / 2.0
 	var old_size := 160.0 if String(shade.name) == "ANTLERED HUNGER" else 96.0
 	return MELEE_LOLTH_HALF_WIDTH + float(MELEE_ENEMY_HALF_WIDTHS.get(String(shade.name), MELEE_DEFAULT_ENEMY_HALF_WIDTH)) * enemy_visual_size(shade) / old_size
 
 func enemy_visual_size(shade: Dictionary) -> float:
+	if is_scree_crawler(shade):
+		return SCREE_CRAWLER_BODY_HEIGHT
 	return float(THORNWAKE_ENEMY_SIZES.get(String(shade.name), 96.0)) if zone == 0 else 96.0
 
 # The nearest live enemy whose drawn body touches Lolth's.
 func find_melee_target() -> Dictionary:
 	var target: Dictionary = {}
 	var best := INF
-	for shade in shades:
+	for shade in combat_targets():
 		if shade.defeated:
 			continue
 		var gap := absf(float(shade.pos.x) - player.x)
@@ -1996,7 +2404,7 @@ func find_melee_target() -> Dictionary:
 func nearest_live_enemy(range_limit: float) -> Dictionary:
 	var target: Dictionary = {}
 	var best := range_limit
-	for shade in shades:
+	for shade in combat_targets():
 		var gap := player.distance_to(shade.pos)
 		if not shade.defeated and gap <= best:
 			target = shade
@@ -2022,6 +2430,9 @@ func player_hurt_visible() -> bool:
 func defeat_enemy(shade: Dictionary) -> void:
 	shade.defeated = true
 	shade.defeated_at = pulse
+	if is_scree_crawler(shade):
+		defeat_scree_crawler()
+		return
 	if mark_level > 0:
 		collect_echo(int(shade.echoes))
 	message = "%s falls. Lolth absorbs its shadow." % shade.name
@@ -2044,10 +2455,10 @@ func use_first_thread() -> void:
 	if first_thread_cooldown > 0.0:
 		return
 	var target: Dictionary = {}
-	var best_distance := FIRST_THREAD_RANGE
-	for shade in shades:
+	var best_distance := INF
+	for shade in combat_targets():
 		var distance := player.distance_to(shade.pos)
-		if not shade.defeated and distance <= best_distance:
+		if not shade.defeated and first_thread_reaches(shade) and distance <= best_distance:
 			target = shade
 			best_distance = distance
 	if target.is_empty():
@@ -2296,7 +2707,7 @@ func advance_mark() -> void:
 	message_time = 4.5
 
 func create_checkpoint() -> void:
-	checkpoint = {"mark": mark_level, "zone": zone, "flame": flame, "provisions": provisions, "awakened": awakened, "final_echo_phase": final_echo_phase, "wagon_repair": wagon_repair, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_integrity": wagon_integrity, "clock": clock_seconds, "echoes": shadow_echoes, "cured": cured_allies.duplicate(), "posts": posted_allies.duplicate(), "downed": downed_drows.duplicate(), "first_night": first_night_complete, "axle_brakes": axle_brakes_installed, "stonehook_boss": stonehook_boss_defeated, "stonehook_shar": stonehook_shar_ready, "hollowroot_boss": hollowroot_boss_defeated, "hollowroot_mark": hollowroot_mark_ready, "hollowroot_web": hollowroot_web_anchor_open, "brazier": brazier_built, "crafted": crafted_recipes.duplicate(true)}
+	checkpoint = {"mark": mark_level, "zone": zone, "flame": flame, "provisions": provisions, "awakened": awakened, "final_echo_phase": final_echo_phase, "wagon_repair": wagon_repair, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_integrity": wagon_integrity, "clock": clock_seconds, "echoes": shadow_echoes, "cured": cured_allies.duplicate(), "posts": posted_allies.duplicate(), "downed": downed_drows.duplicate(), "first_night": first_night_complete, "axle_brakes": axle_brakes_installed, "stonehook_boss": stonehook_boss_defeated, "stonehook_shar": stonehook_shar_ready, "hollowroot_boss": hollowroot_boss_defeated, "hollowroot_mark": hollowroot_mark_ready, "hollowroot_web": hollowroot_web_anchor_open, "brazier": brazier_built, "crafted": crafted_recipes.duplicate(true), "crawler": scree_crawler_state()}
 
 func fail_run(reason: String) -> void:
 	if state != "journey":
@@ -2341,7 +2752,7 @@ func capture_safe_wagon_state() -> void:
 		taken.append(bool(item.taken))
 		if item.has("id"):
 			taken_by_id[String(item.id)] = bool(item.taken)
-	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken, "pickup_taken": taken_by_id}
+	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken, "pickup_taken": taken_by_id, "crawler": scree_crawler_state()}
 	camp_secured = true
 	message = "CAMP SECURED — If Lolth falls, she returns to this moment at the Wagon."
 	message_time = 4.0
@@ -2387,7 +2798,9 @@ func restore_safe_wagon_state() -> void:
 			salvage[index].taken = bool(taken_by_id[pickup_id])
 		elif index < taken.size():
 			salvage[index].taken = bool(taken[index])
-	# spawn_zone() returned Lolth to the cave camp and the view to its zero offset.
+	# spawn_zone() returned Lolth to the cave camp and the view to its zero offset, and cleared
+	# the transient crawler. Its saved flags roll back together with the saved Echoes and ore.
+	apply_scree_crawler_state(saved.get("crawler", {}))
 	was_at_safe_wagon = false
 	message = "Restored at the safe Wagon. Mark I and %s's cure remain." % ", ".join(cured_allies)
 	message_time = 4.0
@@ -2437,6 +2850,7 @@ func restart_from_checkpoint() -> void:
 	passive_mission.clear()
 	state = "journey"
 	spawn_zone()
+	apply_scree_crawler_state(checkpoint.get("crawler", {}))
 	message = "Restored at %s. The Wagon holds." % checkpoint_label()
 	message_time = 4.0
 
@@ -2467,6 +2881,9 @@ func reset_to_prologue() -> void:
 	camp_secured = false
 	safe_wagon_state = {}
 	was_at_safe_wagon = false
+	crawler_activated = false
+	crawler_defeated = false
+	crawler_reward_paid = false
 	player_action = ""
 	player_action_time = 0.0
 	hurt_flash_time = 0.0
@@ -2656,6 +3073,154 @@ func enemy_region_limits(enemy: Dictionary) -> Vector2:
 	var origin := int(enemy.get("origin_zone", zone))
 	var region_end := ROUTE_THORNWAKE_END_X if origin == 0 else VIEW.x
 	return Vector2(ENEMY_EDGE_MARGIN, region_end - ENEMY_EDGE_MARGIN)
+
+# --- B-07 first Stonehook encounter -------------------------------------------------------
+func is_scree_crawler(shade: Dictionary) -> bool:
+	return String(shade.get("encounter_id", "")) == SCREE_CRAWLER_ID
+
+func scree_crawler_source() -> Rect2:
+	return SCREE_CRAWLER_SOURCE
+
+# Every actor Lolth can strike: the current cave threats plus the foothill crawler.
+func combat_targets() -> Array[Dictionary]:
+	var targets: Array[Dictionary] = shades.duplicate()
+	if not scree_crawler.is_empty():
+		targets.append(scree_crawler)
+	return targets
+
+# FIRST THREAD keeps its range, damage and cooldown. For the crawler the range is measured on
+# the same floor band as melee, and never shorter than melee reach on its visible body.
+func first_thread_reaches(shade: Dictionary) -> bool:
+	if is_scree_crawler(shade):
+		var gap := absf(float(shade.pos.x) - player.x)
+		return gap <= maxf(FIRST_THREAD_RANGE, melee_reach(shade)) and absf(float(shade.pos.y) - player.y) <= MELEE_VERTICAL_REACH
+	return player.distance_to(shade.pos) <= FIRST_THREAD_RANGE
+
+func scree_crawler_body_half_width() -> float:
+	return enemy_draw_geometry({"encounter_id": SCREE_CRAWLER_ID, "pos": Vector2.ZERO}).body.size.x / 2.0
+
+# The full visible body stays inside the foothill span 1760-3040, within its clear patrol.
+func scree_crawler_limits() -> Vector2:
+	var half := scree_crawler_body_half_width()
+	return Vector2(maxf(ROUTE_FOOTHILLS_START_X, SCREE_CRAWLER_PATROL.x) + half, minf(ROUTE_END_X, SCREE_CRAWLER_PATROL.y) - half)
+
+# The crawler reacts to Lolth only while she is inside its own foothill region.
+func lolth_in_crawler_region() -> bool:
+	return player.x >= ROUTE_FOOTHILLS_START_X
+
+func scree_crawler_windup_time() -> float:
+	return SCREE_CRAWLER_WINDUP
+
+# Lunge contact uses the same body as Lolth's melee; the windup starts one lunge further out.
+func scree_crawler_strike_range() -> float:
+	return melee_reach({"encounter_id": SCREE_CRAWLER_ID, "pos": Vector2.ZERO}) + SCREE_CRAWLER_LUNGE_SPEED * SCREE_CRAWLER_LUNGE_TIME
+
+func live_scree_crawler_count() -> int:
+	var count := 0
+	for shade in combat_targets():
+		if is_scree_crawler(shade) and not bool(shade.defeated):
+			count += 1
+	return count
+
+func scree_crawler_warning_visible() -> bool:
+	return not scree_crawler.is_empty() and not bool(scree_crawler.defeated) and String(scree_crawler.attack_state) == "windup"
+
+# Only legitimate foothill entry creates the crawler: the B-06 departure gate (real first
+# cure, safe camp, no playtester override) plus Lolth's world position. A saved defeat or an
+# existing actor prevents another copy.
+func scree_crawler_spawn_allowed() -> bool:
+	return zone == 0 and scree_crawler.is_empty() and not crawler_defeated and player.x >= ROUTE_FOOTHILLS_START_X and expedition_departure_allowed()
+
+func spawn_scree_crawler() -> void:
+	scree_crawler = {"encounter_id": SCREE_CRAWLER_ID, "region": "stonehook_foothills", "name": "SCREE CRAWLER", "pos": Vector2(SCREE_CRAWLER_HOME_X, GROUND_Y - 34), "health": SCREE_CRAWLER_HEALTH, "max_health": SCREE_CRAWLER_HEALTH, "echoes": 1, "behavior": "scree_lunge", "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "strike_spent": false, "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0, "facing_left": player.x < SCREE_CRAWLER_HOME_X}
+	crawler_activated = true
+	message = "A SCREE CRAWLER stirs in the foothill scree."
+	message_time = 2.5
+
+func update_foothill_encounter(delta: float) -> void:
+	if zone != 0:
+		return
+	if scree_crawler.is_empty():
+		if scree_crawler_spawn_allowed():
+			spawn_scree_crawler()
+		return
+	if not bool(scree_crawler.defeated):
+		update_scree_crawler(scree_crawler, delta)
+
+# Approach, a locked-direction windup, a short lunge that can hit once, then recovery.
+# It never targets the Wagon, never leaves the foothills and never strikes across the border.
+func update_scree_crawler(crawler: Dictionary, delta: float) -> void:
+	var lolth_in_region := lolth_in_crawler_region()
+	var dx := player.x - float(crawler.pos.x)
+	var motion := 0.0
+	var lunging := String(crawler.attack_state) == "strike"
+	crawler.attack_time = maxf(0.0, float(crawler.attack_time) - delta)
+	match String(crawler.attack_state):
+		"approach":
+			if lolth_in_region:
+				if absf(dx) > scree_crawler_strike_range():
+					motion = signf(dx) * SCREE_CRAWLER_SPEED * delta
+				elif absf(player.y - float(crawler.pos.y)) <= MELEE_VERTICAL_REACH:
+					crawler.attack_state = "windup"
+					crawler.attack_time = scree_crawler_windup_time()
+					crawler.attack_dir = signf(dx) if not is_zero_approx(dx) else (-1.0 if bool(crawler.facing_left) else 1.0)
+					crawler.strike_spent = false
+		"windup":
+			if not lolth_in_region:
+				# Retreat out of the foothills cancels the pending strike.
+				crawler.attack_state = "approach"
+				crawler.attack_time = 0.0
+			elif float(crawler.attack_time) <= 0.0:
+				crawler.attack_state = "strike"
+				crawler.attack_time = SCREE_CRAWLER_LUNGE_TIME
+		"strike":
+			motion = float(crawler.attack_dir) * SCREE_CRAWLER_LUNGE_SPEED * delta
+			if float(crawler.attack_time) <= 0.0:
+				crawler.attack_state = "recover"
+				crawler.attack_time = SCREE_CRAWLER_RECOVER
+		"recover":
+			if float(crawler.attack_time) <= 0.0:
+				crawler.attack_state = "approach"
+	var limits := scree_crawler_limits()
+	var previous_x := float(crawler.pos.x)
+	crawler.pos.x = clampf(previous_x + motion, limits.x, limits.y)
+	# Contact is tested after this frame's lunge motion, so the full lunge distance counts at
+	# any frame rate, including the final frame that ends the strike.
+	if lunging and not bool(crawler.strike_spent) and lolth_in_region and absf(player.x - float(crawler.pos.x)) <= melee_reach(crawler) and absf(player.y - float(crawler.pos.y)) <= MELEE_VERTICAL_REACH:
+		scree_crawler_strike_lands(crawler)
+	if String(crawler.attack_state) in ["windup", "strike"]:
+		update_enemy_facing(crawler, float(crawler.attack_dir))
+	else:
+		update_enemy_facing(crawler, float(crawler.pos.x) - previous_x)
+
+# A strike is spent on first contact, whether it wounds Lolth or she dashes through it.
+func scree_crawler_strike_lands(crawler: Dictionary) -> void:
+	crawler.strike_spent = true
+	if dodge_time > 0.0:
+		message = "Lolth dashes through the SCREE CRAWLER's lunge."
+		message_time = 1.2
+		return
+	if hurt_cooldown > 0.0:
+		return
+	hurt_lolth()
+
+# One credited defeat pays at most one Shadow Echo, still under the unchanged Thornwake cap.
+func defeat_scree_crawler() -> void:
+	crawler_defeated = true
+	if not crawler_reward_paid:
+		crawler_reward_paid = true
+		if mark_level > 0:
+			collect_echo(1)
+	message = "SCREE CRAWLER falls. Lolth absorbs its shadow."
+	message_time = 1.2
+
+func scree_crawler_state() -> Dictionary:
+	return {"activated": crawler_activated, "defeated": crawler_defeated, "reward_paid": crawler_reward_paid}
+
+func apply_scree_crawler_state(saved: Dictionary) -> void:
+	crawler_activated = bool(saved.get("activated", false))
+	crawler_defeated = bool(saved.get("defeated", false))
+	crawler_reward_paid = bool(saved.get("reward_paid", false))
 
 func update_enemy_facing(enemy: Dictionary, horizontal_motion: float) -> void:
 	if not is_zero_approx(horizontal_motion):
@@ -3142,6 +3707,9 @@ func _draw() -> void:
 	draw_player()
 	draw_foreground_overlay()
 	draw_foreground_readability()
+	# B-07: the crawler's lunge warning sits in front of the foothill frame overlay.
+	if scree_crawler_warning_visible():
+		draw_scree_crawler_warning(scree_crawler)
 	draw_route_markers()
 	draw_mark_vfx()
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
@@ -3290,6 +3858,9 @@ func enemy_source_cell(sheet: Texture2D, column: int, row: int) -> Rect2:
 	return Rect2(start, end - start)
 
 func enemy_sprite_frame(shade: Dictionary) -> Dictionary:
+	# B-07: selected by the actor's stable identity, never by Lolth's region or by name case.
+	if is_scree_crawler(shade):
+		return {"sheet": STONEHOOK_THREATS_RUNTIME, "source": scree_crawler_source()}
 	var sheet: Texture2D = BRIAR_HOUND_RUNTIME
 	if zone == 1:
 		sheet = STONEHOOK_THREATS_RUNTIME
@@ -3332,6 +3903,9 @@ func enemy_draw_geometry(shade: Dictionary) -> Dictionary:
 	var bounds := enemy_frame_bounds(sheet, source)
 	var size := enemy_visual_size(shade)
 	var draw_size := source.size * (size / source.size.y) if zone == 0 else Vector2(size, size)
+	if is_scree_crawler(shade):
+		# Uniform scale so the visible alpha body, not the padded crop, is 120 px tall.
+		draw_size = source.size * (SCREE_CRAWLER_BODY_HEIGHT / float(bounds.size.y))
 	var scale_factor := draw_size / source.size
 	var p: Vector2 = shade.pos
 	var destination := Rect2(p.x - (float(bounds.position.x) + float(bounds.size.x) / 2.0) * scale_factor.x, p.y + 34.0 - float(bounds.end.y) * scale_factor.y, draw_size.x, draw_size.y)
@@ -3339,7 +3913,8 @@ func enemy_draw_geometry(shade: Dictionary) -> Dictionary:
 	return {"sheet": sheet, "source": source, "destination": destination, "body": body}
 
 func draw_shades() -> void:
-	for shade in shades:
+	# B-07: the foothill crawler is drawn with the same sprite, label and health-bar path.
+	for shade in combat_targets():
 		if shade.defeated and pulse - shade.defeated_at > 0.42:
 			continue
 		var p: Vector2 = shade.pos
@@ -3386,6 +3961,10 @@ func prepare_enemy_frame_bounds() -> void:
 	ui_enemy_bounds_startup_usec = Time.get_ticks_usec() - started
 
 func cache_enemy_frame_bounds(sheet: Texture2D, source: Rect2, atlas: Image) -> void:
+	ui_enemy_bounds[sheet.resource_path + str(source)] = scan_alpha_bounds(source, atlas)
+	ui_enemy_bounds_scans += 1
+
+func scan_alpha_bounds(source: Rect2, atlas: Image) -> Rect2i:
 	var pixels := atlas.get_region(Rect2i(source))
 	var used := pixels.get_used_rect()
 	var minimum := pixels.get_size()
@@ -3398,11 +3977,21 @@ func cache_enemy_frame_bounds(sheet: Texture2D, source: Rect2, atlas: Image) -> 
 				minimum.y = mini(minimum.y, y)
 				maximum.x = maxi(maximum.x, x)
 				maximum.y = maxi(maximum.y, y)
-	ui_enemy_bounds[sheet.resource_path + str(source)] = Rect2i(minimum, maximum - minimum + Vector2i.ONE) if maximum.x >= 0 else Rect2i(Vector2i.ZERO, Vector2i(source.size))
-	ui_enemy_bounds_scans += 1
+	return Rect2i(minimum, maximum - minimum + Vector2i.ONE) if maximum.x >= 0 else Rect2i(Vector2i.ZERO, Vector2i(source.size))
+
+# B-07: the crawler's exact crop is scanned once here, before the first gameplay frame, with
+# the same alpha rule. It is kept apart from the 22 atlas cells so their cache is unchanged.
+func prepare_encounter_bounds() -> void:
+	ui_encounter_bounds.clear()
+	ui_encounter_bounds_scans = 0
+	var source := scree_crawler_source()
+	ui_encounter_bounds[STONEHOOK_THREATS_RUNTIME.resource_path + str(source)] = scan_alpha_bounds(source, STONEHOOK_THREATS_RUNTIME.get_image())
+	ui_encounter_bounds_scans += 1
 
 func enemy_frame_bounds(sheet: Texture2D, source: Rect2) -> Rect2i:
 	var key := sheet.resource_path + str(source)
+	if ui_encounter_bounds.has(key):
+		return ui_encounter_bounds[key]
 	if not ui_enemy_bounds.has(key):
 		push_error("Enemy frame was not prepared before gameplay: " + key)
 		return Rect2i(Vector2i.ZERO, Vector2i(source.size))
@@ -3415,6 +4004,22 @@ func draw_attack_telegraphs() -> void:
 	for shade in shades:
 		if not shade.defeated and String(shade.get("attack_state", "")) == "windup":
 			draw_attack_telegraph(shade)
+
+# B-07 ground warning: the strip the lunge will cross, in its locked direction, with a label.
+# Drawn after the foreground overlay so the frame art cannot hide it.
+func draw_scree_crawler_warning(crawler: Dictionary) -> void:
+	var geometry := enemy_draw_geometry(crawler)
+	var body: Rect2 = geometry.body
+	var direction := float(crawler.attack_dir)
+	var warning := Color(1.0, 0.42, 0.25, 0.7 + 0.3 * sin(pulse * 18.0))
+	var front_x := body.end.x if direction > 0.0 else body.position.x
+	var tip_x := front_x + direction * (SCREE_CRAWLER_LUNGE_SPEED * SCREE_CRAWLER_LUNGE_TIME + MELEE_LOLTH_HALF_WIDTH)
+	draw_rect(Rect2(minf(front_x, tip_x), GROUND_Y - 8.0, absf(tip_x - front_x), 12.0), Color(warning.r, warning.g, warning.b, 0.35))
+	draw_line(Vector2(front_x, GROUND_Y - 2.0), Vector2(tip_x, GROUND_Y - 2.0), warning, 4.0)
+	draw_line(Vector2(tip_x, GROUND_Y - 2.0), Vector2(tip_x - direction * 16.0, GROUND_Y - 12.0), warning, 4.0)
+	draw_line(Vector2(tip_x, GROUND_Y - 2.0), Vector2(tip_x - direction * 16.0, GROUND_Y + 8.0), warning, 4.0)
+	var p: Vector2 = crawler.pos
+	draw_string(ThemeDB.fallback_font, Vector2(p.x - 60.0, body.position.y - 44.0), "LUNGE!", HORIZONTAL_ALIGNMENT_CENTER, 120, 16, warning)
 
 func draw_attack_telegraph(shade: Dictionary) -> void:
 	var p: Vector2 = shade.pos

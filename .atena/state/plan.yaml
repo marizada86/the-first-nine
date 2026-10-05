@@ -606,7 +606,7 @@ active_plan:
   evidence: "[[2026-10-05-b07-stonehook-first-encounter]]"
   prior_acceptance: "[[2026-10-05-b06-integrated-human-acceptance]]"
   instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
-  status: approved-awaiting-document-delivery
+  status: implemented-awaiting-human-review
   mode: guided
   request_classification: NEW_PLAN
   preparation_approved: true
@@ -620,18 +620,26 @@ active_plan:
   execution_target: opus-5.5
   baseline_commit: "e189184e1928efca8172ce4a9c65996be81c206a"
   proposed_implementation_branch: codex/b07-stonehook-first-encounter
-  checkpoint: awaiting-authorized-document-delivery-verification
+  checkpoint: implementation-awaiting-human-review
   documentation_publication_approved: true
   documentation_publication_source: "Owner explicitly authorized one documentation-only commit and normal push to main of the B-07 package and B-06 integrated acceptance receipt, excluding unrelated local evidence."
-  publication_snapshot: pre-push
-  documentation_published: false
-  delivery_verified: false
+  publication_snapshot: delivered-and-verified
+  documentation_published: true
+  delivery_commit: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+  delivery_verified: true
+  delivery_verification: "Owner handoff supplied fcc98b63e1919c54b6df563c8de0c7173a7affcb. Executor fetched origin: origin/main equals it, its parent is e189184 and the committed delivery checker passed (8 package files, 22 links). The pre-push snapshot fields described the earlier checkpoint; the local delivery checkpoint is cleared without a further publication commit."
+  implementation_branch: codex/b07-stonehook-first-encounter
+  implementation_base: "fcc98b63e1919c54b6df563c8de0c7173a7affcb"
+  implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+  implementation_committed: local-only
+  implementation_published: false
+  human_acceptance: pending
   scope: "One finite Scree Crawler in the existing on-foot Stonehook foothills, telegraphed combat, native-aspect geometry and consistent encounter/reward restoration; fixed cave and B-06 locks preserved."
   blocking_gaps: []
   steps: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
   batches: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
-  steps_completed: []
-  batches_completed: []
+  steps_completed: ["S-001-encounter", "S-002-restoration", "S-003-validation"]
+  batches_completed: ["B-001-encounter", "B-002-restoration", "B-003-validation"]
   resolvable_defaults: "One crawler at x=2340, 3 health, one capped Echo; static upper-left atlas crop 768x480, visible body height 120; retreat permitted, failure clears transient actors and rolls back encounter flags/reward together. All numbers are playtest settings, not new canon."
   deferred: "Stonehook boss/shrine, remaining enemies, Mark II and cures, wagon travel, parry, missions/posts, web/rope mechanics, new assets/audio, dependencies, disk save, broad tuning and existing B-06 visual limitations."
   push_approved: false
@@ -639,7 +647,10 @@ active_plan:
   merge_approved: false
   dispatch_approved: false
   standing_publication_authority: none
-plan_cursor: B-07-approved-awaiting-document-delivery
+  implementation_adjustments: "Within the approved defaults: crawler home x=2520 (proposed 2340) and a clear patrol span 2400-2860 inside the foothills, because the existing foothill foreground overlay is nearly opaque at x 1800-2200 and 2880-3040; one strike removes one existing hurt (1 of 3 health), the spec's 12-health wording having no counterpart in the 3-health model; lunge contact is tested after each frame's motion. Review required."
+  validation: "Linux executor run only, see implementation evidence; no Windows or CI result is claimed."
+  next_recommendation: "Non-authorizing. Owner review of the local implementation, captures and limitations, then official Windows validation by Atena; any push, PR or merge needs separate explicit authority."
+plan_cursor: B-07-implemented-awaiting-human-review
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

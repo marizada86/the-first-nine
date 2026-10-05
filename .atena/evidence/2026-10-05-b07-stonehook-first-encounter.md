@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-document-delivery
+status: implemented-awaiting-human-review
 kind: preparation-evidence
 created: 2026-10-05
 plan_id: 2026-10-05-b07-stonehook-first-encounter
@@ -12,9 +12,19 @@ implementation_approved: true
 instruction: "[[2026-10-05-b07-stonehook-first-encounter-instruction]]"
 documentation_publication_approved: true
 documentation_publication_source: owner-authorized-one-documentation-commit-and-normal-push-to-main
-publication_snapshot: pre-push
-documentation_published: false
+publication_snapshot: delivered-and-verified
+documentation_published: true
+delivery_commit: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+delivery_verified: true
+implementation_branch: codex/b07-stonehook-first-encounter
+implementation_base: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+human_acceptance: pending
 engine_rerun: false
+push_approved: false
+pull_request_approved: false
+merge_approved: false
+dispatch_approved: false
 ---
 
 # B07 Preparation Evidence
@@ -60,3 +70,7 @@ Remote main was independently checked at `e189184e1928efca8172ce4a9c65996be81c20
 The active checkpoint now awaits verification of authorized document delivery. These records are the pre-push snapshot: `documentation_published: false` makes no claim about the eventual push outcome. The new commit hash and confirmed remote result will be reported after the push. Opus may verify that fetched commit under the delivered instruction and clear the local delivery gate without demanding an additional receipt commit. No implementation publication, PR, merge, external dispatch or B-08 work is authorized.
 
 Before staging, `.atena/generated/2026-10-05-b07-delivery/validate_delivery.cjs working` passed with exit 0: the eight-file package is scoped to `.atena/`, all 22 wiki links resolve to package or tracked baseline records, approval fields agree, completed history and unrelated state are preserved, and no implementation step or production edit exists. The checker uses only built-in Node modules, without the unpushed owner-local sync manifest. A separate owner-local SHA256 check confirmed all 374 earlier evidence files unchanged. These are record/scope checks only, not engine validation or a push result.
+
+## Delivery Verification and Implementation Checkpoint
+
+On 2026-10-05, the owner supplied the published documentation commit `fcc98b63e1919c54b6df563c8de0c7173a7affcb` and the explicit implementation handoff. The executor fetched origin and verified that commit as `origin/main`, a direct child of `e189184`; the committed delivery checker passed. The local delivery checkpoint was then cleared. The earlier `pre-push` snapshot and false publication field describe the dated pre-push checkpoint and are superseded here, not rewritten. S-001 through S-003 were executed locally on `codex/b07-stonehook-first-encounter` from that commit. Results, implementation decisions and limitations are in [[2026-10-05-b07-stonehook-first-encounter-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-08 work has started.

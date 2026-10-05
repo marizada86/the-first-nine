@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-document-delivery
+status: implemented-awaiting-human-review
 kind: external-implementation-instruction
 created: 2026-10-05
 plan_id: 2026-10-05-b07-stonehook-first-encounter
@@ -13,8 +13,14 @@ baseline_commit: e189184e1928efca8172ce4a9c65996be81c206a
 proposed_implementation_branch: codex/b07-stonehook-first-encounter
 documentation_publication_approved: true
 documentation_publication_source: owner-authorized-one-documentation-commit-and-normal-push-to-main
-publication_snapshot: pre-push
-documentation_published: false
+publication_snapshot: delivered-and-verified
+documentation_published: true
+delivery_commit: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+delivery_verified: true
+implementation_branch: codex/b07-stonehook-first-encounter
+implementation_base: fcc98b63e1919c54b6df563c8de0c7173a7affcb
+implementation_evidence: "[[2026-10-05-b07-stonehook-first-encounter-implementation]]"
+human_acceptance: pending
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -82,3 +88,7 @@ Return exactly these sections in English:
 5. Approval and publication state: implementation awaiting review, nothing pushed, no PR/merge, no later batch started and a non-authorizing next recommendation.
 
 Stop for the owner's review. Do not push, open or merge a PR, send external messages, delete branches or begin B-08. Automatic hooks and tool-generated publication links are not owner authorization.
+
+## Delivery Verification and Implementation Checkpoint
+
+On 2026-10-05, the owner supplied the published documentation commit `fcc98b63e1919c54b6df563c8de0c7173a7affcb` and the explicit implementation handoff. The executor fetched origin and verified that commit as `origin/main`, a direct child of `e189184`; the committed delivery checker passed. The local delivery checkpoint was then cleared. The earlier `pre-push` snapshot and false publication field describe the dated pre-push checkpoint and are superseded here, not rewritten. S-001 through S-003 were executed locally on `codex/b07-stonehook-first-encounter` from that commit. Results, implementation decisions and limitations are in [[2026-10-05-b07-stonehook-first-encounter-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-08 work has started.
