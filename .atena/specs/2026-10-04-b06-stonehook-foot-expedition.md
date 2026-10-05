@@ -1,5 +1,5 @@
 ---
-status: draft-awaiting-approval-selection
+status: approved-awaiting-external-delivery
 kind: bounded-runtime-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -8,8 +8,13 @@ implementation_preceded_spec: false
 request_classification: NEW_PLAN
 preparation_approved: true
 preparation_authority: owner-stated-pode-to-plan-and-English-Opus-prompt
-approval_mode: unconfigured
-implementation_approved: false
+approval_mode: per-plan
+approved: 2026-10-04
+approval_source: owner-selected-1-to-approve-the-presented-B06-implementation-scope
+request_execution_classification: IN_PLAN
+implementation_approved: true
+execution_target: opus-5.5
+preparation_commit: 0a82ead8384969a11399f20ef3dcf3828734df27
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -23,7 +28,7 @@ instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
 
 # B-06 First Stonehook Foot Expedition
 
-B-06 proposes the first reversible expedition from the cave to early Stonehook. Lolth walks through a connected route, collects one regional resource and returns to the same wagon. The wagon, relics and eight family members remain at the cave. This document is ready for approval selection, not implementation: the owner authorized preparation only.
+B-06 defines the first reversible expedition from the cave to early Stonehook. Lolth walks through a connected route, collects one regional resource and returns to the same wagon. The wagon, relics and eight family members remain at the cave. The owner approved this bounded implementation scope per plan by selecting option 1 on 2026-10-04. Execution is assigned to Opus 5.5 and awaits separately authorized delivery; no local implementation is performed by recording this approval.
 
 ## Authoritative Sources and Existing State
 
@@ -74,9 +79,9 @@ Allowed production files are `main.gd` and, only for necessary proximity/context
 
 ## Gaps and Grounded Defaults
 
-BLOCKING design gaps: none for this proposal. Execution still requires approval selection, explicit plan approval and delivery of the exact records to the executor; those are gates, not fabricated implementation results.
+BLOCKING design gaps: none for this scope. Approval selection and explicit plan approval are satisfied. Execution still requires authorized delivery of the exact approved records to the executor; this is a gate, not an implementation result.
 
-RESOLVABLE defaults are the short route geometry, legitimate departure gate, one stable ore pickup, persistent camp simulation, spatial visual blend and return-to-cave failure semantics above. They are proposed technical/playtest choices requiring plan approval, not new canon. The existing preloads supply visual assets; no generated reference is silently admitted.
+RESOLVABLE defaults are the short route geometry, legitimate departure gate, one stable ore pickup, persistent camp simulation, spatial visual blend and return-to-cave failure semantics above. They are technical/playtest choices approved within this plan, not new canon. The existing preloads supply visual assets; no generated reference is silently admitted.
 
 DEFERRED work includes full Stonehook combat, material progression, Mark II, higher powers, audio, later-region terrain, permanent save files and broader tuning. If the executor finds the bounded camp/route separation impossible without a broader rewrite or new design choice, stop with a PLAN_CHANGE_REQUEST rather than silently changing scope.
 
@@ -87,7 +92,7 @@ DEFERRED work includes full Stonehook combat, material progression, Mark II, hig
 - S-003 in B-002: extend safe-wagon and F4 operational restoration plus new-run reset for route state.
 - S-004 in B-003: run positive/negative, real-input, rendered and regression checks; write English implementation evidence and stop for human review.
 
-Stable batches are B-001 Route and Rendering, B-002 Camp and State, B-003 Validation and Evidence. `per-plan` approves the local/executor implementation scope as one unit; `per-batch` stops before each batch; `per-step` stops before each S-001 through S-004. Current mode is `unconfigured`, with all implementation steps pending. Plan approval explicitly covers the bounded coordinate/context change described above, not a general architecture rewrite. Push, PR, merge, external dispatch and dependency gates remain separate.
+Stable batches are B-001 Route and Rendering, B-002 Camp and State, B-003 Validation and Evidence. The owner selected `per-plan`: one approval covers S-001 through S-004 and all three batches for Opus 5.5, without new batch/step approvals inside this unchanged scope. All implementation steps remain pending external delivery. Plan approval explicitly covers the bounded coordinate/context change described above, not a general architecture rewrite. Push, PR, merge, external dispatch and dependency gates remain separate.
 
 ## Validation and Evidence
 
@@ -101,6 +106,6 @@ Write `.atena/evidence/2026-10-04-b06-stonehook-foot-expedition-implementation.m
 
 ## Recovery and Delivery
 
-Use a codex-prefixed feature branch from the verified current approved baseline, preserving local work and all existing branches. Normal corrective commits are the recovery path; no destructive resets, force-pushes or amending published history. The current local baseline includes unpushed acceptance `2f34635`; the preparation documents are also local. The owner must separately approve their publication/delivery before a cloud executor can rely on them. A missing commit or record is a delivery blocker: do not reconstruct an unseen spec from a pasted summary.
+Use a codex-prefixed feature branch from the verified current approved baseline, preserving local work and all existing branches. Normal corrective commits are the recovery path; no destructive resets, force-pushes or amending published history. The current local baseline includes unpushed acceptance `2f34635`; preparation commit `0a82ead` and this approval reconciliation are also local. The owner must separately approve their publication/delivery before a cloud executor can rely on them. A missing commit or record is a delivery blocker: do not reconstruct an unseen spec from a pasted summary.
 
-The English handoff is prepared but not sent. It tells Opus to check the live approval mode, exact repository state and delivery before editing. No runtime, art, branch publication or external message is performed during preparation.
+The English handoff records the per-plan implementation approval but has not been sent. It tells Opus to check the live approval mode, exact repository state and delivery before editing. No runtime, art, branch publication or external message is performed during preparation or this approval reconciliation.

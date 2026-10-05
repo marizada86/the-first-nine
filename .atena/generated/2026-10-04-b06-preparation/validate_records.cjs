@@ -1,4 +1,4 @@
-// B-06 preparation checks only. No Godot execution or whole-file YAML parsing.
+// B-06 approval/delivery checkpoint checks only. No Godot execution or whole-file YAML parsing.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {execFileSync}=require('node:child_process');
 const baseline='2f34635ff5adf735e51a7c144862e7c1bba37bed';
@@ -16,8 +16,13 @@ walk('.atena');
 let links=0;
 for(const file of [spec,evidence,instruction]){
   const text=fs.readFileSync(file,'utf8');
-  assert(text.includes('approval_mode: unconfigured'));
-  assert(text.includes('implementation_approved: false'));
+  assert(text.includes('status: approved-awaiting-external-delivery'));
+  assert(text.includes('approval_mode: per-plan'));
+  assert(text.includes('approved: 2026-10-04'));
+  assert(text.includes('approval_source: owner-selected-1-to-approve-the-presented-B06-implementation-scope'));
+  assert(text.includes('implementation_approved: true'));
+  assert(text.includes('execution_target: opus-5.5'));
+  assert(text.includes('push_approved: false')&&text.includes('dispatch_approved: false'));
   assert(!/^(<<<<<<<|=======|>>>>>>>)/m.test(text));
   for(const match of text.matchAll(/\[\[([^\]]+)\]\]/g)){assert(ids.has(match[1]),'Unresolved link '+match[1]);links++;}
 }
@@ -28,8 +33,9 @@ for(const id of ['S-001','S-002','S-003','S-004','B-001','B-002','B-003'])assert
 const state=normalize(fs.readFileSync('.atena/state/plan.yaml','utf8'));
 const before=normalize(git('show',baseline+':.atena/state/plan.yaml'));
 const active=state.match(/^active_plan:\n([\s\S]*?)^plan_cursor:/m)[1];
-for(const fact of ['id: "2026-10-04-b06-stonehook-foot-expedition"','approval_mode: unconfigured','implementation_approved: false','push_approved: false','pull_request_approved: false','merge_approved: false','dispatch_approved: false','blocking_gaps: []','checkpoint: approval-selection-pending'])assert(active.includes(fact),'Missing gate '+fact);
-assert(!/^  approved:/m.test(active),'Preparation must not fabricate execution approval');
+for(const fact of ['id: "2026-10-04-b06-stonehook-foot-expedition"','status: approved-awaiting-external-delivery','approval_mode: per-plan','approval_selection: owner-selected-option-1','approved: "2026-10-04"','request_execution_classification: IN_PLAN','implementation_approved: true','execution_target: opus-5.5','steps_completed: []','push_approved: false','pull_request_approved: false','merge_approved: false','dispatch_approved: false','blocking_gaps: []','checkpoint: approved-plan-awaiting-external-delivery','preparation_commit: "0a82ead8384969a11399f20ef3dcf3828734df27"'])assert(active.includes(fact),'Missing gate '+fact);
+assert(/^  approval_source: "Owner selected 1 /m.test(active),'Missing explicit owner approval provenance');
+assert(state.includes('plan_cursor: B-06-approved-awaiting-external-delivery'));
 assert.equal(state.replace(/^active_plan:\n[\s\S]*?^plan_cursor:.*$/m,'active_plan: null\nplan_cursor: complete'),before,'Completed plan/history or unrelated state changed');
 assert(!/\t/.test(state));
 for(const match of active.matchAll(/\[\[([^\]]+)\]\]/g)){assert(ids.has(match[1]));links++;}
@@ -40,5 +46,5 @@ for(const line of git('status','--porcelain').split('\n').filter(Boolean)){
   assert(allowed.has(file)||file==='.atena/generated/2026-10-04-b06-preparation/','Out-of-scope worktree change '+file);
 }
 git('-c','core.whitespace=-blank-at-eof','diff','--check',baseline,'--');
-console.log('B06_PREPARATION_PASS: '+links+' links, ADD contract, pending approval mode/gates, exact completed state/history and scoped documentation preserved.');
+console.log('B06_APPROVAL_PASS: '+links+' links, ADD contract, explicit per-plan approval, pending delivery/publication gates, exact completed state/history and scoped documentation preserved.');
 console.log('No B-06 implementation, new engine results, publication, external dispatch or full YAML parser claim.');
