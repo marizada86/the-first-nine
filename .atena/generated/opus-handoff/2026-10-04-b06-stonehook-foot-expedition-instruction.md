@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-external-delivery
+status: approved-awaiting-external-execution
 kind: external-implementation-instruction
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -10,6 +10,9 @@ approved: 2026-10-04
 approval_source: owner-selected-1-to-approve-the-presented-B06-implementation-scope
 implementation_approved: true
 execution_target: opus-5.5
+documentation_publication_approved: true
+documentation_published: true
+delivery_commit: 77ee387d5649a131ae20c5910b2dc7421c76f22f
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -18,15 +21,15 @@ dispatch_approved: false
 
 # B-06 Stonehook Foot Expedition Instructions for Opus 5.5
 
-Implement only the first reversible on-foot expedition from Thornwake to early Stonehook, using the repository plan as the source of truth, once the delivery gate is satisfied. The owner approved the complete bounded implementation scope per plan by selecting option 1 on 2026-10-04. This handoff records that approval but has not been delivered or dispatched. Check the live approval and delivery gate below before editing anything.
+Implement only the first reversible on-foot expedition from Thornwake to early Stonehook, using the repository plan as the source of truth. The owner approved the complete bounded implementation scope per plan by selecting option 1 on 2026-10-04 and then authorized documentation publication to main. Repository delivery is recorded below; this instruction has not been sent as an external message. Verify the delivered approval records before editing anything.
 
 ## Approval and Delivery Gate
 
 Work in `marizada86/the-first-nine`. Inspect `.atena/state/plan.yaml`, the linked B-06 spec/evidence and this instruction. Require the delivered records to agree on explicit B-06 implementation approval and `per-plan`. Once authorized delivery is recorded and its checkpoint cleared, execute S-001 through S-004 without seeking new batch or step approval within this unchanged scope. If the live records are missing, unconfigured, unapproved or still awaiting delivery, read and report readiness only; do not start. Old B-01 through B-05 approvals, the accepted playtest and a pasted copy of this instruction do not substitute for the delivered B-06 approval records.
 
-Report the exact inspected branch, HEAD and working-tree status. Current preparation baseline is local `2f34635ff5adf735e51a7c144862e7c1bba37bed`, containing the owner's accepted integrated playtest; gameplay comes from `05eac1e7a639e213f39cff81b1e75305727ab4d0`. Preparation commit `0a82ead8384969a11399f20ef3dcf3828734df27` and the subsequent approval reconciliation are not yet published. A later owner-authorized publication may add delivery records; use that delivered version, not an obsolete exact-HEAD requirement. Confirm the listed records actually exist and the branch contains the accepted facing implementation/merge, preparation and approval. Stop and report missing delivery if required commits or files are absent. Never pretend an older branch contains a newer correction or reconstruct unseen records from this summary.
+Report the exact inspected branch, HEAD and working-tree status. Fetch origin/main without discarding local work. It must contain acceptance `2f34635ff5adf735e51a7c144862e7c1bba37bed`, preparation `0a82ead8384969a11399f20ef3dcf3828734df27` and approval `77ee387d5649a131ae20c5910b2dc7421c76f22f`, plus this delivery reconciliation or a later verified descendant. Those three commits were normally pushed and verified at remote HEAD `77ee387`; gameplay remains from `05eac1e7a639e213f39cff81b1e75305727ab4d0`. Do not require an obsolete exact HEAD or start from the still-pending delivery wording at the initial approval commit. Confirm the listed records exist and the branch contains the accepted facing implementation/merge, preparation, approval and cleared delivery checkpoint. Stop and report missing delivery if required commits or files are absent. Never pretend an older branch contains a newer correction or reconstruct unseen records from this summary.
 
-Use a separate `codex/b06-stonehook-foot-expedition` branch after the execution gate is met. Preserve dirty work and all existing branches. No force-push, destructive reset, published-history amend or branch deletion. Per-plan implementation approval does not authorize push, PR, merge or external messages.
+Use a separate `codex/b06-stonehook-foot-expedition` branch from the verified delivered main after the execution gate is met. Preserve dirty work and all existing branches. No force-push, destructive reset, published-history amend or branch deletion. The documentation push is already authorized and recorded; `push_approved: false` refers to future B-06 implementation publication. Per-plan implementation approval does not authorize that push, PR, merge or external messages.
 
 ## Read Before Editing
 

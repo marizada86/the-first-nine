@@ -511,7 +511,7 @@ active_plan:
   spec: "[[2026-10-04-b06-stonehook-foot-expedition]]"
   evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
   instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
-  status: approved-awaiting-external-delivery
+  status: approved-awaiting-external-execution
   mode: guided
   request_classification: NEW_PLAN
   preparation_approved: true
@@ -523,13 +523,19 @@ active_plan:
   request_execution_classification: IN_PLAN
   implementation_approved: true
   execution_target: opus-5.5
+  documentation_publication_approved: true
+  documentation_publication_source: "Owner answered autorizado to publishing the three local documentation commits on main for Claude to read."
+  documentation_published: true
+  documentation_publication_branch: main
+  delivery_commit: "77ee387d5649a131ae20c5910b2dc7421c76f22f"
+  delivery_verified: true
   push_approved: false
   pull_request_approved: false
   merge_approved: false
   dispatch_approved: false
   scope: "One reversible on-foot Thornwake-to-early-Stonehook corridor, gradual visual transition and one ore pickup; cave wagon/family stay fixed, existing camp simulation and safe/F4 restore are preserved."
   blocking_gaps: []
-  checkpoint: approved-plan-awaiting-external-delivery
+  checkpoint: external-execution-ready-after-checkout-verification
   preparation_commit: "0a82ead8384969a11399f20ef3dcf3828734df27"
   baseline_commit: "2f34635ff5adf735e51a7c144862e7c1bba37bed"
   gameplay_baseline: "05eac1e7a639e213f39cff81b1e75305727ab4d0"
@@ -539,9 +545,9 @@ active_plan:
   steps_completed: []
   resolvable_defaults: "Approved route spans 1280+480+1280 world units with original cave at x=190 and floor y=555; legitimate Mark I/one cure/repair/safe return gates departure; one stable finite ore pickup, ongoing offscreen cave threats and restore to last valid cave snapshot. Technical/playtest defaults within this plan, not new canon."
   deferred: "Stonehook combat/boss/shrine, Mark II and further cures, wagon travel, pullers/posts/missions, rope teleport, web gates, later regions, parry, new art/audio, disk saves and tuning."
-  delivery_gate: "Acceptance commit 2f34635, preparation commit 0a82ead and approval records remain local until separately authorized publication/delivery. Opus must verify exact delivery and a cleared delivery checkpoint before implementation."
-  exception: "Per-plan approval records only; execution is assigned to Opus after delivery, not local Atena implementation. No runtime edits, new branch, B-06 implementation, new engine results, push, PR, merge, external Page or dispatch. Existing completed plan/history remain unchanged."
-plan_cursor: B-06-approved-awaiting-external-delivery
+  delivery_gate: "Acceptance 2f34635, preparation 0a82ead and approval 77ee387 were normally pushed to origin/main and remote HEAD verified at 77ee387. This reconciliation clears documentation delivery; Opus must fetch/read it or a later descendant and verify the approved checkout before implementation."
+  exception: "Authorized documentation publication/reconciliation only; execution is assigned to Opus, not local Atena implementation. No runtime edits, new implementation branch, B-06 implementation, new engine results, PR, merge, external Page or message dispatch. push_approved false applies to future implementation publication. Existing completed plan/history remain unchanged."
+plan_cursor: B-06-approved-awaiting-external-execution
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"
