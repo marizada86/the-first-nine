@@ -181,6 +181,28 @@ const SCREE_CRAWLER_WINDUP := 0.7
 const SCREE_CRAWLER_LUNGE_TIME := 0.25
 const SCREE_CRAWLER_LUNGE_SPEED := 180.0
 const SCREE_CRAWLER_RECOVER := 1.0
+# B-08 Cliff Harrier: the upper-right bird of the same atlas, one finite foothill actor.
+# Numbers are playtest defaults. Attack initiation is 170, not the proposed 180: body reach
+# (44 + 69.1) plus the longest dive (220 * 0.3 = 66) cannot connect from 180.
+const CLIFF_HARRIER_ID := "stonehook_cliff_harrier_01"
+const CLIFF_HARRIER_SOURCE := Rect2(768, 0, 768, 497)
+const CLIFF_HARRIER_ACTIVATION_X := 2600.0
+const CLIFF_HARRIER_HOME_X := 2760.0
+const CLIFF_HARRIER_PATROL := Vector2(2400.0, 2860.0)
+const CLIFF_HARRIER_BODY_HEIGHT := 110.0
+const CLIFF_HARRIER_HEALTH := 3
+const CLIFF_HARRIER_HOVER := 30.0
+const CLIFF_HARRIER_BOB := 6.0
+const CLIFF_HARRIER_BOB_RATE := 2.4
+const CLIFF_HARRIER_APPROACH_SPEED := 70.0
+const CLIFF_HARRIER_RETREAT_SPEED := 45.0
+const CLIFF_HARRIER_RETREAT_RANGE := 100.0
+const CLIFF_HARRIER_ATTACK_RANGE := 170.0
+const CLIFF_HARRIER_WINDUP := 0.8
+const CLIFF_HARRIER_DIVE_TIME := 0.3
+const CLIFF_HARRIER_DIVE_SPEED := 220.0
+const CLIFF_HARRIER_DIVE_DIP := 18.0
+const CLIFF_HARRIER_RECOVER := 1.2
 const ROUTE_ORE_X := 2620.0
 # H-01 and H-02 shells. Identifiers only: they are never displayed to the player.
 # Final panels and dialogue require an approved English script and art admission.
@@ -247,6 +269,9 @@ var ui_enemy_bounds_startup_usec := 0
 # Encounter-specific source crops, prepared once at startup like the 22 atlas cells above.
 var ui_encounter_bounds: Dictionary = {}
 var ui_encounter_bounds_scans := 0
+# B-08: the Harrier crop shares the encounter cache but keeps its own scan counter, so the
+# B-07 crawler-crop count (1) keeps its meaning.
+var ui_harrier_bounds_scans := 0
 var message := "THE LAST CAMP — Keep them alive."
 var message_time := 5.0
 var state := "journey" # opening, journey, shar_shell, cure, victory, defeat
@@ -271,6 +296,11 @@ var scree_crawler: Dictionary = {}
 var crawler_activated := false
 var crawler_defeated := false
 var crawler_reward_paid := false
+# B-08 Cliff Harrier: an independent actor and independent flags, saved like the crawler's.
+var cliff_harrier: Dictionary = {}
+var harrier_activated := false
+var harrier_defeated := false
+var harrier_reward_paid := false
 var passive_mission: Dictionary = {}
 var mission_selected := 0
 var posted_allies: Array[String] = []
@@ -576,6 +606,7 @@ func run_self_test() -> void:
 	var combat_readability_ready := run_combat_readability_self_test()
 	var expedition_ready := run_stonehook_expedition_self_test()
 	var encounter_ready := run_stonehook_encounter_self_test()
+	var harrier_ready := run_cliff_harrier_self_test()
 	if not run_playtester_self_test():
 		get_tree().quit(1)
 		return
@@ -700,7 +731,7 @@ func run_self_test() -> void:
 	fail_run("hollowroot test")
 	restart_from_checkpoint()
 	var hollowroot_checkpoint := zone == 2 and mark_level == 3 and hollowroot_boss_defeated and hollowroot_web_anchor_open
-	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and expedition_ready and encounter_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
+	if controls_bound and opening_cave_ready and thornwake_tutorial_ready and first_boss_ready and stabilization_ready and combat_readability_ready and expedition_ready and encounter_ready and harrier_ready and wagon_failure and first_wave_ready and second_wave_ready and combo_works and stock_capacity and cataplasm_works and wheel_kit_works and brazier_works and dodge_works and cure_prompted and chosen_ally_helps and drow_returns and checkpoint_restored and tutorial_never_starts_shar and first_cure_stays_at_cave and first_cure_travel_blocked and first_mark_not_repeated and direct_entry_blocked and mountain_enemies_ready and scree_works and axle_brakes_work and stone_maw_ready and rope_route_works and second_cure_prompted and hollowroot_ready and hollowroot_enemies_ready and third_cure_prompted and web_anchor_works and hollowroot_checkpoint:
 		print("SELF_TEST_PASS: Thornwake, Stonehook, and Hollowroot combat, cures, web crossing, checkpoints, and chapter transitions are ready")
 		get_tree().quit(0)
 	else:
@@ -1202,7 +1233,10 @@ func run_combat_readability_self_test() -> bool:
 # B-06 corridor fixtures run with the B-07 encounter already resolved (flagged defeated before
 # the safe capture, without paying its Echo), so their assertions keep their pre-B-07 meaning.
 # B-07 checks pass with_encounter = true and exercise the crawler explicitly.
-func reach_expedition_ready_for_test(with_encounter := false) -> void:
+# B-07 suites pass with_encounter (live crawler); B-08 suites also pass with_harrier. Each
+# encounter left out is marked already resolved (activated and defeated, no Echo paid), so
+# B-06 and B-07 suites keep their original meaning beside the new actor.
+func reach_expedition_ready_for_test(with_encounter := false, with_harrier := false) -> void:
 	reach_safe_camp_for_test()
 	player = Vector2(CARAVAN_X + 20.0, GROUND_Y - PLAYER_FEET_OFFSET)
 	use_camp_action()
@@ -1213,6 +1247,9 @@ func reach_expedition_ready_for_test(with_encounter := false) -> void:
 	if not with_encounter:
 		crawler_activated = true
 		crawler_defeated = true
+	if not with_harrier:
+		harrier_activated = true
+		harrier_defeated = true
 	was_at_safe_wagon = false
 	update_safe_wagon()
 	snap_camera()
@@ -1847,6 +1884,558 @@ func run_stonehook_encounter_self_test() -> bool:
 		push_error("SELF_TEST_B07_FAIL: %s" % ", ".join(failed))
 	return failed.is_empty()
 
+# B-08 test fixtures. They place state only; behavior runs through the production update.
+func ensure_harrier_for_test(checks: Dictionary) -> bool:
+	if cliff_harrier.is_empty():
+		reach_expedition_ready_for_test(true, true)
+		enter_foothills_for_test(CLIFF_HARRIER_ACTIVATION_X + 20.0)
+		checks.section_fixtures_ready = false
+	return not cliff_harrier.is_empty()
+
+func hold_harrier_for_test(health_value: int, x: float = CLIFF_HARRIER_HOME_X) -> void:
+	if cliff_harrier.is_empty():
+		return
+	cliff_harrier.health = health_value
+	cliff_harrier.pos = Vector2(x, cliff_harrier_anchor_y(CLIFF_HARRIER_HOVER))
+	cliff_harrier.attack_state = "recover"
+	cliff_harrier.attack_time = 99.0
+	cliff_harrier.bob_time = 0.0
+	cliff_harrier.hit_flash = 0.0
+
+func arm_harrier_for_test(x: float = CLIFF_HARRIER_HOME_X) -> void:
+	if cliff_harrier.is_empty():
+		return
+	cliff_harrier.health = 10
+	cliff_harrier.pos = Vector2(x, cliff_harrier_anchor_y(CLIFF_HARRIER_HOVER))
+	cliff_harrier.attack_state = "approach"
+	cliff_harrier.attack_time = 0.0
+	cliff_harrier.bob_time = 0.0
+	cliff_harrier.strike_spent = false
+
+# Holds the crawler out of the way (recovering at its own left bound) so Harrier-only
+# measurements are not affected by it; it stays a live, separate actor.
+func park_crawler_for_test(far := false) -> void:
+	if not scree_crawler.is_empty():
+		# far: out past its bound, only for sections that run no frames (nothing clamps it).
+		hold_crawler_for_test(SCREE_CRAWLER_HEALTH, 2200.0 if far else scree_crawler_limits().x)
+
+func harrier_altitude_for_test() -> float:
+	return GROUND_Y - 34.0 - float(cliff_harrier.pos.y)
+
+# Runs frames until the Harrier leaves the given state, forcing no hurt cooldown when asked.
+func run_harrier_state_for_test(state_name: String, limit: int, clear_cooldown := false, dt: float = 1.0 / 60.0) -> int:
+	var frames := 0
+	while frames < limit and String(cliff_harrier.attack_state) == state_name:
+		if clear_cooldown:
+			hurt_cooldown = 0.0
+		encounter_frames_for_test(1, dt)
+		frames += 1
+	return frames
+
+# B-08 checks. Each entry is a named assertion so faulty test subclasses can be identified.
+func cliff_harrier_checks() -> Dictionary:
+	var checks := {"section_fixtures_ready": true}
+	var floor_y := GROUND_Y - PLAYER_FEET_OFFSET
+	var crawler_scans_before := ui_encounter_bounds_scans
+	var atlas_scans_before := ui_enemy_bounds_scans
+	var harrier_scans_before := ui_harrier_bounds_scans
+	var harrier_key := STONEHOOK_THREATS_RUNTIME.resource_path + str(cliff_harrier_source())
+	# Locked contexts: a new run, the tutorial, an unsecured camp and an F4 Mark override.
+	reset_to_prologue()
+	enter_foothills_for_test(2650.0)
+	encounter_frames_for_test(30)
+	var new_run_locked := cliff_harrier.is_empty() and not harrier_activated
+	reach_safe_camp_for_test()
+	enter_foothills_for_test(2650.0)
+	var tutorial_locked := cliff_harrier.is_empty() and not harrier_activated
+	reach_safe_camp_for_test()
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	use_camp_action()
+	defeat_boss_for_test()
+	skip_shar_shell()
+	cure_selected_ally()
+	enter_foothills_for_test(2650.0)
+	var unsecured_locked := cliff_harrier.is_empty() and not harrier_activated
+	var debug_locked := true
+	if playtester_available():
+		reset_to_prologue()
+		playtester_change_mark(1)
+		enter_foothills_for_test(2650.0)
+		debug_locked = cliff_harrier.is_empty() and not harrier_activated
+		restore_playtester_session()
+	checks.harrier_locked_contexts = new_run_locked and tutorial_locked and unsecured_locked and debug_locked
+	# Legitimate access: the crawler appears at the foothill border, the Harrier only at x>=2600.
+	reach_expedition_ready_for_test(true, true)
+	enter_foothills_for_test(CLIFF_HARRIER_ACTIVATION_X - 10.0)
+	encounter_frames_for_test(20)
+	var below_threshold := cliff_harrier.is_empty() and not harrier_activated and live_scree_crawler_count() == 1
+	enter_foothills_for_test(CLIFF_HARRIER_ACTIVATION_X)
+	checks.harrier_activation_at_2600 = below_threshold and not cliff_harrier.is_empty() and String(cliff_harrier.encounter_id) == CLIFF_HARRIER_ID and String(cliff_harrier.region) == "stonehook_foothills" and int(cliff_harrier.health) == CLIFF_HARRIER_HEALTH and float(cliff_harrier.pos.x) == CLIFF_HARRIER_HOME_X and live_cliff_harrier_count() == 1 and live_scree_crawler_count() == 1 and harrier_activated and shades.is_empty() and zone == 0
+	# Border and threshold oscillation, nightfall and dawn keep both actors and their health.
+	var harrier_actor := cliff_harrier
+	var crawler_actor := scree_crawler
+	cliff_harrier.health = 2
+	scree_crawler.health = 2
+	hurt_cooldown = 99.0
+	for _crossing in 3:
+		player.x = ROUTE_FOOTHILLS_START_X - 260.0
+		encounter_frames_for_test(20)
+		player.x = CLIFF_HARRIER_ACTIVATION_X - 120.0
+		encounter_frames_for_test(10)
+		player.x = CLIFF_HARRIER_ACTIVATION_X + 40.0
+		hurt_cooldown = 99.0
+		encounter_frames_for_test(10)
+	clock_seconds = DAY_DURATION - 0.01
+	update_clock(0.02)
+	var night_kept := is_same(cliff_harrier, harrier_actor) and is_same(scree_crawler, crawler_actor) and is_night()
+	clock_seconds = DAY_DURATION + NIGHT_DURATION - 0.01
+	update_clock(0.02)
+	checks.both_actors_persist_oscillation_days = night_kept and is_same(cliff_harrier, harrier_actor) and is_same(scree_crawler, crawler_actor) and int(cliff_harrier.health) == 2 and int(scree_crawler.health) == 2 and live_cliff_harrier_count() == 1 and live_scree_crawler_count() == 1
+	# Geometry: the bird's own crop, native aspect, a 110 px body whose claws hover 30 px up.
+	if not ensure_harrier_for_test(checks):
+		return checks
+	park_crawler_for_test()
+	hold_harrier_for_test(10)
+	var geometry := enemy_draw_geometry(cliff_harrier)
+	var source: Rect2 = geometry.source
+	var destination: Rect2 = geometry.destination
+	var body: Rect2 = geometry.body
+	var cached := enemy_frame_bounds(STONEHOOK_THREATS_RUNTIME, source)
+	var uniform := is_equal_approx(destination.size.x / source.size.x, destination.size.y / source.size.y)
+	checks.harrier_geometry_crop = source == Rect2(768, 0, 768, 497) and cached == Rect2i(37, 8, 613, 488) and uniform and absf(body.size.y - CLIFF_HARRIER_BODY_HEIGHT) < 0.01 and is_equal_approx(body.end.y, GROUND_Y - CLIFF_HARRIER_HOVER) and is_equal_approx(body.get_center().x, float(cliff_harrier.pos.x)) and absf(body.size.x / body.size.y - 613.0 / 488.0) < 0.001
+	# Hover and bob limits over several seconds; the dive dips but never touches the floor.
+	park_crawler_for_test()
+	var min_alt := INF
+	var max_alt := -INF
+	cliff_harrier.attack_state = "approach"
+	player.x = ROUTE_FOOTHILLS_START_X - 60.0
+	# At every bob phase of the live flight, a grounded melee strike and First Thread reach it.
+	var live_hits := 0
+	var live_tries := 0
+	for frame in 360:
+		encounter_frames_for_test(1)
+		min_alt = minf(min_alt, harrier_altitude_for_test())
+		max_alt = maxf(max_alt, harrier_altitude_for_test())
+		if frame % 45 == 0:
+			var outside_x := player.x
+			var live_health := int(cliff_harrier.health)
+			player = Vector2(float(cliff_harrier.pos.x) - (melee_reach(cliff_harrier) - 3.0), floor_y)
+			on_floor = true
+			combo_time = 0.0
+			hurt_cooldown = 99.0
+			handle_attack()
+			first_thread_cooldown = 0.0
+			use_first_thread()
+			live_tries += 1
+			if int(cliff_harrier.health) == live_health - 1 - FIRST_THREAD_DAMAGE:
+				live_hits += 1
+			cliff_harrier.health = live_health
+			player = Vector2(outside_x, floor_y)
+	checks.harrier_reachable_in_live_flight = live_tries == 8 and live_hits == live_tries
+	var bob_ok := min_alt >= CLIFF_HARRIER_HOVER - CLIFF_HARRIER_BOB - 0.01 and max_alt <= CLIFF_HARRIER_HOVER + CLIFF_HARRIER_BOB + 0.01 and max_alt - min_alt > CLIFF_HARRIER_BOB
+	arm_harrier_for_test()
+	player = Vector2(CLIFF_HARRIER_HOME_X - 150.0, floor_y)
+	hurt_cooldown = 99.0
+	encounter_frames_for_test(1)
+	run_harrier_state_for_test("windup", 200)
+	var dive_min_alt := INF
+	var dive_min_claw := INF
+	while String(cliff_harrier.attack_state) == "dive":
+		encounter_frames_for_test(1)
+		dive_min_alt = minf(dive_min_alt, harrier_altitude_for_test())
+	checks.harrier_hover_and_bob = bob_ok and dive_min_alt >= CLIFF_HARRIER_HOVER - CLIFF_HARRIER_DIVE_DIP - 0.01 and dive_min_alt > 0.0
+	park_crawler_for_test(true)
+	# Melee reach follows the visible body, without a global reach change.
+	hold_harrier_for_test(10)
+	body = enemy_draw_geometry(cliff_harrier).body
+	var reach := melee_reach(cliff_harrier)
+	checks.harrier_reach_matches_body = is_equal_approx(reach, MELEE_LOLTH_HALF_WIDTH + body.size.x / 2.0) and MELEE_VERTICAL_REACH == 70.0 and FIRST_THREAD_RANGE == 150.0 and FIRST_THREAD_DAMAGE == 2 and FIRST_THREAD_COOLDOWN == 1.2
+	# Grounded melee hits inside the visible reach and misses outside it, with no hurt pose.
+	var hx := float(cliff_harrier.pos.x)
+	player = Vector2(hx - (reach - 2.0), floor_y)
+	on_floor = true
+	combo_time = 0.0
+	hurt_flash_time = 0.0
+	hurt_cooldown = 99.0
+	handle_attack()
+	var grounded_hit := int(cliff_harrier.health) == 9 and player_pose() == "strike" and not player_hurt_visible()
+	player.x = hx - (reach + 2.0)
+	combo_time = 0.0
+	handle_attack()
+	checks.harrier_grounded_melee_hit_miss = grounded_hit and int(cliff_harrier.health) == 9 and message.begins_with("Out of reach") and not player_hurt_visible()
+	var thread_reach := maxf(FIRST_THREAD_RANGE, reach)
+	player.x = hx - (thread_reach - 2.0)
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	var thread_hit := int(cliff_harrier.health) == 7 and first_thread_cooldown > 0.0
+	player.x = hx - (thread_reach + 2.0)
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	checks.harrier_first_thread_hit_miss = thread_hit and int(cliff_harrier.health) == 7 and message.begins_with("FIRST THREAD finds no target")
+	# Vertical reach follows the displayed bird: raised out of reach, neither ability lands.
+	player.x = hx - 40.0
+	cliff_harrier.pos.y = cliff_harrier_anchor_y(120.0)
+	combo_time = 0.0
+	handle_attack()
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	var high_missed := int(cliff_harrier.health) == 7
+	var high_body_end: float = enemy_draw_geometry(cliff_harrier).body.end.y
+	hold_harrier_for_test(7)
+	combo_time = 0.0
+	handle_attack()
+	checks.harrier_vertical_reach_follows_display = high_missed and is_equal_approx(high_body_end, GROUND_Y - 120.0) and int(cliff_harrier.health) == 6
+	# Nearest eligible target: with both actors in reach the closer one is struck; a defeated or
+	# out-of-reach nearer actor is skipped.
+	hold_harrier_for_test(10, 2700.0)
+	hold_crawler_for_test(10, 2520.0)
+	player.x = 2600.0
+	combo_time = 0.0
+	handle_attack()
+	var nearer_crawler := int(scree_crawler.health) == 9 and int(cliff_harrier.health) == 10
+	player.x = 2625.0
+	combo_time = 0.0
+	handle_attack()
+	var nearer_harrier := int(cliff_harrier.health) == 9 and int(scree_crawler.health) == 9
+	cliff_harrier.pos.y = cliff_harrier_anchor_y(120.0)
+	combo_time = 0.0
+	handle_attack()
+	var skips_unreachable := int(scree_crawler.health) == 8 and int(cliff_harrier.health) == 9
+	hold_harrier_for_test(9, 2700.0)
+	first_thread_cooldown = 0.0
+	use_first_thread()
+	checks.nearest_eligible_target = nearer_crawler and nearer_harrier and skips_unreachable and int(cliff_harrier.health) == 7 and int(scree_crawler.health) == 8
+	# Facing toward Lolth on either side; the reflected body stays centered on the anchor.
+	hold_crawler_for_test(10, 2520.0)
+	arm_harrier_for_test(2650.0)
+	hurt_cooldown = 99.0
+	player.x = 2400.0
+	encounter_frames_for_test(2)
+	var faces_left := enemy_facing_left(cliff_harrier)
+	cliff_harrier.attack_state = "approach"
+	player.x = 3000.0
+	encounter_frames_for_test(2)
+	var faces_right := not enemy_facing_left(cliff_harrier)
+	var centered := is_equal_approx(enemy_draw_geometry(cliff_harrier).body.get_center().x, float(cliff_harrier.pos.x))
+	checks.harrier_facings = faces_left and faces_right and centered
+	park_crawler_for_test()
+	# Approach from afar at 70 and back off at 45 inside 100.
+	arm_harrier_for_test(2700.0)
+	player.x = 2300.0
+	encounter_frames_for_test(60)
+	var approached := absf((2700.0 - float(cliff_harrier.pos.x)) - CLIFF_HARRIER_APPROACH_SPEED) < 0.5
+	arm_harrier_for_test(2700.0)
+	player.x = 2660.0
+	encounter_frames_for_test(60)
+	checks.harrier_approach_and_retreat = approached and absf((float(cliff_harrier.pos.x) - 2700.0) - CLIFF_HARRIER_RETREAT_SPEED) < 0.5 and String(cliff_harrier.attack_state) == "approach"
+	park_crawler_for_test()
+	# Windup: a visible warning, then a dive toward the target locked at windup start, never
+	# retargeting when Lolth crosses over, moving continuously and never past the target.
+	arm_harrier_for_test()
+	health = max_health()
+	hurt_cooldown = 0.0
+	dodge_time = 0.0
+	player = Vector2(CLIFF_HARRIER_HOME_X - 150.0, floor_y)
+	encounter_frames_for_test(1)
+	var windup_started := String(cliff_harrier.attack_state) == "windup" and cliff_harrier_warning_visible()
+	var locked_target := float(cliff_harrier.target_x)
+	var locked_dir := float(cliff_harrier.attack_dir)
+	player.x = CLIFF_HARRIER_HOME_X + 140.0
+	var warning_throughout := true
+	var lock_held := true
+	var windup_frames := 1
+	while String(cliff_harrier.attack_state) == "windup" and windup_frames < 200:
+		warning_throughout = warning_throughout and cliff_harrier_warning_visible()
+		lock_held = lock_held and float(cliff_harrier.target_x) == locked_target and float(cliff_harrier.attack_dir) == locked_dir
+		encounter_frames_for_test(1)
+		windup_frames += 1
+	var dive_start := float(cliff_harrier.pos.x)
+	var last_x := dive_start
+	var continuous := true
+	var never_past := true
+	while String(cliff_harrier.attack_state) == "dive":
+		lock_held = lock_held and float(cliff_harrier.target_x) == locked_target
+		encounter_frames_for_test(1)
+		continuous = continuous and absf(float(cliff_harrier.pos.x) - last_x) <= CLIFF_HARRIER_DIVE_SPEED / 60.0 + 0.001
+		never_past = never_past and float(cliff_harrier.pos.x) >= locked_target - 0.001
+		last_x = float(cliff_harrier.pos.x)
+	var windup_seconds := float(windup_frames) / 60.0
+	checks.harrier_windup_locks_target = windup_started and warning_throughout and lock_held and locked_target == CLIFF_HARRIER_HOME_X - 150.0 and locked_dir < 0.0 and absf(windup_seconds - CLIFF_HARRIER_WINDUP) <= 2.0 / 60.0 and windup_seconds >= MIN_TELEGRAPH_TIME and continuous and never_past and float(cliff_harrier.pos.x) < dive_start and dive_start - float(cliff_harrier.pos.x) <= CLIFF_HARRIER_DIVE_SPEED * CLIFF_HARRIER_DIVE_TIME + 0.01 and health == max_health()
+	park_crawler_for_test()
+	# One dive wounds at most once, at 60 and at 16 frames per second, with no cooldown left.
+	arm_harrier_for_test()
+	health = max_health()
+	player = Vector2(CLIFF_HARRIER_HOME_X - (CLIFF_HARRIER_ATTACK_RANGE - 2.0), floor_y)
+	encounter_frames_for_test(1)
+	run_harrier_state_for_test("windup", 200, true)
+	run_harrier_state_for_test("dive", 200, true)
+	var hit_at_60 := health == max_health() - 1.0 and bool(cliff_harrier.strike_spent)
+	arm_harrier_for_test()
+	health = max_health()
+	player = Vector2(CLIFF_HARRIER_HOME_X - (CLIFF_HARRIER_ATTACK_RANGE - 2.0), floor_y)
+	encounter_frames_for_test(1)
+	run_harrier_state_for_test("windup", 200, true, 1.0 / 16.0)
+	run_harrier_state_for_test("dive", 200, true, 1.0 / 16.0)
+	checks.harrier_single_hit_per_dive = hit_at_60 and health == max_health() - 1.0 and bool(cliff_harrier.strike_spent) and state == "journey"
+	park_crawler_for_test()
+	# Dash invulnerability avoids the dive, which is then spent.
+	arm_harrier_for_test()
+	health = max_health()
+	hurt_cooldown = 0.0
+	player = Vector2(CLIFF_HARRIER_HOME_X - 150.0, floor_y)
+	encounter_frames_for_test(1)
+	run_harrier_state_for_test("windup", 200)
+	dodge_time = DODGE_DURATION
+	run_harrier_state_for_test("dive", 200)
+	checks.harrier_dash_avoids_dive = health == max_health() and bool(cliff_harrier.strike_spent)
+	park_crawler_for_test()
+	# No idle contact: overlapping a recovering or hovering bird never hurts.
+	health = max_health()
+	dodge_time = 0.0
+	hold_harrier_for_test(10)
+	player.x = CLIFF_HARRIER_HOME_X
+	for _frame in 300:
+		hurt_cooldown = 0.0
+		encounter_frames_for_test(1)
+	var recover_safe := health == max_health()
+	arm_harrier_for_test()
+	player.x = CLIFF_HARRIER_HOME_X
+	for _frame in 60:
+		hurt_cooldown = 0.0
+		encounter_frames_for_test(1)
+	checks.harrier_no_idle_contact = recover_safe and health == max_health() and String(cliff_harrier.attack_state) == "approach"
+	park_crawler_for_test()
+	# Leaving the foothills cancels a windup and stops a dive without contact.
+	arm_harrier_for_test(cliff_harrier_limits().x)
+	health = max_health()
+	hurt_cooldown = 0.0
+	player = Vector2(float(cliff_harrier.pos.x) - 150.0, floor_y)
+	encounter_frames_for_test(2)
+	var pending := String(cliff_harrier.attack_state) == "windup"
+	player.x = ROUTE_FOOTHILLS_START_X - 6.0
+	encounter_frames_for_test(1)
+	var windup_cancelled := String(cliff_harrier.attack_state) == "approach"
+	arm_harrier_for_test(cliff_harrier_limits().x)
+	player.x = float(cliff_harrier.pos.x) - 150.0
+	encounter_frames_for_test(1)
+	run_harrier_state_for_test("windup", 200)
+	player.x = ROUTE_FOOTHILLS_START_X - 6.0
+	encounter_frames_for_test(1)
+	var integrity_before := wagon_integrity
+	var held_x := float(cliff_harrier.pos.x)
+	for _frame in 600:
+		hurt_cooldown = 0.0
+		encounter_frames_for_test(1)
+	checks.harrier_cancels_outside_foothills = pending and windup_cancelled and health == max_health() and String(cliff_harrier.attack_state) == "approach" and is_equal_approx(float(cliff_harrier.pos.x), held_x) and wagon_integrity == integrity_before
+	park_crawler_for_test()
+	# Body, dives and warning stay within the clear patrol and the foothills.
+	var min_body := INF
+	var max_body := -INF
+	var warning_inside := true
+	for side in [ROUTE_FOOTHILLS_START_X + 6.0, ROUTE_END_X - PLAYER_EDGE_MARGIN]:
+		player.x = side
+		for _frame in 900:
+			hurt_cooldown = 99.0
+			encounter_frames_for_test(1)
+			var b: Rect2 = enemy_draw_geometry(cliff_harrier).body
+			min_body = minf(min_body, b.position.x)
+			max_body = maxf(max_body, b.end.x)
+			if cliff_harrier_warning_visible():
+				var to_x := clampf(float(cliff_harrier.target_x) + float(cliff_harrier.attack_dir) * MELEE_LOLTH_HALF_WIDTH, ROUTE_FOOTHILLS_START_X, ROUTE_END_X)
+				warning_inside = warning_inside and to_x >= ROUTE_FOOTHILLS_START_X and to_x <= ROUTE_END_X
+	checks.harrier_stays_in_bounds = min_body >= CLIFF_HARRIER_PATROL.x - 0.01 and max_body <= CLIFF_HARRIER_PATROL.y + 0.01 and warning_inside
+	# Simultaneous combat: both actors strike in the same exchange; each lands once only.
+	reach_expedition_ready_for_test(true, true)
+	enter_foothills_for_test(2600.0)
+	if not ensure_harrier_for_test(checks) or scree_crawler.is_empty():
+		checks.section_fixtures_ready = false
+		return checks
+	health = max_health()
+	scree_crawler.pos = Vector2(2600.0 - (scree_crawler_strike_range() - 6.0), GROUND_Y - 34)
+	scree_crawler.attack_state = "approach"
+	scree_crawler.strike_spent = false
+	arm_harrier_for_test(2600.0 + 160.0)
+	var frames_run := 0
+	while frames_run < 240 and not (bool(scree_crawler.strike_spent) and bool(cliff_harrier.strike_spent) and String(scree_crawler.attack_state) == "recover" and String(cliff_harrier.attack_state) == "recover"):
+		hurt_cooldown = 0.0
+		encounter_frames_for_test(1)
+		frames_run += 1
+	checks.simultaneous_combat_single_hits = health == max_health() - 2.0 and bool(scree_crawler.strike_spent) and bool(cliff_harrier.strike_spent) and state == "journey"
+	# Independent defeat and reward: killing one never alters the other.
+	health = max_health()
+	var echoes_before := shadow_echoes
+	hold_crawler_for_test(1, 2520.0)
+	hold_harrier_for_test(2, 2700.0)
+	player.x = 2520.0 - 40.0
+	combo_time = 0.0
+	handle_attack()
+	var crawler_only := crawler_defeated and crawler_reward_paid and not harrier_defeated and not harrier_reward_paid and int(cliff_harrier.health) == 2 and not bool(cliff_harrier.defeated) and shadow_echoes == echoes_before + 1 and live_cliff_harrier_count() == 1
+	encounter_frames_for_test(5)
+	defeat_enemy(cliff_harrier)
+	var harrier_paid := harrier_defeated and harrier_reward_paid and shadow_echoes == echoes_before + 2 and crawler_defeated
+	defeat_enemy(cliff_harrier)
+	defeat_enemy(scree_crawler)
+	encounter_frames_for_test(10)
+	var independent_first := crawler_only and harrier_paid and shadow_echoes == echoes_before + 2 and live_cliff_harrier_count() == 0 and live_scree_crawler_count() == 0 and not cliff_harrier_spawn_allowed() and not scree_crawler_spawn_allowed()
+	# The mirror order: a Harrier-first kill leaves the live crawler and its flags untouched.
+	reach_expedition_ready_for_test(true, true)
+	enter_foothills_for_test(2650.0)
+	var echoes_mirror := shadow_echoes
+	hold_crawler_for_test(2, 2520.0)
+	hold_harrier_for_test(1, 2700.0)
+	player.x = 2700.0 - 40.0
+	combo_time = 0.0
+	handle_attack()
+	var harrier_only := harrier_defeated and harrier_reward_paid and not crawler_defeated and not crawler_reward_paid and int(scree_crawler.health) == 2 and not bool(scree_crawler.defeated) and shadow_echoes == echoes_mirror + 1 and live_scree_crawler_count() == 1
+	encounter_frames_for_test(5)
+	harrier_only = harrier_only and live_scree_crawler_count() == 1 and not crawler_defeated
+	checks.independent_defeat_and_reward = independent_first and harrier_only
+	# The unchanged 3/3 cap: with one Echo to go, only the first kill pays.
+	reach_expedition_ready_for_test(true, true)
+	enter_foothills_for_test(2650.0)
+	shadow_echoes = int(ECHO_THRESHOLDS[1]) - 1
+	defeat_enemy(cliff_harrier)
+	defeat_enemy(scree_crawler)
+	var capped := shadow_echoes == int(ECHO_THRESHOLDS[1]) and harrier_reward_paid and crawler_reward_paid
+	try_advance_from_camp()
+	checks.two_rewards_within_cap = capped and mark_level == 1 and cured_allies.size() == 1 and zone == 0 and wagon_travel_locked() and not stonehook_boss_defeated and mark_gates.is_empty() and ui_management.recipe_locked(3)
+	# Cave waves, wave completion, dawn and real Stag damage coexist with both live actors.
+	reach_expedition_ready_for_test(true, true)
+	enter_foothills_for_test(2650.0)
+	var harrier_live := cliff_harrier
+	var crawler_live := scree_crawler
+	clock_seconds = DAY_DURATION - 0.05
+	hurt_cooldown = 99.0
+	simulate_frames_for_test(30)
+	var night_with_both := is_night() and night_wave == 1 and is_same(cliff_harrier, harrier_live) and is_same(scree_crawler, crawler_live)
+	for _wave in TUTORIAL_NIGHT_WAVES:
+		for enemy in shades:
+			enemy.defeated = true
+		update_night_waves(0.0)
+		update_night_waves(NIGHT_WAVE_INTERVAL)
+	var waves_done := night_waves_complete and live_cliff_harrier_count() == 1 and live_scree_crawler_count() == 1
+	shades.clear()
+	spawn_enemy("STAG OF MIRE", Vector2(CARAVAN_X + 300.0, GROUND_Y - 34), 2, 1)
+	var wagon_before := wagon_integrity
+	player.x = ROUTE_FOOTHILLS_START_X - 300.0
+	for _frame in 600:
+		_process(1.0 / 60.0)
+		if wagon_integrity < wagon_before:
+			break
+	checks.cave_waves_keep_both = night_with_both and waves_done and wagon_integrity < wagon_before and state == "journey" and is_same(cliff_harrier, harrier_live) and is_same(scree_crawler, crawler_live)
+	shades.clear()
+	clock_seconds = DAY_DURATION + NIGHT_DURATION - 0.01
+	update_clock(0.02)
+	# Valid cave capture with both alive; an unsafe cave stays unsafe.
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	was_at_safe_wagon = false
+	var captured_before := safe_wagon_state.duplicate(true)
+	spawn_enemy("BRIAR HOUND", Vector2(CARAVAN_X + 90.0, GROUND_Y - 34), 1, 1)
+	update_safe_wagon()
+	var unsafe_kept := safe_wagon_state == captured_before
+	shades.clear()
+	was_at_safe_wagon = false
+	update_safe_wagon()
+	var saved_harrier: Dictionary = safe_wagon_state.get("harrier", {})
+	var saved_crawler: Dictionary = safe_wagon_state.get("crawler", {})
+	checks.safe_capture_with_both_live = unsafe_kept and safe_wagon_state != captured_before and bool(saved_harrier.get("activated", false)) and not bool(saved_harrier.get("defeated", true)) and bool(saved_crawler.get("activated", false)) and live_cliff_harrier_count() == 1 and live_scree_crawler_count() == 1
+	# Ore pickup and deposit with both actors alive.
+	player = Vector2(ROUTE_ORE_X, floor_y)
+	recovered_load.clear()
+	handle_primary()
+	var ore_carried := load_has_pickup(ROUTE_ORE_ID, recovered_load) == 1
+	player = Vector2(CARAVAN_X + 20.0, floor_y)
+	handle_primary()
+	checks.ore_independent_of_both = ore_carried and load_has_pickup(ROUTE_ORE_ID, wagon_stock) == 1 and pickup_copies(ROUTE_ORE_ID) == 1 and not crawler_defeated and not harrier_defeated and live_cliff_harrier_count() == 1 and live_scree_crawler_count() == 1
+	# The four saved combinations: saved defeats survive failure, unsaved ones roll back, and
+	# each undefeated actor is recreated once at initial health on its own legitimate entry.
+	for combo in [[false, false], [true, false], [false, true], [true, true]]:
+		var label := "save_combo_%s" % ("both" if combo[0] and combo[1] else "crawler_only" if combo[0] else "harrier_only" if combo[1] else "neither")
+		reach_expedition_ready_for_test(true, true)
+		enter_foothills_for_test(2650.0)
+		if bool(combo[0]):
+			defeat_enemy(scree_crawler)
+		if bool(combo[1]):
+			defeat_enemy(cliff_harrier)
+		player = Vector2(CARAVAN_X + 20.0, floor_y)
+		was_at_safe_wagon = false
+		update_safe_wagon()
+		var echoes_saved := shadow_echoes
+		enter_foothills_for_test(2650.0)
+		if not bool(combo[0]) and not scree_crawler.is_empty():
+			defeat_enemy(scree_crawler)
+		if not bool(combo[1]) and not cliff_harrier.is_empty():
+			defeat_enemy(cliff_harrier)
+		var all_down := crawler_defeated and harrier_defeated
+		provisions = 0.0
+		check_survival_failures()
+		restart_from_checkpoint()
+		var flags_ok := crawler_defeated == bool(combo[0]) and crawler_reward_paid == bool(combo[0]) and harrier_defeated == bool(combo[1]) and harrier_reward_paid == bool(combo[1]) and crawler_activated and harrier_activated and shadow_echoes == echoes_saved
+		var cleared := scree_crawler.is_empty() and cliff_harrier.is_empty() and state == "journey"
+		enter_foothills_for_test(ROUTE_FOOTHILLS_START_X + 140.0)
+		var crawler_ok := scree_crawler.is_empty() if bool(combo[0]) else (not scree_crawler.is_empty() and int(scree_crawler.health) == SCREE_CRAWLER_HEALTH)
+		var harrier_waits := cliff_harrier.is_empty()
+		enter_foothills_for_test(2650.0)
+		var harrier_ok := cliff_harrier.is_empty() if bool(combo[1]) else (not cliff_harrier.is_empty() and int(cliff_harrier.health) == CLIFF_HARRIER_HEALTH and float(cliff_harrier.pos.x) == CLIFF_HARRIER_HOME_X)
+		var first_harrier := cliff_harrier
+		var first_crawler := scree_crawler
+		hurt_cooldown = 99.0
+		player.x = ROUTE_FOOTHILLS_START_X - 200.0
+		encounter_frames_for_test(5)
+		enter_foothills_for_test(2650.0)
+		var once := is_same(cliff_harrier, first_harrier) and is_same(scree_crawler, first_crawler) and live_scree_crawler_count() == (0 if bool(combo[0]) else 1) and live_cliff_harrier_count() == (0 if bool(combo[1]) else 1)
+		checks[label] = all_down and flags_ok and cleared and crawler_ok and harrier_waits and harrier_ok and once
+	# F4 deep-restores both live actors, their timers, positions and flags exactly.
+	checks.f4_restores_both_exactly = true
+	if playtester_available():
+		reach_expedition_ready_for_test(true, true)
+		enter_foothills_for_test(2650.0)
+		cliff_harrier.health = 2
+		cliff_harrier.pos = Vector2(2700.0, cliff_harrier_anchor_y(33.0))
+		cliff_harrier.attack_state = "windup"
+		cliff_harrier.attack_time = 0.41
+		cliff_harrier.target_x = 2620.0
+		cliff_harrier.attack_dir = -1.0
+		cliff_harrier.bob_time = 1.7
+		cliff_harrier.facing_left = true
+		scree_crawler.health = 1
+		scree_crawler.attack_state = "recover"
+		scree_crawler.attack_time = 0.6
+		crawler_defeated = false
+		var harrier_before := cliff_harrier.duplicate(true)
+		var crawler_before := scree_crawler.duplicate(true)
+		var flags_before := [scree_crawler_state(), cliff_harrier_state()]
+		playtester_change_mark(1)
+		cliff_harrier.health = 1
+		cliff_harrier.pos = Vector2(2500.0, cliff_harrier_anchor_y(30.0))
+		cliff_harrier.attack_state = "dive"
+		scree_crawler.health = 3
+		harrier_defeated = true
+		crawler_reward_paid = true
+		restore_playtester_session()
+		checks.f4_restores_both_exactly = cliff_harrier == harrier_before and scree_crawler == crawler_before and [scree_crawler_state(), cliff_harrier_state()] == flags_before and mark_level == 1
+	# A new run clears every added field.
+	reset_to_prologue()
+	var reset_clear := cliff_harrier.is_empty() and not harrier_activated and not harrier_defeated and not harrier_reward_paid and scree_crawler.is_empty() and not crawler_activated
+	enter_foothills_for_test(2650.0)
+	checks.new_run_resets_both = reset_clear and cliff_harrier.is_empty()
+	# Startup prepared both crops once; nothing above rescanned pixels.
+	checks.harrier_bounds_prepared_once = ui_harrier_bounds_scans == 1 and harrier_scans_before == 1 and ui_encounter_bounds.has(harrier_key) and ui_encounter_bounds_scans == crawler_scans_before and ui_encounter_bounds_scans == 1 and ui_enemy_bounds_scans == atlas_scans_before and ui_enemy_bounds_scans == 22 and ui_enemy_bounds.size() == 22
+	reset_to_prologue()
+	return checks
+
+func run_cliff_harrier_self_test() -> bool:
+	var checks := cliff_harrier_checks()
+	var failed: Array[String] = []
+	for check_name in checks:
+		if not bool(checks[check_name]):
+			failed.append(String(check_name))
+	if failed.is_empty():
+		print("SELF_TEST_B08_PASS: one legitimate Cliff Harrier beside the Scree Crawler with its own crop, grounded reach, locked-target single-hit dives, bounds, independent rewards and four-way restoration (%d checks)" % checks.size())
+	else:
+		push_error("SELF_TEST_B08_FAIL: %s" % ", ".join(failed))
+	return failed.is_empty()
+
 func run_playtester_self_test() -> bool:
 	if not playtester_available():
 		print("SELF_TEST_PLAYTESTER_SKIP: debug tools unavailable in release")
@@ -2070,8 +2659,9 @@ func spawn_zone() -> void:
 	ally_assists_used.clear()
 	salvage.clear()
 	shades.clear()
-	# The foothill actor is transient like the cave threats; its saved flags decide re-creation.
+	# The foothill actors are transient like the cave threats; their saved flags decide re-creation.
 	scree_crawler = {}
+	cliff_harrier = {}
 	mark_gates.clear()
 	zone_hazards.clear()
 	rope_routes.clear()
@@ -2390,7 +2980,7 @@ func handle_primary() -> void:
 	message_time = 2.0
 
 func melee_reach(shade: Dictionary) -> float:
-	if is_scree_crawler(shade) or (zone == 0 and THORNWAKE_ENEMY_SIZES.has(String(shade.name))):
+	if is_scree_crawler(shade) or is_cliff_harrier(shade) or (zone == 0 and THORNWAKE_ENEMY_SIZES.has(String(shade.name))):
 		return MELEE_LOLTH_HALF_WIDTH + enemy_draw_geometry(shade).body.size.x / 2.0
 	var old_size := 160.0 if String(shade.name) == "ANTLERED HUNGER" else 96.0
 	return MELEE_LOLTH_HALF_WIDTH + float(MELEE_ENEMY_HALF_WIDTHS.get(String(shade.name), MELEE_DEFAULT_ENEMY_HALF_WIDTH)) * enemy_visual_size(shade) / old_size
@@ -2398,6 +2988,8 @@ func melee_reach(shade: Dictionary) -> float:
 func enemy_visual_size(shade: Dictionary) -> float:
 	if is_scree_crawler(shade):
 		return SCREE_CRAWLER_BODY_HEIGHT
+	if is_cliff_harrier(shade):
+		return CLIFF_HARRIER_BODY_HEIGHT
 	return float(THORNWAKE_ENEMY_SIZES.get(String(shade.name), 96.0)) if zone == 0 else 96.0
 
 # The nearest live enemy whose drawn body touches Lolth's.
@@ -2461,6 +3053,9 @@ func defeat_enemy(shade: Dictionary) -> void:
 	shade.defeated_at = pulse
 	if is_scree_crawler(shade):
 		defeat_scree_crawler()
+		return
+	if is_cliff_harrier(shade):
+		defeat_cliff_harrier()
 		return
 	if mark_level > 0:
 		collect_echo(int(shade.echoes))
@@ -2738,7 +3333,7 @@ func advance_mark() -> void:
 	message_time = 4.5
 
 func create_checkpoint() -> void:
-	checkpoint = {"mark": mark_level, "zone": zone, "flame": flame, "provisions": provisions, "awakened": awakened, "final_echo_phase": final_echo_phase, "wagon_repair": wagon_repair, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_integrity": wagon_integrity, "clock": clock_seconds, "echoes": shadow_echoes, "cured": cured_allies.duplicate(), "posts": posted_allies.duplicate(), "downed": downed_drows.duplicate(), "first_night": first_night_complete, "axle_brakes": axle_brakes_installed, "stonehook_boss": stonehook_boss_defeated, "stonehook_shar": stonehook_shar_ready, "hollowroot_boss": hollowroot_boss_defeated, "hollowroot_mark": hollowroot_mark_ready, "hollowroot_web": hollowroot_web_anchor_open, "brazier": brazier_built, "crafted": crafted_recipes.duplicate(true), "crawler": scree_crawler_state()}
+	checkpoint = {"mark": mark_level, "zone": zone, "flame": flame, "provisions": provisions, "awakened": awakened, "final_echo_phase": final_echo_phase, "wagon_repair": wagon_repair, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_integrity": wagon_integrity, "clock": clock_seconds, "echoes": shadow_echoes, "cured": cured_allies.duplicate(), "posts": posted_allies.duplicate(), "downed": downed_drows.duplicate(), "first_night": first_night_complete, "axle_brakes": axle_brakes_installed, "stonehook_boss": stonehook_boss_defeated, "stonehook_shar": stonehook_shar_ready, "hollowroot_boss": hollowroot_boss_defeated, "hollowroot_mark": hollowroot_mark_ready, "hollowroot_web": hollowroot_web_anchor_open, "brazier": brazier_built, "crafted": crafted_recipes.duplicate(true), "crawler": scree_crawler_state(), "harrier": cliff_harrier_state()}
 
 func fail_run(reason: String) -> void:
 	if state != "journey":
@@ -2783,7 +3378,7 @@ func capture_safe_wagon_state() -> void:
 		taken.append(bool(item.taken))
 		if item.has("id"):
 			taken_by_id[String(item.id)] = bool(item.taken)
-	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken, "pickup_taken": taken_by_id, "crawler": scree_crawler_state()}
+	safe_wagon_state = {"health": health, "flame": flame, "provisions": provisions, "wagon_integrity": wagon_integrity, "clock": clock_seconds, "load": recovered_load.duplicate(true), "stock": wagon_stock.duplicate(true), "wagon_repair": wagon_repair, "crafted": crafted_recipes.duplicate(true), "brazier": brazier_built, "echoes": shadow_echoes, "first_night": first_night_complete, "tutorial_phase": tutorial_phase, "night_wave": night_wave, "night_wave_total": night_wave_total, "night_waves_complete": night_waves_complete, "salvage_taken": taken, "pickup_taken": taken_by_id, "crawler": scree_crawler_state(), "harrier": cliff_harrier_state()}
 	camp_secured = true
 	message = "CAMP SECURED — If Nolf falls, she returns to this moment at the Wagon."
 	message_time = 4.0
@@ -2832,6 +3427,7 @@ func restore_safe_wagon_state() -> void:
 	# spawn_zone() returned Lolth to the cave camp and the view to its zero offset, and cleared
 	# the transient crawler. Its saved flags roll back together with the saved Echoes and ore.
 	apply_scree_crawler_state(saved.get("crawler", {}))
+	apply_cliff_harrier_state(saved.get("harrier", {}))
 	was_at_safe_wagon = false
 	message = "Restored at the safe Wagon. Mark I and %s's cure remain." % ", ".join(cured_allies)
 	message_time = 4.0
@@ -2882,6 +3478,7 @@ func restart_from_checkpoint() -> void:
 	state = "journey"
 	spawn_zone()
 	apply_scree_crawler_state(checkpoint.get("crawler", {}))
+	apply_cliff_harrier_state(checkpoint.get("harrier", {}))
 	message = "Restored at %s. The Wagon holds." % checkpoint_label()
 	message_time = 4.0
 
@@ -2915,6 +3512,9 @@ func reset_to_prologue() -> void:
 	crawler_activated = false
 	crawler_defeated = false
 	crawler_reward_paid = false
+	harrier_activated = false
+	harrier_defeated = false
+	harrier_reward_paid = false
 	player_action = ""
 	player_action_time = 0.0
 	hurt_flash_time = 0.0
@@ -3112,17 +3712,19 @@ func is_scree_crawler(shade: Dictionary) -> bool:
 func scree_crawler_source() -> Rect2:
 	return SCREE_CRAWLER_SOURCE
 
-# Every actor Lolth can strike: the current cave threats plus the foothill crawler.
+# Every actor Lolth can strike: the current cave threats plus the foothill encounters.
 func combat_targets() -> Array[Dictionary]:
 	var targets: Array[Dictionary] = shades.duplicate()
 	if not scree_crawler.is_empty():
 		targets.append(scree_crawler)
+	if not cliff_harrier.is_empty():
+		targets.append(cliff_harrier)
 	return targets
 
 # FIRST THREAD keeps its range, damage and cooldown. For the crawler the range is measured on
 # the same floor band as melee, and never shorter than melee reach on its visible body.
 func first_thread_reaches(shade: Dictionary) -> bool:
-	if is_scree_crawler(shade):
+	if is_scree_crawler(shade) or is_cliff_harrier(shade):
 		var gap := absf(float(shade.pos.x) - player.x)
 		return gap <= maxf(FIRST_THREAD_RANGE, melee_reach(shade)) and absf(float(shade.pos.y) - player.y) <= MELEE_VERTICAL_REACH
 	return player.distance_to(shade.pos) <= FIRST_THREAD_RANGE
@@ -3171,6 +3773,7 @@ func spawn_scree_crawler() -> void:
 func update_foothill_encounter(delta: float) -> void:
 	if zone != 0:
 		return
+	update_cliff_harrier_encounter(delta)
 	if scree_crawler.is_empty():
 		if scree_crawler_spawn_allowed():
 			spawn_scree_crawler()
@@ -3252,6 +3855,158 @@ func apply_scree_crawler_state(saved: Dictionary) -> void:
 	crawler_activated = bool(saved.get("activated", false))
 	crawler_defeated = bool(saved.get("defeated", false))
 	crawler_reward_paid = bool(saved.get("reward_paid", false))
+
+# --- B-08 Cliff Harrier ------------------------------------------------------------------
+func is_cliff_harrier(shade: Dictionary) -> bool:
+	return String(shade.get("encounter_id", "")) == CLIFF_HARRIER_ID
+
+func cliff_harrier_source() -> Rect2:
+	return CLIFF_HARRIER_SOURCE
+
+func prepare_harrier_bounds(atlas: Image) -> void:
+	ui_harrier_bounds_scans = 0
+	var source := cliff_harrier_source()
+	ui_encounter_bounds[STONEHOOK_THREATS_RUNTIME.resource_path + str(source)] = scan_alpha_bounds(source, atlas)
+	ui_harrier_bounds_scans += 1
+
+func cliff_harrier_body_half_width() -> float:
+	return enemy_draw_geometry({"encounter_id": CLIFF_HARRIER_ID, "pos": Vector2.ZERO}).body.size.x / 2.0
+
+# The full visible body (wings included) stays inside the clear foothill patrol span.
+func cliff_harrier_limits() -> Vector2:
+	var half := cliff_harrier_body_half_width()
+	return Vector2(maxf(ROUTE_FOOTHILLS_START_X, CLIFF_HARRIER_PATROL.x) + half, minf(ROUTE_END_X, CLIFF_HARRIER_PATROL.y) - half)
+
+# The world anchor follows the displayed bird: a ground actor's anchor raised by its altitude.
+func cliff_harrier_anchor_y(altitude: float) -> float:
+	return GROUND_Y - 34.0 - altitude
+
+func cliff_harrier_altitude(harrier: Dictionary) -> float:
+	if String(harrier.attack_state) == "dive":
+		var progress := clampf(1.0 - float(harrier.attack_time) / CLIFF_HARRIER_DIVE_TIME, 0.0, 1.0)
+		return CLIFF_HARRIER_HOVER - CLIFF_HARRIER_DIVE_DIP * sin(PI * progress)
+	return CLIFF_HARRIER_HOVER + CLIFF_HARRIER_BOB * sin(float(harrier.bob_time) * CLIFF_HARRIER_BOB_RATE)
+
+func cliff_harrier_windup_time() -> float:
+	return CLIFF_HARRIER_WINDUP
+
+func live_cliff_harrier_count() -> int:
+	var count := 0
+	for shade in combat_targets():
+		if is_cliff_harrier(shade) and not bool(shade.defeated):
+			count += 1
+	return count
+
+func cliff_harrier_warning_visible() -> bool:
+	return not cliff_harrier.is_empty() and not bool(cliff_harrier.defeated) and String(cliff_harrier.attack_state) == "windup"
+
+# Legitimate expedition access (the B-06 departure gate) and Lolth's first arrival at x>=2600.
+func cliff_harrier_spawn_allowed() -> bool:
+	return zone == 0 and cliff_harrier.is_empty() and not harrier_defeated and player.x >= CLIFF_HARRIER_ACTIVATION_X and expedition_departure_allowed()
+
+func spawn_cliff_harrier() -> void:
+	cliff_harrier = {"encounter_id": CLIFF_HARRIER_ID, "region": "stonehook_foothills", "name": "CLIFF HARRIER", "pos": Vector2(CLIFF_HARRIER_HOME_X, cliff_harrier_anchor_y(CLIFF_HARRIER_HOVER)), "health": CLIFF_HARRIER_HEALTH, "max_health": CLIFF_HARRIER_HEALTH, "echoes": 1, "behavior": "harrier_dive", "attack_state": "approach", "attack_time": 0.0, "attack_dir": 0.0, "target_x": CLIFF_HARRIER_HOME_X, "strike_spent": false, "bob_time": 0.0, "hit_flash": 0.0, "defeated": false, "defeated_at": -1.0, "facing_left": player.x < CLIFF_HARRIER_HOME_X}
+	harrier_activated = true
+	message = "A CLIFF HARRIER drops from the crags."
+	message_time = 2.5
+
+func update_cliff_harrier_encounter(delta: float) -> void:
+	if cliff_harrier.is_empty():
+		if cliff_harrier_spawn_allowed():
+			spawn_cliff_harrier()
+		return
+	if not bool(cliff_harrier.defeated):
+		update_cliff_harrier(cliff_harrier, delta)
+
+# Hover, approach or back off, then a windup that locks the target point and direction, a
+# short continuous dive toward that point (never past it) and recovery. Only the dive can
+# hurt, at most once; nothing reaches past the foothills, the cave or the Wagon.
+func update_cliff_harrier(harrier: Dictionary, delta: float) -> void:
+	var lolth_in_region := lolth_in_crawler_region()
+	var dx := player.x - float(harrier.pos.x)
+	var motion := 0.0
+	var diving := String(harrier.attack_state) == "dive"
+	# The dive moves for the time actually left, so its travel never exceeds speed * duration
+	# whatever the frame rate or float remainder.
+	var time_before := float(harrier.attack_time)
+	harrier.attack_time = maxf(0.0, float(harrier.attack_time) - delta)
+	harrier.bob_time = float(harrier.bob_time) + delta
+	match String(harrier.attack_state):
+		"approach":
+			if lolth_in_region:
+				var away := -signf(dx) if not is_zero_approx(dx) else (1.0 if bool(harrier.facing_left) else -1.0)
+				if absf(dx) < CLIFF_HARRIER_RETREAT_RANGE:
+					motion = away * CLIFF_HARRIER_RETREAT_SPEED * delta
+				elif absf(dx) > CLIFF_HARRIER_ATTACK_RANGE:
+					motion = signf(dx) * CLIFF_HARRIER_APPROACH_SPEED * delta
+				elif absf(player.y - float(harrier.pos.y)) <= MELEE_VERTICAL_REACH:
+					harrier.attack_state = "windup"
+					harrier.attack_time = cliff_harrier_windup_time()
+					harrier.target_x = player.x
+					harrier.attack_dir = signf(dx)
+					harrier.strike_spent = false
+		"windup":
+			if not lolth_in_region:
+				# Retreat out of the foothills cancels the pending dive.
+				harrier.attack_state = "approach"
+				harrier.attack_time = 0.0
+			elif float(harrier.attack_time) <= 0.0:
+				harrier.attack_state = "dive"
+				harrier.attack_time = CLIFF_HARRIER_DIVE_TIME
+		"dive":
+			if not lolth_in_region:
+				harrier.attack_state = "recover"
+				harrier.attack_time = CLIFF_HARRIER_RECOVER
+			else:
+				var remaining := float(harrier.target_x) - float(harrier.pos.x)
+				if signf(remaining) == float(harrier.attack_dir):
+					motion = float(harrier.attack_dir) * minf(absf(remaining), CLIFF_HARRIER_DIVE_SPEED * minf(delta, time_before))
+				if float(harrier.attack_time) <= 0.0:
+					harrier.attack_state = "recover"
+					harrier.attack_time = CLIFF_HARRIER_RECOVER
+		"recover":
+			if float(harrier.attack_time) <= 0.0:
+				harrier.attack_state = "approach"
+	var limits := cliff_harrier_limits()
+	var previous_x := float(harrier.pos.x)
+	harrier.pos = Vector2(clampf(previous_x + motion, limits.x, limits.y), cliff_harrier_anchor_y(cliff_harrier_altitude(harrier)))
+	# As with the crawler, contact is tested after this frame's motion.
+	if diving and lolth_in_region and not bool(harrier.strike_spent) and absf(player.x - float(harrier.pos.x)) <= melee_reach(harrier) and absf(player.y - float(harrier.pos.y)) <= MELEE_VERTICAL_REACH:
+		cliff_harrier_strike_lands(harrier)
+	if String(harrier.attack_state) in ["windup", "dive"]:
+		update_enemy_facing(harrier, float(harrier.attack_dir))
+	elif lolth_in_region:
+		update_enemy_facing(harrier, dx)
+	else:
+		update_enemy_facing(harrier, float(harrier.pos.x) - previous_x)
+
+# A dive is spent on first contact, whether it wounds Lolth or she dashes through it.
+func cliff_harrier_strike_lands(harrier: Dictionary) -> void:
+	harrier.strike_spent = true
+	if dodge_time > 0.0:
+		message = "Nolf dashes under the CLIFF HARRIER's dive."
+		message_time = 1.2
+		return
+	if hurt_cooldown > 0.0:
+		return
+	hurt_lolth()
+
+func defeat_cliff_harrier() -> void:
+	harrier_defeated = true
+	if not harrier_reward_paid:
+		harrier_reward_paid = true
+		if mark_level > 0:
+			collect_echo(1)
+	message = "CLIFF HARRIER falls. Nolf absorbs its shadow."
+	message_time = 1.2
+
+func cliff_harrier_state() -> Dictionary:
+	return {"activated": harrier_activated, "defeated": harrier_defeated, "reward_paid": harrier_reward_paid}
+
+func apply_cliff_harrier_state(saved: Dictionary) -> void:
+	harrier_activated = bool(saved.get("activated", false))
+	harrier_defeated = bool(saved.get("defeated", false))
+	harrier_reward_paid = bool(saved.get("reward_paid", false))
 
 func update_enemy_facing(enemy: Dictionary, horizontal_motion: float) -> void:
 	if not is_zero_approx(horizontal_motion):
@@ -3741,6 +4496,9 @@ func _draw() -> void:
 	# B-07: the crawler's lunge warning sits in front of the foothill frame overlay.
 	if scree_crawler_warning_visible():
 		draw_scree_crawler_warning(scree_crawler)
+	# B-08: the Harrier's dive warning, likewise above the foreground.
+	if cliff_harrier_warning_visible():
+		draw_cliff_harrier_warning(cliff_harrier)
 	draw_route_markers()
 	draw_mark_vfx()
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
@@ -3892,6 +4650,8 @@ func enemy_sprite_frame(shade: Dictionary) -> Dictionary:
 	# B-07: selected by the actor's stable identity, never by Lolth's region or by name case.
 	if is_scree_crawler(shade):
 		return {"sheet": STONEHOOK_THREATS_RUNTIME, "source": scree_crawler_source()}
+	if is_cliff_harrier(shade):
+		return {"sheet": STONEHOOK_THREATS_RUNTIME, "source": cliff_harrier_source()}
 	var sheet: Texture2D = BRIAR_HOUND_RUNTIME
 	if zone == 1:
 		sheet = STONEHOOK_THREATS_RUNTIME
@@ -3937,6 +4697,10 @@ func enemy_draw_geometry(shade: Dictionary) -> Dictionary:
 	if is_scree_crawler(shade):
 		# Uniform scale so the visible alpha body, not the padded crop, is 120 px tall.
 		draw_size = source.size * (SCREE_CRAWLER_BODY_HEIGHT / float(bounds.size.y))
+	elif is_cliff_harrier(shade):
+		# B-08: the same uniform rule; the body's lower edge (claws) sits at pos.y + 34, so the
+		# displayed bird follows its world position, altitude included.
+		draw_size = source.size * (CLIFF_HARRIER_BODY_HEIGHT / float(bounds.size.y))
 	var scale_factor := draw_size / source.size
 	var p: Vector2 = shade.pos
 	var destination := Rect2(p.x - (float(bounds.position.x) + float(bounds.size.x) / 2.0) * scale_factor.x, p.y + 34.0 - float(bounds.end.y) * scale_factor.y, draw_size.x, draw_size.y)
@@ -4016,8 +4780,11 @@ func prepare_encounter_bounds() -> void:
 	ui_encounter_bounds.clear()
 	ui_encounter_bounds_scans = 0
 	var source := scree_crawler_source()
-	ui_encounter_bounds[STONEHOOK_THREATS_RUNTIME.resource_path + str(source)] = scan_alpha_bounds(source, STONEHOOK_THREATS_RUNTIME.get_image())
+	var atlas := STONEHOOK_THREATS_RUNTIME.get_image()
+	ui_encounter_bounds[STONEHOOK_THREATS_RUNTIME.resource_path + str(source)] = scan_alpha_bounds(source, atlas)
 	ui_encounter_bounds_scans += 1
+	# B-08: the Harrier crop, scanned with the same alpha rule before the first frame.
+	prepare_harrier_bounds(atlas)
 
 func enemy_frame_bounds(sheet: Texture2D, source: Rect2) -> Rect2i:
 	var key := sheet.resource_path + str(source)
@@ -4051,6 +4818,23 @@ func draw_scree_crawler_warning(crawler: Dictionary) -> void:
 	draw_line(Vector2(tip_x, GROUND_Y - 2.0), Vector2(tip_x - direction * 16.0, GROUND_Y + 8.0), warning, 4.0)
 	var p: Vector2 = crawler.pos
 	draw_string(ThemeDB.fallback_font, Vector2(p.x - 60.0, body.position.y - 44.0), "LUNGE!", HORIZONTAL_ALIGNMENT_CENTER, 120, 16, warning)
+
+# B-08 dive warning: a ground strip from below the bird to the locked target, a target mark
+# and a label. The strip is clamped to the foothill span. Drawn above the foreground overlay.
+func draw_cliff_harrier_warning(harrier: Dictionary) -> void:
+	var body: Rect2 = enemy_draw_geometry(harrier).body
+	var direction := float(harrier.attack_dir)
+	var warning := Color(1.0, 0.42, 0.25, 0.7 + 0.3 * sin(pulse * 18.0))
+	var from_x := float(harrier.pos.x)
+	var to_x := clampf(float(harrier.target_x) + direction * MELEE_LOLTH_HALF_WIDTH, ROUTE_FOOTHILLS_START_X, ROUTE_END_X)
+	draw_rect(Rect2(minf(from_x, to_x), GROUND_Y - 8.0, absf(to_x - from_x), 12.0), Color(warning.r, warning.g, warning.b, 0.35))
+	draw_line(Vector2(from_x, GROUND_Y - 2.0), Vector2(to_x, GROUND_Y - 2.0), warning, 4.0)
+	var target := Vector2(float(harrier.target_x), GROUND_Y - 2.0)
+	draw_arc(target, 14.0, 0.0, TAU, 24, warning, 3.0)
+	draw_line(target + Vector2(-10, -10), target + Vector2(10, 10), warning, 3.0)
+	draw_line(target + Vector2(-10, 10), target + Vector2(10, -10), warning, 3.0)
+	draw_line(Vector2(from_x, body.end.y), Vector2(from_x, GROUND_Y - 6.0), Color(warning.r, warning.g, warning.b, 0.6), 2.0)
+	draw_string(ThemeDB.fallback_font, Vector2(from_x - 60.0, body.position.y - 44.0), "DIVE!", HORIZONTAL_ALIGNMENT_CENTER, 120, 16, warning)
 
 func draw_attack_telegraph(shade: Dictionary) -> void:
 	var p: Vector2 = shade.pos

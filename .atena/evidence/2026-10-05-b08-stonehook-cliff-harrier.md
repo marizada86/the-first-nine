@@ -1,54 +1,66 @@
 ---
-status: prepared-inactive-dependency-cleared-awaiting-mode
-kind: future-plan-preparation-evidence
+status: implemented-awaiting-human-review
+kind: preparation-evidence
 created: 2026-10-05
 plan_id: 2026-10-05-b08-stonehook-cliff-harrier
-request_classification: PLAN_DEVIATION
-deviation_id: DEV-001-b08-preparation
 spec: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
 instruction: "[[2026-10-05-b08-stonehook-cliff-harrier-instruction]]"
-preparation_approved: true
-approval_mode: unconfigured
-implementation_approved: false
-engine_rerun: false
+baseline_commit: 4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1
+approval_mode: per-plan
+approved: 2026-10-05
+request_execution_classification: IN_PLAN
+implementation_approved: true
+engine_rerun: true
+documentation_published: false
+push_approved: false
+pull_request_approved: false
+merge_approved: false
+dispatch_approved: false
+implementation_branch: codex/b08-stonehook-cliff-harrier
+implementation_evidence: "[[2026-10-05-b08-stonehook-cliff-harrier-implementation]]"
+human_acceptance: pending
 ---
 
-# B08 Preparation and Return to B07
+# B08 Preparation Evidence
 
-The owner said B-07 was executing and requested B-08. After the required plan-deviation decision, the owner selected option 1: prepare the B-08 plan and English prompt now, with implementation waiting for B-07 validation and integration. This is preparation authority, not scope approval or approval-mode selection for B-08 implementation.
+The executor prepared this record before any B-08 production change, following the owner's 2026-10-05 message. That message approves the revised scope and selects per-plan approval (option 1).
 
-## Local Suspension Before Preparation
+## Starting Point Verification
 
-Before creating the B-08 proposal, `.atena/state/plan.yaml` recorded `suspension.id: DEV-001-b08-preparation`, the suspended B-07 coordination context, local-only scope, owner authority and the original return cursor. No external task was interrupted or messaged, no B-07 field or cursor was replaced, and the cloud executor was not paused. This suspension exists to coordinate local proposal preparation only.
+- **Local state before preparation:** the checkout was on `codex/b07-stonehook-first-encounter` at `4da953c`, with a clean tree.
+- **Fetch:** origin was fetched without overwriting local work. `origin/main` is `4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1`.
+- **Ancestry:** `4da953c` (implementation), `523421e` (acceptance records), `2684dac` (PR #7 regular merge, parents `fcc98b6` and `523421e`) and `4d3c5c1` (closure) are all ancestors of `origin/main`. The merged tree equals the `523421e` tree.
+- **B-07 closure:** `.atena/state/plan.yaml` had `active_plan: null` and `plan_cursor: complete`. B-07 was `last_completed_plan` with `complete-implementation-merged`, human acceptance and the Windows review receipt [[2026-10-05-b07-windows-review]].
+- **Branches:** no B-08 branch existed locally or on origin. `codex/b08-stonehook-cliff-harrier` was created from `origin/main`, without upstream tracking. Local `main` and the B-07 branch were left unchanged.
+- **Material read:** the integrated B-07 spec, evidence, implementation note, Windows review receipt and production code.
+- **Windows evidence:** those results are Atena's externally reported runs, not executor runs.
 
-## Inspected Sources and Limits
+## Inspected Evidence
 
-The preparation checkout was main at `fcc98b63e1919c54b6df563c8de0c7173a7affcb`, with no tracked edits before the temporary suspension. B-07's approved spec, the slow-travel/continuous-floor/control decisions, the Stonehook threat family, the runtime migration manifest and current prototype movement/targeting/drawing code were inspected. The owner reports external B-07 execution; its resulting implementation is not available in this checkout. No B-07 test result, merge, code API or accepted implementation base is invented.
+The existing atlas was read in a scratch copy with a headless Godot 4.7.2 probe and the game's alpha >= 0.25 rule. No asset was changed.
 
-Visual inspection of the existing Stonehook atlas identified the upper-right bird. Read-only Pillow inspection found RGBA 1536x1024. The initial 768x500 crop included four opaque pixels from neighboring lower-row art at y=499. Harrier claw pixels continue through y=495, with no alpha>=64 pixels at y=496-498; the proposal therefore uses (768, 0, 768, 497) as the initial source crop. No image was edited or generated. This is source inspection, not rendered suitability validation.
+| Region | Finding |
+| --- | --- |
+| Proposed crop `(768, 0, 768, 497)` | Alpha bounds `(37, 8, 613, 488)`: only the bird, wings and claws included, facing right natively |
+| Rows 496-497 | Empty |
+| Below row 497 | The next cell's creature begins at row 500 |
 
-## Proposed Work and Open Dependency
+At the 110 px body height the visible footprint is 138.2 px wide, so the half width is 69.1.
 
-[[2026-10-05-b08-stonehook-cliff-harrier]] proposes one finite bird, reachable low flight, a telegraphed dive and independent two-actor restoration/reward state. [[2026-10-05-b08-stonehook-cliff-harrier-instruction]] is a future English handoff draft with explicit stop gates. It must not launch another implementation while B-07 runs.
+The existing code was also inspected:
 
-The unresolved implementation dependency is the validated, accepted, merged and closed B-07 base. B-08 also requires its own approval selection, scope approval, activation and any separately authorized external delivery. No implementation, engine run, commit, push, PR, merge or dispatch is performed by preparation.
+- **Targeting.** Melee uses a body-width horizontal reach and a 70 px vertical check around `pos.y`.
+- **Crawler bounds.** The B-07 crawler crop has its own `ui_encounter_bounds_scans` counter, which both B-07 validators assert equals 1.
+- **Shared fixture.** `reach_expedition_ready_for_test(with_encounter)` resolves the crawler for B-06 suites.
 
-## Return to B07
+## Preparation Outcome
 
-After preparing the proposal and handoff, the temporary local suspension was cleared. The complete B-07 active block, its original cursor and completed-plan history were preserved. `deferred_requests` now retains DEV-001's completed preparation and explicitly deferred execution, with B-08 approval mode unconfigured and all execution/publication gates false. B-08 is not the active plan and no message was sent to the ongoing external executor.
+The Harrier's world position will be its displayed anchor, the ground-enemy anchor raised by its altitude, so grounded reach needs no global change. The Harrier crop gets its own scan counter, keeping the B-07 assertions' meaning. The shared fixture gains a Harrier opt-in, so B-06 and B-07 suites run with the Harrier resolved.
 
-The final B-08 scope and implementation base must be reconfirmed against B-07's actual accepted result, not this preparation checkout. The specification and handoff remain local, unpublished and not executable. The choice of low flight, existing static artwork and limited two-actor integration is proposal judgment documented for future owner approval, not a canonical rule change.
+One proposed default is arithmetically incompatible. A dive from 180 cannot reach a standing Lolth, because body reach (113.1) plus maximum dive travel (66) is 179.1. Attack initiation is therefore set to 170 and reported. No blocking gap remains. The plan was activated with `approval_mode: per-plan` before implementation; completed history and the B-07 closure are preserved.
 
-## Preparation Validation
+These are preparation checks only. No gameplay result is claimed here.
 
-`.atena/generated/2026-10-05-b08-preparation/validate_preparation.cjs` passed with exit 0. It resolved 18 links, checked the required ADD paths and scoped record syntax, confirmed B-08 inactive/unapproved with its base unresolved, and compared the state against `fcc98b6`: the B-07 active block, cursor, completed history and unrelated state are unchanged after checkout line-ending normalization. The only final state difference is DEV-001's future request; suspension is null. All 374 earlier owner-local evidence files retained their SHA256 hashes, and no production/staged edit was present. Whitespace checks passed.
+## Implementation Checkpoint
 
-This is documentation/preparation validation only. No general YAML parser, engine suite, fresh rendered capture, remote publication or B-07 implementation result is claimed. The previous validators describe their own checkpoints and were not modified to accommodate this new future request.
-
-## Revised Readiness After B07 Closure
-
-The earlier preparation sections are dated history. B-07 was reviewed on native Windows (full runner exit 0; 24 case outcomes including 11 rejected faulty controls), accepted by the owner with limitations, regularly merged through PR #7 at `2684dac`, and closed on main at `4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1`. [[2026-10-05-b07-windows-review]] distinguishes fresh Windows results from the executor's Linux evidence.
-
-The revised proposal retains one finite reachable bird and independent two-actor restoration. It maps damage to one existing hurt, uses home x=2760 and footprint-bounded clear patrol 2400-2860, and reuses B-07's actual separate crawler/flags, combat_targets, source selection, bounds cache and safe/F4 restore conventions. Production and canon are unchanged. No B-08 engine result is claimed.
-
-The owner approved delivery of the revised English cloud prompt. Sending its explicit per-plan selection can configure that mode in the receiving cloud checkout. Here B-08 remains inactive and mode-unconfigured until that selection is persisted. Drafts remain local/unpublished; the prompt is self-contained so missing local drafts do not block the executor. No push, PR, merge or B-09 authority follows.
+On 2026-10-05, S-001 through S-003 were executed locally on `codex/b08-stonehook-cliff-harrier` from verified integrated main `4d3c5c1`. Results, tuning adjustments, inspected captures and limitations are in [[2026-10-05-b08-stonehook-cliff-harrier-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-09 work has started. The earlier "in implementation" wording describes the dated pre-implementation checkpoint and is superseded here.

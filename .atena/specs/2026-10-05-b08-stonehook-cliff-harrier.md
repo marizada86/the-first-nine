@@ -1,103 +1,153 @@
 ---
-status: prepared-inactive-dependency-cleared-awaiting-mode
-kind: future-bounded-runtime-proposal
+status: implemented-awaiting-human-review
+kind: bounded-runtime-plan
 created: 2026-10-05
 plan_id: 2026-10-05-b08-stonehook-cliff-harrier
 origin: planned
 implementation_preceded_spec: false
-request_classification: PLAN_DEVIATION
-deviation_id: DEV-001-b08-preparation
-preparation_approved: true
-preparation_authority: owner-selected-option-1-to-prepare-now-without-implementation
-approval_mode: unconfigured
-implementation_approved: false
-active_plan: false
-scope_approved: true
-scope_approval_source: owner-approved-delivery-of-the-revised-english-b08-prompt
-approval_mode_selection: pending-owner-sent-per-plan-prompt
-execution_target: opus-5.5-cloud
-depends_on: "[[2026-10-05-b07-stonehook-first-encounter]]"
-preparation_checkout: fcc98b63e1919c54b6df563c8de0c7173a7affcb
-implementation_base: 4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1
-proposed_implementation_branch: codex/b08-stonehook-cliff-harrier
+request_classification: NEW_PLAN
+approval_mode: per-plan
+approval_selection: owner-selected-option-1
+approved: 2026-10-05
+approval_source: owner-message-approving-the-revised-B08-scope-and-selecting-option-1
+request_execution_classification: IN_PLAN
+implementation_approved: true
+execution_target: cloud-executor
+baseline_commit: 4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1
+implementation_branch: codex/b08-stonehook-cliff-harrier
 evidence: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
 instruction: "[[2026-10-05-b08-stonehook-cliff-harrier-instruction]]"
+prior_plan: "[[2026-10-05-b07-stonehook-first-encounter]]"
+documentation_published: false
 push_approved: false
 pull_request_approved: false
 merge_approved: false
 dispatch_approved: false
+implementation_evidence: "[[2026-10-05-b08-stonehook-cliff-harrier-implementation]]"
+human_acceptance: pending
 ---
 
-# B08 Stonehook Cliff Harrier Proposal
+# B08 Stonehook Cliff Harrier
 
-Prepare one second, finite Stonehook encounter using the existing Cliff Harrier artwork. The proposed enemy uses low flight, a visible dive warning and a recovery window, adding variety without enabling a boss or further progression. The owner approved the revised scope and requested its English cloud prompt. B-07 is technically validated, accepted, merged and operationally closed. B-08 remains inactive until approval-mode selection and activation; sending the self-contained owner prompt with its explicit per-plan selection can provide that choice to the cloud executor.
+Add one finite Cliff Harrier encounter to the existing on-foot foothills, alongside the accepted Scree Crawler. The owner approved this revised scope and selected per-plan approval (option 1) in the 2026-10-05 implementation message. That message supplies the scope directly; the owner-local B-08 drafts were not published and are not required. B-07 is complete and integrated at `4d3c5c1` ([[2026-10-05-b07-windows-review]]).
 
-## Sources and Dependency Gate
+## Sources and Existing Implementation
 
-[[2026-10-03-caravan-survival-slow-travel]] retains Stonehook's regional threat family and stationary early cave hub. [[2026-10-03-continuous-caravan-ground-and-web-gates]] protects the connected floor. [[2026-10-04-first-boss-mark-and-cure]] and [[2026-10-04-separated-controls-and-wagon-management]] preserve current progression and inputs. [[2026-10-05-b07-stonehook-first-encounter]] defines the preceding crawler, identity, combat, reward and restore work.
+[[2026-10-03-caravan-survival-slow-travel]], [[2026-10-03-continuous-caravan-ground-and-web-gates]], [[2026-10-04-first-boss-mark-and-cure]] and [[2026-10-04-separated-controls-and-wagon-management]] remain binding. [[2026-10-04-b06-stonehook-foot-expedition]] supplies the corridor, departure gate, ore and fixed cave camp. [[2026-10-05-b07-stonehook-first-encounter]] supplies the conventions to reuse:
 
-B-07 implementation `4da953c` passed Atena's fresh Windows validation and was accepted with its documented limitations. PR #7 was regularly merged at `2684dac`; the documentation closure is published at `4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1`, which is the verified integrated main and readiness baseline. See [[2026-10-05-b07-windows-review]]. Production `main.gd` is unchanged since the reviewed implementation. The cloud executor must fetch and verify this base or a later compatible descendant, then read the integrated B-07 code and records.
+- a separate foothill actor outside the cave `shades` list;
+- identity-based sprite selection;
+- startup bounds;
+- body-based reach;
+- a warning drawn above the foreground;
+- post-motion contact;
+- snapshot flags, and the clear patrol span 2400-2860 chosen against the foreground overlay.
 
-B-08 still requires an explicit approval mode and activation before implementation. The local drafts are not published. The owner-sent self-contained English prompt may deliver the exact revised scope directly; if used, persist it in the planned B-08 records before implementation rather than requiring missing files. No new B-08 publication, PR or merge is authorized.
+The existing atlas `assets/runtime_v2/enemies/stonehook/stonehook-threats-core-v1.png` holds the bird in its upper-right cell. Inspected at preparation with the game's alpha rule (>= 0.25):
 
-## Proposed Encounter and Movement
+- The proposed crop `Rect2(768, 0, 768, 497)` contains only the bird, with wings, claws and native right-facing pose.
+- Its alpha bounds are `(37, 8, 613, 488)`.
+- Rows 496-497 are empty, and the next cell's creature begins at row 500.
 
-Use one stable identity `stonehook_cliff_harrier_01`. Proposed activation: legitimate expedition access plus first arrival at x>=2600 in the existing foothills. Initial position: x=2760, with a proposed clear patrol span 2400-2860, clamped by the visible half-width. This leaves the crawler encounter earlier on the route and requires no larger map, new ground or forced kill. Available day and night; activation, health and defeat persist across ordinary visits and days. One Harrier and the existing crawler are the only foothill encounters in scope.
+## Scope and Technical Defaults
 
-Use an approach/retreat phase, frozen windup, short dive to a projected floor position and recovery back to low flight. Proposed tuning: 3 health, 1 capped Echo, approach 70 units/s, retreat 45 units/s inside a 100-unit distance, attack initiation at 180 units, windup 0.8 s, dive 0.3 s, maximum horizontal dive speed 220 units/s, recovery 1.2 s and one existing one-point hurt per strike in Lolth's three-health model. These are playtest defaults, not canon. Bound travel distance by speed and elapsed time; never teleport to the player or retarget during a strike.
+One actor, `stonehook_cliff_harrier_01`, activates on legitimate expedition access once Lolth first reaches x >= 2600, day or night. The defaults below are adjustable playtest data within this scope, not canon.
 
-Low flight remains reachable by the current grounded attack and First Thread; jumping is optional, not a requirement. Proposed visual hover height is 30 pixels above the existing floor, with at most 6 pixels of visual bob. Geometry, hurt testing and targeting must use the actual displayed position rather than a separate invisible anchor. During windup, show a readable landing warning on the floor and lock horizontal target/direction. Attack damage is active only during the strike, at most once per strike, with existing hurt cooldown and dash invulnerability honored. No idle contact damage or unseen vertical attack.
+**Placement and health**
+- Home x=2760.
+- Patrol 2400-2860, limited by the visible body footprint.
+- Health 3, and one capped Echo per credited defeat.
 
-Cancel a pending attack when Lolth retreats out of the foothills. The entire enemy body stays inside the clear 2400-2860 patrol; strikes and projected warnings stay inside 1760-3040 with footprint-aware bounds. These constraints avoid the existing opaque foreground without editing it. The Harrier never enters the approach/cave, attacks the wagon or damages across the boundary. Ordinary retreat preserves health; it is not a heal/reward reset. Implement behavior with the existing accepted B-07 encounter conventions, not a general flying-navigation system.
+**Flight**
+- Hover: the claws sit 30 px above the floor, with a bob of at most 6 px.
+- Approach at 70/s.
+- Retreat at 45/s while Lolth is within 100 units.
+- The visible alpha body is 110 px tall, at native aspect.
 
-## Artwork and Targeting
+**Attack**
+- Windup 0.8 s, with the target and direction locked at windup start.
+- A short, continuous 0.3 s dive toward the locked target x, at no more than 220/s horizontally and never past that x.
+- Recovery 1.2 s.
+- At most one existing one-point hurt per strike.
 
-The existing `assets/runtime_v2/enemies/stonehook/stonehook-threats-core-v1.png` is already preloaded. Its upper-right bird artwork is a static pose, not a new flight animation strip. Proposed source rectangle: (768, 0, 768, 497). Read-only preparation found its claw pixels through y=495; neighboring lower-row artwork becomes opaque at y=499. This crop is a grounded starting point, not a rendered acceptance result.
+Grounded melee and First Thread reach the bird without a jump. Its world position is its displayed anchor, so the existing vertical check covers its altitude. Ability range, damage and cooldown are unchanged, and global reach is not enlarged.
 
-Preserve native aspect ratio, wings and claws, using a proposed visible alpha-body height of 110 pixels rather than padded-cell height. Reuse B-07's accepted fixed-source selection and prewarmed bounds, adapted only for this actor. No other creature cell or bottom-row boss may appear when nearby or defeated. Use procedural motion, facing, warning, hit tint and the existing short defeat display, not unrelated atlas cells as animation frames.
+The warning is a readable ground strip and label drawn above the foreground. The rules for the Harrier's movement and strikes are:
 
-Melee and First Thread must distinguish the two actors by their actual accepted geometry and reach policy. Preserve the existing ability range, damage and cooldown. Tests must cover nearest eligible target, an out-of-range enemy closer by a misleading anchor, vertical reach, both facings and camera offsets. Do not enlarge global reach, hurt radii or contact damage to mask poor placement. Preserve crawler and Thornwake geometry and behavior.
+- no retargeting or teleporting;
+- dash invulnerability and hurt cooldown are honored;
+- no idle contact damage;
+- no cave pursuit or Wagon attack;
+- the body, strike and warning stay within their bounds;
+- pending attacks cancel when Lolth leaves the foothills.
 
-## Two Encounter State and Camp Coexistence
+Prepare the exact crop bounds before gameplay, using a separate counter so the B-07 crawler-crop assertions keep their meaning. Never cycle other atlas cells.
 
-Reuse the actual accepted B-07 lifecycle and extend it minimally to two stable identities. Spawning, clearing, saving and reward credit must not depend on array order, shared enemy name or a single global defeated flag. Killing one must never kill, reward, reset, erase or suppress the other. Border/day oscillation creates no duplicates. The two encounters do not need separation steering or ally mechanics; simultaneous combat is allowed and must be tested.
+## Independent Encounter State and Restoration
 
-Preserve concrete offscreen cave waves, survival, wagon damage and terminal failure. Neither foothill enemy blocks a legitimate cave safe capture or cave wave completion; cave wave creation/clearing never erases either foothill enemy. Local pause policy for UI/F4 remains unchanged. The finite ore can be collected, carried and deposited independently of either kill, with the same capacity and identity rules.
+**Separate state.** Each actor has its own identity, live health, and activation, defeat and reward flags. Killing or clearing one never alters the other. Each pays at most one Echo under the unchanged 3/3 cap.
 
-Snapshot activation/defeat/reward flags for each actor consistently with saved Echoes and ore. On failure, unsaved kills and rewards roll back together for each actor. Follow the accepted B-07 transient-clearing policy: saved undefeated encounters recreate once at initial health on a subsequent legitimate visit; saved defeated encounters remain defeated. Ordinary retreat does not reset a living actor. Cover all four saved defeat combinations: neither, crawler only, Harrier only, both. F4 exact restore deep-restores both actors' live states, timers, positions and the original snapshot without reward leakage. New run clears all added fields.
+**What stays independent.** Cave waves and safe-capture scans neither erase nor count foothill actors. Ore collection and deposit stay independent of either kill. Concrete offscreen cave threats and terminal failure are preserved.
 
-## Non Goals and Impacts
+**Saving and failure.** Snapshots save both flag sets with Echoes and ore. Failure rolls back unsaved defeats and rewards consistently. A saved undefeated actor is recreated once, at initial health, on legitimate re-entry; a saved defeated actor stays defeated. All four saved combinations are tested: neither defeated, crawler only, Harrier only, both.
 
-Do not enable Stone Maw, shrine, Mark II, second cure, wagon travel, pullers/posts/missions, axle/brakes progression, parry, web/rope traversal, later regions, terrain hazards, new art/audio, binary asset edits, dependencies, disk saves or broad camera/AI architecture. No canonical files or completed records change. Existing documented visual and balance limitations remain.
+**F4 and new runs.** F4 deep-restores both live actors with their timers, positions and flags. A new run clears all added state.
 
-Future allowed production edit: `main.gd` only, based on the integrated B-07 version. Tests, fixtures, captures and operational evidence belong under `.atena/`. Preserve existing historical validators/results; add explained regression wrappers only if a previous single-actor boundary assertion needs an explicit two-actor adaptation. Another production file or asset requirement needs a plan change. During preparation, no production edit is allowed at all.
+## Non Goals and Allowed Files
+
+Only `main.gd` may change in production. Tests, captures and records belong under `.atena/`.
+
+The following are out of scope:
+
+- Stone Maw, the shrine, Mark II and additional cures;
+- wagon travel, pullers, missions/posts and parry;
+- web/rope traversal and later regions;
+- new art or audio, binary asset edits and dependencies;
+- disk saves and broad architecture.
+
+Controls, menus, progression locks, continuous terrain, accepted crawler behavior and historical validators/results are preserved.
 
 ## Acceptance Criteria
 
-1. Legitimate later foothill entry creates exactly one Harrier, never before the route gate or through debug-only Mark changes. Crossing, day changes and retreat cannot duplicate/reset either encounter.
-2. Day/night renders at 1280x720 show only the bird, with natural proportions, intact crop, correct facing, stable body/target alignment, readable warning and camera-correct labels. Exact source bounds are prepared before gameplay.
-3. Grounded melee and First Thread hit/miss correctly. The dive is visibly warned, locks its target, moves continuously, hits at most once and can be escaped with dash. A player attack does not produce a hurt pose without genuine damage.
-4. Both enemies can coexist. Killing/crediting one leaves the other unchanged; each pays at most one capped Echo. The unchanged 3/3 cap never opens Mark II, a cure or travel.
-5. Retreat, the continuous floor, offscreen cave threats, safe capture, inventory and ore loop remain functional. No remote damage or remote camp access appears.
-6. Failure restore passes all four saved defeat combinations and rolls unsaved rewards/ore back coherently. F4 exact restore and new-run reset cover both identities and live actor state.
-7. Accepted B-07 encounter tests and B-06/core regressions retain their protected behavior. Results are fresh and platform-specific; historical evidence is never presented as a new run.
+1. Only legitimate access at x >= 2600 creates exactly one Harrier. Border/day oscillation duplicates neither actor and resets neither actor's health.
+2. The Harrier uses only its own crop, with wings and claws and native aspect, and hovers and bobs within limits. It is readable in day/night and both facings under camera offsets. Bounds are prepared before gameplay.
+3. Grounded melee and First Thread hit inside the visible reach and miss outside it. The nearest eligible target is selected. Vertical reach follows the displayed position.
+4. The windup warning precedes every dive with a locked target and direction. A dash avoids the dive. A strike hurts at most once, never across the region boundary and never at idle.
+5. Both actors coexist in simultaneous combat with independent health, defeat and reward. Each pays at most one Echo under the cap, and neither affects the ore, cave waves or capture.
+6. The four saved combinations, unsaved rollback, F4 exact restore (also through real input) and new-run reset are consistent.
+7. B-07, B-06 and core regressions, the full self-test and the smoke runs keep their intent. Faulty controls are genuinely rejected.
 
-## Gaps and Approval
+## Gaps and Deferred Work
 
-The B-07 implementation dependency is resolved at the verified integrated base above; no technical dependency blocker remains. Approval-mode selection and B-08 activation are pending operational gates, not engine results. Asset suitability and attack balance are later validation obligations; if the fixed existing artwork cannot meet the criteria without a binary edit, stop for an asset-scope decision.
+BLOCKING gaps: none.
 
-RESOLVABLE proposed defaults: low flight rather than inaccessible aerial combat; one finite bird after the ore approach; reusable static artwork; bounded telegraphed dive; per-actor save/reward identity. DEFERRED: all non-goals, later Stonehook progression and additional hand-drawn animation.
+The approval and scope come from the owner's message. One resolvable default was adjusted at preparation:
 
-The earlier option 1 authorized proposal preparation only. The owner's later approval accepts this revised scope and requests its English cloud prompt. Local approval mode remains unconfigured until the owner selects it; the self-contained owner-sent prompt explicitly selects option 1, per-plan, when dispatched by the owner. Before implementation, persist the mode, approval source, scope and active checkpoint. Publication, PR and merge retain independent gates.
+- **Arithmetic.** The visible body is 138 px wide at a height of 110 px. Body-based melee reach is therefore 44 + 69.1 = 113.1, and the maximum dive is 220 × 0.3 = 66, so a dive from the proposed 180 initiation distance can never connect (113.1 + 66 = 179.1).
+- **Adjustment.** Attack initiation is set to 170, keeping a 9-unit margin. This is reported for review.
+- **Other numbers** stay as proposed unless validation shows a need; any change will be reported.
 
-## Future Plan of Flight and Validation
+DEFERRED: the remaining Stonehook threats, Stone Maw, the shrine and progression, animation art, balance tuning and the existing B-06/B-07 visual limitations.
 
-- S-001 / B-001: inspect the accepted B-07 base, add bird geometry and telegraphed movement with reachable targeting.
-- S-002 / B-002: integrate two identities, camp coexistence, reward credit and restoration.
-- S-003 / B-003: headless and real-input tests, negative controls, inspected captures and owner review.
+## Plan of Flight and Approval
 
-Future validation uses Godot 4.7.2 (`D:/Godot/godot.exe` on owner-local Windows), with isolated scratch runs and recorded actual commands/version/platform/exits. Exercise activation/visit/day repetition, both-target selection, flight and dive targeting, windup/locked aim/dash/recovery, bounds, reward cap, cave waves, ore, four save combinations, F4 and reset. Run accepted B-07 tests, B-06 route/combat/menu/geometry/facing regressions, full self-tests and rendered/headless 600-frame smoke checks. Controller filtering must precede gameplay in keyboard-only tests; keep separate trigger-noise and controller checks.
+Approval mode is per-plan. After this record is activated, S-001 through S-003 run without intermediate approvals. Publication, push, PR, merge, dependencies and scope expansion remain separate gates. Human acceptance is required before completion.
 
-Capture day/night and both facings, grounded hit/miss, dive warning/strike/recovery and both enemies together. Inspect sprite crop, targeting, position continuity and UI readability. Keep Linux and Windows results separate. Reject genuine faulty controls for unreachable hover, wrong artwork, late bounds preparation, live retargeting, repeated strike damage, cross-boundary dive, shared identity/defeat flags, repeated reward, lost actor on cave-wave clear and incomplete restore. Parser/import crashes are not successful negative controls.
+- **S-001 / B-001:** bird geometry, movement and telegraphed combat.
+- **S-002 / B-002:** independent two-actor rewards, camp coexistence and restoration.
+- **S-003 / B-003:** validation, inspected captures and operational reconciliation.
 
-Save evidence under `.atena/generated/2026-10-05-b08-validation/` and a future implementation note, without overwriting earlier results. Reconcile actual implementation status and separately authorized publication facts; stop for human acceptance. No test or capture result is claimed at preparation time.
+## Validation and Evidence
+
+Save fresh artifacts under `.atena/generated/2026-10-05-b08-validation/`:
+
+- a headless B-08 suite and a real-input runtime fixture with controller isolation before the first frame;
+- faulty controls for wrong artwork, unreachable flight, late bounds preparation, retargeting, repeated damage, boundary escape, shared defeat/reward state, duplicate rewards and incomplete restoration;
+- the B-07, B-06 and core regressions, the self-test and both smoke runs;
+- inspected day/night, facing, warning/strike/recovery and two-actor captures.
+
+Linux executor results are kept separate from any reported Windows evidence.
+
+## Implementation Checkpoint
+
+On 2026-10-05, S-001 through S-003 were executed locally on `codex/b08-stonehook-cliff-harrier` from verified integrated main `4d3c5c1`. Results, tuning adjustments, inspected captures and limitations are in [[2026-10-05-b08-stonehook-cliff-harrier-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-09 work has started. The earlier "in implementation" wording describes the dated pre-implementation checkpoint and is superseded here.

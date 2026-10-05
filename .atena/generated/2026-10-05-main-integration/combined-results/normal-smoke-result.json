@@ -1,0 +1,19 @@
+{
+  "name": "normal-smoke",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": "Using Device: NVIDIA - NVIDIA GeForce GTX 1650\r"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 8.197,
+  "expected_rejection": null,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}

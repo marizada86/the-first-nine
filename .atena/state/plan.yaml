@@ -899,3 +899,26 @@ approved_change_requests:
     approved: "2026-10-03"
     request_classification: PLAN_CHANGE_REQUEST
     scope: "Adapt Thornwake into a compact caravan action/defense loop; preserve the active interface/VFX reference batch and all canonical gameplay boundaries."
+
+repository_integration:
+  id: 2026-10-05-main-integration
+  spec: '[[2026-10-05-main-integration]]'
+  evidence: '[[2026-10-05-main-integration]]'
+  status: validated-awaiting-main-publication
+  mode: direct
+  approval_mode: direct-owner-authority
+  authority: Owner requested combining all current work into main and updating it.
+  recovery_commit: 6e6410e80a49b5c0542aeda9dc4f448f338cf3b3
+  b08_implementation_commit: 052ec6466ee2a8252cf54f6f72ed11f0cc26e045
+  b08_feature_branch: codex/b08-stonehook-cliff-harrier
+  b08_branch_published: true
+  b08_human_playtest: pending-no-itemized-results-inferred
+  merge_approved: true
+  push_approved: true
+  publication_target: origin/main
+  branch_deletion_approved: false
+  b09_offline_art_targets: 30
+  b09_runtime_admission_approved: false
+  b09_gameplay_started: false
+  validation_receipt: .atena/generated/2026-10-05-main-integration/integration-validation.json
+  historical_publication_flags: Earlier plan flags retain their dated checkpoint meaning; this owner instruction authorizes current repository integration and publication only.

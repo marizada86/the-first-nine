@@ -1,5 +1,5 @@
 ---
-status: executing
+status: validated-awaiting-main-publication
 kind: repository-integration
 created: 2026-10-05
 origin: planned

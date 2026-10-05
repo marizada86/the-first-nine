@@ -1,0 +1,310 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Inicialização do Projeto (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Escaneando estrutura de arquivos...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Carregando nomes de classe globais...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verificando GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Criando scripts autoload...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Inicializando plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Iniciando escaneamento de arquivos...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registrando classes globais... (3 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Escaneando ações... (92 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | caravan-flame-runtime-states-v1.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | last-camp-prop-sheet-v1.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | wagon-repair-states-runtime-v1.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | wagon-repair-states-runtime-v2.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | lolth-drow-action-runtime-sheet-v1.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | lolth-drow-aerial-runtime-sheet-v1.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | lolth-drow-dash-runtime-sheet-v1.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | lolth-drow-intensified-aerial-runtime-sheet-v1.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | lolth-drow-intensified-motion-runtime-sheet-v1.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | lolth-drow-motion-runtime-sheet-v1.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | lolth-drow-runtime-sheet-v1.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | lolth-elf-action-runtime-sheet-v1.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | lolth-elf-aerial-runtime-sheet-v1.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | lolth-elf-gameplay-poses-v1.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | lolth-elf-motion-runtime-sheet-v1.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | lolth-elf-motion-runtime-sheet-v2.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | lolth-elf-motion-runtime-sheet-v3.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | lolth-elf-runtime-sheet-v1.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | lolth-elf-unified-idle-sheet-v1.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | lolth-elf-unified-interaction-sheet-v1.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | lolth-elf-unified-locomotion-sheet-v1.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | lolth-gameplay-poses-v1.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | shade-motion-runtime-sheet-v1.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | shade-motion-runtime-sheet-v2.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | shade-runtime-sheet-v1.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | ashen-way-backdrop-runtime-v1.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | ashen-way-foreground-overlay-runtime-v1.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | last-threshold-backdrop-runtime-v1.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | ruins-foreground-overlays-runtime-v1.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | traversal-platforms-runtime-sheet-v1.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | veil-ruins-backdrop-runtime-v1.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | zone-ground-bands-runtime-sheet-v1.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | dream-gate-runtime-v1.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | mark-gates-runtime-sheet-v1.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | mark-gates-runtime-sheet-v2.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | salvage-pickups-runtime-sheet-v1.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | salvage-pickups-runtime-sheet-v2.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | action-prompts-runtime-sheet-v1.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | camp-status-emblems-runtime-v1.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | hud-status-icons-runtime-v1.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | mark-progression-seals-runtime-v1.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | passive-mission-emblems-runtime-v1.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | shadow-actions-runtime-sheet-v1.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | shadow-actions-runtime-sheet-v2.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | shadow-mark-effects-v1.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | first-drows-lineup-v1.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | first-drows-portrait-sheet-v1.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | first-elves-portrait-sheet-v1.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | lolth-definitive-production-sheet-v1.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | lolth-eight-mark-transformations-v1.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | lolth-eight-mark-transformations-v2.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | lolth-mark-evolution-v1.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | lolth-original-elf-form-v1.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | the-kiss-of-shar-storyboard-v1.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | golden-city-of-dreams-v1.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | shadow-crown-drow-body-shadow-form-v1.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | shadow-crown-lolth-reference-v1.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | shadow-crown-variant-a-v1.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | shadow-crown-variant-b-v1.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | the-kiss-of-shar-v1.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | the-last-camp-elven-survivors-v1.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | the-last-camp-elven-survivors-v2.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | the-last-camp-v1.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | lolth-anatomy-reference-01.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | lolth-anatomy-reference-02.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | lolth-anatomy-reference-03.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | lolth-anatomy-reference-04.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | lolth-user-reference.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | phase-01-gameplay-screen-reference.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | phase-01-golden-city-exodus-reference.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | wagon-open-core-states-v1.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | lolth-drow-core-sheet-v1.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | lolth-elf-core-sheet-v1.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | lolth-mark-3-atlas-v1.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | lolth-mark-5-atlas-v1.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | lolth-mark-7-atlas-v1.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | thalestriel-cured-assists-sheet-v1.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | thalestriel-plagued-survivors-sheet-v1.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | region-threats-and-bosses-v1.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | stonehook-threats-core-v1.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | antlered-hunger-core-v1.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | briar-hound-core-v1.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | stag-of-mire-core-v1.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | salvage-pickups-core-v1.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | shar-to-lolth-progression-v1.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | survival-and-mark-icons-v1.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | shadow-actions-core-v1.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | shadow-web-actions-v1.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | salvage-workshop-web-gates-v1.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | continuous-route-atlas-v1.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | stonehook-continuous-route-v1.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | thornwake-continuous-ground-v1.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importando Recursos (92 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   1% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  19% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  49% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  74% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  92% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  97% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executando operações pré-reimportação...[39m[0m
+[   0% ] [90m[1mreimport[22m | phase-01-gameplay-screen-reference.png[39m[0m
+[   1% ] [90m[1mreimport[22m | lolth-user-reference.png[39m[0m
+[   2% ] [90m[1mreimport[22m | lolth-anatomy-reference-04.png[39m[0m
+[   3% ] [90m[1mreimport[22m | lolth-anatomy-reference-03.png[39m[0m
+[   4% ] [90m[1mreimport[22m | lolth-anatomy-reference-02.png[39m[0m
+[   5% ] [90m[1mreimport[22m | lolth-anatomy-reference-01.png[39m[0m
+[   6% ] [90m[1mreimport[22m | the-last-camp-v1.png[39m[0m
+[   7% ] [90m[1mreimport[22m | the-last-camp-elven-survivors-v2.png[39m[0m
+[   8% ] [90m[1mreimport[22m | the-last-camp-elven-survivors-v1.png[39m[0m
+[   9% ] [90m[1mreimport[22m | the-kiss-of-shar-v1.png[39m[0m
+[  10% ] [90m[1mreimport[22m | shadow-crown-variant-b-v1.png[39m[0m
+[  11% ] [90m[1mreimport[22m | shadow-crown-variant-a-v1.png[39m[0m
+[  12% ] [90m[1mreimport[22m | shadow-crown-lolth-reference-v1.png[39m[0m
+[  13% ] [90m[1mreimport[22m | shadow-crown-drow-body-shadow-form-v1.png[39m[0m
+[  15% ] [90m[1mreimport[22m | golden-city-of-dreams-v1.png[39m[0m
+[  16% ] [90m[1mreimport[22m | the-kiss-of-shar-storyboard-v1.png[39m[0m
+[  17% ] [90m[1mreimport[22m | lolth-original-elf-form-v1.png[39m[0m
+[  18% ] [90m[1mreimport[22m | lolth-mark-evolution-v1.png[39m[0m
+[  19% ] [90m[1mreimport[22m | lolth-eight-mark-transformations-v2.png[39m[0m
+[  20% ] [90m[1mreimport[22m | lolth-eight-mark-transformations-v1.png[39m[0m
+[  21% ] [90m[1mreimport[22m | lolth-definitive-production-sheet-v1.png[39m[0m
+[  22% ] [90m[1mreimport[22m | first-elves-portrait-sheet-v1.png[39m[0m
+[  23% ] [90m[1mreimport[22m | first-drows-portrait-sheet-v1.png[39m[0m
+[  24% ] [90m[1mreimport[22m | thornwake-continuous-ground-v1.png[39m[0m
+[  25% ] [90m[1mreimport[22m | stonehook-continuous-route-v1.png[39m[0m
+[  26% ] [90m[1mreimport[22m | continuous-route-atlas-v1.png[39m[0m
+[  27% ] [90m[1mreimport[22m | salvage-workshop-web-gates-v1.png[39m[0m
+[  29% ] [90m[1mreimport[22m | shadow-web-actions-v1.png[39m[0m
+[  30% ] [90m[1mreimport[22m | shadow-actions-core-v1.png[39m[0m
+[  31% ] [90m[1mreimport[22m | survival-and-mark-icons-v1.png[39m[0m
+[  32% ] [90m[1mreimport[22m | shar-to-lolth-progression-v1.png[39m[0m
+[  33% ] [90m[1mreimport[22m | salvage-pickups-core-v1.png[39m[0m
+[  34% ] [90m[1mreimport[22m | stag-of-mire-core-v1.png[39m[0m
+[  35% ] [90m[1mreimport[22m | briar-hound-core-v1.png[39m[0m
+[  36% ] [90m[1mreimport[22m | antlered-hunger-core-v1.png[39m[0m
+[  37% ] [90m[1mreimport[22m | stonehook-threats-core-v1.png[39m[0m
+[  38% ] [90m[1mreimport[22m | region-threats-and-bosses-v1.png[39m[0m
+[  39% ] [90m[1mreimport[22m | thalestriel-plagued-survivors-sheet-v1.png[39m[0m
+[  40% ] [90m[1mreimport[22m | thalestriel-cured-assists-sheet-v1.png[39m[0m
+[  41% ] [90m[1mreimport[22m | lolth-mark-7-atlas-v1.png[39m[0m
+[  43% ] [90m[1mreimport[22m | lolth-mark-5-atlas-v1.png[39m[0m
+[  44% ] [90m[1mreimport[22m | lolth-mark-3-atlas-v1.png[39m[0m
+[  45% ] [90m[1mreimport[22m | lolth-elf-core-sheet-v1.png[39m[0m
+[  46% ] [90m[1mreimport[22m | lolth-drow-core-sheet-v1.png[39m[0m
+[  47% ] [90m[1mreimport[22m | wagon-open-core-states-v1.png[39m[0m
+[  48% ] [90m[1mreimport[22m | phase-01-golden-city-exodus-reference.png[39m[0m
+[  49% ] [90m[1mreimport[22m | shade-motion-runtime-sheet-v1.png[39m[0m
+[  50% ] [90m[1mreimport[22m | lolth-gameplay-poses-v1.png[39m[0m
+[  51% ] [90m[1mreimport[22m | lolth-elf-unified-locomotion-sheet-v1.png[39m[0m
+[  52% ] [90m[1mreimport[22m | lolth-elf-unified-interaction-sheet-v1.png[39m[0m
+[  53% ] [90m[1mreimport[22m | lolth-elf-unified-idle-sheet-v1.png[39m[0m
+[  54% ] [90m[1mreimport[22m | lolth-elf-runtime-sheet-v1.png[39m[0m
+[  55% ] [90m[1mreimport[22m | lolth-elf-motion-runtime-sheet-v3.png[39m[0m
+[  56% ] [90m[1mreimport[22m | lolth-elf-motion-runtime-sheet-v2.png[39m[0m
+[  58% ] [90m[1mreimport[22m | lolth-elf-motion-runtime-sheet-v1.png[39m[0m
+[  59% ] [90m[1mreimport[22m | lolth-elf-gameplay-poses-v1.png[39m[0m
+[  60% ] [90m[1mreimport[22m | lolth-elf-aerial-runtime-sheet-v1.png[39m[0m
+[  61% ] [90m[1mreimport[22m | lolth-elf-action-runtime-sheet-v1.png[39m[0m
+[  62% ] [90m[1mreimport[22m | lolth-drow-runtime-sheet-v1.png[39m[0m
+[  63% ] [90m[1mreimport[22m | lolth-drow-motion-runtime-sheet-v1.png[39m[0m
+[  64% ] [90m[1mreimport[22m | lolth-drow-intensified-motion-runtime-sheet-v1.png[39m[0m
+[  65% ] [90m[1mreimport[22m | lolth-drow-intensified-aerial-runtime-sheet-v1.png[39m[0m
+[  66% ] [90m[1mreimport[22m | lolth-drow-dash-runtime-sheet-v1.png[39m[0m
+[  67% ] [90m[1mreimport[22m | lolth-drow-aerial-runtime-sheet-v1.png[39m[0m
+[  68% ] [90m[1mreimport[22m | lolth-drow-action-runtime-sheet-v1.png[39m[0m
+[  69% ] [90m[1mreimport[22m | wagon-repair-states-runtime-v2.png[39m[0m
+[  70% ] [90m[1mreimport[22m | wagon-repair-states-runtime-v1.png[39m[0m
+[  72% ] [90m[1mreimport[22m | last-camp-prop-sheet-v1.png[39m[0m
+[  73% ] [90m[1mreimport[22m | caravan-flame-runtime-states-v1.png[39m[0m
+[  74% ] [90m[1mreimport[22m | first-drows-lineup-v1.png[39m[0m
+[  75% ] [90m[1mreimport[22m | shadow-mark-effects-v1.png[39m[0m
+[  76% ] [90m[1mreimport[22m | shadow-actions-runtime-sheet-v2.png[39m[0m
+[  77% ] [90m[1mreimport[22m | shadow-actions-runtime-sheet-v1.png[39m[0m
+[  78% ] [90m[1mreimport[22m | passive-mission-emblems-runtime-v1.png[39m[0m
+[  79% ] [90m[1mreimport[22m | mark-progression-seals-runtime-v1.png[39m[0m
+[  80% ] [90m[1mreimport[22m | hud-status-icons-runtime-v1.png[39m[0m
+[  81% ] [90m[1mreimport[22m | camp-status-emblems-runtime-v1.png[39m[0m
+[  82% ] [90m[1mreimport[22m | action-prompts-runtime-sheet-v1.png[39m[0m
+[  83% ] [90m[1mreimport[22m | salvage-pickups-runtime-sheet-v2.png[39m[0m
+[  84% ] [90m[1mreimport[22m | salvage-pickups-runtime-sheet-v1.png[39m[0m
+[  86% ] [90m[1mreimport[22m | mark-gates-runtime-sheet-v2.png[39m[0m
+[  87% ] [90m[1mreimport[22m | mark-gates-runtime-sheet-v1.png[39m[0m
+[  88% ] [90m[1mreimport[22m | dream-gate-runtime-v1.png[39m[0m
+[  89% ] [90m[1mreimport[22m | zone-ground-bands-runtime-sheet-v1.png[39m[0m
+[  90% ] [90m[1mreimport[22m | veil-ruins-backdrop-runtime-v1.png[39m[0m
+[  91% ] [90m[1mreimport[22m | traversal-platforms-runtime-sheet-v1.png[39m[0m
+[  92% ] [90m[1mreimport[22m | ruins-foreground-overlays-runtime-v1.png[39m[0m
+[  93% ] [90m[1mreimport[22m | last-threshold-backdrop-runtime-v1.png[39m[0m
+[  94% ] [90m[1mreimport[22m | ashen-way-foreground-overlay-runtime-v1.png[39m[0m
+[  95% ] [90m[1mreimport[22m | ashen-way-backdrop-runtime-v1.png[39m[0m
+[  96% ] [90m[1mreimport[22m | shade-runtime-sheet-v1.png[39m[0m
+[  97% ] [90m[1mreimport[22m | shade-motion-runtime-sheet-v2.png[39m[0m
+[  98% ] [90m[1mreimport[22m | Finalizando Importação de Recursos...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importando Recursos (92 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executando operações pós-reimportação...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Carregando editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Carregando layout do editor...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Carregando abas...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

@@ -1,0 +1,40 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1650
+
+B07RT PASS controller isolation precedes the first gameplay frame (pulse 0.000, state opening, engine frame 0 = 0)
+B07RT PASS the game's first gameplay frame (engine frame 1) follows isolation (engine frame 0)
+B07RT PASS synthetic 0.21 trigger and 0.35 stick noise neither dash, queue nor move Lolth
+B07RT PASS fixture: legitimate first cure and safe return, no crawler yet
+B07RT_TRACE D frames=849 settle_frames=21 settled=true monotonic=true x=1921.6
+B07RT PASS real D walk enters the foothills and creates exactly one identified crawler
+B07RT PASS day-right: crawler body visible (0.56 of body box), grounded (lowest row 555), centered on its world x under a 1410 px view (0.0 px), clean padding (0 of 4440 pixels changed)
+B07RT PASS day-left: crawler body visible (0.56 of body box), grounded (lowest row 555), centered on its world x under a 1410 px view (0.0 px), clean padding (0 of 4440 pixels changed)
+B07RT PASS day: left facing is the exact reflection of right facing around the body center (0.99 overlap)
+B07RT PASS night-right: crawler body visible (0.56 of body box), grounded (lowest row 555), centered on its world x under a 1410 px view (0.0 px), clean padding (0 of 4440 pixels changed)
+B07RT PASS night-left: crawler body visible (0.56 of body box), grounded (lowest row 555), centered on its world x under a 1410 px view (0.0 px), clean padding (0 of 4440 pixels changed)
+B07RT PASS night: left facing is the exact reflection of right facing around the body center (0.99 overlap)
+B07RT PASS real left-click hits the crawler inside its visible reach (134.1 px) without a hurt pose
+B07RT PASS real left-click just outside the reach misses without damage or a hurt pose
+B07RT PASS real C First Thread hits inside its range for its existing damage
+B07RT PASS real C First Thread finds no target just outside its range
+B07RT PASS windup shows a ground warning toward Lolth and a LUNGE! label (1130 / 366 changed pixels)
+B07RT PASS real Shift dash avoids the lunge, which is spent without damage
+B07RT PASS an unavoided lunge wounds Lolth exactly once by the existing hurt (1 hurt frames)
+B07RT PASS real A retreat from inside a windup takes no damage; the crawler never leaves its patrol (outcome: strike)
+B07RT_TRACE A frames=703 settle_frames=21 settled=true monotonic=true x=282.4
+B07RT PASS real A return reaches the cave Wagon; a live foothill crawler does not block the safe capture
+B07RT_TRACE D frames=814 settle_frames=21 settled=true monotonic=true x=1921.7
+B07RT PASS real D revisit finds the same live crawler with its health; no second copy
+B07RT PASS restored controller bindings match the bindings before isolation
+B07RT PASS real controller X attack hits the crawler inside its reach
+B07RT PASS real controller right trigger dashes with restored bindings
+B07RT_TRACE D frames=363 settle_frames=21 settled=true monotonic=true x=2631.1
+B07RT_TRACE A frames=463 settle_frames=21 settled=true monotonic=true x=1697.0
+B07RT PASS real D/E/A run collects the ore past the live crawler and leaves alive (health 2/3)
+B07RT_TRACE D frames=112 settle_frames=21 settled=true monotonic=true x=1922.6
+B07RT PASS returning after the ore run meets the same crawler; no second copy
+B07RT_TRACE A frames=339 settle_frames=21 settled=true monotonic=true x=1697.3
+B07RT_TRACE D frames=111 settle_frames=21 settled=true monotonic=true x=1922.7
+B07RT PASS a real credited defeat pays one Echo once; revisits do not respawn or pay again
+B07RT PASS crop bounds stayed cached through rendered play (encounter scans 1, atlas scans 22)
+B07_RUNTIME_PASS: 28/28 checks

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "art_targets": 30,
+  "accepted_art_hashes": 90,
+  "forms": 196,
+  "engine_cases": 26,
+  "faulty_controls": 11,
+  "b06_original_parity": "Preserved 50/53 result from the approved name change only",
+  "b06_current_names": 53,
+  "links": 30,
+  "previous_state_preserved": true,
+  "negative_controls": [
+    "tampered-master-hash",
+    "unaccepted-target",
+    "runtime-admission"
+  ],
+  "yaml_validation": "Scoped exact state preservation, not a whole-file YAML parser",
+  "runtime_art_admission": false
+}

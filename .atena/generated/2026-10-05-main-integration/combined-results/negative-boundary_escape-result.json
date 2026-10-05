@@ -1,0 +1,22 @@
+{
+  "name": "negative-boundary_escape",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 3.13,
+  "expected_rejection": "B08 FAIL harrier_stays_in_bounds",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B08 FAIL harrier_cancels_outside_foothills",
+    "B08 FAIL harrier_stays_in_bounds"
+  ],
+  "error": null
+}

@@ -1,0 +1,25 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+   at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+   at: initialize (servers/audio/audio_server.cpp:258)
+
+COMBAT_ISOLATION PASS: removed 7 joypad motion bindings before gameplay=true (game pulse 0.000, state opening, engine frame 0, added at 0); 0.21 trigger matched dash before=true after=false; button bindings kept=true
+RUNTIME PASS F4 Next night spawns a Briar Hound
+DODGE gap=445 enemy_hp=1 lolth_hp=3.0 pose=dodge hurt_overlay=false vfx=dash msg=LOLTH DODGES
+RUNTIME PASS dodge shows the dodge pose and dash effect without hurt (Lolth 3.0 -> 3.0)
+HIT_BEFORE gap=68 enemy_hp=1 lolth_hp=3.0 pose=walk hurt_overlay=false vfx=dash msg=LOLTH DODGES
+HIT_AFTER gap=57 enemy_hp=0 lolth_hp=3.0 pose=strike hurt_overlay=false vfx=strike msg=WAVE 1/2 CLEARED - Next threat in 3.
+RUNTIME PASS attack pressed at 68 px visible contact damages the hound (1 -> 0), Lolth 3.0 -> 3.0
+RUNTIME PASS the defeated hound grants no Echo before Mark I
+RUNTIME PASS night wave advances to the Stag of Mire (wave 2)
+MISS gap=183 enemy_hp=2 lolth_hp=3.0 pose=strike hurt_overlay=false vfx=swing msg=Out of reach — step closer to strike the STAG OF MIRE.
+RUNTIME PASS attack at 195 px misses the stag (2 -> 2) with a distinct swing
+RUNTIME PASS real presses defeat the stag (2 presses) and clear the night (phase safe_camp)
+HURT gap=30 enemy_hp=1 lolth_hp=2.0 pose=hurt hurt_overlay=true vfx=strike msg=Lolth is wounded.
+RUNTIME PASS a real hound strike lowers Lolth (3.0 -> 2.0) and shows the hurt pose and overlay
+RUNTIME PASS playtester restore returns to the original run
+B05_RUNTIME_PASS: 0 failures

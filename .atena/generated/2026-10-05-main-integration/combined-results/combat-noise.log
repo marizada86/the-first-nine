@@ -1,0 +1,19 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1650
+
+COMBAT_ISOLATION PASS: removed 7 joypad motion bindings before gameplay=true (game pulse 0.000, state opening, engine frame 0, added at 0); 0.21 trigger matched dash before=true after=false; button bindings kept=true
+RUNTIME PASS F4 Next night spawns a Briar Hound
+DODGE gap=449 enemy_hp=1 lolth_hp=3.0 pose=dodge hurt_overlay=false vfx=dash msg=NOLF DODGES
+RUNTIME PASS dodge shows the dodge pose and dash effect without hurt (Lolth 3.0 -> 3.0)
+HIT_BEFORE gap=78 enemy_hp=1 lolth_hp=3.0 pose=walk hurt_overlay=false vfx=dash msg=NOLF DODGES
+HIT_AFTER gap=75 enemy_hp=0 lolth_hp=3.0 pose=strike hurt_overlay=false vfx=strike msg=WAVE 1/2 CLEARED - Next threat in 3.
+RUNTIME PASS attack pressed at 78 px visible contact damages the hound (1 -> 0), Lolth 3.0 -> 3.0
+RUNTIME PASS the defeated hound grants no Echo before Mark I
+RUNTIME PASS night wave advances to the Stag of Mire (wave 2)
+MISS gap=203 enemy_hp=2 lolth_hp=3.0 pose=strike hurt_overlay=false vfx=swing msg=Out of reach — step closer to strike the STAG OF MIRE.
+RUNTIME PASS attack at 208 px misses the stag (2 -> 2) with a distinct swing
+RUNTIME PASS real presses defeat the stag (2 presses) and clear the night (phase safe_camp)
+HURT gap=33 enemy_hp=1 lolth_hp=2.0 pose=hurt hurt_overlay=true vfx=strike msg=Nolf is wounded.
+RUNTIME PASS a real hound strike lowers Lolth (3.0 -> 2.0) and shows the hurt pose and overlay
+RUNTIME PASS playtester restore returns to the original run
+B05_RUNTIME_PASS: 0 failures

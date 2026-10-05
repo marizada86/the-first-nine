@@ -1,0 +1,23 @@
+{
+  "name": "negative-repeated_damage",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 3.212,
+  "expected_rejection": "B08 FAIL harrier_single_hit_per_dive",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B08 FAIL harrier_single_hit_per_dive",
+    "B08 FAIL harrier_dash_avoids_dive",
+    "B08 FAIL simultaneous_combat_single_hits"
+  ],
+  "error": null
+}

@@ -1,0 +1,21 @@
+{
+  "name": "negative-wrong_artwork",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 3.609,
+  "expected_rejection": "B08 FAIL harrier_geometry_crop",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B08 FAIL harrier_geometry_crop"
+  ],
+  "error": null
+}

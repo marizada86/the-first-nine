@@ -1,0 +1,8 @@
+{
+  "source_commit": "7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc",
+  "source_sha256": "10183dfbeb63aaac0dc825eff36b2721dcb76a5298da559d57b5dfe8a3025d35",
+  "normalized_sha256": "ea8324d287e9469fb38c4ecd1aec76bb53086992b17042cf6358ac1a51c3516b",
+  "scope": "Only approved name replacements inside string literals in a generated scratch baseline",
+  "protected_assertions_changed": false,
+  "production_changed": false
+}

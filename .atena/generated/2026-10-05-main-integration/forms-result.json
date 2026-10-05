@@ -1,0 +1,10 @@
+{
+  "name": "forms",
+  "exit_code": 0,
+  "error": null,
+  "passed": true,
+  "project_diagnostics": [],
+  "markers": [
+    "LOLTH_FORMS_PASS: 196/196 checks"
+  ]
+}

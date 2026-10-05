@@ -1,0 +1,19 @@
+{
+  "name": "self-test",
+  "platform": {
+    "os": "win32",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "native",
+    "device": null
+  },
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 3.488,
+  "expected_rejection": null,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}
