@@ -45,15 +45,41 @@
 		827,
 		827
 	],
-	"outward_frames": 295,
-	"outward_max_step": 40.0701751708984,
+	"isolation_boundary": {
+		"dashed": false,
+		"queued": false
+	},
+	"isolation_control": {
+		"dashed": true,
+		"queued": true
+	},
+	"joypad_bindings_before_suspension": {
+		"attack": 1,
+		"camp_action": 1,
+		"camp_menu": 1,
+		"jump": 1,
+		"move_left": 2,
+		"move_right": 2,
+		"primary": 1,
+		"shadow_action": 1,
+		"shadow_strike": 1,
+		"skip": 1,
+		"ui_colorpicker_delete_preset": 1,
+		"ui_down": 2,
+		"ui_left": 2,
+		"ui_right": 2,
+		"ui_select": 1,
+		"ui_up": 2
+	},
+	"outward_frames": 306,
+	"outward_max_step": 35.580322265625,
 	"parity_day_differing_pixels": 0,
 	"parity_night_differing_pixels": 0,
 	"parity_secured_differing_pixels": 0,
 	"restored_trigger_021_dashes": true,
 	"seam_1280": {
 		"seam_column_difference": 0.000609094712301983,
-		"typical_column_difference": 0.0130399112281693
+		"typical_column_difference": 0.0130906691222372
 	},
 	"seam_1760": {
 		"seam_column_difference": 0.00226950361162213,

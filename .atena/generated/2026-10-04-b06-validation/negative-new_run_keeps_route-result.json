@@ -10,7 +10,7 @@
   "exit_code": 1,
   "signal": null,
   "passed": true,
-  "seconds": 2.153,
+  "seconds": 2.044,
   "project_diagnostics": [],
   "environment_diagnostics": [],
   "detections": [

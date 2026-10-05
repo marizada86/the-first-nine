@@ -3,6 +3,8 @@ extends SceneTree
 # camera translation fixture, a real-input outward/return run, offscreen Stag damage, camera-offset
 # combat and UI, and frozen day/night captures at five transition positions.
 # B06_RENDER_FAULT runs only the translation fixture with a deliberately faulty subclass.
+# B06_ISOLATION_FAULT=late_isolation runs only the route-start isolation boundary with the
+# published ccc4fcf/7c781ab ordering (isolation after the first journey frame).
 
 const RES_DIR := "res://.atena/generated/2026-10-04-b06-validation"
 var game
@@ -10,6 +12,7 @@ var checks := 0
 var failures := 0
 var out_dir := RES_DIR
 var render_fault := ""
+var isolation_fault := ""
 var metrics := {}
 var suspended_joypad_events := {}
 const SETTLE_TIMEOUT_MS := 3000
@@ -19,6 +22,7 @@ func _initialize() -> void:
 	if OS.get_environment("OUT") != "":
 		out_dir = OS.get_environment("OUT")
 	render_fault = OS.get_environment("B06_RENDER_FAULT")
+	isolation_fault = OS.get_environment("B06_ISOLATION_FAULT")
 	call_deferred("run")
 
 func check(label: String, passed: bool) -> void:
@@ -228,10 +232,10 @@ func hold_until(code: Key, done: Callable, timeout_seconds: float) -> Dictionary
 # Keyboard-only route section: physical controllers attached to the test machine must not inject
 # actions (a resting right trigger near 0.20 exceeds the 0.2 action deadzone and dashes). Only
 # this test process's InputMap is changed; device settings and production thresholds are not.
+# Idempotent: a repeated call keeps every binding saved by an earlier call for restoration.
 func suspend_joypad_bindings() -> void:
-	suspended_joypad_events.clear()
 	for action in InputMap.get_actions():
-		var removed: Array = []
+		var removed: Array = suspended_joypad_events.get(action, [])
 		for event in InputMap.action_get_events(action):
 			if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 				removed.append(event)
@@ -245,6 +249,71 @@ func restore_joypad_bindings() -> void:
 		for event in suspended_joypad_events[action]:
 			InputMap.action_add_event(action, event)
 	suspended_joypad_events.clear()
+
+func joypad_binding_counts() -> Dictionary:
+	var counts := {}
+	for action in InputMap.get_actions():
+		var count := 0
+		for event in InputMap.action_get_events(action):
+			if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+				count += 1
+		if count > 0:
+			counts[action] = count
+	return counts
+
+# Holds gameplay processing for one input dispatch so a controller action that reaches the
+# request queue stays queued, then reports whether it was queued and whether Lolth dashed
+# once processing resumed. late_suspension reproduces isolation applied after the queueing.
+func boundary_trigger(instance, late_suspension: bool) -> Dictionary:
+	instance.dodge_cooldown = 0.0
+	instance.dodge_time = 0.0
+	instance.set_process(false)
+	trigger(0.21)
+	await process_frame
+	await process_frame
+	var queued: bool = instance.ui_gameplay_requests.has("shadow_action")
+	if late_suspension:
+		suspend_joypad_bindings()
+	trigger(0.0)
+	instance.set_process(true)
+	var dashed := false
+	for _frame in 4:
+		await process_frame
+		dashed = dashed or instance.dodge_time > 0.0
+	return {"queued": queued, "dashed": dashed}
+
+# Control: with live bindings, a 0.21 trigger queues a dash that survives a later suspension.
+# This proves the boundary check below can detect the stale-queue failure it guards against.
+func isolation_boundary_control() -> void:
+	var instance = load("res://main.tscn").instantiate()
+	root.add_child(instance)
+	await process_frame
+	instance.skip_opening()
+	await process_frame
+	var before := joypad_binding_counts()
+	var stale: Dictionary = await boundary_trigger(instance, true)
+	restore_joypad_bindings()
+	metrics.isolation_control = stale
+	check("control: a 0.21 trigger queued before isolation still dashes after a late suspension", bool(stale.queued) and bool(stale.dashed) and joypad_binding_counts() == before)
+	await free_node(instance)
+
+# Route start. Isolation begins right after the game's _ready (which defines the production
+# bindings) and before any frame, so no controller action can reach the request queue.
+func start_route_game() -> void:
+	game = load("res://main.tscn").instantiate()
+	root.add_child(game)
+	metrics.joypad_bindings_before_suspension = joypad_binding_counts()
+	var late := isolation_fault == "late_isolation"
+	if not late:
+		suspend_joypad_bindings()
+	trigger(0.21)
+	await process_frame
+	await tap(KEY_ESCAPE)
+	var boundary: Dictionary = await boundary_trigger(game, late)
+	# A repeated suspension must not discard the bindings saved by the first one.
+	suspend_joypad_bindings()
+	metrics.isolation_boundary = boundary
+	check("controller isolation starts before the first journey frame: a 0.21 trigger at the boundary neither queues nor performs a dash", not suspended_joypad_events.is_empty() and not bool(boundary.queued) and not bool(boundary.dashed) and game.state == "journey")
 
 func trigger(value: float) -> void:
 	var event := InputEventJoypadMotion.new()
@@ -267,13 +336,7 @@ func trigger_dashes(value: float) -> bool:
 	return dashed
 
 func route_run() -> void:
-	game = load("res://main.tscn").instantiate()
-	root.add_child(game)
-	await process_frame
-	await tap(KEY_ESCAPE)
-	suspend_joypad_bindings()
-	var resting_trigger_dashed: bool = await trigger_dashes(0.21)
-	check("controller bindings are suspended for the keyboard-only route section (resting trigger 0.21 ignored)", not suspended_joypad_events.is_empty() and not resting_trigger_dashed)
+	await start_route_game()
 	# Fixture: the legitimate B-03/B-04 path through the boss, Mark I, one cure and a safe return.
 	game.reach_expedition_ready_for_test()
 	await process_frame
@@ -482,6 +545,11 @@ func run() -> void:
 		print("B06_RUNTIME_%s: %d/%d checks (render fault: %s)" % ["PASS" if failures == 0 else "FAIL", checks - failures, checks, render_fault])
 		quit(0 if failures == 0 else 1)
 		return
+	if isolation_fault != "":
+		await start_route_game()
+		print("B06_RUNTIME_%s: %d/%d checks (isolation fault: %s)" % ["PASS" if failures == 0 else "FAIL", checks - failures, checks, isolation_fault])
+		quit(0 if failures == 0 else 1)
+		return
 	if render_fault != "":
 		await translation_fixture()
 		print("B06_RUNTIME_%s: %d/%d checks (render fault: %s)" % ["PASS" if failures == 0 else "FAIL", checks - failures, checks, render_fault])
@@ -489,10 +557,12 @@ func run() -> void:
 		return
 	await baseline_parity()
 	await translation_fixture()
+	await isolation_boundary_control()
 	await route_run()
 	await offscreen_camp()
 	await camera_offset_combat()
 	restore_joypad_bindings()
+	check("repeated suspension keeps every saved controller binding through restoration", joypad_binding_counts() == metrics.joypad_bindings_before_suspension)
 	var restored_bindings := InputMap.action_get_events("shadow_action").size() == 2 and InputMap.action_get_events("move_right").size() >= 4
 	game.shades.clear()
 	# Root-cause record only: with bindings restored, a 0.21 trigger value passes the 0.2 deadzone.

@@ -8,7 +8,7 @@ WARNING: All audio drivers failed, falling back to the dummy driver.
    at: initialize (servers/audio/audio_server.cpp:258)
 
 GEOMETRY PASS startup prepares all 22 runtime cells
-GEOMETRY_PREPARE: cells=22 time_ms=642.955
+GEOMETRY_PREPARE: cells=22 time_ms=670.394
 GEOMETRY PASS BRIAR HOUND frame 0 source/aspect
 GEOMETRY PASS BRIAR HOUND frame 0 native outline/centering/floor
 GEOMETRY PASS BRIAR HOUND frame 0 native shared reach

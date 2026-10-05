@@ -17,7 +17,7 @@ const cases = {
   'b06-runtime': {args: [...render, '--script', RES + '/validate_b06_runtime.gd'], render: true, marker: 'B06_RUNTIME_PASS:'},
   'self-test': {args: ['--headless', '--', '--self-test'], marker: 'SELF_TEST_PASS:', also: 'SELF_TEST_B06_PASS:'},
   'combat': {args: [...render, '--script', 'res://.atena/generated/2026-10-04-b05-combat-validation/validate_b05_combat.gd'], render: true, out: 'regressions/combat'},
-  'menus': {args: [...render, '--script', 'res://.atena/generated/2026-10-04-b05-local-controls-validation/validate_controls_and_menus.gd'], render: true, out: 'regressions/menus', marker: 'LOCAL_CONTROLS_PASS:'},
+  'menus': {args: [...render, '--script', RES + '/menus_regression.gd'], render: true, out: 'regressions/menus', marker: 'LOCAL_CONTROLS_PASS: 33/33', also: 'MENU_ISOLATION PASS'},
   'geometry': {args: [...render, '--script', RES + '/geometry_regression.gd'], render: true},
   'facing-headless': {args: ['--headless', '--script', RES + '/facing_regression.gd']},
   'facing-normal': {args: [...render, '--script', RES + '/facing_regression.gd'], render: true},
@@ -26,6 +26,8 @@ const cases = {
 };
 for (const fault of logicFaults) cases['negative-' + fault] = {args: cases['b06-headless'].args, env: {B06_FAULT: fault}, negative: 'B06 FAIL '};
 for (const fault of renderFaults) cases['render-negative-' + fault] = {args: cases['b06-runtime'].args, render: true, env: {B06_RENDER_FAULT: fault}, negative: 'B06RT FAIL '};
+// Isolation control: the published ordering applies isolation after a dash is already queued.
+cases['isolation-negative-late_isolation'] = {args: cases['b06-runtime'].args, render: true, env: {B06_ISOLATION_FAULT: 'late_isolation'}, negative: 'B06RT FAIL '};
 // Diagnostics from the host audio/display stack, not from the project, are recorded but tolerated.
 // Each diagnostic is classified together with its following "at:" source line.
 const environmentOnly = [/ALSA|PulseAudio|audio drivers? failed|drivers\/alsa|drivers\/pulseaudio|audio_driver/i, /V-?Sync/i, /XDG_RUNTIME_DIR/i];

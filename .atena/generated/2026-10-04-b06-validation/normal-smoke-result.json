@@ -10,7 +10,7 @@
   "exit_code": 0,
   "signal": null,
   "passed": true,
-  "seconds": 8.132,
+  "seconds": 8.838,
   "project_diagnostics": [],
   "environment_diagnostics": [
     "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)",
