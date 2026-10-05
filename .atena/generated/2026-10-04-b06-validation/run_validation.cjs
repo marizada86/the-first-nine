@@ -16,7 +16,10 @@ const cases = {
   'b06-headless': {args: ['--headless', '--script', RES + '/validate_b06_headless.gd'], marker: 'B06_PASS:'},
   'b06-runtime': {args: [...render, '--script', RES + '/validate_b06_runtime.gd'], render: true, marker: 'B06_RUNTIME_PASS:'},
   'self-test': {args: ['--headless', '--', '--self-test'], marker: 'SELF_TEST_PASS:', also: 'SELF_TEST_B06_PASS:'},
-  'combat': {args: [...render, '--script', 'res://.atena/generated/2026-10-04-b05-combat-validation/validate_b05_combat.gd'], render: true, out: 'regressions/combat'},
+  // The historical 9-check combat suite, run through the controller-isolation wrapper.
+  'combat': {args: [...render, '--script', RES + '/combat_regression.gd'], render: true, out: 'regressions/combat', marker: 'B05_RUNTIME_PASS: 0 failures', also: 'COMBAT_ISOLATION PASS', count: ['RUNTIME PASS ', 9]},
+  // Same suite with a synthetic 0.21 trigger every frame: isolation must neutralize it.
+  'combat-noise': {args: [...render, '--script', RES + '/combat_regression.gd'], render: true, out: 'regressions/combat-noise', env: {B06_COMBAT_NOISE: '1'}, marker: 'B05_RUNTIME_PASS: 0 failures', also: 'COMBAT_ISOLATION PASS', count: ['RUNTIME PASS ', 9]},
   'menus': {args: [...render, '--script', RES + '/menus_regression.gd'], render: true, out: 'regressions/menus', marker: 'LOCAL_CONTROLS_PASS: 33/33', also: 'MENU_ISOLATION PASS'},
   'geometry': {args: [...render, '--script', RES + '/geometry_regression.gd'], render: true},
   'facing-headless': {args: ['--headless', '--script', RES + '/facing_regression.gd']},
@@ -27,6 +30,9 @@ const cases = {
 for (const fault of logicFaults) cases['negative-' + fault] = {args: cases['b06-headless'].args, env: {B06_FAULT: fault}, negative: 'B06 FAIL '};
 for (const fault of renderFaults) cases['render-negative-' + fault] = {args: cases['b06-runtime'].args, render: true, env: {B06_RENDER_FAULT: fault}, negative: 'B06RT FAIL '};
 // Isolation control: the published ordering applies isolation after a dash is already queued.
+// Combat isolation controls, both under the same synthetic trigger noise.
+cases['combat-negative-missing_isolation'] = {args: cases['combat'].args, render: true, out: 'regressions/combat-faults', env: {B06_COMBAT_ISOLATION_FAULT: 'missing'}, negative: 'RUNTIME FAIL '};
+cases['combat-negative-late_isolation'] = {args: cases['combat'].args, render: true, out: 'regressions/combat-faults', env: {B06_COMBAT_ISOLATION_FAULT: 'late'}, negative: 'COMBAT_ISOLATION FAIL'};
 cases['isolation-negative-late_isolation'] = {args: cases['b06-runtime'].args, render: true, env: {B06_ISOLATION_FAULT: 'late_isolation'}, negative: 'B06RT FAIL '};
 // Diagnostics from the host audio/display stack, not from the project, are recorded but tolerated.
 // Each diagnostic is classified together with its following "at:" source line.
@@ -64,7 +70,7 @@ for (const name of names) {
   const failMarkers = /SCRIPT ERROR|_FAIL|RUNTIME FAIL|LOCAL FAIL|GEOMETRY FAIL|FACING FAIL|B06 FAIL|B06RT FAIL/;
   const passed = spec.negative
     ? result.status === 1 && detections.length > 0 && projectDiagnostics.length === 0
-    : result.status === 0 && projectDiagnostics.length === 0 && !failMarkers.test(output) && (!spec.marker || output.includes(spec.marker)) && (!spec.also || output.includes(spec.also));
+    : result.status === 0 && projectDiagnostics.length === 0 && !failMarkers.test(output) && (!spec.marker || output.includes(spec.marker)) && (!spec.also || output.includes(spec.also)) && (!spec.count || lines.filter(line => line.startsWith(spec.count[0])).length === spec.count[1]);
   const device = (output.match(/Using Device[^\n]*/) || [null])[0];
   const record = {name, platform: {...platform, device}, exit_code: result.status, signal: result.signal, passed, seconds: (Date.now() - started) / 1000, project_diagnostics: projectDiagnostics, environment_diagnostics: diagnosticLines.filter(line => !projectDiagnostics.includes(line)), detections, error: result.error?.message || null};
   fs.writeFileSync(path.join(out, name + '-result.json'), JSON.stringify(record, null, 2) + '\n');

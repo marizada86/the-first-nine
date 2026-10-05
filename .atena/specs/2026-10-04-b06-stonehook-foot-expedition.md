@@ -1,5 +1,5 @@
 ---
-status: implemented-branch-published-isolation-follow-up-awaiting-review
+status: implemented-branch-published-combat-isolation-follow-up-awaiting-review
 kind: bounded-runtime-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -39,9 +39,11 @@ published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
 publication_authority: owner-authorized-normal-push-of-the-branch-for-review
 follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
 follow_up_published: true
-latest_published_commit: 7c781ab65d75251af20880cf6e9548d1239be0dd
+latest_published_commit: 9640881e2c56b010fb1be93b3818f22be91d3b9c
 isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
-isolation_follow_up_published: false
+isolation_follow_up_published: true
+combat_isolation_follow_up: local-test-only
+combat_isolation_follow_up_published: false
 ---
 
 # B-06 First Stonehook Foot Expedition
@@ -163,3 +165,17 @@ Separate Atena diagnostics, which are not official acceptance runs, traced both 
 None of these Windows results were reproduced by the executor.
 
 The IN_PLAN test-only follow-up `b446b7b` (local, not pushed) corrects both isolation points without touching production; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Further push, PR and merge remain unauthorized, and B-07 has not been started.
+
+## Isolation Publication and Combat Isolation Follow-up
+
+The owner authorized a normal push of `b446b7b` and `9640881`. Before pushing, the branch was verified: `9640881` contains `b446b7b` and descends from published `7c781ab`, with no remote divergence and a clean tree. A normal fast-forward moved `origin/codex/b06-stonehook-foot-expedition` from `7c781ab` to `9640881e2c56b010fb1be93b3818f22be91d3b9c`; remote `main` stayed at `7e477ba`. The earlier publication history above is unchanged.
+
+Findings supplied by the owner from Atena's Windows validation of `9640881` (native Godot 4.7.2):
+- B-06 headless 30/30, rendered route 53/53, menus 33/33, geometry 46/46, facing 65/65 headless and 102/102 rendered.
+- The full self-test and both smoke runs passed, and all 12 faulty controls were rejected.
+- The full runner still exited 1, because the historical combat validator passed 8/9. The out-of-reach miss kept the enemy at 2 health, with a `strike` pose and a `swing` effect, but the message was "Lolth needs a moment before dodging again."
+- A separate reviewer-only diagnostic isolated joypad motion bindings after the game's `_ready` and passed 9/9. Physical device 0 reported a right trigger of about 0.21958, above the 0.2 deadzone.
+
+That diagnostic does not replace the official 8/9 result. Atena's detailed receipt was not available in this checkout, so these findings come from the owner's request and were not reproduced by the executor.
+
+The IN_PLAN test-only combat isolation follow-up is local and unpublished; see [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Production files are unchanged. Human acceptance remains pending, further push, PR and merge remain unauthorized, and B-07 has not been started.

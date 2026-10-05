@@ -71,15 +71,15 @@
 		"ui_select": 1,
 		"ui_up": 2
 	},
-	"outward_frames": 306,
-	"outward_max_step": 35.580322265625,
+	"outward_frames": 304,
+	"outward_max_step": 42.5025939941406,
 	"parity_day_differing_pixels": 0,
 	"parity_night_differing_pixels": 0,
 	"parity_secured_differing_pixels": 0,
 	"restored_trigger_021_dashes": true,
 	"seam_1280": {
 		"seam_column_difference": 0.000609094712301983,
-		"typical_column_difference": 0.0130906691222372
+		"typical_column_difference": 0.0130851066138774
 	},
 	"seam_1760": {
 		"seam_column_difference": 0.00226950361162213,

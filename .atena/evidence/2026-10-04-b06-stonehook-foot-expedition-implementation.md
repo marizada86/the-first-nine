@@ -1,5 +1,5 @@
 ---
-status: implemented-branch-published-isolation-follow-up-awaiting-review
+status: implemented-branch-published-combat-isolation-follow-up-awaiting-review
 kind: implementation-note
 created: 2026-10-05
 batch: B-06
@@ -31,9 +31,11 @@ branch_publication_approved: true
 published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
 follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
 follow_up_published: true
-latest_published_commit: 7c781ab65d75251af20880cf6e9548d1239be0dd
+latest_published_commit: 9640881e2c56b010fb1be93b3818f22be91d3b9c
 isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
-isolation_follow_up_published: false
+isolation_follow_up_published: true
+combat_isolation_follow_up: local-test-only
+combat_isolation_follow_up_published: false
 ---
 
 # B-06 - first on-foot Stonehook expedition
@@ -542,3 +544,109 @@ Request classification: IN_PLAN, test-input isolation and publication-record rec
 - **Published.** `origin/codex/b06-stonehook-foot-expedition` is at `7c781ab`.
 - **Local only.** Isolation follow-up `b446b7b` and the records commit that adds this section were not pushed.
 - **Not authorized.** Further push, PR, merge and dispatch, and B-07 has not been started.
+
+## Isolation publication (`b446b7b`, `9640881`)
+
+The sections above record the state before this publication and are kept unchanged as history.
+
+- **Authority.** The owner explicitly authorized a normal push of `b446b7b` and `9640881`. This did not cover an amend, a force-push, a change to `main`, a PR, a merge, branch deletion or B-07.
+- **Pre-push check.** On the correct branch with a clean tree. `9640881` contains `b446b7b` and descends from `7c781ab`; the remote was still at `7c781ab`, with no remote-only commits.
+- **Push.** A normal fast-forward moved the branch from `7c781ab` to `9640881e2c56b010fb1be93b3818f22be91d3b9c`, confirmed with `git ls-remote`. Remote `main` stayed at `7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc`.
+
+## Combat isolation follow-up (local, test-only)
+
+### Atena's Windows findings for `9640881`
+
+These findings come from the owner's request. Atena's receipt `.atena/evidence/2026-10-04-b06-isolation-windows-review.md` is not in this checkout or its history, so it was not read; nothing here was reproduced by the executor.
+
+**Official runs** (native Windows, Godot 4.7.2):
+
+| Suite | Result |
+| --- | --- |
+| B-06 headless | 30/30 |
+| Rendered route | 53/53 |
+| Menus | 33/33 |
+| Geometry | 46/46 |
+| Facing | 65/65 headless, 102/102 rendered |
+| Full self-test and both 600-frame smoke runs | pass |
+| 12 faulty controls | all rejected |
+| Historical combat validator | **8/9**, so the full runner exited 1 |
+
+The failed combat check was the out-of-reach miss:
+- Enemy health stayed at 2, Lolth's pose was `strike` and the effect was `swing`.
+- The message was "Lolth needs a moment before dodging again." instead of starting with "Out of reach".
+
+**Reviewer-only diagnostic** (not an acceptance run): it kept all nine original combat assertions and isolated joypad motion bindings immediately after the game node's `_ready`. It passed 9/9. During it, physical device 0 reported a right trigger of about 0.21958, above the unchanged 0.2 deadzone.
+
+This points to physical-controller interference, not to a combat defect. The diagnostic does not replace the official 8/9 result.
+
+Request classification: IN_PLAN, a narrowly scoped test-only combat isolation follow-up. No production gameplay change was authorized and none was made. `main.gd`, `wagon_inventory_ui.gd`, assets, scenes, project settings, canon, action deadzones, device settings and the historical B-05 validators are byte-identical to `9640881`. The foreground readability implementation and its documented limitations are unchanged.
+
+### Changes (test-only)
+
+- **`combat_regression.gd`.** It extends the unchanged historical `validate_b05_combat.gd`, following the published `menus_regression.gd` pattern.
+  - **When it runs.** On the game node's `ready` signal, which is emitted synchronously inside `add_child()` after `_ready()` defines the production bindings, and before the validator's first `await process_frame`.
+  - **What it removes.** Every joypad motion binding (sticks and triggers, 7 in these runs) from the test process's `InputMap`, releasing each affected action. Button bindings are kept.
+  - **What it preserves.** The original nine scenarios, assertions, thresholds, input sequence and timeouts are inherited unchanged.
+- **Proof that it runs before gameplay.** The wrapper's `COMBAT_ISOLATION` marker passes only when all of these hold:
+  - the game's `pulse` is exactly 0. `main.gd` advances `pulse` on every processed gameplay frame, so this proves no gameplay frame has run;
+  - the game state is `opening`;
+  - a non-dispatching probe (`InputMap.event_is_action` on a 0.21 right-trigger event) matched `shadow_action` before isolation and no longer matches after it;
+  - the button bindings (Shadow strike B, Attack X, Primary Y) are still present.
+
+  If any condition fails, the marker reports `FAIL` and the run's failure count increases, so the process exits 1.
+- **Runner.** The official `combat` case now runs the wrapper. It requires all of these:
+  - exit 0;
+  - `COMBAT_ISOLATION PASS`;
+  - `B05_RUNTIME_PASS: 0 failures`;
+  - exactly nine `RUNTIME PASS` lines;
+  - no failure markers or project diagnostics.
+- **Deterministic interference check and controls.** All three cases below send a synthetic 0.21 right-trigger event on every frame, emulating the reported physical trigger.
+  - **`combat-noise` (positive):** the corrected wrapper must still pass 9/9.
+  - **`combat-negative-missing_isolation`:** no isolation. It must fail genuine original combat assertions.
+  - **`combat-negative-late_isolation`:** isolation applied only after the game's first processed frame. The timing proof must reject it.
+- **Unchanged.** All 12 earlier faulty controls (8 logic, 3 render and the route `late_isolation`) and every other case are unchanged. Fault cases write into `regressions/combat-faults`, separate from the positive `regressions/combat` and `regressions/combat-noise` outputs, so they cannot overwrite positive captures.
+
+### Validation (Linux, isolated copy)
+
+- **Platform.** Godot `4.7.2.stable.official.ed1daf0bf`, Linux x86_64 container. Rendered cases under Xvfb at 1280×720, `gl_compatibility`, device "Mesa llvmpipe (LLVM 20.1.2)". No physical controller is attached.
+- **Setup.** A fresh scratch project copy with byte-identical production files and cleared output directories. No fixed FPS.
+- **Command.**
+
+  ```
+  GODOT=<godot> B06_PROJECT=<copy> XVFB=1 node .atena/generated/2026-10-04-b06-validation/run_validation.cjs all
+  ```
+
+| Case | Exit | Result |
+| --- | --- | --- |
+| `b06-headless` | 0 | `B06_PASS: 30/30 checks` |
+| `b06-runtime` | 0 | `B06_RUNTIME_PASS: 53/53 checks` |
+| `self-test` | 0 | B01 to B06, PLAYTESTER and `SELF_TEST_PASS` |
+| `combat` (wrapper) | 0 | `COMBAT_ISOLATION PASS` (7 motion bindings removed; pulse 0.000, state `opening`; probe matched before, not after; buttons kept), 9 `RUNTIME PASS`, `B05_RUNTIME_PASS: 0 failures` |
+| `combat-noise` | 0 | same marker, 9/9 under a 0.21 trigger every frame |
+| `menus` (wrapper) | 0 | `MENU_ISOLATION PASS`, `LOCAL_CONTROLS_PASS: 33/33 checks` |
+| `geometry` | 0 | `GEOMETRY_PASS: 46/46 checks` |
+| `facing-headless` | 0 | `FACING_PASS: 65/65 checks` |
+| `facing-normal` | 1 | 101/102, the known Linux software-OpenGL difference |
+| `normal-smoke`, `headless-smoke` | 0 | 600 frames, no project diagnostics |
+| 8 logic, 3 render and 1 route-isolation faulty controls | 1 each | all rejected, as before |
+| `combat-negative-missing_isolation` | 1 | rejected: "RUNTIME FAIL attack at 196 px misses the stag (2 -> 2) with a distinct swing", the same out-of-reach miss check Atena saw fail on Windows |
+| `combat-negative-late_isolation` | 1 | rejected: `COMBAT_ISOLATION FAIL` (pulse 0.143 at isolation, after the first processed frame) |
+
+- **Totals.** 14 faulty controls rejected; every positive case passed except the known rendered-facing difference.
+- **Missing-isolation variance.** The number of original checks this control breaks depends on how frame timing meets the dash cooldown. A development run before the final suite broke two checks: the contact hit and the out-of-reach miss. The final run broke only the out-of-reach miss. The runner requires at least one genuine original-assertion failure.
+- **Rendered facing on Linux.** It stays 101/102 with exit 1 here: the single `ANTLERED HUNGER frame 1 labels/bars stay unmirrored` difference, also reproduced on the unchanged `7e477ba` baseline in this environment. The full runner therefore exits 1 on Linux for this platform-specific reason. The records validator accepts it only from Linux software OpenGL. No 102/102 result is claimed here; the Windows 102/102 is Atena's.
+- **Diagnostics.** The only ones are the container's missing audio device and V-Sync control.
+
+### Remaining limitations
+
+- **No physical controller here.** Both combat isolation checks use synthetic trigger events. Whether the wrapper resolves the physical Windows interference needs Atena's official Windows run.
+- **Buttons are not filtered.** The wrapper, like the menu wrapper, filters only controller motion; a physical controller button held during a run could still interfere.
+- **Pending human acceptance.** The foreground readability appearance (semi-transparent Lolth in two spans), the far-edge clipping at x=2998, the mirrored seam echo and the other earlier camera and visual limitations all remain as documented.
+
+### State
+
+- **Plan state.** `implemented-branch-published-combat-isolation-follow-up-awaiting-review`, checkpoint `owner-review-of-combat-isolation-follow-up`.
+- **Published.** `origin/codex/b06-stonehook-foot-expedition` was at `9640881e2c56b010fb1be93b3818f22be91d3b9c` when this section was written.
+- **Local only.** This follow-up is a single local commit (wrapper, runner, fresh results and these records) and was not pushed.
+- **Pending and not authorized.** Human acceptance is pending. Further push, PR, merge and dispatch remain unauthorized, and B-07 has not been started.
