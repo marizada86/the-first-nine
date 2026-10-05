@@ -1,0 +1,15 @@
+{
+  "name": "combat",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 13.188,
+  "project_diagnostics": [],
+  "environment_diagnostics": [
+    "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)",
+    "ERROR: Condition \"status < 0\" is true. Returning: ERR_CANT_OPEN    at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)",
+    "WARNING: All audio drivers failed, falling back to the dummy driver.      at: initialize (servers/audio/audio_server.cpp:258)"
+  ],
+  "detections": [],
+  "error": null
+}

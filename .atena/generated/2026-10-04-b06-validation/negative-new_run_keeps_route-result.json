@@ -1,0 +1,13 @@
+{
+  "name": "negative-new_run_keeps_route",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.146,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL new_run_resets"
+  ],
+  "error": null
+}

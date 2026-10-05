@@ -1,0 +1,13 @@
+{
+  "name": "negative-lost_f4_fields",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.045,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL f4_exact_restore"
+  ],
+  "error": null
+}

@@ -1,0 +1,16 @@
+{
+  "name": "negative-remote_wagon",
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.138,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B06 FAIL remote_wagon_blocked",
+    "B06 FAIL remote_no_capture",
+    "B06 FAIL border_no_respawn",
+    "B06 FAIL foothill_rollback"
+  ],
+  "error": null
+}

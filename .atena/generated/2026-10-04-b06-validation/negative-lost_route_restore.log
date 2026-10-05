@@ -1,0 +1,33 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+B06 PASS new_run_ore_ready
+B06 PASS new_run_blocked
+B06 PASS pre_boss_blocked
+B06 PASS uncured_mark_blocked
+B06 PASS unsecured_blocked
+B06 PASS debug_mark_blocked
+B06 PASS legit_departure_allowed
+B06 PASS full_route_outward
+B06 PASS hub_fixed
+B06 PASS remote_wagon_blocked
+B06 PASS remote_no_capture
+B06 PASS remote_inventory_opens
+B06 PASS ore_full_load_retained
+B06 PASS ore_collected_once
+B06 PASS border_no_respawn
+B06 FAIL foothill_rollback
+B06 FAIL return_captures
+B06 FAIL full_stock_retains_ore
+B06 FAIL ore_deposited_once
+B06 FAIL recapture_consistent
+B06 FAIL deposit_survives_restore
+B06 PASS offscreen_clock_runs
+B06 PASS enemy_keeps_origin
+B06 PASS offscreen_stag_damage
+B06 FAIL offscreen_terminal_restore
+B06 PASS f4_override_gate
+B06 PASS f4_exact_restore
+B06 PASS no_progression_unlock
+B06 PASS camera_offset_combat
+B06 PASS new_run_resets
+B06_FAIL: 23/30 checks (fault: lost_route_restore)

@@ -1,0 +1,55 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+   at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+   at: initialize (servers/audio/audio_server.cpp:258)
+
+B06RT PASS cave view at zero offset matches the pre-B-06 build (day, 0 differing pixels)
+B06RT PASS cave view at zero offset matches the pre-B-06 build (night, 0 differing pixels)
+B06RT PASS cave view at zero offset matches the pre-B-06 build (secured, 0 differing pixels)
+B06RT PASS world translation keeps right-facing Lolth, enemies, labels and bars identical on screen (0 differing pixels)
+B06RT PASS world marker after reflected sprites and screen marker stay in place (right)
+B06RT PASS world translation keeps left-facing Lolth, enemies, labels and bars identical on screen (0 differing pixels)
+B06RT PASS world marker after reflected sprites and screen marker stay in place (left)
+B06RT PASS legitimate first cure and safe return open the on-foot route
+B06RT_TRACE D frames=298 monotonic=true step_ok=true camera_ok=true context_ok=true max_step=35.91 max_step_ratio=1.000
+B06RT PASS real D input reaches the far foothill limit
+B06RT PASS outward motion has no reset, jump, region screen or floor change
+B06RT PASS view offset stays zero while Lolth is inside the cave window
+B06RT PASS displayed region crosses Thornwake, the approach and the foothills
+B06RT PASS Wagon and family keep one cave anchor while Lolth is away
+B06RT_TRACE A frames=39 monotonic=true step_ok=true camera_ok=true context_ok=true max_step=38.38 max_step_ratio=1.000
+B06RT PASS real E collects the single foothill ore
+B06RT PASS a second E press finds nothing more
+B06RT PASS M cannot open the Wagon from the foothills
+B06RT PASS I opens Lolth's inventory away from the Wagon and pauses the world
+B06RT PASS Esc closes the inventory
+B06RT PASS left-click in the foothills swings without a target or a world interaction
+B06RT_TRACE A frames=260 monotonic=true step_ok=true camera_ok=true context_ok=true max_step=11.25 max_step_ratio=1.000
+B06RT PASS real A input returns along the same route to the cave Wagon
+B06RT PASS arrival secures a consistent snapshot with the carried ore
+B06RT PASS real E deposits the ore once at the cave Wagon
+B06RT_TRACE D frames=210 monotonic=true step_ok=true camera_ok=true context_ok=true max_step=43.02 max_step_ratio=1.000
+B06RT PASS the cave Stag telegraphs and damages the Wagon while Lolth stays in the foothills
+B06RT PASS Wagon destruction away from the cave reaches the defeat card
+B06RT PASS E restores the cave snapshot with Mark I, the cure and one ore
+B06RT_TRACE D frames=91 monotonic=true step_ok=true camera_ok=true context_ok=true max_step=12.03 max_step_ratio=1.000
+B06RT PASS left-click melee and C First Thread hit by world position under a 259 px view offset
+B06RT PASS M near the Thornwake border still cannot open the Wagon
+B06RT PASS frozen day capture at x=1000 uses view offset 80
+B06RT PASS frozen day capture at x=1280 uses view offset 360
+B06RT PASS frozen day capture at x=1520 uses view offset 600
+B06RT PASS frozen day capture at x=1760 uses view offset 840
+B06RT PASS frozen day capture at x=2400 uses view offset 1480
+B06RT PASS frozen night capture at x=1000 uses view offset 80
+B06RT PASS frozen night capture at x=1280 uses view offset 360
+B06RT PASS frozen night capture at x=1520 uses view offset 600
+B06RT PASS frozen night capture at x=1760 uses view offset 840
+B06RT PASS frozen night capture at x=2400 uses view offset 1480
+B06RT PASS HUD title stays fixed in screen space at every position
+B06RT PASS no visible cut at the x=1280 seam (0.0006 vs typical 0.0131)
+B06RT PASS no visible cut at the x=1760 seam (0.0023 vs typical 0.0161)
+B06_RUNTIME_PASS: 40/40 checks

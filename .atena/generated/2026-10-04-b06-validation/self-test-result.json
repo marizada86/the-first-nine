@@ -1,0 +1,11 @@
+{
+  "name": "self-test",
+  "exit_code": 0,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.045,
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [],
+  "error": null
+}
