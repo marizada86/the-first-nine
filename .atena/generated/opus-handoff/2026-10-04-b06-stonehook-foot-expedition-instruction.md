@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-external-execution
+status: implemented-awaiting-review
 kind: external-implementation-instruction
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -17,6 +17,12 @@ push_approved: false
 pull_request_approved: false
 merge_approved: false
 dispatch_approved: false
+implementation_branch: codex/b06-stonehook-foot-expedition
+implementation_base: 7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc
+implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
+implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
+steps_completed: [S-001, S-002, S-003, S-004]
+human_review: pending
 ---
 
 # B-06 Stonehook Foot Expedition Instructions for Opus 5.5
@@ -65,3 +71,7 @@ Add B-06 headless and real-input outward/return checks, border-repeat/capacity c
 Rerun the full self-test and applicable prior combat/menu/geometry/facing suites, writing fresh results to `.atena/generated/2026-10-04-b06-validation/` rather than overwriting committed evidence. Distinguish reproduction from inspected historical results. Preserve the intent of previous assertions; explain any narrow approved boundary adaptation. Do not use `self_test_travel_bypass` as an ordinary gameplay entitlement.
 
 Write `.atena/evidence/2026-10-04-b06-stonehook-foot-expedition-implementation.md` and reconcile the spec/evidence/plan to actual implementation-awaiting-review status. Report: exact branch/base/head, changed files, implemented behavior, tests and actual exits, new captures, unresolved limitations, approval/checkpoint state and the next non-authorizing recommendation. State whether anything was committed or published. Stop for owner review. Do not push, open a PR, merge, delete a branch or start another batch without its required authority.
+
+## Execution Record
+
+The owner directed the assigned executor, in its chat session on 2026-10-05, to read this delivered instruction from the repository. Atena sent no external message, and `dispatch_approved` is unchanged. The executor verified the gate above and implemented the approved scope locally on `codex/b06-stonehook-foot-expedition` (implementation commit `42bddf8`, base `7e477ba`). Results are in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. Nothing was pushed, and no PR, merge or B-07 work occurred.

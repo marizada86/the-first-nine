@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-external-execution
+status: implemented-awaiting-review
 kind: bounded-runtime-plan
 created: 2026-10-04
 plan_id: 2026-10-04-b06-stonehook-foot-expedition
@@ -27,6 +27,12 @@ gameplay_baseline: 05eac1e7a639e213f39cff81b1e75305727ab4d0
 proposed_implementation_branch: codex/b06-stonehook-foot-expedition
 evidence: "[[2026-10-04-b06-stonehook-foot-expedition]]"
 instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
+implementation_branch: codex/b06-stonehook-foot-expedition
+implementation_base: 7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc
+implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
+implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
+steps_completed: [S-001, S-002, S-003, S-004]
+human_review: pending
 ---
 
 # B-06 First Stonehook Foot Expedition
@@ -112,3 +118,11 @@ Write `.atena/evidence/2026-10-04-b06-stonehook-foot-expedition-implementation.m
 Use a codex-prefixed feature branch from the verified current approved baseline, preserving local work and all existing branches. Normal corrective commits are the recovery path; no destructive resets, force-pushes or amending published history. Acceptance `2f34635`, preparation `0a82ead` and approval `77ee387` were normally pushed to origin/main after explicit owner authorization; the remote HEAD was verified as `77ee387d5649a131ae20c5910b2dc7421c76f22f`. This documentation reconciliation accompanies that authorized delivery. Use the delivered reconciliation or a later verified descendant, not the obsolete pending-delivery records at the initial approval commit. A missing commit or record is a delivery blocker: do not reconstruct an unseen spec from a pasted summary.
 
 The English handoff is available through the authorized repository delivery but has not been sent as a message. It tells Opus to check the live approval mode, exact repository state and delivery before editing. No runtime, art, implementation branch publication or external message is performed during this documentation delivery. `push_approved: false` refers to future B-06 implementation publication, not the completed documentation push.
+
+## Implementation Checkpoint
+
+The assigned executor verified the delivered records on `origin/main` at `7e477ba` (acceptance `2f34635`, preparation `0a82ead`, approval `77ee387` and the delivery reconciliation), then executed S-001 through S-004 under the unchanged per-plan approval on the local branch `codex/b06-stonehook-foot-expedition`. Request classification: IN_PLAN. Implementation commit `42bddf8` changes `main.gd`, narrow wagon-proximity guards in `wagon_inventory_ui.gd` and validation artifacts under `.atena/generated/2026-10-04-b06-validation/`. No asset, scene, project setting, canon or dependency changed.
+
+The implemented geometry, gate, camera, blended route art, finite ore, offscreen camp, restoration and validation results are recorded in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. The B-06 headless checks (30/30), the rendered real-input runner (40/40), the full self-test, the combat (9/9), menu (33/33), geometry (46/46) and headless facing (65/65) suites pass on Linux. All ten faulty controls are rejected. The rendered facing suite reports the same single pre-existing 101/102 difference on this Linux software renderer as the unchanged `7e477ba` baseline; it is left recorded as a failure, not adapted.
+
+Status is `implemented-awaiting-review`, at checkpoint `owner-review-of-local-implementation`. Human review is pending. Implementation push, PR, merge and dispatch remain unapproved and were not performed. B-07 was not started.

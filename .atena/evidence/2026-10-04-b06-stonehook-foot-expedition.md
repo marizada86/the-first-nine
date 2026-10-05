@@ -1,5 +1,5 @@
 ---
-status: approved-awaiting-external-execution
+status: implemented-awaiting-review
 kind: planning-evidence
 created: 2026-10-04
 request_classification: NEW_PLAN
@@ -15,13 +15,19 @@ preparation_commit: 0a82ead8384969a11399f20ef3dcf3828734df27
 documentation_publication_approved: true
 documentation_published: true
 delivery_commit: 77ee387d5649a131ae20c5910b2dc7421c76f22f
-runtime_changed: false
+runtime_changed: true
 push_approved: false
 dispatch_approved: false
 spec: "[[2026-10-04-b06-stonehook-foot-expedition]]"
 instruction: "[[2026-10-04-b06-stonehook-foot-expedition-instruction]]"
 local_baseline: 2f34635ff5adf735e51a7c144862e7c1bba37bed
 gameplay_baseline: 05eac1e7a639e213f39cff81b1e75305727ab4d0
+implementation_branch: codex/b06-stonehook-foot-expedition
+implementation_base: 7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc
+implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
+implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"
+steps_completed: [S-001, S-002, S-003, S-004]
+human_review: pending
 ---
 
 # B-06 Expedition Planning Evidence
@@ -71,3 +77,9 @@ A fresh fetch confirmed no remote-only commits and exactly three local commits a
 The documentation delivery checkpoint is now cleared, with status `approved-awaiting-external-execution`. The executor must read this reconciliation or a later descendant and verify the files/approval before creating its implementation branch. No local B-06 implementation, new engine results, PR, merge, branch deletion or message to Opus occurred. `push_approved: false` continues to protect future implementation publication; the separately authorized documentation push is recorded by the documentation publication fields.
 
 Delivery reconciliation validation passed with exit 0 and `B06_DELIVERY_PASS`: 14 resolved links, required ADD structure, consistent per-plan approval/documentation publication, approval commit present on origin/main, separate future implementation publication gates, exact prior completed-plan/history preservation and unchanged runtime/assets/settings/canon. Scoped whitespace checks pass. These are documentation checks, not B-06 gameplay results.
+
+## Implementation Checkpoint
+
+The assigned executor read this evidence, the spec, the instruction and the active plan from `origin/main` at `7e477ba`, confirmed the per-plan approval and the cleared delivery checkpoint, and created `codex/b06-stonehook-foot-expedition` from that commit. S-001 through S-004 were executed locally as IN_PLAN work without new batch or step approvals. Implementation commit `42bddf8` and the records follow-up are local only.
+
+Fresh engine results, negative controls, captures and limitations are in [[2026-10-04-b06-stonehook-foot-expedition-implementation]]. The preparation, approval and delivery validator under `.atena/generated/2026-10-04-b06-preparation/` checks those earlier documentation checkpoints only; it is superseded at this checkpoint by `.atena/generated/2026-10-04-b06-validation/validate_records.cjs`, and is left unchanged as historical evidence. Status is `implemented-awaiting-review`; human review, implementation publication, PR, merge and dispatch remain pending and unapproved.
