@@ -7,8 +7,10 @@
   "faulty_controls": 11,
   "b06_original_parity": "Preserved 50/53 result from the approved name change only",
   "b06_current_names": 53,
-  "links": 30,
+  "links": 38,
   "previous_state_preserved": true,
+  "protected_b08_validators": 18,
+  "implementation_ancestry": true,
   "negative_controls": [
     "tampered-master-hash",
     "unaccepted-target",

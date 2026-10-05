@@ -1,5 +1,5 @@
 ---
-status: implemented-awaiting-human-review
+status: implementation-merged-owner-authorized-playtest-pending
 kind: bounded-runtime-plan
 created: 2026-10-05
 plan_id: 2026-10-05-b08-stonehook-cliff-harrier
@@ -18,13 +18,18 @@ implementation_branch: codex/b08-stonehook-cliff-harrier
 evidence: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
 instruction: "[[2026-10-05-b08-stonehook-cliff-harrier-instruction]]"
 prior_plan: "[[2026-10-05-b07-stonehook-first-encounter]]"
-documentation_published: false
-push_approved: false
+documentation_published: true
+push_approved: true
 pull_request_approved: false
-merge_approved: false
+merge_approved: true
 dispatch_approved: false
 implementation_evidence: "[[2026-10-05-b08-stonehook-cliff-harrier-implementation]]"
 human_acceptance: pending
+implementation_published: true
+integration_approved: true
+integration_commit: 88d7cfb16e06644d606623aee5ea3d12dfeab32c
+integration_evidence: '[[2026-10-05-main-integration]]'
+integration_executor: local-atena
 ---
 
 # B08 Stonehook Cliff Harrier
@@ -151,3 +156,13 @@ Linux executor results are kept separate from any reported Windows evidence.
 ## Implementation Checkpoint
 
 On 2026-10-05, S-001 through S-003 were executed locally on `codex/b08-stonehook-cliff-harrier` from verified integrated main `4d3c5c1`. Results, tuning adjustments, inspected captures and limitations are in [[2026-10-05-b08-stonehook-cliff-harrier-implementation]]. The plan awaits human review: nothing is pushed, no PR or merge exists, human acceptance is pending and no B-09 work has started. The earlier "in implementation" wording describes the dated pre-implementation checkpoint and is superseded here.
+
+## Main integration on 2026 10 05
+
+The earlier implementation and publication restrictions describe their dated checkpoints. The owner subsequently authorized publication of 052ec6466ee2a8252cf54f6f72ed11f0cc26e045 to codex/b08-stonehook-cliff-harrier, then directly requested combining the project into main and updating it. This authorizes the current normal integration and push, not new gameplay or an external dispatch.
+
+Main now contains the regular merge 88d7cfb16e06644d606623aee5ea3d12dfeab32c, with parents 6e6410e80a49b5c0542aeda9dc4f448f338cf3b3 and 052ec6466ee2a8252cf54f6f72ed11f0cc26e045. A normal push from 4d3c5c1 to 88d7cfb succeeded and GitHub refs were freshly verified. The B-08 feature branch remains at 052ec646; no PR was opened and no branch was deleted.
+
+Fresh combined-build Windows validation and its one approved-name baseline adjustment are recorded in [[2026-10-05-main-integration]]. B-08 passed 34/34 headless and 33/33 real-input checks; the existing regressions, full self-test, smoke runs and eleven faulty controls retained their meaning. Forms passed 196/196. Earlier Linux and Windows review evidence remain separate historical checkpoints; the later integrated tests do not retroactively change them.
+
+The implementation is integrated by explicit owner authority, while balance and itemized human playtest remain pending. No detailed human acceptance is inferred. Existing static-art, overlap, foreground and in-memory-save limitations remain. The approved B-09 images are repository-published offline art only; B-09 gameplay and runtime admission are not started. This handoff is historical, not authority to send further work to an external executor.

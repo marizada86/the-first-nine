@@ -1,5 +1,5 @@
 ---
-status: validated-awaiting-main-publication
+status: complete-published
 kind: repository-integration
 created: 2026-10-05
 origin: planned

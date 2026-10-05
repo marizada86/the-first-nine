@@ -904,7 +904,7 @@ repository_integration:
   id: 2026-10-05-main-integration
   spec: '[[2026-10-05-main-integration]]'
   evidence: '[[2026-10-05-main-integration]]'
-  status: validated-awaiting-main-publication
+  status: complete-published
   mode: direct
   approval_mode: direct-owner-authority
   authority: Owner requested combining all current work into main and updating it.
@@ -916,6 +916,13 @@ repository_integration:
   merge_approved: true
   push_approved: true
   publication_target: origin/main
+  merge_commit: 88d7cfb16e06644d606623aee5ea3d12dfeab32c
+  verified_published_main_commit: 88d7cfb16e06644d606623aee5ea3d12dfeab32c
+  merge_method: regular-merge
+  main_publication_verified: true
+  b08_status: implementation-merged-owner-authorized-playtest-pending
+  human_playtest_remains_pending: true
+  documentation_followup_publication: Exact final commit and push outcome reported in the owner completion message.
   branch_deletion_approved: false
   b09_offline_art_targets: 30
   b09_runtime_admission_approved: false

@@ -33,6 +33,10 @@ for(const target of ['CLIFF_HARRIER_ID','SCREE_CRAWLER_ID','LOLTH_TRANSFORMATION
 assert(!production.includes('package-masters-v2')&&!production.includes('b09-opening-art-production'),'offline art not admitted');
 const paths=cp.execFileSync('git',['ls-files','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
 assert(!paths.some(p=>/\/(?:checkout|godot-profile|\.git|\.godot|scratch)\//.test(p)),'no nested replicas staged');
+cp.execFileSync('git',['merge-base','--is-ancestor','052ec6466ee2a8252cf54f6f72ed11f0cc26e045','main'],{cwd:root});
+cp.execFileSync('git',['merge-base','--is-ancestor','6e6410e80a49b5c0542aeda9dc4f448f338cf3b3','main'],{cwd:root});
+const protectedFiles=cp.execFileSync('git',['ls-tree','-r','--name-only','052ec6466ee2a8252cf54f6f72ed11f0cc26e045','.atena/generated/2026-10-05-b08-validation'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(p=>/\.(gd|cjs)$/.test(p));
+for(const file of protectedFiles)assert.equal(norm(read(file)),norm(cp.execFileSync('git',['show','052ec6466ee2a8252cf54f6f72ed11f0cc26e045:'+file],{cwd:root,encoding:'utf8'})),file+' historical validator unchanged');
 const ids=new Set(paths.filter(p=>p.endsWith('.md')).map(p=>path.basename(p,'.md')));
 const docs=['.atena/specs/2026-10-05-main-integration.md','.atena/evidence/2026-10-05-main-integration.md','.atena/specs/2026-10-05-b08-stonehook-cliff-harrier.md','.atena/evidence/2026-10-05-b08-stonehook-cliff-harrier.md','.atena/evidence/2026-10-05-b08-stonehook-cliff-harrier-implementation.md','.atena/generated/opus-handoff/2026-10-05-b08-stonehook-cliff-harrier-instruction.md'];
 let links=0;for(const file of docs){const text=read(file);assert(!/^(<<<<<<<|=======|>>>>>>>)/m.test(text));for(const m of text.matchAll(/\[\[([^\]#|]+)(?:[^\]]*)\]\]/g)){assert(ids.has(m[1]),file+' '+m[1]);links++;}}
@@ -55,6 +59,6 @@ const negative=[];
 for(const [name,mutate] of [['tampered-master-hash',items=>items[0].master_sha256='0'.repeat(64)],['unaccepted-target',items=>items[0].owner_accepted=false],['runtime-admission',items=>items[0].runtime_admitted=true]]){
   const items=structuredClone(baseline.art.items);mutate(items);let rejected=false;try{artCheck(items);}catch{rejected=true;}assert(rejected);negative.push(name);
 }
-const report={status:'PASS',art_targets:30,accepted_art_hashes:90,forms:196,engine_cases:26,faulty_controls:11,b06_original_parity:'Preserved 50/53 result from the approved name change only',b06_current_names:53,links,previous_state_preserved:true,negative_controls:negative,yaml_validation:'Scoped exact state preservation, not a whole-file YAML parser',runtime_art_admission:false};
+const report={status:'PASS',art_targets:30,accepted_art_hashes:90,forms:196,engine_cases:26,faulty_controls:11,b06_original_parity:'Preserved 50/53 result from the approved name change only',b06_current_names:53,links,previous_state_preserved:true,protected_b08_validators:protectedFiles.length,implementation_ancestry:true,negative_controls:negative,yaml_validation:'Scoped exact state preservation, not a whole-file YAML parser',runtime_art_admission:false};
 fs.writeFileSync(path.join(__dirname,'integration-validation.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));
