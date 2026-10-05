@@ -11,7 +11,7 @@ const project = path.resolve(process.env.B06_PROJECT || process.cwd());
 const out = path.join(project, REL);
 const render = ['--rendering-method', 'gl_compatibility', '--resolution', '1280x720'];
 const logicFaults = ['bypass_departure', 'border_respawn', 'remote_wagon', 'paused_offscreen', 'lost_route_restore', 'lost_f4_fields', 'progression_unlock', 'new_run_keeps_route'];
-const renderFaults = ['leaked_camera_transform', 'unshifted_reflection'];
+const renderFaults = ['leaked_camera_transform', 'unshifted_reflection', 'no_foreground_readability'];
 const cases = {
   'b06-headless': {args: ['--headless', '--script', RES + '/validate_b06_headless.gd'], marker: 'B06_PASS:'},
   'b06-runtime': {args: [...render, '--script', RES + '/validate_b06_runtime.gd'], render: true, marker: 'B06_RUNTIME_PASS:'},
@@ -33,6 +33,9 @@ const environmentOnly = [/ALSA|PulseAudio|audio drivers? failed|drivers\/alsa|dr
 const baseline = path.join(out, 'baseline', 'main_7e477ba.gd');
 fs.mkdirSync(path.dirname(baseline), {recursive: true});
 fs.writeFileSync(baseline, execFileSync('git', ['show', '7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc:main.gd'], {cwd: __dirname, encoding: 'utf8'}));
+// Results are tagged with their platform so reruns elsewhere stay separate and comparable.
+const godotVersion = (() => { try { return execFileSync(godot, ['--version'], {encoding: 'utf8'}).trim(); } catch (error) { return 'unknown: ' + error.message; } })();
+const platform = {os: process.platform, arch: process.arch, godot: godotVersion, display: process.env.XVFB === '1' ? 'xvfb' : 'native'};
 let failed = false;
 const names = process.argv.slice(2).flatMap(name => name === 'all' ? Object.keys(cases) : [name]);
 for (const name of names) {
@@ -60,7 +63,8 @@ for (const name of names) {
   const passed = spec.negative
     ? result.status === 1 && detections.length > 0 && projectDiagnostics.length === 0
     : result.status === 0 && projectDiagnostics.length === 0 && !failMarkers.test(output) && (!spec.marker || output.includes(spec.marker)) && (!spec.also || output.includes(spec.also));
-  const record = {name, exit_code: result.status, signal: result.signal, passed, seconds: (Date.now() - started) / 1000, project_diagnostics: projectDiagnostics, environment_diagnostics: diagnosticLines.filter(line => !projectDiagnostics.includes(line)), detections, error: result.error?.message || null};
+  const device = (output.match(/Using Device[^\n]*/) || [null])[0];
+  const record = {name, platform: {...platform, device}, exit_code: result.status, signal: result.signal, passed, seconds: (Date.now() - started) / 1000, project_diagnostics: projectDiagnostics, environment_diagnostics: diagnosticLines.filter(line => !projectDiagnostics.includes(line)), detections, error: result.error?.message || null};
   fs.writeFileSync(path.join(out, name + '-result.json'), JSON.stringify(record, null, 2) + '\n');
   console.log(output.trimEnd());
   console.log('GODOT_PROCESS ' + (passed ? 'PASS' : 'FAIL') + ' ' + name + ': exit=' + result.status);

@@ -1,9 +1,16 @@
 {
   "name": "render-negative-unshifted_reflection",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": "Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)"
+  },
   "exit_code": 1,
   "signal": null,
   "passed": true,
-  "seconds": 2.776,
+  "seconds": 2.988,
   "project_diagnostics": [],
   "environment_diagnostics": [
     "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)",

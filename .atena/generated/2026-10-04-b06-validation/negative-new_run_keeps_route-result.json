@@ -1,9 +1,16 @@
 {
   "name": "negative-new_run_keeps_route",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
   "exit_code": 1,
   "signal": null,
   "passed": true,
-  "seconds": 2.146,
+  "seconds": 2.153,
   "project_diagnostics": [],
   "environment_diagnostics": [],
   "detections": [

@@ -157,6 +157,11 @@ const CAMERA_WINDOW_LEFT := 360.0
 const CAMERA_WINDOW_RIGHT := 920.0
 const CAMERA_GLIDE_SPEED := 2400.0
 const ROUTE_OVERLAY_FADE_WIDTH := 160.0
+# Spans (world x) where the existing frame overlays cover Lolth once the route is open:
+# the Ashen Way edge tree with its seam fade, and the Stonehook ruins arch at the far limit.
+const FOREGROUND_READABILITY_SPANS := [Vector2(980.0, 1460.0), Vector2(2700.0, ROUTE_END_X)]
+const FOREGROUND_READABILITY_RAMP := 120.0
+const FOREGROUND_READABILITY_ALPHA := 0.72
 const ROUTE_ORE_ID := "stonehook_iron_ore_01"
 const ROUTE_ORE_X := 2620.0
 # H-01 and H-02 shells. Identifiers only: they are never displayed to the player.
@@ -3136,6 +3141,7 @@ func _draw() -> void:
 	draw_portal()
 	draw_player()
 	draw_foreground_overlay()
+	draw_foreground_readability()
 	draw_route_markers()
 	draw_mark_vfx()
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
@@ -3533,7 +3539,8 @@ func draw_portal() -> void:
 	draw_texture_rect(DREAM_GATE_RUNTIME, Rect2(p - Vector2(100, 160), Vector2(200, 240)), false)
 	draw_string(ThemeDB.fallback_font, p + Vector2(-66, 88), "DREAM GATE", HORIZONTAL_ALIGNMENT_CENTER, 132, 16, Color("f2d4ff"))
 
-func draw_player() -> void:
+# The current pose cell and optional crop, shared by the normal and readability passes.
+func player_sprite_frame() -> Dictionary:
 	var pose_sheet: Texture2D = LOLTH_ELF_RUNTIME if lolth_form() == "elf" else LOLTH_DROW_RUNTIME
 	var pose_index := 0
 	match player_pose():
@@ -3559,12 +3566,16 @@ func draw_player() -> void:
 		var top_cut := 0.32 if lolth_form() == "elf" else 0.23
 		var left_cut := 0.0 if lolth_form() == "elf" else 0.15
 		crop = Rect2(pose_width * left_cut, pose_height * top_cut, pose_width * (1.0 - left_cut), pose_height * (1.0 - top_cut))
-	draw_player_sprite(pose_sheet, pose_source, PLAYER_SPRITE_HEIGHT, 1.0, crop)
+	return {"sheet": pose_sheet, "source": pose_source, "crop": crop}
+
+func draw_player() -> void:
+	var frame := player_sprite_frame()
+	draw_player_sprite(frame.sheet, frame.source, PLAYER_SPRITE_HEIGHT, 1.0, frame.crop)
 	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color("fff0b0"))
 	if player_hurt_visible():
 		draw_circle(player + Vector2(0, -62), 58, Color(0.85, 0.25, 0.45, 0.18))
 
-func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0, crop: Rect2 = Rect2()) -> void:
+func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_SPRITE_HEIGHT, feet_ratio: float = 1.0, crop: Rect2 = Rect2(), tint: Color = Color.WHITE) -> void:
 	var width := height * source.size.x / source.size.y
 	var destination := Rect2(player.x - width / 2.0, player.y + PLAYER_FEET_OFFSET - height * feet_ratio, width, height)
 	if crop.has_area():
@@ -3575,10 +3586,34 @@ func draw_player_sprite(sheet: Texture2D, source: Rect2, height: float = PLAYER_
 	if player_facing_left:
 		var origin := world_draw_origin()
 		draw_set_transform(Vector2(player.x * 2.0, 0.0) + origin, 0.0, Vector2(-1.0, 1.0))
-		draw_texture_rect_region(sheet, destination, source)
+		draw_texture_rect_region(sheet, destination, source, tint)
 		draw_set_transform(origin, 0.0, Vector2.ONE)
 		return
-	draw_texture_rect_region(sheet, destination, source)
+	draw_texture_rect_region(sheet, destination, source, tint)
+
+# B-06 readability: the frame-like foreground overlays hide Lolth at the Thornwake border
+# and at the far foothill limit. Inside those named spans only, and only while the route is
+# open, her existing sprite is redrawn semi-transparently in front of the overlay. Elsewhere,
+# including the whole original cave and tutorial view, nothing extra is drawn.
+func foreground_readability_alpha() -> float:
+	if zone != 0 or camera_limit_x() <= 0.0:
+		return 0.0
+	var strength := 0.0
+	for span in FOREGROUND_READABILITY_SPANS:
+		var rise := clampf((player.x - span.x) / FOREGROUND_READABILITY_RAMP, 0.0, 1.0)
+		# A span that ends at the route limit stays at full strength up to the limit.
+		var fall := clampf((span.y - player.x) / FOREGROUND_READABILITY_RAMP, 0.0, 1.0) if span.y < ROUTE_END_X else 1.0
+		if player.x >= span.x and player.x <= span.y:
+			strength = maxf(strength, minf(rise, fall))
+	return FOREGROUND_READABILITY_ALPHA * strength
+
+func draw_foreground_readability() -> void:
+	var alpha := foreground_readability_alpha()
+	if alpha <= 0.0:
+		return
+	var frame := player_sprite_frame()
+	draw_player_sprite(frame.sheet, frame.source, PLAYER_SPRITE_HEIGHT, 1.0, frame.crop, Color(1, 1, 1, alpha))
+	draw_string(ThemeDB.fallback_font, player + Vector2(-58, -174), "LOLTH", HORIZONTAL_ALIGNMENT_CENTER, 116, 13, Color(1.0, 0.94, 0.69, alpha))
 
 func draw_foreground_overlay() -> void:
 	var panel_width := RUINS_FOREGROUND_OVERLAYS.get_width() / 2.0

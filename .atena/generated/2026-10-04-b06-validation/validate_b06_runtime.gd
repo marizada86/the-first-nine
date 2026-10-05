@@ -11,6 +11,9 @@ var failures := 0
 var out_dir := RES_DIR
 var render_fault := ""
 var metrics := {}
+var suspended_joypad_events := {}
+const SETTLE_TIMEOUT_MS := 3000
+const READABILITY_MIN_RATIO := 0.5
 
 func _initialize() -> void:
 	if OS.get_environment("OUT") != "":
@@ -168,56 +171,109 @@ func translation_fixture() -> void:
 			var image: Image = await capture(fixture)
 			images.append(image)
 		var label := "left" if facing_left else "right"
-		images[1].save_png(out_dir + "/translation-%s-offset-1000.png" % label)
+		# Faulty runs never write evidence captures, so they cannot replace the real images.
+		if render_fault == "":
+			images[1].save_png(out_dir + "/translation-%s-offset-1000.png" % label)
 		var different := differing_pixels(images[0], images[1])
 		metrics["translation_%s_differing_pixels" % label] = different
 		check("world translation keeps %s-facing Lolth, enemies, labels and bars identical on screen (%d differing pixels)" % [label, different], different == 0)
 		check("world marker after reflected sprites and screen marker stay in place (%s)" % label, images[1].get_pixel(110, 110) == Color.CYAN and images[1].get_pixel(50, 50) == Color.MAGENTA)
 	await free_node(fixture)
 
+# Measures one observed frame of the walk: continuity bounds, context and regions.
+func sample_walk(result: Dictionary, direction: float) -> void:
+	await process_frame
+	# process_frame resumes before this frame's _process, so the observed step belongs to
+	# either the previous or the current frame time; bound it by the larger of the two.
+	var delta: float = game.get_process_delta_time()
+	var frame_time := maxf(delta, float(result.last_delta))
+	result.last_delta = delta
+	var step: float = game.player.x - float(result.last_x)
+	result.monotonic = bool(result.monotonic) and step * direction >= -0.001
+	result.step_ok = bool(result.step_ok) and absf(step) <= 290.0 * frame_time + 0.5
+	result.camera_ok = bool(result.camera_ok) and absf(game.camera_x - float(result.last_camera)) <= game.CAMERA_GLIDE_SPEED * frame_time + 0.5
+	result.context_ok = bool(result.context_ok) and game.zone == 0 and game.state == "journey" and is_equal_approx(game.player.y, floor_y())
+	result.max_step = maxf(float(result.max_step), absf(step))
+	if frame_time > 0.0:
+		result.max_step_ratio = maxf(float(result.max_step_ratio), absf(step) / (290.0 * frame_time))
+	if game.player.x <= game.CAMERA_WINDOW_RIGHT:
+		result.camera_at_cave = maxf(float(result.camera_at_cave), game.camera_x)
+	var region: String = game.lolth_region()
+	if result.regions.is_empty() or String(result.regions.back()) != region:
+		result.regions.append(region)
+	result.last_x = game.player.x
+	result.last_camera = game.camera_x
+	result.frames = int(result.frames) + 1
+
+# Holds a movement key until the condition holds, then releases it and waits for Lolth to
+# actually stop (zero velocity) under a wall-clock timeout, measuring every frame throughout.
+# A walk counts as done only when the condition holds after a real stop.
 func hold_until(code: Key, done: Callable, timeout_seconds: float) -> Dictionary:
 	var direction := 1.0 if code == KEY_D else -1.0
-	var result := {"frames": 0, "monotonic": true, "step_ok": true, "camera_ok": true, "context_ok": true, "max_step": 0.0, "max_step_ratio": 0.0, "camera_at_cave": 0.0, "regions": []}
+	var result := {"frames": 0, "settle_frames": 0, "monotonic": true, "step_ok": true, "camera_ok": true, "context_ok": true, "max_step": 0.0, "max_step_ratio": 0.0, "camera_at_cave": 0.0, "regions": [], "last_x": game.player.x, "last_camera": game.camera_x, "last_delta": game.get_process_delta_time()}
 	var started := Time.get_ticks_msec()
-	var last_x: float = game.player.x
-	var last_camera: float = game.camera_x
-	var last_delta: float = game.get_process_delta_time()
 	key(code, true)
 	while not done.call() and Time.get_ticks_msec() - started < int(timeout_seconds * 1000.0):
-		await process_frame
-		# process_frame resumes before this frame's _process, so the observed step belongs to
-		# either the previous or the current frame time; bound it by the larger of the two.
-		var delta: float = game.get_process_delta_time()
-		var frame_time := maxf(delta, last_delta)
-		last_delta = delta
-		var step: float = game.player.x - last_x
-		result.monotonic = bool(result.monotonic) and step * direction >= -0.001
-		result.step_ok = bool(result.step_ok) and absf(step) <= 290.0 * frame_time + 0.5
-		result.camera_ok = bool(result.camera_ok) and absf(game.camera_x - last_camera) <= game.CAMERA_GLIDE_SPEED * frame_time + 0.5
-		result.context_ok = bool(result.context_ok) and game.zone == 0 and game.state == "journey" and is_equal_approx(game.player.y, floor_y())
-		result.max_step = maxf(float(result.max_step), absf(step))
-		if frame_time > 0.0:
-			result.max_step_ratio = maxf(float(result.max_step_ratio), absf(step) / (290.0 * frame_time))
-		if game.player.x <= game.CAMERA_WINDOW_RIGHT:
-			result.camera_at_cave = maxf(float(result.camera_at_cave), game.camera_x)
-		var region: String = game.lolth_region()
-		if result.regions.is_empty() or String(result.regions.back()) != region:
-			result.regions.append(region)
-		last_x = game.player.x
-		last_camera = game.camera_x
-		result.frames = int(result.frames) + 1
+		await sample_walk(result, direction)
 	key(code, false)
-	for _settle in 6:
-		await process_frame
-	result.done = done.call()
-	print("B06RT_TRACE %s frames=%d monotonic=%s step_ok=%s camera_ok=%s context_ok=%s max_step=%.2f max_step_ratio=%.3f" % [OS.get_keycode_string(code), int(result.frames), result.monotonic, result.step_ok, result.camera_ok, result.context_ok, float(result.max_step), float(result.max_step_ratio)])
+	var settle_started := Time.get_ticks_msec()
+	while not is_zero_approx(game.velocity.x) and Time.get_ticks_msec() - settle_started < SETTLE_TIMEOUT_MS:
+		await sample_walk(result, direction)
+		result.settle_frames = int(result.settle_frames) + 1
+	result.settled = is_zero_approx(game.velocity.x)
+	result.done = done.call() and bool(result.settled)
+	print("B06RT_TRACE %s frames=%d settle_frames=%d settled=%s monotonic=%s step_ok=%s camera_ok=%s context_ok=%s max_step=%.2f max_step_ratio=%.3f" % [OS.get_keycode_string(code), int(result.frames), int(result.settle_frames), result.settled, result.monotonic, result.step_ok, result.camera_ok, result.context_ok, float(result.max_step), float(result.max_step_ratio)])
 	return result
+
+# Keyboard-only route section: physical controllers attached to the test machine must not inject
+# actions (a resting right trigger near 0.20 exceeds the 0.2 action deadzone and dashes). Only
+# this test process's InputMap is changed; device settings and production thresholds are not.
+func suspend_joypad_bindings() -> void:
+	suspended_joypad_events.clear()
+	for action in InputMap.get_actions():
+		var removed: Array = []
+		for event in InputMap.action_get_events(action):
+			if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+				removed.append(event)
+				InputMap.action_erase_event(action, event)
+		if not removed.is_empty():
+			suspended_joypad_events[action] = removed
+			Input.action_release(action)
+
+func restore_joypad_bindings() -> void:
+	for action in suspended_joypad_events:
+		for event in suspended_joypad_events[action]:
+			InputMap.action_add_event(action, event)
+	suspended_joypad_events.clear()
+
+func trigger(value: float) -> void:
+	var event := InputEventJoypadMotion.new()
+	event.axis = JOY_AXIS_TRIGGER_RIGHT
+	event.axis_value = value
+	Input.parse_input_event(event)
+
+# Sends a right-trigger value for a few frames and reports whether Lolth dashed.
+func trigger_dashes(value: float) -> bool:
+	game.dodge_cooldown = 0.0
+	game.dodge_time = 0.0
+	trigger(value)
+	var dashed := false
+	for _frame in 4:
+		await process_frame
+		dashed = dashed or game.dodge_time > 0.0
+	trigger(0.0)
+	for _frame in 3:
+		await process_frame
+	return dashed
 
 func route_run() -> void:
 	game = load("res://main.tscn").instantiate()
 	root.add_child(game)
 	await process_frame
 	await tap(KEY_ESCAPE)
+	suspend_joypad_bindings()
+	var resting_trigger_dashed: bool = await trigger_dashes(0.21)
+	check("controller bindings are suspended for the keyboard-only route section (resting trigger 0.21 ignored)", not suspended_joypad_events.is_empty() and not resting_trigger_dashed)
 	# Fixture: the legitimate B-03/B-04 path through the boss, Mark I, one cure and a safe return.
 	game.reach_expedition_ready_for_test()
 	await process_frame
@@ -312,6 +368,79 @@ func camera_offset_combat() -> void:
 	await tap(KEY_M)
 	check("M near the Thornwake border still cannot open the Wagon", not game.ui_management.is_open())
 
+func sprite_visibility(with_lolth: Image, without_lolth: Image, region: Rect2i) -> float:
+	return region_difference_plain(with_lolth, without_lolth, region)
+
+func region_difference_plain(a: Image, b: Image, region: Rect2i) -> float:
+	var total := 0.0
+	for y in range(region.position.y, region.end.y):
+		for x in range(region.position.x, region.end.x):
+			var c := a.get_pixel(x, y)
+			var d := b.get_pixel(x, y)
+			total += (absf(c.r - d.r) + absf(c.g - d.g) + absf(c.b - d.b)) / 3.0
+	return total / float(maxi(1, region.size.x * region.size.y))
+
+# Measures Lolth's visibility at the two reviewed problem locations, in day and night and both
+# facings: the difference she makes on screen with the foreground drawn, relative to the same
+# frame with the foreground omitted. Also checks the pass stays out of every other view.
+func foreground_readability() -> void:
+	var script_path := RES_DIR + ("/readability_fixture.gd" if render_fault == "" else "/faults/" + render_fault + ".gd")
+	# The route-run instance is hidden and paused so only the measured view draws.
+	if game != null:
+		game.visible = false
+		game.set_process(false)
+	var view = load(script_path).new()
+	root.add_child(view)
+	await process_frame
+	view.set_process(false)
+	view.reset_to_prologue()
+	view.player = Vector2(1200.0, view.GROUND_Y - view.PLAYER_FEET_OFFSET)
+	var closed_route_clear: bool = view.foreground_readability_alpha() == 0.0
+	view.reach_expedition_ready_for_test()
+	view.shades.clear()
+	view.night_wave_total = 0
+	view.message_time = 0.0
+	view.player_action_time = 0.0
+	view.mark_vfx_time = 0.0
+	view.pulse = 0.5
+	var scoped := closed_route_clear
+	for x in [900.0, 2400.0]:
+		view.player.x = x
+		scoped = scoped and view.foreground_readability_alpha() == 0.0
+	check("readability pass stays out of the closed route, the cave view and unoccluded foothills", scoped)
+	var ratios := {}
+	for night in [false, true]:
+		view.clock_seconds = view.DAY_DURATION + 10.0 if night else 10.0
+		for x in [1280.0, view.ROUTE_END_X - view.PLAYER_EDGE_MARGIN]:
+			for facing_left in [false, true]:
+				view.player = Vector2(x, view.GROUND_Y - view.PLAYER_FEET_OFFSET)
+				view.player_facing_left = facing_left
+				view.velocity = Vector2.ZERO
+				view.snap_camera()
+				var screen_x := int(round(x - view.camera_x))
+				var region := Rect2i(screen_x - 75, int(view.player.y + view.PLAYER_FEET_OFFSET) - 205, 150, 205).intersection(Rect2i(0, 130, 1280, 486))
+				var frames := {}
+				for hide_foreground in [false, true]:
+					view.fixture_hide_foreground = hide_foreground
+					for present in [true, false]:
+						view.player.y = view.GROUND_Y - view.PLAYER_FEET_OFFSET + (0.0 if present else 3000.0)
+						frames[str(hide_foreground) + str(present)] = await capture(view)
+				view.player.y = view.GROUND_Y - view.PLAYER_FEET_OFFSET
+				view.fixture_hide_foreground = false
+				var label := "%s-%04d-%s" % ["night" if night else "day", int(x), "left" if facing_left else "right"]
+				if render_fault == "":
+					frames["falsetrue"].save_png(out_dir + "/readability-" + label + ".png")
+				var occluded := sprite_visibility(frames["falsetrue"], frames["falsefalse"], region)
+				var unoccluded := sprite_visibility(frames["truetrue"], frames["truefalse"], region)
+				var ratio := occluded / maxf(unoccluded, 0.0001)
+				ratios[label] = {"visibility_ratio": ratio, "alpha": view.foreground_readability_alpha()}
+				check("Lolth stays readable through the foreground at %s (visibility %.2f of unoccluded)" % [label, ratio], ratio >= READABILITY_MIN_RATIO)
+	metrics.foreground_readability = ratios
+	await free_node(view)
+	if game != null:
+		game.visible = true
+		game.set_process(true)
+
 func transition_captures() -> void:
 	game.set_process(false)
 	game.shades.clear()
@@ -348,6 +477,11 @@ func transition_captures() -> void:
 
 func run() -> void:
 	root.size = Vector2i(1280, 720)
+	if render_fault == "no_foreground_readability":
+		await foreground_readability()
+		print("B06_RUNTIME_%s: %d/%d checks (render fault: %s)" % ["PASS" if failures == 0 else "FAIL", checks - failures, checks, render_fault])
+		quit(0 if failures == 0 else 1)
+		return
 	if render_fault != "":
 		await translation_fixture()
 		print("B06_RUNTIME_%s: %d/%d checks (render fault: %s)" % ["PASS" if failures == 0 else "FAIL", checks - failures, checks, render_fault])
@@ -358,6 +492,14 @@ func run() -> void:
 	await route_run()
 	await offscreen_camp()
 	await camera_offset_combat()
+	restore_joypad_bindings()
+	var restored_bindings := InputMap.action_get_events("shadow_action").size() == 2 and InputMap.action_get_events("move_right").size() >= 4
+	game.shades.clear()
+	# Root-cause record only: with bindings restored, a 0.21 trigger value passes the 0.2 deadzone.
+	metrics.restored_trigger_021_dashes = await trigger_dashes(0.21)
+	var controller_dash: bool = await trigger_dashes(1.0)
+	check("restored controller bindings dash again on a synthetic right trigger", restored_bindings and controller_dash)
+	await foreground_readability()
 	await transition_captures()
 	var file := FileAccess.open(out_dir + "/runtime-metrics.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(metrics, "\t") + "\n")
