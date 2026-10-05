@@ -1,5 +1,5 @@
 ---
-status: implemented-branch-published-combat-isolation-follow-up-awaiting-review
+status: implemented-published-human-accepted-awaiting-pr
 kind: implementation-note
 created: 2026-10-05
 batch: B-06
@@ -22,7 +22,7 @@ base_commit: 7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc
 implementation_commit: 42bddf87b64eafb2046a47b1f2695df3ad9d4075
 steps_completed: [S-001, S-002, S-003, S-004]
 batches_completed: [B-001, B-002, B-003]
-human_review: pending
+human_review: accepted
 push_approved: false
 pull_request_approved: false
 merge_approved: false
@@ -31,11 +31,19 @@ branch_publication_approved: true
 published_commit: ccc4fcf69271d88e421e26a81841cf6cce834a37
 follow_up_commit: d2012a1412f52d3066e4eff1216cfa9d57490acd
 follow_up_published: true
-latest_published_commit: 9640881e2c56b010fb1be93b3818f22be91d3b9c
+latest_published_commit: 7de6d6658a2e8b7aea5954320ef29902094d7215
 isolation_follow_up_commit: b446b7b507d6a5faa8fb2ac9d28197da34887e99
 isolation_follow_up_published: true
-combat_isolation_follow_up: local-test-only
-combat_isolation_follow_up_published: false
+combat_isolation_follow_up: published-test-only
+combat_isolation_follow_up_commit: 7de6d6658a2e8b7aea5954320ef29902094d7215
+combat_isolation_follow_up_published: true
+combat_isolation_publication_source: owner-separately-authorized-normal-push-fast-forward-9640881-to-7de6d66
+human_acceptance: accepted
+human_acceptance_date: 2026-10-05
+human_acceptance_scope: overall-owner-aprovado-of-the-reviewed-B06-slice-at-7de6d66
+windows_review_7de6d66: atena-external-review-2026-10-05-not-reproduced-by-executor
+reconciliation_documentation_push_authority: owner-authorized-one-normal-documentation-commit-and-push-on-this-branch-only-separate-from-the-completed-implementation-publication
+pull_request_state: awaiting-separate-authorization
 ---
 
 # B-06 - first on-foot Stonehook expedition
@@ -646,7 +654,21 @@ Request classification: IN_PLAN, a narrowly scoped test-only combat isolation fo
 
 ### State
 
+_Historical checkpoint (as of `9640881`, before `7de6d66` was published and reviewed); superseded by the final section below._
+
 - **Plan state.** `implemented-branch-published-combat-isolation-follow-up-awaiting-review`, checkpoint `owner-review-of-combat-isolation-follow-up`.
 - **Published.** `origin/codex/b06-stonehook-foot-expedition` was at `9640881e2c56b010fb1be93b3818f22be91d3b9c` when this section was written.
 - **Local only.** This follow-up is a single local commit (wrapper, runner, fresh results and these records) and was not pushed.
 - **Pending and not authorized.** Human acceptance is pending. Further push, PR, merge and dispatch remain unauthorized, and B-07 has not been started.
+
+## Combat isolation publication, Windows review and human acceptance
+
+**Publication.** The owner separately authorized a normal push of `7de6d66`. The feature branch `codex/b06-stonehook-foot-expedition` was fast-forwarded from `9640881` to `7de6d6658a2e8b7aea5954320ef29902094d7215`, and Atena independently confirmed the resulting remote refs. Remote `main` stayed at `7e477ba799ce5b4bf9cb6e9dde44e83c97db0bbc`. The "local" and "unpublished" wording about the combat isolation follow-up in the sections above is a dated historical checkpoint from before this publication (as of `9640881`, 2026-10-04/05); it is preserved, not rewritten.
+
+**Official Windows review of `7de6d66` (2026-10-05).** Atena's official Windows review of `7de6d66`, performed on 2026-10-05 (external; not runs reproduced by the executor): Godot `4.7.2.stable.official.ed1daf0bf`, native Windows x64, OpenGL compatibility, 1280x720, GTX 1650, NVIDIA driver 616.92. The full official runner exited 0. B-06 headless 30/30; rendered route 53/53; combat 9/9 normally and 9/9 under continuous synthetic trigger noise; menus 33/33; geometry 46/46; facing 65/65 headless and 102/102 rendered; the full self-test and both 600-frame smoke runs passed. All 14 faulty controls were rejected with genuine exit 1 and named failures. All 25 case records were fresh Windows results, without project diagnostics or process errors. The published records validator exited 0, verifying 39 links, scoped files, preserved completed history and saved results. These are Atena's external results, supplied in the owner's request for this reconciliation. Atena's owner-local receipt `.atena/evidence/2026-10-05-b06-combat-isolation-windows-review.md` is not present in this checkout; the executor did not read it and did not copy its logs or captures. The earlier Linux results and the historical Windows combat failure at `9640881` (official combat 8/9, full runner exit 1) stay as recorded and are not overwritten by these later successes.
+
+**Human acceptance (2026-10-05).** After Atena's Windows report and visual/camera playtest recommendation, the owner replied `aprovado`. This records overall human acceptance of the reviewed B-06 slice at `7de6d66`. No item-by-item playtest results, timings, additional engine runs or independently verified tested-build hash are inferred. All documented limitations remain: Lolth transparency in the foreground spans, far-edge clipping at x=2998, the mirrored seam echo, camera and balance tuning, overlapping labels and in-memory saves.
+
+**State.** `implemented-published-human-accepted-awaiting-pr`: implemented, published, human accepted, awaiting a pull request. B-06 stays active; it is not merged or complete, and the plan is not cleared. `pull_request_approved`, `merge_approved` and `dispatch_approved` remain false, and B-07 has not been started.
+
+**Documentation authorization.** The owner separately authorized one normal documentation commit and push of these operational records on this branch only. It is distinct from the completed implementation publication above. A PR, merge and any later publication remain unauthorized. The outcome of that push is reported in the executor's response, not recorded here.

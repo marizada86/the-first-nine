@@ -9,9 +9,10 @@ const implementation = '42bddf87b64eafb2046a47b1f2695df3ad9d4075';
 const published = 'ccc4fcf69271d88e421e26a81841cf6cce834a37';
 const followUp = 'd2012a1412f52d3066e4eff1216cfa9d57490acd';
 const previousPublished = '7c781ab65d75251af20880cf6e9548d1239be0dd';
-const latest = '9640881e2c56b010fb1be93b3818f22be91d3b9c';
+const previousLatest = '9640881e2c56b010fb1be93b3818f22be91d3b9c';
+const latest = '7de6d6658a2e8b7aea5954320ef29902094d7215';
 const isolation = 'b446b7b507d6a5faa8fb2ac9d28197da34887e99';
-const status = 'status: implemented-branch-published-combat-isolation-follow-up-awaiting-review';
+const status = 'status: implemented-published-human-accepted-awaiting-pr';
 const dir = '.atena/generated/2026-10-04-b06-validation';
 const git = (...args) => execFileSync('git', args, {encoding: 'utf8'}).replace(/\r\n/g, '\n');
 const normalize = text => text.replace(/^﻿/, '').replace(/\r\n/g, '\n').trimEnd();
@@ -33,7 +34,7 @@ let links = 0;
 for (const file of [spec, planning, instruction, note]) {
   const text = fs.readFileSync(file, 'utf8');
   assert(text.includes(status), 'Status not reconciled in ' + file);
-  for (const fact of ['branch_publication_approved: true', 'published_commit: ' + published, 'follow_up_commit: ' + followUp, 'follow_up_published: true', 'latest_published_commit: ' + latest, 'isolation_follow_up_commit: ' + isolation, 'isolation_follow_up_published: true', 'combat_isolation_follow_up: local-test-only', 'combat_isolation_follow_up_published: false']) assert(text.includes(fact), 'Publication fact ' + fact + ' missing in ' + file);
+  for (const fact of ['branch_publication_approved: true', 'published_commit: ' + published, 'follow_up_commit: ' + followUp, 'follow_up_published: true', 'latest_published_commit: ' + latest, 'isolation_follow_up_commit: ' + isolation, 'isolation_follow_up_published: true', 'combat_isolation_follow_up: published-test-only', 'combat_isolation_follow_up_commit: ' + latest, 'combat_isolation_follow_up_published: true', 'human_review: accepted', 'human_acceptance: accepted']) assert(text.includes(fact), 'Publication fact ' + fact + ' missing in ' + file);
   assert(text.includes('approval_mode: per-plan'), 'Approval mode missing in ' + file);
   assert(text.includes('push_approved: false'), 'Push gate missing in ' + file);
   assert(text.includes(implementation), 'Implementation commit missing in ' + file);
@@ -49,15 +50,15 @@ for (const file of [spec, planning, instruction]) {
   assert(text.includes('implementation_evidence: "[[2026-10-04-b06-stonehook-foot-expedition-implementation]]"'), 'Implementation link missing in ' + file);
 }
 const noteText = fs.readFileSync(note, 'utf8');
-for (const fact of ['origin: planned', 'implementation_preceded_spec: false', 'human_review: pending', 'pull_request_approved: false', 'merge_approved: false', 'published: true', 'base_commit: ' + base, '## Authorized branch publication', '## Review follow-up', '## Follow-up publication', '## Test-isolation follow-up', '## Isolation publication', '## Combat isolation follow-up']) assert(noteText.includes(fact), 'Note missing ' + fact);
+for (const fact of ['origin: planned', 'implementation_preceded_spec: false', 'human_review: accepted', 'pull_request_approved: false', 'merge_approved: false', 'published: true', 'base_commit: ' + base, '## Authorized branch publication', '## Review follow-up', '## Follow-up publication', '## Test-isolation follow-up', '## Isolation publication', '## Combat isolation follow-up', '## Combat isolation publication, Windows review and human acceptance']) assert(noteText.includes(fact), 'Note missing ' + fact);
 
 // Plan state: only the active plan block and cursor change; completed history is preserved exactly.
 const state = normalize(fs.readFileSync('.atena/state/plan.yaml', 'utf8'));
 const before = normalize(git('show', base + ':.atena/state/plan.yaml'));
 const active = state.match(/^active_plan:\n([\s\S]*?)^plan_cursor:/m)[1];
-for (const fact of ['id: "2026-10-04-b06-stonehook-foot-expedition"', 'status: implemented-branch-published-combat-isolation-follow-up-awaiting-review', 'approval_mode: per-plan', 'implementation_approved: true', 'checkpoint: owner-review-of-combat-isolation-follow-up', 'latest_published_commit: "' + latest + '"', 'isolation_follow_up_commit: "' + isolation + '"', 'isolation_follow_up_published: true', 'combat_isolation_follow_up: local-test-only', 'combat_isolation_follow_up_published: false', 'human_acceptance: pending', 'branch_publication_approved: true', 'published_commit: "' + published + '"', 'follow_up_commit: "' + followUp + '"', 'follow_up_published: true', 'follow_up_classification: IN_PLAN', 'implementation_branch: codex/b06-stonehook-foot-expedition', 'implementation_base: "' + base + '"', 'implementation_commit: "' + implementation + '"', 'implementation_published: true', 'human_review: pending', 'push_approved: false', 'pull_request_approved: false', 'merge_approved: false', 'dispatch_approved: false', 'blocking_gaps: []', 'steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]']) assert(active.includes(fact), 'Plan state missing ' + fact);
+for (const fact of ['id: "2026-10-04-b06-stonehook-foot-expedition"', 'status: implemented-published-human-accepted-awaiting-pr', 'approval_mode: per-plan', 'implementation_approved: true', 'checkpoint: awaiting-pull-request-authorization', 'latest_published_commit: "' + latest + '"', 'isolation_follow_up_commit: "' + isolation + '"', 'isolation_follow_up_published: true', 'combat_isolation_follow_up: published-test-only', 'combat_isolation_follow_up_commit: "' + latest + '"', 'combat_isolation_follow_up_published: true', 'human_acceptance: accepted', 'human_acceptance_date: "2026-10-05"', 'windows_review_7de6d66:', 'branch_publication_approved: true', 'published_commit: "' + published + '"', 'follow_up_commit: "' + followUp + '"', 'follow_up_published: true', 'follow_up_classification: IN_PLAN', 'implementation_branch: codex/b06-stonehook-foot-expedition', 'implementation_base: "' + base + '"', 'implementation_commit: "' + implementation + '"', 'implementation_published: true', 'human_review: accepted', 'push_approved: false', 'pull_request_approved: false', 'merge_approved: false', 'dispatch_approved: false', 'blocking_gaps: []', 'steps_completed: ["S-001-route-rendering", "S-002-camp-resource-guards", "S-003-restoration", "S-004-validation-review"]']) assert(active.includes(fact), 'Plan state missing ' + fact);
 for (const match of active.matchAll(/\[\[([^\]]+)\]\]/g)) { assert(ids.has(match[1]), 'Unresolved plan link ' + match[1]); links++; }
-assert(state.includes('plan_cursor: B-06-combat-isolation-follow-up-awaiting-owner-review'), 'Plan cursor not reconciled');
+assert(state.includes('plan_cursor: B-06-human-accepted-awaiting-pr'), 'Plan cursor not reconciled');
 const strip = text => text.replace(/^active_plan:\n[\s\S]*?^plan_cursor:.*$/m, 'ACTIVE');
 assert.equal(strip(state), strip(before), 'Completed plans or history changed');
 assert(!/\t/.test(state), 'Tab in plan state');
@@ -68,6 +69,7 @@ git('merge-base', '--is-ancestor', implementation, 'HEAD');
 git('merge-base', '--is-ancestor', published, 'HEAD');
 git('merge-base', '--is-ancestor', followUp, 'HEAD');
 git('merge-base', '--is-ancestor', previousPublished, 'HEAD');
+git('merge-base', '--is-ancestor', previousLatest, 'HEAD');
 git('merge-base', '--is-ancestor', latest, 'HEAD');
 git('merge-base', '--is-ancestor', isolation, 'HEAD');
 // The isolation follow-up is test-only: production files are identical to the latest published commit.
