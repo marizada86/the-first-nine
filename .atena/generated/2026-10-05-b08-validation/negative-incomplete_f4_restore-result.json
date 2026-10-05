@@ -1,0 +1,21 @@
+{
+  "name": "negative-incomplete_f4_restore",
+  "platform": {
+    "os": "linux",
+    "arch": "x64",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": "xvfb",
+    "device": null
+  },
+  "exit_code": 1,
+  "signal": null,
+  "passed": true,
+  "seconds": 2.421,
+  "expected_rejection": "B08 FAIL f4_restores_both_exactly",
+  "project_diagnostics": [],
+  "environment_diagnostics": [],
+  "detections": [
+    "B08 FAIL f4_restores_both_exactly"
+  ],
+  "error": null
+}

@@ -1,0 +1,90 @@
+{
+	"activation": {
+		"first_spawn_player_x": 2603.54370117188,
+		"spawned_early": false
+	},
+	"day_mirror_overlap": 0.997948717948718,
+	"defeat": {
+		"echoes_after": 2,
+		"echoes_before": 0
+	},
+	"isolation": {
+		"added_frame": 0,
+		"first_gameplay_frame": 1,
+		"isolated_frame": 0,
+		"pulse": 0.0,
+		"state": "opening",
+		"trigger_021_matched_after": false,
+		"trigger_021_matched_before": true
+	},
+	"joypad_bindings_before_suspension": {
+		"attack": 1,
+		"camp_action": 1,
+		"camp_menu": 1,
+		"jump": 1,
+		"move_left": 2,
+		"move_right": 2,
+		"primary": 1,
+		"shadow_action": 1,
+		"shadow_strike": 1,
+		"skip": 1,
+		"ui_colorpicker_delete_preset": 1,
+		"ui_down": 2,
+		"ui_left": 2,
+		"ui_right": 2,
+		"ui_select": 1,
+		"ui_up": 2
+	},
+	"night_mirror_overlap": 0.998814287831629,
+	"noise": {
+		"dashed": false,
+		"moved": 0.0,
+		"queued": false
+	},
+	"retreat": {
+		"harrier_x": 2469.08813476562,
+		"lolth_x": 1695.59936523438,
+		"state_at_capture": "windup"
+	},
+	"view_day-left": {
+		"body_fraction": 0.446370176586004,
+		"camera_x": 1420.0,
+		"center_offset": 0.0,
+		"expected_bottom": 525,
+		"lowest_row": 524,
+		"padding_changes": 0,
+		"padding_pixels": 3300
+	},
+	"view_day-right": {
+		"body_fraction": 0.445846958796599,
+		"camera_x": 1420.0,
+		"center_offset": 0.0,
+		"expected_bottom": 525,
+		"lowest_row": 524,
+		"padding_changes": 0,
+		"padding_pixels": 3300
+	},
+	"view_night-left": {
+		"body_fraction": 0.439960758665795,
+		"camera_x": 1420.0,
+		"center_offset": 0.0,
+		"expected_bottom": 525,
+		"lowest_row": 524,
+		"padding_changes": 0,
+		"padding_pixels": 3300
+	},
+	"view_night-right": {
+		"body_fraction": 0.441268803139307,
+		"camera_x": 1420.0,
+		"center_offset": 0.0,
+		"expected_bottom": 525,
+		"lowest_row": 524,
+		"padding_changes": 0,
+		"padding_pixels": 3300
+	},
+	"windup_warning": {
+		"label_changes": 266,
+		"locked_target": 2400.0,
+		"strip_changes": 1897
+	}
+}

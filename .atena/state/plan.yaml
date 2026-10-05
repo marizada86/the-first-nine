@@ -667,8 +667,47 @@ completed_plan_history:
     blocking_gaps: []
     evidence: "[[2026-10-03-dreamwater-reference-batch-h]]"
     exception: "Sprite cells, atlas, pivots, collision and runtime admission remain deferred."
-active_plan: null
-plan_cursor: complete
+active_plan:
+  id: "2026-10-05-b08-stonehook-cliff-harrier"
+  spec: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
+  evidence: "[[2026-10-05-b08-stonehook-cliff-harrier]]"
+  instruction: "[[2026-10-05-b08-stonehook-cliff-harrier-instruction]]"
+  prior_plan: "[[2026-10-05-b07-stonehook-first-encounter]]"
+  status: implemented-awaiting-human-review
+  mode: guided
+  request_classification: NEW_PLAN
+  approval_mode: per-plan
+  approval_selection: owner-selected-option-1
+  approved: "2026-10-05"
+  approval_source: "Owner implementation message of 2026-10-05 approving the revised B-08 Cliff Harrier scope and selecting option 1, per-plan; publication, push, PR, merge, dependencies and scope expansion remain separate gates."
+  request_execution_classification: IN_PLAN
+  implementation_approved: true
+  execution_target: cloud-executor
+  baseline_commit: "4d3c5c1ae5411aaf58e6fd7ae8333e45ecef7ac1"
+  implementation_branch: codex/b08-stonehook-cliff-harrier
+  checkpoint: implementation-awaiting-human-review
+  documentation_published: false
+  scope: "One finite Cliff Harrier (stonehook_cliff_harrier_01) beside the accepted Scree Crawler: own atlas crop, hovering flight with a locked-target telegraphed dive, independent two-actor rewards and restoration; fixed cave and earlier locks preserved."
+  blocking_gaps: []
+  steps: ["S-001-harrier-combat", "S-002-two-actor-restoration", "S-003-validation"]
+  batches: ["B-001-harrier-combat", "B-002-two-actor-restoration", "B-003-validation"]
+  steps_completed: ["S-001-harrier-combat", "S-002-two-actor-restoration", "S-003-validation"]
+  batches_completed: ["B-001-harrier-combat", "B-002-two-actor-restoration", "B-003-validation"]
+  resolvable_defaults: "Activation at x>=2600, home 2760, patrol 2400-2860 by body footprint, health 3, one capped Echo, hover 30 with bob <=6, approach 70, retreat 45 inside 100, windup 0.8, dive 0.3 at <=220, recovery 1.2, one 1-point hurt; crop Rect2(768,0,768,497), body 110. Attack initiation adjusted 180 -> 170 because body reach 113.1 plus dive travel 66 cannot reach from 180. Playtest settings, not canon."
+  deferred: "Remaining Stonehook threats, Stone Maw, shrine, Mark II and cures, wagon travel, pullers, missions/posts, parry, web/rope, later regions, new art/audio, dependencies, disk save, balance tuning and existing B-06/B-07 visual limitations."
+  implementation_evidence: "[[2026-10-05-b08-stonehook-cliff-harrier-implementation]]"
+  implementation_committed: local-only
+  implementation_published: false
+  human_acceptance: pending
+  push_approved: false
+  pull_request_approved: false
+  merge_approved: false
+  dispatch_approved: false
+  standing_publication_authority: none
+  implementation_adjustments: "Attack initiation 170 instead of 180 (body reach 113.1 plus dive travel 66 cannot connect from 180); an added cosmetic 18 px dive dip; per-step dive travel capped by time left; home 2760 and patrol 2400-2860 as proposed. One existing one-point hurt per dive. Review required."
+  validation: "Linux executor run only (Godot 4.7.2, Xvfb llvmpipe): B08 headless 34/34 and real-input 33/33; B07 24/24 and 28/28; B06 30/30 and 53/53; combat/noise 9/9 each; menus 33/33; geometry 46/46; facing headless 65/65 and rendered 101/102 (known Linux difference, identical on 4d3c5c1); self-test and both 600-frame smokes pass; 11 faulty controls rejected by named assertions; 12 captures inspected. No Windows or CI result is claimed."
+  next_recommendation: "Non-authorizing. Owner review of the local implementation, captures and limitations, then official Windows validation by Atena; any push, PR or merge needs separate explicit authority."
+plan_cursor: B-08-implemented-awaiting-human-review
 last_direct_execution:
   id: "2026-10-04-playtester-debug-controls"
   spec: "[[2026-10-04-playtester-debug-controls]]"

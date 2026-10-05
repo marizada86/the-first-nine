@@ -1,0 +1,80 @@
+{
+	"checks": 102,
+	"failures": 1,
+	"fault": "",
+	"raster_metrics": [
+		{
+			"enemy": "BRIAR HOUND",
+			"frame": 0,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.0752195771830431
+		},
+		{
+			"enemy": "BRIAR HOUND",
+			"frame": 1,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.0698335314163337
+		},
+		{
+			"enemy": "BRIAR HOUND",
+			"frame": 2,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.0701821465076901
+		},
+		{
+			"enemy": "BRIAR HOUND",
+			"frame": 3,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.040065750617112
+		},
+		{
+			"enemy": "STAG OF MIRE",
+			"frame": 0,
+			"mirror_error": 0.000000337993397432215,
+			"unmirrored_error": 0.0630327888257426
+		},
+		{
+			"enemy": "STAG OF MIRE",
+			"frame": 1,
+			"mirror_error": 0.000000364525784877047,
+			"unmirrored_error": 0.0566156469205137
+		},
+		{
+			"enemy": "STAG OF MIRE",
+			"frame": 2,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.060017443242253
+		},
+		{
+			"enemy": "STAG OF MIRE",
+			"frame": 3,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.0310313596857187
+		},
+		{
+			"enemy": "ANTLERED HUNGER",
+			"frame": 0,
+			"mirror_error": 0.000000562958463939052,
+			"unmirrored_error": 0.0780521429526974
+		},
+		{
+			"enemy": "ANTLERED HUNGER",
+			"frame": 1,
+			"mirror_error": 0.00000339439007537801,
+			"unmirrored_error": 0.0699734542519269
+		},
+		{
+			"enemy": "ANTLERED HUNGER",
+			"frame": 2,
+			"mirror_error": 0.0,
+			"unmirrored_error": 0.0819198312269436
+		},
+		{
+			"enemy": "ANTLERED HUNGER",
+			"frame": 3,
+			"mirror_error": 0.00000359567035260678,
+			"unmirrored_error": 0.0256774578264416
+		}
+	],
+	"rendered": true
+}
